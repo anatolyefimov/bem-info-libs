@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/sets-with-docs/desktop.blocks/menu-item/menu-item.js
