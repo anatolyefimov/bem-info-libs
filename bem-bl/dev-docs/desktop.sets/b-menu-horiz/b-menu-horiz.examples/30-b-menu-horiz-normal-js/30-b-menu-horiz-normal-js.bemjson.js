@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-menu-horiz/b-menu-horiz.examples/30-b-menu-horiz-normal-js.bemjson.js
