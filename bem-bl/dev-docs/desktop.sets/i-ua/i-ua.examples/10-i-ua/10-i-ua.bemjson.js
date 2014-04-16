@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/i-ua/i-ua.examples/10-i-ua.bemjson.js

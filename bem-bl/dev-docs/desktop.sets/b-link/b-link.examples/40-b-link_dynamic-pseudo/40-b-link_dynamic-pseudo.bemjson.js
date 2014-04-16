@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-link/b-link.examples/40-b-link_dynamic-pseudo.bemjson.js

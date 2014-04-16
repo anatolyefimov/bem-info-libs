@@ -1,0 +1,45 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../undefined/_undefined.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../undefined/_undefined.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок b-icon</span></div><div class="block__title"></div><div class="block__description static-text"><p>﻿Блок ##b-icon## создает контейнер для изображения.</p>
+<p>Aтрибуты ##alt, url, width, height## опциональны.
+То есть могут быть объявлены или необъявлены во входных данных.</p>
+<h2 id="bemjson-">BEMJSON## блока:</h2>
+<p>%%hl js
+{
+    block: &#39;b-icon&#39;
+}
+%%</p>
+<p>Выводит картинку (##img##) с однопиксельным прозрачным ##.gif## и пустым атрибутом ##alt##.</p>
+<p>Использовать блок можно двумя способами:</p>
+<ul>
+<li>через ##url##</li>
+<li>через модификатор</li>
+</ul>
+<p>==== Использование блока через ##url##</p>
+<p>Задаем в атрибуте ##url## свой путь к изображению, ##BEMJSON##:
+%%hl js
+{
+    block: &#39;b-icon&#39;,
+    url: &#39;my-icon.png&#39;,
+    alt: &#39;My icon&#39;
+}
+%%</p>
+<p>Этот способ рекомендуется для добавления одиночных картинок.</p>
+<p>==== Использование блока через добавление модификатора</p>
+<p>Добавляем блоку модификатор, ##BEMJSON##:
+%%hl js
+{
+    block: &#39;b-icon&#39;,
+    mods: { type: &#39;simple&#39; },
+    alt: &#39;My icon&#39;
+}
+%%</p>
+<p>В ##CSS## задаем размеры изображения и путь к нему:
+%%hl xml
+.b-icon_type_simple
+{
+    width: 16px;
+    height: 16px;</p>
+<pre><code>background: url(icons-sprite.png) no-repeat -50px 0;
+</code></pre><p>}
+%%</p>
+<p>Этот способ рекомендуется при использовании спрайтов.</p>
+</div></div></div></body></html>
