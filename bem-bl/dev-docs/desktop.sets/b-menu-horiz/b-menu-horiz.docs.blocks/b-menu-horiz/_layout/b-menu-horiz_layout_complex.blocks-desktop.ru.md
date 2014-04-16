@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-menu-horiz/_layout/b-menu-horiz_layout_complex.ru.md

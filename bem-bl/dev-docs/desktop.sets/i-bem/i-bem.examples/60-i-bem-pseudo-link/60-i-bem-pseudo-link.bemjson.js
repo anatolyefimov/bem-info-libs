@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/i-bem/i-bem.examples/60-i-bem-pseudo-link.bemjson.js

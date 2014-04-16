@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-menu-vert/__title/b-menu-vert__title.ru.md
