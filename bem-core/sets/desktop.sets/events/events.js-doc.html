@@ -1,0 +1,157 @@
+<h1 id="events-module">events Module</h1>
+<h2 id="event-class">Event Class</h2>
+<h3 id="constructor">Constructor</h3>
+<h4 id="event-type-target-">Event ( type, target )</h4>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>type {String}</li>
+<li>target {Object}</li>
+</ul>
+<h3 id="instance-properties">Instance properties</h3>
+<h4 id="type-string-">type {String}</h4>
+<p>Type</p>
+<h4 id="target-string-">target {String}</h4>
+<p>Target</p>
+<h4 id="result-">result {*}</h4>
+<p>Result</p>
+<h4 id="data-">data {*}</h4>
+<p>Data</p>
+<h3 id="instance-methods">Instance methods</h3>
+<h4 id="preventdefault-">preventDefault ()</h4>
+<p>Prevents default action</p>
+<h4 id="isdefaultprevented-boolean-">isDefaultPrevented () → {Boolean}</h4>
+<p>Returns whether is default action prevented</p>
+<h5 id="returns-">Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="stoppropagation-">stopPropagation ()</h4>
+<p>Stops propagation</p>
+<h4 id="ispropagationstopped-boolean-">isPropagationStopped () → {Boolean}</h4>
+<p>Returns whether is propagation stopped</p>
+<h5 id="returns-">Returns:</h5>
+<p>{Boolean}</p>
+<h2 id="emitter-class">Emitter Class</h2>
+<h3 id="instance-methods">Instance methods</h3>
+<h4 id="on-e-data-fn-ctx-this-">on ( e, [data], fn, [ctx] ) → {this}</h4>
+<p>Adds an event handler</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="once-e-data-fn-ctx-this-">once ( e, [data], fn, [ctx] ) → {this}</h4>
+<p>Adds a one time handler for the event.
+Handler is executed only the next time the event is fired, after which it is removed.</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="un-e-fn-ctx-this-">un ( [e], [fn], [ctx] ) → {this}</h4>
+<p>Removes event handler or handlers</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[e] {String}<br/>
+Event type</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="emit-e-data-this-">emit ( e, [data] ) → {this}</h4>
+<p>Fires event handlers</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String | events:Event}<br/>
+Event</li>
+<li>[data] {Object}<br/>
+Additional data</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h3 id="static-methods">Static methods</h3>
+<h4 id="on-e-data-fn-ctx-this-">on ( e, [data], fn, [ctx] ) → {this}</h4>
+<p>Adds an event handler</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="once-e-data-fn-ctx-this-">once ( e, [data], fn, [ctx] ) → {this}</h4>
+<p>Adds a one time handler for the event.
+Handler is executed only the next time the event is fired, after which it is removed.</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="un-e-fn-ctx-this-">un ( [e], [fn], [ctx] ) → {this}</h4>
+<p>Removes event handler or handlers</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[e] {String}<br/>
+Event type</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h4 id="emit-e-data-this-">emit ( e, [data] ) → {this}</h4>
+<p>Fires event handlers</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>e {String | events:Event}<br/>
+Event</li>
+<li>[data] {Object}<br/>
+Additional data</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{this}</p>
+<h1 id="events__channels-module">events__channels Module</h1>
+<h2 id="-function-id-default-drop-false-events-emitter-undefined-"><em>function</em> ( [id=&#39;default&#39;], [drop=false] ) → {events:Emitter | undefined}</h2>
+<p>Returns/destroys a named communication channel</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>[id=&#39;default&#39;] {String}<br/>
+Channel ID</li>
+<li>[drop=false] {Boolean}<br/>
+Destroy the channel</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{events:Emitter | undefined}</p>
+<p>Communication channel</p>
