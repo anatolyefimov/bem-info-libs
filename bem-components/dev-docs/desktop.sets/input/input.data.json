@@ -1,1 +1,1 @@
-{"name":"input","description":[{"content":"<p>Поле ввода с шириной 100%\nОтключен\nВ фокусе\nИнпут c крестиком очистки содержимого</p>\n<p>Тип\nПароль\nТекстовая область\nЭлемент, рисующий поля ввода (нативный инпут скрыт)\nКнопка «очистить»\nВиден\nНативный инпут\nМетка над полем ввода\nПолучение фокуса при вводе текста на странице</p>\n"}],"examples":[{"url":"input.examples/simple/_simple"}]}
+{"name":"input","description":[{"content":"\n\n\n\n\n\n\n\n\n\n\n\n"}],"examples":[{"url":"input.examples/simple/_simple"}]}
