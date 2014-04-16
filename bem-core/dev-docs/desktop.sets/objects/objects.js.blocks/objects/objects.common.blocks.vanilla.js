@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/objects/objects.vanilla.js

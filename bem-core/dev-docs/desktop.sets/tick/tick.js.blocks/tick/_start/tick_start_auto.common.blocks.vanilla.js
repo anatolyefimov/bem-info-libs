@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/tick/_start/tick_start_auto.vanilla.js
