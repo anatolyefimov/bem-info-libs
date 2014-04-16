@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/common.blocks/menu/_select/menu_select.js

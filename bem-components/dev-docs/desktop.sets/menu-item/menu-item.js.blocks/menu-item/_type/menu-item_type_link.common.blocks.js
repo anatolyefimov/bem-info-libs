@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/common.blocks/menu-item/_type/menu-item_type_link.js
