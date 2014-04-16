@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/vow/vow.js

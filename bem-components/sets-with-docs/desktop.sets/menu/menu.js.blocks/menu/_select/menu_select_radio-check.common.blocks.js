@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/sets-with-docs/common.blocks/menu/_select/menu_select_radio-check.js

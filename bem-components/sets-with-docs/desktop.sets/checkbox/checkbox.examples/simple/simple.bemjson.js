@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/sets-with-docs/common.blocks/checkbox/checkbox.tests/simple.bemjson.js

@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js

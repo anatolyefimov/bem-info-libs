@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/strings/__escape/strings__escape.vanilla.js

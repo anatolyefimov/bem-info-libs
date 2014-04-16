@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/sets-with-docs/common.blocks/checkbox/_type/checkbox_type_button.js

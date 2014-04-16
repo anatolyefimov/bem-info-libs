@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/idle/_start/idle_start_auto.js

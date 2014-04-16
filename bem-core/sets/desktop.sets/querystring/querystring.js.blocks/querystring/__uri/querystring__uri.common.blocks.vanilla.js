@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/querystring/__uri/querystring__uri.vanilla.js

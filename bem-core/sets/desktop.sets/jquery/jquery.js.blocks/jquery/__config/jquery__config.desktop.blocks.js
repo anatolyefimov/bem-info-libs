@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/sets/desktop.blocks/jquery/__config/jquery__config.js
