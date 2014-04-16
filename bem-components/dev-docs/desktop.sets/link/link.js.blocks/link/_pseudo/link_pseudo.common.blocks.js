@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/common.blocks/link/_pseudo/link_pseudo.js

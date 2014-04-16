@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/common.blocks/button/_togglable/button_togglable.ru.title.txt
