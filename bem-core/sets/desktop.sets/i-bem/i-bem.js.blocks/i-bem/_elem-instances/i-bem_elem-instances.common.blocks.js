@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/i-bem/_elem-instances/i-bem_elem-instances.js

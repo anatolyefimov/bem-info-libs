@@ -3,8 +3,8 @@
     "ref": "sets-with-docs",
     "url": "http://github.yandex-team.ru/bem/bem-components",
     "readme": "<h1 id=\"bem-components-library--!-build-status--https:--travis-ci-org-bem-bem-components-svg-branch=v2---https:--travis-ci-org-bem-bem-components---!-coverage-status--https:--coveralls-io-repos-bem-bem-components-badge-png-branch=v2---https:--coveralls-io-r-bem-bem-components-branch=v2-\">BEM Components Library <a href=\"https://travis-ci.org/bem/bem-components\"><img src=\"https://travis-ci.org/bem/bem-components.svg?branch=v2\" alt=\"Build Status\"></a> <a href=\"https://coveralls.io/r/bem/bem-components?branch=v2\"><img src=\"https://coveralls.io/repos/bem/bem-components/badge.png?branch=v2\" alt=\"Coverage Status\"></a></h1>\n<h2 id=\"что-это-\">Что это?</h2>\n<p>Библиотека блоков для управления формами.\nСодержит абстрагированные от дизайна базовые реализации.</p>\n<h2 id=\"использование\">Использование</h2>\n<p>Подключить библиотеку в проект любым известным способом.</p>\n<h2 id=\"поддерживаемые-браузеры\">Поддерживаемые браузеры</h2>\n<ul>\n<li>Desktop:<ul>\n<li>Firefox 24+</li>\n<li>Chrome last 2 versions</li>\n<li>Safari 6.0+</li>\n<li>Opera 12.1+</li>\n<li>Internet Explorer 9+</li>\n</ul>\n</li>\n<li>Touch-pad:<ul>\n<li>Android 4+</li>\n<li>iOS 5+</li>\n</ul>\n</li>\n<li>Touch-phone:<ul>\n<li>Android 4+</li>\n<li>iOS 6+</li>\n<li>Windows Phone 8+ (Internet Explorer 10+)</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"состав\">Состав</h2>\n<h3 id=\"уровни\">Уровни</h3>\n<h3 id=\"блоки\">Блоки</h3>\n<h3 id=\"технологии\">Технологии</h3>\n<h2 id=\"история-изменений\">История изменений</h2>\n<p>История изменений доступна на <a href=\"CHANGELOG.md\">отдельной странице</a>.</p>\n<h2 id=\"миграция\">Миграция</h2>\n<p>Миграция описана на <a href=\"MIGRATION.md\">отдельной странице</a>.</p>\n<h2 id=\"разработка\">Разработка</h2>\n<h3 id=\"рабочая-копия\">Рабочая копия</h3>\n<ol>\n<li><p>Получаем исходники:</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ git clone -b v2 git://github.com/bem/bem-components.git\n$ <span class=\"built_in\">cd</span> bem-components\n</code></pre>\n</li>\n<li><p>Устанавливаем зависимости:</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ npm install\n</code></pre>\n<p>Для последующего запуска локально установленных bem-tools нам потребуется <code>export PATH=./node_modules/.bin:$PATH</code> или любой альтернативный способ.</p>\n</li>\n<li><p>Устанавливаем зависимые библиотеки:</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ bower-npm-install\n</code></pre>\n</li>\n<li><p>Собираем примеры и тесты:</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ bem make sets\n</code></pre>\n</li>\n<li><p>Запускаем разработческий сервер:</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ bem server\n</code></pre>\n</li>\n<li><p>Проверяем code-style</p>\n<pre class=\"highlight\"><code class=\"highlight__code bash\">$ npm run lint\n</code></pre>\n</li>\n</ol>\n<h3 id=\"внесение-изменений\">Внесение изменений</h3>\n<ol>\n<li><a href=\"https://github.com/bem/bem-components/issues/new\">Создать issue</a> с описанием сути изменений.</li>\n<li>Определить в какую версию необходимо внести изменения.</li>\n<li>Сделать feature-branch с указанием номера issue и версии (<code>issues/&lt;номер issue&gt;@v&lt;номер версии&gt;</code>) на основе ветки версии.\nНапример для issue с номером 42 и версией 1: <code>git checkout -b issues/42@v1 v1</code>. Если изменения нужно внести в несколько версий, то для каждой из версий создаётся отдельная ветка.</li>\n<li>Внести изменения (для версии v2, можно локально проверить, что ничего не сломалось, запустив <code>npm test</code>).</li>\n<li>Закоммитить и сделать <code>push</code>. Если это необходимо, то нужно сделать <code>rebase</code> от базовой ветки версии.</li>\n<li>Создать pull-request на основе созданной ветки (или несколько pull-request&#39;ов для случая изменений в нескольких версиях).</li>\n<li>Любым способом связать pull-request и issue (например, c помощью <a href=\"https://github.com/blog/1506-closing-issues-via-pull-requests\">комментария</a>).</li>\n<li>Ждать закрытия pull-request и issue ;-)</li>\n</ol>\n<h3 id=\"модульное-тестирование\">Модульное тестирование</h3>\n",
-    "changelog": "<h1 id=\"история-изменений\">История изменений</h1>\n<h2 id=\"2-0-0\">2.0.0</h2>\n<h3 id=\"крупные-изменения\">Крупные изменения</h3>\n<ul>\n<li>Переход на модульную систему <a href=\"https://github.com/ymaps/modules\">https://github.com/ymaps/modules</a>.</li>\n</ul>\n<h3 id=\"остальные-изменения\">Остальные изменения</h3>\n<ul>\n<li>Понятия автофокуса для блока <code>input</code> изменено.\nБольше нет js-параметра <code>autoFocus</code>, вместо него нужно использовать модификатор <code>_autofocus_focused</code>.\nМодификатор <code>_autofocus_yes</code> теперь называется <code>_autofocus_hidden</code>.</li>\n</ul>\n",
     "migration": "<h1 id=\"миграция\">Миграция</h1>\n",
+    "changelog": "<h1 id=\"история-изменений\">История изменений</h1>\n<h2 id=\"2-0-0\">2.0.0</h2>\n<h3 id=\"крупные-изменения\">Крупные изменения</h3>\n<ul>\n<li>Переход на модульную систему <a href=\"https://github.com/ymaps/modules\">https://github.com/ymaps/modules</a>.</li>\n</ul>\n<h3 id=\"остальные-изменения\">Остальные изменения</h3>\n<ul>\n<li>Понятия автофокуса для блока <code>input</code> изменено.\nБольше нет js-параметра <code>autoFocus</code>, вместо него нужно использовать модификатор <code>_autofocus_focused</code>.\nМодификатор <code>_autofocus_yes</code> теперь называется <code>_autofocus_hidden</code>.</li>\n</ul>\n",
     "levels": [
         {
             "name": "desktop.sets",
@@ -20,7 +20,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "attach.examples/simple/simple"
+                                "url": "attach.examples/simple/_simple"
                             }
                         ]
                     },
@@ -37,7 +37,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "button.examples/simple/simple"
+                                "url": "button.examples/simple/_simple"
                             }
                         ]
                     },
@@ -54,7 +54,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "checkbox.examples/simple/simple"
+                                "url": "checkbox.examples/simple/_simple"
                             }
                         ]
                     },
@@ -76,7 +76,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "input.examples/simple/simple"
+                                "url": "input.examples/simple/_simple"
                             }
                         ]
                     },
@@ -94,7 +94,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "link.examples/simple/simple"
+                                "url": "link.examples/simple/_simple"
                             }
                         ]
                     }
@@ -136,7 +136,7 @@
                         ],
                         "examples": [
                             {
-                                "url": "spin.examples/simple/simple"
+                                "url": "spin.examples/simple/_simple"
                             }
                         ]
                     }

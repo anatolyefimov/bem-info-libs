@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/sets/common.blocks/i-bem/__dom/_elem-instances/i-bem__dom_elem-instances.ru.md
