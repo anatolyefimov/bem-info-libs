@@ -1,0 +1,26 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../undefined/_undefined.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../undefined/_undefined.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок b-search</span></div><div class="block__title"></div><div class="block__description static-text"><h2 id="-">Описание</h2>
+<p>Поисковая форма, содержащая поле ввода (элемент <code>input</code>) и кнопку (элемент <code>button</code>). Элементы <code>input</code> и <code>button</code> являются обязательными.</p>
+<p>Блок <code>b-search</code>, преобразуется в тег <code>&lt;form&gt;</code>, внутри которого лежит <code>[элемент layout](#__layout)</code>,
+отвечающий за раскладку блока.</p>
+<p>Если есть необходимость добавить атрибуты элементам блока или самому блоку, достаточно в <strong>BEMJSON</strong> описать свойство <code>attrs</code>, и перечислить в нем все необходимые атрибуты.</p>
+<h2 id="-">Объявление блока на странице</h2>
+<pre><code class="lang-js">{
+    block: &#39;b-search&#39;,
+    attrs: { action: &#39;/search.xml&#39; },
+    input: {
+        elem: &#39;input&#39;
+    },
+    button: {
+        elem: &#39;button&#39;
+    },
+    under: {
+        block: &#39;b-link&#39;,
+        url: &#39;/&#39;,
+        content: &#39;Advanced search&#39;
+    }
+}
+</code></pre>
+<p>Элемент <code>layout</code> миксируется с блоком <code>b-layout-table</code> в <strong>BEMHTML</strong>-шаблоне блока <code>b-search</code>.</p>
+<p>Свойства <code>input</code>, <code>button</code>, <code>under</code>, представляют собой элементы для раскладки <code>[ layout-input, layout-button, layout-under ]</code>, которые миксируются с элементами <code>cell</code> блока <code>b-layout-table</code>, преобразуясь в <strong>HTML</strong> в ячейки таблицы.</p>
+<p>Свойство <code>under</code> добавляет еще одну строку с ячейкой, в нее можно помещать дополнительную информацию. Например, ссылка «Расширенный поиск» под поисковым полем.</p>
+</div></div></div></body></html>

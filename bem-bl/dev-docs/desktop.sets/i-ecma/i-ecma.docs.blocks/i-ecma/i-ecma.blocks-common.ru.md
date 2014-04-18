@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-common/i-ecma/i-ecma.ru.md

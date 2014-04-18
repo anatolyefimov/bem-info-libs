@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-link/_inner/b-link_inner_yes.ru.md
