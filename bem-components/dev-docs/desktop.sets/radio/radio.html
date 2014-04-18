@@ -1,0 +1,248 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../undefined/_undefined.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../undefined/_undefined.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок radio</span></div><div class="block__title"></div><div class="block__description static-text"><h1 id="radio">radio</h1>
+<p>Блок <strong>radio</strong> – «радио-группа», состоящая из набора зависимых переключателей «радио-кнопок». Служит для выбора единственного варианта из списка. В реализации блока используется функциональность нативного контрола радиобокс, сам контрол скрыт.</p>
+<h1 id="-">Модификаторы блока</h1>
+<h2 id="_theme">_theme</h2>
+<p>Может использоваться без модификатора <code>_theme</code>. </p>
+<pre><code>    {
+        block : &#39;radio&#39;,
+        name : &#39;default1&#39;,
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; },
+            { val : 3, text : &#39;third&#39;, disabled : true }
+        ],
+        val : 2
+    }
+</code></pre><pre><code>    {
+        block : &#39;radio&#39;,
+        name : &#39;default2&#39;,
+        mods : { disabled : true },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    }
+</code></pre><h3 id="simple">simple</h3>
+<pre><code>    {
+        block : &#39;radio&#39;,
+        name : &#39;simple1&#39;,
+        mods : { theme : &#39;simple&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; },
+            { val : 3, text : &#39;third&#39;, disabled : true }
+        ],
+        val : 2
+    }
+</code></pre><pre><code>    {
+        block : &#39;radio&#39;,
+        name : &#39;simple2&#39;,
+        mods : { theme : &#39;simple&#39;, disabled : true },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    }
+</code></pre><h3 id="normal">normal</h3>
+<pre><code>    {
+        block : &#39;radio&#39;,
+        name : &#39;normal1&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; },
+            { val : 3, text : &#39;third&#39;, disabled : true }
+        ],
+        val : 2
+    }
+</code></pre><pre><code>    { tag : &#39;h3&#39;, content : &#39;button&#39; },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;simple-button1&#39;,
+        mods : { theme : &#39;simple&#39;, type : &#39;button&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; },
+            { val : 3, text : &#39;third&#39;, disabled : true }
+        ],
+        val : 2
+    } },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;simple-button2&#39;,
+        mods : { theme : &#39;simple&#39;, type : &#39;button&#39;, disabled : true },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    } },
+
+    { tag : &#39;hr&#39; },
+
+    { tag : &#39;h2&#39;, content : &#39;normal&#39; },
+    { tag : &#39;p&#39;, content : {
+
+
+
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;normal2&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    } },
+
+    { tag : &#39;h3&#39;, content : &#39;size&#39; },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;normal-size1&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    } },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;normal-size2&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    } },
+
+    { tag : &#39;h3&#39;, content : &#39;button&#39; },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;normal-button1&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39; },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; },
+            { val : 3, text : &#39;third&#39;, disabled : true }
+        ],
+        val : 2
+    } },
+    { tag : &#39;p&#39;, content : {
+        block : &#39;radio&#39;,
+        name : &#39;normal-button2&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, disabled : true },
+        options : [
+            { val : 1, text : &#39;first&#39; },
+            { val : 2, text : &#39;second&#39; }
+        ],
+        val : 2
+    } }
+]
+</code></pre><p>});</p>
+<h2 id="block-modifiers">Block Modifiers</h2>
+<h2 id="__theme">__theme</h2>
+<h3 id="simple">simple</h3>
+<pre><code>    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }
+    }
+</code></pre><h3 id="nornal">nornal</h3>
+<pre><code>    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }
+    }
+</code></pre><h2 id="__size">__size</h2>
+<p><code>{ size : &#39;s&#39; }</code></p>
+<p>There are five sizes available: <strong>xs</strong>, <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<table>
+  <tr>
+    <th>Theme/Size</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>xs</td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;xs&#39;, progress : true }
+    }
+</td>
+    <td><br>    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;xs&#39;, progress : true }
+    }
+</td>
+  </tr>
+  <tr>
+    <td>s</td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }
+    }
+    </td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }
+    }
+    </td>
+  </tr>
+  <tr>
+    <td>m</td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;m&#39;, progress : true }
+    }
+    </td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, progress : true }
+    }
+    </td>
+  </tr>
+  <tr>
+    <td>l</td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;l&#39;, progress : true }
+    }
+    </td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;l&#39;, progress : true }
+    }
+    </td>
+  </tr>
+  <tr>
+    <td>xl</td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;simple&#39;, size : &#39;xl&#39;, progress : true }
+    }
+    </td>
+    <td>
+    {
+        block : &#39;spin&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;xl&#39;, progress : true }
+    }
+    </td>
+  </tr>
+
+</table>
+
+<h2 id="__progress">__progress</h2>
+<p>The <code>{ progress : true }</code> modifier activates the spin. The <strong>spin</strong> block rotates in visible state.</p>
+<p>The <code>{ progress : false }</code> modifies paused rotation process. The <code>false</code> value is used when a <strong>spin</strong> block is invisible.</p>
+</div></div></div></body></html>
