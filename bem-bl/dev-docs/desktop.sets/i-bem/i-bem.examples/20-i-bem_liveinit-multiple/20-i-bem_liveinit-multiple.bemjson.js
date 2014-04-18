@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/i-bem/i-bem.examples/20-i-bem_liveinit-multiple.bemjson.js

@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-search/b-search.examples/20-b-search_under.bemjson.js

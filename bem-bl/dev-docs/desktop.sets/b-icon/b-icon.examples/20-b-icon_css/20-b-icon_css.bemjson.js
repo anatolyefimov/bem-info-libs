@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev-docs/blocks-desktop/b-icon/b-icon.examples/20-b-icon_css.bemjson.js
