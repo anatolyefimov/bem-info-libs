@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-menu-vert/__item-content/_visibility/b-menu-vert__item-content_visibility_visible.en.md

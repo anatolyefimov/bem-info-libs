@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-page/b-page.examples/10-b-page-simple.bemjson.js

@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-text/b-text.examples/10-b-text-simple.bemjson.js

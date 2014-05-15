@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-link/b-link.examples/10-b-link-link.bemjson.js

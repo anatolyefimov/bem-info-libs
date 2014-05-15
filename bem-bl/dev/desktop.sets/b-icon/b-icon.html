@@ -1,0 +1,52 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../.dist/dist.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../.dist/dist.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок b-icon</span></div><div class="block__title"></div><div class="block__description static-text"><h2 id="-">Описание</h2>
+<p>Блок <code>b-icon</code> создает контейнер для изображения. Предоставляет возможность добавлять и редактировать изображение без необходимости правки родительского блока. </p>
+<h2 id="-">Атрибуты блока</h2>
+<p>Имеет опциональные атрибуты блока:</p>
+<ul>
+<li><code>alt</code> – устанавливает альтернативный текст для изображений. Такой текст позволяет получить текстовую информацию о рисунке при отключенной в браузере загрузке изображений.  </li>
+<li><code>url</code> – задавая url, можно подставлять b-icon новую картинку, со свомим alt, шириной и высотой.  </li>
+<li><code>width</code>  устанавливает ширину изображения. Допускается использовать значения в пикселах или процентах. Если установлена процентная запись, то размеры изображения вычисляются относительно родительского элемента — контейнера, где находится тег <code>&lt;img&gt;</code>.  </li>
+<li><code>height</code> – устанавливает высоту изображения. Допускается использовать значения в пикселах или процентах. Если установлена процентная запись, то размеры изображения вычисляются относительно родительского элемента — контейнера, где находится тег <code>&lt;img&gt;</code>.</li>
+</ul>
+<h3 id="-">Объявление блока на странице</h3>
+<pre><code>{
+    block: &#39;b-icon&#39;
+}
+</code></pre><p>Представление блока в HTML, после BEMHTML-преобразования:</p>
+<pre><code>&lt;body class=&quot;b-page b-page__body&quot;&gt;
+      &lt;div class=&quot;b-page__body-i&quot;&gt;&lt;img class=&quot;b-icon&quot; src=&quot;//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif&quot; alt=&quot;&quot;/&gt;&lt;/div&gt;
+   &lt;/body&gt;
+</code></pre><p>По умолчанию тег <code>&lt;img&gt;</code> выводит картинку с однопиксельным прозрачным .gif и пустым атрибутом <code>alt</code>.</p>
+<p>Использовать блок можно двумя способами:</p>
+<ul>
+<li>через url  </li>
+<li>через модификатор</li>
+</ul>
+<h3 id="-url">Использование блока через url</h3>
+<p>Задаем в атрибуте url свой путь к изображению, BEMJSON:</p>
+<pre><code>{
+    block: &#39;b-icon&#39;,
+    url: &#39;my-icon.png&#39;,
+    alt: &#39;My icon&#39;
+}
+</code></pre><p>Этот способ рекомендуется для добавления одиночных картинок.</p>
+<h3 id="-">Использование блока через добавление модификатора</h3>
+<p>Добавляем блоку модификатор, BEMJSON:</p>
+<pre><code>{
+    block: &#39;b-icon&#39;,
+    mods: { type: &#39;simple&#39; },
+    alt: &#39;My icon&#39;
+}
+</code></pre><p>В CSS задаем размеры изображения и путь к нему:</p>
+<pre><code>.b-icon_type_simple
+{
+    width: 16px;
+    height: 16px;
+    background: url(icons-sprite.png) no-repeat -50px 0;
+}
+</code></pre><p>Этот способ рекомендуется при использовании спрайтов.</p>
+<p>!<em>При помощи css-свойства background: url(...); в блоке можно использовать как спрайты, так и одиночную иконку.</em></p>
+<h2 id="-">Модификаторы</h2>
+<h3 id="_size-">_size-*</h3>
+<p>Позволяют отображать специконки различных размеров.</p>
+</div><div class="block__examples"><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-icon:examples:10-b-icon-src:_10-b-icon-src:ru"><a class="example__title" href="b-icon.examples/10-b-icon-src/_10-b-icon-src.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-icon.examples/10-b-icon-src/_10-b-icon-src.ru.bemjson.js"></iframe><iframe class="example__live" src="b-icon.examples/10-b-icon-src/_10-b-icon-src.ru.html"></iframe></div><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-icon:examples:20-b-icon-css:_20-b-icon-css:ru"><a class="example__title" href="b-icon.examples/20-b-icon-css/_20-b-icon-css.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-icon.examples/20-b-icon-css/_20-b-icon-css.ru.bemjson.js"></iframe><iframe class="example__live" src="b-icon.examples/20-b-icon-css/_20-b-icon-css.ru.html"></iframe></div><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-icon:examples:30-b-icon-sprite:_30-b-icon-sprite:ru"><a class="example__title" href="b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.ru.bemjson.js"></iframe><iframe class="example__live" src="b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.ru.html"></iframe></div></div></div></div></body></html>

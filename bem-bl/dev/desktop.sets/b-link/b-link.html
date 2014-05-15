@@ -1,0 +1,50 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../.dist/dist.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../.dist/dist.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок b-link</span></div><div class="block__title"></div><div class="block__description static-text"><h2 id="-">Описание</h2>
+<p>Блок <strong>b-link</strong> — является ссылкой. Используется в других блоках.</p>
+<p>По умолчанию цвет ссылки – #1A3DC1.</p>
+<p>Виды ссылок:</p>
+<ul>
+<li>простые ссылки</li>
+<li>ссылки со счетчиками. </li>
+<li>псевдо-ссылки. Ссылка, подразумевающая действие без перехода на другую страницу.</li>
+</ul>
+<h2 id="-">Атрибуты блока</h2>
+<ul>
+<li><code>show-counter</code> - определяет вероятность показа счетчика для конкретной ссылки. По умолчанию вероятность показа счётчика — 10%. При значении <code>show-counter = 100</code> — показ счётчика гарантирован всегда.</li>
+</ul>
+<h2 id="-">Объявление блока на странице</h2>
+<p>BEMJSON для использования блока:</p>
+<pre><code>{
+   block: &#39;b-link&#39;,
+   url: &#39;http://company.yandex.ru&#39;,
+   title: &#39;Click here to learn more&#39;,
+   target: &#39;_blank&#39;,
+   content: &#39;The best company all over the world&#39;
+}
+</code></pre><p>В результате BEMHTML-преобразований cвойство <code>url</code> трансформируется в атрибут <code>href</code>. Свойства <code>title</code> и <code>target</code> — в соотвествующие атрибуты.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;body class=&quot;b-page b-page__body&quot;&gt;
+      &lt;div class=&quot;b-page__body-i&quot;&gt;&lt;a class=&quot;b-link&quot; href=&quot;http://company.yandex.ru&quot; target=&quot;_blank&quot; title=&quot;Click here to learn more&quot;&gt;The best company all over the world&lt;/a&gt;&lt;/div&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="-">Элементы блока</h2>
+<h3 id="__inner">__inner</h3>
+<p>Внутренний элемент<br><code>{ elem: &#39;inner&#39; }</code><br>Опциональный элемент, в который помещается текстовое содержимое ссылки. Необходим, когда ссылка содержит графический контент, например, иконку.</p>
+<h2 id="-">Модификаторы</h2>
+<h3 id="_disabled">_disabled</h3>
+<p>_disabled_yes<br>Неактивная ссылка<br><code>{ mods: { &#39;disabled&#39;: &#39;yes&#39; } }</code><br>Делает ссылку или псевдоссылку неактивной.</p>
+<h3 id="_inner">_inner</h3>
+<p>_inner_yes<br>Ссылка с вложенным элементом<br><code>{ mods: { &#39;inner&#39;: &#39;yes&#39; } }</code><br>Для удобного использования с иконками. Позволяет добавлять в ссылку элемент <code>__inner</code>. Содержит только CSS, которые переносит подчеркивание с самой ссылки на ее внутренний элемент.</p>
+<h3 id="_pseudo">_pseudo</h3>
+<p>_pseudo_yes<br>Псевдоссылка<br><code>{ mods: { &#39;pseudo&#39;: &#39;yes&#39; } }</code><br>Модификация ссылки, подразумевающая действие без перехода на другую страницу. Визуально имеет пунктирное нижнее подчеркивание.</p>
+
+<p>﻿Делает ссылку или псевдоссылку неактивной.</p>
+
+<p>Для удобного использования с иконками. Позволяет добавлять в ссылку элемент <strong>inner</strong>. Содержит только <strong>CSS</strong>-правила,
+которые переносят подчеркивание с самой ссылки на ее внутренний элемент.</p>
+
+<p>Модификация ссылки, подразумевающая действие без перехода на другую страницу.
+Визуально имеет пунктирное нижнее подчеркивание.</p>
+
+<p>﻿Опциональный элемент, в который помещается текстовое содержимое ссылки.
+Необходим, когда ссылка содержит графический контент, например, иконку.</p>
+</div><div class="block__examples"><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-link:examples:10-b-link-link:_10-b-link-link:ru"><a class="example__title" href="b-link.examples/10-b-link-link/_10-b-link-link.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-link.examples/10-b-link-link/_10-b-link-link.ru.bemjson.js"></iframe><iframe class="example__live" src="b-link.examples/10-b-link-link/_10-b-link-link.ru.html"></iframe></div><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-link:examples:20-b-link-pseudo:_20-b-link-pseudo:ru"><a class="example__title" href="b-link.examples/20-b-link-pseudo/_20-b-link-pseudo.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-link.examples/20-b-link-pseudo/_20-b-link-pseudo.ru.bemjson.js"></iframe><iframe class="example__live" src="b-link.examples/20-b-link-pseudo/_20-b-link-pseudo.ru.html"></iframe></div><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-link:examples:30-b-link-inner:_30-b-link-inner:ru"><a class="example__title" href="b-link.examples/30-b-link-inner/_30-b-link-inner.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-link.examples/30-b-link-inner/_30-b-link-inner.ru.bemjson.js"></iframe><iframe class="example__live" src="b-link.examples/30-b-link-inner/_30-b-link-inner.ru.html"></iframe></div><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="b-link:examples:40-b-link-dynamic-pseudo:_40-b-link-dynamic-pseudo:ru"><a class="example__title" href="b-link.examples/40-b-link-dynamic-pseudo/_40-b-link-dynamic-pseudo.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="b-link.examples/40-b-link-dynamic-pseudo/_40-b-link-dynamic-pseudo.ru.bemjson.js"></iframe><iframe class="example__live" src="b-link.examples/40-b-link-dynamic-pseudo/_40-b-link-dynamic-pseudo.ru.html"></iframe></div></div></div></div></body></html>
