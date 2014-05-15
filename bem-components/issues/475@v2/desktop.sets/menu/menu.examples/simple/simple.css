@@ -1,0 +1,245 @@
+html {
+    min-height: 100%;
+}
+
+.page_theme_normal {
+    font: 13px/15px Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    margin: 0;
+    color: #000;
+    background: #fff;
+}
+
+.test {
+    display: table-cell;
+    width: 150px;
+    padding: 1px;
+    border-right: 20px solid transparent;
+}
+    .test h3 {
+        margin-top: 0;
+    }
+    .test .button {
+        display: block;
+        margin: 5px;
+    }
+
+.menu_theme_simple {
+    outline: 0;
+}
+    .menu_theme_simple.menu_focused {
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
+    }
+    .menu_theme_simple .menu__group-title {
+        font-style: italic;
+        padding: 4px 10px;
+    }
+
+.menu-item_theme_simple {
+    padding: 4px 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+    .menu__group .menu-item_theme_simple {
+        padding-left: 25px;
+    }
+    .menu-item_theme_simple.menu-item_disabled {
+        opacity: 0.3;
+    }
+    .menu-item_theme_simple .link_disabled {
+        cursor: text;
+    }
+    .menu-item_theme_simple.menu-item_checked {
+        font-weight: bold;
+        background: #fff7db;
+    }
+    .menu-item_theme_simple.menu-item_hovered {
+        cursor: pointer;
+        background: #ffc7c7;
+    }
+    .menu-item_theme_simple .icon {
+        width: 1.2em;
+        height: 1.2em;
+        margin-right: 0.4em;
+        vertical-align: top;
+    }
+
+.icon {
+    display: inline-block;
+    background: 50% no-repeat;
+}
+    /* Hack for correct baseline positioning */
+    .icon::after {
+        visibility: hidden;
+        content: '\00A0';
+    }
+
+.menu_theme_normal {
+    user-select: none;
+    outline: 0;
+    background: #fff;
+}
+    .menu_theme_normal.menu_size_s {
+        font-size: 13px;
+        line-height: 24px;
+        padding: 3px 0;
+    }
+        .menu_theme_normal.menu_size_s .menu-item + .menu__group {
+            margin-top: 3px;
+        }
+        .menu_theme_normal.menu_size_s .menu__group {
+            padding: 3px 0;
+        }
+            .menu_theme_normal.menu_size_s .menu__group-title {
+                padding: 0 10px;
+            }
+    .menu_theme_normal.menu_size_m {
+        font-size: 13px;
+        line-height: 24px;
+        padding: 4px 0;
+    }
+        .menu_theme_normal.menu_size_m .menu-item + .menu__group {
+            margin-top: 4px;
+        }
+        .menu_theme_normal.menu_size_m .menu__group {
+            padding: 4px 0;
+        }
+            .menu_theme_normal.menu_size_m .menu__group-title {
+                padding: 0 13px;
+            }
+    .menu_theme_normal.menu_size_l {
+        font-size: 15px;
+        line-height: 28px;
+        padding: 5px 0;
+    }
+        .menu_theme_normal.menu_size_l .menu-item + .menu__group {
+            margin-top: 5px;
+        }
+        .menu_theme_normal.menu_size_l .menu__group {
+            padding: 5px 0;
+        }
+            .menu_theme_normal.menu_size_l .menu__group-title {
+                padding: 0 15px;
+            }
+    .menu_theme_normal.menu_size_xl {
+        font-size: 15px;
+        line-height: 32px;
+        padding: 6px 0;
+    }
+        .menu_theme_normal.menu_size_xl .menu-item + .menu__group {
+            margin-top: 6px;
+        }
+        .menu_theme_normal.menu_size_xl .menu__group {
+            padding: 6px 0;
+        }
+            .menu_theme_normal.menu_size_xl .menu__group-title {
+                padding: 0 20px;
+            }
+    .menu_theme_normal .menu__group {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-width: 1px 0;
+    }
+        .menu_theme_normal .menu__group-title {
+            color: #999;
+        }
+        .menu_theme_normal .menu__group + .menu__group {
+            border-top: 0;
+        }
+        .menu_theme_normal .menu__group:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+        .menu_theme_normal .menu__group:first-child {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+.menu-item_theme_normal {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+    .menu-item_theme_normal.menu-item_disabled {
+        opacity: 0.3;
+    }
+    .menu-item_theme_normal .link_disabled {
+        cursor: text;
+    }
+    .menu-item_theme_normal.menu-item_checked {
+        background: 0 50% no-repeat url(../../../../design/common.blocks/theme/_normal/tip.svg);
+    }
+    .menu-item_theme_normal.menu-item_hovered {
+        cursor: pointer;
+        background-color: #ffeba0;
+    }
+    .menu-item_theme_normal.menu-item_type_link .link {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+    }
+    .menu-item_theme_normal .icon {
+        width: 16px;
+        margin-right: 5px;
+    }
+
+.menu_size_s .menu-item_theme_normal {
+    padding: 0 10px;
+    background-size: 14px;
+    background-position: 10px 50%;
+}
+
+.menu_size_s .menu__group + .menu-item_theme_normal {
+    margin-top: 3px;
+}
+
+.menu_size_s[class*='menu_select'] .menu-item_theme_normal,
+.menu_size_s .menu__group-title ~ .menu-item_theme_normal {
+    padding-left: 30px;
+}
+
+.menu_size_m .menu-item_theme_normal {
+    padding: 0 13px;
+    background-size: 14px;
+    background-position: 13px 50%;
+}
+
+.menu_size_m .menu__group + .menu-item_theme_normal {
+    margin-top: 4px;
+}
+
+.menu_size_m[class*='menu_select'] .menu-item_theme_normal,
+.menu_size_m .menu__group-title ~ .menu-item_theme_normal {
+    padding-left: 30px;
+}
+
+.menu_size_l .menu-item_theme_normal {
+    padding: 0 15px;
+    background-size: 15px;
+    background-position: 15px 50%;
+}
+
+.menu_size_l .menu__group + .menu-item_theme_normal {
+    margin-top: 5px;
+}
+
+.menu_size_l[class*='menu_select'] .menu-item_theme_normal,
+.menu_size_l .menu__group-title ~ .menu-item_theme_normal {
+    padding-left: 34px;
+}
+
+.menu_size_xl .menu-item_theme_normal {
+    padding: 0 20px;
+    background-size: 15px;
+    background-position: 20px 50%;
+}
+
+.menu_size_xl .menu__group + .menu-item_theme_normal {
+    margin-top: 6px;
+}
+
+.menu_size_xl[class*='menu_select'] .menu-item_theme_normal,
+.menu_size_xl .menu__group-title ~ .menu-item_theme_normal {
+    padding-left: 40px;
+}
