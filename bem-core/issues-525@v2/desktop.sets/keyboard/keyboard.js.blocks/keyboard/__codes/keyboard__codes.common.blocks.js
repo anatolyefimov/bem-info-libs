@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/issues-525@v2/common.blocks/keyboard/__codes/keyboard__codes.js
