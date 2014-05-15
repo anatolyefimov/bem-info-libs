@@ -1,1 +1,1 @@
-/Users/user/Work/bds-bem-info/content/bem-components/issues/475@v2/common.blocks/radio-group/radio-group.tests/simple.bemjson.js
+/Users/user/Work/bds-bem-info/content/bem-components/issues-475@v2/common.blocks/radio-group/radio-group.tests/simple.bemjson.js

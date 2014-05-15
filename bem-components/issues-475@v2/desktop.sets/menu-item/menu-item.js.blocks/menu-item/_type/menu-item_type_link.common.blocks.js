@@ -1,1 +1,1 @@
-/Users/user/Work/bds-bem-info/content/bem-components/issues/475@v2/common.blocks/menu-item/_type/menu-item_type_link.js
+/Users/user/Work/bds-bem-info/content/bem-components/issues-475@v2/common.blocks/menu-item/_type/menu-item_type_link.js
