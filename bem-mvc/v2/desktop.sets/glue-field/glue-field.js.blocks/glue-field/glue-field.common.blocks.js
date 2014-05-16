@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-mvc/v2/common.blocks/glue-field/glue-field.js
