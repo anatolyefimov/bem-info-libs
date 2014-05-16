@@ -10,34 +10,29 @@
             "name": "desktop.sets",
             "blocks": [
                 {
-                    "name": ".dist",
-                    "data": null,
-                    "jsdoc": null
-                },
-                {
                     "name": "attach",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "base-control",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "button",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "checkbox",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "dropdown",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "icon",
@@ -52,37 +47,37 @@
                 {
                     "name": "input",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "link",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "menu",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "menu-item",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "popup",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "radio",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "radio-group",
                     "data": null,
-                    "jsdoc": null
+                    "jsdoc": ""
                 },
                 {
                     "name": "spin",
