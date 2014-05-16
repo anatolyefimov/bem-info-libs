@@ -1,0 +1,540 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../.dist/dist.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../.dist/dist.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок button</span></div><div class="block__title"></div><div class="block__description static-text"><h1 id="button">button</h1>
+<p>Блок <strong>button</strong> используется для создания различных типов кнопок и предоставляет возможность изменять их размер, состояние, содержимое и внешний вид.</p>
+<p>В MSIE8 и ниже кастомные кнопки деградируют до нативных кнопок <code>&lt;button&gt;</code>, кнопка-ссылка станет нативной ссылкой <code>&lt;a&gt;</code>.</p>
+<h2 id="-">Варианты использования кнопок</h2>
+<p>Блок <strong>button</strong> служит для создания различных типов кнопок:</p>
+<table>
+  <tr>
+    <th>Тип</th>
+    <th>Описание</th>
+    <th>Пример</th>
+  </tr>
+  <tr>
+    <td>Обычная кнопка</td>
+    <td>Применяется для любых кнопок веб-интерфейса; используется по умолчанию.</td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+            icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } }
+        }
+      </pre></code>
+    </td>
+   <tr>
+    <td>Кнопка-ссылка</td>
+    <td>Разновидность обычной кнопки, для которой дополнительно задан атрибут <code>url</code>.
+Применяется для перехода по ссылке.</td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;link&#39; },
+            url : &#39;#&#39;,
+            text : &#39;link&#39;
+        }
+      </pre></code>
+    </td>
+   </tr>
+   <tr>
+    <td>Кнопка действия</td>
+    <td>Предназначена для отправки данных на сервер (submit). Всегда располагается в форме.
+    Чтобы кнопка стала кнопкой действия, во входном BEMJSON блока необходимо добавить модификатор <code>type</code> со значением <code>submit</code>.
+    </td>
+    <td>
+      <pre><code>
+        {
+            tag: &#39;form&#39;,
+            content: {
+                block : &#39;button&#39;,
+                mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;submit&#39; },
+                text : &#39;button&#39;
+            }
+        }
+      </pre></code>
+    </td>
+   </tr>
+</table>
+
+<h2 id="api-">API блока</h2>
+<p>Публичные методы блока представлены в таблице:</p>
+<table>
+  <tr>
+    <th>Метод</th>
+    <th>Описание</th>
+  </tr>
+  <tr>
+    <td>getText</td>
+    <td>Возвращает текст кнопки {String}</td>
+  </tr>
+  <tr>
+    <td>setText</td>
+    <td>Задает текст кнопки</td>
+  </tr>
+</table>
+
+
+<h2 id="-">Допустимые атрибуты блока</h2>
+<p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON блока:</p>
+<table>
+  <tr>
+    <th>Атрибут</th>
+    <th>Тип</th>
+    <th>Описание</th>
+  </tr>
+  <tr>
+    <td>text</td>
+    <td><code>string</code></td>
+    <td>Текст кнопки</td>
+   </tr>
+   <tr>
+    <td>icon</td>
+    <td><code>bemjson</code></td>
+    <td>Блок <code>icon</code>, формирующий иконку.</td>
+  </tr>
+  <tr>
+    <td>url</td>
+    <td><code>string</code></td>
+    <td>Адрес ссылки. Если указан, то кнопка становится ссылкой, а значение <code>url</code> атрибутом <code>href</code>.</td>
+  </tr>
+</table>
+
+<p>Другие допустимые атрибуты блока могут задаваться в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
+<h2 id="-">Модификаторы блока</h2>
+<ul>
+<li><a href="#Темы блока `_theme`">theme</a></li>
+<li><a href="#Размеры кнопок `_size`">size</a></li>
+<li><a href="#Типы блока `_type`">type</a></li>
+<li><a href="#Не активна `_disabled_true`">disabled</a></li>
+<li><a href="#В фокусе `_focused_true`">focused</a></li>
+<li><a href="#Наведение курсором `_hovered_true`">hovered</a></li>
+<li><a href="#Нажатие `_pressed_true`">pressed</a></li>
+<li><a href="#Залипание `_togglable_true`">togglable</a></li>
+<li><a href="#Выделение `_action_true`">action</a></li>
+<li><a href="#Псевдокнопка `_pseudo_true`">pseudo</a></li>
+</ul>
+<h3 id="-_theme-">Темы <code>_theme</code></h3>
+<p>Блок представлен в следующих темах:</p>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером.</p>
+<p>Наглядно видно на примерах ниже:</p>
+<h4 id="default">default</h4>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        text : &#39;default&#39;
+    }
+</code></pre>
+<h4 id="simple">simple</h4>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        mods : { theme : &#39;simple&#39; },
+        text : &#39;simple&#39;
+    }
+</code></pre>
+<h4 id="normal">normal</h4>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        text : &#39;normal&#39;
+    }
+</code></pre>
+<h3 id="-_size-">Размеры кнопок <code>_size</code></h3>
+<p>Задает размер всем типам кнопок. Обязательный модификатор.</p>
+<p>Реализован только в теме <em>normal</em>.</p>
+<p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<table>
+  <tr>
+    <th>Параметры/Размер</th>
+    <th>s</th>
+    <th>m</th>
+    <th>l</th>
+    <th>xl</th>
+  </tr>
+  <tr>
+    <td>Размер шрифта</td>
+    <td>13px</td>
+    <td>13px</td>
+    <td>15px</td>
+    <td>18px</td>
+  </tr>
+  <tr>
+    <td>Высота кнопки</td>
+    <td>24px</td>
+    <td>28px</td>
+    <td>32px</td>
+    <td>38px</td>
+  </tr>
+  <tr>
+    <td>Пример</td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;s&#39; },
+            text : &#39;Small&#39;
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+            text : &#39;Medium&#39;
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
+            text : &#39;Large&#39;
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;xl&#39; },
+            text : &#39;X-large&#39;
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+
+<h3 id="-_type-">Типы кнопок <code>_type</code></h3>
+<p>Блок представлен следующими типами:</p>
+<ul>
+<li>кнопка-ссылка (<code>_link</code>). Обязательный атрибут <code>url</code>. Кнопка получает тег <code>&lt;a&gt;</code>, а значение <code>url</code> становится атрибутом <code>href</code>.</li>
+<li>кнопка действия (<code>_submit</code>). Обязательно располагается в форме.</li>
+</ul>
+<p>Реализован в теме <em>simple</em> и <em>normal</em>.</p>
+<table>
+  <tr>
+    <th>Тип / Реализация</th>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td> <code>_link</code></td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { type : &#39;link&#39; },
+            url : &#39;#&#39;,
+            text : &#39;link&#39;
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;simple&#39;, type : &#39;link&#39; },
+            url : &#39;#&#39;,
+            text : &#39;link&#39;
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;link&#39; },
+            url : &#39;#&#39;,
+            text : &#39;link&#39;
+        }
+      </pre></code>
+    </td>
+  </tr>
+  <tr>
+    <td><code>_submit</code></td>
+    <td>
+      <pre><code>
+        {
+            tag: &#39;form&#39;,
+            content: {
+                block : &#39;button&#39;,
+                mods : { type : &#39;submit&#39; },
+                text : &#39;default&#39;
+            }
+        }
+      <pre><code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            tag: &#39;form&#39;,
+            content: {
+                block : &#39;button&#39;,
+                mods : { theme : &#39;simple&#39;, type : &#39;submit&#39; },
+                text : &#39;simple&#39;
+            }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            tag: &#39;form&#39;,
+            content: {
+                block : &#39;button&#39;,
+                mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;submit&#39; },
+                text : &#39;normal&#39;
+            }
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+<h3 id="-">Состояния</h3>
+<h4 id="-_disabled-">Не активна <code>_disabled</code></h4>
+<p>В состоянии &quot;не активна&quot; кнопка видна, но недоступна для действий пользователя.</p>
+<p>Такая кнопка не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами.</p>
+<p>Реализован во всех темах блока.</p>
+<table>
+  <tr>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_disabled_true&#39;,
+            mods : { disabled : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_disabled_true&#39;,
+            mods : { theme : &#39;simple&#39;, disabled : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_disabled_true&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true }
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_focused-">В фокусе <code>_focused</code></h4>
+<p>В состоянии блока <code>focused</code> со значением <code>true</code> кнопка всегда находится в фокусе. Нажатие по ней можно выполнить клавишей <code>Space</code> или <code>Enter</code>. Переход по контролам формы осуществляется клавишей <code>Tab</code>.</p>
+<p>Реализован во всех темах блока.</p>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        text : &#39;_focused_true&#39;,
+        mods : {
+            theme : &#39;normal&#39;,
+            size : &#39;m&#39;,
+            focused : true
+        }
+    }
+</code></pre>
+<h4 id="-_hovered-">Наведение курсором <code>_hovered</code></h4>
+<p>Определяет действие &quot;наведение курсором&quot; на кнопку.</p>
+<p>Реализован во всех темах блока.</p>
+<table>
+  <tr>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_hovered_true&#39;,
+            mods : { hovered : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_hovered_true&#39;,
+            mods : { theme : &#39;simple&#39;, hovered : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_hovered_true&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, hovered : true }
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_pressed-">Нажатие <code>_pressed</code></h4>
+<p>Определяет состояние &quot;нажатие на кнопку&quot; (действие).</p>
+<p>Реализован во всех темах блока.</p>
+<table>
+  <tr>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_pressed_true&#39;,
+            mods : { pressed : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_pressed_true&#39;,
+            mods : { theme : &#39;simple&#39;, pressed : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_pressed_true&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pressed : true }
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_togglable-">Залипание <code>_togglable</code></h4>
+<p>Определяет состояние кнопки в нажатом состоянии, когда первый клик по кнопке нажимает ее, а второй возвращает в исходное состояние.</p>
+<table>
+  <tr>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_togglable_true&#39;,
+            mods : { togglable : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_togglable_true&#39;,
+            mods : { theme : &#39;simple&#39;, togglable : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_togglable_true&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, togglable : true }
+        }
+      </pre></code>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_action-">Выделение <code>_action</code></h4>
+<p>Визуально выделяет кнопку на странице.</p>
+<p>Реализован во всех темах блока.</p>
+<table>
+  <tr>
+    <th>default</th>
+    <th>simple</th>
+    <th>normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_action_true&#39;,
+            mods : { action : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_action_true&#39;,
+            mods : { theme : &#39;simple&#39;, action : true }
+        }
+      </pre></code>
+    </td>
+    <td>
+      <pre><code>
+        {
+            block : &#39;button&#39;,
+            text : &#39;_action_true&#39;,
+            mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, action : true }
+        }
+      </pre></code>
+  </td>
+  </tr>
+</table>
+
+<h4 id="-_pseudo-">Псевдокнопка <code>_pseudo</code></h4>
+<p>При выборе модификатора <code>_pseudo</code> со значением <code>true</code>, кнопка получает прозрачный фон. В неактивном состоянии границы псевдокнопки исчезают и она сливается со страницей.</p>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true },
+        text : &#39;pseudo&#39;
+    }
+</code></pre>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true, disabled : true },
+        text : &#39;pseudo&#39;
+    }
+</code></pre>
+<h2 id="-">Элементы блока</h2>
+<p>Визуально представлен следующими элементами:</p>
+<h3 id="__text">__text</h3>
+<p>Технический элемент. Обрамляет текст кнопки.
+Нужен для позиционирования текста внутри кнопки, в том числе для случаев использования вместе с иконкой.</p>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } },
+        text : &#39;with icon&#39;
+    }
+</code></pre>
+</div><div class="block__examples"><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="button:examples:simple:_simple:ru"><a class="example__title" href="button.examples/simple/_simple.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="button.examples/simple/_simple.ru.bemjson.js"></iframe><iframe class="example__live" src="button.examples/simple/_simple.ru.html"></iframe></div></div></div></div></body></html>
