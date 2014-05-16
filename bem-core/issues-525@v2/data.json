@@ -11,8 +11,8 @@
             "blocks": [
                 {
                     "name": ".dist",
-                    "data": null,
-                    "jsdoc": null
+                    "jsdoc": null,
+                    "data": null
                 },
                 {
                     "name": "clearfix",
