@@ -10,11 +10,6 @@
             "name": "desktop.sets",
             "blocks": [
                 {
-                    "name": ".dist",
-                    "data": null,
-                    "jsdoc": null
-                },
-                {
                     "name": "clearfix",
                     "jsdoc": null,
                     "data": {
