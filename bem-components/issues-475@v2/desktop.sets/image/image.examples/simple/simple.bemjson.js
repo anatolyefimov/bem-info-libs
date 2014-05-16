@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/issues-475@v2/common.blocks/image/image.tests/simple.bemjson.js

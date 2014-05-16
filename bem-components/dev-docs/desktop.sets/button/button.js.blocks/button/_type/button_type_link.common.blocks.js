@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/common.blocks/button/_type/button_type_link.js

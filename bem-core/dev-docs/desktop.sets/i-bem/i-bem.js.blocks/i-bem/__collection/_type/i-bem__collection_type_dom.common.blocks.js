@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/i-bem/__collection/_type/i-bem__collection_type_dom.js

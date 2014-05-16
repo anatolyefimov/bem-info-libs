@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/issues-475@v2/common.blocks/popup/_autoclosable/popup_autoclosable.js

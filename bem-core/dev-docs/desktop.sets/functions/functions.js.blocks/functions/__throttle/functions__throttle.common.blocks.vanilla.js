@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/functions/__throttle/functions__throttle.vanilla.js

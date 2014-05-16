@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/i-bem/__dom/_init/i-bem__dom_init.js

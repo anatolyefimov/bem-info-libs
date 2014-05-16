@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/dev-docs/common.blocks/i-bem/__internal/i-bem__internal.vanilla.js

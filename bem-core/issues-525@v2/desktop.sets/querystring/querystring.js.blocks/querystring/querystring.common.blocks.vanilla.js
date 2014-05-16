@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/issues-525@v2/common.blocks/querystring/querystring.vanilla.js

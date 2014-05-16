@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/issues-525@v2/common.blocks/loader/_type/loader_type_js.js

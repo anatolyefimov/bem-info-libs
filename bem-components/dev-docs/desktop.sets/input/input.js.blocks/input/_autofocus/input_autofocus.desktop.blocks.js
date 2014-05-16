@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/dev-docs/desktop.blocks/input/_autofocus/input_autofocus.js
