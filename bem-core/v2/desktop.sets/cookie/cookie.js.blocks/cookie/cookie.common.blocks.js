@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/v2/common.blocks/cookie/cookie.js

@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/v2/desktop.blocks/page/page.examples/40-es5-shims.bemjson.js
