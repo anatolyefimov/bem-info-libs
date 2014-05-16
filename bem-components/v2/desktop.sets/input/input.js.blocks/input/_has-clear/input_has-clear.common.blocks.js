@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/_has-clear/input_has-clear.js
