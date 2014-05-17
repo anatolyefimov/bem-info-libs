@@ -4,7 +4,7 @@
     "url": "http://github.com/bem/bem-bl",
     "changelog": null,
     "migration": null,
-    "readme": "<h1 id=\"библиотека-блоков-bem-bl\">Библиотека блоков bem-bl</h1>\n<p><a href=\"http://bem.github.com/bem-bl/index.ru.html\">Описание библиотеки и примеры</a>.</p>\n<!-- Yandex.Metrika counter -->\n<img src=\"https://mc.yandex.ru/watch/12831025\" style=\"position:absolute; left:-9999px;\" alt=\"\" />\n<!-- /Yandex.Metrika counter -->\n",
+    "readme": "<h1 id=\"bem-bl-blocks-library\">bem-bl blocks library</h1>\n<p>bem-bl is an extended library of blocks, that consists not only of basic blocks but also has a number of universal solutions to display a menu, text, logo, search tab, table, etc.</p>\n<p>Current state of development: bem-bl is suspended and will not be filled with new blocks, however we provide user support and bug fixing. We recommend you to start new projects with <a href=\"http://bem.info/libs/bem-core/\">bem-core</a> instead of bem-bl.</p>\n<!-- Yandex.Metrika counter -->\n<img src=\"https://mc.yandex.ru/watch/12831025\" style=\"position:absolute; left:-9999px;\" alt=\"\" />\n<!-- /Yandex.Metrika counter -->\n",
     "levels": [
         {
             "name": "desktop.sets",
@@ -65,26 +65,6 @@
                     "name": "b-layout-table",
                     "jsdoc": null,
                     "data": {
-                        "en": {
-                            "name": "b-layout-table",
-                            "description": [
-                                {
-                                    "content": "<p><code>b-layout-table</code> block — is a 100%-width table for making a layout.</p>\n<p>This block has a <code>bemhtml</code> template that gives a table, its rows and cells with all the attribute nodes needed.</p>\n<p>Cells of the block can be either <code>cell</code> or <code>gap</code> elements.\nA <code>cell</code> element is to contain a content and <code>gap</code> element is to set some space betwen cells.</p>\n<p>Let&#39;s look at <strong>bemjson</strong> input data of the block:</p>\n<pre><code class=\"lang-js\">{\n    block: &#39;b-layout-table&#39;,\n    mods: { layout: &#39;58-40&#39;},\n    content: [\n        {\n            elem: &#39;row&#39;,\n            content: [\n                {\n                    elem: &#39;gap&#39;,\n                    rowspan: &#39;2&#39;\n                },\n                {\n                    elem: &#39;cell&#39;,\n                    content: {\n                        elem: &#39;inner&#39;,\n                        content: &#39;Left cell&#39;\n                    }\n                },\n                {\n                    elem: &#39;cell&#39;,\n                    elemMods: { position: &#39;r&#39;},\n                    content: &#39;Right cell&#39;\n                }\n            ]\n        },\n        {\n            elem: &#39;row&#39;,\n            content: [\n                {\n                    elem: &#39;cell&#39;,\n                    colspan: &#39;2&#39;,\n                    content: &#39;Second row and one cell&#39;\n                }\n            ]\n        }\n    ]\n}\n</code></pre>\n<p>There is no width for cells by default.</p>\n<p>You can extend a block by your own CSS rules. For example, set a layout modifier to your block <code>mods: { layout: &#39;58-40&#39;}</code>, set a position modifier to right cell <code>elemMods: { position: &#39;r&#39;}</code>.\nWrap cells&#39; content by <strong>inner</strong> element to be able to set some paddings. Then, set CSS rules you\nneed (via cascade):</p>\n<p>This are CSS rules for the example above:</p>\n<pre><code class=\"lang-css\">.b-layout-table_layout_58-40 .b-layout-table__cell_position_r\n{\n    width: 40%;\n}\n\n.b-layout-table_layout_58-40 .b-layout-table__gap\n{\n    width: 2%;\n    padding-left: 20px;\n}\n\n.b-layout-table_layout_58-40 .b-layout-table__inner\n{\n    margin-right: 0.8em;\n}\n</code></pre>\n<p>Draw your attention that you shouldn&#39;t set any CSS to the block itself.\nThis is important to avoid CSS conflicts, because this block may be used as a part of many others.\nSo, use modifiers or mix with other blocks when using <code>b-layout-table</code>.</p>\n"
-                                }
-                            ],
-                            "examples": [
-                                {
-                                    "content": [
-                                        {
-                                            "url": "b-layout-table.examples/10-b-layout-table/_10-b-layout-table.en"
-                                        },
-                                        {
-                                            "url": "b-layout-table.examples/20-b-layout-table-rows/_20-b-layout-table-rows.en"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         "ru": {
                             "name": "b-layout-table",
                             "description": [
@@ -100,6 +80,26 @@
                                         },
                                         {
                                             "url": "b-layout-table.examples/20-b-layout-table-rows/_20-b-layout-table-rows.ru"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "en": {
+                            "name": "b-layout-table",
+                            "description": [
+                                {
+                                    "content": "<p><code>b-layout-table</code> block — is a 100%-width table for making a layout.</p>\n<p>This block has a <code>bemhtml</code> template that gives a table, its rows and cells with all the attribute nodes needed.</p>\n<p>Cells of the block can be either <code>cell</code> or <code>gap</code> elements.\nA <code>cell</code> element is to contain a content and <code>gap</code> element is to set some space betwen cells.</p>\n<p>Let&#39;s look at <strong>bemjson</strong> input data of the block:</p>\n<pre><code class=\"lang-js\">{\n    block: &#39;b-layout-table&#39;,\n    mods: { layout: &#39;58-40&#39;},\n    content: [\n        {\n            elem: &#39;row&#39;,\n            content: [\n                {\n                    elem: &#39;gap&#39;,\n                    rowspan: &#39;2&#39;\n                },\n                {\n                    elem: &#39;cell&#39;,\n                    content: {\n                        elem: &#39;inner&#39;,\n                        content: &#39;Left cell&#39;\n                    }\n                },\n                {\n                    elem: &#39;cell&#39;,\n                    elemMods: { position: &#39;r&#39;},\n                    content: &#39;Right cell&#39;\n                }\n            ]\n        },\n        {\n            elem: &#39;row&#39;,\n            content: [\n                {\n                    elem: &#39;cell&#39;,\n                    colspan: &#39;2&#39;,\n                    content: &#39;Second row and one cell&#39;\n                }\n            ]\n        }\n    ]\n}\n</code></pre>\n<p>There is no width for cells by default.</p>\n<p>You can extend a block by your own CSS rules. For example, set a layout modifier to your block <code>mods: { layout: &#39;58-40&#39;}</code>, set a position modifier to right cell <code>elemMods: { position: &#39;r&#39;}</code>.\nWrap cells&#39; content by <strong>inner</strong> element to be able to set some paddings. Then, set CSS rules you\nneed (via cascade):</p>\n<p>This are CSS rules for the example above:</p>\n<pre><code class=\"lang-css\">.b-layout-table_layout_58-40 .b-layout-table__cell_position_r\n{\n    width: 40%;\n}\n\n.b-layout-table_layout_58-40 .b-layout-table__gap\n{\n    width: 2%;\n    padding-left: 20px;\n}\n\n.b-layout-table_layout_58-40 .b-layout-table__inner\n{\n    margin-right: 0.8em;\n}\n</code></pre>\n<p>Draw your attention that you shouldn&#39;t set any CSS to the block itself.\nThis is important to avoid CSS conflicts, because this block may be used as a part of many others.\nSo, use modifiers or mix with other blocks when using <code>b-layout-table</code>.</p>\n"
+                                }
+                            ],
+                            "examples": [
+                                {
+                                    "content": [
+                                        {
+                                            "url": "b-layout-table.examples/10-b-layout-table/_10-b-layout-table.en"
+                                        },
+                                        {
+                                            "url": "b-layout-table.examples/20-b-layout-table-rows/_20-b-layout-table-rows.en"
                                         }
                                     ]
                                 }
@@ -279,41 +279,6 @@
                     "name": "b-menu-vert",
                     "jsdoc": null,
                     "data": {
-                        "en": {
-                            "name": "b-menu-vert",
-                            "description": [
-                                {
-                                    "content": "<p>This block makes HTML markup for a vertical menu. It is based on a helper block <code>i-menu</code>.</p>\n<p>There are two types of elements in this block:</p>\n<h5 id=\"layout-elements\">Layout Elements</h5>\n<ul>\n<li><code>layout</code></li>\n<li><code>layout-unit</code></li>\n</ul>\n<h5 id=\"functional-element\">Functional Element</h5>\n<ul>\n<li><code>title</code></li>\n<li><code>item</code></li>\n</ul>\n\n<p>You can make <strong>item-content</strong> element visible using this modificator.</p>\n\n<div class=\"shmakowiki\"><p>﻿This block makes HTML markup for a vertical menu. It is based on helper block <tt>i-menu</tt>.</p><p>There are 2 type of elements in this block:</p><h4 id=\"Layoutelements\">Layout elements</h4><ul><li>layout</li><li>layout-unit</li></ul><h4 id=\"Functionalelement\">Functional element</h4><ul><li>title</li><li>item</li></ul></div>"
-                                }
-                            ],
-                            "examples": [
-                                {
-                                    "content": [
-                                        {
-                                            "url": "b-menu-vert.examples/10-b-menu-vert-simple/_10-b-menu-vert-simple.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/20-b-menu-vert-js/_20-b-menu-vert-js.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/30-b-menu-vert-js-complex/_30-b-menu-vert-js-complex.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/40-b-menu-vert-trigger/_40-b-menu-vert-trigger.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/50-b-menu-vert-trigger-deep/_50-b-menu-vert-trigger-deep.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/60-b-menu-vert-submenu/_60-b-menu-vert-submenu.en"
-                                        },
-                                        {
-                                            "url": "b-menu-vert.examples/70-b-menu-vert-submenu-trigger/_70-b-menu-vert-submenu-trigger.en"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         "ru": {
                             "name": "b-menu-vert",
                             "description": [
@@ -344,6 +309,41 @@
                                         },
                                         {
                                             "url": "b-menu-vert.examples/70-b-menu-vert-submenu-trigger/_70-b-menu-vert-submenu-trigger.ru"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "en": {
+                            "name": "b-menu-vert",
+                            "description": [
+                                {
+                                    "content": "<p>This block makes HTML markup for a vertical menu. It is based on a helper block <code>i-menu</code>.</p>\n<p>There are two types of elements in this block:</p>\n<h5 id=\"layout-elements\">Layout Elements</h5>\n<ul>\n<li><code>layout</code></li>\n<li><code>layout-unit</code></li>\n</ul>\n<h5 id=\"functional-element\">Functional Element</h5>\n<ul>\n<li><code>title</code></li>\n<li><code>item</code></li>\n</ul>\n\n<p>You can make <strong>item-content</strong> element visible using this modificator.</p>\n\n<div class=\"shmakowiki\"><p>﻿This block makes HTML markup for a vertical menu. It is based on helper block <tt>i-menu</tt>.</p><p>There are 2 type of elements in this block:</p><h4 id=\"Layoutelements\">Layout elements</h4><ul><li>layout</li><li>layout-unit</li></ul><h4 id=\"Functionalelement\">Functional element</h4><ul><li>title</li><li>item</li></ul></div>"
+                                }
+                            ],
+                            "examples": [
+                                {
+                                    "content": [
+                                        {
+                                            "url": "b-menu-vert.examples/10-b-menu-vert-simple/_10-b-menu-vert-simple.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/20-b-menu-vert-js/_20-b-menu-vert-js.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/30-b-menu-vert-js-complex/_30-b-menu-vert-js-complex.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/40-b-menu-vert-trigger/_40-b-menu-vert-trigger.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/50-b-menu-vert-trigger-deep/_50-b-menu-vert-trigger-deep.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/60-b-menu-vert-submenu/_60-b-menu-vert-submenu.en"
+                                        },
+                                        {
+                                            "url": "b-menu-vert.examples/70-b-menu-vert-submenu-trigger/_70-b-menu-vert-submenu-trigger.en"
                                         }
                                     ]
                                 }
