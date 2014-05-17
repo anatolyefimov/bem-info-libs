@@ -13,29 +13,6 @@
                     "name": "b-icon",
                     "jsdoc": null,
                     "data": {
-                        "en": {
-                            "name": "b-icon",
-                            "description": [
-                                {
-                                    "content": "<p>This is an abstract container for an icon.</p>\n<p>By default the block produces a tag <code>img</code> which has an one-pixel transparent image (.gif) and an empty attribute <code>alt</code>.</p>\n<p>The block has optional attributes: <code>alt</code>, <code>url</code>, <code>width</code>, <code>height</code>.</p>\n<p>Set property <code>url#</code> to make <strong>b-icon</strong> with another image. The same for attributes <code>alt</code>, <code>width</code> and <code>height</code>.</p>\n<p>It is possible to use css sprites and single images for the block by using css-property <code>background: url(...);</code></p>\n"
-                                }
-                            ],
-                            "examples": [
-                                {
-                                    "content": [
-                                        {
-                                            "url": "b-icon.examples/10-b-icon-src/_10-b-icon-src.en"
-                                        },
-                                        {
-                                            "url": "b-icon.examples/20-b-icon-css/_20-b-icon-css.en"
-                                        },
-                                        {
-                                            "url": "b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.en"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         "ru": {
                             "name": "b-icon",
                             "description": [
@@ -54,6 +31,29 @@
                                         },
                                         {
                                             "url": "b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.ru"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "en": {
+                            "name": "b-icon",
+                            "description": [
+                                {
+                                    "content": "<p>This is an abstract container for an icon.</p>\n<p>By default the block produces a tag <code>img</code> which has an one-pixel transparent image (.gif) and an empty attribute <code>alt</code>.</p>\n<p>The block has optional attributes: <code>alt</code>, <code>url</code>, <code>width</code>, <code>height</code>.</p>\n<p>Set property <code>url#</code> to make <strong>b-icon</strong> with another image. The same for attributes <code>alt</code>, <code>width</code> and <code>height</code>.</p>\n<p>It is possible to use css sprites and single images for the block by using css-property <code>background: url(...);</code></p>\n"
+                                }
+                            ],
+                            "examples": [
+                                {
+                                    "content": [
+                                        {
+                                            "url": "b-icon.examples/10-b-icon-src/_10-b-icon-src.en"
+                                        },
+                                        {
+                                            "url": "b-icon.examples/20-b-icon-css/_20-b-icon-css.en"
+                                        },
+                                        {
+                                            "url": "b-icon.examples/30-b-icon-sprite/_30-b-icon-sprite.en"
                                         }
                                     ]
                                 }
