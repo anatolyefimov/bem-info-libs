@@ -2,9 +2,18 @@
     "repo": "bem-bl",
     "ref": "dev",
     "url": "http://github.com/bem/bem-bl",
-    "changelog": null,
-    "migration": null,
-    "readme": "<h1 id=\"bem-bl-blocks-library\">bem-bl blocks library</h1>\n<p>bem-bl is an extended library of blocks, that consists not only of basic blocks but also has a number of universal solutions to display a menu, text, logo, search tab, table, etc.</p>\n<p>Current state of development: bem-bl is suspended and will not be filled with new blocks, however we provide user support and bug fixing. We recommend you to start new projects with <a href=\"http://bem.info/libs/bem-core/\">bem-core</a> instead of bem-bl.</p>\n<!-- Yandex.Metrika counter -->\n<img src=\"https://mc.yandex.ru/watch/12831025\" style=\"position:absolute; left:-9999px;\" alt=\"\" />\n<!-- /Yandex.Metrika counter -->\n",
+    "changelog": {
+        "en": null,
+        "ru": null
+    },
+    "migration": {
+        "en": null,
+        "ru": null
+    },
+    "readme": {
+        "en": "<h1 id=\"bem-bl-blocks-library\">bem-bl blocks library</h1>\n<p>bem-bl is an extended library of blocks, that consists not only of basic blocks but also has a number of universal solutions to display a menu, text, logo, search tab, table, etc.</p>\n<p>Current state of development: bem-bl is suspended and will not be filled with new blocks, however we provide user support and bug fixing. We recommend you to start new projects with <a href=\"http://bem.info/libs/bem-core/\">bem-core</a> instead of bem-bl.</p>\n<!-- Yandex.Metrika counter -->\n<img src=\"https://mc.yandex.ru/watch/12831025\" style=\"position:absolute; left:-9999px;\" alt=\"\" />\n<!-- /Yandex.Metrika counter -->\n",
+        "ru": "<h1 id=\"библиотека-блоков-bem-bl\">Библиотека блоков bem-bl</h1>\n<p>bem-bl — расширенная библиотека блоков, которая помимо базовых вариантов блоков включает\nреализации некоторых универсальных решений для меню, текста, логотипа, поисковой строки, таблиц и т.д.</p>\n<p>На данный момент развитие библиотеки новыми блоками приостановлено, проект в статусе поддержки.\nНовые проекты рекомендуется разрабатывать на базе библиотеки <a href=\"http://ru.bem.info/libs/bem-core/\">bem-core</a>.</p>\n"
+    },
     "levels": [
         {
             "name": "desktop.sets",
