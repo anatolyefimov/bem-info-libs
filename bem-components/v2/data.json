@@ -2,14 +2,17 @@
     "repo": "bem-components",
     "ref": "v2",
     "url": "http://github.com/bem/bem-components",
-    "migration": {
-        "en": "<h1 id=\"миграция\">Миграция</h1>\n",
-        "ru": "<h1 id=\"миграция\">Миграция</h1>\n"
+    "readme": {
+        "en": "<h1 id=\"bem-components-library--!-build-status--https:--travis-ci-org-bem-bem-components-svg-branch=v2---https:--travis-ci-org-bem-bem-components---!-coverage-status--https:--coveralls-io-repos-bem-bem-components-badge-png-branch=v2---https:--coveralls-io-r-bem-bem-components-branch=v2-\">BEM Components Library <a href=\"https://travis-ci.org/bem/bem-components\"><img src=\"https://travis-ci.org/bem/bem-components.svg?branch=v2\" alt=\"Build Status\"></a> <a href=\"https://coveralls.io/r/bem/bem-components?branch=v2\"><img src=\"https://coveralls.io/repos/bem/bem-components/badge.png?branch=v2\" alt=\"Coverage Status\"></a></h1>\n<h2 id=\"что-это-\">Что это?</h2>\n<p>Библиотека блоков для управления формами.\nСодержит абстрагированные от дизайна базовые реализации.</p>\n<h2 id=\"использование\">Использование</h2>\n<p>Подключить библиотеку в проект любым известным способом.</p>\n<h2 id=\"поддерживаемые-браузеры\">Поддерживаемые браузеры</h2>\n<ul>\n<li>Desktop:<ul>\n<li>Firefox 24+</li>\n<li>Chrome last 2 versions</li>\n<li>Safari 6.0+</li>\n<li>Opera 12.1+</li>\n<li>Internet Explorer 9+</li>\n</ul>\n</li>\n<li>Touch-pad:<ul>\n<li>Android 4+</li>\n<li>iOS 5+</li>\n</ul>\n</li>\n<li>Touch-phone:<ul>\n<li>Android 4+</li>\n<li>iOS 6+</li>\n<li>Windows Phone 8+ (Internet Explorer 10+)</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"состав\">Состав</h2>\n<h3 id=\"уровни\">Уровни</h3>\n<h3 id=\"блоки\">Блоки</h3>\n<h3 id=\"технологии\">Технологии</h3>\n<h2 id=\"история-изменений\">История изменений</h2>\n<p>История изменений доступна на <a href=\"CHANGELOG.md\">отдельной странице</a>.</p>\n<h2 id=\"миграция\">Миграция</h2>\n<p>Миграция описана на <a href=\"MIGRATION.md\">отдельной странице</a>.</p>\n<h2 id=\"разработка\">Разработка</h2>\n<h3 id=\"рабочая-копия\">Рабочая копия</h3>\n<ol>\n<li><p>Получаем исходники:</p>\n<pre><code class=\"lang-bash\">$ git clone -b v2 git://github.com/bem/bem-components.git\n$ cd bem-components\n</code></pre>\n</li>\n<li><p>Устанавливаем зависимости:</p>\n<pre><code class=\"lang-bash\">$ npm install\n</code></pre>\n<p>Для последующего запуска локально установленных bem-tools нам потребуется <code>export PATH=./node_modules/.bin:$PATH</code> или любой альтернативный способ.</p>\n</li>\n<li><p>Устанавливаем зависимые библиотеки:</p>\n<pre><code class=\"lang-bash\">$ bower-npm-install\n</code></pre>\n</li>\n<li><p>Собираем примеры и тесты:</p>\n<pre><code class=\"lang-bash\">$ bem make sets\n</code></pre>\n</li>\n<li><p>Запускаем разработческий сервер:</p>\n<pre><code class=\"lang-bash\">$ bem server\n</code></pre>\n</li>\n<li><p>Проверяем code-style</p>\n<pre><code class=\"lang-bash\">$ npm run lint\n</code></pre>\n</li>\n</ol>\n<h3 id=\"внесение-изменений\">Внесение изменений</h3>\n<ol>\n<li><a href=\"https://github.com/bem/bem-components/issues/new\">Создать issue</a> с описанием сути изменений.</li>\n<li>Определить в какую версию необходимо внести изменения.</li>\n<li>Сделать feature-branch с указанием номера issue и версии (<code>issues/&lt;номер issue&gt;@v&lt;номер версии&gt;</code>) на основе ветки версии.\nНапример для issue с номером 42 и версией 1: <code>git checkout -b issues/42@v1 v1</code>. Если изменения нужно внести в несколько версий, то для каждой из версий создаётся отдельная ветка.</li>\n<li>Внести изменения (для версии v2, можно локально проверить, что ничего не сломалось, запустив <code>npm test</code>).</li>\n<li>Закоммитить и сделать <code>push</code>. Если это необходимо, то нужно сделать <code>rebase</code> от базовой ветки версии.</li>\n<li>Создать pull-request на основе созданной ветки (или несколько pull-request&#39;ов для случая изменений в нескольких версиях).</li>\n<li>Любым способом связать pull-request и issue (например, c помощью <a href=\"https://github.com/blog/1506-closing-issues-via-pull-requests\">комментария</a>).</li>\n<li>Ждать закрытия pull-request и issue ;-)</li>\n</ol>\n<h3 id=\"модульное-тестирование\">Модульное тестирование</h3>\n",
+        "ru": "<h1 id=\"bem-components-library--!-build-status--https:--travis-ci-org-bem-bem-components-svg-branch=v2---https:--travis-ci-org-bem-bem-components---!-coverage-status--https:--coveralls-io-repos-bem-bem-components-badge-png-branch=v2---https:--coveralls-io-r-bem-bem-components-branch=v2-\">BEM Components Library <a href=\"https://travis-ci.org/bem/bem-components\"><img src=\"https://travis-ci.org/bem/bem-components.svg?branch=v2\" alt=\"Build Status\"></a> <a href=\"https://coveralls.io/r/bem/bem-components?branch=v2\"><img src=\"https://coveralls.io/repos/bem/bem-components/badge.png?branch=v2\" alt=\"Coverage Status\"></a></h1>\n<h2 id=\"что-это-\">Что это?</h2>\n<p>Библиотека блоков для управления формами.\nСодержит абстрагированные от дизайна базовые реализации.</p>\n<h2 id=\"использование\">Использование</h2>\n<p>Подключить библиотеку в проект любым известным способом.</p>\n<h2 id=\"поддерживаемые-браузеры\">Поддерживаемые браузеры</h2>\n<ul>\n<li>Desktop:<ul>\n<li>Firefox 24+</li>\n<li>Chrome last 2 versions</li>\n<li>Safari 6.0+</li>\n<li>Opera 12.1+</li>\n<li>Internet Explorer 9+</li>\n</ul>\n</li>\n<li>Touch-pad:<ul>\n<li>Android 4+</li>\n<li>iOS 5+</li>\n</ul>\n</li>\n<li>Touch-phone:<ul>\n<li>Android 4+</li>\n<li>iOS 6+</li>\n<li>Windows Phone 8+ (Internet Explorer 10+)</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"состав\">Состав</h2>\n<h3 id=\"уровни\">Уровни</h3>\n<h3 id=\"блоки\">Блоки</h3>\n<h3 id=\"технологии\">Технологии</h3>\n<h2 id=\"история-изменений\">История изменений</h2>\n<p>История изменений доступна на <a href=\"CHANGELOG.md\">отдельной странице</a>.</p>\n<h2 id=\"миграция\">Миграция</h2>\n<p>Миграция описана на <a href=\"MIGRATION.md\">отдельной странице</a>.</p>\n<h2 id=\"разработка\">Разработка</h2>\n<h3 id=\"рабочая-копия\">Рабочая копия</h3>\n<ol>\n<li><p>Получаем исходники:</p>\n<pre><code class=\"lang-bash\">$ git clone -b v2 git://github.com/bem/bem-components.git\n$ cd bem-components\n</code></pre>\n</li>\n<li><p>Устанавливаем зависимости:</p>\n<pre><code class=\"lang-bash\">$ npm install\n</code></pre>\n<p>Для последующего запуска локально установленных bem-tools нам потребуется <code>export PATH=./node_modules/.bin:$PATH</code> или любой альтернативный способ.</p>\n</li>\n<li><p>Устанавливаем зависимые библиотеки:</p>\n<pre><code class=\"lang-bash\">$ bower-npm-install\n</code></pre>\n</li>\n<li><p>Собираем примеры и тесты:</p>\n<pre><code class=\"lang-bash\">$ bem make sets\n</code></pre>\n</li>\n<li><p>Запускаем разработческий сервер:</p>\n<pre><code class=\"lang-bash\">$ bem server\n</code></pre>\n</li>\n<li><p>Проверяем code-style</p>\n<pre><code class=\"lang-bash\">$ npm run lint\n</code></pre>\n</li>\n</ol>\n<h3 id=\"внесение-изменений\">Внесение изменений</h3>\n<ol>\n<li><a href=\"https://github.com/bem/bem-components/issues/new\">Создать issue</a> с описанием сути изменений.</li>\n<li>Определить в какую версию необходимо внести изменения.</li>\n<li>Сделать feature-branch с указанием номера issue и версии (<code>issues/&lt;номер issue&gt;@v&lt;номер версии&gt;</code>) на основе ветки версии.\nНапример для issue с номером 42 и версией 1: <code>git checkout -b issues/42@v1 v1</code>. Если изменения нужно внести в несколько версий, то для каждой из версий создаётся отдельная ветка.</li>\n<li>Внести изменения (для версии v2, можно локально проверить, что ничего не сломалось, запустив <code>npm test</code>).</li>\n<li>Закоммитить и сделать <code>push</code>. Если это необходимо, то нужно сделать <code>rebase</code> от базовой ветки версии.</li>\n<li>Создать pull-request на основе созданной ветки (или несколько pull-request&#39;ов для случая изменений в нескольких версиях).</li>\n<li>Любым способом связать pull-request и issue (например, c помощью <a href=\"https://github.com/blog/1506-closing-issues-via-pull-requests\">комментария</a>).</li>\n<li>Ждать закрытия pull-request и issue ;-)</li>\n</ol>\n<h3 id=\"модульное-тестирование\">Модульное тестирование</h3>\n"
     },
-    "readme": null,
     "changelog": {
         "en": "<h1 id=\"история-изменений\">История изменений</h1>\n<h2 id=\"2-0-0\">2.0.0</h2>\n<h3 id=\"крупные-изменения\">Крупные изменения</h3>\n<ul>\n<li>Переход на модульную систему <a href=\"https://github.com/ymaps/modules\">https://github.com/ymaps/modules</a>.</li>\n</ul>\n<h3 id=\"остальные-изменения\">Остальные изменения</h3>\n<ul>\n<li>Понятия автофокуса для блока <code>input</code> изменено.\nБольше нет js-параметра <code>autoFocus</code>, вместо него нужно использовать модификатор <code>_autofocus_focused</code>.\nМодификатор <code>_autofocus_yes</code> теперь называется <code>_autofocus_hidden</code>.</li>\n</ul>\n",
         "ru": "<h1 id=\"история-изменений\">История изменений</h1>\n<h2 id=\"2-0-0\">2.0.0</h2>\n<h3 id=\"крупные-изменения\">Крупные изменения</h3>\n<ul>\n<li>Переход на модульную систему <a href=\"https://github.com/ymaps/modules\">https://github.com/ymaps/modules</a>.</li>\n</ul>\n<h3 id=\"остальные-изменения\">Остальные изменения</h3>\n<ul>\n<li>Понятия автофокуса для блока <code>input</code> изменено.\nБольше нет js-параметра <code>autoFocus</code>, вместо него нужно использовать модификатор <code>_autofocus_focused</code>.\nМодификатор <code>_autofocus_yes</code> теперь называется <code>_autofocus_hidden</code>.</li>\n</ul>\n"
+    },
+    "migration": {
+        "en": "<h1 id=\"миграция\">Миграция</h1>\n",
+        "ru": "<h1 id=\"миграция\">Миграция</h1>\n"
     },
     "levels": [
         {
@@ -17,6 +20,7 @@
             "blocks": [
                 {
                     "name": "attach",
+                    "jsdoc": "",
                     "data": {
                         "en": {
                             "name": "attach",
@@ -52,8 +56,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "base-control",
@@ -87,6 +90,7 @@
                 },
                 {
                     "name": "button",
+                    "jsdoc": "",
                     "data": {
                         "en": {
                             "name": "button",
@@ -122,8 +126,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "checkbox",
@@ -205,23 +208,6 @@
                     "name": "icon",
                     "jsdoc": null,
                     "data": {
-                        "ru": {
-                            "name": "icon",
-                            "description": [
-                                {
-                                    "content": "<h1 id=\"icon\">icon</h1>\n<p>Блок <strong>icon</strong> используется в качестве графического элемента в других блоках. В HTML представлен тегом <i>. Иконка задается через свойство <code>background</code> и, соответственно, не имеет возможности фоллбека.</p>\n<p>Иконку можно передать как через модификатор, так и через поле <code>url</code>:</p>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;icon&#39;,\n        mods : { social : &#39;twitter&#39; }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n     block : &#39;icon&#39;,\n     url : &#39;../../../test.blocks/icon/_action/download.svg&#39;\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;button&#39;,\n        text : &#39;with icon&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },\n        icon : { block : &#39;icon&#39;, mods : { social : &#39;twitter&#39; } }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;checkbox&#39;,\n        mods : { theme : &#39;simple&#39;, type : &#39;button&#39; },\n        text : &#39;icon&#39;,\n        icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;button&#39;,\n        text : &#39;with icon&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },\n        icon : { block : &#39;icon&#39;, url : &#39;../../../test.blocks/icon/_action/download.svg&#39; }\n    }\n</code></pre>\n"
-                                }
-                            ],
-                            "examples": [
-                                {
-                                    "content": [
-                                        {
-                                            "url": "icon.examples/simple/_simple.ru"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         "en": {
                             "name": "icon",
                             "description": [
@@ -234,6 +220,23 @@
                                     "content": [
                                         {
                                             "url": "icon.examples/simple/_simple.en"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "ru": {
+                            "name": "icon",
+                            "description": [
+                                {
+                                    "content": "<h1 id=\"icon\">icon</h1>\n<p>Блок <strong>icon</strong> используется в качестве графического элемента в других блоках. В HTML представлен тегом <i>. Иконка задается через свойство <code>background</code> и, соответственно, не имеет возможности фоллбека.</p>\n<p>Иконку можно передать как через модификатор, так и через поле <code>url</code>:</p>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;icon&#39;,\n        mods : { social : &#39;twitter&#39; }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n     block : &#39;icon&#39;,\n     url : &#39;../../../test.blocks/icon/_action/download.svg&#39;\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;button&#39;,\n        text : &#39;with icon&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },\n        icon : { block : &#39;icon&#39;, mods : { social : &#39;twitter&#39; } }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;checkbox&#39;,\n        mods : { theme : &#39;simple&#39;, type : &#39;button&#39; },\n        text : &#39;icon&#39;,\n        icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } }\n    }\n</code></pre>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;button&#39;,\n        text : &#39;with icon&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },\n        icon : { block : &#39;icon&#39;, url : &#39;../../../test.blocks/icon/_action/download.svg&#39; }\n    }\n</code></pre>\n"
+                                }
+                            ],
+                            "examples": [
+                                {
+                                    "content": [
+                                        {
+                                            "url": "icon.examples/simple/_simple.ru"
                                         }
                                     ]
                                 }
@@ -323,7 +326,6 @@
                 },
                 {
                     "name": "link",
-                    "jsdoc": "",
                     "data": {
                         "en": {
                             "name": "link",
@@ -359,7 +361,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "menu",
@@ -499,7 +502,6 @@
                 },
                 {
                     "name": "radio",
-                    "jsdoc": "",
                     "data": {
                         "en": {
                             "description": [
@@ -525,7 +527,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "radio-group",
@@ -569,23 +572,6 @@
                     "name": "spin",
                     "jsdoc": null,
                     "data": {
-                        "en": {
-                            "name": "spin",
-                            "description": [
-                                {
-                                    "content": "<h1 id=\"spin\">spin</h1>\n<p>This block indicates the progress of some process (e.g. site page or some media file loading).</p>\n<p>Rotation of the <strong>spin</strong> block is implemented by CSS3 animation.</p>\n<h2 id=\"block-modifiers\">Block Modifiers</h2>\n<p>The <strong>spin</strong> block requires the block modifiers listed below:</p>\n<h3 id=\"themes-of-a-block-_theme-\">Themes of a block <code>_theme</code></h3>\n<h4 id=\"simple\">simple</h4>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;spin&#39;,\n        mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }\n    }\n</code></pre>\n<h4 id=\"normal\">normal</h4>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;spin&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }\n    }\n</code></pre>\n<h3 id=\"sizes-_size-\">Sizes <code>_size</code></h3>\n<p>There are five sizes available: <strong>xs</strong>, <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>\n<table>\n  <tr>\n    <th>Theme/Size</th>\n    <th>simple</th>\n    <th>normal</th>\n  </tr>\n  <tr>\n    <th>xs</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;xs&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;xs&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>s</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>m</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;m&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>l</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;l&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;l&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>xl</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;xl&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;xl&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n</table>\n\n<h3 id=\"spin-progress-_progress-\">Spin progress <code>_progress</code></h3>\n<p>The <code>{ progress : true }</code> modifier activates the spin. The <strong>spin</strong> block rotates in visible state.</p>\n<p>The <code>{ progress : false }</code> modifies paused rotation process. The <code>false</code> value is used when a <strong>spin</strong> block is invisible.</p>\n"
-                                }
-                            ],
-                            "examples": [
-                                {
-                                    "content": [
-                                        {
-                                            "url": "spin.examples/simple/_simple.en"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         "ru": {
                             "name": "spin",
                             "description": [
@@ -598,6 +584,23 @@
                                     "content": [
                                         {
                                             "url": "spin.examples/simple/_simple.ru"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "en": {
+                            "name": "spin",
+                            "description": [
+                                {
+                                    "content": "<h1 id=\"spin\">spin</h1>\n<p>This block indicates the progress of some process (e.g. site page or some media file loading).</p>\n<p>Rotation of the <strong>spin</strong> block is implemented by CSS3 animation.</p>\n<h2 id=\"block-modifiers\">Block Modifiers</h2>\n<p>The <strong>spin</strong> block requires the block modifiers listed below:</p>\n<h3 id=\"themes-of-a-block-_theme-\">Themes of a block <code>_theme</code></h3>\n<h4 id=\"simple\">simple</h4>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;spin&#39;,\n        mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }\n    }\n</code></pre>\n<h4 id=\"normal\">normal</h4>\n<pre><code class=\"lang-bemjson\">    {\n        block : &#39;spin&#39;,\n        mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }\n    }\n</code></pre>\n<h3 id=\"sizes-_size-\">Sizes <code>_size</code></h3>\n<p>There are five sizes available: <strong>xs</strong>, <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>\n<table>\n  <tr>\n    <th>Theme/Size</th>\n    <th>simple</th>\n    <th>normal</th>\n  </tr>\n  <tr>\n    <th>xs</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;xs&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;xs&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>s</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;s&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;s&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>m</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;m&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>l</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;l&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;l&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n  <tr>\n    <th>xl</th>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;simple&#39;, size : &#39;xl&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n    <td>\n        <pre><code>\n            {\n                block : &#39;spin&#39;,\n                mods : { theme : &#39;normal&#39;, size : &#39;xl&#39;, progress : true }\n            }\n        </pre></code>\n    </td>\n  </tr>\n</table>\n\n<h3 id=\"spin-progress-_progress-\">Spin progress <code>_progress</code></h3>\n<p>The <code>{ progress : true }</code> modifier activates the spin. The <strong>spin</strong> block rotates in visible state.</p>\n<p>The <code>{ progress : false }</code> modifies paused rotation process. The <code>false</code> value is used when a <strong>spin</strong> block is invisible.</p>\n"
+                                }
+                            ],
+                            "examples": [
+                                {
+                                    "content": [
+                                        {
+                                            "url": "spin.examples/simple/_simple.en"
                                         }
                                     ]
                                 }
