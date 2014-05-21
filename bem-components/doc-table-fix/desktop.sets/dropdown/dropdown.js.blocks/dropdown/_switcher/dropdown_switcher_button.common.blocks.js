@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/doc-table-fix/common.blocks/dropdown/_switcher/dropdown_switcher_button.js

@@ -1,0 +1,28 @@
+<!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../.dist/dist.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../.dist/dist.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок base-control</span></div><div class="block__title"></div><div class="block__description static-text"><h1 id="base-control">base-control</h1>
+<p>Вспомогательный блок. Используется в работе большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>: <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md">attach</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.title.txt">checkbox</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md">input</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md">link</a>, <a href="https://github.com/bem/bem-components/tree/v2/common.blocks/menu/menu.ru.md">menu</a>, <a href="https://github.com/bem/bem-components/tree/v2/common.blocks/radio/radio.ru.md">radio</a>. Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.</p>
+<p>Использует следующие методы:</p>
+<div class="table-container">
+    <table>
+        <tr>
+            <th align="center">Метод</td>
+            <th align="center">Описание</td>
+        </tr>
+        <tr>
+            <td><code>beforesetMod</code></td>
+            <td>Сообщает блоку его действие до установки модификатора. Производит проверку активности блока: если блок неактивен (<code>disabled</code>), то он не может получить модификатор <code>focused</code>.</td>
+        </tr>
+        <tr>
+            <td><code>setMod</code></td>
+            <td>Устанавливает блоку соответствующий модификатор (<code>disabled</code>или <code>focused</code>).</td>
+        </tr>
+        <tr>
+            <td><code>getName</code></td>
+            <td>Возвращает имя контрола при его наличии. В обратном случае должен вернуть пустую строку.</td>
+        </tr>
+        <tr>
+            <td><code>getVal</code></td>
+            <td>Возвращает значение контрола.</td>
+        </tr>
+    </table>
+</div>
+</div><div class="block__examples"></div></div></div></body></html>

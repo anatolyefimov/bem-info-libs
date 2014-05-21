@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/doc-table-fix/desktop.blocks/input/input.js
