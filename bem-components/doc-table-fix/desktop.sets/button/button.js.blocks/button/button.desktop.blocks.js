@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/doc-table-fix/desktop.blocks/button/button.js

@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-components/doc-table-fix/common.blocks/radio-group/radio-group.tests/simple.bemjson.js
