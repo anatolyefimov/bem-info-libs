@@ -60,5 +60,10 @@ exports.deps = [
         "block": "radio-group",
         "mod": "size",
         "val": "l"
+    },
+    {
+        "block": "radio-group",
+        "mod": "type",
+        "val": "line"
     }
 ];

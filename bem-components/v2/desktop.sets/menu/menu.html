@@ -1,60 +1,98 @@
 <!doctype html><html class="page__root"><head><meta charset="utf-8"/><title></title><link rel="stylesheet" href="../.dist/dist.css"/><script src="//yandex.st/jquery/1.8.2/jquery.min.js"></script><script src="../.dist/dist.js"></script></head><body class="page"><div class="catalogue"><div class="block"><div class="header"><a class="link link_pos_right" href="../index/index.html">← каталог</a><span class="header__block-name">Блок menu</span></div><div class="block__title"></div><div class="block__description static-text"><h1 id="menu">menu</h1>
-<p>Блок <strong>menu</strong> используется для создания различных типов меню и селектов. Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных блоков – пунктов меню или селекта.  </p>
+<p>Блок <code>menu</code> используется для создания различных типов меню и селектов.</p>
+<p>В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом <code>&lt;div&gt;</code> и свойством <code>role=&quot;menu&quot;</code>. HTML-элементом содержит набор переключателей – пунктов меню (блок <code>menu-item</code>).</p>
+<p>Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных блоков – пунктов меню или селекта.</p>
 <h2 id="-">Варианты использования меню</h2>
-<p>Блок <strong>menu</strong> служит для создания различных типов меню:</p>
+<p>Блок <code>menu</code> служит для создания различных типов меню:</p>
 <table>
-  <tr>
-    <th>Тип</th>
-    <th>Описание</th>
-    <th>Пример</th>
-  </tr>
-  <tr>
-    <td>Меню-переключатель</td>
-    <td>Применяется для создания меню или селектов, позволяющих только одиночный выбор.</td>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;simple&#39;, select : &#39;radio&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-   </td></code></pre>
-   <tr>
-    <td>Селект с множественным выбором</td>
-    <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется, и наоборот.</td>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;simple&#39;, select : &#39;check&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td></code></pre>
-   </tr>
-   <tr>
-
-   </tr>
-</table>
+    <tr>
+        <th>Тип</th>
+        <th>Описание</th>
+        <th>Пример</th>
+    </tr>
+    <tr>
+        <td>Меню-переключатель</td>
+        <td>Применяется для создания меню или селектов, позволяющих только одиночный выбор.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;,
+        size : &#39;m&#39;, 
+        select : &#39;radio&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    <tr>
+        <td>Селект с множественным выбором (<code>_select_check</code>)</td>
+        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется, и наоборот.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;m&#39;,
+        select : &#39;check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+<tr>
+        <td>Простой список (без модификатора <code>_select</code>)</td>
+        <td>При щелчке мышью по пункту меню его состояние не меняется. Модификатор <code>_cheked</code> не устанавливается.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;m&#39;,
+        select : &#39;check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr><br></table>
 
 
 
@@ -62,252 +100,336 @@
 <h3 id="-_theme-">Темы блока <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
-<li>simple   </li>
-<li>normal  </li>
+<li>simple</li>
+<li>normal</li>
 </ul>
-<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером. </p>
+<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером.</p>
 <p>Наглядно видно на примерах ниже:</p>
 <h4 id="default">default</h4>
-<pre><code class="lang-bemjson">    {
-        block : &#39;menu&#39;,
-        mods : { select : &#39;check&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
+<pre><code class="lang-bemjson">{
+    block : &#39;menu&#39;,
+    mods : { select : &#39;check&#39; },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
 </code></pre>
 <h4 id="simple">simple</h4>
-<pre><code class="lang-bemjson">    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;simple&#39;, select : &#39;check&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
+<pre><code class="lang-bemjson">{
+    block : &#39;menu&#39;,
+    mods : { theme : &#39;simple&#39;, select : &#39;check&#39; },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
 </code></pre>
 <h4 id="normal">normal</h4>
-<pre><code class="lang-bemjson">    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;xl&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
+<pre><code class="lang-bemjson">{
+    block : &#39;menu&#39;,
+    mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;xl&#39; },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
 </code></pre>
 <h3 id="-_size-">Размеры меню <code>_size</code></h3>
-<p>Задает размер всем типам меню. Обязательный модификатор. </p>
+<p>Задает размер всем типам меню. Обязательный модификатор.</p>
 <p>Реализован только в теме <em>normal</em>.</p>
 <p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
 <table>
-  <tr>
-    <th>Параметры/Размер</th>
-    <th>s</th>
-    <th>m</th>
-    <th>l</th>
-    <th>xl</th>
-  </tr>
-  <tr>
-    <td>Размер шрифта</td>
-    <td>13px</td>
-    <td>13px</td>
-    <td>15px</td>
-    <td>15px</td>
-  </tr>
-  <tr>
-    <td>Высота строки <code>line-heigh</code></td>
-    <td>24px</td>
-    <td>24px</td>
-    <td>28px</td>
-    <td>32px</td>
-  </tr>
-  <tr>
-    <td>Левый отступ <code>padding-left</code></td>
-    <td>30px</td>
-    <td>30px</td>
-    <td>34px</td>
-    <td>40px</td>
-  </tr>
-  <tr>
-    <td>Отступ <code>padding</code></td>
-    <td>10px</td>
-    <td>13px</td>
-    <td>15px</td>
-    <td>20px</td>
-  </tr><br>  <tr>
-    <td>Пример</td>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;s&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td></code></pre>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;m&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td></code></pre>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;l&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td></code></pre>
-    <td><pre><code>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;xl&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td>
-  </tr>
+    <tr>
+        <th>Размер/Параметры</th>
+        <th>Размер шрифта</th>
+        <th>Высота строки <code>line-heigh</code></th>
+        <th>Левый отступ <code>padding-left</code></th>
+        <th>Отступ <code>padding</code></th>
+        <th>Размер &quot;галочки&quot; для темы normal</code></th>
+    </tr>
+    <tr>
+        <td>s</td>
+        <td>13px</td>
+        <td>24px</td>
+        <td>30px</td>
+        <td>14px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        select : &#39;check&#39;, 
+        size : &#39;s&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>13px</td>
+        <td>24px</td>
+        <td>30px</td>
+        <td>14px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        select : &#39;check&#39;, 
+        size : &#39;m&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>l</td>
+        <td>15px</td>
+        <td>28px</td>
+        <td>34px</td>
+        <td>15px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        select : &#39;check&#39;, 
+        size : &#39;l&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>xl</td>
+        <td>15px</td>
+        <td>32px</td>
+        <td>40px</td>
+        <td>15px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        select : &#39;check&#39;, 
+        size : &#39;xl&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
 </table>
 
-<h3 id="-_select-">Одиночный или множественный выбор <code>_select</code></h3>
-<p>Модификатор <code>_select</code> управляет возможностью множественного выбора пункта меню. </p>
+
+<h3 id="-_select-">Способ выбора пунктов <code>_select</code></h3>
+<p>Модификатор <code>_select</code> управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.</p>
+<p>Доступны следующие значения модификатора:</p>
 <ul>
-<li>В значении <code>radio</code> при щелчке мышью будет производиться переключение активных пунктов меню. При повторном щелчке пункт, по которому он был произведен, останется активным;</li>
-<li>В значении <code>check</code> пункт, по которому был произведен щелчек, изменит состояние на противоположное и будет менять состояние при повторных щелчках.</li>
+<li><code>check</code> – селект. Пункт, по которому был произведен щелчек мышью, изменит состояние на противоположное и будет менять состояние при повторных щелчках. Доступна возможность множественного выбора пунктов;</li>
+<li><code>radio</code> – переключатель. При щелчке мышью будет производиться переключение активных пунктов меню. При повторном щелчке пункт, по которому он был произведен, останется <strong>активным</strong>. Множественный выбор недоступен;</li>
+<li><code>radio-check</code> – переключатель. При щелчке мышью будет производиться переключение активных пунктов меню. При повторном щелчке пункт, по которому он был произведен, станет <strong>неактивным</strong>. Множественный выбор недоступен.</li>
 </ul>
 <p>Реализован во всех темах блока.</p>
 <table>
-  <tr>
-    <th>Тип</th>
-
-    <th>Пример</th>
-  </tr>
-  <tr>
-    <td>Одиночный выбор</td>
-
-    <td>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, size : &#39;l&#39;, select : &#39;radio&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                mods : { checked : true },<br>                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td>
-   <tr>
-    <td>Множественный выбор</td>
-
-    <td>
-    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, size : &#39;l&#39;, select : &#39;check&#39; },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;First item&#39;
-            },
-            {
-                block : &#39;menu-item&#39;,
-                val : 2,
-                mods : { checked : true },
-                content : &#39;Second item&#39;
-            }
-        ]
-    }
-    </td>
-   </tr>
-   <tr>
-
-   </tr>
+    <tr>
+        <th>Выбор пунктов</th>
+        <th>Пример</th>
+    </tr>
+    <tr>
+        <td>Только один (<code>_select_radio</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        select : &#39;radio&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Множественный выбор или ни одного (<code>_select_check</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        select : &#39;check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Один или ни одного (<code>_select_radio-check</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        select : &#39;radio-check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
 </table>
 
 
 <h3 id="-">Состояния блока</h3>
 <h4 id="-_focused-">В фокусе <code>_focused</code></h4>
-<p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
+<p>Модификатор <code>_focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
 <p>Реализован во всех темах блока.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        select : &#39;check&#39;, 
+        size : &#39;xl&#39;,
+        focused : true 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+</code></pre>
 <h2 id="-">Элементы блока</h2>
 <p>Визуально представлен следующими элементами:</p>
 <h3 id="__group">__group</h3>
-<p>Элемент <code>__group</code> служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле <code>content</code> элемента.</p>
+<p>Элемент <code>__group</code> служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле <code>content</code> элемента. Группы визуально отделяются серой чертой.</p>
 <p>Например:</p>
 <pre><code class="lang-bemjson">{
     block : &#39;menu&#39;,
@@ -320,24 +442,24 @@
         },
         {
             elem : &#39;group&#39;,
-            content : [   
+            content : [
                 {
-                block : &#39;menu-item&#39;,
-                mods : { checked : true },
-                val : 2,
-                content : &#39;Open&#39;
+                    block : &#39;menu-item&#39;,
+                    mods : { checked : true },
+                    val : 2,
+                    content : &#39;Open&#39;
                 },
                 {
-                block : &#39;menu-item&#39;,
-                val : 3,
-                content : &#39;Open Recent&#39;
+                    block : &#39;menu-item&#39;,
+                    val : 3,
+                    content : &#39;Open Recent&#39;
                 }
             ]
-        },                                                                               
-         {
+        },
+        {
             block : &#39;menu-item&#39;,
             val : 4,
-            content : &#39;Open Not so Recent)&#39;
+            content : &#39;Open Not so Recent&#39;
         }
     ]
 }
@@ -345,41 +467,47 @@
 <h3 id="__group-title">__group-title</h3>
 <p>Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента <code>__group</code>.</p>
 <p>Например:</p>
-<pre><code class="lang-bemjson">    {
-        block : &#39;menu&#39;,
-        mods : { theme : &#39;normal&#39;, size : &#39;xl&#39;, select : &#39;radio&#39;, focused : true  },
-        content : [
-            {
-                block : &#39;menu-item&#39;,
-                val : 1,
-                content : &#39;New&#39;
-            },                                  
-            {
-                elem : &#39;group&#39;,
-                title : &#39;Cool title&#39;                
-                content : [   
-                    {
-                        block : &#39;menu-item&#39;,
-                        mods : { checked : true },
-                        val : 2,
-                        content : &#39;Open&#39;
-                    },
-                    {
-                        block : &#39;menu-item&#39;,
-                        val : 3,
-                        content : &#39;Open Recent&#39;
-                    }]
-            }
-        ]
-    }
+<pre><code class="lang-bemjson">{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;xl&#39;, 
+        select : &#39;radio&#39;, 
+        focused : true  
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;New&#39;
+        },
+        {
+            elem : &#39;group&#39;,
+            title : &#39;Cool title&#39;,
+            content : [
+                {
+                    block : &#39;menu-item&#39;,
+                    mods : { checked : true },
+                    val : 2,
+                    content : &#39;Open&#39;
+                },
+                {
+                    block : &#39;menu-item&#39;,
+                    val : 3,
+                    content : &#39;Open Recent&#39;
+                }
+            ]
+        }
+    ]
+}
 </code></pre>
 <h3 id="-">Зависимости блока</h3>
-<p>Блок <code>menu</code> зависит от следующего набора блоков:</p>
+<p>Блок <code>menu</code> зависит от следующего набора блоков и элементов:</p>
 <ul>
-<li>i-bem__dom </li>
-<li>menu-item</li>
-<li>dom</li>
-<li>keyboard</li>
-<li>base-control</li>
+<li><code>i-bem__dom</code></li>
+<li><code>menu-item</code></li>
+<li><code>dom</code></li>
+<li><code>keyboard</code></li>
+<li><code>base-control</code></li>
 </ul>
 </div><div class="block__examples"><div class="example i-bem" onclick="return {&quot;example&quot;:{}}" id="menu:examples:simple:_simple:ru"><a class="example__title" href="menu.examples/simple/_simple.ru.html" target="_blank"></a><div class="example__source-switch"><span class="link link_pseudo_yes cut">Исходный код</span></div><iframe class="example__source" src="menu.examples/simple/_simple.ru.bemjson.js"></iframe><iframe class="example__live" src="menu.examples/simple/_simple.ru.html"></iframe></div></div></div></div></body></html>

@@ -264,11 +264,6 @@ exports.deps = [
     {
         "block": "icon",
         "mod": "action",
-        "val": "up"
-    },
-    {
-        "block": "icon",
-        "mod": "action",
         "val": "down"
     },
     {
@@ -280,6 +275,11 @@ exports.deps = [
         "block": "icon",
         "mod": "action",
         "val": "right"
+    },
+    {
+        "block": "icon",
+        "mod": "action",
+        "val": "up"
     },
     {
         "block": "button",
@@ -294,15 +294,6 @@ exports.deps = [
         "block": "button",
         "mod": "togglable",
         "val": "radio"
-    },
-    {
-        "block": "button",
-        "mod": "checked"
-    },
-    {
-        "block": "button",
-        "mod": "checked",
-        "val": true
     },
     {
         "block": "i-bem",

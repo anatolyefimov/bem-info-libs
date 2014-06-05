@@ -1131,7 +1131,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
     },
 
     _buildModEventName : function(modEvent) {
-        var res = MOD_DELIM + modEvent.modName + MOD_DELIM + modEvent.modVal;
+        var res = MOD_DELIM + modEvent.modName + MOD_DELIM + (modEvent.modVal === false? '' : modEvent.modVal);
         modEvent.elem && (res = ELEM_DELIM + modEvent.elem + res);
         return res;
     },
@@ -2039,33 +2039,25 @@ var undef,
         '(?:' + MOD_DELIM + '(' + NAME_PATTERN + '))?$'),
 
     buildModPostfix = INTERNAL.buildModPostfix,
-    buildClass = INTERNAL.buildClass;
+    buildClass = INTERNAL.buildClass,
+
+    reverse = Array.prototype.reverse;
 
 /**
  * Initializes blocks on a DOM element
  * @param {jQuery} domElem DOM element
  * @param {String} uniqInitId ID of the "initialization wave"
  */
-function init(domElem, uniqInitId) {
+function initBlocks(domElem, uniqInitId) {
     var domNode = domElem[0],
         params = getParams(domNode),
-        blockName, blockParams;
+        blockName;
 
-    for(blockName in params) {
-        if(params.hasOwnProperty(blockName)) {
-            blockParams = params[blockName];
-            processParams(blockParams, domNode, blockName, uniqInitId);
-            var block = uniqIdToBlock[blockParams.uniqId];
-            if(block) {
-                if(block.domElem.index(domNode) < 0) {
-                    block.domElem = block.domElem.add(domElem);
-                    objects.extend(block.params, blockParams);
-                }
-            } else {
-                initBlock(blockName, domElem, blockParams);
-            }
-        }
-    }
+    for(blockName in params)
+        initBlock(
+            blockName,
+            domElem,
+            processParams(params[blockName], blockName, uniqInitId));
 }
 
 /**
@@ -2073,22 +2065,24 @@ function init(domElem, uniqInitId) {
  * @param {String} blockName Block name
  * @param {jQuery} domElem DOM element
  * @param {Object} [params] Initialization parameters
- * @param {Boolean} [forceLive] Force live initialization
+ * @param {Boolean} [forceLive=false] Force live initialization
  * @param {Function} [callback] Handler to call after complete initialization
  */
 function initBlock(blockName, domElem, params, forceLive, callback) {
-    if(typeof params === 'boolean') {
-        callback = forceLive;
-        forceLive = params;
-        params = undef;
-    }
-
     var domNode = domElem[0];
-    params = processParams(params || getParams(domNode)[blockName], domNode, blockName);
 
-    var uniqId = params.uniqId;
-    if(uniqIdToBlock[uniqId]) {
-        return uniqIdToBlock[uniqId]._init();
+    params || (params = processParams(getBlockParams(domNode, blockName), blockName));
+
+    var uniqId = params.uniqId,
+        block = uniqIdToBlock[uniqId];
+
+    if(block) {
+        if(block.domElem.index(domNode) < 0) {
+            block.domElem = block.domElem.add(domElem);
+            objects.extend(block.params, params);
+        }
+
+        return block;
     }
 
     uniqIdToDomElems[uniqId] = uniqIdToDomElems[uniqId]?
@@ -2104,7 +2098,7 @@ function initBlock(blockName, domElem, params, forceLive, callback) {
     if(!(blockClass._liveInitable = !!blockClass._processLive()) || forceLive || params.live === false) {
         forceLive && domElem.addClass(BEM_CLASS); // add css class for preventing memory leaks in further destructing
 
-        var block = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+        block = uniqIdToBlock[uniqId] = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
         delete uniqIdToDomElems[uniqId];
         callback && callback.apply(block, Array.prototype.slice.call(arguments, 4));
         return block;
@@ -2114,18 +2108,14 @@ function initBlock(blockName, domElem, params, forceLive, callback) {
 /**
  * Processes and adds necessary block parameters
  * @param {Object} params Initialization parameters
- * @param {HTMLElement} domNode DOM node
  * @param {String} blockName Block name
  * @param {String} [uniqInitId] ID of the "initialization wave"
  */
-function processParams(params, domNode, blockName, uniqInitId) {
-    (params || (params = {})).uniqId ||
-        (params.uniqId = (params.id? blockName + '-id-' + params.id : identify()) + (uniqInitId || identify()));
-
-    var domUniqId = identify(domNode),
-        domParams = domElemToParams[domUniqId] || (domElemToParams[domUniqId] = {});
-
-    domParams[blockName] || (domParams[blockName] = params);
+function processParams(params, blockName, uniqInitId) {
+    params.uniqId ||
+        (params.uniqId = (params.id?
+            blockName + '-id-' + params.id :
+            identify()) + (uniqInitId || identify()));
 
     return params;
 }
@@ -2149,10 +2139,22 @@ function findDomElem(ctx, selector, excludeSelf) {
  * @param {HTMLElement} domNode DOM node
  * @returns {Object}
  */
-function getParams(domNode) {
+function getParams(domNode, blockName) {
     var uniqId = identify(domNode);
     return domElemToParams[uniqId] ||
-       (domElemToParams[uniqId] = extractParams(domNode));
+        (domElemToParams[uniqId] = extractParams(domNode));
+}
+
+/**
+ * Returns parameters of a block extracted from DOM node
+ * @param {HTMLElement} domNode DOM node
+ * @param {String} blockName
+ * @returns {Object}
+ */
+
+function getBlockParams(domNode, blockName) {
+    var params = getParams(domNode);
+    return params[blockName] || (params[blockName] = {});
 }
 
 /**
@@ -2172,7 +2174,7 @@ function extractParams(domNode) {
  */
 function removeDomNodeFromBlock(block, domNode) {
     block.domElem.length === 1?
-        block._destruct(true) :
+        block._destruct() :
         block.domElem = block.domElem.not(domNode);
 }
 
@@ -2212,12 +2214,11 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
          */
         this._elemCache = {};
 
-        uniqIdToBlock[
-            /**
-             * @member {String} Unique block ID
-             * @private
-             */
-            this._uniqId = params.uniqId || identify(this)] = this;
+        /**
+         * @member {String} Unique block ID
+         * @private
+         */
+        this._uniqId = params.uniqId;
 
         /**
          * @member {Boolean} Flag for whether it's necessary to unbind from the document and window when destroying the block
@@ -2309,14 +2310,14 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         select && (domElems = domElems.add(ctxElem[select](selector)));
 
         if(onlyFirst) {
-            return domElems[0]? initBlock(blockName, domElems.eq(0), true) : null;
+            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true) : null;
         }
 
         var res = [],
             uniqIds = {};
 
         domElems.each(function(i, domElem) {
-            var block = initBlock(blockName, $(domElem), true);
+            var block = initBlock(blockName, $(domElem), undef, true);
             if(!uniqIds[block._uniqId]) {
                 uniqIds[block._uniqId] = true;
                 res.push(block);
@@ -2873,7 +2874,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
 
         var uniqInitId = identify();
         findDomElem(ctx, BEM_SELECTOR).each(function() {
-            init($(this), uniqInitId);
+            initBlocks($(this), uniqInitId);
         });
 
         this._runInitFns();
@@ -2887,7 +2888,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {Boolean} [excludeSelf=false] Exclude the main domElem
      */
     destruct : function(ctx, excludeSelf) {
-        findDomElem(ctx, BEM_SELECTOR, excludeSelf).each(function(i, domNode) {
+        reverse.call(findDomElem(ctx, BEM_SELECTOR, excludeSelf)).each(function(i, domNode) {
             var params = getParams(domNode);
             objects.each(params, function(blockParams) {
                 if(blockParams.uniqId) {
@@ -3033,7 +3034,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         if(storage) {
             var node = e.target, classNames = [];
             for(var className in storage) {
-                storage.hasOwnProperty(className) && classNames.push(className);
+                classNames.push(className);
             }
             do {
                 var nodeClassName = ' ' + node.className + ' ', i = 0;
@@ -3060,6 +3061,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
             var args = [
                     _this._name,
                     $(this).closest(_this.buildSelector()),
+                    undef,
                     true
                 ],
                 block = initBlock.apply(null, invokeOnInit? args.concat([callback, e]) : args);
@@ -3518,7 +3520,7 @@ provide(/** @exports */{
     /**
      * URL for loading jQuery if it does not exist
      */
-    url : '//yastatic.net/jquery/2.1.0/jquery.min.js'
+    url : '//yastatic.net/jquery/2.1.1/jquery.min.js'
 });
 
 });
@@ -3540,7 +3542,7 @@ provide(
         objects.extend(
             base,
             {
-                url : '//yastatic.net/jquery/1.11.0/jquery.min.js'
+                url : '//yastatic.net/jquery/1.11.1/jquery.min.js'
             }) :
         base);
 
@@ -5361,6 +5363,10 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
                     this.setMod('focused') :
                     // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
             }
         },
 
@@ -5381,6 +5387,13 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
 
             'true' : function() {
                 this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
             }
         }
     },
@@ -6023,11 +6036,6 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
         this._inPopupPointerClick?
            this._inPopupPointerClick = null :
            this.delMod('visible');
-    },
-
-    /** @override */
-    _onScrollOrResize : function() {
-        this.delMod('visible');
     }
 }, {
     live : function() {

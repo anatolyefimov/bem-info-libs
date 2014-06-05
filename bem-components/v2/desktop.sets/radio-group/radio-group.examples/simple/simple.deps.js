@@ -316,6 +316,11 @@ exports.deps = [
         "val": "l"
     },
     {
+        "block": "radio-group",
+        "mod": "type",
+        "val": "line"
+    },
+    {
         "block": "i-bem",
         "elem": "i18n",
         "mod": "dummy",

@@ -35,6 +35,11 @@ exports.deps = [
     },
     {
         "block": "input",
+        "mod": "type",
+        "val": "search"
+    },
+    {
+        "block": "input",
         "mod": "theme",
         "val": "simple"
     },
@@ -52,11 +57,6 @@ exports.deps = [
         "block": "input",
         "mod": "type",
         "val": "password"
-    },
-    {
-        "block": "input",
-        "mod": "type",
-        "val": "search"
     },
     {
         "block": "input",

@@ -17,6 +17,8 @@ html {
         position: relative;
         display: block;
         user-select: none;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background: #fff;
     }
     .input_theme_simple .input__control {
         font-family: inherit;
@@ -24,8 +26,16 @@ html {
         box-sizing: border-box;
         width: 100%;
         margin: 0;
+        border: 0;
+        -webkit-appearance: none;
     }
         .input_theme_simple .input__control::-ms-clear {
+            display: none;
+        }
+        .input_theme_simple .input__control::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+        .input_theme_simple .input__control::-webkit-search-cancel-button {
             display: none;
         }
     .input_theme_simple .input__clear {

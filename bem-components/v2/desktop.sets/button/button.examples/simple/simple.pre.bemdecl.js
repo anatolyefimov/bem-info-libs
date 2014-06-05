@@ -87,11 +87,6 @@ exports.deps = [
         "val": "download"
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "up"
-    },
-    {
         "block": "button",
         "elem": "text"
     },
@@ -111,6 +106,11 @@ exports.deps = [
         "val": "right"
     },
     {
+        "block": "icon",
+        "mod": "action",
+        "val": "up"
+    },
+    {
         "block": "button",
         "mod": "togglable",
         "val": "check"
@@ -119,10 +119,5 @@ exports.deps = [
         "block": "button",
         "mod": "togglable",
         "val": "radio"
-    },
-    {
-        "block": "button",
-        "mod": "checked",
-        "val": true
     }
 ];
