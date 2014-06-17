@@ -5794,6 +5794,59 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
 });
 
 /* end: ../../../common.blocks/base-control/base-control.js */
+/* begin: ../../../desktop.blocks/base-control/base-control.js */
+/** @module base-control */
+
+modules.define(
+    'base-control',
+    function(provide, BaseControl) {
+
+provide(BaseControl.decl({
+    beforeSetMod : {
+        'hovered' : {
+            'true' : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
+    onSetMod : {
+        'disabled' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.delMod('hovered');
+            }
+        },
+
+        'hovered' : {
+            'true' : function() {
+                this.bindTo('mouseleave', this._onMouseLeave);
+            },
+
+            '' : function() {
+                this.unbindFrom('mouseleave', this._onMouseLeave);
+            }
+        }
+    },
+
+    _onMouseOver : function() {
+        this.setMod('hovered');
+    },
+
+    _onMouseLeave : function() {
+        this.delMod('hovered');
+    }
+}, {
+    live : function() {
+        return this
+            .liveBindTo('mouseover', this.prototype._onMouseOver)
+            .__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../desktop.blocks/base-control/base-control.js */
 /* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
 modules.define('link', function(provide, Link) {
 
@@ -5992,55 +6045,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
 });
 
 /* end: ../../../common.blocks/button/button.js */
-/* begin: ../../../desktop.blocks/button/button.js */
-modules.define('button', function(provide, Button) {
-
-provide(Button.decl({
-    beforeSetMod : {
-        'hovered' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
-    onSetMod : {
-        'disabled' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('hovered');
-            }
-        },
-
-        'hovered' : {
-            'true' : function() {
-                this.bindTo('mouseleave', this._onMouseLeave);
-            },
-
-            '' : function() {
-                this.unbindFrom('mouseleave', this._onMouseLeave);
-            }
-        }
-    },
-
-    _onMouseOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onMouseLeave : function() {
-        this.delMod('hovered');
-    }
-}, {
-    live : function() {
-        return this
-            .liveBindTo('mouseover', this.prototype._onMouseOver)
-            .__base.apply(this, arguments);
-    }
-}));
-
-});
-
-/* end: ../../../desktop.blocks/button/button.js */
 /* begin: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
 modules.define('popup', ['objects'], function(provide, objects, Popup) {
 
