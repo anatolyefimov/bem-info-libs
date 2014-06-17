@@ -1,0 +1,1 @@
+exports.deps = [{"block":"i-bem"},{"block":"i-bem","elem":"dom","mod":"elem-instances","val":true}];

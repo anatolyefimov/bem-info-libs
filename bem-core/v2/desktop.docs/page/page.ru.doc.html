@@ -1,0 +1,410 @@
+<div class="shmakowiki"><p>Блок <tt>i-bem</tt> — это блок-хелпер, позволяющий создавать другие блоки. Блок реализован в технологиях <tt>BEMHTML</tt> и <tt>JS</tt>. Обе эти реализации являются ядром библиотеки блоков в соответствующих технологиях.</p><h2 id="jsrealizaciyablokaibem">js-реализация блока i-bem</h2><p>Реализация блока <tt>i-bem</tt> в <tt>JS</tt> обеспечивает хелперы для представления блока в виде <tt>JS</tt> объекта с определёнными методами и свойствами. Это нужно, чтобы писать клиентский <tt>JS</tt> в терминах <tt>BEM</tt>. То есть <tt>JS</tt> оперирует более высоким уровнем абстракции, чем <tt>DOM</tt> представление.</p><p>Для того, чтобы js-представление блока использовало ядро <tt>i-bem</tt>, оно должно быть написано с соблюдением специальных правил.</p><h4 id="Chtoopisanonaetojstranice">Что описано на этой странице?</h4><ul><li>Какие бывают блоки<ul><li><a href="#dom.blocks">Блоки с DOM-представлением</a></li><li><a href="#abstract.blocks">Блоки без DOM-представления</a></li></ul></li><li>Принципы и особенности подхода<ul><li><a href="#decl">Декларативный принцип</a></li><li><a href="#block.getting">Доступ к другим блокам</a></li><li><a href="#mods">Работа с модификаторами</a></li><li><a href="#customization">Кастомизация блоков</a></li></ul></li><li><a href="#creation">Создание собственного bem-js блока</a></li><li>Подробнее о понятиях<ul><li><a href="#init">Инициализация</a></li><li><a href="#liveinit">Инициализация по требованию (live-инициализация<span>)</span></a></li><li><a href="#finding">Методы доступа к блокам и элементам</a></li><li><a href="#events">Работа с событиями</a></li></ul></li></ul><pre><code class="xml">&lt;a name=&quot;dom.blocks&quot;&gt;&lt;/a&gt;</code></pre><h4 id="BlokisDOMpredstavleniem">Блоки с DOM-представлением</h4><p>Блокам, реализованным на <tt>bem-js</tt>, могут соответствовать ноды в <tt>HTML</tt>. В этом случае говорится о том, что блоки имеют <tt>DOM</tt> представление.<br/> В <tt>HTML</tt> блоки на <tt>bem-js</tt> отличаются дополнительным <tt>CSS</tt> классом <tt>i-bem</tt> и специальным форматом записи параметров блока в <tt>onclick</tt>:</p><pre><code class="xml">&lt;div class=&quot;b-my-block i-bem&quot; onclick=&quot;return { &apos;b-my-block&apos; : { name : &apos;b-my-block&apos;}}&quot;&gt;
+...
+&lt;/div&gt;</code></pre><p>Ниже подробно рассказано о <a href="#onclick.params">формате параметров в onclick</a>.</p><pre><code class="xml">&lt;a name=&quot;abstract.blocks&quot;&gt;&lt;/a&gt;</code></pre><h4 id="BlokibezDOMpredstavleniya">Блоки без DOM-представления</h4><p>Технология <tt>bem-js</tt> позволяет также создавать блоки, не имеющие <tt>DOM</tt> представления. Такие блоки тем не менее существуют в <tt>JS</tt> в виде объектов, манипулировать ими можно так же, как и блоками с <tt>DOM</tt> представлением.</p><p>О том, как создавать такие блоки, написано под заголовком <a href="#dom.decl">Декларация блока</a>.</p><p>Блоки, реализованные на <tt>bem-js</tt>,  после инициализации представлены в <tt>js</tt> объектами, имеющими свои методы. Эти методы необходимо использовать, если нужно повлиять на внешний вид или поведение блока.<br/> Технология <tt>bem-js</tt> использует предметную область <a href="http://wiki.yandex-team.ru/lento4ka/bem">концепции <tt>BEM</tt></a>. Все сущности являются блоками или их элементами, управление их состояниями реализуется при помощи модификаторов.<br/> Представление блока в <tt>js</tt> не обязано иметь взаимное соответствие с одной <tt>DOM</tt>-нодой. Можно разместить несколько блоков на одной <tt>DOM</tt>-ноде (это называется <tt>mix</tt>), а также реализовать один блок на нескольких <tt>DOM</tt>-нодах.<br/> Далее блок, использующий технологию <tt>bem-js</tt>, будет называться <tt>блок, реализованный на bem-js</tt>, или <tt>bem-js-блок</tt>. Примером такого блока в библиотеке может служить <tt>b-link</tt>.</p><pre><code class="xml">&lt;a name=&quot;decl&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Deklarativnyjprincip">Декларативный принцип</h2><p>Важной особенностью технологии <tt>bem-js</tt> является декларативный принцип. Подобно работе декларативных языков программирования, <tt>js</tt>-код содержит не последовательный алгоритм работы блока, а набор действий и условий, при которых эти действия необходимо выполнять.</p><h3 id="Deklaraciyabloka">Декларация блока</h3><p>Декларативность проявляется в объявлении того, к каким блокам или их модификациям применим код компонента:</p><pre><code class="js">BEM.DOM.decl(&apos;b-link&apos;, {
+...</code></pre><pre><code class="js">BEM.DOM.decl({ name : &apos;b-domik&apos;, modName : &apos;type&apos;, modVal : &apos;popup&apos; }, {
+...</code></pre><p><a href="#dom.decl">Подробнее о декларации блока</a></p><pre><code class="xml">&lt;a name=&quot;mods.reaction&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Reakciyanaizmeneniemodifikatorov">Реакция на изменение модификаторов</h3><p>Согласно концепции, состояния блока или его элементов определяются модификаторами. Поэтому, чтобы динамически изменять состояния блоков и элементов, в <tt>bem-js</tt> есть специальные методы для установки и снятия модификаторов.</p><p>В коде компонента можно записать, как блок или элемент должен отреагировать на изменение модификатора. Эта запись тоже декларативна.<br/> Например, блок <tt>b-dropdowna</tt> при установке модификатора <tt>disabled</tt> прячет показанный попап:</p><pre><code class="js">BEM.DOM.decl(&apos;b-dropdowna&apos;, {
+
+    onSetMod : {
+
+        &apos;disabled&apos; : function(modName, modVal) {
+
+            this._getSwitcher().setMod(modName, modVal);
+            modVal == &apos;yes&apos; &amp;&amp; this.getPopup().hide();
+
+        }
+
+    },
+...</code></pre><p>Подробно <a href="#mods.callbacks">о декларации обработки модификаторов</a> рассказано в пункте про создание собственного блока.</p><pre><code class="xml">&lt;a name=&quot;block.getting&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Dostupkdrugimblokam">Доступ к другим блокам</h2><p>Может возникнуть необходимость управлять другим блоком. Для любых манипуляций с блоком необходимо получить доступ к <tt>js</tt>-объекту этого блока и вызывать его методы.</p><pre><code class="xml">&lt;a name=&quot;blocks.finding&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Dostupkbemjsblokuizdrugogobemjsbloka">Доступ к bem-js-блоку из другого bem-js-блока.</h3><p>В случае <a href="#creation">реализации собственного кастомного блока на технологии <tt>bem-js</tt></a>, блоку соответствует <tt>js</tt>-объект. Он наследует общие для всех блоков методы, позволяющие работать с <tt>DOM</tt> документа в терминах <tt>BEM</tt>. Среди этих методов есть методы поиска других блоков относительно текущего (<tt>findBlock*</tt>-методы). Они возвращают <tt>js</tt>-объект искомого блока, что позволяет затем напрямую вызывать его методы.<br/> <b>Не используйте <tt>jQuery</tt>-селекторы для поиска блоков и элементов.</b></p><p>В этом примере вызывается метод <tt>val()</tt> у блока <tt>b-form-checkbox</tt>:</p><pre><code class="js">BEM.DOM.decl(&apos;b-checkbox-example&apos;, {
+
+    onSetMod: {
+        &apos;js&apos;: function() {
+            var checkbox = this.findBlockInside({ blockName : &apos;b-form-checkbox&apos;, modName : &apos;type&apos;, modVal : &apos;my-checkbox&apos;});
+            this.domElem.append(&apos;Значение checkbox: &apos; + checkbox.val());
+        }
+    }
+}
+);</code></pre><h3 id="Dostupkbemjsblokuneizbemjsbloka">Доступ к bem-js-блоку не из bem-js-блока</h3><p>В случае работы не из <tt>bem-js-блока</tt>, методы <tt>findBlock*</tt> недоступны. <tt>js</tt>-объект блока можно получить, используя метод <tt>.bem()</tt> <tt>jQuery</tt> коллекции:</p><pre><code class="js">$(уникальный селектор).bem(&apos;b-link&apos;);</code></pre><p>Этот способ <b>не рекомендован</b>. Лучшим вариантом работы с блоками, реализованными на <tt>i-bem</tt>, является создание собственного компонента на <tt>i-bem</tt>. Подробнее о <a href="#creation">создании собственного bem-js-компонента</a> написано ниже.</p><pre><code class="xml">&lt;a name=&quot;mods&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Rabotasmodifikatoramibloka">Работа с модификаторами блока</h2><p>Модификатор задаёт блоку определённое состояние. Каждому блоку можно присвоить один или несколько модификаторов (у блока также может не быть модификаторов вообще). У модификатора есть имя и значение.</p><p>Любой перевод блока в другое состояние должен производиться при помощи установки модификатора. Например, для того, чтобы сделать чекбокс выделенным в блоке <tt>b-form-checkbox</tt>, ему нужно установить модификатор <tt>checked</tt> в значение <tt>yes</tt>.<br/> На странице документации каждого блока есть список его элементов и модификаторов. Из этого списка можно однозначно определять, какие состояния блока доступны для использования.</p><p>Модификаторы нельзя устанавливать, напрямую меняя <tt>CSS</tt> класс на соответствующей <tt>DOM</tt>-ноде. Для корректной работы <tt>js</tt> все манипуляции с модификаторами должны производиться при помощи метода-хелпера <tt>setMod()</tt>. Также существуют методы <tt>hasMod()</tt>, <tt>getMod</tt>/<tt>getMods()</tt>, <tt>toggleMod()</tt> и <tt>delMod()</tt>. Сигнатуры этих методов доступны в <a href="/blocks/i-bem/i-bem.jsdoc.wiki">референсе по BEM</a>.</p><pre><code class="xml">&lt;a name=&quot;customization&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Izmeneniepovedeniyasushhestvuyushhixblokov">Изменение поведения существующих блоков</h2><p>Используя <tt>bem-js</tt>, можно переопределять и доопределять методы блока и функций реакции на изменения модификаторов. Это делается аналогично кастомизации блоков на <tt>CSS</tt> или <tt>BEMHTML</tt>.</p><h3 id="Pereopredeleniepovedeniya">Переопределение поведения</h3><p>Например, на сервисе существует необходимость модифицировать все блоки <tt>b-dropdowna</tt> так, чтобы они не закрывались по второму клику на псевдо-ссылку. В этом случае на уровне переопределения сервиса нужно сделать файл <tt>blocks/b-dropdowna/b-dropdowna.js</tt>, кастомизирующий поведение блока из библиотеки:</p><pre><code class="js">BEM.DOM.decl(&apos;b-dropdowna&apos;, {
+
+    onSetMod : {
+
+        &apos;js&apos; : function() {
+
+            this._getSwitcher().on(&apos;click&apos;, this._on, this);
+
+        }
+    },
+    _on : function() {
+        this.getPopup().show(this.elem(&apos;switcher&apos;));
+    }
+});</code></pre><h3 id="Rasshireniepovedeniya">Расширение поведения</h3><p>В предыдущем примере код кастомизации полностью переопределяет поведение блока. Технология <tt>bem-js</tt> позволяет также реализовывать «доопределение» блока. Для этого в методах кастомизирующего кода можно вызывать <tt>this._<span>_</span>base.apply()</tt>, передавая в качестве аргументов <tt>this</tt> и <tt>arguments</tt>. Вызов такого метода аналогичен использованию <tt>&lt;xsl:apply-imports/&gt;</tt>.</p><p>Например, можно доопределить реакцию на клик всех блоков <tt>b-link</tt> на проекте, так, чтобы после первого клика на псевдо-ссылку она приобретала красный цвет.</p><p>Содержание файла <tt>blocks/b-link/_pseudo/b-link_pseudo_yes.js</tt></p><pre><code class="js">BEM.DOM.decl({&apos;name&apos;: &apos;b-link&apos;, &apos;modName&apos;: &apos;pseudo&apos;, &apos;modVal&apos;: &apos;yes&apos;}, {
+    _onClick : function() {
+         this
+            .__base.apply(this, arguments) // выполнить метод _onClick основного b-link
+            .setMod(&apos;status&apos;, &apos;clicked&apos;);
+    }
+});</code></pre><p>Содержание файла <tt>blocks/b-link/_status/b-link_status_clicked.css</tt></p><pre><code class="xml">.b-link_status_clicked
+{
+    color: red;
+}</code></pre><h3 id="Kastomizaciyasispolyzovaniemmodifikatorov">Кастомизация с использованием модификаторов</h3><p>Предыдущие примеры кастомизации изменяют поведение <i>всех</i> определенных блоков на странице. Но очень часто возникает задача кастомизации конкретного блока без влияния на поведение всех таких блоков. Согласно концепции <tt>BEM</tt>, если блок чем-то отличается от других похожих, это выражается модификатором. Так что нужно реализовывать поведение для блока с таким модификатором.</p><p>Возвращаясь к примеру про псевдоссылку, приобретающую красный цвет после первого клика, сделаем модификацию <tt>reaction_odd</tt>. Псевдоссылка с таким модификатором приобретает красный цвет после каждого нечётного клика, а после каждого чётного возвращается к исходному цвету .</p><p>Содержание файла <tt>blocks/b-link/_reaction/b-link_reaction_odd.js</tt>:</p><pre><code class="js">BEM.DOM.decl({name : &apos;b-link&apos;, modName : &apos;reaction&apos;, &apos;modVal&apos; : &apos;odd&apos;}, {
+    _onClick : function() {
+         this
+            .__base.apply(this, arguments) // выполнить метод _onClick основного b-link
+            .toggleMod(&apos;status&apos;, &apos;clicked&apos;);
+    }
+});</code></pre><pre><code class="xml">&lt;a name=&quot;creation&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Sozdaniejskomponentadlyasobstvennogoblokailisobstvennojmodifikacii">Создание js-компонента для собственного блока или собственной модификации</h2><p>Рекомендованным способом работы с <tt>bem-js-блоками</tt> является создание собственных <tt>bem-js-блоков</tt> (чаще всего — контейнеров), реагирующих на события других блоков страницы. Собственные <tt>bem-js-блоки</tt> могут вызывать методы других блоков (если нужно) и реализовывать свой функционал.<br/> <tt>js-код</tt> блока принято размещать в папке блока в файле с именем, соответствующим имени блока, и расширением <tt>.js</tt>. Если <tt>js-реализация</tt> относится не к блоку, а лишь к одной из его модификаций, можно разместить код в <tt>js-файле</tt>, соответствующем данному модификатору.</p><pre><code class="xml">&lt;a name=&quot;dom.decl&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Deklaraciyabloka">Декларация блока</h3><p>Создание <tt>js-компонента</tt> блока сводится к его декларации с помощью специальных хелперов. Существуют два хелпера для декларации блоков: один для блоков, которые имеют <tt>DOM</tt>-представление, второй — для блоков, не имеющих <tt>DOM</tt> представления (например <tt>i-request</tt>, <tt>i-update-session</tt>).</p><p>В первом случае блоки декларируются с помощью <tt>BEM.DOM.decl</tt>, во втором — с помощью <tt>BEM.decl</tt>.</p><p>Хелпер декларации блока принимает 3 параметра:</p><ol><li>Матчащий параметр<br/>
+    Первым параметром может быть либо строка с именем
+блока, либо хеш. Хеш кроме имени блока содержит дополнительную информацию о том, к какому
+типу блоков применять компонент.</li><li>Методы и свойства экземляра блока<br/>
+    Методы и свойства, предметной областью которых является конкретный инстанс блока
+    на странице. Это как <a href="#mods.callbacks">функции обработки модификаторов</a>,
+    так и <a href="#methods">кастомные методы блока</a>.</li><li>Статические методы и свойства<br/>
+    Методы и свойства, не относящиеся к конкретному инстансу блока. <a href="#static.methods">Подробнее</a></li></ol><p>Например:</p><pre><code class="js">BEM.DOM.decl(
+    &apos;b-link&apos;, // имя блока
+    {
+        // методы и свойства экземпляра блока
+    },
+    {
+        // статические методы и свойства блока
+    });</code></pre><p>и</p><pre><code class="js">BEM.decl(&apos;i-request&apos;, {
+    {
+        // методы и свойства экземпляра блока
+    },
+    {
+        // статические методы и свойства блока
+});</code></pre><p>Вместо имени блока может быть указано более сложное описание, например, информация о предке:</p><pre><code class="js">BEM.decl({ name : &apos;b-dataprovider&apos;, baseBlock : &apos;i-request&apos; }, {
+
+    get : function() {
+        this.__base(); // вызов одноименного метода из i-request
+        doSomething();
+    }
+
+});</code></pre><p>Тут указано, что блок <tt>b-dataprovider</tt> наследуется от блока <tt>i-request</tt> и переопределяет его метод <tt>get</tt>.</p><p>В первом параметре (хеше) декларации может быть указано не только то, к какому блоку применить компонент, но и уточнён модификатор и/или его значение:</p><pre><code class="js">BEM.decl({ name : &apos;b-popup&apos;, modName : &apos;type&apos;, modVal : &apos;inplace&apos; }, {
+
+    show : function() {
+        doSomething();
+    }
+
+});</code></pre><p>Все методы, описанные в такой декларации, будут вызываться для таких блоков <tt>b-popup</tt>, которые в данный момент имеют модификатор <tt>type</tt>, установленный в <tt>inplace</tt>.</p><pre><code class="xml">&lt;a name=&quot;mods.callbacks&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Reakciyanaizmeneniemodifikatorov">Реакция на изменение модификаторов</h3><p>Согласно концепции <tt>BEM</tt> состояния блоков и его элементов определяются модификаторами. Блок может сам назначать себе или своему элементу модификатор, или получать это назначение из другого блока.<br/> Во время того, как блок или элемент получил определённый модификатор, может возникнуть необходимость отреагировать на установку (или снятие) модификатора.</p><p>Для этого в декларации в части описании методов и свойств экземпляра блока зарезервировано два специальных свойства: <tt>onSetMod</tt> и <tt>onElemSetMod</tt>, где описываются <tt>callback</tt>-функции, вызываемые при установке модификаторов для блока или его элементов.</p><p>Описание <tt>callback</tt>-функций для <tt>onSetMod</tt> представляет собой хеш вида:</p><pre><code class="js">{
+    &apos;модификатор1&apos; : {
+
+        &apos;значение1-модификатора1&apos; : function() { ... }, // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в значение &apos;значение1&apos;
+
+        ...
+
+        &apos;значениеN-модификатора1&apos; : function() { ... }, // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в значение &apos;значениеN&apos;
+
+        &apos;*&apos; : function() { ... } // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в любое из значений
+
+    },
+
+    &apos;модификатор2&apos; : function() {}, // функция, которая будет вызвана при установке модификатора &apos;модификатор2&apos; в любое из значений
+
+    ...
+
+    &apos;модификаторN&apos; : {
+
+        &apos;значение1-модификатораN&apos; : function() { ... },
+
+        ...
+
+        &apos;значениеN-модификатораN&apos; : function() { ... }
+
+    }
+
+}</code></pre><p>Описание <tt>callback</tt>-функций для <tt>onElemSetMod</tt> аналогично, за исключением того, что на верхнем уровне указывается имя элемента:</p><pre><code class="js">{
+
+    &apos;элемент1&apos; : {
+
+        &apos;модификатор1&apos; : {
+
+            &apos;значение1-модификатора1&apos; : function() { ... }, // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в значение &apos;значение1&apos; для элемента &apos;элемент1&apos;
+
+            ...
+
+            &apos;значениеN-модификатора1&apos; : function() { ... }, // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в значение &apos;значениеN&apos; для элемента &apos;элемент1&apos;
+
+            &apos;*&apos; : function() { ... } // функция, которая будет вызвана при установке модификатора &apos;модификатор1&apos; в любое из значений  для элемента &apos;элемент1&apos;
+
+        }
+
+    },
+
+    ...
+
+    &apos;элементN&apos; : function() { }, // функция, которая будет вызвана при установке любого модификатора в любое из значений для элемента &apos;элементN&apos;
+
+}</code></pre><p>Параметры <tt>callback</tt>-функций:</p><ul><li><tt>{jQuery} [elem]</tt> — элемент блока (если установка модификатора была для элемента)</li><li><tt>{String} modName</tt> — имя модификатора</li><li><tt>{String} modVal</tt> — устанавливаемое значение модификатора</li><li><tt>{String} curModVal</tt> — текущее значение модификатора</li></ul><p>Порядок вызовов <tt>callback</tt>-функций при установке модификатора <tt>modVal</tt> в значение <tt>modName</tt>:</p><ul><li>вызывается <tt>callback</tt>-функция на установку любого модификатора в любое значение (если она существует)</li><li>вызывается <tt>callback</tt>-функция на установку модификатора <tt>modVal</tt> в любое значение (если она существует)</li><li>вызывается <tt>callback</tt>-функция на установку модификатора <tt>modVal</tt> в значение <tt>modName</tt> (если она существует)</li></ul><p>Если хоть один из вызовов этих функций вернет <tt>false</tt>, то установки модификатора не произойдет.</p><p>Например:</p><pre><code class="js">BEM.DOM.decl(&apos;b-menu&apos;, {
+
+    onElemSetMod : {
+
+        &apos;trigger&apos; : {
+
+            &apos;state&apos; : function(elem, modName, modVal) {
+
+                // тут описаны действия, которые нужно совершить при установке элементу &apos;trigger&apos; модификатора с именем &apos;state&apos; в любое значение
+                this
+                    .toggleMod(
+                        this.findElem(elem.closest(this.buildSelector(&apos;layout-cell&apos;)), &apos;item-content&apos;).eq(0),
+                        &apos;visibility&apos;,
+                        &apos;visible&apos;,
+                        modVal == &apos;opened&apos;)
+                    .trigger(&apos;trigger&apos;, {
+                        domElem : elem,
+                        state : modVal
+                    });
+
+            }
+
+        }
+
+    },
+
+    onTriggerClick : function(e) { // при клике на триггер
+
+        e.preventDefault();
+        this.toggleMod(e.data.domElem, &apos;state&apos;, &apos;opened&apos;); // устанавливаем или снимаем значение &apos;opened&apos; у модификатор &apos;state&apos; для элемента &apos;trigger&apos;
+
+    }
+
+}, {
+
+    live : function() {
+
+        this
+            .liveBindTo(&apos;trigger&apos;, &apos;click&apos;, function(e) { // слушаем live-клик на элементах &apos;trigger&apos;
+                this.onTriggerClick(e);
+            });
+
+    }
+
+});</code></pre><p><tt>В данном примере при вызове </tt>toggleMod<tt> внутри </tt>onTriggerClick<tt> будет вызвана соответствущая ей </tt>callback<tt>-функция из </tt>onElemSetMod<tt>.</tt></p><p><tt>Callback</tt> функции, реагирующие на изменение модификатора, выполняются до установки модификатора. Если существует необходимость выполнить часть кода после установки модификатора, нужно воспользоваться методом <tt>.afterCurrentEvent()</tt>.</p><p>Пример ниже демонстрирует, что квадратик становится больше только после установки модификатора:</p><pre><code class="js">BEM.DOM.decl(&apos;b-square2&apos;, {
+
+    onSetMod : {
+
+        &apos;js&apos; : function() {
+
+            var square = this;
+
+            this.bindTo(&apos;click&apos;, function(){
+                square.setMod(&apos;size&apos;, &apos;big&apos;);
+            });
+
+        },
+        &apos;size&apos; : function() {
+            this.domElem.append(&apos;размер1: &apos;, this.domElem.width() + &apos;&lt;br/&gt;&apos;); // напишет 200
+
+            this.afterCurrentEvent(function(){
+                this.domElem.append(&apos;размер2: &apos;, this.domElem.width()); // напишет 400
+            });
+        }
+    }
+
+});</code></pre><h4 id="Nachalorabotysblokommodifikatorjs">Начало работы с блоком (модификатор <tt>js</tt>)</h4><p>Блок начинает свою работу с действий, описанных в <tt>callback</tt>-функции на установку его модификатора <tt>js</tt> в значение <tt>inited</tt>:</p><pre><code class="js">BEM.DOM.decl(&apos;b-form-input&apos;, {
+
+    onSetMod : {
+
+        &apos;js&apos; : {
+
+            &apos;inited&apos; : function() {
+
+                this
+                    .bindTo(this.elem(&apos;input&apos;), {
+                        &apos;focus&apos; : this.onFocus,
+                        &apos;blur&apos;  : this.onBlur
+                    })
+
+            }
+
+        }
+
+    }
+
+});</code></pre><p>Этот модификатор присваивается блоку в момент инициализации. Поскольку код обработчика модификатора выполняется до установки модификатора, эта функция-обработчик и является первой выполняющейся функцией блока.</p><p>Модификаторы могут без ограничения присваиваться как блокам, имеющим <tt>DOM</tt> представление, так и блокам без него. Так что, у блоков без <tt>DOM</tt> представления первый исполняемый метод также задаётся как <tt>callback</tt> модификатора <tt>js_inited</tt>.</p><p>В коде блоков можно встретить <tt>callback</tt> функцию не на значение <tt>inited</tt> модификатора <tt>js</tt>, а на установку модификатора <tt>js</tt> в любое значение:</p><pre><code class="js">BEM.DOM.decl(&apos;b-form-input&apos;, {
+
+    onSetMod : {
+
+    &apos;js&apos; : function() { // конструктор b-form-input
+        ...
+        }
+
+    }
+});</code></pre><p>Это краткая декларация, возможная из-за того, что до инициализации блок не имеет модификатора <tt>js</tt>, а в момент инциализации приобретает значение <tt>inited</tt>. Другие значения модификатора сейчас не предусмотрены.</p><pre><code class="xml">&lt;a name=&quot;methods&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Metodybloka">Методы блока</h3><p>Кроме реакции на модификаторы, в блоке могут быть определены его собственные методы. Определённые в блоке методы могут быть вызваны им самим или другими блоками.</p><p>Например, так выглядит метод <tt>.toggle()</tt> блока <a href="/blocks/b-form-checkbox/b-form/checkbox.wiki">b-form-checkbox</a>:</p><pre><code class="js">BEM.DOM.decl(&apos;b-form-checkbox&apos;, {
+    ...
+    toggle : function() {
+        this.toggleMod(&apos;checked&apos;, &apos;yes&apos;, &apos;&apos;);
+    }
+    ...
+});</code></pre><h4 id="Pereopredelenieidoopredeleniemetodovbloka">Переопределение и доопределение методов блока</h4><p>Любой метод блока (в том числе и методы обработки модификаторов) может быть переопределён. Об этом написано выше в пункте <a href="#customization">Изменение поведения существующих блоков</a>.</p><pre><code class="xml">&lt;a name=&quot;static.methods&quot;&gt;&lt;/a&gt;</code></pre><h3 id="Staticheskiemetodybloka">Статические методы блока</h3><p>Третий параметр, передаваемый в функцию декларации блока, – это хеш статических методов блока.</p><p>Примером блока, использующего статические методы, может служить <a href="/blocks/b-flash/b-flash.wiki">/blocks/b-flash/b-flash.wiki</a>.</p><p>Для каждого блока может быть определен статический метод <tt>live</tt>, позвляющий реализовать <a href="#liveinit">инициализацию по требованию (liveinit<span>)</span></a>.</p><pre><code class="xml">&lt;a name=&quot;init&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Inicializaciya">Инициализация</h2><p>Для того, чтобы у блока появился <tt>js-объект</tt>, описанный в декларации, происходит процесс инициализации блока. Инициализация блоков производится функцией <tt>BEM.DOM.init()</tt> на фрагменте <tt>DOM</tt> дерева. Если элемент <tt>i-bem_<span>_</span>dom</tt> задекларирован с модификатором <tt>init_auto</tt> (подключается файл <tt>i-bem_<span>_</span>dom_init_auto.js</tt>), то инициализация блоков происходит на всём документе по событию domReady. Также функцию <tt>BEM.DOM.init</tt> можно вызвать самостоятельно. Например, это делается для инициализации блоков после динамического изменения страницы, если появились новые блоки с js-представлением.</p><h3 id="InicializaciyablokovsDOMpredstavleniem">Инициализация блоков с DOM-представлением</h3><p>Для инициализации блоков, представленных в <tt>DOM</tt>, на фрагменте дерева ищутся все блоки, помеченные классом <tt>i-bem</tt>, у них считываются параметры из атрибута <tt>onclick</tt>, и создаётся <tt>js-объект</tt> такого блока.</p><pre><code class="xml">&lt;a name=&quot;onclick.params&quot;&gt;&lt;/a&gt;</code></pre><h4 id="Formatparametrovblokavonclick">Формат параметров блока в onclick</h4><p>Параметры для блока записываются в виде возвращаемого атрибутом <tt>onclick</tt> хеша. Этот хеш должен содержать элементы с названиями, соответствующими названиям блоков, к которым они относятся. Значением каждого элемента должен быть вложенный хеш c параметрами.<br/> Такая запись позволяет задавать параметры для нескольких блоков в том случае, если они представлены в <tt>HTML</tt> одной и той же <tt>DOM-нодой</tt>.</p><p>Вот как выглядит <tt>DOM-нода</tt> произвольного блока, реализованного на <tt>bem-js</tt>:</p><pre><code class="xml">&lt;div class=&quot;b-my-block i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {}
+}&quot;&gt;
+..
+&lt;/div&gt;</code></pre><p>В случае, если блоку необходим параметр, он указывается на том же уровне, что и элемент <tt>name</tt>. Формат параметра может быть любым: строка, число, массив, хеш, функция. Количество параметров также не ограничено.</p><pre><code class="xml">&lt;div class=&quot;b-my-block i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {
+        &apos;points&apos; : [
+            [1.67, 2.5],
+            [-30, 2.07],
+            [290, -0.39]
+        ],
+        &apos;title&apos; : &apos;Какое-то название&apos;,
+    }
+}&quot;&gt;
+..
+&lt;/div&gt;</code></pre><p>Для нескольких блоков на одной <tt>DOM-ноде</tt> <tt>HTML</tt> представление будет аналогично следующему:</p><pre><code class="xml">&lt;div class=&quot;b-my-block b-my-second-block i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {
+        &apos;title&apos; : &apos;Какое-то название&apos;, // Этот блок имеет опцинальный параметр title
+    },
+    &apos;b-my-second-block&apos; : {
+        // У этого блока нет никаких опциональных параметров
+    }
+}&quot;&gt;
+..
+&lt;/div&gt;</code></pre><h4 id="DOMpredstavlenieinicializirovannogobloka">DOM-представление инициализированного блока</h4><p>После инициализации <tt>DOM</tt> представление блока изменяется: у блока появляется дополнительный модификатор <tt>js_inited</tt>.<br/> Если <tt>DOM-ноде</tt> соответствуют несколько блоков, то появление модификатора у одного из них свидетельствует об инициализации только этого блока и не влияет на инициализацию другого (других).</p><p>DOM-представление блока после инициализации:</p><pre><code class="xml">&lt;div class=&quot;b-my-block b-my-block_js_inited i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {
+        &apos;name&apos; : &apos;b-my-block&apos;
+    }
+}&quot;&gt;
+..
+&lt;/div&gt;</code></pre><p><tt>DOM</tt> представление двух блоков после инициализации:</p><pre><code class="xml">&lt;div class=&quot;b-my-block b-my-second-block b-my-block_js_inited b-my-second-block_js_inited i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {
+        &apos;name&apos; : &apos;b-my-block&apos;,
+    },
+    &apos;b-my-second-block&apos; : {
+        &apos;name&apos; : &apos;b-my-second-block&apos;
+    }
+}&quot;&gt;</code></pre><p><tt>DOM</tt> представление двух блоков, но инициализован только один из них:</p><pre><code class="xml">&lt;div class=&quot;b-my-block b-my-second-block b-my-second-block_js_inited i-bem&quot; onclick=&quot;return {
+    &apos;b-my-block&apos; : {
+        &apos;name&apos; : &apos;b-my-block&apos;,
+    },
+    &apos;b-my-second-block&apos; : {
+        &apos;name&apos; : &apos;b-my-second-block&apos;
+    }
+}&quot;&gt;</code></pre><h3 id="InicializaciyablokovbezDOMpredstavleniya">Инициализация блоков без DOM-представления</h3><p>В том случае, если у блока нет <tt>DOM</tt> представления, в процессе инициализации просто возникает <tt>js-объект</tt>, соответствующий этому блоку. Дальнейшее зависит от кода блока.</p><pre><code class="xml">&lt;a name=&quot;liveinit&quot;&gt;&lt;/a&gt;</code></pre><h2 id="InicializaciyapotrebovaniyuliveInit">Инициализация по требованию (liveInit)</h2><p>Многим блокам (например, <tt>b-link</tt>, <tt>b-dropdown</tt>, <tt>b-smart-help</tt>) нет необходимости делать сразу же полную инициализацию. Инициализация может происходить только на ключевые события для этого блока, например, клик по элементу этого блока. Рассмотрим на примере блока <tt>b-link</tt>:</p><pre><code class="js">BEM.DOM.decl(&apos;b-link&apos;, {
+
+    _onClick : function(e) {
+
+        e.preventDefault();
+        this.trigger(&apos;click&apos;);
+
+    }
+
+}, {
+
+    live : function() {
+
+        this.liveBindTo(&apos;click&apos;, function(e) {
+            this._onClick(e);
+        });
+
+    }
+
+});</code></pre><p>В статических свойствах блока предусмотрено специальное свойство <tt>live</tt> (<tt>Function</tt>|<tt>Boolean</tt>), отвечающее за инициализацию по требованию и за подписку на <tt>live</tt> события на <tt>DOM</tt> элементах внутри такого блока.</p><p>Если <tt>live</tt> определено как <tt>Function</tt>, то эта функция будет выполнена один раз — при попытке инициализации первого такого блока.</p><p>Существует несколько хелперов для <tt>live</tt> событий:</p><ul><li><tt>liveInitOnEvent</tt> — хелпер для инициализации блока по событию на блоке или его внутреннем элементе</li><li><tt>liveBindTo</tt> — подписка на события на блоке или его внутреннем элементе</li></ul><p>Оба этих хелпера инициализируют блок при возникновении первого такого события. Различие же заключается в том, что <tt>callback</tt> функция в <tt>liveInitOnEvent</tt> вызывается только один раз после инициализации блока, а в <tt>liveBindTo</tt> она будет вызываться при каждом событии. Контекстом такой <tt>callback</tt> функции является тот блок, в котором произошло событие.</p><p>В вышеприведенном примере блок <tt>b-link</tt> будет инициализирован при первом клике на себе и будет реагировать на каждый последующий клик.</p><p>Если же <tt>live</tt> определено как <tt>Boolean</tt> и установлено в <tt>true</tt>, то такой блок будет инициализирован только при попытке доступа к нему, например, из методов поиска <tt>findBlockInside</tt>/<tt>findBlockOutside</tt>.</p><p>&lt;a name=&quot;finding&quot;&gt;&lt;/a&gt;</p><h2 id="Metodydostupakblokamielementam">Методы доступа к блокам и элементам</h2><p>Работая с блоками, реализованными на <tt>bem-js</tt>, необходимо использовать встроенные методы для поиска блоков и их элементов. Эти методы доступны в каждом блоке и умеют возвращать другой блок или <tt>jQuery</tt> коллекцию (в случае поиска элементов).</p><h3 id="Metodypoiskablokov">Методы поиска блоков</h3><p>Поиск блоков осуществляется относительно текущего блока при помощи методов <tt>findBlock*</tt>.</p><p>Реализуем блок <tt>b-my-block</tt>, который находит первый из блоков <tt>b-form-checkbox</tt> внутри себя и вызывает у него метод <tt>toggle()</tt> для переключения чекбокса.</p><pre><code class="js">BEM.DOM.decl(&apos;b-my-block&apos;, {
+    onSetMod : {
+        &apos;js&apos; : function() {
+            var checkbox = this.findBlockInside(&apos;b-form-checkbox&apos;);
+            checkbox.toggle();
+        }
+    }
+});</code></pre><p>Поиск блока или блоков может быть выполнен одним из следующих методов:</p><ul><li><tt>findBlockInside/findBlocksInside</tt> — поиск блока/блоков внутри <tt>DOM</tt> элементов текущего блока или его элементов</li><li><tt>findBlockOn/findBlocksOn</tt> — поиск блока/блоков на <tt>DOM</tt> элементах текущего блока или его элементов</li><li><tt>findBlockOutside/findBlocksOutside</tt> — поиск блока/блоков снаружи <tt>DOM</tt> элементов текущего блока или его элементов</li></ul><p>Список методов поиска блоков и их сигнатуры можно посмотреть в <a href="/blocks/i-bem/dom/i-bem__dom.jsdoc.wiki">референсе по BEM.DOM</a>.</p><p>Примерами блоков, использующих методы поиска других блоков, могут быть: <a href="/blocks/b-smart-help/b-smart-help.wiki">b-smart-help</a>, <a href="blocks/b-screenshot/b-screenshot.wiki">b-screenshot</a> и <a href="blocks/b-dropdowna/b-dropdowna.wiki">b-dropdowna</a>.</p><h3 id="Metodydostupakelementam">Методы доступа к элементам</h3><p>Для поиска элементов внутри блока используется метод <tt>elem</tt>. Результат этого метода кэшируется.</p><p>Например:</p><pre><code class="js">BEM.DOM.decl(&apos;b-form-input&apos;, {
+
+    doSomething : function() {
+
+        this.elem(&apos;hint&apos;); // тут будут найдены элементы b-form-input__hint
+
+    }
+
+});</code></pre><p>Можно искать элементы внутри блока с учетом модификатора:</p><pre><code class="js">BEM.DOM.decl(&apos;b-menu&apos;, {
+
+    doSomething : function() {
+
+        this.elem(&apos;item&apos;, &apos;state&apos;, &apos;current&apos;); // тут будут найдены элементы b-menu__item_state_current
+
+    }
+
+});</code></pre><p>Некэширующий метод поиска элементов называется <tt>findElem()</tt>.</p><p>Полный список методов для поиска элементов и их сигнатуры можно найти в <a href="/blocks/i-bem/dom/i-bem__dom.jsdoc.wiki">референсе по BEM.DOM</a>.</p><pre><code class="xml">&lt;a name=&quot;events&quot;&gt;&lt;/a&gt;</code></pre><h2 id="Rabotassobytiyami">Работа с событиями</h2><h3 id="Sobytiyanablokax">События на блоках</h3><p>Блоки предоставляют интерфейс для подписки/отписки/нотификации своих собственных (не <tt>DOM</tt>) событий:</p><ul><li><tt>on(e, [data], fn, [ctx])</tt> — подписка на событие <tt>e</tt></li><li><tt>onFirst(e, [data], fn, [ctx])</tt> — подписка только на первое событие <tt>e</tt></li><li><tt>un([e], [fn], [ctx])</tt> — отписка от конкретного события <tt>e</tt> или всех событий</li><li><tt>trigger(e, [data])</tt> — нотификация о событии  <tt>e</tt></li></ul><h3 id="livesobytiyanablokax">live-события на блоках</h3><p>В <tt>bem-js</tt> есть события, реализованные по паттерну делегированных событий, они называются <tt>live</tt> события.</p><p>Следующий пример демонстрирует работу с live-событием <tt>click</tt> для блоков <tt>b-link</tt>, содержащихся в определённой <tt>DOM-ноде</tt>. В данном случае контейнер и блок совпадают:</p><pre><code class="js">BEM.DOM.decl(&apos;b-link-example&apos;, {
+
+    onSetMod: {
+        &apos;js&apos;: function() {
+            var link = this.findBlockInside(&apos;b-link&apos;);
+            BEM.blocks[&apos;b-link&apos;]
+                .liveCtxBind(link.domElem,
+                            &apos;click&apos;,
+                            function(){
+                                link.domElem.text(&apos;Кликнутая ссылка&apos;);
+                            },
+                            this);
+        }
+    }
+},
+{
+    live: function() {
+        this.liveInitOnBlockInsideInit(&apos;b-link&apos;);
+    }
+}
+);</code></pre><p>Метод <tt>.liveCtxBind()</tt> реализует возможность реакции на bem-события блоков, вложенных в какой-либо <tt>DOM</tt> элемент. <b>Это не DOM-события</b><br/> Использование <tt>live</tt> событий позволяет избежать лишнего поиска блоков в <tt>DOM</tt> дереве. Кроме того, при такой привязке к событию реакция на событие блока из контейнера будет происходить даже в том случае, если на момент привязки блока в контейнере не было, а он появился позже в результате динамического изменения документа.</p><p>Кроме возможности привязки к <tt>live</tt> событию блока, здесь также продемонстрированы <a href="#blocks.finding">поиск блока относительно текущего</a> и <a href="#liveinit">live-инициалиация</a>.<br/></p></div>
+<div class="shmakowiki"><p>﻿Блок <tt>page</tt> создаёт теги верхнего уровня страницы:</p><ul><li><tt>&lt;html&gt;</tt></li><li><tt>&lt;head&gt;</tt></li><li><tt>&lt;body&gt;</tt></li></ul><p>Именно он отвечает за то, какие подключить <tt>CSS</tt> и <tt>JS</tt> файлы к странице, выставление <tt>meta</tt> тегов, заголовка и так далее.</p><p>Декларация блока в <tt>BEMJSON</tt> начинается объявлением блока и указанием свойства <tt>title</tt>, которое превращается в тег <tt>&lt;title&gt;</tt> в <tt>HTML</tt>.</p><pre><code class="js">({
+block: &apos;page&apos;,
+title: &apos;Page with link&apos;,
+...
+})</code></pre><p>Указание свойства <tt>head</tt> дополняет элемент <tt>head</tt>, соответствующий <tt>HTML</tt> тегу <tt>&lt;head&gt;</tt>, элементами для подключения <tt>CSS</tt> и <tt>JS</tt> файлов, а также указания <tt>meta</tt>:</p><pre><code class="js">({
+...
+head: [
+    { elem: &apos;css&apos;, url: &apos;example.css&apos;, ie: false },
+    { elem: &apos;css&apos;, url: &apos;example.ie.css&apos;, ie: &apos;lt IE 8&apos; },
+    { elem: &apos;js&apos;, url: &apos;example.js&apos; },
+    { elem: &apos;meta&apos;, attrs: { name: &apos;keywords&apos;, content: &apos;js, css, html&apos; } },
+    { elem: &apos;meta&apos;, attrs: { name: &apos;description&apos;, content: &apos;Yet another webdev blog&apos; } }
+],
+...
+})</code></pre><p>Элемент <tt>css</tt> превращается в <tt>HTML</tt> в тег <tt>&lt;link&gt;</tt>, подключающий как <tt>CSS</tt> стиль тот файл, что указан в свойстве <tt>url</tt> этого элемента. Также у такого элемента может быть свойство <tt>ie</tt>. Если это свойство <tt>false</tt>, то будут использоваться такие <tt>conditional comments</tt>, которые предотвратят использование этих стилей в <tt>IE</tt>. При строчном значении этого свойства тег <tt>&lt;link&gt;</tt> , будет обёрнут в соответствующий <tt>conditional comment</tt>, и этот стиль будет грузиться и использоваться указанных браузерах.<br/> Также есть возможность указывать свойство <tt>content</tt> для содержания тега <tt>&lt;style&gt;</tt>:</p><pre><code class="js">({
+...
+head: [
+    {
+        elem: &apos;css&apos;,
+        content: &apos;.b-blah { color: #f00&apos; }
+    },
+    ...
+],
+...
+})</code></pre><p>Элемент <tt>js</tt> действует аналогично, подключая к странице <tt>JS</tt> файлы при помощи тега <tt>&lt;script&gt;</tt>.</p><p>Свойство <tt>head</tt> не описывает содержание <tt>HTML</tt>-тега <tt>&lt;head&gt;</tt> полностью, а лишь дополняет дефолтное, которое блок сам создаёт в своём <tt>BEMHTML</tt> шаблоне.</p><h3 id="Tegmetasukazaniemkodirovki">Тег &lt;meta&gt; с указанием кодировки</h3><p><tt>BEMHTML</tt>:</p><pre><code class="js">content: [
+{
+    tag: &apos;meta&apos;,
+    attrs: { &apos;http-equiv&apos;: &apos;content-type&apos;, content: &apos;text/html; charset=utf-8&apos; }
+},
+...</code></pre><h3 id="TegmetadlyaispolyzovaniyaIE9ivyshevmaksimalynomcompatibilityrezhime">Тег &lt;meta&gt; для использования <tt>IE9</tt> (и выше) в максимальном <tt>compatibility</tt> режиме</h3><p><tt>BEMHTML</tt>:</p><pre><code class="js">content: [
+...
+{
+    tag: &apos;meta&apos;,
+    attrs: { &apos;http-equiv&apos;: &apos;X-UA-Compatible&apos;, content: &apos;IE=EmulateIE7, IE=edge&apos; }
+},
+...</code></pre><h3 id="Vystavlenieznacheniyategatitlestranicyizsvojstva">Выставление значения тега &lt;title&gt; страницы из свойства</h3><pre><code class="js">content: [
+...
+{
+    tag: &apos;title&apos;,
+    content: this.ctx.title
+},
+...</code></pre><h3 id="Vystavleniefavikonki">Выставление фавиконки</h3><pre><code class="js">content: [
+...
+this.ctx.favicon ? {
+    elem: &apos;favicon&apos;,
+    url: this.ctx.favicon
+} : &apos;&apos;,
+...</code></pre><h3 id="Deklaraciyablokaua">Декларация блока ua</h3><pre><code class="js">content: [
+...
+{
+    block: &apos;ua&apos;
+},
+...</code></pre><p>Значением свойства <tt>content</tt> блока <tt>page</tt> может быть хеш-описание содержимого (если речь идёт лишь об одном блоке) или массив блоков, описанных хешами:</p><pre><code class="js">({
+...
+content: {
+    block: &apos;b-link&apos;,
+    mods: { pseudo: &apos;yes&apos;, togcolor: &apos;yes&apos;, color: &apos;green&apos; },
+    url: &apos;#&apos;,
+    target: &apos;_blank&apos;,
+    title: &apos;Кликни меня&apos;,
+    content: &apos;Псевдоссылка, меняющая цвет по клику&apos;
+}
+})</code></pre><p>На блоки, содержащиеся в <tt>content</tt>, действуют их <tt>BEMHTML</tt> шаблоны.</p><h3 id="Otmenaavtomaticheskojinicializaciiblokov">Отмена автоматической инициализации блоков</h3><pre><code class="js">noDeps: [
+    { block: &apos;i-bem&apos;, elem: &apos;dom&apos;, mods: { init: &apos;auto&apos; } }
+]</code></pre></div>
+<div class="shmakowiki"><p>Используется для поставки на страницу нужных плагинов через зависимости блоков от элементов блока <tt>i-jquery</tt>.</p></div>
+<div class="shmakowiki"><p>Блок <tt>ua</tt> — служебный, не имеет визуального представления на странице.</p><p>Этот блок используется всегда, когда используется блок <tt>page</tt>, так как вызывается внутри него. Задавать его самостоятельно на странице не нужно.</p><p>В <tt>HTML</tt> блок представлен в виде инлайнового скрипта, в результате работы которого, у тега <tt>&lt;html&gt;</tt> появляются <tt>CSS</tt>-классы, идентифицирующие, включен ли <tt>JS</tt> (<tt>ua_js_no</tt>/<tt>ua_js_yes</tt>) и в каком режиме рендеринга находится браузер (<tt>ua_css_standart</tt>/<tt>ua_css_quirks</tt>).</p><p>Эти классы можно использовать, чтобы при помощи <tt>CSS</tt> задавать блокам разный внешний вид в зависимости от ситуации.</p><p>Если такие классы проекту не нужны, можно переопределить <tt>BEMHTML</tt> шаблон блока <tt>ua</tt> на уровне переопределения проекта:</p><pre><code class="js">block(&apos;ua&apos;).default()()</code></pre></div>
