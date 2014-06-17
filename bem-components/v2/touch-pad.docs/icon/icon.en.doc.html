@@ -1,0 +1,34 @@
+<h1 id="icon">icon</h1>
+<p><code>&lt;i&gt;</code>-based block for using as an element in other blocks, not for independent using. Picture is set as <code>background</code> property.</p>
+<p>In BEMJSON you can use both the modifier and the <code>url</code> field for a picture representation:</p>
+<pre><code class="lang-bemjson">    {
+        block : &#39;icon&#39;,
+        mods : { social : &#39;twitter&#39; }
+    }
+</code></pre>
+<pre><code class="lang-bemjson">    {
+     block : &#39;icon&#39;,
+     url : &#39;../../../test.blocks/icon/_action/download.svg&#39;
+    }
+</code></pre>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        text : &#39;with icon&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        icon : { block : &#39;icon&#39;, mods : { social : &#39;twitter&#39; } }
+    }
+</code></pre>
+<pre><code class="lang-bemjson">    {
+        block : &#39;checkbox&#39;,
+        mods : { theme : &#39;simple&#39;, type : &#39;button&#39; },
+        text : &#39;icon&#39;,
+        icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } }
+    }
+</code></pre>
+<pre><code class="lang-bemjson">    {
+        block : &#39;button&#39;,
+        text : &#39;with icon&#39;,
+        mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+        icon : { block : &#39;icon&#39;, url : &#39;../../../test.blocks/icon/_action/download.svg&#39; }
+    }
+</code></pre>

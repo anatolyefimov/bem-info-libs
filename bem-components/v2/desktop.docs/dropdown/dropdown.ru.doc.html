@@ -1,0 +1,318 @@
+<h1 id="dropdown">dropdown</h1>
+<p>Блок <code>dropdown</code> используется для создания выпадающих элементов и позволяет изменять их состояние, поведение и внешний вид. Блок состоит из двух компонентов – управляющего компонента и попапа (блок <code>popup</code>), который отображается поверх остальных элементов страницы.</p>
+<p>Управляющий компонент при щелчке мышью вызывает попап (устанавливает для блока <code>popup</code> модификатор <code>_visible</code>).</p>
+<p>В зависимости от значения модификатора <code>_switcher</code>,  управляющим компонентом может служить ссылка, псевдоссылка или кнопка.</p>
+<h2 id="-">Допустимые параметры блока</h2>
+<p>Допустимые параметры блока задаются в одноименных полях входного BEMJSON блока:</p>
+<table>
+    <tr>
+        <th>Атрибут</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>switcher</td>
+        <td><code>String|BEMJSON</code></td>
+        <td>Текст управляющего компонента. Может содержать фрагмент BEMJSON, например, если нужно обернуть управляющий компонент в другой блок или передать ему дополнительные параметры. </td>
+    </tr>
+    <tr>
+        <td>popup</td>
+        <td><code>String|BEMJSON</code></td>
+        <td>Текст или фрагмент BEMJSON, отображаемый во всплывающем окне <code>popup</code>. BEMJSON при этом будет преобразован в HTML.</td>
+    </tr>
+</table>
+
+
+
+<h2 id="-">Модификаторы блока</h2>
+<h3 id="-_theme-">Темы блока <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером.</p>
+<p>Наглядно видно на примерах ниже:</p>
+<h4 id="default">default</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : { switcher : &#39;link&#39; },
+    switcher : &#39;link&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h4 id="simple">simple</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : { switcher : &#39;link&#39;, theme : &#39;simple&#39; },
+    switcher : &#39;link&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h4 id="normal">normal</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : { switcher : &#39;link&#39;, theme : &#39;normal&#39; },
+    switcher : &#39;link&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h3 id="-_switcher-">Управляющий компонент <code>_switcher</code></h3>
+<p>Обязательный модификатор.</p>
+<p>Модификатор отвечает за то, какой блок будет использоваться в качестве управляющего компонента:</p>
+<ul>
+<li><code>_switcher_link</code> - ссылка. В качестве управляющего компонента используется блок <code>link</code>.</li>
+<li><code>_switcher_button</code> - кнопка. В качестве управляющего компонента используется блок <code>button</code>.</li>
+</ul>
+<p>Реализован во всех темах.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : {
+        switcher : &#39;button&#39;,
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;
+    },
+    switcher : &#39;button&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h3 id="-_disabled-">Неактивен <code>_disabled</code></h3>
+<p>В состоянии &quot;неактивен&quot; дропдаун отображается, но недоступен для действий пользователя.</p>
+<p>Для такого блока не будет устанавливаться состояние <code>_opened</code> при щелчке мышью по управляющему компоненту.</p>
+<p>При установке для блока модификатора <code>_disabled</code>, для компонентов блока не будут производиться следующие действия:</p>
+<ul>
+<li>Блок </code>popup – установка модификатора <code>_visible</code>;</li>
+<li>Управляющий компонент <code>link</code> – установка состояния <code>_focused</code>. Ссылка не получает фокус по щелчку мышью или по нажатию клавиши <code>Tab</code>;</li>
+<li>Управляющий компонент <code>button</code>:<ul>
+<li>установка состояния <code>_focused</code>. Кнопка не получает фокус по щелчку мышью или по нажатию клавиши <code>Tab</code>;</li>
+<li>установка состояния <code>_hovered</code> при наведении указателем мыши.</li>
+</ul>
+</li>
+</ul>
+<p>Модификатор реализован во всех темах блока.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : {
+        switcher : &#39;button&#39;,
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;,
+        disabled : true
+    },
+    switcher : &#39;button&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h3 id="-">Состояния блока</h3>
+<h4 id="-_opened-">Открыт <code>_opened</code></h4>
+<p>Модификатор <code>_opened</code> в значении <code>true</code> автоматически выставляется блоку при щелчке мышью по управляющему компоненту блока.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : {
+        switcher : &#39;button&#39;,
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;,
+        opened : true
+    },
+    switcher : &#39;button&#39;,
+    popup : &#39;Hello, world!&#39;
+}
+</code></pre>
+<p>Модификатор снимается при повторном щелчке мышью по управляющему компоненту или за пределами попапа (зависит от наличия модификатора <code>_autoclosable</code> блока <code>popup</code>).</p>
+<h2 id="bemjson-switcher-popup-">BEMJSON в атрибутах <code>switcher</code> и <code>popup</code></h2>
+<p>Атрибуты управляющего компонента и попапа могут содержать фрагмент БЭМ-дерева, например, если нужно обернуть управляющий компонент в другой блок или передать ему дополнительные параметры.</p>
+<p>Например, можно сделать кнопку управляющего компонента &quot;залипающей&quot;:</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : {
+        switcher : &#39;button&#39;,
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;
+    },
+    switcher : {
+        block : &#39;button&#39;,
+        mods : { togglable : &#39;true&#39; },
+        text : &#39;custom button&#39;
+    },
+    popup : &#39;Popup message&#39;
+}
+</code></pre>
+<p>Или создать на основе блока выпадающий селект:</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;dropdown&#39;,
+    mods : {
+        switcher : &#39;button&#39;,
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;
+    },
+    switcher : &#39;Dropdown menu&#39;,
+    popup : {
+        block : &#39;menu&#39;,
+        mods : {
+            theme : &#39;normal&#39;,
+            size : &#39;xl&#39;,
+            select : &#39;check&#39;
+        },
+        content : [
+            {
+                block : &#39;menu-item&#39;,
+                val : 1,
+                content : &#39;First item&#39;
+            },
+            {
+                block : &#39;menu-item&#39;,
+                val : 2,
+                content : &#39;Second item&#39;
+            }
+        ]
+    }
+}
+</code></pre>
+<h2 id="-">Зависимости блока</h2>
+<p>Блок <code>dropdown</code> зависит от следующего набора блоков и элементов:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>dom</code></li>
+<li><code>popup</code></li>
+<li><code>button</code>/<code>link</code> (в зависимости от управляющего компонента <code>_switcher</code>)</li>
+</ul>
+
+<h1 id="popup">popup</h1>
+<p>Блок <code>popup</code> используется для создания выпадающих элементов и позволяет изменять их состояние, поведение и внешний вид. Блок отображается поверх остальных элементов страницы.</p>
+<p>Попап может быть вызван различными элементами страницы, например, кнопками или псевдоссылками.</p>
+<p>В момент первого показа (установка модификатора <code>_visible</code>) DOM-элемент блока создается в конце <code>&lt;body&gt;</code>.</p>
+<h2 id="-">Модификаторы блока</h2>
+<h3 id="-_theme-">Темы блока <code>_theme</code></h3>
+<p>Блок представлен в следующих темах:</p>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером.</p>
+<p>Наглядно видно на примерах ниже:</p>
+<h4 id="default">default</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    content : &#39;default&#39;
+}
+</code></pre>
+<h4 id="simple">simple</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;simple&#39; },
+    content : &#39;simple&#39;
+}
+</code></pre>
+<h4 id="normal">normal</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39; },
+    content : &#39;normal&#39;
+}
+</code></pre>
+<h3 id="-_visible-">Видимый <code>_visible</code></h3>
+<p>Модификатор, отвечающий за видимость блока. При значении модификатора <code>false</code> блок не отображается.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39;, visible : true },
+    content : &#39;normal&#39;
+}
+</code></pre>
+<h3 id="-_direction-">Расположение относительно родителя <code>_direction</code></h3>
+<p>Модификатор управляет положением попапа на странице, относительно вызвавшего его блока. Расположение блока определяется автоматически, исходя из массива допустимых расположений и положения родителя на странице.</p>
+<p>Выбранное расположение влияет на направление анимации раскрытия.</p>
+<p>По умолчанию используется следующий массив допустимых расположений:</p>
+<table>
+    <tr>
+        <th> Направление раскрытия </td>
+        <th> Индекс в массиве </td>
+    </tr>
+        <td> bottom-left </td>
+        <td> 0 </td>
+    </tr>
+    <tr>
+        <td> bottom-center </td>
+       <td> 1 </td>
+   </tr>
+    <tr>
+        <td> bottom-right</td>
+        <td> 2 </td>
+    </tr>
+    <tr>
+        <td> top-left </td>
+        <td> 3 </td>
+    </tr>
+    <tr>
+        <td> top-center </td>
+        <td> 4 </td>
+    </tr>
+    <tr>
+        <td> top-right </td>
+        <td> 5 </td>
+    </tr>
+    <tr>
+        <td> right-top </td>
+        <td> 6 </td>
+    </tr>
+    <tr>
+        <td> right-center </td>
+        <td> 7 </td>
+    </tr>
+    <tr>
+        <td> right-bottom </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <td> left-top </td>
+        <td> 9 </td>
+    </tr>
+    <tr>
+        <td> left-center </td>
+        <td> 10 </td>
+    </tr>
+    <tr>
+        <td> left-bottom </td>
+        <td> 11 </td>
+    </tr>
+</table>
+
+<p>Чтобы управлять расположением попапа, можно ограничить массив расположений, оставив только требуемые. Пользовательский массив нужно передать в качестве JS-параметра с ключом <code>directions</code>. При этом, из значений массива будет выбрано наиболее подходящее, исходя из положения родителя на странице.</p>
+<p>Например, если требуется, чтобы попап раскрывался над родителем:</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    js : { directions : [&#39;top-left&#39;, &#39;top-center&#39;, &#39;top-right&#39;] },
+    content : &#39;Hello, world!&#39;
+}
+</code></pre>
+<p>Или разместить попап справа по центру:</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    js : { directions : [&#39;right-center&#39;] },
+    content : &#39;Hello, world!&#39;
+}
+</code></pre>
+<h3 id="-_autoclosable-">Автоматическое скрытие <code>_autoclosable</code></h3>
+<p>Модификатор отвечает за автоматическое скрытие попапа при клике вне блока. При установке модификатора <code>_autoclosable</code> в значении <code>_true</code> блок будет скрываться при щелчке за его пределами (будет снят модификатор <code>_visible</code>).</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39;, autoclosable : true },
+    content : &#39;normal&#39;
+}
+</code></pre>
+<h2 id="-popup-">Взаимосвязи между popup&#39;ами</h2>
+<p>Так как попап выносит себя в конец <code>&lt;body&gt;</code>, чтобы перекрывать другие элементы страницы, возникает необходимость в построении взаимосвязей. Блок умеет выстраивать связи Parent → [ Child, Child, ... ]. Для этого он выполняет проверку, вложен ли блок, вызывающий попап в другой <code>popup</code>. Потомки знают о наличии родителя.
+Если бы этих взаимосвязей не было, то родительский попап (при наличии модификатора <code>autoclosable</code> со значением <code>true</code>) закрылся бы при клике внутри дочернего.</p>
+<p>Другими словами, модификатор <code>autoclosable</code> со значением <code>true</code> означает, что попап закроется сам и закроет свои дочерние блоки при клике за пределами его самого и дочерних попапов.</p>
+<p>Дочерние блоки popup можно рассматривать в виде цепочки 1 → 2 → 3 → 4. При клике на 2-ом попапе – закрываются 3, 4. При клике в 1 – закрываются 2, 3, 4. При клике за пределами любого попапа из цепочки – закроются все.</p>
+<h3 id="-">Зависимости блока</h3>
+<p>Блок <code>popup</code> зависит от следующего набора блоков и элементов:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>jquery</code></li>
+<li><code>dom</code></li>
+<li><code>objects</code></li>
+<li><code>functions__throttle</code></li>
+<li><code>keyboard</code></li>
+<li><code>ua</code></li>
+<li><code>jquery__event_pointer</code></li>
+</ul>

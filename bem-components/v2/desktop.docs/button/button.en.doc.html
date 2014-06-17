@@ -1,0 +1,541 @@
+<h1 id="button">button</h1>
+<p>The <strong>button</strong> block is used for different types of buttons creating. It allows you to manage size, sate, content and appearance of a button.</p>
+<p>In MSIE8 block <strong>button</strong> is rendered as native button <code>&lt;button&gt;</code>; <code>link-button</code> is rendered as native link <code>&lt;a&gt;</code>.</p>
+<h2 id="button-use-cases">Button use cases</h2>
+<table>
+  <tr>
+    <th align="center">Type</th>
+    <th align="center">Description</th>
+    <th align="center">Example</th>
+  </tr>
+  <tr>
+    <td>Button</td>
+    <td>Used by default.</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;
+  },
+  icon : {
+    block : &#39;icon&#39;,
+    mods : {
+      action : &#39;download&#39;
+    }
+  }
+}
+      </code></pre>
+    </td>
+   <tr>
+    <td>Link-button</td>
+    <td>A button that provides link functionality. <br>Has an optional attribute <code>url</code><br> to specify the address to which to <br>navigate.</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    type : &#39;link&#39;
+  },
+  url : &#39;#&#39;,
+  text : &#39;link&#39;
+}
+      </code></pre>
+    </td>
+   </tr>
+   <tr>
+    <td>Action button</td>
+    <td>Designed to send data to the server (submit).<br> Always located in the form. <br>Set a <code>type</code> modifier with <code>submit</code> value in <br>BEMJSON to create an action button.
+    </td>
+    <td>
+      <pre><code>
+{
+  tag: &#39;form&#39;,
+  content: {
+    block : &#39;button&#39;,
+    mods : {
+      theme : &#39;normal&#39;,
+      size : &#39;m&#39;,
+      type : &#39;submit&#39;
+    },
+    text : &#39;button&#39;
+  }
+}
+      </code></pre>
+    </td>
+   </tr>
+</table>
+
+<h2 id="block-s-api">Block&#39;s API</h2>
+<p>The public methods of the block are:</p>
+<table>
+  <tr>
+    <th align="center">Method</th>
+    <th align="center">Description</th>
+  </tr>
+  <tr>
+    <td>getText</td>
+    <td>Returns text of the button {String}.</td>
+  </tr>
+  <tr>
+    <td>setText</td>
+    <td>Sets text to the button.</td>
+  </tr>
+</table>
+
+<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes could be specified in the corresponding fields of the block BEMJSON file:</p>
+<table>
+  <tr>
+    <th align="center">Attributes</th>
+    <th align="center">Type</th>
+    <th align="center">Description</th>
+  </tr>
+  <tr>
+    <td>text</td>
+    <td>String</td>
+    <td>Text of the button.</td>
+   </tr>
+   <tr>
+    <td>icon</td>
+    <td>BEMJSON</td>
+    <td>The <strong>icon</strong> block.</td>
+  </tr>
+  <tr>
+    <td>url</td>
+    <td>String</td>
+    <td>URL address. If URL address is specified the <br>button provides a link functionality.</td>
+  </tr>
+</table>
+
+<p>The other valid block&#39;s attributes could be specified in the <code>attrs</code> field in BEMJSON.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<p>The block supports the follwing themes:</p>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>It a <code>_theme</code> modifier is not specified the native representation (<code>default</code>) of a control is available.</p>
+<h4 id="default">default</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    text : &#39;default&#39;
+}
+</code></pre>
+<h4 id="simple">simple</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;simple&#39; },
+    text : &#39;simple&#39;
+}
+</code></pre>
+<h4 id="normal">normal</h4>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+    text : &#39;normal&#39;
+}
+</code></pre>
+<h3 id="the-sizes-_size-">The sizes <code>_size</code></h3>
+<p>Mandatory modifier for <em>normal</em> theme only.
+Provides the size value to all types of buttons.</p>
+<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
+<p>Following example demonstrates this:</p>
+<table>
+  <tr>
+    <th align="center">Size/Values</th>
+    <th align="center">Font size</th>
+    <th align="center">Button height</th>
+    <th align="center">Example</th>
+  </tr>
+  <tr>
+    <th align="center">s</th>
+    <td>13px</td>
+    <td>24px</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;s&#39;
+  },
+  text : &#39;Small&#39;
+}
+      </code></pre>
+    </td>
+  </tr>
+  <tr>
+    <th align="center">m</th>
+    <td>13px</td>
+    <td>28px</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;
+  },
+  text : &#39;Medium&#39;
+}
+      </code></pre>
+    </td>
+  </tr>
+  <tr>
+    <th align="center">l</th>
+    <td>15px</td>
+    <td>32px</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;l&#39;
+  },
+  text : &#39;Large&#39;
+}
+      </code></pre>
+    </td>
+  </tr>
+  <tr>
+    <th align="center">xl</th>
+    <td>18px</td>
+    <td>38px</td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;xl&#39;
+  },
+  text : &#39;X-large&#39;
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h3 id="button-s-type-_type-">Button&#39;s type <code>_type</code></h3>
+<p>The following types of button are available:</p>
+<ul>
+<li><p>link-button (<code>_link</code>). Has a mandatory attribute <code>url</code>. A link-button has an <code>&lt;a&gt;</code> attribute and the <code>url</code> value becomes a <code>href</code> attribute.</p>
+</li>
+<li><p>action  button (<code>_submit</code>). Should be a part of a form only.</p>
+</li>
+</ul>
+<p>The <code>_type</code> modifier is available for <em>simple</em> and <em>normal</em> themes.</p>
+<table>
+  <tr>
+    <th align="center">Type/<br>Realisation</th>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td> <code>_link</code></td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : { type : &#39;link&#39; },
+  url : &#39;#&#39;,
+  text : &#39;link&#39;
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    type : &#39;link&#39;
+  },
+  url : &#39;#&#39;,
+  text : &#39;link&#39;
+}
+      </code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><code>_submit</code></td>
+    <td>
+      <pre><code>
+{
+  tag: &#39;form&#39;,
+  content: {
+    block : &#39;button&#39;,
+    mods : { type : &#39;submit&#39; },
+    text : &#39;default&#39;
+}
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  tag: &#39;form&#39;,
+  content: {
+    block : &#39;button&#39;,
+    mods : {
+      theme : &#39;normal&#39;,
+      size : &#39;m&#39;,
+      type : &#39;submit&#39;
+    },
+    text : &#39;normal&#39;
+  }
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h3 id="button-s-states">Button&#39;s states</h3>
+<h4 id="-_disabled-"><code>_disabled</code></h4>
+<p>If a <code>_disabled</code> modifier has <code>_true</code> value the button is visible, but is not available for user action.</p>
+<p>Disabled button cannot be focused by <code>Tab</code> pressing or mouse click.</p>
+<p>Available for all themes of block.</p>
+<table>
+  <tr>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_disabled_true&#39;,
+  mods : { disabled : true }
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_disabled_true&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    disabled : true
+  }
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_focused-"><code>_focused</code></h4>
+<p>If <code>focused</code> modifier has a <code>true</code> value the button is always focused. You can click the focused button using <code>Space</code> button on your keyboard. To switch between controls use a <code>Tab</code> button.</p>
+<p>Available for all themes of block.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    text : &#39;_focused_true&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;m&#39;,
+        focused : true
+    }
+}
+</code></pre>
+<h4 id="-_hovered-"><code>_hovered</code></h4>
+<p>Defines the &quot;hover&quot; action.</p>
+<p>Available for all themes of block.</p>
+<table>
+  <tr>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_hovered_true&#39;,
+  mods : { hovered : true }
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_hovered_true&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    hovered : true
+  }
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_pressed-"><code>_pressed</code></h4>
+<p>Defines a &quot;pressed&quot; state of a button.</p>
+<p>Available for all themes of block.</p>
+<table>
+  <tr>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_pressed_true&#39;,
+  mods : { pressed : true }
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_pressed_true&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    pressed : true
+  }
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_togglable-"><code>_togglable</code></h4>
+<p>Determines the state of the pressed button when the first click the button presses it, and the second returns to its original state.</p>
+<p>Available for all themes of block.</p>
+<table>
+  <tr>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_togglable_true&#39;,
+  mods : { togglable : true }
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_togglable_true&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    togglable : true
+  }
+}
+      </code></pre>
+    </td>
+  </tr>
+</table>
+
+<h4 id="-_action-"><code>_action</code></h4>
+<p>Visually detects the button on a page.</p>
+<p>Available for all themes of block.</p>
+<table>
+  <tr>
+    <th align="center">default</th>
+    <th align="center">normal</th>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_action_true&#39;,
+  mods : { action : true }
+}
+      </code></pre>
+    </td>
+    <td>
+      <pre><code>
+{
+  block : &#39;button&#39;,
+  text : &#39;_action_true&#39;,
+  mods : {
+    theme : &#39;normal&#39;,
+    size : &#39;m&#39;,
+    action : true
+  }
+}
+      </code></pre>
+  </td>
+  </tr>
+</table>
+
+<h4 id="pseudo-button-_pseudo-">Pseudo button <code>_pseudo</code></h4>
+<p>If <code>pseudo</code> modifier has <code>true</code> value the button background becomes transparent. If pseudo button is disabled its boarders disappear.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true },
+    text : &#39;pseudo&#39;
+}
+</code></pre>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true, disabled : true },
+    text : &#39;pseudo&#39;
+}
+</code></pre>
+<h2 id="b-ock-s-elements">B;ock&#39;s elements</h2>
+<p>The block is visually represented by the following elements:</p>
+<h3 id="__text">__text</h3>
+<p>This element intended to set a text position in the button.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+    icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; } },
+    text : &#39;with icon&#39;
+}
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<p>The <code>button</code> block depends on</p>
+<ul>
+<li><code>base-control</code>, that provides public API for the controls.<code>i-bem__dom</code></li>
+<li><code>i-bem__dom</code></li>
+</ul>
+
+<h1 id="base-control">base-control</h1>
+<p>Auxiliary block designed to implement the common functionality of the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library to provide them <code>focused</code> and <code>disabled</code> states: <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.en.md">attach</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md">button</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.en.title.txt">checkbox</a>, [input], [link], [menu], [radio].</p>
+<p>The block uses the following methods:</p>
+<table>
+    <tr>
+        <th>Method</td>
+        <th>Description</td>
+    </tr>
+    <tr>
+        <td><code>beforesetMod</code></td>
+        <td>Provides the block behavior before the modifier is set. Checks the block active state. If block is <code>disabled</code> it cannot be <code>focused</code>.</td>
+    </tr>
+    <tr>
+        <td><code>setMod</code></td>
+        <td>Provides <code>focused</code> or <code>disabled</code> modifier to the block.</td>
+    </tr>
+    <tr>
+        <td><code>getName</code></td>
+        <td>Returns the name of the control (if available). If a control name is not available, returns an empty string.</td>
+    </tr>
+    <tr>
+        <td><code>getVal</code></td>
+        <td>Returns control value.</td>
+    </tr>
+</table>

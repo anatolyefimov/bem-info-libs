@@ -1,0 +1,9 @@
+.icon {
+    display: inline-block;
+    background: 50% no-repeat;
+}
+    /* Hack for correct baseline positioning */
+    .icon:after {
+        visibility: hidden;
+        content: '\00A0';
+    }

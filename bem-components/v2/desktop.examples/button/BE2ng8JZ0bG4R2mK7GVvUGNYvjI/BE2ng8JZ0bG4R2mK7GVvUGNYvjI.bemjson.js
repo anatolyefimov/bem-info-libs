@@ -1,0 +1,4 @@
+({
+    block : 'button',
+    text : 'default'
+})

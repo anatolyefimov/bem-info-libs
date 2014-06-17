@@ -1,0 +1,287 @@
+<h1 id="checkbox">checkbox</h1>
+<p>Block <code>checkbox</code> is a graphical user interface element that permits the user to make a binary choice.</p>
+<p>The block creates a container that includes a native checkbox control (<code>control</code> element) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot; attributes&gt;</code> and uses its functionality. A native control is hidden. An <code>autocomplete</code> attribute is <code>off</code> by default.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    text : &#39;Label 1&#39;,
+    name: &#39;name1&#39;,
+    value: &#39;1&#39;
+}
+</code></pre>
+<h2 id="-valid-block-s-attributes">## Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes could be specified in the corresponding fields of the block BEMJSON file:</p>
+<table>
+    <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies text string value of a checkbox.</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies a checkbox name. A mandatory attribute. The name part of the name/value pair associated with this element for the purposes of form submission.</td>
+    </tr>
+    <tr>
+        <td>val</td>
+            <code>String</code>
+        <td>Specifies a checkbox value. The value part of the name/value pair associated with this element for the purposes of form submission.</td>
+    </tr>
+    <tr>
+        <td>icon</td>
+        <td>
+            <code>BEMJSON</code>
+        </td>
+        <td>An icon that is rendered using an <code>icon</code> block.</td>
+    </tr>
+</table>
+
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="themes-_theme-">Themes <code>_theme</code></h3>
+<p>The block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>It a <code>_theme</code> modifier is not specified the native representation (<em>default</em>) of a control is available.</p>
+<p>Following example demonstrates this:</p>
+<ul>
+<li><p>default</p>
+<pre><code class="lang-bemjson">  {
+      block : &#39;checkbox&#39;,
+      text : &#39;default&#39;,
+      name: &#39;default&#39;,
+      value: &#39;1&#39;
+  }
+</code></pre>
+</li>
+<li><p>simple</p>
+<pre><code class="lang-bemjson">  {
+      block : &#39;checkbox&#39;,
+      mods : { theme : &#39;simple&#39; },
+      text : &#39;Theme Simple&#39;,
+      name: &#39;simple&#39;,
+      value: &#39;2&#39;
+  }
+</code></pre>
+</li>
+<li><p>normal</p>
+<pre><code class="lang-bemjson">  {
+      block : &#39;checkbox&#39;,
+      mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+      text : &#39;Theme Normal&#39;,
+      name: &#39;normal&#39;,
+      value: &#39;3&#39;
+  }
+</code></pre>
+</li>
+</ul>
+<h3 id="font-size-_size-">Font size <code>_size</code></h3>
+<p>Mandatory modifier for <em>normal</em> theme only.
+Provides the font size value to the checkbox text elements.</p>
+<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
+<p>Following example demonstrates this:</p>
+<table>
+    <tr>
+        <th>Size/Parameters</th>
+        <th>Font size</th>
+        <th>String height</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>S</th>
+        <td>13px</td>
+        <td>24px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;checkbox&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;s&#39;
+    },
+    text : &#39;Size S&#39;,
+    name: &#39;name1&#39;,
+    value: &#39;1&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>M</th>
+        <td>13px</td>
+        <td>28px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;checkbox&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;m&#39;
+    },
+    text : &#39;Size M&#39;,
+    name: &#39;name2&#39;,
+    value: &#39;2&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>L</th>
+        <td>15px</td>
+        <td>32px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;checkbox&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;l&#39;
+    },
+    text : &#39;Size L&#39;,
+    name: &#39;name3&#39;,
+    value: &#39;3&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>XL</th>
+        <td>18px</td>
+        <td>38px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;checkbox&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;xl&#39;
+    },
+    text : &#39;Size XL&#39;,
+    name: &#39;name4&#39;,
+    value: &#39;4&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+<h3 id="types-_type-">Types <code>_type</code></h3>
+<p>The <code>checkbox</code> block can be rendered as a buttons. For this use a <code>type</code> modifier with a <code>button</code> value. In this case a <code>checked</code> state of a checkbox is defined by clicking the button.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : {
+        theme : &#39;normal&#39;,
+        size : &#39;m&#39;,
+        type : &#39;button&#39;
+    },
+    text : &#39;Label&#39;,
+    name: &#39;button&#39;,
+    value: &#39;1&#39;
+}
+</code></pre>
+<h3 id="states-of-a-checkbox">States of a checkbox</h3>
+<h4 id="-_focused-"><code>_focused</code></h4>
+<p>Checkbox is focused if a block has a <code>focused</code> modifier with a <code>true</code> value.</p>
+<p>You can tick off the focused checkbox using <code>Space</code> button on your keyboard. To switch between controls use a <code>Tab</code> button.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, focused : true },
+    text : &#39;Focused&#39;,
+    name: &#39;name1&#39;,
+    val : 1
+}
+</code></pre>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, focused : true },
+    text : &#39;Focused&#39;,
+    name: &#39;name2&#39;,
+    val : 2
+}
+</code></pre>
+<h4 id="-_disabled-"><code>_disabled</code></h4>
+<p>If a <code>disabled</code> modifier has <code>true</code> value the checkbox is visible, but is not available for the user action.</p>
+<p>Disabled checkbox cannot be focused by <code>Tab</code> pressing or mouse click.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true },
+    text : &#39;Disabled&#39;,
+    name: &#39;name1&#39;,
+    val : 1
+}
+</code></pre>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, disabled : true },
+    text : &#39;Disabled&#39;,
+    name: &#39;name2&#39;,
+    val : 2
+}
+</code></pre>
+<h4 id="-_checked-"><code>_checked</code></h4>
+<p>A <code>checked</code> modifier with <code>true</code> value ticks off the checkbox, or clicks a button if a checkbox has <code>{ type : &#39;button&#39; }</code> modifier.</p>
+<p>A <code>checked</code> modifier can be used for all checkboxes in the group.ппе.</p>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, checked : true },
+    text : &#39;Checked&#39;,
+    name: &#39;name1&#39;,
+    val : 1
+}
+</code></pre>
+<pre><code class="lang-bemjson">{
+    block : &#39;checkbox&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, checked : true },
+    text : &#39;Checked&#39;,
+    name: &#39;name2&#39;,
+    val : 2
+}
+</code></pre>
+<h2 id="block-s-elements">Block&#39;s elements</h2>
+<h3 id="-__box-"><code>__box</code></h3>
+<p>The <code>box</code> element is used to draw the checkbox. A native checkbox is hidden.</p>
+<p>The <code>box</code> element is added to the block on a template engine level.</p>
+<h3 id="-__control-"><code>__control</code></h3>
+<p>The <code>control</code> element is used to provide native control checkbox functionality.</p>
+<p>The <code>control</code> element is added to the block on a template engine level.</p>
+<h2 id="block-s-dependencies">Block&#39;s dependencies</h2>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>base-control</code></li>
+<li><code>button</code></li>
+</ul>
+
+<h1 id="base-control">base-control</h1>
+<p>Auxiliary block designed to implement the common functionality of the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library to provide them <code>focused</code> and <code>disabled</code> states: <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.en.md">attach</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md">button</a>, <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.en.title.txt">checkbox</a>, [input], [link], [menu], [radio].</p>
+<p>The block uses the following methods:</p>
+<table>
+    <tr>
+        <th>Method</td>
+        <th>Description</td>
+    </tr>
+    <tr>
+        <td><code>beforesetMod</code></td>
+        <td>Provides the block behavior before the modifier is set. Checks the block active state. If block is <code>disabled</code> it cannot be <code>focused</code>.</td>
+    </tr>
+    <tr>
+        <td><code>setMod</code></td>
+        <td>Provides <code>focused</code> or <code>disabled</code> modifier to the block.</td>
+    </tr>
+    <tr>
+        <td><code>getName</code></td>
+        <td>Returns the name of the control (if available). If a control name is not available, returns an empty string.</td>
+    </tr>
+    <tr>
+        <td><code>getVal</code></td>
+        <td>Returns control value.</td>
+    </tr>
+</table>
