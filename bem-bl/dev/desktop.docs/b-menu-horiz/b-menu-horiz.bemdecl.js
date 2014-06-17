@@ -1,0 +1,1 @@
+exports.deps = [{"block":"b-menu-horiz"},{"block":"b-menu-horiz","mod":"layout","val":"complex"},{"block":"b-menu-horiz","mod":"layout","val":"normal"},{"block":"b-menu-horiz","mod":"layout","val":"simple"}];

@@ -1,0 +1,1 @@
+{"ru":{"name":"i-ecma","examples":[{"content":[]}],"description":[{"content":"<h2 id=\"-\">Описание</h2>\n<p>Блок i-ecma позволяет использовать некоторые методы (<code>forEach</code>, <code>map</code>, ...) из <strong>ECMAScript 5</strong> для браузеров, не имеющих их нативной поддержки.</p>\n"}]},"en":{"name":"i-ecma","examples":[{"content":[]}],"description":[{"content":""}]}}

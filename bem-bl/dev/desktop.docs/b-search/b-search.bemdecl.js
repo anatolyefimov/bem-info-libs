@@ -1,0 +1,1 @@
+exports.deps = [{"block":"b-search"},{"block":"b-search","elem":"layout"}];

@@ -1,0 +1,91 @@
+<h2 id="-">Описание</h2>
+<p>Блок <code>b-layout-table</code> — таблица со 100% шириной, для создания раскладки.</p>
+<p>Bemhtml шаблон блока выводит таблицу, строки и ячейки со всеми необходимыми атрибутами.</p>
+<h2 id="-">Элементы блока</h2>
+<p>Имеет опциональные элементы блока: <code>gap</code>, <code>cell</code>, <code>row</code>, <code>inner</code>.</p>
+<p>Ячейки блока могут быть представлены либо елементом <code>cell</code>, либо элементом <code>gap</code>. </p>
+<h3 id="__cell">__cell</h3>
+<p>Предназначен для вложения контента.<br>Преобразуется BEMHTML-шаблоном в тэг <code>&lt;td&gt;</code>.  </p>
+<h3 id="__gap">__gap</h3>
+<p>Пустая ячейка, служит распоркой.<br>Преобразуется BEMHTML-шаблоном в тэг <code>&lt;td&gt;</code>. </p>
+<h3 id="__row">__row</h3>
+<p>Служит для обозначения строк в раскладке таблицы.<br>Преобразуется BEMHTML-шаблоном в тэг <code>&lt;tr&gt;</code>.  </p>
+<h3 id="__inner">__inner</h3>
+<p>Оборачивает контент ячеек, что позволяет задать отступы.<br>В HTML преобразуется тегом <code>&lt;div&gt;</code> с классом <code>b-layout-table</code>.</p>
+<h2 id="-">Объявление блока на странице</h2>
+<p>BEMJSON для использования блока:</p>
+<pre><code>{
+    block: &#39;b-layout-table&#39;,  // имя блока   
+    mods: { layout: &#39;58-40&#39;}, // модификаторы блока. Модификатор необязательный
+    content: [                // структура страницы
+        {
+            elem: &#39;row&#39;,   
+            content: [
+                {
+                    elem: &#39;gap&#39;,
+                    rowspan: &#39;2&#39;
+                },
+                {
+                    elem: &#39;cell&#39;,
+                    content: {
+                        elem: &#39;inner&#39;,
+                        content: &#39;Left cell&#39;
+                    }
+                },
+                {
+                    elem: &#39;cell&#39;,
+                    elemMods: { position: &#39;r&#39;},
+                    content: &#39;Right cell&#39;
+                }
+            ]
+        },
+        {
+            elem: &#39;row&#39;,
+            content: [
+                {
+                    elem: &#39;cell&#39;,
+                    colspan: &#39;2&#39;,
+                    content: &#39;Second row and one cell&#39;
+                }
+            ]
+        }
+    ]
+}
+</code></pre><p>Представление блока в HTML, после BEMHTML-преобразования:</p>
+<pre><code>    &lt;table class=&quot;b-layout-table b-layout-table_layout_58-40&quot;&gt;
+        &lt;tr class=&quot;b-layout-table__row&quot;&gt;
+            &lt;td class=&quot;b-layout-table__gap&quot; rowspan=&quot;2&quot;&gt;&lt;/td&gt;
+            &lt;td class=&quot;b-layout-table__cell&quot;&gt;
+                &lt;div class=&quot;b-layout-table__inner&quot;&gt;Left cell&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td class=&quot;b-layout-table__cell b-layout-table__cell_position_r&quot;&gt;Right cell&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;b-layout-table__row&quot;&gt;
+            &lt;td class=&quot;b-layout-table__cell&quot; colspan=&quot;2&quot;&gt;Second row and one cell&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre><p>По умолчанию значения ширины ячеек в блоке не задаются. Доопределить блок стилями можно следующим образом:  </p>
+<ul>
+<li>добавляем модификатор блоку — <code>mods: { layout: &#39;58-40&#39; }</code>;  </li>
+<li>добавляем модификатор ячейке — <code>elemMods: { position: &#39;r&#39; }</code>;   </li>
+<li>оборачиваем контент ячеек, используя элемент <code>inner</code>, что позволяет задать нужные отступы. Далее каскадом задаем нужные  CSS-свойства.</li>
+</ul>
+<p>Вот такой CSS получится к BEMJSON-файлу, приведенному выше: </p>
+<pre><code>.b-layout-table_layout_58-40 .b-layout-table__cell_position_r 
+{
+    width: 40%;
+}
+.b-layout-table_layout_58-40 .b-layout-table__gap 
+{
+    width: 2%;
+    padding-left: 20px;
+}
+.b-layout-table_layout_58-40 .b-layout-table__inner 
+{
+    margin-right: 0.8em;
+}
+</code></pre><p><strong>Важно</strong>
+Обратите внимание, что нельзя задавать самому блоку никаких дополнительных CCS-свойств, это может привести к конфликтам в верстке, так как блок может быть использован в реализации других блоков.<br>Использовать блок нужно, задавая ему модификатор или миксируя его с другим блоком/элементом.</p>
+<h2 id="-">Модификаторы блока</h2>
+<h4 id="_layout">_layout</h4>
+<p>Позволяет задавать размеры таблицы</p>

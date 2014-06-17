@@ -1,0 +1,107 @@
+/* ../../../blocks-touch/b-page/b-page.css: begin */ /**/
+    .b-page
+    {
+        font: 12px Helvetica, Arial, sans-serif;
+    
+        margin: 0;
+    
+        background: #fff;
+        -webkit-text-size-adjust: none;
+    }
+/* ../../../blocks-touch/b-page/b-page.css: end */ /**/
+
+/* ../../../blocks-touch/b-menu/b-menu.css: begin */ /**/
+    .b-menu__list
+    {
+        margin: 0;
+        padding: 0;
+    
+        list-style: none;
+    }
+/* ../../../blocks-touch/b-menu/b-menu.css: end */ /**/
+
+/* ../../../blocks-touch/b-menu/_layout/b-menu_layout_horiz.css: begin */ /**/
+    .b-menu_layout_horiz .b-menu__list
+    {
+        display: inline-table;
+        vertical-align: middle;
+    }
+    
+    .b-menu_layout_horiz .b-menu__item,
+    .b-menu_layout_horiz .b-menu__gap
+    {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+/* ../../../blocks-touch/b-menu/_layout/b-menu_layout_horiz.css: end */ /**/
+
+/* ../../../blocks-touch/b-slider/b-slider.css: begin */ /**/
+    /* запрещаем тягание и выделение блоков внутри в декстопных браузерах */
+    .b-slider .b-link,
+    .b-slider .b-form-button,
+    .b-slider .b-ico
+    {
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+    }
+    
+    .b-slider__inner
+    {
+        overflow: hidden;
+    }
+    
+    .b-slider .b-menu
+    {
+        float: left;
+    
+        white-space: nowrap;
+    }
+    
+    .i-ua_platform_ios .b-slider .b-menu
+    {
+        -webkit-transform: translateZ(0);
+    }
+    
+    .i-ua_platform_wp .b-slider .b-menu__item
+    {
+        display: inline-block;
+    }
+    
+    .b-slider_animation_yes
+    {
+        pointer-events: none;
+    }
+/* ../../../blocks-touch/b-slider/b-slider.css: end */ /**/
+
+/* ./blocks/b-my-slider/b-my-slider.css: begin */ /**/
+    .b-my-slider
+    {
+        font-size: 16px;
+    
+        padding: 20px 0 10px;
+    }
+    
+    .b-my-slider .b-menu__item
+    {
+        padding: 0 10px;
+    
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+/* ./blocks/b-my-slider/b-my-slider.css: end */ /**/
+
+/* ../../../blocks-touch/b-link/b-link.css: begin */ /**/
+    .b-link__text
+    {
+        vertical-align: middle;
+    }
+    
+    .b-link > .b-icon
+    {
+        margin: 0 5px 0 0;
+    
+        vertical-align: middle;
+    }
+    
+/* ../../../blocks-touch/b-link/b-link.css: end */ /**/

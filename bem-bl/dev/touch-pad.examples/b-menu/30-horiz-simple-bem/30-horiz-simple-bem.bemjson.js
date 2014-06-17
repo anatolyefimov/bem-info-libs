@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-touch/b-menu/b-menu.examples/30-horiz-simple-bem.bemjson.js

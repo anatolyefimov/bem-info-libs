@@ -1,0 +1,67 @@
+<p><code>b-layout-table</code> block — is a 100%-width table for making a layout.</p>
+<p>This block has a <code>bemhtml</code> template that gives a table, its rows and cells with all the attribute nodes needed.</p>
+<p>Cells of the block can be either <code>cell</code> or <code>gap</code> elements.
+A <code>cell</code> element is to contain a content and <code>gap</code> element is to set some space betwen cells.</p>
+<p>Let&#39;s look at <strong>bemjson</strong> input data of the block:</p>
+<pre><code class="lang-js">{
+    block: &#39;b-layout-table&#39;,
+    mods: { layout: &#39;58-40&#39;},
+    content: [
+        {
+            elem: &#39;row&#39;,
+            content: [
+                {
+                    elem: &#39;gap&#39;,
+                    rowspan: &#39;2&#39;
+                },
+                {
+                    elem: &#39;cell&#39;,
+                    content: {
+                        elem: &#39;inner&#39;,
+                        content: &#39;Left cell&#39;
+                    }
+                },
+                {
+                    elem: &#39;cell&#39;,
+                    elemMods: { position: &#39;r&#39;},
+                    content: &#39;Right cell&#39;
+                }
+            ]
+        },
+        {
+            elem: &#39;row&#39;,
+            content: [
+                {
+                    elem: &#39;cell&#39;,
+                    colspan: &#39;2&#39;,
+                    content: &#39;Second row and one cell&#39;
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<p>There is no width for cells by default.</p>
+<p>You can extend a block by your own CSS rules. For example, set a layout modifier to your block <code>mods: { layout: &#39;58-40&#39;}</code>, set a position modifier to right cell <code>elemMods: { position: &#39;r&#39;}</code>.
+Wrap cells&#39; content by <strong>inner</strong> element to be able to set some paddings. Then, set CSS rules you
+need (via cascade):</p>
+<p>This are CSS rules for the example above:</p>
+<pre><code class="lang-css">.b-layout-table_layout_58-40 .b-layout-table__cell_position_r
+{
+    width: 40%;
+}
+
+.b-layout-table_layout_58-40 .b-layout-table__gap
+{
+    width: 2%;
+    padding-left: 20px;
+}
+
+.b-layout-table_layout_58-40 .b-layout-table__inner
+{
+    margin-right: 0.8em;
+}
+</code></pre>
+<p>Draw your attention that you shouldn&#39;t set any CSS to the block itself.
+This is important to avoid CSS conflicts, because this block may be used as a part of many others.
+So, use modifiers or mix with other blocks when using <code>b-layout-table</code>.</p>

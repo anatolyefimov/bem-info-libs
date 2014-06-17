@@ -1,0 +1,17 @@
+<p><strong>b-link</strong> block is used inside the other blocks.</p>
+<p>For a simple like set the following bemjson:</p>
+<pre><code class="lang-js">{
+   block: &#39;b-link&#39;,
+   url: &#39;http://company.yandex.ru&#39;,
+   title: &#39;Click here to learn more&#39;,
+   target: &#39;_blank&#39;,
+   content: &#39;The best company all over the world&#39;
+}
+</code></pre>
+<p>An <code>url</code> property transforms info a <code>href</code> attribute. The <code>title</code> and <code>target</code> properties turn into the relevant attributes.</p>
+
+<p>This is an abstract container for an icon.</p>
+<p>By default the block produces a tag <code>img</code> which has an one-pixel transparent image (.gif) and an empty attribute <code>alt</code>.</p>
+<p>The block has optional attributes: <code>alt</code>, <code>url</code>, <code>width</code>, <code>height</code>.</p>
+<p>Set property <code>url#</code> to make <strong>b-icon</strong> with another image. The same for attributes <code>alt</code>, <code>width</code> and <code>height</code>.</p>
+<p>It is possible to use css sprites and single images for the block by using css-property <code>background: url(...);</code></p>
