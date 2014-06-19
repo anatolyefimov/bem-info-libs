@@ -16,6 +16,9 @@
         "ru": "<h1 id=\"миграция\">Миграция</h1>\n"
     },
     "notes": null,
+    "deps": {
+        "bem-core": "git://github.com/bem/bem-core.git#v2"
+    },
     "levels": [
         {
             "name": "desktop.docs",
@@ -340,6 +343,7 @@
                 },
                 {
                     "name": "input",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "input",
@@ -375,12 +379,10 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "link",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "link",
@@ -416,7 +418,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "menu",
@@ -596,6 +599,7 @@
                 },
                 {
                     "name": "radio-group",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "radio-group",
@@ -631,12 +635,10 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "spin",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "spin",
@@ -672,7 +674,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 }
             ]
         },
@@ -681,6 +684,7 @@
             "blocks": [
                 {
                     "name": "attach",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "attach",
@@ -716,8 +720,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "base-control",
@@ -753,6 +756,7 @@
                 },
                 {
                     "name": "button",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "button",
@@ -788,8 +792,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "checkbox",
@@ -839,7 +842,6 @@
                 },
                 {
                     "name": "checkbox-group",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "checkbox-group",
@@ -875,7 +877,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "dropdown",
@@ -959,6 +962,7 @@
                 },
                 {
                     "name": "image",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "image",
@@ -994,8 +998,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "input",
@@ -1255,6 +1258,7 @@
                 },
                 {
                     "name": "radio-group",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "radio-group",
@@ -1290,8 +1294,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "spin",
@@ -1340,6 +1343,7 @@
             "blocks": [
                 {
                     "name": "attach",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "attach",
@@ -1375,11 +1379,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "base-control",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "base-control",
@@ -1407,11 +1411,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "button",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "button",
@@ -1447,11 +1451,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "checkbox",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "checkbox",
@@ -1493,11 +1497,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "checkbox-group",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "checkbox-group",
@@ -1533,8 +1537,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "dropdown",
@@ -1658,6 +1661,7 @@
                 },
                 {
                     "name": "input",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "input",
@@ -1693,11 +1697,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "link",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "link",
@@ -1733,11 +1737,11 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "menu",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "menu",
@@ -1773,8 +1777,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "menu-item",
