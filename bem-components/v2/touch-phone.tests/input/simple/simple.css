@@ -178,10 +178,11 @@ html {
     .input_theme_normal.input_disabled .input__clear {
         display: none;
     }
+    .input_theme_normal.input_disabled .input__label,
     .input_theme_normal.input_disabled .input__box,
     .input_theme_normal.input_disabled .input__control {
         color: rgba(0, 0, 0, 0.4);
-        cursor: auto;
+        cursor: default;
     }
     .input_theme_normal.input_size_s .input__clear,
     .input_theme_normal.input_size_m .input__clear {
