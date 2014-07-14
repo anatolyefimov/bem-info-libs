@@ -1,1 +1,0 @@
-/Users/user/Work/bds-bem-info/content/bem-core/v2/common.blocks/page/page.examples/20-doctype.bemjson.js

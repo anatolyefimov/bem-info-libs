@@ -1,0 +1,1534 @@
+<h1 id="i-bem__dom-module">i-bem__dom Module</h1>
+<h2 id="bemdom-class">BEMDOM Class</h2>
+<p>Aughtments {BEMDOM}</p>
+<p>Base block for creating BEM blocks that have DOM representation</p>
+<h3 id="instance-properties">Instance properties</h3>
+<h4 id="domelem-jquery-readonly-">domElem {jQuery} (readonly)</h4>
+<p>DOM elements of block</p>
+<h3 id="instance-methods">Instance methods</h3>
+<h4 id="findblocksinside-elem-block-bemdom-">findBlocksInside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks inside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockinside-elem-block-bemdom-">findBlockInside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block inside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblocksoutside-elem-block-bemdom-">findBlocksOutside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks outside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockoutside-elem-block-bemdom-">findBlockOutside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block outside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockson-elem-block-bemdom-">findBlocksOn ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks on DOM elements of the current block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockon-elem-block-bemdom-">findBlockOn ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block on DOM elements of the current block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="bindtodomelem-domelem-event-data-fn-bemdom-protected">bindToDomElem ( domElem, event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler for any DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>domElem {jQuery}<br/>
+DOM element where the event will be listened for</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindtodoc-event-data-fn-bemdom-protected">bindToDoc ( event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the document</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindtowin-event-data-fn-bemdom-protected">bindToWin ( event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the window</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindto-elem-event-data-fn-bemdom-protected">bindTo ( [elem], event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the block&#39;s main DOM elements or its nested elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery | String}<br/>
+Element</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromdomelem-domelem-event-fn-bemdom-protected">unbindFromDomElem ( domElem, event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handlers from any DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>domElem {jQuery}<br/>
+DOM element where the event was being listened for</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromdoc-event-fn-bemdom-protected">unbindFromDoc ( event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handler from document</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromwin-event-fn-bemdom-protected">unbindFromWin ( event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handler from window</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfrom-elem-event-fn-bemdom-protected">unbindFrom ( [elem], event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handlers from the block&#39;s main DOM elements or its nested elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery | String}<br/>
+Nested element</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="setmod-elem-modname-modval-bemdom-">setMod ( [elem], modName, modVal ) → {BEMDOM}</h4>
+<p>Sets a modifier for a block/nested element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+<li>modVal {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="findelem-ctx-this-domelem-names-modname-modval-strictmode-false-jquery-">findElem ( [ctx=this.domElem], names, [modName], [modVal], [strictMode=false] ) → {jQuery}</h4>
+<p>Finds elements nested in a block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>names {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="_filterfindelemresults-res-jquery-">_filterFindElemResults ( res ) → {jQuery}</h4>
+<p>Filters results of findElem helper execution in strict mode</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>res {jQuery}<br/>
+DOM elements</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="elem-names-modname-modval-jquery-">elem ( names, [modName], [modVal] ) → {jQuery}</h4>
+<p>Lazy search for elements nested in a block (caches results)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>names {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="closestelem-ctx-elemname-jquery-">closestElem ( ctx, elemName ) → {jQuery}</h4>
+<p>Finds elements outside the context</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+context</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="dropelemcache-names-modname-modval-bemdom-protected">dropElemCache ( [names], [modName], [modVal] ) → {BEMDOM}  protected</h4>
+<p>Clearing the cache for elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[names] {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="elemparams-elem-object-">elemParams ( elem ) → {Object}</h4>
+<p>Retrieves parameters of a block element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Object}</p>
+<p>Parameters</p>
+<h4 id="elemify-elem-elemname-jquery-">elemify ( elem, elemName ) → {jQuery}</h4>
+<p>Elemify given element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {jQuery}<br/>
+Element</li>
+<li>elemName {String}<br/>
+Name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<h4 id="containsdomelem-ctx-this-domelem-domelem-boolean-protected">containsDomElem ( [ctx=this.domElem], domElem ) → {Boolean}  protected</h4>
+<p>Checks whether a DOM element is in a block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where check is being performed</li>
+<li>domElem {jQuery}<br/>
+DOM element</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="buildselector-elem-modname-modval-string-">buildSelector ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS selector corresponding to a block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="getmod-elem-modname-string-protected">getMod ( [elem], modName ) → {String}  protected</h4>
+<p>Delegates native getMod helper to element&#39;s instance</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<p>Modifier value</p>
+<h4 id="getmods-elem-modname1-object-protected">getMods ( [elem], [modName1] ) → {Object}  protected</h4>
+<p>Delegates native getMods helper to element&#39;s instance</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>[modName1] {String}<br/>
+..., modNameN] Modifier names</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Object}</p>
+<p>Hash of modifier values</p>
+<h4 id="setmod-elem-modname-modval-bem-protected">setMod ( [elem], modName, modVal ) → {BEM}  protected</h4>
+<p>Delegates native setMod helper to element&#39;s instances</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+<li>modVal {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEM}</p>
+<h4 id="block-bemdom-">block () → {BEMDOM}</h4>
+<p>Returns and initializes (if necessary) the own block of current element</p>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="_filterfindelemresults-res-jquery-">_filterFindElemResults ( res ) → {jQuery}</h4>
+<p>Filters results of findElem helper execution in strict mode</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>res {jQuery}<br/>
+DOM elements</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="eleminstance-elem-modname-modval-bemdom-">elemInstance ( elem, [modName], [modVal] ) → {BEMDOM}</h4>
+<p>Lazy search (caches results) for the first instance of defined element and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="eleminstances-elem-modname-modval-bemdom-">elemInstances ( elem, [modName], [modVal] ) → {BEMDOM}</h4>
+<p>Lazy search (caches results) for instances of defined elements and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findeleminstance-ctx-this-domelem-elem-modname-modval-strictmode-false-bemdom-">findElemInstance ( [ctx=this.domElem], elem, [modName], [modVal], [strictMode=false] ) → {BEMDOM}</h4>
+<p>Finds the first instance of defined element and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findeleminstances-ctx-this-domelem-elem-modname-modval-strictmode-false-bemdom-">findElemInstances ( [ctx=this.domElem], elem, [modName], [modVal], [strictMode=false] ) → {BEMDOM}</h4>
+<p>Finds instances of defined elements and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="closestelem-ctx-this-domelem-elemname-jquery-">closestElem ( [ctx=this.domElem], elemName ) → {jQuery}</h4>
+<p>Finds elements outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="closesteleminstance-ctx-this-domelem-elemname-bemdom-">closestElemInstance ( [ctx=this.domElem], elemName ) → {BEMDOM}</h4>
+<p>Finds instance of defined element outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="closesteleminstances-ctx-this-domelem-elemname-bemdom-">closestElemInstances ( [ctx=this.domElem], elemName ) → {BEMDOM}</h4>
+<p>Finds instances of defined elements outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h3 id="static-properties">Static properties</h3>
+<h4 id="scope-jquery-">scope {jQuery}</h4>
+<p>Scope, will be set on onDomReady to <code>&lt;body&gt;</code></p>
+<h4 id="doc-jquery-">doc {jQuery}</h4>
+<p>Document shortcut</p>
+<h4 id="win-jquery-">win {jQuery}</h4>
+<p>Window shortcut</p>
+<h3 id="static-methods">Static methods</h3>
+<h4 id="init-ctx-scope-jquery-">init ( [ctx=scope] ) → {jQuery}</h4>
+<p>Initializes blocks on a fragment of the DOM tree</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=scope] {jQuery | String}<br/>
+Root DOM node</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>ctx Initialization context</p>
+<h4 id="destruct-ctx-excludeself-false-">destruct ( ctx, [excludeSelf=false] )</h4>
+<p>Destroys blocks on a fragment of the DOM tree</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>[excludeSelf=false] {Boolean}<br/>
+Exclude the main domElem</li>
+</ul>
+<h4 id="update-ctx-content-jquery-">update ( ctx, content ) → {jQuery}</h4>
+<p>Replaces a fragment of the DOM tree inside the context, destroying old blocks and intializing new ones</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+New content</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>Updated root DOM node</p>
+<h4 id="replace-ctx-content-jquery-">replace ( ctx, content ) → {jQuery}</h4>
+<p>Changes a fragment of the DOM tree including the context and initializes blocks.</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="append-ctx-content-jquery-">append ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree at the end of the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="prepend-ctx-content-jquery-">prepend ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree at the beginning of the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="before-ctx-content-jquery-">before ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree before the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Contextual DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="after-ctx-content-jquery-">after ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree after the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Contextual DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="liveinitonevent-elemname-event-callback-protected">liveInitOnEvent ( [elemName], event, [callback] )  protected</h4>
+<p>Helper for live initialization for an event on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elemName] {String}<br/>
+Element name or names (separated by spaces)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler to call after successful initialization</li>
+</ul>
+<h4 id="livebindto-to-event-callback-protected">liveBindTo ( [to], event, [callback] )  protected</h4>
+<p>Helper for subscribing to live events on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[to] {String | Object}<br/>
+Description (object with modName, modVal, elem) or name of the element or elements (space-separated)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler</li>
+</ul>
+<h4 id="liveunbindfrom-elem-event-callback-protected">liveUnbindFrom ( [elem], event, [callback] )  protected</h4>
+<p>Helper for unsubscribing from live events on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Name of the element or elements (space-separated)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler</li>
+</ul>
+<h4 id="liveinitonblockevent-event-blockname-callback-protected">liveInitOnBlockEvent ( event, blockName, callback )  protected</h4>
+<p>Helper for live initialization for a different block&#39;s event on the current block&#39;s DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>blockName {String}<br/>
+Name of the block that should trigger a reaction when initialized</li>
+<li>callback {Function}<br/>
+Handler to be called after successful initialization in the new block&#39;s context</li>
+</ul>
+<h4 id="liveinitonblockinsideevent-event-blockname-callback-protected">liveInitOnBlockInsideEvent ( event, blockName, [callback] )  protected</h4>
+<p>Helper for live initialization for a different block&#39;s event inside the current block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>blockName {String}<br/>
+Name of the block that should trigger a reaction when initialized</li>
+<li>[callback] {Function}<br/>
+Handler to be called after successful initialization in the new block&#39;s context</li>
+</ul>
+<h4 id="on-ctx-e-data-fn-fnctx-">on ( [ctx], e, [data], fn, [fnCtx] )</h4>
+<p>Adds a live event handler to a block, based on a specified element where the event will be listened for</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx] {jQuery}<br/>
+The element in which the event will be listened for</li>
+<li>e {String}<br/>
+Event name</li>
+<li>[data] {Object}<br/>
+Additional information that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[fnCtx] {Object}<br/>
+Handler&#39;s context</li>
+</ul>
+<h4 id="un-ctx-e-fn-fnctx-">un ( [ctx], e, [fn], [fnCtx] )</h4>
+<p>Removes the live event handler from a block, based on a specified element where the event was being listened for</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx] {jQuery}<br/>
+The element in which the event was being listened for</li>
+<li>e {String}<br/>
+Event name</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[fnCtx] {Object}<br/>
+Handler context</li>
+</ul>
+<h4 id="buildclass-elem-modname-modval-string-">buildClass ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS class corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="buildselector-elem-modname-modval-string-">buildSelector ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS selector corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="decl-name-props-staticprops-_autodecl-function-protected">decl ( name, [props], [staticProps], [_autoDecl] ) → {Function}  protected</h4>
+<p>Auto-declarator for elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>name {Object}<br/>
+Instance name</li>
+<li>[props] {Object}<br/>
+Methods</li>
+<li>[staticProps] {Object}<br/>
+Static methods</li>
+<li>[_autoDecl] {Object}<br/>
+Auto-declaration flag</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Function}</p>
+<h4 id="liveinitonblockevent-event-callback-function-protected">liveInitOnBlockEvent ( event, [callback] ) → {Function}  protected</h4>
+<p>Helper for live initialization for an own block&#39;s event</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler to be called after successful initialization in the new element&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Function}</p>
+<p>this</p>
+<h4 id="buildclass-elem-modname-modval-string-">buildClass ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS class corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h1 id="jquery-module">jquery Module</h1>
+<p>Provide jQuery (load if it does not exist).</p>
+<h2 id="-function-"><em>function</em> ()</h2>
+<h1 id="loader_type_js-module">loader_type_js Module</h1>
+<p>Load JS from external URL.</p>
+<h2 id="-function-path-callback-"><em>function</em> ( path, callback )</h2>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>path {String}<br/>
+resource link</li>
+<li>callback {Function}<br/>
+executes when resource is loaded</li>
+</ul>
+<h1 id="jquery__config-module">jquery__config Module</h1>
+<p>Configuration for jQuery</p>
+<h2 id="url-string-">url {String}</h2>
+<p>URL for loading jQuery if it does not exist</p>
+<p>Value: &quot;//yastatic.net/jquery/2.1.1/jquery.min.js&quot;</p>
+<h1 id="jquery__config-module">jquery__config Module</h1>
+<p>Configuration for jQuery</p>
+<h1 id="ua-module">ua Module</h1>
+<p>Detect some user agent features (works like jQuery.browser in jQuery 1.8)</p>
+<p>See:</p>
+<ul>
+<li><a href="http://code.jquery.com/jquery-migrate-1.1.1.js">http://code.jquery.com/jquery-migrate-1.1.1.js</a></li>
+</ul>
+<h2 id="-type-object-"><em>type</em> {Object}</h2>
+<h1 id="dom-module">dom Module</h1>
+<p>some DOM utils</p>
+<h2 id="contains-ctx-domelem-boolean-">contains ( ctx, domElem ) → {Boolean}</h2>
+<p>Checks whether a DOM elem is in a context</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>ctx {jQuery}<br/>
+DOM elem where check is being performed</li>
+<li>domElem {jQuery}<br/>
+DOM elem to check</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="getfocused-jquery-">getFocused () → {jQuery}</h2>
+<p>Returns current focused DOM elem in document</p>
+<h3 id="returns-">Returns:</h3>
+<p>{jQuery}</p>
+<h2 id="containsfocus-domelem-boolean-">containsFocus ( domElem ) → {Boolean}</h2>
+<p>Checks whether a DOM element contains focus</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>domElem {jQuery}</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="isfocusable-domelem-boolean-">isFocusable ( domElem ) → {Boolean}</h2>
+<p>Checks whether a browser currently can set focus on DOM elem</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>domElem {jQuery}</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="iseditable-domelem-boolean-">isEditable ( domElem ) → {Boolean}</h2>
+<p>Checks whether a domElem is intended to edit text</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>domElem {jQuery}</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{Boolean}</p>
+<h1 id="i-bem__dom_init-module">i-bem__dom_init Module</h1>
+<h2 id="-function-ctx-scope-jquery-"><em>function</em> ( [ctx=scope] ) → {jQuery}</h2>
+<p>Initializes blocks on a fragment of the DOM tree</p>
+<h3 id="parameters-">Parameters:</h3>
+<ul>
+<li>[ctx=scope] {jQuery}<br/>
+Root DOM node</li>
+</ul>
+<h3 id="returns-">Returns:</h3>
+<p>{jQuery}</p>
+<p>ctx Initialization context</p>
+<h1 id="i-bem-module">i-bem Module</h1>
+<h2 id="bem-class">BEM Class</h2>
+<p>Aughtments {BEM}</p>
+<h3 id="static-methods">Static methods</h3>
+<h4 id="decl-decl-props-staticprops-function-protected">decl ( decl, [props], [staticProps] ) → {Function}  protected</h4>
+<p>Declares elements and creates an elements class</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>decl {Object}<br/>
+Element description</li>
+<li>decl.block {String}<br/>
+Block name</li>
+<li>decl.elem {String}<br/>
+Element name</li>
+<li>[decl.baseBlock] {String}<br/>
+Name of the parent block</li>
+<li>[decl.baseMix] {Array}<br/>
+Mixed block names</li>
+<li>[decl.modName] {String}<br/>
+Modifier name</li>
+<li>[decl.modVal] {String | Array}<br/>
+Modifier value</li>
+<li>[props] {Object}<br/>
+Methods</li>
+<li>[staticProps] {Object}<br/>
+Static methods</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Function}</p>
+<h4 id="create-desc-params-bem-">create ( desc, [params] ) → {BEM}</h4>
+<p>Factory method for creating an instance of the element named</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>desc {Object}<br/>
+Description</li>
+<li>[params] {Object}<br/>
+Instance parameters</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEM}</p>
+<h4 id="getname-shortname-string-protected">getName ( [shortName] ) → {String}  protected</h4>
+<p>Returns the name of the current instance</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[shortName] {Boolean}<br/>
+return the short name of the current instance</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h1 id="i-bem__dom-module">i-bem__dom Module</h1>
+<h2 id="bemdom-class">BEMDOM Class</h2>
+<p>Aughtments {BEMDOM}</p>
+<p>Base block for creating BEM blocks that have DOM representation</p>
+<h3 id="instance-properties">Instance properties</h3>
+<h4 id="domelem-jquery-readonly-">domElem {jQuery} (readonly)</h4>
+<p>DOM elements of block</p>
+<h3 id="instance-methods">Instance methods</h3>
+<h4 id="findblocksinside-elem-block-bemdom-">findBlocksInside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks inside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockinside-elem-block-bemdom-">findBlockInside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block inside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblocksoutside-elem-block-bemdom-">findBlocksOutside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks outside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockoutside-elem-block-bemdom-">findBlockOutside ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block outside the current block or its elements (including context)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockson-elem-block-bemdom-">findBlocksOn ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds blocks on DOM elements of the current block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findblockon-elem-block-bemdom-">findBlockOn ( [elem], block ) → {BEMDOM}</h4>
+<p>Finds the first block on DOM elements of the current block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String | jQuery}<br/>
+Block element</li>
+<li>block {String | Object}<br/>
+Name or description (block,modName,modVal) of the block to find</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="bindtodomelem-domelem-event-data-fn-bemdom-protected">bindToDomElem ( domElem, event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler for any DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>domElem {jQuery}<br/>
+DOM element where the event will be listened for</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindtodoc-event-data-fn-bemdom-protected">bindToDoc ( event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the document</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindtowin-event-data-fn-bemdom-protected">bindToWin ( event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the window</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="bindto-elem-event-data-fn-bemdom-protected">bindTo ( [elem], event, [data], fn ) → {BEMDOM}  protected</h4>
+<p>Adds an event handler to the block&#39;s main DOM elements or its nested elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery | String}<br/>
+Element</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[data] {Object}<br/>
+Additional event data</li>
+<li>fn {Function}<br/>
+Handler function, which will be executed in the block&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromdomelem-domelem-event-fn-bemdom-protected">unbindFromDomElem ( domElem, event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handlers from any DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>domElem {jQuery}<br/>
+DOM element where the event was being listened for</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromdoc-event-fn-bemdom-protected">unbindFromDoc ( event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handler from document</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfromwin-event-fn-bemdom-protected">unbindFromWin ( event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handler from window</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="unbindfrom-elem-event-fn-bemdom-protected">unbindFrom ( [elem], event, [fn] ) → {BEMDOM}  protected</h4>
+<p>Removes event handlers from the block&#39;s main DOM elements or its nested elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery | String}<br/>
+Nested element</li>
+<li>event {String | Object}<br/>
+Event name or event object</li>
+<li>[fn] {Function}<br/>
+Handler function</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="setmod-elem-modname-modval-bemdom-">setMod ( [elem], modName, modVal ) → {BEMDOM}</h4>
+<p>Sets a modifier for a block/nested element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+<li>modVal {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="findelem-ctx-this-domelem-names-modname-modval-strictmode-false-jquery-">findElem ( [ctx=this.domElem], names, [modName], [modVal], [strictMode=false] ) → {jQuery}</h4>
+<p>Finds elements nested in a block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>names {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="_filterfindelemresults-res-jquery-">_filterFindElemResults ( res ) → {jQuery}</h4>
+<p>Filters results of findElem helper execution in strict mode</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>res {jQuery}<br/>
+DOM elements</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="elem-names-modname-modval-jquery-">elem ( names, [modName], [modVal] ) → {jQuery}</h4>
+<p>Lazy search for elements nested in a block (caches results)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>names {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="closestelem-ctx-elemname-jquery-">closestElem ( ctx, elemName ) → {jQuery}</h4>
+<p>Finds elements outside the context</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+context</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="dropelemcache-names-modname-modval-bemdom-protected">dropElemCache ( [names], [modName], [modVal] ) → {BEMDOM}  protected</h4>
+<p>Clearing the cache for elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[names] {String}<br/>
+Nested element name (or names separated by spaces)</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<p>this</p>
+<h4 id="elemparams-elem-object-">elemParams ( elem ) → {Object}</h4>
+<p>Retrieves parameters of a block element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Object}</p>
+<p>Parameters</p>
+<h4 id="elemify-elem-elemname-jquery-">elemify ( elem, elemName ) → {jQuery}</h4>
+<p>Elemify given element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {jQuery}<br/>
+Element</li>
+<li>elemName {String}<br/>
+Name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<h4 id="containsdomelem-ctx-this-domelem-domelem-boolean-protected">containsDomElem ( [ctx=this.domElem], domElem ) → {Boolean}  protected</h4>
+<p>Checks whether a DOM element is in a block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where check is being performed</li>
+<li>domElem {jQuery}<br/>
+DOM element</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="buildselector-elem-modname-modval-string-">buildSelector ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS selector corresponding to a block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="getmod-elem-modname-string-protected">getMod ( [elem], modName ) → {String}  protected</h4>
+<p>Delegates native getMod helper to element&#39;s instance</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<p>Modifier value</p>
+<h4 id="getmods-elem-modname1-object-protected">getMods ( [elem], [modName1] ) → {Object}  protected</h4>
+<p>Delegates native getMods helper to element&#39;s instance</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>[modName1] {String}<br/>
+..., modNameN] Modifier names</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Object}</p>
+<p>Hash of modifier values</p>
+<h4 id="setmod-elem-modname-modval-bem-protected">setMod ( [elem], modName, modVal ) → {BEM}  protected</h4>
+<p>Delegates native setMod helper to element&#39;s instances</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {jQuery}<br/>
+Nested element</li>
+<li>modName {String}<br/>
+Modifier name</li>
+<li>modVal {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEM}</p>
+<h4 id="block-bemdom-">block () → {BEMDOM}</h4>
+<p>Returns and initializes (if necessary) the own block of current element</p>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="_filterfindelemresults-res-jquery-">_filterFindElemResults ( res ) → {jQuery}</h4>
+<p>Filters results of findElem helper execution in strict mode</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>res {jQuery}<br/>
+DOM elements</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="eleminstance-elem-modname-modval-bemdom-">elemInstance ( elem, [modName], [modVal] ) → {BEMDOM}</h4>
+<p>Lazy search (caches results) for the first instance of defined element and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="eleminstances-elem-modname-modval-bemdom-">elemInstances ( elem, [modName], [modVal] ) → {BEMDOM}</h4>
+<p>Lazy search (caches results) for instances of defined elements and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findeleminstance-ctx-this-domelem-elem-modname-modval-strictmode-false-bemdom-">findElemInstance ( [ctx=this.domElem], elem, [modName], [modVal], [strictMode=false] ) → {BEMDOM}</h4>
+<p>Finds the first instance of defined element and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="findeleminstances-ctx-this-domelem-elem-modname-modval-strictmode-false-bemdom-">findElemInstances ( [ctx=this.domElem], elem, [modName], [modVal], [strictMode=false] ) → {BEMDOM}</h4>
+<p>Finds instances of defined elements and intializes it (if necessary)</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+Element where search is being performed</li>
+<li>elem {String | jQuery}<br/>
+Element</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+<li>[strictMode=false] {Boolean}</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="closestelem-ctx-this-domelem-elemname-jquery-">closestElem ( [ctx=this.domElem], elemName ) → {jQuery}</h4>
+<p>Finds elements outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>DOM elements</p>
+<h4 id="closesteleminstance-ctx-this-domelem-elemname-bemdom-">closestElemInstance ( [ctx=this.domElem], elemName ) → {BEMDOM}</h4>
+<p>Finds instance of defined element outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h4 id="closesteleminstances-ctx-this-domelem-elemname-bemdom-">closestElemInstances ( [ctx=this.domElem], elemName ) → {BEMDOM}</h4>
+<p>Finds instances of defined elements outside the context or current element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=this.domElem] {jQuery}<br/>
+context (current element by default)</li>
+<li>elemName {String}<br/>
+Element name</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{BEMDOM}</p>
+<h3 id="static-properties">Static properties</h3>
+<h4 id="scope-jquery-">scope {jQuery}</h4>
+<p>Scope, will be set on onDomReady to <code>&lt;body&gt;</code></p>
+<h4 id="doc-jquery-">doc {jQuery}</h4>
+<p>Document shortcut</p>
+<h4 id="win-jquery-">win {jQuery}</h4>
+<p>Window shortcut</p>
+<h3 id="static-methods">Static methods</h3>
+<h4 id="init-ctx-scope-jquery-">init ( [ctx=scope] ) → {jQuery}</h4>
+<p>Initializes blocks on a fragment of the DOM tree</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx=scope] {jQuery | String}<br/>
+Root DOM node</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>ctx Initialization context</p>
+<h4 id="destruct-ctx-excludeself-false-">destruct ( ctx, [excludeSelf=false] )</h4>
+<p>Destroys blocks on a fragment of the DOM tree</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>[excludeSelf=false] {Boolean}<br/>
+Exclude the main domElem</li>
+</ul>
+<h4 id="update-ctx-content-jquery-">update ( ctx, content ) → {jQuery}</h4>
+<p>Replaces a fragment of the DOM tree inside the context, destroying old blocks and intializing new ones</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+New content</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>Updated root DOM node</p>
+<h4 id="replace-ctx-content-jquery-">replace ( ctx, content ) → {jQuery}</h4>
+<p>Changes a fragment of the DOM tree including the context and initializes blocks.</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="append-ctx-content-jquery-">append ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree at the end of the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="prepend-ctx-content-jquery-">prepend ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree at the beginning of the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Root DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="before-ctx-content-jquery-">before ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree before the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Contextual DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="after-ctx-content-jquery-">after ( ctx, content ) → {jQuery}</h4>
+<p>Adds a fragment of the DOM tree after the context and initializes blocks</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>ctx {jQuery}<br/>
+Contextual DOM node</li>
+<li>content {jQuery | String}<br/>
+Content to be added</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{jQuery}</p>
+<p>New content</p>
+<h4 id="liveinitonevent-elemname-event-callback-protected">liveInitOnEvent ( [elemName], event, [callback] )  protected</h4>
+<p>Helper for live initialization for an event on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elemName] {String}<br/>
+Element name or names (separated by spaces)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler to call after successful initialization</li>
+</ul>
+<h4 id="livebindto-to-event-callback-protected">liveBindTo ( [to], event, [callback] )  protected</h4>
+<p>Helper for subscribing to live events on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[to] {String | Object}<br/>
+Description (object with modName, modVal, elem) or name of the element or elements (space-separated)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler</li>
+</ul>
+<h4 id="liveunbindfrom-elem-event-callback-protected">liveUnbindFrom ( [elem], event, [callback] )  protected</h4>
+<p>Helper for unsubscribing from live events on DOM elements of a block or its elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Name of the element or elements (space-separated)</li>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler</li>
+</ul>
+<h4 id="liveinitonblockevent-event-blockname-callback-protected">liveInitOnBlockEvent ( event, blockName, callback )  protected</h4>
+<p>Helper for live initialization for a different block&#39;s event on the current block&#39;s DOM element</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>blockName {String}<br/>
+Name of the block that should trigger a reaction when initialized</li>
+<li>callback {Function}<br/>
+Handler to be called after successful initialization in the new block&#39;s context</li>
+</ul>
+<h4 id="liveinitonblockinsideevent-event-blockname-callback-protected">liveInitOnBlockInsideEvent ( event, blockName, [callback] )  protected</h4>
+<p>Helper for live initialization for a different block&#39;s event inside the current block</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>blockName {String}<br/>
+Name of the block that should trigger a reaction when initialized</li>
+<li>[callback] {Function}<br/>
+Handler to be called after successful initialization in the new block&#39;s context</li>
+</ul>
+<h4 id="on-ctx-e-data-fn-fnctx-">on ( [ctx], e, [data], fn, [fnCtx] )</h4>
+<p>Adds a live event handler to a block, based on a specified element where the event will be listened for</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx] {jQuery}<br/>
+The element in which the event will be listened for</li>
+<li>e {String}<br/>
+Event name</li>
+<li>[data] {Object}<br/>
+Additional information that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[fnCtx] {Object}<br/>
+Handler&#39;s context</li>
+</ul>
+<h4 id="un-ctx-e-fn-fnctx-">un ( [ctx], e, [fn], [fnCtx] )</h4>
+<p>Removes the live event handler from a block, based on a specified element where the event was being listened for</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[ctx] {jQuery}<br/>
+The element in which the event was being listened for</li>
+<li>e {String}<br/>
+Event name</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[fnCtx] {Object}<br/>
+Handler context</li>
+</ul>
+<h4 id="buildclass-elem-modname-modval-string-">buildClass ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS class corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="buildselector-elem-modname-modval-string-">buildSelector ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS selector corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>
+<h4 id="decl-name-props-staticprops-_autodecl-function-protected">decl ( name, [props], [staticProps], [_autoDecl] ) → {Function}  protected</h4>
+<p>Auto-declarator for elements</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>name {Object}<br/>
+Instance name</li>
+<li>[props] {Object}<br/>
+Methods</li>
+<li>[staticProps] {Object}<br/>
+Static methods</li>
+<li>[_autoDecl] {Object}<br/>
+Auto-declaration flag</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Function}</p>
+<h4 id="liveinitonblockevent-event-callback-function-protected">liveInitOnBlockEvent ( event, [callback] ) → {Function}  protected</h4>
+<p>Helper for live initialization for an own block&#39;s event</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>event {String}<br/>
+Event name</li>
+<li>[callback] {Function}<br/>
+Handler to be called after successful initialization in the new element&#39;s context</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{Function}</p>
+<p>this</p>
+<h4 id="buildclass-elem-modname-modval-string-">buildClass ( [elem], [modName], [modVal] ) → {String}</h4>
+<p>Builds a CSS class corresponding to the block/element and modifier</p>
+<h5 id="parameters-">Parameters:</h5>
+<ul>
+<li>[elem] {String}<br/>
+Element name</li>
+<li>[modName] {String}<br/>
+Modifier name</li>
+<li>[modVal] {String}<br/>
+Modifier value</li>
+</ul>
+<h5 id="returns-">Returns:</h5>
+<p>{String}</p>

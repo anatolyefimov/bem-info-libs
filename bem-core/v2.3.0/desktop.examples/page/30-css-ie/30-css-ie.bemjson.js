@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-core/v2.3.0/desktop.blocks/page/page.examples/30-css-ie.bemjson.js
