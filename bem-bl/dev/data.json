@@ -179,7 +179,6 @@
                 },
                 {
                     "name": "b-logo",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-logo",
@@ -227,7 +226,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "b-menu-horiz",
@@ -475,7 +475,6 @@
                 },
                 {
                     "name": "b-text",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-text",
@@ -511,7 +510,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "i-bem",
@@ -611,7 +611,6 @@
                 },
                 {
                     "name": "i-geolocation",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-geolocation",
@@ -639,7 +638,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "i-jquery",
@@ -675,7 +675,6 @@
                 },
                 {
                     "name": "i-menu",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-menu",
@@ -703,7 +702,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "i-ua",
@@ -1089,6 +1089,7 @@
                 },
                 {
                     "name": "i-geolocation",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-geolocation",
@@ -1116,8 +1117,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "i-jquery",
