@@ -3,13 +3,19 @@
     "ref": "dev",
     "enb": true,
     "url": "http://github.com/bem/bem-bl",
-    "readme": {
-        "ru": "<h1 id=\"библиотека-блоков-bem-bl\">Библиотека блоков bem-bl</h1>\n<p>bem-bl — расширенная библиотека блоков, которая помимо базовых вариантов блоков включает\nреализации некоторых универсальных решений для меню, текста, логотипа, поисковой строки, таблиц и т.д.</p>\n<p>На данный момент развитие библиотеки новыми блоками приостановлено, проект в статусе поддержки.\nНовые проекты рекомендуется разрабатывать на базе библиотеки <a href=\"http://ru.bem.info/libs/bem-core/\">bem-core</a>.</p>\n",
-        "en": "<h1 id=\"библиотека-блоков-bem-bl\">Библиотека блоков bem-bl</h1>\n<p>bem-bl — расширенная библиотека блоков, которая помимо базовых вариантов блоков включает\nреализации некоторых универсальных решений для меню, текста, логотипа, поисковой строки, таблиц и т.д.</p>\n<p>На данный момент развитие библиотеки новыми блоками приостановлено, проект в статусе поддержки.\nНовые проекты рекомендуется разрабатывать на базе библиотеки <a href=\"http://ru.bem.info/libs/bem-core/\">bem-core</a>.</p>\n"
+    "custom": [],
+    "docs": {
+        "readme": {
+            "title": {
+                "en": "Readme",
+                "ru": "Readme"
+            },
+            "content": {
+                "ru": "<h1 id=\"Библиотека-блоков-bem-bl\">Библиотека блоков bem-bl</h1>\n<p>bem-bl — расширенная библиотека блоков, которая помимо базовых вариантов блоков включает\nреализации некоторых универсальных решений для меню, текста, логотипа, поисковой строки, таблиц и т.д.</p>\n<p>На данный момент развитие библиотеки новыми блоками приостановлено, проект в статусе поддержки.\nНовые проекты рекомендуется разрабатывать на базе библиотеки <a href=\"http://ru.bem.info/libs/bem-core/\">bem-core</a>.</p>\n",
+                "en": "<h1 id=\"bem-bl-blocks-library\">bem-bl blocks library</h1>\n<p>bem-bl is an extended library of blocks, that consists not only of basic blocks but also has a number of universal solutions to display a menu, text, logo, search tab, table, etc.</p>\n<p>Current state of development: bem-bl is suspended and will not be filled with new blocks, however we provide user support and bug fixing. We recommend you to start new projects with <a href=\"http://bem.info/libs/bem-core/\">bem-core</a> instead of bem-bl.</p>\n<!-- Yandex.Metrika counter -->\n<img src=\"https://mc.yandex.ru/watch/12831025\" style=\"position:absolute; left:-9999px;\" alt=\"\" />\n<!-- /Yandex.Metrika counter -->\n"
+            }
+        }
     },
-    "changelog": null,
-    "migration": null,
-    "notes": null,
     "deps": null,
     "levels": [
         {
@@ -17,7 +23,6 @@
             "blocks": [
                 {
                     "name": "b-icon",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-icon",
@@ -65,7 +70,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "b-layout-table",
@@ -115,6 +121,7 @@
                 },
                 {
                     "name": "b-link",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-link",
@@ -168,8 +175,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "b-logo",
@@ -469,6 +475,7 @@
                 },
                 {
                     "name": "b-text",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-text",
@@ -504,8 +511,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "i-bem",
@@ -605,6 +611,7 @@
                 },
                 {
                     "name": "i-geolocation",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-geolocation",
@@ -632,8 +639,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "i-jquery",
@@ -669,6 +675,7 @@
                 },
                 {
                     "name": "i-menu",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-menu",
@@ -696,8 +703,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "i-ua",
@@ -746,6 +752,7 @@
             "blocks": [
                 {
                     "name": "b-slider",
+                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "b-slider",
@@ -811,8 +818,7 @@
                                 }
                             ]
                         }
-                    },
-                    "jsdoc": ""
+                    }
                 },
                 {
                     "name": "i-bem",
@@ -1051,7 +1057,6 @@
                 },
                 {
                     "name": "i-ecma",
-                    "jsdoc": "",
                     "data": {
                         "ru": {
                             "name": "i-ecma",
@@ -1079,7 +1084,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "jsdoc": ""
                 },
                 {
                     "name": "i-geolocation",
