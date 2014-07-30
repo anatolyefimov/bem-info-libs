@@ -1,0 +1,1 @@
+/Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/control-group/control-group.tests/simple.bemjson.js

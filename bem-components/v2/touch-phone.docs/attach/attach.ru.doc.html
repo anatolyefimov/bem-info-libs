@@ -3,63 +3,40 @@
 <p>По умолчанию блок визуально представлен кнопкой на основе блока <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a>, открывающей системное окно загрузки файла, и текстовым сообщением «Файл не выбран». После загрузки файла отображаются следующие элементы:</p>
 <ul>
 <li>иконка файла (блок <code>icon</code>);</li>
-<li>имя файла (<code>__text</code>);</li>
-<li>крестик для отмены (<code>__clear</code>).</li>
+<li>имя файла (элемент <code>text</code>);</li>
+<li>крестик для отмены (элемент <code>clear</code>).</li>
 </ul>
 <p>Не позволяет прикреплять несколько файлов и не поддерживает drag-and-drop.</p>
 <h2 id="-">Модификаторы блока</h2>
 <h3 id="-_theme-">Темы оформления  <code>_theme</code></h3>
 <p>Блок представлен только в теме <em>simple</em>.</p>
 <p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
-<p>Наглядно видно на примерах ниже:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;attach&#39;,
-    button : &#39;Выберите файл&#39;,
-    noFileText : &#39;Файл не выбран&#39;
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;attach&#39;,
-    mods : { theme : &#39;simple&#39; },
-    button : &#39;Выберите файл&#39;,
-    noFileText : &#39;Файл не выбран&#39;
-}
-</code></pre>
+<p>Наглядно показано на примерах ниже:</p>
+<p><strong>default</strong></p>
+<!-- bem-example: touch-phone.examples/attach/2LkwTGo-4d7fxgnG4skRO2tHoic -->
+<strong>simple</strong>
+
+<!-- bem-example: touch-phone.examples/attach/nwytMff5nyXPoczzUvwVbgD7YQQ -->
+
 <h3 id="-">Состояния блока</h3>
 <h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
 <p>В состоянии блока «неактивен» кнопка выбора становится недоступной для действий пользователя.</p>
 <p>Если модификатор <code>disabled</code> не выбран, кнопка по умолчанию активна.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;attach&#39;,
-    mods : { theme : &#39;simple&#39;, disabled : true },
-    button : &#39;Выберите файл&#39;,
-    noFileText : &#39;файл не выбран&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/TlYDF2oQVo93Y7ocT-4hcsjHHB8 -->
+
 <h2 id="-">Элементы блока</h2>
 <p>Визуально представлен следующими элементами:</p>
 <h3 id="__button">__button</h3>
 <p>Обязательный элемент.
 Кнопка выбора файла. Открывает системное окно загрузки файла. Создается на основе блока <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a> и использует его поведение (JS) и внешний вид (CSS). Контент кнопки задается во входных данных.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;attach&#39;,
-    mods : { theme : &#39;simple&#39; },
-    button : {
-        block : &#39;button&#39;,
-        mods : { theme : &#39;simple&#39; },
-        icon : { block : &#39;icon&#39;, mods : { action : &#39;download&#39; },
-        text: &#39;Выберите файл&#39;
-        }
-    },
-    noFileText : &#39;Файл не выбран&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/c3tTTsQQpS_wyaTRUODJQMWC3x8 -->
+
 <h3 id="__control">__control</h3>
 <p>Нативный контрол «прикрепить файл».</p>
 <p>Преобразуется BEMHTML- и BH-шаблонами в нативный элемент прикрепления файла с атрибутами <code>&lt;input class=&quot;attach__control&quot; type=&quot;file&quot;&gt;</code>.</p>
 <h3 id="__no-file">__no-file</h3>
 <p>Элемент для отображения текста, когда файл не выбран.</p>
-<p>Если тема <em>simple</em> не указана для блока <code>attach</code>, будет отображаться значение нативного контрола – «Файл не выбран».</p>
+<p>Если тема <em>simple</em> не указана для блока <code>attach</code>, будет отображаться значение нативного контрола «Файл не выбран».</p>
 <h3 id="__file">__file</h3>
 <p>Контейнер с информацией о прикрепленном файле.</p>
 <p>Формируется из следующих элементов блока:</p>
@@ -67,30 +44,23 @@
 <li><code>__text</code></li>
 <li><code>__clear</code></li>
 </ul>
-<p>Может содержать блок <code>icon</code>. В зависимости от типа файла, блоку <code>icon</code> добавляется соответствующий модификатор, которому будет назначена иконка типа файла.</p>
+<p>Может содержать блок <code>icon</code>. В зависимости от типа файла блоку <code>icon</code> добавляется соответствующий модификатор, которому будет назначена иконка типа файла.</p>
 <h3 id="__text">__text</h3>
 <p>Имя файла. Появляется после прикрепления файла.</p>
 <h3 id="__clear">__clear</h3>
 <p>Кнопка отмены выбранного файла (крестик). Появляется после прикрепления файла.</p>
 <p>Элемент реализован для темы <em>simple</em>.</p>
-<h3 id="-">Зависимости блока</h3>
-<ul>
-<li><code>base-control</code></li>
-<li><code>i-bem__dom</code></li>
-<li><code>icon</code></li>
-<li><code>button</code></li>
-</ul>
 
-<h1 id="base-control">base-control</h1>
+<h1 id="control">control</h1>
 <p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
 <ul>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md">attach</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.title.txt">checkbox</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md">input</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md">link</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/menu/menu.ru.md">menu</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/radio/radio.ru.md">radio</a></li>
+<li><a href="../attach/attach.ru.md">attach</a></li>
+<li><a href="../button/button.ru.md">button</a></li>
+<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
+<li><a href="../input/input.ru.md">input</a></li>
+<li><a href="../link/link.ru.md">link</a></li>
+<li><a href="../menu/menu.ru.md">menu</a></li>
+<li><a href="../radio/radio.ru.md">radio</a></li>
 </ul>
 <p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
 Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>
@@ -114,9 +84,9 @@
 <p>Блок <code>button</code> используется для создания различных типов кнопок и предоставляет возможность изменять их размер, состояние, содержимое и внешний вид.</p>
 <h2 id="-">Варианты использования кнопок</h2>
 <ul>
-<li>Обычная кнопка – применяется для любых кнопок веб-интерфейса; используется по умолчанию.</li>
-<li>Кнопка-ссылка – применяется для перехода по ссылке. Задается модификатором <code>_type</code> со значением <code>_link</code>.</li>
-<li>Кнопка действия – предназначена для отправки данных на сервер (submit). Всегда располагается в форме. Задается через атрибут блока <code>type</code> со значением <code>submit</code>.</li>
+<li>Обычная кнопка – применяется для любых кнопок веб-интерфейса. Используется по умолчанию.</li>
+<li>Кнопка-ссылка – применяется для перехода по ссылке. Задается модификатором <code>type</code> со значением <code>link</code>.</li>
+<li>Кнопка отправки формы – предназначена для отправки данных формы на сервер (submit). Задается модификатором <code>type</code> со значением <code>submit</code>.</li>
 </ul>
 <h2 id="-">Допустимые атрибуты блока</h2>
 <p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON блока:</p>
@@ -140,18 +110,32 @@
         <td>Кнопка с иконкой, которая формируется блоком <code>icon</code>.</td>
     </tr>
     <tr>
-        <td>type</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Преобразует обычную кнопку в кнопку действия. Допустимое значение атрибута – <code>submit</code>.</td>
-    </tr>
-    <tr>
         <td>url</td>
         <td>
             <code>String</code>
         </td>
-        <td>Адрес ссылки. Применяется только при наличии модификатора блока <code>_type_link</code>. Кнопка становится ссылкой, а значение <code>url</code> атрибутом <code>href</code>.</td>
+        <td>Адрес ссылки. Применяется только при наличии модификатора блока <code>button_type_link</code>. Кнопка становится ссылкой, а значение <code>url</code> – атрибутом <code>href</code>.</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Уникальный идентификатор кнопки.</td>
+    </tr>
+    <tr>
+        <td>tabindex</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Определяет последовательность перехода между кнопками при нажатии на <code>Tab</code>.</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Значение, отправляемое на сервер. По умолчанию пустое.</td>
     </tr>
 </table>
 
@@ -164,29 +148,18 @@
 <li>normal</li>
 </ul>
 <p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
-<p>Наглядно видно на примерах ниже:</p>
+<p>Наглядно показано на примерах ниже:</p>
 <p><strong>default</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;Тема не указана&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/pxTNfkqsHxpJmDhwS0QK2QBs3ZY -->
+
 <p><strong>simple</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;simple&#39; },
-    text : &#39;Тема simple&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/KtCevfKa_rzm7MTQMzA65Z0ZREU -->
+
 <p><strong>normal</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    text : &#39;Тема normal&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/Rb77AVqNcSM2UUBxbCkUkHULKWc -->
+
 <h3 id="-_size-">Размеры кнопок <code>_size</code></h3>
-<p>Задает размер всем типам кнопок. Обязательный модификатор.</p>
+<p>Обязательный модификатор. Задает размер всем типам кнопок.</p>
 <p>Реализован только в теме <em>normal</em>.</p>
 <p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
 <table>
@@ -255,131 +228,56 @@
 </table>
 
 <h3 id="-_type-">Типы кнопок <code>_type</code></h3>
-<p>Блок может быть представлен в виде кнопки-ссылки (<code>_type_link</code>).
-Дополнительно во входных данных необходимо указать обязательный атрибут <code>url</code>. В таком случае кнопка получает тег <code>&lt;a&gt;</code>, а значение <code>url</code> становится атрибутом <code>href</code>.</p>
-<pre><code>{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;link&#39; },
-    url : &#39;#&#39;,
-    text : &#39;Кнопка-ссылка&#39;
-}
-</code></pre><h3 id="-">Состояния</h3>
+<p>Блок может быть представлен в виде кнопки-ссылки (<code>_type_link</code>) и кнопки отправки формы (<code>_type_submit</code>).
+В случак кнопки-ссылки, дополнительно во входных данных необходимо указать обязательный атрибут <code>url</code>. В таком случае кнопка получает тег <code>&lt;a&gt;</code>, а значение <code>url</code> становится атрибутом <code>href</code>.</p>
+<p><strong>Кнопка-ссылка</strong></p>
+<!-- bem-example: touch-phone.examples/attach/El0pc_bZgByjhimDRiJmaUa0ubw -->
+
+<p><strong>Кнопка отправки формы</strong></p>
+<!-- bem-example: touch-phone.examples/attach/gtF_RY9_ivjSx1sADQLwlLOSzmo -->
+
+<h3 id="-">Состояния</h3>
 <h4 id="-_disabled-">Неактивна <code>_disabled</code></h4>
 <p>В состоянии «неактивна» кнопка видна, но недоступна для действий пользователя.</p>
 <p>Такая кнопка не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами.</p>
-<pre><code class="lang-bemjsom">{
-    block : &#39;button&#39;,
-    text : &#39;Неактивна&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true }
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/VrNTsucLZEWlatBulG8rqd0wHxQ -->
+
 <h4 id="-_focused-">В фокусе <code>_focused</code></h4>
-<p>В состоянии блока <code>focused</code> со значением <code>true</code> кнопка всегда находится в фокусе. Нажатие по ней можно выполнить клавишей <code>Space</code> или <code>Enter</code>. Переход по контролам формы осуществляется клавишей <code>Tab</code>.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;В фокусе&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, focused : true }
-}
-</code></pre>
+<p>В состоянии блока <code>focused</code> со значением <code>true</code> кнопка всегда находится в фокусе. Нажатие по ней можно выполнить клавишей <code>Space</code> или <code>Enter</code>.</p>
+<!-- bem-example: touch-phone.examples/attach/ByAZ1dHx4rZKUf9zbxuHmfOmGNs -->
+
 <h4 id="-_hovered-">Наведение курсором <code>_hovered</code></h4>
 <p>Определяет действие «наведение курсором» на кнопку.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;Наведение курсором&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, hovered : true }
-}
-</code></pre>
 <h4 id="-_pressed-">Нажатие <code>_pressed</code></h4>
 <p>Определяет состояние «нажатие на кнопку» (действие).</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;Кнопка нажата&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pressed : true }
-}
-</code></pre>
 <h4 id="-_togglable-">Залипание <code>_togglable</code></h4>
-<p>Определяет состояние кнопки в нажатом состоянии, когда первый клик по кнопке нажимает ее, а второй возвращает в исходное состояние.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;Кнопка зажата&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, togglable : true }
-}
-</code></pre>
+<p>Позволяет реализовать залипание кнопки. Допустимые значения: <code>check</code> и <code>radio</code>.</p>
+<!-- bem-example: touch-phone.examples/attach/NYbJzppv5-r9T8LQ0_-SaNLJWds -->
+
 <h4 id="-_action-">Визуальное выделение <code>_action</code></h4>
 <p>Визуально выделяет кнопку на странице.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, action : true },
-    type : &#39;submit&#39;,
-    text : &#39;Action&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/X1_VUgD2DCMkTeRUN6Vd4diR7Yk -->
+
 <h4 id="-_pseudo-">Псевдокнопка <code>_pseudo</code></h4>
-<p>При выборе модификатора <code>_pseudo</code> со значением <code>true</code>, кнопка получает прозрачный фон.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true },
-    text : &#39;Псевдокнопка&#39;
-}
-</code></pre>
+<p>При выборе модификатора <code>pseudo</code> со значением <code>true</code>, кнопка получает прозрачный фон.</p>
+<!-- bem-example: touch-phone.examples/attach/h_ijyu_mqbPaJBB22OxZERaFyZA -->
+
 <p>В неактивном состоянии границы псевдокнопки исчезают и она сливается со страницей.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, pseudo : true, disabled : true },
-    text : &#39;Псевдокнопка&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/igxPz7KCvCVG6TTxlXRYzE2_5pI -->
+
 <h2 id="-">Элементы блока</h2>
 <h3 id="__text">__text</h3>
 <p>Технический элемент. Обрамляет текст кнопки.
 Нужен для позиционирования текста внутри кнопки, в том числе для случаев использования вместе с иконкой.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    icon : {
-        block : &#39;icon&#39;,
-        mods : { action : &#39;download&#39; }
-    },
-    text : &#39;Кнопка с иконкой&#39;
-}
-</code></pre>
-<h2 id="-">Зависимости</h2>
-<ul>
-<li><code>base-control</code></li>
-<li><code>i-bem__dom</code></li>
-<li><code>keyboard</code></li>
-</ul>
+<!-- bem-example: touch-phone.examples/attach/RQ8YcvhxhqjSwO3I3VjLBOanRns -->
 
 <h1 id="icon">icon</h1>
 <p>Блок <code>icon</code> используется в качестве графического элемента в других блоках. В HTML представлен тегом <code>&lt;i&gt;</code>. Иконка задается через свойство <code>background</code> и, соответственно, не имеет возможности фоллбека.</p>
 <p>Иконку можно передать как через модификатор, так и через поле <code>url</code>:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;icon&#39;,
-    mods : { social : &#39;twitter&#39; }
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;icon&#39;,
-    url : &#39;../../../test.blocks/icon/_action/download.svg&#39;
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;Кнопка с иконкой&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    icon : {
-        block : &#39;icon&#39;,
-        mods : { social : &#39;twitter&#39; }
-    }
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;button&#39;,
-    text : &#39;with icon&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    icon : {
-        block : &#39;icon&#39;,
-        url : &#39;../../../test.blocks/icon/_action/download.svg&#39;
-    }
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/attach/b2PchFG0vbxDCGt-_1VzrN-GK0 -->
+
+<!-- bem-example: touch-phone.examples/attach/bek_pi0vSgei-mm8QD-H3qy_E0c -->
+
+<!-- bem-example: touch-phone.examples/attach/bqsLdaiup-wWnOz-fYrlos47T_c -->
+
+<!-- bem-example: touch-phone.examples/attach/w_tWuwVyYuwv7N6i7jChuJOj8Vc -->

@@ -18,8 +18,8 @@ dropRequireCache(require, require.resolve("../../../node_modules/bh/lib/bh.js"))
 var BH = require("../../../node_modules/bh/lib/bh.js");
 var bh = new BH();
 bh.setOptions({
-jsAttrName: 'onclick',
-jsAttrScheme: 'js'
+jsAttrName: 'data-bem',
+jsAttrScheme: 'json'
 })
 dropRequireCache(require, require.resolve("../../../libs/bem-core/common.blocks/page/page.bh.js"));
 require("../../../libs/bem-core/common.blocks/page/page.bh.js")(bh);
@@ -39,6 +39,10 @@ dropRequireCache(require, require.resolve("../../../common.blocks/menu-item/menu
 require("../../../common.blocks/menu-item/menu-item.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/menu/_focused/menu_focused.bh.js"));
 require("../../../common.blocks/menu/_focused/menu_focused.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/menu/__group/menu__group.bh.js"));
+require("../../../common.blocks/menu/__group/menu__group.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/menu/__group-title/menu__group-title.bh.js"));
+require("../../../common.blocks/menu/__group-title/menu__group-title.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/button/button.bh.js"));
 require("../../../common.blocks/button/button.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/button/__text/button__text.bh.js"));
@@ -49,10 +53,6 @@ dropRequireCache(require, require.resolve("../../../common.blocks/menu-item/_typ
 require("../../../common.blocks/menu-item/_type/menu-item_type_link.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/link/link.bh.js"));
 require("../../../common.blocks/link/link.bh.js")(bh);
-dropRequireCache(require, require.resolve("../../../common.blocks/menu/__group/menu__group.bh.js"));
-require("../../../common.blocks/menu/__group/menu__group.bh.js")(bh);
-dropRequireCache(require, require.resolve("../../../common.blocks/menu/__group-title/menu__group-title.bh.js"));
-require("../../../common.blocks/menu/__group-title/menu__group-title.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/icon/icon.bh.js"));
 require("../../../common.blocks/icon/icon.bh.js")(bh);
 module.exports = bh;

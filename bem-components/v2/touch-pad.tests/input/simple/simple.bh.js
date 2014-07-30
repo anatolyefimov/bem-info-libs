@@ -18,8 +18,8 @@ dropRequireCache(require, require.resolve("../../../node_modules/bh/lib/bh.js"))
 var BH = require("../../../node_modules/bh/lib/bh.js");
 var bh = new BH();
 bh.setOptions({
-jsAttrName: 'onclick',
-jsAttrScheme: 'js'
+jsAttrName: 'data-bem',
+jsAttrScheme: 'json'
 })
 dropRequireCache(require, require.resolve("../../../libs/bem-core/common.blocks/page/page.bh.js"));
 require("../../../libs/bem-core/common.blocks/page/page.bh.js")(bh);
@@ -41,16 +41,14 @@ dropRequireCache(require, require.resolve("../../../common.blocks/input/__contro
 require("../../../common.blocks/input/__control/input__control.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../touch.blocks/input/__control/input__control.bh.js"));
 require("../../../touch.blocks/input/__control/input__control.bh.js")(bh);
-dropRequireCache(require, require.resolve("../../../common.blocks/input/_has-clear/input_has-clear.bh.js"));
-require("../../../common.blocks/input/_has-clear/input_has-clear.bh.js")(bh);
-dropRequireCache(require, require.resolve("../../../common.blocks/input/__clear/input__clear.bh.js"));
-require("../../../common.blocks/input/__clear/input__clear.bh.js")(bh);
-dropRequireCache(require, require.resolve("../../../common.blocks/input/__label/input__label.bh.js"));
-require("../../../common.blocks/input/__label/input__label.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/input/_type/input_type_search.bh.js"));
 require("../../../common.blocks/input/_type/input_type_search.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/input/_type/input_type_textarea.bh.js"));
 require("../../../common.blocks/input/_type/input_type_textarea.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/input/_has-clear/input_has-clear.bh.js"));
+require("../../../common.blocks/input/_has-clear/input_has-clear.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/input/__clear/input__clear.bh.js"));
+require("../../../common.blocks/input/__clear/input__clear.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/input/_type/input_type_password.bh.js"));
 require("../../../common.blocks/input/_type/input_type_password.bh.js")(bh);
 module.exports = bh;

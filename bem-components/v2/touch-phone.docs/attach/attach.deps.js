@@ -14,7 +14,7 @@ exports.deps = [
         "block": "attach"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "dom"

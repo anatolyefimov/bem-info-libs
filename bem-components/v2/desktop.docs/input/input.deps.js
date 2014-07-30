@@ -26,7 +26,7 @@ exports.deps = [
         "mod": "focused"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "dom"

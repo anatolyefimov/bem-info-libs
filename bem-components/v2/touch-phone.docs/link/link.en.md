@@ -1,8 +1,206 @@
-# base-control
+# link
 
-Auxiliary block designed to implement the common functionality of the most blocks of [bem-components](https://github.com/bem/bem-components) library to provide them `focused` and `disabled` states: [attach](https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.en.md), [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md), [checkbox](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.en.title.txt), [input], [link], [menu], [radio].
+A `link` block is used for a various types of links creation. It allows to manage state, behaviour and appearance of a links.
 
-The block uses the following methods:
+## link use cases
+
+The block is used for creation of following link types:
+
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Basic link</td>
+        <td>Is used to set up various kinds of links. A default type.</td>
+        <td>
+            <pre><code>
+{
+    block : 'link',
+    url : ' #',
+    content : 'link'
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Pseudo link</td>
+        <td>The variation of link that will not be followed by a browser on click. Used mainly for scripts invocation.
+        </td>
+        <td>
+            <pre><code>
+{
+    block : 'link',
+    mods : { pseudo : true, theme: 'normal' },
+    content : 'pseudo'
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+
+## Valid block's attributes
+
+Valid block's attributes can be specified in the corresponding fields of block's BEMJSON declaration:
+
+<table>
+    <tr>
+        <th align="center">Attributes</th>
+        <th align="center">Type</th>
+        <th align="center">Description</th>
+    </tr>
+    <tr>
+        <td>url</td>
+        <td><code>String|BEMJSON</code></td>
+        <td>Link's URL. If presented an <code>url</code> value, will renders to <code>href</code> HTML attribute. Is mandatory for a normal link. If BEMJSON is passed as the value, it will be processed and will return the string.</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td><code>String</code></td>
+        <td>Popup label's text.</td>
+    </tr>  
+    <tr>
+        <td>target</td>
+        <td><code>String</code></td>
+        <td>Target window. Mainly used with a <code>_blank</code> value to open the link in new window.</td>
+    </tr>
+    <tr>
+        <td>tabIndex</td>
+        <td><code>Number</code></td>
+        <td>Index to define an order of links focusing on <code>Tab</code> key press. Will be rendered to native <code>tabindex</code> HTML attribute.</td>
+    </tr>
+</table>
+
+
+## Block's modifiers
+
+### The themes `_theme`
+
+ * simple
+ * normal
+
+If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+
+For example:
+
+#### default
+```bemjson
+{
+    block : 'link',
+    url : '#',
+    content : 'link'
+}
+```
+
+
+#### simple
+
+```bemjson
+{
+    block : 'link',
+    mods : { theme : 'simple' },
+    url : '#',
+    content : 'link'
+}
+```
+
+
+#### normal
+
+```bemjson
+{
+    block : 'link',
+    mods : { theme : 'normal' },
+    url : '#',
+    content : 'link'
+}
+```
+
+
+### Pseudo link `_pseudo`
+
+```bemjson
+{
+    block : 'link',
+    mods : {
+        theme : 'normal',
+        pseudo : true
+    },
+    title : 'pseudo mod are toggled',
+    content : 'link'
+}
+```
+
+
+### Link's states
+
+#### In focus `_focused`
+
+A `_focused` modifier is automaticly toggles to the block when it is in focus. For example, on mouse click or by `Tab` key press. Focused link can be followed by Enter key press.
+
+Available for all block themes.
+
+```
+{
+    block : 'link',
+    mods : {
+        theme : 'normal',
+        focused : true
+    },
+    url : '#',
+    content : '_focused'
+}
+```
+
+### Inactive `_disabled`
+
+A `_disabled` modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  
+
+For such a link will not be performed:
+
+* `_focused` state modifier toggling, when in focus;
+* redirection to the link address if an `url` attribute is provided;
+* `click` BEM event emiting.
+
+Available for all block themes.
+
+```bemjson
+{
+    block : 'link',
+    mods : {
+        theme : 'normal',
+        disabled : true
+    },
+    url : '#',
+    content : '_disabled'
+}
+```
+
+## Dependencies
+
+The block depends on:
+
+* `control`
+* `i-bem__dom`
+
+# control
+
+Auxiliary block designed for common functionality implementation to provide the most blocks of [bem-components](https://github.com/bem/bem-components) library with `focused` and `disabled` states:
+
+* [attach](../attach/attach.en.md)
+* [button](../button/button.en.md)
+* [checkbox](../checkbox/checkbox.en.md)
+* [input](../input/input.en.md)
+* [link](../link/link.en.md)
+* [menu](../menu/menu.en.md)
+* [radio](../radio/radio.en.md)
+
+The `control` block provides valid `tabIndex` attribute value depending on the current state of a block.
+
+The block uses following methods:
 
 <table>
     <tr>
@@ -10,19 +208,11 @@ The block uses the following methods:
         <th>Description</td>
     </tr>
     <tr>
-        <td>`beforesetMod`</td>
-        <td>Provides the block behavior before the modifier is set. Checks the block active state. If block is `disabled` it cannot be `focused`.</td>
-    </tr>
-    <tr>
-        <td>`setMod`</td>
-        <td>Provides `focused` or `disabled` modifier to the block.</td>
+        <td>`getVal`</td>
+        <td>Returns a control's value.</td>
     </tr>
     <tr>
         <td>`getName`</td>
-        <td>Returns the name of the control (if available). If a control name is not available, returns an empty string.</td>
-    </tr>
-    <tr>
-        <td>`getVal`</td>
-        <td>Returns control value.</td>
+        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
     </tr>
 </table>

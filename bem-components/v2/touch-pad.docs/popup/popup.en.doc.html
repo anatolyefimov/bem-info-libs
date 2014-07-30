@@ -1,0 +1,116 @@
+<h1 id="popup">popup</h1>
+<p>A <code>popup</code> block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.</p>
+<p>Popup can be displayed by different page elements like pseudo links or buttons.</p>
+<p>At the moment of first display (<code>_visible</code> modifier toggle) block&#39;s DOM element is created in the end of document <code>&lt;body&gt;</code>.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to block.</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/popup/Uhdsvnf2MsxKNrQy7w6uLKTxdek -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/popup/7PzT7oA6awlAKgFGXccAdhfz0n0 -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/popup/L1MMDUGHLM4djlDaj5mhiKHvDH8 -->
+
+<h3 id="visibility-_visible-">Visibility <code>_visible</code></h3>
+<p>A <code>_visible</code> modifier allow to control block visibility. If it&#39;s not set, block will not be displayed.</p>
+<!-- bem-example: touch-pad.examples/popup/m6WdfiXJP4RkxnBzEuzumr9C4w0 -->
+
+
+<h3 id="alignment-respect-to-its-parent-_direction-">Alignment respect to its parent <code>_direction</code></h3>
+<p>Modifier controls the position of popup window relative to the block which opened it – popup&#39;s alignment. Popup window&#39;s position is detected automatically basing on the admissible directions array and the parent block&#39;s position.</p>
+<p>Chosen alignment will affect the opening animation direction.</p>
+<p>By default following admissible directions array is used:</p>
+<table>
+    <tr>
+        <th> Direction </td>
+        <th> Index in array </td>
+    </tr>
+        <td> bottom-left </td>
+        <td> 0 </td>
+    </tr>
+    <tr>
+        <td> bottom-center </td>
+       <td> 1 </td>
+   </tr>
+    <tr>
+        <td> bottom-right</td>
+        <td> 2 </td>
+    </tr>
+    <tr>
+        <td> top-left </td>
+        <td> 3 </td>
+    </tr>
+    <tr>
+        <td> top-center </td>
+        <td> 4 </td>
+    </tr>
+    <tr>
+        <td> top-right </td>
+        <td> 5 </td>
+    </tr>
+    <tr>
+        <td> right-top </td>
+        <td> 6 </td>
+    </tr>
+    <tr>
+        <td> right-center </td>
+        <td> 7 </td>
+    </tr>
+    <tr>
+        <td> right-bottom </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <td> left-top </td>
+        <td> 9 </td>
+    </tr>
+    <tr>
+        <td> left-center </td>
+        <td> 10 </td>
+    </tr>
+    <tr>
+        <td> left-bottom </td>
+        <td> 11 </td>
+    </tr>
+</table>
+
+<p>To control the popup window position you can provide directions array with desired directions set only. According to parent block&#39;s position on a page the most suitable directions will be chosen among the provided values.</p>
+<p>For example, if the popup window should be opened at the top of the parent block:</p>
+<!-- bem-example: touch-pad.examples/popup/ROJZHxrl71CFbWiWU5Ry_Q0Jbhw -->
+
+
+<p>Or if it should be opened strictly at the center-right position:</p>
+<!-- bem-example: touch-pad.examples/popup/VE0JWgs-I2gVU8suKC3_eTK29EE -->
+
+
+<h3 id="automatic-closure-_autoclosable-">Automatic closure  <code>_autoclosable</code></h3>
+<p>With <code>_autoclosable</code> modifier toggled block will automatically hide away on mouse click outside popup window (<code>_visible</code> modifier will be removed).</p>
+<!-- bem-example: touch-pad.examples/popup/M1T2dIuSVeBoluZEMgCmA90Stgc -->
+
+
+<h2 id="relations-between-popup-s">Relations between popup&#39;s</h2>
+<p>As long as popup&#39;s parent block itself can be nested in another popup block there is a need in a popup&#39;s relations handling. Block can handle Parent → [ Child, Child, ... ] relations by checking if the parent block is nested in another popup block. So, the children knows about the parent blocks existence.</p>
+<p>If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that <code>_autoclosable</code> modifier is set to <code>true</code>.</p>
+<p>This means that with <code>autoclosable</code> modifier toggled block will close itself and close all of it children on mouse click outside block&#39;s window or it child&#39;s window.</p>
+<p>Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>The block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>jquery</code></li>
+<li><code>dom</code></li>
+<li><code>objects</code></li>
+<li><code>functions__throttle</code></li>
+<li><code>keyboard</code></li>
+<li><code>ua</code></li>
+<li><code>jquery__event_pointer</code></li>
+</ul>

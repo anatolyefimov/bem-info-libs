@@ -96,11 +96,14 @@ exports.deps = [
     },
     {
         "block": "icon",
-        "mod": "social"
+        "mod": "action"
     },
     {
         "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "mod": "action",
+        "val": "download"
+    },
+    {
+        "block": "image"
     }
 ];

@@ -18,8 +18,8 @@ dropRequireCache(require, require.resolve("../../../node_modules/bh/lib/bh.js"))
 var BH = require("../../../node_modules/bh/lib/bh.js");
 var bh = new BH();
 bh.setOptions({
-jsAttrName: 'onclick',
-jsAttrScheme: 'js'
+jsAttrName: 'data-bem',
+jsAttrScheme: 'json'
 })
 dropRequireCache(require, require.resolve("../../../libs/bem-core/common.blocks/page/page.bh.js"));
 require("../../../libs/bem-core/common.blocks/page/page.bh.js")(bh);
@@ -45,4 +45,6 @@ dropRequireCache(require, require.resolve("../../../common.blocks/button/_type/b
 require("../../../common.blocks/button/_type/button_type_link.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/icon/icon.bh.js"));
 require("../../../common.blocks/icon/icon.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/image/image.bh.js"));
+require("../../../common.blocks/image/image.bh.js")(bh);
 module.exports = bh;

@@ -335,6 +335,8 @@ function templates(template, local, apply, applyNext, oninit) {
 /// ------ BEM-XJST User-code Start -----
 /// -------------------------------------
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/* global oninit */
+
 oninit(function(exports, context) {
 
 var undef,
@@ -373,19 +375,19 @@ var MOD_DELIM = '_',
 
 function buildModPostfix(modName, modVal) {
     var res = MOD_DELIM + modName;
-    if (modVal !== true) res += MOD_DELIM + modVal;
+    if(modVal !== true) res += MOD_DELIM + modVal;
     return res;
 }
 
 function buildBlockClass(name, modName, modVal) {
     var res = name;
-    if (modVal) res += buildModPostfix(modName, modVal);
+    if(modVal) res += buildModPostfix(modName, modVal);
     return res;
 }
 
 function buildElemClass(block, name, modName, modVal) {
     var res = buildBlockClass(block) + ELEM_DELIM + name;
-    if (modVal) res += buildModPostfix(modName, modVal);
+    if(modVal) res += buildModPostfix(modName, modVal);
     return res;
 }
 
@@ -503,11 +505,11 @@ function BEMContext(context, apply_) {
     // Compatibility stuff, just in case
     var _this = this;
     this._buf = {
-        push: function() {
+        push : function() {
             var chunks = slice.call(arguments).join('');
             _this._str += chunks;
         },
-        join: function() {
+        join : function() {
             return this._str;
         }
     };
@@ -655,14 +657,13 @@ match(this._mode === '')(
 );
 
 def()(function() {
-    var _this = this,
-        BEM_INTERNAL = _this.BEM.INTERNAL,
+    var BEM_INTERNAL = this.BEM.INTERNAL,
         ctx = this.ctx,
         isBEM,
         tag,
         res;
 
-    local({ _str: '' })(function() {
+    local({ _str : '' })(function() {
         var vBlock = this.block;
 
         tag = apply('tag');
@@ -693,7 +694,7 @@ def()(function() {
                     this._str += BEM_INTERNAL.buildClasses(vBlock, ctx.elem, ctx.elemMods || ctx.mods);
 
                     var mix = apply('mix');
-                    ctx.mix && (mix = mix? mix.concat(ctx.mix) : ctx.mix);
+                    ctx.mix && (mix = mix? [].concat(mix, ctx.mix) : ctx.mix);
 
                     if(mix) {
                         var visited = {},
@@ -708,15 +709,15 @@ def()(function() {
                         for(var i = 0; i < mix.length; i++) {
                             var mixItem = mix[i],
                                 hasItem = mixItem.block || mixItem.elem,
-                                mixBlock = mixItem.block || mixItem._block || _this.block,
-                                mixElem = mixItem.elem || mixItem._elem || _this.elem;
+                                mixBlock = mixItem.block || mixItem._block || this.block,
+                                mixElem = mixItem.elem || mixItem._elem || this.elem;
 
                             hasItem && (this._str += ' ');
 
                             this._str += BEM_INTERNAL[hasItem? 'buildClasses' : 'buildModsClasses'](
                                 mixBlock,
                                 mixItem.elem || mixItem._elem ||
-                                    (mixItem.block? undefined : _this.elem),
+                                    (mixItem.block? undefined : this.elem),
                                 mixItem.elemMods || mixItem.mods);
 
                             if(mixItem.js) {
@@ -820,7 +821,9 @@ content()(function() { return this.ctx.content; });
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
 block('page')(
 
-    def()(function() {
+    def().match(function() { return !this._defPageApplied; })(function() {
+        this._defPageApplied = true;
+
         var ctx = this.ctx;
         applyCtx([
             ctx.doctype || '<!DOCTYPE html>',
@@ -839,27 +842,22 @@ block('page')(
                             ctx.favicon? { elem : 'favicon', url : ctx.favicon } : ''
                         ]
                     },
-                    // Добавляем элемент, чтобы сработал другой шаблон и не было зацикливания
-                    this.extend(ctx, { elem : 'body' })
+                    ctx
                 ]
             }
         ]);
+
+        this._defPageApplied = false;
     }),
 
-    elem('body')(
-        tag()('body'),
-        content()(function() {
-            return [
-                applyNext(),
-                this.ctx.scripts
-            ];
-        }),
-        def()(function() {
-            // Обратно очищаем поле elem, чтобы сохранить правильный контекст
-            this.ctx.elem = null;
-            applyNext();
-        })
-    ),
+    tag()('body'),
+
+    content()(function() {
+        return [
+            applyNext(),
+            this.ctx.scripts
+        ];
+    }),
 
     elem('head')(
         bem()(false),
@@ -888,7 +886,7 @@ block('page')(
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/desktop.blocks/page/page.bemhtml */
 block('page')(
     elem('head')(
-        content()(function () {
+        content()(function() {
             return [
                 this.ctx['x-ua-compatible'] === false ?
                     false :
@@ -986,48 +984,59 @@ block('ua').content()(function() {
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/ua/__svg/ua__svg.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/link.bemhtml */
 block('link')(
+    def()(function() {
+        var ctx = this.ctx;
+        typeof ctx.url === 'object' && // url could contain bemjson
+            (ctx.url = this.reapply(ctx.url));
+        applyNext();
+    }),
+
     tag()('a'),
 
     js()(true),
 
-    // Implements `base-control`'s interface
+    // NOTE: mix below is to satisfy interface of `control`
     mix()([{ elem : 'control' }]),
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {
-                tabindex : ctx.tabIndex
-            },
-            url = ctx.url,
-            typeOfUrl = typeof url;
+            attrs = {},
+            tabIndex;
 
-        typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
-            url :
-            this.reapply(url)); // url could contain bemjson
+        if(!this.mods.disabled) {
+            if(ctx.url) {
+                attrs.href = ctx.url;
+                tabIndex = ctx.tabIndex;
+            } else {
+                tabIndex = ctx.tabIndex || 0;
+            }
+        }
 
-        // default value for tabindex in case of link \wo href, so link could be focusable
-        typeof attrs.href === 'undefined' &&
-            typeof attrs.tabindex === 'undefined' &&
-            (attrs.tabindex = 0);
+        typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);
 
         ctx.title && (attrs.title = ctx.title);
         ctx.target && (attrs.target = ctx.target);
 
         return attrs;
-    })
-)
+    }),
+
+    mod('disabled', true)
+        .js()(function() {
+            return this.extend(applyNext(), { url : this.ctx.url });
+        })
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/link.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/_pseudo/link_pseudo.bemhtml */
 block('link').mod('pseudo', true)(
-    tag().match(function() { return !this.ctx.url })('span')
-)
+    tag().match(function() { return !this.ctx.url; })('span')
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/_pseudo/link_pseudo.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.bemhtml */
 block('popup')(
     js()(true)
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/input.bemhtml */
@@ -1035,26 +1044,21 @@ block('input')(
     tag()('span'),
     js()(true),
     def()(function() {
-        var ctx = this.ctx;
-        ctx.id = ctx.id || this.generateId();
-        applyNext({ _input: ctx })
+        applyNext({ _input : this.ctx });
     }),
     content()(
         function() {
-            var ctx = this.ctx, content = [{ elem: 'control' }];
-            // NOTE: not made in separate templates for perf optimization
-            ctx.label && this.mods['has-label'] && content.unshift({ elem: 'label', content: ctx.label });
-            return content;
+            return { elem : 'box', content : { elem : 'control' } };
         },
-        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
             return this.ctx.content;
         })
     )
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/input.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/__box/input__box.bemhtml */
-block('input').elem('box').tag()('span')
+block('input').elem('box').tag()('span');
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/__box/input__box.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/__control/input__control.bemhtml */
@@ -1065,30 +1069,20 @@ block('input').elem('control')(
     attrs()(function() {
         var input = this._input,
             attrs = {
-                id: input.id,
-                name: input.name,
-                value: input.val,
-                maxlength: input.maxLength,
-                tabindex: input.tabIndex,
-                placeholder: input.placeholder
+                id : input.id,
+                name : input.name,
+                value : input.val,
+                maxlength : input.maxLength,
+                tabindex : input.tabIndex,
+                placeholder : input.placeholder
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');
         this.mods.disabled && (attrs.disabled = 'disabled');
 
         return attrs;
-    }),
-
-    def().match(function() { return !this._input__control })(function() {
-        applyCtx(
-            { '_input__control': true },
-            {
-                elem: 'box',
-                content: this.ctx
-            })
     })
-
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/input/__control/input__control.bemhtml */;
 /// -------------------------------------

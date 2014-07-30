@@ -19,12 +19,25 @@ exports.deps = [
         "block": "link"
     },
     {
+        "block": "link",
+        "mod": "disabled",
+        "val": true
+    },
+    {
         "block": "link-content"
     },
     {
         "block": "link",
         "mod": "pseudo",
         "val": true
+    },
+    {
+        "block": "icon"
+    },
+    {
+        "block": "icon",
+        "mod": "action",
+        "val": "download"
     },
     {
         "block": "link",

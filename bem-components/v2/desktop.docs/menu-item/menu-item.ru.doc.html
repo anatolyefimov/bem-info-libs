@@ -1,5 +1,5 @@
 <h1 id="menu-item">menu-item</h1>
-<p>Блок <code>menu-item</code> служит для создания пунктов меню или селекта. Используется внутри блока <code>menu</code>. Блок <code>menu-item</code> предоставляет возможность изменять состояние, содержимое и порядок отображения пунктов меню.</p>
+<p>Блок <code>menu-item</code> служит для создания пунктов меню или селекта. Используется внутри блока <code>menu</code>. Блок <code>menu-item</code> предоставляет возможность изменять состояние, содержимое и тип пунктов меню.</p>
 <p>Блок <code>menu-item</code> в результате BEMHTML-преобразований на странице становится HTML-элементом с тегом <code>&lt;div&gt;</code> со свойством <code>role=&quot;menuitem&quot;</code>.</p>
 <h2 id="-">Варианты использования пунктов меню</h2>
 <p>Блок <code>menu-item</code> служит для создания различных типов пунктов меню:</p>
@@ -59,86 +59,55 @@
 
 
 <h2 id="-">Модификаторы блока</h2>
+<h3 id="-_theme-">Темы блока <code>_theme</code></h3>
+<ul>
+<li>simple   </li>
+<li>normal  </li>
+</ul>
+<p>Без указания темы к блоку применяются значения, установленные браузером по умолчанию (<em>default</em>).</p>
+<p>Наглядно видно на примерах ниже:</p>
+<h4 id="default">default</h4>
+<!-- bem-example: desktop.examples/menu-item/eV0q9qK02nCPsMxztjMtbDnRz7U -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: desktop.examples/menu-item/BxhdTuPatcCVRdT_1B8cW6OHGQ0 -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: desktop.examples/menu-item/snjxOm4SOT8_nFgCXdf2BKaL_Xs -->
+
+
 <h3 id="-_type-">Типы блока <code>_type</code></h3>
 <p>Модификатор <code>_type</code> в значении <code>_link</code> позволяет создавать пункт меню-ссылку. Блок <code>link</code> при этом помещается в поле <code>content</code> BEMJSON-декларации блока. Если модификатор <code>_type_link</code> не установлен, вложенная ссылка будет доступна для действий пользователя при установленном модификаторе <code>_disabled</code>.</p>
 <p>Реализован во всех темах блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        type : &#39;link&#39; 
-    },
-    content : {
-        block : &#39;link&#39;,
-        url : &#39;#&#39;,
-        content : &#39;Link 1&#39;
-    }
-}
-</code></pre>
+<!-- bem-example: desktop.examples/menu-item/47lHiiyDspaBs5AiC22G42Y-N_o -->
+
+
 <h3 id="-">Состояния блока</h3>
 <h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
 <p>В состоянии &quot;неактивен&quot; пункт меню отображается, но недоступен для действий пользователя.  </p>
 <p>Такой пункт меню не изменяет состояние при щелчке мышью. Если для блока установлен модификатор <code>_type_link</code>, переход по ссылке не осуществляется. </p>
 <p>Реализован во всех темах блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        disabled : true 
-    },
-    content : &#39;_disabled&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/menu-item/00ejmLqt61w5ksAsfBl7KgE4dBE -->
+
+
 <h4 id="-_hovered-">Наведение курсором <code>_hovered</code></h4>
 <p>Определяет действие &quot;наведение курсором&quot; на пункт меню.</p>
 <p>Реализован во всех темах блока.</p>
 <p>Автоматически выставляется при наведении указателем мыши на пункт меню.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        hovered : true 
-    },
-    content : &#39;_hovered&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/menu-item/Sgw4iIN4STar-QE05xyBmgntftw -->
+
+
 <h4 id="-_checked-">Выбранный пункт меню <code>_checked</code></h4>
 <p>Модификатор задает выбранный пункт меню.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    content : &#39;_checked&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        checked : true 
-    }
-}
-</code></pre>
+<!-- bem-example: desktop.examples/menu-item/T77G-B0x1-Z9ZaPqpW_TAskNFI8 -->
+
+
 <p>В блоке <code>menu</code> модификатор <code>_checked</code> устанавливается для пункта при щелчке мышью:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;,
-        select : &#39;check&#39;
-    },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: desktop.examples/menu-item/sURVY49aNm3TBC1XVeOG1Q5_vi8 -->
+
+
 <h3 id="-">Зависимости блока</h3>
 <p>Блок <code>menu-item</code> зависит от следующего набора блоков и элементов:</p>
 <ul>

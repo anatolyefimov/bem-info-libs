@@ -192,7 +192,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [data] Additional data that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {BEM} this
      */
     on : function(e, data, fn, ctx) {
         if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
@@ -207,7 +207,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String|Object} [e] Event type
      * @param {Function} [fn] Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {BEM} this
      */
     un : function(e, fn, ctx) {
         if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
@@ -222,7 +222,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @protected
      * @param {String} e Event name
      * @param {Object} [data] Additional information
-     * @returns {this}
+     * @returns {BEM} this
      */
     emit : function(e, data) {
         var isModJsEvent = false;
@@ -346,7 +346,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [elem] Nested element
      * @param {String} modName Modifier name
      * @param {String} modVal Modifier value
-     * @returns {this}
+     * @returns {BEM} this
      */
     setMod : function(elem, modName, modVal) {
         if(typeof modVal === 'undefined') {
@@ -406,7 +406,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
             }
 
             this._processingMods[modId] = null;
-            this._emitModChangeEvents(modName, modVal, curModVal, elem, elemName);
+            needSetMod && this._emitModChangeEvents(modName, modVal, curModVal, elem, elemName);
         }
 
         return this;
@@ -440,7 +440,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String} modVal1 First modifier value
      * @param {String} [modVal2] Second modifier value
      * @param {Boolean} [condition] Condition
-     * @returns {this}
+     * @returns {BEM} this
      */
     toggleMod : function(elem, modName, modVal1, modVal2, condition) {
         if(typeof elem === 'string') { // if this is a block
@@ -479,7 +479,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @protected
      * @param {Object} [elem] Nested element
      * @param {String} modName Modifier name
-     * @returns {this}
+     * @returns {BEM} this
      */
     delMod : function(elem, modName) {
         if(!modName) {
@@ -549,7 +549,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * Executes given callback on next turn eventloop in block's context
      * @protected
      * @param {Function} fn callback
-     * @returns {this}
+     * @returns {BEM} this
      */
     nextTick : function(fn) {
         var _this = this;
@@ -594,9 +594,9 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
         typeof decl.block === 'undefined' && (decl.block = this.getName());
 
         var baseBlock;
-        if(typeof decl.baseBlock === 'undefined')
+        if(typeof decl.baseBlock === 'undefined') {
             baseBlock = blocks[decl.block] || this;
-        else if(typeof decl.baseBlock === 'string') {
+        } else if(typeof decl.baseBlock === 'string') {
             baseBlock = blocks[decl.baseBlock];
             if(!baseBlock)
                 throw('baseBlock "' + decl.baseBlock + '" for "' + decl.block + '" is undefined');
@@ -644,10 +644,13 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
             });
         }
 
-        decl.block === baseBlock.getName()?
+        if(decl.block === baseBlock.getName()) {
             // makes a new "live" if the old one was already executed
-            (block = inherit.self(baseBlocks, props, staticProps))._processLive(true) :
+            (block = inherit.self(baseBlocks, props, staticProps))._processLive(true);
+        } else {
             (block = blocks[decl.block] = inherit(baseBlocks, props, staticProps))._name = decl.block;
+            delete block._liveInitable;
+        }
 
         return block;
     },
@@ -693,7 +696,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [data] Additional data that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {Function} this
      */
     on : function(e, data, fn, ctx) {
         if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
@@ -708,7 +711,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String|Object} [e] Event type
      * @param {Function} [fn] Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {Function} this
      */
     un : function(e, fn, ctx) {
         if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
@@ -879,6 +882,7 @@ provide(/** @exports */{
 });
 
 });
+
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__internal/i-bem__internal.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/inherit/inherit.vanilla.js */
 /**
@@ -1391,7 +1395,7 @@ var undef,
          * @param {Object} [data] Additional data that the handler gets as e.data
          * @param {Function} fn Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         on : function(e, data, fn, ctx, _special) {
             if(typeof e === 'string') {
@@ -1437,7 +1441,7 @@ var undef,
          * @param {Object} [data] Additional data that the handler gets as e.data
          * @param {Function} fn Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         once : function(e, data, fn, ctx) {
             return this.on(e, data, fn, ctx, { once : true });
@@ -1448,7 +1452,7 @@ var undef,
          * @param {String} [e] Event type
          * @param {Function} [fn] Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         un : function(e, fn, ctx) {
             if(typeof e === 'string' || typeof e === 'undefined') {
@@ -1504,7 +1508,7 @@ var undef,
          * Fires event handlers
          * @param {String|events:Event} e Event
          * @param {Object} [data] Additional data
-         * @returns {this}
+         * @returns {Emitter} this
          */
         emit : function(e, data) {
             var storage = this[storageExpando],
@@ -1692,7 +1696,8 @@ function initBlock(blockName, domElem, params, forceLive, callback) {
     if(!(blockClass._liveInitable = !!blockClass._processLive()) || forceLive || params.live === false) {
         forceLive && domElem.addClass(BEM_CLASS); // add css class for preventing memory leaks in further destructing
 
-        block = uniqIdToBlock[uniqId] = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+        block = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+
         delete uniqIdToDomElems[uniqId];
         callback && callback.apply(block, Array.prototype.slice.call(arguments, 4));
         return block;
@@ -1824,6 +1829,8 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
          */
         this._uniqId = params.uniqId;
 
+        uniqIdToBlock[this._uniqId] = this;
+
         /**
          * @member {Boolean} Flag for whether it's necessary to unbind from the document and window when destroying the block
          * @private
@@ -1936,16 +1943,23 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {jQuery} domElem DOM element where the event will be listened for
      * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToDomElem : function(domElem, event, fn) {
+    bindToDomElem : function(domElem, event, data, fn) {
+        if(functions.isFunction(data)) {
+            fn = data;
+            data = undef;
+        }
+
         fn?
             domElem.bind(
                 this._buildEventName(event),
+                data,
                 $.proxy(fn, this)) :
             objects.each(event, function(fn, event) {
-                this.bindToDomElem(domElem, event, fn);
+                this.bindToDomElem(domElem, event, data, fn);
             }, this);
 
         return this;
@@ -1954,45 +1968,67 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
     /**
      * Adds an event handler to the document
      * @protected
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToDoc : function(event, fn) {
+    bindToDoc : function(event, data, fn) {
         this._needSpecialUnbind = true;
-        return this.bindToDomElem(doc, event, fn);
+        return this.bindToDomElem(doc, event, data, fn);
     },
 
     /**
      * Adds an event handler to the window
      * @protected
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToWin : function(event, fn) {
+    bindToWin : function(event, data, fn) {
         this._needSpecialUnbind = true;
-        return this.bindToDomElem(win, event, fn);
+        return this.bindToDomElem(win, event, data, fn);
     },
 
     /**
      * Adds an event handler to the block's main DOM elements or its nested elements
      * @protected
      * @param {jQuery|String} [elem] Element
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindTo : function(elem, event, fn) {
-        if(!event || functions.isFunction(event)) { // if there is no element
-            fn = event;
+    bindTo : function(elem, event, data, fn) {
+        var len = arguments.length;
+        if(len === 3) {
+            if(functions.isFunction(data)) {
+                fn = data;
+                if(typeof event === 'object') {
+                    data = event;
+                    event = elem;
+                    elem = this.domElem;
+                }
+            }
+        } else if(len === 2) {
+            if(functions.isFunction(event)) {
+                fn = event;
+                event = elem;
+                elem = this.domElem;
+            } else if(!(typeof elem === 'string' || elem instanceof $)) {
+                data = event;
+                event = elem;
+                elem = this.domElem;
+            }
+        } else if(len === 1) {
             event = elem;
             elem = this.domElem;
-        } else if(typeof elem === 'string') {
-            elem = this.elem(elem);
         }
 
-        return this.bindToDomElem(elem, event, fn);
+        typeof elem === 'string' && (elem = this.elem(elem));
+
+        return this.bindToDomElem(elem, event, data, fn);
     },
 
     /**
@@ -2001,7 +2037,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery} domElem DOM element where the event was being listened for
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromDomElem : function(domElem, event, fn) {
         if(typeof event === 'string') {
@@ -2023,7 +2059,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromDoc : function(event, fn) {
         return this.unbindFromDomElem(doc, event, fn);
@@ -2034,7 +2070,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromWin : function(event, fn) {
         return this.unbindFromDomElem(win, event, fn);
@@ -2046,7 +2082,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery|String} [elem] Nested element
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFrom : function(elem, event, fn) {
         var argLen = arguments.length;
@@ -2135,7 +2171,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery} [elem] Nested element
      * @param {String} modName Modifier name
      * @param {String} modVal Modifier value
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     setMod : function(elem, modName, modVal) {
         if(elem && typeof modVal !== 'undefined' && elem.length > 1) {
@@ -2344,7 +2380,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {String} [names] Nested element name (or names separated by spaces)
      * @param {String} [modName] Modifier name
      * @param {String} [modVal] Modifier value
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     dropElemCache : function(names, modName, modVal) {
         if(names) {
@@ -2463,9 +2499,17 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         if('live' in this) {
             var noLive = typeof res === 'undefined';
 
-            if(noLive ^ heedLive) {
+            if(noLive ^ heedLive) { // should be opposite to each other
                 res = this.live() !== false;
-                this.live = functions.noop;
+
+                var blockName = this.getName(),
+                    origLive = this.live;
+
+                this.live = function() {
+                    return this.getName() === blockName?
+                        res :
+                        origLive.apply(this, arguments);
+                };
             }
         }
 
@@ -2478,8 +2522,9 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @returns {jQuery} ctx Initialization context
      */
     init : function(ctx) {
-        if(typeof ctx === 'string') ctx = $(ctx);
-        else if(!ctx) ctx = DOM.scope;
+        if(typeof ctx === 'string') {
+            ctx = $(ctx);
+        } else if(!ctx) ctx = DOM.scope;
 
         var uniqInitId = identify();
         findDomElem(ctx, BEM_SELECTOR).each(function() {
@@ -2846,7 +2891,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {Object} [data] Additional information that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [fnCtx] Handler context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     _liveCtxBind : function(ctx, e, data, fn, fnCtx) {
         if(typeof e === 'object') {
@@ -3088,7 +3133,7 @@ provide(
     /**
      * @exports
      * @param {String} path resource link
-     * @param {Function} callback executes when resource is loaded
+     * @param {Function} cb executes when resource is loaded
      */
     function(path, cb) {
         if(loaded[path]) {

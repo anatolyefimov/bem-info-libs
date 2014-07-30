@@ -124,10 +124,21 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
-        "block": "base-control"
+        "block": "control"
+    },
+    {
+        "block": "link",
+        "mod": "disabled",
+        "val": true
     },
     {
         "block": "link-content"
@@ -140,6 +151,18 @@ exports.deps = [
         "block": "link",
         "mod": "pseudo",
         "val": true
+    },
+    {
+        "block": "icon"
+    },
+    {
+        "block": "icon",
+        "mod": "action"
+    },
+    {
+        "block": "icon",
+        "mod": "action",
+        "val": "download"
     },
     {
         "block": "link",

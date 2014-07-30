@@ -75,7 +75,7 @@ exports.deps = [
         "block": "events"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "dom"

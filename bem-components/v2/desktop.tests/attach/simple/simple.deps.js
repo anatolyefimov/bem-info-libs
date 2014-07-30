@@ -106,7 +106,7 @@ exports.deps = [
         "block": "attach"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "jquery",
@@ -128,6 +128,12 @@ exports.deps = [
         "elem": "event",
         "mod": "type",
         "val": "pointerclick"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
+        "val": "pointernative"
     },
     {
         "block": "jquery",

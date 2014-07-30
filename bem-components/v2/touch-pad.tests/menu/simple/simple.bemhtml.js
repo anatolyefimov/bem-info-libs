@@ -335,6 +335,8 @@ function templates(template, local, apply, applyNext, oninit) {
 /// ------ BEM-XJST User-code Start -----
 /// -------------------------------------
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/* global oninit */
+
 oninit(function(exports, context) {
 
 var undef,
@@ -373,19 +375,19 @@ var MOD_DELIM = '_',
 
 function buildModPostfix(modName, modVal) {
     var res = MOD_DELIM + modName;
-    if (modVal !== true) res += MOD_DELIM + modVal;
+    if(modVal !== true) res += MOD_DELIM + modVal;
     return res;
 }
 
 function buildBlockClass(name, modName, modVal) {
     var res = name;
-    if (modVal) res += buildModPostfix(modName, modVal);
+    if(modVal) res += buildModPostfix(modName, modVal);
     return res;
 }
 
 function buildElemClass(block, name, modName, modVal) {
     var res = buildBlockClass(block) + ELEM_DELIM + name;
-    if (modVal) res += buildModPostfix(modName, modVal);
+    if(modVal) res += buildModPostfix(modName, modVal);
     return res;
 }
 
@@ -503,11 +505,11 @@ function BEMContext(context, apply_) {
     // Compatibility stuff, just in case
     var _this = this;
     this._buf = {
-        push: function() {
+        push : function() {
             var chunks = slice.call(arguments).join('');
             _this._str += chunks;
         },
-        join: function() {
+        join : function() {
             return this._str;
         }
     };
@@ -655,14 +657,13 @@ match(this._mode === '')(
 );
 
 def()(function() {
-    var _this = this,
-        BEM_INTERNAL = _this.BEM.INTERNAL,
+    var BEM_INTERNAL = this.BEM.INTERNAL,
         ctx = this.ctx,
         isBEM,
         tag,
         res;
 
-    local({ _str: '' })(function() {
+    local({ _str : '' })(function() {
         var vBlock = this.block;
 
         tag = apply('tag');
@@ -693,7 +694,7 @@ def()(function() {
                     this._str += BEM_INTERNAL.buildClasses(vBlock, ctx.elem, ctx.elemMods || ctx.mods);
 
                     var mix = apply('mix');
-                    ctx.mix && (mix = mix? mix.concat(ctx.mix) : ctx.mix);
+                    ctx.mix && (mix = mix? [].concat(mix, ctx.mix) : ctx.mix);
 
                     if(mix) {
                         var visited = {},
@@ -708,15 +709,15 @@ def()(function() {
                         for(var i = 0; i < mix.length; i++) {
                             var mixItem = mix[i],
                                 hasItem = mixItem.block || mixItem.elem,
-                                mixBlock = mixItem.block || mixItem._block || _this.block,
-                                mixElem = mixItem.elem || mixItem._elem || _this.elem;
+                                mixBlock = mixItem.block || mixItem._block || this.block,
+                                mixElem = mixItem.elem || mixItem._elem || this.elem;
 
                             hasItem && (this._str += ' ');
 
                             this._str += BEM_INTERNAL[hasItem? 'buildClasses' : 'buildModsClasses'](
                                 mixBlock,
                                 mixItem.elem || mixItem._elem ||
-                                    (mixItem.block? undefined : _this.elem),
+                                    (mixItem.block? undefined : this.elem),
                                 mixItem.elemMods || mixItem.mods);
 
                             if(mixItem.js) {
@@ -820,7 +821,9 @@ content()(function() { return this.ctx.content; });
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
 block('page')(
 
-    def()(function() {
+    def().match(function() { return !this._defPageApplied; })(function() {
+        this._defPageApplied = true;
+
         var ctx = this.ctx;
         applyCtx([
             ctx.doctype || '<!DOCTYPE html>',
@@ -839,27 +842,22 @@ block('page')(
                             ctx.favicon? { elem : 'favicon', url : ctx.favicon } : ''
                         ]
                     },
-                    // Добавляем элемент, чтобы сработал другой шаблон и не было зацикливания
-                    this.extend(ctx, { elem : 'body' })
+                    ctx
                 ]
             }
         ]);
+
+        this._defPageApplied = false;
     }),
 
-    elem('body')(
-        tag()('body'),
-        content()(function() {
-            return [
-                applyNext(),
-                this.ctx.scripts
-            ];
-        }),
-        def()(function() {
-            // Обратно очищаем поле elem, чтобы сохранить правильный контекст
-            this.ctx.elem = null;
-            applyNext();
-        })
-    ),
+    tag()('body'),
+
+    content()(function() {
+        return [
+            applyNext(),
+            this.ctx.scripts
+        ];
+    }),
 
     elem('head')(
         bem()(false),
@@ -887,9 +885,9 @@ block('page')(
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/libs/bem-core/touch.blocks/page/page.bemhtml */
 block('page')(
-    mode('head')(function() {
+    elem('head').content()(function() {
         return [
-            { block : 'ua' },
+            applyNext(),
             {
                 elem : 'meta',
                 attrs : {
@@ -901,13 +899,15 @@ block('page')(
                 }
             },
             { elem : 'meta', attrs : { name : 'format-detection', content : 'telephone=no' } },
-            { elem : 'link', attrs : { name : 'apple-mobile-web-app-capable', content : 'yes' } },
-            this.ctx.head
+            { elem : 'link', attrs : { name : 'apple-mobile-web-app-capable', content : 'yes' } }
         ];
     }),
 
     mix()(function() {
-        return applyNext().concat({ block : 'ua', js : true });
+        var mix = applyNext(),
+            uaMix = [{ block : 'ua', js : true }];
+
+        return mix? uaMix.concat(mix) : uaMix;
     })
 );
 
@@ -964,7 +964,12 @@ block('ua').content()(function() {
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/menu.bemhtml */
 block('menu')(
     def()(function() {
-        applyNext({ _menuTheme : this.mods.theme });
+        applyNext({
+            _menuMods : {
+                theme : this.mods.theme,
+                disabled : this.mods.disabled
+            }
+        });
         delete this._menuTheme;
     }),
     attrs()(function() {
@@ -974,10 +979,11 @@ block('menu')(
     }),
     js()(true),
     mix()([{ elem : 'control' }])
-)
+);
 
-block('menu-item').match(this._menuTheme).def()(function() {
-    this.mods.theme = this._menuTheme;
+block('menu-item').match(this._menuMods).def()(function() {
+    this.mods.theme = this._menuMods.theme;
+    this.mods.disabled = this.mods.disabled || this._menuMods.disabled;
     applyNext();
 });
 
@@ -985,22 +991,42 @@ block('menu-item').match(this._menuTheme).def()(function() {
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
 block('menu-item')(
     js()(function() {
-        return { val : this.ctx.val }
+        return { val : this.ctx.val };
     }),
     attrs()({ role : 'menuitem' })
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
 block('menu').mod('focused', true).js()(function() {
     return this.extend(applyNext(), { live : false });
-})
+});
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
+/* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
+block('menu').elem('group')(
+    attrs()({ role : 'group' }),
+    match(function() { return typeof this.ctx.title !== 'undefined'; })(
+        attrs()(function() {
+            return this.extend(applyNext(), { 'aria-label' : this.ctx.title });
+        }),
+        content()(function() {
+            return [
+                { elem : 'group-title', content : this.ctx.title },
+                applyNext()
+            ];
+        })
+    )
+);
+
+/* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
+/* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
+block('menu').elem('group-title').attrs()({ role : 'presentation' });
+
+/* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/button.bemhtml */
 block('button')(
     def()(function() {
-        var mods = this.mods;
         applyNext({ _button : this.ctx });
     }),
 
@@ -1010,62 +1036,65 @@ block('button')(
 
     js()(true),
 
-    // Implements `base-control`'s interface
-    mix()([{ elem : 'control' }]),
+    // NOTE: mix below is to satisfy interface of `control`
+    mix()({ elem : 'control' }),
 
     attrs()(
         // Common attributes
         function() {
-            var ctx = this.ctx,
-                attrs = { role : 'button' };
+            var ctx = this.ctx;
 
-            ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
-
-            return attrs;
+            return {
+                role : 'button',
+                tabindex : ctx.tabIndex,
+                id : ctx.id,
+                title : ctx.title
+            };
         },
 
         // Attributes for button variant
-        match(function() { return !this.mods.type })(function() {
+        match(function() { return !this.mods.type || this.mods.type === 'submit'; })(function() {
             var ctx = this.ctx,
-                attrs = {};
+                attrs = {
+                    type : this.mods.type || 'button',
+                    name : ctx.name,
+                    value : ctx.val
+                };
 
-            ctx.tag || (attrs.type = ctx.type || 'button');
-
-            ctx.name && (attrs.name = ctx.name);
-            ctx.val && (attrs.value = ctx.val);
             this.mods.disabled && (attrs.disabled = 'disabled');
 
-            return this._.extend(applyNext(), attrs);
+            return this.extend(applyNext(), attrs);
         })
     ),
 
     content()(
         function() {
-            var ctx = this.ctx, content = [this.ctx.icon];
-            // NOTE: не вынесли в отдельные шаблоны ради оптимизации
-            ctx.text && content.push({ elem : 'text', content : ctx.text });
+            var ctx = this.ctx,
+                content = [ctx.icon];
+            // NOTE: wasn't moved to separate template for optimization
+            'text' in ctx && content.push({ elem : 'text', content : ctx.text });
             return content;
         },
-        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
             return this.ctx.content;
         })
     )
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/button.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/__text/button__text.bemhtml */
 block('button').elem('text')(
     tag()('span'),
-    match(function() { return typeof this._button.textMaxWidth === 'number' }).attrs()(function() {
+    match(function() { return typeof this._button.textMaxWidth === 'number'; }).attrs()(function() {
         return { style : 'max-width:' + this._button.textMaxWidth + 'px' };
     })
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/__text/button__text.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/_focused/button_focused.bemhtml */
 block('button').mod('focused', true).js()(function() {
     return this.extend(applyNext(), { live : false });
-})
+});
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/_focused/button_focused.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu-item/_type/menu-item_type_link.bemhtml */
@@ -1082,66 +1111,56 @@ block('link').match(this._menuItemDisabled).def()(function() {
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu-item/_type/menu-item_type_link.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/link.bemhtml */
 block('link')(
+    def()(function() {
+        var ctx = this.ctx;
+        typeof ctx.url === 'object' && // url could contain bemjson
+            (ctx.url = this.reapply(ctx.url));
+        applyNext();
+    }),
+
     tag()('a'),
 
     js()(true),
 
-    // Implements `base-control`'s interface
+    // NOTE: mix below is to satisfy interface of `control`
     mix()([{ elem : 'control' }]),
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {
-                tabindex : ctx.tabIndex
-            },
-            url = ctx.url,
-            typeOfUrl = typeof url;
+            attrs = {},
+            tabIndex;
 
-        typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
-            url :
-            this.reapply(url)); // url could contain bemjson
+        if(!this.mods.disabled) {
+            if(ctx.url) {
+                attrs.href = ctx.url;
+                tabIndex = ctx.tabIndex;
+            } else {
+                tabIndex = ctx.tabIndex || 0;
+            }
+        }
 
-        // default value for tabindex in case of link \wo href, so link could be focusable
-        typeof attrs.href === 'undefined' &&
-            typeof attrs.tabindex === 'undefined' &&
-            (attrs.tabindex = 0);
+        typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);
 
         ctx.title && (attrs.title = ctx.title);
         ctx.target && (attrs.target = ctx.target);
 
         return attrs;
-    })
-)
+    }),
+
+    mod('disabled', true)
+        .js()(function() {
+            return this.extend(applyNext(), { url : this.ctx.url });
+        })
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/link/link.bemhtml */
-/* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
-block('menu').elem('group')(
-    attrs()({ role : 'group' }),
-    match(function() { return typeof this.ctx.title !== 'undefined' })(
-        attrs()(function() {
-            return this.extend(applyNext(), { 'aria-label' : this.ctx.title });
-        }),
-        content()(function() {
-            return [
-                { elem : 'group-title', content : this.ctx.title },
-                applyNext()
-            ];
-        })
-    )
-)
-
-/* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
-/* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
-block('menu').elem('group-title').attrs()({ role : 'presentation' })
-
-/* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.bemhtml */
 block('icon')(
     tag()('i'),
-    attrs().match(function() { return this.ctx.url })(function() {
+    attrs().match(function() { return this.ctx.url; })(function() {
         return { style : 'background-image:url(' + this.ctx.url + ')' };
     })
-)
+);
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.bemhtml */;
 /// -------------------------------------

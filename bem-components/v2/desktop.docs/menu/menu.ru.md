@@ -2,9 +2,9 @@
 
 Блок `menu` используется для создания различных типов меню и селектов.
 
-В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом `<div>` и свойством `role="menu"`. HTML-элементом содержит набор переключателей – пунктов меню (блок `menu-item`).
-
 Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных блоков – пунктов меню или селекта.
+
+В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом `<div>` и свойством `role="menu"`. HTML-элементом, содащим набор переключателей – пунктов меню (блок `menu-item`).
 
 
 ## Варианты использования меню
@@ -27,7 +27,7 @@
     mods : { 
         theme : 'normal',
         size : 'm', 
-        select : 'radio' 
+        mode : 'radio'
     },
     content : [
         {
@@ -45,8 +45,8 @@
             </code></pre>
         </td>
     <tr>
-        <td>Селект с множественным выбором (<code>_select_check</code>)</td>
-        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется, и наоборот.</td>
+        <td>Селект с множественным выбором (<code>_mode_check</code>)</td>
+        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется и наоборот.</td>
         <td>
             <pre><code>
 {
@@ -54,7 +54,7 @@
     mods : { 
         theme : 'normal', 
         size : 'm',
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -73,7 +73,7 @@
         </td>
     </tr>
 <tr>
-        <td>Простой список (без модификатора <code>_select</code>)</td>
+        <td>Простой список (без модификатора <code>_mode</code>)</td>
         <td>При щелчке мышью по пункту меню его состояние не меняется. Модификатор <code>_cheked</code> не устанавливается.</td>
         <td>
             <pre><code>
@@ -82,7 +82,7 @@
     mods : { 
         theme : 'normal', 
         size : 'm',
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -99,9 +99,8 @@
 }
             </code></pre>
         </td>
-    </tr>    
+    </tr>   
 </table>
-
 
 
 ## Модификаторы блока
@@ -113,16 +112,16 @@
  * simple
  * normal
 
-Без указания темы к блоку применяются значения по умолчанию (*default*), установленные браузером.
+Без указания темы к блоку применяются значения, установленные браузером по умолчанию (*default*).
 
-Наглядно видно на примерах ниже:
+Наглядно показано на примерах ниже:
 
 #### default
 
 ```bemjson
 {
     block : 'menu',
-    mods : { select : 'check' },
+    mods : { mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -137,13 +136,14 @@
     ]
 }
 ```
+
 
 #### simple
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'simple', select : 'check' },
+    mods : { theme : 'simple', mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -158,13 +158,14 @@
     ]
 }
 ```
+
 
 #### normal
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', select : 'check', size : 'xl' },
+    mods : { theme : 'normal', mode : 'check', size : 'xl' },
     content : [
         {
             block : 'menu-item',
@@ -179,6 +180,7 @@
     ]
 }
 ```
+
 
 ### Размеры меню `_size`
 
@@ -209,7 +211,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 's' 
     },
     content : [
@@ -240,7 +242,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'm' 
     },
     content : [
@@ -271,7 +273,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'l' 
     },
     content : [
@@ -302,7 +304,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'xl' 
     },
     content : [
@@ -324,9 +326,9 @@
 </table>
 
 
-### Способ выбора пунктов `_select`
+### Способ выбора пунктов `_mode`
 
-Модификатор `_select` управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.
+Модификатор `_mode` управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.
 
 Доступны следующие значения модификатора:
 
@@ -343,7 +345,7 @@
         <th>Пример</th>
     </tr>
     <tr>
-        <td>Только один (<code>_select_radio</code>)</td>
+        <td>Только один (<code>_mode_radio</code>)</td>
         <td>
             <pre><code>
 {
@@ -351,7 +353,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'radio' 
+        mode : 'radio'
     },
     content : [
         {
@@ -371,7 +373,7 @@
         </td>
     </tr>
     <tr>
-        <td>Множественный выбор или ни одного (<code>_select_check</code>)</td>
+        <td>Множественный выбор или ни одного (<code>_mode_check</code>)</td>
         <td>
             <pre><code>
 {
@@ -379,7 +381,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -399,7 +401,7 @@
         </td>
     </tr>
     <tr>
-        <td>Один или ни одного (<code>_select_radio-check</code>)</td>
+        <td>Один или ни одного (<code>_mode_radio-check</code>)</td>
         <td>
             <pre><code>
 {
@@ -407,7 +409,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'radio-check' 
+        mode : 'radio-check'
     },
     content : [
         {
@@ -443,7 +445,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'xl',
         focused : true 
     },
@@ -476,7 +478,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'xl', select : 'radio', focused : true  },
+    mods : { theme : 'normal', size : 'xl', mode : 'radio', focused : true  },
     content : [
         {
             block : 'menu-item',
@@ -521,7 +523,7 @@
     mods : { 
         theme : 'normal', 
         size : 'xl', 
-        select : 'radio', 
+        mode : 'radio',
         focused : true  
     },
     content : [
@@ -560,25 +562,24 @@
 * `menu-item`
 * `dom`
 * `keyboard`
-* `base-control`
+* `control`
 
-# base-control
+# control
 
 Вспомогательный блок. Используется для работы большинства блоков библиотеки [bem-components](https://github.com/bem/bem-components):
 
-* [attach](https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md)
-* [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md)
-* [checkbox](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.title.txt)
-* [input](https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md)
-* [link](https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md)
-* [menu](https://github.com/bem/bem-components/tree/v2/common.blocks/menu/menu.ru.md)
-* [radio](https://github.com/bem/bem-components/tree/v2/common.blocks/radio/radio.ru.md)
+* [attach](../attach/attach.ru.md)
+* [button](../button/button.ru.md)
+* [checkbox](../checkbox/checkbox.ru.md)
+* [input](../input/input.ru.md)
+* [link](../link/link.ru.md)
+* [menu](../menu/menu.ru.md)
+* [radio](../radio/radio.ru.md)
 
 Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния `focused` и `disabled`.
 Следит за значением атрибута `tabIndex` в зависимости от текущего состояния блока.
 
 Блок использует следующие методы:
-
 
 <table>
     <tr>
@@ -597,7 +598,7 @@
 
 # menu-item  
 
-Блок `menu-item` служит для создания пунктов меню или селекта. Используется внутри блока `menu`. Блок `menu-item` предоставляет возможность изменять состояние, содержимое и порядок отображения пунктов меню.
+Блок `menu-item` служит для создания пунктов меню или селекта. Используется внутри блока `menu`. Блок `menu-item` предоставляет возможность изменять состояние, содержимое и тип пунктов меню.
 
 Блок `menu-item` в результате BEMHTML-преобразований на странице становится HTML-элементом с тегом `<div>` со свойством `role="menuitem"`.
 
@@ -663,6 +664,53 @@
 
 
 ## Модификаторы блока
+
+### Темы блока `_theme`
+
+ * simple   
+ * normal  
+
+Без указания темы к блоку применяются значения, установленные браузером по умолчанию (*default*).
+
+Наглядно видно на примерах ниже:
+
+#### default
+
+```bemjson
+{
+    block : 'menu-item',
+    content : 'default',
+    val : 'my value'
+}
+```
+
+
+#### simple
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { theme : 'simple' },
+    content : 'simple',
+    val : 'my value'
+}
+```
+
+
+#### normal
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { 
+        theme : 'normal', 
+        size : 'l'
+    },
+    content : 'normal',
+    val : 'my value'
+}
+```
+
 
 ### Типы блока `_type`
 

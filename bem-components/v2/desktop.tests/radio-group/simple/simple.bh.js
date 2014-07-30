@@ -18,8 +18,8 @@ dropRequireCache(require, require.resolve("../../../node_modules/bh/lib/bh.js"))
 var BH = require("../../../node_modules/bh/lib/bh.js");
 var bh = new BH();
 bh.setOptions({
-jsAttrName: 'onclick',
-jsAttrScheme: 'js'
+jsAttrName: 'data-bem',
+jsAttrScheme: 'json'
 })
 dropRequireCache(require, require.resolve("../../../libs/bem-core/common.blocks/page/page.bh.js"));
 require("../../../libs/bem-core/common.blocks/page/page.bh.js")(bh);
@@ -53,4 +53,6 @@ dropRequireCache(require, require.resolve("../../../common.blocks/radio/_type/ra
 require("../../../common.blocks/radio/_type/radio_type_button.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/icon/icon.bh.js"));
 require("../../../common.blocks/icon/icon.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../common.blocks/radio-group/_mode/radio-group_mode_radio-check.bh.js"));
+require("../../../common.blocks/radio-group/_mode/radio-group_mode_radio-check.bh.js")(bh);
 module.exports = bh;

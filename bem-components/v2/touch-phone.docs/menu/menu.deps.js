@@ -10,7 +10,7 @@ exports.deps = [
         "block": "menu"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "dom"
@@ -47,6 +47,25 @@ exports.deps = [
     {
         "block": "menu",
         "mod": "focused",
+        "val": true
+    },
+    {
+        "block": "menu",
+        "elem": "group"
+    },
+    {
+        "block": "menu",
+        "elem": "group-title"
+    },
+    {
+        "block": "menu",
+        "elem": "group",
+        "mod": "has-title"
+    },
+    {
+        "block": "menu",
+        "elem": "group",
+        "mod": "has-title",
         "val": true
     }
 ];

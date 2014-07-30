@@ -154,10 +154,16 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "radio-group",
@@ -319,5 +325,14 @@ exports.deps = [
         "block": "radio-group",
         "mod": "type",
         "val": "line"
+    },
+    {
+        "block": "radio-group",
+        "mod": "mode"
+    },
+    {
+        "block": "radio-group",
+        "mod": "mode",
+        "val": "radio-check"
     }
 ];

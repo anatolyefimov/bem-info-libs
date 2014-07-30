@@ -1,7 +1,7 @@
 <h1 id="menu">menu</h1>
 <p>Блок <code>menu</code> используется для создания различных типов меню и селектов.</p>
-<p>В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом <code>&lt;div&gt;</code> и свойством <code>role=&quot;menu&quot;</code>. HTML-элементом содержит набор переключателей – пунктов меню (блок <code>menu-item</code>).</p>
 <p>Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных блоков – пунктов меню или селекта.</p>
+<p>В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом <code>&lt;div&gt;</code> и свойством <code>role=&quot;menu&quot;</code>. HTML-элементом, содащим набор переключателей – пунктов меню (блок <code>menu-item</code>).</p>
 <h2 id="-">Варианты использования меню</h2>
 <p>Блок <code>menu</code> служит для создания различных типов меню:</p>
 <table>
@@ -20,7 +20,7 @@
     mods : { 
         theme : &#39;normal&#39;,
         size : &#39;m&#39;, 
-        select : &#39;radio&#39; 
+        mode : &#39;radio&#39;
     },
     content : [
         {
@@ -38,8 +38,8 @@
             </code></pre>
         </td>
     <tr>
-        <td>Селект с множественным выбором (<code>_select_check</code>)</td>
-        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется, и наоборот.</td>
+        <td>Селект с множественным выбором (<code>_mode_check</code>)</td>
+        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется и наоборот.</td>
         <td>
             <pre><code>
 {
@@ -47,7 +47,7 @@
     mods : { 
         theme : &#39;normal&#39;, 
         size : &#39;m&#39;,
-        select : &#39;check&#39; 
+        mode : &#39;check&#39;
     },
     content : [
         {
@@ -66,7 +66,7 @@
         </td>
     </tr>
 <tr>
-        <td>Простой список (без модификатора <code>_select</code>)</td>
+        <td>Простой список (без модификатора <code>_mode</code>)</td>
         <td>При щелчке мышью по пункту меню его состояние не меняется. Модификатор <code>_cheked</code> не устанавливается.</td>
         <td>
             <pre><code>
@@ -75,7 +75,7 @@
     mods : { 
         theme : &#39;normal&#39;, 
         size : &#39;m&#39;,
-        select : &#39;check&#39; 
+        mode : &#39;check&#39;
     },
     content : [
         {
@@ -95,7 +95,6 @@
     </tr><br></table>
 
 
-
 <h2 id="-">Модификаторы блока</h2>
 <h3 id="-_theme-">Темы блока <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
@@ -103,62 +102,20 @@
 <li>simple</li>
 <li>normal</li>
 </ul>
-<p>Без указания темы к блоку применяются значения по умолчанию (<em>default</em>), установленные браузером.</p>
-<p>Наглядно видно на примерах ниже:</p>
+<p>Без указания темы к блоку применяются значения, установленные браузером по умолчанию (<em>default</em>).</p>
+<p>Наглядно показано на примерах ниже:</p>
 <h4 id="default">default</h4>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { select : &#39;check&#39; },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/vAAUvyJpkNyuM0yEru7LP3dZ7xE -->
+
+
 <h4 id="simple">simple</h4>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { theme : &#39;simple&#39;, select : &#39;check&#39; },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/JgK_lg3CEjumbM6ThTKEOcNpfH0 -->
+
+
 <h4 id="normal">normal</h4>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { theme : &#39;normal&#39;, select : &#39;check&#39;, size : &#39;xl&#39; },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/MGiZ5_2bYS32yaxnY5iD9OevjVk -->
+
+
 <h3 id="-_size-">Размеры меню <code>_size</code></h3>
 <p>Задает размер всем типам меню. Обязательный модификатор.</p>
 <p>Реализован только в теме <em>normal</em>.</p>
@@ -184,7 +141,7 @@
     block : &#39;menu&#39;,
     mods : { 
         theme : &#39;normal&#39;, 
-        select : &#39;check&#39;, 
+        mode : &#39;check&#39;,
         size : &#39;s&#39; 
     },
     content : [
@@ -215,7 +172,7 @@
     block : &#39;menu&#39;,
     mods : { 
         theme : &#39;normal&#39;, 
-        select : &#39;check&#39;, 
+        mode : &#39;check&#39;,
         size : &#39;m&#39; 
     },
     content : [
@@ -246,7 +203,7 @@
     block : &#39;menu&#39;,
     mods : { 
         theme : &#39;normal&#39;, 
-        select : &#39;check&#39;, 
+        mode : &#39;check&#39;,
         size : &#39;l&#39; 
     },
     content : [
@@ -277,7 +234,7 @@
     block : &#39;menu&#39;,
     mods : { 
         theme : &#39;normal&#39;, 
-        select : &#39;check&#39;, 
+        mode : &#39;check&#39;,
         size : &#39;xl&#39; 
     },
     content : [
@@ -299,8 +256,8 @@
 </table>
 
 
-<h3 id="-_select-">Способ выбора пунктов <code>_select</code></h3>
-<p>Модификатор <code>_select</code> управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.</p>
+<h3 id="-_mode-">Способ выбора пунктов <code>_mode</code></h3>
+<p>Модификатор <code>_mode</code> управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.</p>
 <p>Доступны следующие значения модификатора:</p>
 <ul>
 <li><code>check</code> – селект. Пункт, по которому был произведен щелчек мышью, изменит состояние на противоположное и будет менять состояние при повторных щелчках. Доступна возможность множественного выбора пунктов;</li>
@@ -314,7 +271,7 @@
         <th>Пример</th>
     </tr>
     <tr>
-        <td>Только один (<code>_select_radio</code>)</td>
+        <td>Только один (<code>_mode_radio</code>)</td>
         <td>
             <pre><code>
 {
@@ -322,7 +279,7 @@
     mods : { 
         theme : &#39;normal&#39;, 
         size : &#39;l&#39;, 
-        select : &#39;radio&#39; 
+        mode : &#39;radio&#39;
     },
     content : [
         {
@@ -342,7 +299,7 @@
         </td>
     </tr>
     <tr>
-        <td>Множественный выбор или ни одного (<code>_select_check</code>)</td>
+        <td>Множественный выбор или ни одного (<code>_mode_check</code>)</td>
         <td>
             <pre><code>
 {
@@ -350,7 +307,7 @@
     mods : { 
         theme : &#39;normal&#39;, 
         size : &#39;l&#39;, 
-        select : &#39;check&#39; 
+        mode : &#39;check&#39;
     },
     content : [
         {
@@ -370,7 +327,7 @@
         </td>
     </tr>
     <tr>
-        <td>Один или ни одного (<code>_select_radio-check</code>)</td>
+        <td>Один или ни одного (<code>_mode_radio-check</code>)</td>
         <td>
             <pre><code>
 {
@@ -378,7 +335,7 @@
     mods : { 
         theme : &#39;normal&#39;, 
         size : &#39;l&#39;, 
-        select : &#39;radio-check&#39; 
+        mode : &#39;radio-check&#39;
     },
     content : [
         {
@@ -404,103 +361,23 @@
 <h4 id="-_focused-">В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>_focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
 <p>Реализован во всех темах блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        select : &#39;check&#39;, 
-        size : &#39;xl&#39;,
-        focused : true 
-    },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/lFNP7KamARohsQ5DCX0QQZU1ACQ -->
+
+
 <h2 id="-">Элементы блока</h2>
 <p>Визуально представлен следующими элементами:</p>
 <h3 id="__group">__group</h3>
 <p>Элемент <code>__group</code> служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле <code>content</code> элемента. Группы визуально отделяются серой чертой.</p>
 <p>Например:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;xl&#39;, select : &#39;radio&#39;, focused : true  },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;New&#39;
-        },
-        {
-            elem : &#39;group&#39;,
-            content : [
-                {
-                    block : &#39;menu-item&#39;,
-                    mods : { checked : true },
-                    val : 2,
-                    content : &#39;Open&#39;
-                },
-                {
-                    block : &#39;menu-item&#39;,
-                    val : 3,
-                    content : &#39;Open Recent&#39;
-                }
-            ]
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 4,
-            content : &#39;Open Not so Recent&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/WSrgcU6mXH0StKcrKnckCnH3lrc -->
+
+
 <h3 id="__group-title">__group-title</h3>
 <p>Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента <code>__group</code>.</p>
 <p>Например:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;xl&#39;, 
-        select : &#39;radio&#39;, 
-        focused : true  
-    },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;New&#39;
-        },
-        {
-            elem : &#39;group&#39;,
-            title : &#39;Cool title&#39;,
-            content : [
-                {
-                    block : &#39;menu-item&#39;,
-                    mods : { checked : true },
-                    val : 2,
-                    content : &#39;Open&#39;
-                },
-                {
-                    block : &#39;menu-item&#39;,
-                    val : 3,
-                    content : &#39;Open Recent&#39;
-                }
-            ]
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/yGGZayW6DClbboVCxBRriqv3YcU -->
+
+
 <h3 id="-">Зависимости блока</h3>
 <p>Блок <code>menu</code> зависит от следующего набора блоков и элементов:</p>
 <ul>
@@ -508,19 +385,19 @@
 <li><code>menu-item</code></li>
 <li><code>dom</code></li>
 <li><code>keyboard</code></li>
-<li><code>base-control</code></li>
+<li><code>control</code></li>
 </ul>
 
-<h1 id="base-control">base-control</h1>
+<h1 id="control">control</h1>
 <p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
 <ul>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md">attach</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.title.txt">checkbox</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md">input</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md">link</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/menu/menu.ru.md">menu</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/radio/radio.ru.md">radio</a></li>
+<li><a href="../attach/attach.ru.md">attach</a></li>
+<li><a href="../button/button.ru.md">button</a></li>
+<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
+<li><a href="../input/input.ru.md">input</a></li>
+<li><a href="../link/link.ru.md">link</a></li>
+<li><a href="../menu/menu.ru.md">menu</a></li>
+<li><a href="../radio/radio.ru.md">radio</a></li>
 </ul>
 <p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
 Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>
@@ -541,7 +418,7 @@
 </table>
 
 <h1 id="menu-item">menu-item</h1>
-<p>Блок <code>menu-item</code> служит для создания пунктов меню или селекта. Используется внутри блока <code>menu</code>. Блок <code>menu-item</code> предоставляет возможность изменять состояние, содержимое и порядок отображения пунктов меню.</p>
+<p>Блок <code>menu-item</code> служит для создания пунктов меню или селекта. Используется внутри блока <code>menu</code>. Блок <code>menu-item</code> предоставляет возможность изменять состояние, содержимое и тип пунктов меню.</p>
 <p>Блок <code>menu-item</code> в результате BEMHTML-преобразований на странице становится HTML-элементом с тегом <code>&lt;div&gt;</code> со свойством <code>role=&quot;menuitem&quot;</code>.</p>
 <h2 id="-">Варианты использования пунктов меню</h2>
 <p>Блок <code>menu-item</code> служит для создания различных типов пунктов меню:</p>
@@ -601,86 +478,55 @@
 
 
 <h2 id="-">Модификаторы блока</h2>
+<h3 id="-_theme-">Темы блока <code>_theme</code></h3>
+<ul>
+<li>simple   </li>
+<li>normal  </li>
+</ul>
+<p>Без указания темы к блоку применяются значения, установленные браузером по умолчанию (<em>default</em>).</p>
+<p>Наглядно видно на примерах ниже:</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-phone.examples/menu/eV0q9qK02nCPsMxztjMtbDnRz7U -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-phone.examples/menu/BxhdTuPatcCVRdT_1B8cW6OHGQ0 -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-phone.examples/menu/snjxOm4SOT8_nFgCXdf2BKaL_Xs -->
+
+
 <h3 id="-_type-">Типы блока <code>_type</code></h3>
 <p>Модификатор <code>_type</code> в значении <code>_link</code> позволяет создавать пункт меню-ссылку. Блок <code>link</code> при этом помещается в поле <code>content</code> BEMJSON-декларации блока. Если модификатор <code>_type_link</code> не установлен, вложенная ссылка будет доступна для действий пользователя при установленном модификаторе <code>_disabled</code>.</p>
 <p>Реализован во всех темах блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        type : &#39;link&#39; 
-    },
-    content : {
-        block : &#39;link&#39;,
-        url : &#39;#&#39;,
-        content : &#39;Link 1&#39;
-    }
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/47lHiiyDspaBs5AiC22G42Y-N_o -->
+
+
 <h3 id="-">Состояния блока</h3>
 <h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
 <p>В состоянии &quot;неактивен&quot; пункт меню отображается, но недоступен для действий пользователя.  </p>
 <p>Такой пункт меню не изменяет состояние при щелчке мышью. Если для блока установлен модификатор <code>_type_link</code>, переход по ссылке не осуществляется. </p>
 <p>Реализован во всех темах блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        disabled : true 
-    },
-    content : &#39;_disabled&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/00ejmLqt61w5ksAsfBl7KgE4dBE -->
+
+
 <h4 id="-_hovered-">Наведение курсором <code>_hovered</code></h4>
 <p>Определяет действие &quot;наведение курсором&quot; на пункт меню.</p>
 <p>Реализован во всех темах блока.</p>
 <p>Автоматически выставляется при наведении указателем мыши на пункт меню.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        hovered : true 
-    },
-    content : &#39;_hovered&#39;
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/Sgw4iIN4STar-QE05xyBmgntftw -->
+
+
 <h4 id="-_checked-">Выбранный пункт меню <code>_checked</code></h4>
 <p>Модификатор задает выбранный пункт меню.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu-item&#39;,
-    content : &#39;_checked&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        checked : true 
-    }
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/T77G-B0x1-Z9ZaPqpW_TAskNFI8 -->
+
+
 <p>В блоке <code>menu</code> модификатор <code>_checked</code> устанавливается для пункта при щелчке мышью:</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;menu&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;,
-        select : &#39;check&#39;
-    },
-    content : [
-        {
-            block : &#39;menu-item&#39;,
-            val : 1,
-            content : &#39;First item&#39;
-        },
-        {
-            block : &#39;menu-item&#39;,
-            val : 2,
-            content : &#39;Second item&#39;
-        }
-    ]
-}
-</code></pre>
+<!-- bem-example: touch-phone.examples/menu/sURVY49aNm3TBC1XVeOG1Q5_vi8 -->
+
+
 <h3 id="-">Зависимости блока</h3>
 <p>Блок <code>menu-item</code> зависит от следующего набора блоков и элементов:</p>
 <ul>

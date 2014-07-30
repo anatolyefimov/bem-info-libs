@@ -1,11 +1,42 @@
 <h1 id="image">image</h1>
-<p><code>&lt;img&gt;</code>-based block for images, using as a content (logo, for example).</p>
-<pre><code class="lang-bemjson">    {
-        block : &#39;image&#39;,
-        url : &#39;http://bem.info/m/_/20zuV2gLiyoaqrHv9LoBRTmB0Ow.svg&#39;,
-        width : 16,
-        height : 16,
-        alt : &#39;BEM&#39;,
-        title : &#39;Find us on bem.info&#39;
-    }
-</code></pre>
+<p><code>&lt;img&gt;</code>-based block is designed for images pasting, using as a content (logo, for example).</p>
+<!-- bem-example: desktop.examples/image/lC8WanGqU6n--Ri8zFvBCOidyB8 -->
+
+<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes could be specified within corresponding fields of block&#39;s BEMJSON file:</p>
+<table>
+    <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies icon name.</td>
+    </tr>
+    <tr>
+        <td>alt</td>
+        <td>
+            <code>String</code></td>
+        <td>A mandatory attribute. Specifies an alternate text for images. This text type allows user to obtain text information about an image when it is impossible to download. <br> This block is recognized by screen readers for alternative playback.</td>
+    </tr>
+    <tr>
+        <td>url</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>An url address to open image.</td>
+    </tr>
+    <tr>
+        <td>width, height</td>
+        <td>
+            <code>Number</code>
+        </td>
+        <td>Values ​​that will be transferred to image&#39;s attributes with same names.</td>
+    </tr>
+</table>
+
+<p>Other valid block&#39;s attributes could be specified in <code>attrs</code> field in BEMJSON.</p>

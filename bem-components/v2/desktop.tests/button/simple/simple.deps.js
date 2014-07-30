@@ -156,6 +156,12 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
@@ -163,7 +169,7 @@ exports.deps = [
         "elem": "codes"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "button",
@@ -173,6 +179,11 @@ exports.deps = [
     {
         "block": "button",
         "mod": "type"
+    },
+    {
+        "block": "button",
+        "mod": "type",
+        "val": "submit"
     },
     {
         "block": "button",
@@ -280,6 +291,9 @@ exports.deps = [
         "block": "icon",
         "mod": "action",
         "val": "up"
+    },
+    {
+        "block": "image"
     },
     {
         "block": "button",

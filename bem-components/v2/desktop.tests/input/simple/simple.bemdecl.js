@@ -25,16 +25,6 @@ exports.deps = [
     },
     {
         "block": "input",
-        "mod": "has-clear",
-        "val": true
-    },
-    {
-        "block": "input",
-        "mod": "has-label",
-        "val": true
-    },
-    {
-        "block": "input",
         "mod": "type",
         "val": "search"
     },
@@ -50,8 +40,13 @@ exports.deps = [
     },
     {
         "block": "input",
-        "mod": "theme",
-        "val": "normal"
+        "mod": "has-clear",
+        "val": true
+    },
+    {
+        "block": "input",
+        "mod": "width",
+        "val": "available"
     },
     {
         "block": "input",
@@ -60,12 +55,13 @@ exports.deps = [
     },
     {
         "block": "input",
-        "mod": "type",
-        "val": "password"
+        "mod": "theme",
+        "val": "normal"
     },
     {
         "block": "input",
-        "elem": "label"
+        "mod": "type",
+        "val": "password"
     },
     {
         "block": "input",

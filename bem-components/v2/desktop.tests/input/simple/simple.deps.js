@@ -108,7 +108,7 @@ exports.deps = [
         "mod": "focused"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "jquery",
@@ -135,6 +135,12 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
@@ -146,37 +152,6 @@ exports.deps = [
     {
         "block": "input",
         "mod": "disabled",
-        "val": true
-    },
-    {
-        "block": "input",
-        "mod": "has-clear"
-    },
-    {
-        "block": "input",
-        "elem": "clear"
-    },
-    {
-        "block": "input",
-        "elem": "clear",
-        "mod": "visible"
-    },
-    {
-        "block": "input",
-        "mod": "has-clear",
-        "val": true
-    },
-    {
-        "block": "input",
-        "mod": "has-label"
-    },
-    {
-        "block": "input",
-        "elem": "label"
-    },
-    {
-        "block": "input",
-        "mod": "has-label",
         "val": true
     },
     {
@@ -204,8 +179,30 @@ exports.deps = [
     },
     {
         "block": "input",
-        "mod": "theme",
-        "val": "normal"
+        "mod": "has-clear"
+    },
+    {
+        "block": "input",
+        "elem": "clear"
+    },
+    {
+        "block": "input",
+        "elem": "clear",
+        "mod": "visible"
+    },
+    {
+        "block": "input",
+        "mod": "has-clear",
+        "val": true
+    },
+    {
+        "block": "input",
+        "mod": "width"
+    },
+    {
+        "block": "input",
+        "mod": "width",
+        "val": "available"
     },
     {
         "block": "input",
@@ -215,6 +212,11 @@ exports.deps = [
         "block": "input",
         "mod": "size",
         "val": "m"
+    },
+    {
+        "block": "input",
+        "mod": "theme",
+        "val": "normal"
     },
     {
         "block": "input",

@@ -1,14 +1,9 @@
 <h1 id="checkbox">checkbox</h1>
 <p>Блок <code>checkbox</code> («чекбокс») позволяет управлять параметром выбора с двумя состояниями – включено и выключено. Используется, когда необходимо выбрать более одного варианта из предложенных.</p>
-<p>Блок создает контейнер, содержащий нативный контрол чекбокс (элемент <code>__control</code>) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot;&gt;</code>, который скрывается при использовании модификатора <code>_theme</code>.</p>
+<p>Блок создает контейнер, содержащий нативный контрол чекбокс (элемент <code>control</code>) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot;&gt;</code>, который скрывается при использовании модификатора <code>theme</code>.</p>
 <p>Атрибут <code>autocomplete</code> принудительно переведен в состояние <code>off</code> для обеспечения корректной работы блока.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    text : &#39;Вариант 1&#39;,
-    name: &#39;name1&#39;,
-    val: &#39;1&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/checkbox/XI4uPzI90-UiMiWRig9noeu3mrg -->
+
 <h2 id="-">Допустимые атрибуты блока</h2>
 <p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON:</p>
 <table>
@@ -29,14 +24,14 @@
         <td>
             <code>String</code>
         </td>
-        <td>Задает имя чекбокса. Обязательный атрибут. Является частью пары имя / значение (name / val), используемой с целью отправки формы.</td>
+        <td>Задает имя чекбокса. Обязательный атрибут. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
     </tr>
     <tr>
         <td>val</td>
         <td>
             <code>String</code>
         </td>
-        <td>Задает значение чекбокса. Является частью пары имя / значение (name / val), используемой с целью отправки формы.</td>
+        <td>Задает значение чекбокса. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
     </tr>
     <tr>
         <td>icon</td>
@@ -55,33 +50,16 @@
 <li>normal</li>
 </ul>
 <p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
-<p>Наглядно видно на примерах ниже:</p>
+<p>Наглядно показано на примерах ниже:</p>
 <p><strong>default</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    text : &#39;default&#39;,
-    name: &#39;default&#39;,
-    val: &#39;1&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/checkbox/sae-WwdkdYcrwwgUC5hw2NDih4 -->
+
 <p><strong>simple</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;simple&#39; },
-    text : &#39;Тема Simple&#39;,
-    name: &#39;simple&#39;,
-    val: &#39;2&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/checkbox/SojNrUmXHg8qOEVNxLMELyPxf1I -->
+
 <p><strong>normal</strong></p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    text : &#39;Тема Normal&#39;,
-    name: &#39;normal&#39;,
-    val: &#39;3&#39;
-}
-</code></pre>
+<!-- bem-example: desktop.examples/checkbox/Sgn48vD0-J9Y9jIc1geFcHu6qVA -->
+
 <h3 id="-_size-">Размер <code>_size</code></h3>
 <p>Задает размер шрифта.</p>
 <p>Обязательный модификатор. Реализован только в теме <em>normal</em>.</p>
@@ -134,96 +112,48 @@
 </table>
 
 <h3 id="-_type-">Тип <code>_type</code></h3>
-<p>Блок может быть представлен в виде кнопки (модификатор <code>_type</code> в значении <code>_button</code>). В таком случае выбор элемента происходит нажатием на кнопку.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39; },
-    text : &#39;Кнопка Normal&#39;,
-    name: &#39;button&#39;,
-    val: &#39;1&#39;
-}
-</code></pre>
+<p>Блок может быть представлен в виде кнопки (модификатор <code>type</code> в значении <code>button</code>). В таком случае выбор элемента происходит нажатием на кнопку.</p>
+<!-- bem-example: desktop.examples/checkbox/GSqTjc8TX7KG5JpqDbcpS1N0CZM -->
+
 <h3 id="-">Состояния</h3>
 <h4 id="-_focused-">В фокусе <code>_focused</code></h4>
-<p>В состоянии блока <code>_focused</code> со значением <code>_true</code> чекбокс всегда находится в фокусе. Если блок представлен в виде кнопки, она приобретает желтую тень. Нажатие по чекбоксу можно выполнить клавишей <code>Space</code> или <code>Enter</code>. Переход по контролам формы осуществляется клавишей <code>Tab</code>.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, focused : true },
-    text : &#39;В фокусе&#39;,
-    name: &#39;name1&#39;,
-    val : 1
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, focused : true },
-    text : &#39;В фокусе&#39;,
-    name: &#39;name2&#39;,
-    val : 2
-}
-</code></pre>
+<p>В состоянии блока <code>focused</code> со значением <code>true</code> чекбокс всегда находится в фокусе. Если блок представлен в виде кнопки, она приобретает желтую тень. Нажатие по чекбоксу можно выполнить клавишей <code>Space</code> или <code>Enter</code>. Переход по контролам формы осуществляется клавишей <code>Tab</code>.</p>
+<!-- bem-example: desktop.examples/checkbox/79qZiqVxBY5r5ZaX_gUFH7MMT5Y -->
+
+<!-- bem-example: desktop.examples/checkbox/tU4ymq_plszDwGgrM91feVLkv6s -->
+
 <h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
 <p>В состоянии «неактивен» чекбокс виден, но недоступен для действий пользователя.</p>
-<p>Такой чекбос не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true },
-    text : &#39;Неактивна&#39;,
-    name: &#39;name1&#39;,
-    val : 1
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, disabled : true },
-    text : &#39;Неактивна&#39;,
-    name: &#39;name2&#39;,
-    val : 2
-}
-</code></pre>
+<p>Такой чекбос не может получить фокус путем нажатия на клавишу <code>Tab</code> мышью или другими способами.</p>
+<!-- bem-example: desktop.examples/checkbox/GiSyOjElYwkWa_mbNQ4LvfexC8o -->
+
+<!-- bem-example: desktop.examples/checkbox/MiwyveGqb-Q3hDh6b5dvanmXUc0 -->
+
 <h4 id="-_checked-">Отмечен <code>_checked</code></h4>
-<p>Модификатор <code>_checked</code> в значении <code>true</code> определяет, что чекбокс отмечен (выбран).</p>
-<p>Модификатор <code>_checked</code> может быть применен ко всем чекбоксам в группе.</p>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, checked : true },
-    text : &#39;Отмечен&#39;,
-    name: &#39;name1&#39;,
-    val : 1
-}
-</code></pre>
-<pre><code class="lang-bemjson">{
-    block : &#39;checkbox&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;button&#39;, checked : true },
-    text : &#39;Отмечен&#39;,
-    name: &#39;name2&#39;,
-    val : 2
-}
-</code></pre>
+<p>Модификатор <code>checked</code> в значении <code>true</code> определяет, что чекбокс отмечен (выбран).</p>
+<p>Модификатор <code>checked</code> может быть применен ко всем чекбоксам в группе.</p>
+<!-- bem-example: desktop.examples/checkbox/IMYtMHFDZhN_agFpLXmNIDTAK4Q -->
+
+<!-- bem-example: desktop.examples/checkbox/ZWO500NSNVuNcdNcItDCWIHDH3o -->
+
 <h2 id="-">Элементы блока</h2>
 <h3 id="-__box-"><code>__box</code></h3>
-<p>Элемент <code>__box</code> служит для отрисовки чекбокса, нативный чекбокс скрыт.</p>
+<p>Элемент <code>box</code> служит для отрисовки чекбокса, нативный чекбокс скрыт.</p>
 <p>Добавляется блоку на уровне шаблонизатора.</p>
 <h3 id="-__control-">Контрол <code>__control</code></h3>
-<p>Элемент <code>__control</code> служит для использования функциональности нативного контрола чекбокса.</p>
+<p>Элемент <code>control</code> служит для использования функциональности нативного контрола чекбокса.</p>
 <p>Добавляется блоку на уровне шаблонизатора.</p>
-<h2 id="-">Зависимости блока</h2>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>base-control</code></li>
-<li><code>button</code></li>
-</ul>
 
-<h1 id="base-control">base-control</h1>
+<h1 id="control">control</h1>
 <p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
 <ul>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md">attach</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.title.txt">checkbox</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md">input</a></li>
-<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md">link</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/menu/menu.ru.md">menu</a></li>
-<li><a href="https://github.com/bem/bem-components/tree/v2/common.blocks/radio/radio.ru.md">radio</a></li>
+<li><a href="../attach/attach.ru.md">attach</a></li>
+<li><a href="../button/button.ru.md">button</a></li>
+<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
+<li><a href="../input/input.ru.md">input</a></li>
+<li><a href="../link/link.ru.md">link</a></li>
+<li><a href="../menu/menu.ru.md">menu</a></li>
+<li><a href="../radio/radio.ru.md">radio</a></li>
 </ul>
 <p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
 Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>

@@ -192,7 +192,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [data] Additional data that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {BEM} this
      */
     on : function(e, data, fn, ctx) {
         if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
@@ -207,7 +207,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String|Object} [e] Event type
      * @param {Function} [fn] Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {BEM} this
      */
     un : function(e, fn, ctx) {
         if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
@@ -222,7 +222,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @protected
      * @param {String} e Event name
      * @param {Object} [data] Additional information
-     * @returns {this}
+     * @returns {BEM} this
      */
     emit : function(e, data) {
         var isModJsEvent = false;
@@ -346,7 +346,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [elem] Nested element
      * @param {String} modName Modifier name
      * @param {String} modVal Modifier value
-     * @returns {this}
+     * @returns {BEM} this
      */
     setMod : function(elem, modName, modVal) {
         if(typeof modVal === 'undefined') {
@@ -406,7 +406,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
             }
 
             this._processingMods[modId] = null;
-            this._emitModChangeEvents(modName, modVal, curModVal, elem, elemName);
+            needSetMod && this._emitModChangeEvents(modName, modVal, curModVal, elem, elemName);
         }
 
         return this;
@@ -440,7 +440,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String} modVal1 First modifier value
      * @param {String} [modVal2] Second modifier value
      * @param {Boolean} [condition] Condition
-     * @returns {this}
+     * @returns {BEM} this
      */
     toggleMod : function(elem, modName, modVal1, modVal2, condition) {
         if(typeof elem === 'string') { // if this is a block
@@ -479,7 +479,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @protected
      * @param {Object} [elem] Nested element
      * @param {String} modName Modifier name
-     * @returns {this}
+     * @returns {BEM} this
      */
     delMod : function(elem, modName) {
         if(!modName) {
@@ -549,7 +549,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * Executes given callback on next turn eventloop in block's context
      * @protected
      * @param {Function} fn callback
-     * @returns {this}
+     * @returns {BEM} this
      */
     nextTick : function(fn) {
         var _this = this;
@@ -594,9 +594,9 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
         typeof decl.block === 'undefined' && (decl.block = this.getName());
 
         var baseBlock;
-        if(typeof decl.baseBlock === 'undefined')
+        if(typeof decl.baseBlock === 'undefined') {
             baseBlock = blocks[decl.block] || this;
-        else if(typeof decl.baseBlock === 'string') {
+        } else if(typeof decl.baseBlock === 'string') {
             baseBlock = blocks[decl.baseBlock];
             if(!baseBlock)
                 throw('baseBlock "' + decl.baseBlock + '" for "' + decl.block + '" is undefined');
@@ -644,10 +644,13 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
             });
         }
 
-        decl.block === baseBlock.getName()?
+        if(decl.block === baseBlock.getName()) {
             // makes a new "live" if the old one was already executed
-            (block = inherit.self(baseBlocks, props, staticProps))._processLive(true) :
+            (block = inherit.self(baseBlocks, props, staticProps))._processLive(true);
+        } else {
             (block = blocks[decl.block] = inherit(baseBlocks, props, staticProps))._name = decl.block;
+            delete block._liveInitable;
+        }
 
         return block;
     },
@@ -693,7 +696,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {Object} [data] Additional data that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {Function} this
      */
     on : function(e, data, fn, ctx) {
         if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
@@ -708,7 +711,7 @@ var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
      * @param {String|Object} [e] Event type
      * @param {Function} [fn] Handler
      * @param {Object} [ctx] Handler context
-     * @returns {this}
+     * @returns {Function} this
      */
     un : function(e, fn, ctx) {
         if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
@@ -879,6 +882,7 @@ provide(/** @exports */{
 });
 
 });
+
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__internal/i-bem__internal.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/inherit/inherit.vanilla.js */
 /**
@@ -1391,7 +1395,7 @@ var undef,
          * @param {Object} [data] Additional data that the handler gets as e.data
          * @param {Function} fn Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         on : function(e, data, fn, ctx, _special) {
             if(typeof e === 'string') {
@@ -1437,7 +1441,7 @@ var undef,
          * @param {Object} [data] Additional data that the handler gets as e.data
          * @param {Function} fn Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         once : function(e, data, fn, ctx) {
             return this.on(e, data, fn, ctx, { once : true });
@@ -1448,7 +1452,7 @@ var undef,
          * @param {String} [e] Event type
          * @param {Function} [fn] Handler
          * @param {Object} [ctx] Handler context
-         * @returns {this}
+         * @returns {Emitter} this
          */
         un : function(e, fn, ctx) {
             if(typeof e === 'string' || typeof e === 'undefined') {
@@ -1504,7 +1508,7 @@ var undef,
          * Fires event handlers
          * @param {String|events:Event} e Event
          * @param {Object} [data] Additional data
-         * @returns {this}
+         * @returns {Emitter} this
          */
         emit : function(e, data) {
             var storage = this[storageExpando],
@@ -1692,7 +1696,8 @@ function initBlock(blockName, domElem, params, forceLive, callback) {
     if(!(blockClass._liveInitable = !!blockClass._processLive()) || forceLive || params.live === false) {
         forceLive && domElem.addClass(BEM_CLASS); // add css class for preventing memory leaks in further destructing
 
-        block = uniqIdToBlock[uniqId] = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+        block = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+
         delete uniqIdToDomElems[uniqId];
         callback && callback.apply(block, Array.prototype.slice.call(arguments, 4));
         return block;
@@ -1824,6 +1829,8 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
          */
         this._uniqId = params.uniqId;
 
+        uniqIdToBlock[this._uniqId] = this;
+
         /**
          * @member {Boolean} Flag for whether it's necessary to unbind from the document and window when destroying the block
          * @private
@@ -1936,16 +1943,23 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {jQuery} domElem DOM element where the event will be listened for
      * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToDomElem : function(domElem, event, fn) {
+    bindToDomElem : function(domElem, event, data, fn) {
+        if(functions.isFunction(data)) {
+            fn = data;
+            data = undef;
+        }
+
         fn?
             domElem.bind(
                 this._buildEventName(event),
+                data,
                 $.proxy(fn, this)) :
             objects.each(event, function(fn, event) {
-                this.bindToDomElem(domElem, event, fn);
+                this.bindToDomElem(domElem, event, data, fn);
             }, this);
 
         return this;
@@ -1954,45 +1968,67 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
     /**
      * Adds an event handler to the document
      * @protected
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToDoc : function(event, fn) {
+    bindToDoc : function(event, data, fn) {
         this._needSpecialUnbind = true;
-        return this.bindToDomElem(doc, event, fn);
+        return this.bindToDomElem(doc, event, data, fn);
     },
 
     /**
      * Adds an event handler to the window
      * @protected
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindToWin : function(event, fn) {
+    bindToWin : function(event, data, fn) {
         this._needSpecialUnbind = true;
-        return this.bindToDomElem(win, event, fn);
+        return this.bindToDomElem(win, event, data, fn);
     },
 
     /**
      * Adds an event handler to the block's main DOM elements or its nested elements
      * @protected
      * @param {jQuery|String} [elem] Element
-     * @param {String} event Event name
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
      * @param {Function} fn Handler function, which will be executed in the block's context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
-    bindTo : function(elem, event, fn) {
-        if(!event || functions.isFunction(event)) { // if there is no element
-            fn = event;
+    bindTo : function(elem, event, data, fn) {
+        var len = arguments.length;
+        if(len === 3) {
+            if(functions.isFunction(data)) {
+                fn = data;
+                if(typeof event === 'object') {
+                    data = event;
+                    event = elem;
+                    elem = this.domElem;
+                }
+            }
+        } else if(len === 2) {
+            if(functions.isFunction(event)) {
+                fn = event;
+                event = elem;
+                elem = this.domElem;
+            } else if(!(typeof elem === 'string' || elem instanceof $)) {
+                data = event;
+                event = elem;
+                elem = this.domElem;
+            }
+        } else if(len === 1) {
             event = elem;
             elem = this.domElem;
-        } else if(typeof elem === 'string') {
-            elem = this.elem(elem);
         }
 
-        return this.bindToDomElem(elem, event, fn);
+        typeof elem === 'string' && (elem = this.elem(elem));
+
+        return this.bindToDomElem(elem, event, data, fn);
     },
 
     /**
@@ -2001,7 +2037,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery} domElem DOM element where the event was being listened for
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromDomElem : function(domElem, event, fn) {
         if(typeof event === 'string') {
@@ -2023,7 +2059,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromDoc : function(event, fn) {
         return this.unbindFromDomElem(doc, event, fn);
@@ -2034,7 +2070,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @protected
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFromWin : function(event, fn) {
         return this.unbindFromDomElem(win, event, fn);
@@ -2046,7 +2082,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery|String} [elem] Nested element
      * @param {String|Object} event Event name or event object
      * @param {Function} [fn] Handler function
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     unbindFrom : function(elem, event, fn) {
         var argLen = arguments.length;
@@ -2135,7 +2171,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {jQuery} [elem] Nested element
      * @param {String} modName Modifier name
      * @param {String} modVal Modifier value
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     setMod : function(elem, modName, modVal) {
         if(elem && typeof modVal !== 'undefined' && elem.length > 1) {
@@ -2344,7 +2380,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {String} [names] Nested element name (or names separated by spaces)
      * @param {String} [modName] Modifier name
      * @param {String} [modVal] Modifier value
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     dropElemCache : function(names, modName, modVal) {
         if(names) {
@@ -2463,9 +2499,17 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         if('live' in this) {
             var noLive = typeof res === 'undefined';
 
-            if(noLive ^ heedLive) {
+            if(noLive ^ heedLive) { // should be opposite to each other
                 res = this.live() !== false;
-                this.live = functions.noop;
+
+                var blockName = this.getName(),
+                    origLive = this.live;
+
+                this.live = function() {
+                    return this.getName() === blockName?
+                        res :
+                        origLive.apply(this, arguments);
+                };
             }
         }
 
@@ -2478,8 +2522,9 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @returns {jQuery} ctx Initialization context
      */
     init : function(ctx) {
-        if(typeof ctx === 'string') ctx = $(ctx);
-        else if(!ctx) ctx = DOM.scope;
+        if(typeof ctx === 'string') {
+            ctx = $(ctx);
+        } else if(!ctx) ctx = DOM.scope;
 
         var uniqInitId = identify();
         findDomElem(ctx, BEM_SELECTOR).each(function() {
@@ -2846,7 +2891,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
      * @param {Object} [data] Additional information that the handler gets as e.data
      * @param {Function} fn Handler
      * @param {Object} [fnCtx] Handler context
-     * @returns {this}
+     * @returns {BEMDOM} this
      */
     _liveCtxBind : function(ctx, e, data, fn, fnCtx) {
         if(typeof e === 'object') {
@@ -3088,7 +3133,7 @@ provide(
     /**
      * @exports
      * @param {String} path resource link
-     * @param {Function} callback executes when resource is loaded
+     * @param {Function} cb executes when resource is loaded
      */
     function(path, cb) {
         if(loaded[path]) {
@@ -3571,15 +3616,56 @@ provide(BEMDOM.decl(this.name, {
  * @module link
  */
 
-modules.define('link', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
+modules.define('link', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class link
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends link.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._url = this.params.url || this.domElem.attr('href');
+
+                this.hasMod('disabled') && this.domElem.removeAttr('href');
+            }
+        },
+
+        'disabled' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('href');
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.attr('href', this._url);
+            }
+        }
+    },
+
+    /**
+     * Returns url
+     * @returns {String}
+     */
+    getUrl : function() {
+        return this._url;
+    },
+
+    /**
+     * Sets url
+     * @param {String} url
+     * @returns {link} this
+     */
+    setUrl : function(url) {
+        this._url = url;
+        this.hasMod('disabled') || this.domElem.attr('href', url);
+        return this;
+    },
+
     _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
@@ -3595,562 +3681,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends l
 });
 
 /* end: ../../../common.blocks/link/link.js */
-/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointer.js */
-﻿/**
- * Basic polyfill for Pointer Events W3C Specification.
- *
- * @author Kir Belevich <kir@soulshine.in>
- * @copyright Kir Belevich 2013
- * @license MIT
- * @version 0.5.2
- */
-modules.define('jquery', function(provide, $) {
-
-/*
-   http://www.w3.org/TR/pointerevents/
-   https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html
-   https://dvcs.w3.org/hg/webevents/raw-file/default/touchevents.html
-   http://msdn.microsoft.com/en-US/library/ie/hh673557.aspx
-   http://www.benalman.com/news/2010/03/jquery-special-events/
-   http://api.jquery.com/category/events/event-object/
-*/
-
-var win = window,
-    doc = win.document,
-    binds = {
-        mouse: {
-            enter: 'mouseenter',
-            over: 'mouseover',
-            down: 'mousedown',
-            move: 'mousemove',
-            up: 'mouseup',
-            out: 'mouseout',
-            leave: 'mouseleave'
-        },
-
-        touch: {
-            enter: 'touchstart',
-            over: 'touchstart',
-            down: 'touchstart',
-            move: 'touchmove',
-            up: 'touchend',
-            out: 'touchend',
-            leave: 'touchend',
-            cancel: 'touchcancel'
-        },
-
-        mspointer: {
-            over: 'MSPointerOver',
-            down: 'MSPointerDown',
-            move: 'MSPointerMove',
-            up: 'MSPointerUp',
-            out: 'MSPointerOut',
-            cancel: 'MSPointerCancel'
-        }
-    };
-
-/**
- * Normalize touch-event by keeping all the
- * possible properties normalized by jQuery.
- *
- * @see http://api.jquery.com/category/events/event-object/
- *
- * @param {Object} e event
- */
-function normalizeTouchEvent(e) {
-
-    if(e.pointerType === 'touch') {
-
-        e.originalEvent = e.originalEvent || e;
-
-        // multitouch
-        if(e.originalEvent.touches.length > 1) {
-            e.multitouch = true;
-            return;
-        }
-
-        var touchPoint = e.originalEvent.changedTouches[0];
-
-        // keep all the properties normalized by jQuery
-        e.clientX = touchPoint.clientX;
-        e.clientY = touchPoint.clientY;
-        e.pageX = touchPoint.pageX;
-        e.pageY = touchPoint.pageY;
-        e.screenX = touchPoint.screenX;
-        e.screenY = touchPoint.screenY;
-        e.layerX = e.originalEvent.layerX;
-        e.layerY = e.originalEvent.layerY;
-        e.offsetX = e.layerX - e.target.offsetLeft;
-        e.offsetY = e.layerY - e.target.offsetTop;
-        e.identifier = touchPoint.identifier;
-    }
-
-}
-
-/**
- * Extend event to match PointerEvent Interface.
- *
- * @see https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html#pointer-events-and-interfaces
- * @see https://dvcs.w3.org/hg/webevents/raw-file/default/touchevents.html
- *
- * @param {object} e event
- */
-function extendToPointerEvent(e) {
-
-    /*eslint complexity:0*/
-    e.width = e.width ||
-              e.webkitRadiusX ||
-              e.radiusX ||
-              0;
-
-    e.height = e.width ||
-               e.webkitRadiusY ||
-               e.radiusY ||
-               0;
-
-    // TODO: stupid Android somehow could send "force" > 1 ;(
-    e.pressure = e.pressure ||
-                 e.mozPressure ||
-                 e.webkitForce ||
-                 e.force ||
-                 e.which && 0.5 ||
-                 0;
-
-    e.tiltX = e.tiltX || 0;
-    e.tiltY = e.tiltY || 0;
-
-    switch(e.pointerType) {
-        case 2: e.pointerType = 'touch'; break;
-        case 3: e.pointerType = 'pen'; break;
-        case 4: e.pointerType = 'mouse'; break;
-        default: e.pointerType = e.pointerType;
-    }
-
-    e.isPrimary = true;
-
-    // "1" is always for mouse, so +2 because of touch can start from 0
-    e.pointerId = e.identifier ? e.identifier + 2 : 1;
-
-}
-
-/**
- * Mutate an event to PointerEvent.
- *
- * @param {object} e current event object
- * @param {string} type future pointerevent type
- */
-function PointerEvent(e, type) {
-    $.extend(this, e);
-
-    this.type = type;
-
-    extendToPointerEvent(this);
-    normalizeTouchEvent(this);
-}
-
-// export PointerEvent class
-$.PointerEvent = PointerEvent;
-
-// nothing to do in IE11 for today
-if(win.navigator.pointerEnabled) {
-    provide($);
-    return;
-}
-
-/**
- * Simple nextTick polyfill.
- *
- * @see http://jsperf.com/settimeout-vs-nexttick-polyfill
- *
- * @returns {Function}
- */
-function nextTick(callback) {
-
-    var msgName = 'nextTick-polyfill',
-        timeouts = [];
-
-    if(win.nextTick) {
-        return win.nextTick(callback);
-    }
-
-    if(!win.postMessage || win.ActiveXObject) {
-        return setTimeout(callback, 0);
-    }
-
-    win.addEventListener('message', function(e){
-        if(e.source === win && e.data === msgName) {
-            if(e.stopPropagation) {
-                e.stopPropagation();
-            }
-
-            if(timeouts.length) {
-                timeouts.shift()();
-            }
-        }
-    }, false);
-
-    timeouts.push(callback);
-    win.postMessage(msgName, '*');
-
-}
-
-/**
- * Create new $.event.special wrapper with some default behavior.
- *
- * @param {string} type event type
- * @param {object} toExtend object to extend default wrapper
- */
-function addPointerEvent(type, toExtend) {
-
-    var eventName = 'pointer' + type,
-        pointerevent,
-
-        eventSpecial = $.event.special[eventName] = {
-            // bind
-            setup: function() {
-                $(this)
-                    .on(binds.mouse[type], eventSpecial.mouseHandler)
-                    .on(binds.touch[type], eventSpecial.touchHandler)
-                    .on(binds.mspointer[type], eventSpecial.msHandler);
-            },
-
-            // unbind
-            teardown: function() {
-                $(this)
-                    .off(binds.mouse[type], eventSpecial.mouseHandler)
-                    .off(binds.touch[type], eventSpecial.touchHandler)
-                    .off(binds.mspointer[type], eventSpecial.msHandler);
-            },
-
-            // mouse
-            mouseHandler: function(e) {
-                // do not duplicate PointerEvent if
-                // touch/mspointer is already processed
-                if(!eventSpecial._noMouse) {
-                    e.pointerType = 4;
-                    pointerevent = new PointerEvent(e, eventName);
-                    $(e.currentTarget).triggerHandler(pointerevent);
-                }
-
-                // clear the "processed" key right after
-                // current event and all the bubblings
-                nextTick(function() {
-                    eventSpecial._noMouse = false;
-                });
-            },
-
-            // touch
-            touchHandler: function(e) {
-                // stop mouse events handling
-                eventSpecial._noMouse = true;
-
-                e.pointerType = 2;
-                pointerevent = new PointerEvent(e, eventName);
-
-                $(e.currentTarget).triggerHandler(pointerevent);
-            },
-
-            // mspointer
-            msHandler: function(e) {
-                // stop mouse events handling
-                eventSpecial._noMouse = true;
-
-                pointerevent = new PointerEvent(e, eventName);
-                $(e.currentTarget).trigger(pointerevent);
-            }
-        };
-
-    // extend this $.event.special wrapper
-    if(toExtend) {
-        $.extend(eventSpecial, toExtend({
-            event: eventSpecial,
-            name: eventName,
-            type: type
-        }));
-    }
-
-}
-
-/**
- * Object to extend $.event.special to touchmove-based events.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function touchmoveBased(params) {
-
-    var event = params.event,
-        type = params.type;
-
-    return {
-        // bind
-        setup: function() {
-            $(this)
-                .on(binds.mouse[type], event.mouseHandler)
-                .on(binds.touch[type], event.touchHandler)
-                .on(binds.touch.down, event.touchDownHandler)
-                .on(binds.mspointer[type], event.msHandler);
-
-            if(type !== 'move') {
-                $(this).on(binds.touch.move, event.touchMoveHandler);
-            }
-        },
-
-        // unbind
-        teardown: function() {
-            $(this)
-                .off(binds.mouse[type], event.mouseHandler)
-                .off(binds.touch[type], event.touchHandler)
-                .off(binds.touch.down, event.touchDownHandler)
-                .off(binds.mspointer[type], event.msHandler);
-
-            if(type !== 'move') {
-                $(this).off(binds.touch.move, event.touchMoveHandler);
-            }
-        },
-
-        touchDownHandler: function(e) {
-            // stop mouse events handling
-            event._noMouse = true;
-            // save initial target
-            event._target = e.target;
-        }
-    };
-
-}
-
-/**
- * Object to extend $.event.special to pointerenter.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendToEnter(params) {
-
-    return $.extend(touchmoveBased(params), {
-        touchMoveHandler: function(e) {
-            e.pointerType = 2;
-
-            var pointerevent = new PointerEvent(e, params.name),
-                targetFromPoint = doc.elementFromPoint(
-                    pointerevent.clientX,
-                    pointerevent.clientY
-                ),
-                target = params.event._target;
-
-            // new target
-            if(target !== targetFromPoint) {
-                // fix simulated event targets
-                pointerevent.relatedTarget = pointerevent.target;
-                pointerevent.target = pointerevent.targetFromPoint;
-
-                // inner target
-                if(target.contains(targetFromPoint)) {
-                    $(targetFromPoint).triggerHandler(pointerevent);
-                // truly new target
-                } else if(!targetFromPoint.contains(target)) {
-                    $(targetFromPoint).trigger(pointerevent);
-                }
-
-                // targetFromPoint -> target
-                params.event._target = targetFromPoint;
-            }
-        }
-    });
-
-}
-
-/**
- * Object to extend $.event.special to pointerover.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendToOver(params) {
-
-    return $.extend(touchmoveBased(params), {
-        touchMoveHandler: function(e) {
-            e.pointerType = 2;
-
-            var pointerevent = new PointerEvent(e, params.name),
-                targetFromPoint = doc.elementFromPoint(
-                    pointerevent.clientX,
-                    pointerevent.clientY
-                ),
-                target = params.event._target;
-
-            // new target
-            if(target !== targetFromPoint) {
-                // fix simulated event targets
-                pointerevent.relatedTarget = pointerevent.target;
-                pointerevent.target = pointerevent.targetFromPoint;
-
-                $(targetFromPoint).trigger(pointerevent);
-
-                // targetFromPoint -> target
-                params.event._target = targetFromPoint;
-            }
-        }
-    });
-
-}
-
-/**
- * Object to extend $.event.special touchHandler with "target from point".
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendWithTargetFromPoint(params) {
-
-    return {
-        touchHandler: function(e) {
-            // stop mouse events handling
-            params.event._noMouse = true;
-
-            e.pointerType = 2;
-
-            var pointerevent = new PointerEvent(e, params.name),
-                targetFromPoint = doc.elementFromPoint(
-                    pointerevent.clientX,
-                    pointerevent.clientY
-                );
-
-            // fix simulated event targets
-            pointerevent.relatedTarget = pointerevent.target;
-            pointerevent.target = pointerevent.targetFromPoint;
-
-            $(targetFromPoint).triggerHandler(pointerevent);
-        }
-    };
-
-}
-
-/**
- * Object to extend $.event.special to pointerout.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendToOut(params) {
-
-    return $.extend(
-        touchmoveBased(params),
-        extendWithTargetFromPoint(params),
-        {
-            touchMoveHandler: function(e) {
-                e.pointerType = 2;
-
-                var pointerevent = new PointerEvent(e, params.name),
-                    targetFromPoint = doc.elementFromPoint(
-                        pointerevent.clientX,
-                        pointerevent.clientY
-                    ),
-                    target = params.event._target;
-
-                // new target
-                if(target !== targetFromPoint) {
-                    $(target).trigger(pointerevent);
-
-                    // targetFromPoint -> target
-                    params.event._target = targetFromPoint;
-                }
-            }
-        }
-    );
-
-}
-
-/**
- * Object to extend $.event.special to pointerleave.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendToLeave(params) {
-
-    return $.extend(
-        touchmoveBased(params),
-        extendWithTargetFromPoint(params),
-        {
-            touchMoveHandler: function(e) {
-                e.pointerType = 2;
-
-                var pointerevent = new PointerEvent(e, params.name),
-                    targetFromPoint = doc.elementFromPoint(
-                        pointerevent.clientX,
-                        pointerevent.clientY
-                    ),
-                    target = params.event._target;
-
-                // new target
-                if(target !== targetFromPoint) {
-                    if(targetFromPoint.contains(target)) {
-                        $(target).triggerHandler(pointerevent);
-                    } else {
-                        $(e.currentTarget).triggerHandler(pointerevent);
-                    }
-
-                    // targetFromPoint -> target
-                    params.event._target = targetFromPoint;
-                }
-            }
-        }
-    );
-
-}
-
-/**
- * Object to extend $.event.special to pointermove.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendToMove(params) {
-
-    return $.extend(
-        touchmoveBased(params),
-        extendWithTargetFromPoint(params)
-    );
-
-}
-
-// init pointer events
-addPointerEvent('enter', extendToEnter);
-addPointerEvent('over', extendToOver);
-addPointerEvent('down');
-addPointerEvent('move', extendToMove);
-addPointerEvent('up', extendWithTargetFromPoint);
-addPointerEvent('out', extendToOut);
-addPointerEvent('leave', extendToLeave);
-addPointerEvent('cancel');
-
-provide($);
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointer.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.
@@ -4946,220 +4476,893 @@ $(function() {
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
-/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointernative.js */
 /**
- * Additional pointerpress and pointerrelease events on top of
- * jquery-pointerevents. Goal – to prevent an accidental pressed
- * states when you just move your finger through the element on
- * touch devices.
- *
- * @author Kir Belevich <kir@soulshine.in>
- * @copyright Kir Belevich 2013
- * @license MIT
- * @version 0.1.0
+ * Basic pointer events polyfill
  */
-modules.define('jquery', function(provide, $) {
+;(function(global, factory) {
 
-// nothing to do without jquery-ppinterevents
-if(!('PointerEvent' in $)) {
-    provide($);
-    return;
+if(typeof modules === 'object' && modules.isDefined('jquery')) {
+    modules.define('jquery', function(provide, $) {
+        factory(this.global, $);
+        provide($);
+    });
+} else if(typeof jQuery === 'function') {
+    factory(global, jQuery);
 }
 
-/**
- * Create new $.event.special wrapper with some default behavior.
- *
- * @param {string} type event type
- * @param {object} toExtend object to extend default wrapper
+}(this, function(window, $) {
+
+// include "jquery-pointerevents.js"
+/*!
+ * Most of source code is taken from PointerEvents Polyfill
+ * written by Polymer Team (https://github.com/Polymer/PointerEvents)
+ * and licensed under the BSD License.
  */
-function addPointerEvent(type, toExtend) {
 
-    var eventName = 'pointer' + type,
+var doc = document,
+    USE_NATIVE_MAP = window.Map && window.Map.prototype.forEach,
+    HAS_BITMAP_TYPE = window.MSPointerEvent && typeof window.MSPointerEvent.MSPOINTER_TYPE_MOUSE === 'number',
+    POINTERS_FN = function() { return this.size };
 
-        eventSpecial = $.event.special[eventName] = {
-            // bind
-            setup: function() {
-                $(this).on({
-                    pointerdown: eventSpecial.handlerDown,
-                    pointermove: eventSpecial.handlerMove,
-                    pointerup: eventSpecial.handlerUp
-                });
-            },
+// NOTE: Remove jQuery special fixes for pointerevents – we fix them ourself
+delete $.event.special.pointerenter;
+delete $.event.special.pointerleave;
 
-            // unbind
-            teardown: function() {
-                $(this).off({
-                    pointerdown: eventSpecial.handlerDown,
-                    pointermove: eventSpecial.handlerMove,
-                    pointerup: eventSpecial.handlerUp
-                });
-            },
-
-            handlerMove: function(e) {
-
-                if(e.pointerType === 'touch') {
-                    var data = eventSpecial.data;
-
-                    // if there is a touch move
-                    if(
-                       data &&
-                       (Math.abs(e.clientX - data.clientX) > 5 ||
-                       Math.abs(e.clientY - data.clientY) > 5)
-                    ) {
-                        // save that
-                        data.move = true;
-                    }
-                }
-            }
+/**
+ * Returns a snapshot of inEvent, with writable properties.
+ *
+ * @param {Event} event An event that contains properties to copy.
+ * @returns {Object} An object containing shallow copies of `inEvent`'s
+ *    properties.
+ */
+function cloneEvent(event) {
+    var eventCopy = $.extend(new $.Event(), event);
+    if(event.preventDefault) {
+        eventCopy.preventDefault = function() {
+            event.preventDefault();
         };
+    }
+    return eventCopy;
+}
 
-    // extend this $.event.special wrapper
-    if(toExtend) {
-        $.extend(eventSpecial, toExtend({
-            event: eventSpecial,
-            name: eventName,
-            type: type
-        }));
+var MOUSE_PROPS = {
+        bubbles : false,
+        cancelable : false,
+        view : null,
+        detail : null,
+        screenX : 0,
+        screenY : 0,
+        clientX : 0,
+        clientY : 0,
+        ctrlKey : false,
+        altKey : false,
+        shiftKey : false,
+        metaKey : false,
+        button : 0,
+        relatedTarget : null,
+        pageX : 0,
+        pageY : 0
+    },
+    mouseProps = Object.keys(MOUSE_PROPS),
+    mousePropsLen = mouseProps.length,
+    mouseDefaults = mouseProps.map(function(prop) { return MOUSE_PROPS[prop] });
+
+/**
+ * Pointer event constructor
+ *
+ * @param {String} type
+ * @param {Object} [params]
+ * @returns {Event}
+ * @constructor
+ */
+function PointerEvent(type, params) {
+    params || (params = {});
+
+    var e = $.Event(type);
+
+    // define inherited MouseEvent properties
+    for(var i = 0, p; i < mousePropsLen; i++) {
+        p = mouseProps[i];
+        e[p] = params[p] || mouseDefaults[i];
     }
 
+    e.buttons = params.buttons || 0;
+
+    // add x/y properties aliased to clientX/Y
+    e.x = e.clientX;
+    e.y = e.clientY;
+
+    // Spec requires that pointers without pressure specified use 0.5 for down
+    // state and 0 for up state.
+    var pressure = 0;
+    if(params.pressure) {
+        pressure = params.pressure;
+    } else {
+        pressure = e.buttons? 0.5 : 0;
+    }
+
+    // define the properties of the PointerEvent interface
+    e.pointerId = params.pointerId || 0;
+    e.width = params.width || 0;
+    e.height = params.height || 0;
+    e.pressure = pressure;
+    e.tiltX = params.tiltX || 0;
+    e.tiltY = params.tiltY || 0;
+    e.pointerType = params.pointerType || '';
+    e.hwTimestamp = params.hwTimestamp || 0;
+    e.isPrimary = params.isPrimary || false;
+
+    // add some common jQuery properties
+    e.which = params.which;
+
+    return e;
 }
 
 /**
- * Object to extend $.event.special to handle pointerpress.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
+ * Implements a map of pointer states
+ * @returns {PointerMap}
+ * @constructor
  */
-function extendPointerPress(params) {
+function PointerMap() {
+    if(USE_NATIVE_MAP) {
+        var m = new Map();
+        m.pointers = POINTERS_FN;
+        return m;
+    }
 
-    var data = params.event.data;
-
-    return {
-        handlerDown: function(e) {
-            var target = e.target,
-                pointerevent;
-
-            // touch
-            if(e.pointerType === 'touch') {
-                data = {
-                    timer: (function() {
-                        // if there was no touchmove in 80ms – trigger pointerpress
-                        return setTimeout(function() {
-                            if(data && !data.move) {
-                                pointerevent = new $.PointerEvent(e, params.name);
-                                $(e.currentTarget).triggerHandler(pointerevent);
-                            }
-                        }, 80);
-                    })(),
-                    clientX: e.clientX,
-                    clientY: e.clientY
-                };
-            // mouse – only left button
-            } else if(e.which === 1) {
-                pointerevent = new $.PointerEvent(e, params.name);
-                $(e.currentTarget).triggerHandler(pointerevent);
-            }
-        },
-
-        handlerUp: function(e) {
-            if(e.pointerType === 'touch') {
-                if(data) {
-                    clearTimeout(data.timer);
-                }
-                data = null;
-            }
-        }
-    };
-
+    this.keys = [];
+    this.values = [];
 }
 
-/**
- * Object to extend $.event.special to handle pointerpress.
- *
- * @param {object} params
- * @param {object} params.event event object
- * @param {string} params.name event name
- * @param {string} params.type event type
- * @returns {object}
- */
-function extendPointerRelease(params) {
-
-    var data = params.event.data;
-
-    return {
-        handlerDown: function(e) {
-            var target = e.target,
-                pointerevent;
-
-            // touch
-            if(e.pointerType === 'touch') {
-                data = {
-                    timer: (function() {
-                        // if there was no touchmove in 80ms – trigger pointerpress
-                        return setTimeout(function() {
-                            if(data && !data.move) {
-                                data.pressed = true;
-                            }
-                        }, 80);
-                    })(),
-                    clientX: e.clientX,
-                    clientY: e.clientY
-                };
-            }
-        },
-
-        handlerUp: function(e) {
-            var pointerevent;
-
-            // touch
-            if(e.pointerType === 'touch') {
-                if(data && data.pressed) {
-                    pointerevent = new $.PointerEvent(e, params.name);
-                    $(e.target).trigger(pointerevent);
-                }
-
-                if(data) {
-                    clearTimeout(data.timer);
-                }
-
-                data = null;
-            // mouse – only left button
-            } else if(e.which === 1) {
-                pointerevent = new $.PointerEvent(e, params.name);
-                $(e.currentTarget).triggerHandler(pointerevent);
-            }
+PointerMap.prototype = {
+    set : function(id, event) {
+        var i = this.keys.indexOf(id);
+        if(i > -1) {
+            this.values[i] = event;
+        } else {
+            this.keys.push(id);
+            this.values.push(event);
         }
-    };
+    },
 
+    has : function(id) {
+        return this.keys.indexOf(id) > -1;
+    },
+
+    'delete' : function(id) {
+        var i = this.keys.indexOf(id);
+        if(i > -1) {
+            this.keys.splice(i, 1);
+            this.values.splice(i, 1);
+        }
+    },
+
+    get : function(id) {
+        var i = this.keys.indexOf(id);
+        return this.values[i];
+    },
+
+    clear : function() {
+        this.keys.length = 0;
+        this.values.length = 0;
+    },
+
+    forEach : function(callback, ctx) {
+        var keys = this.keys;
+        this.values.forEach(function(v, i) {
+            callback.call(ctx, v, keys[i], this);
+        }, this);
+    },
+
+    pointers : function() {
+        return this.keys.length;
+    }
+};
+
+var pointermap = new PointerMap();
+
+var dispatcher = {
+    eventMap : {},
+    eventSourceList : [],
+
+    /**
+     * Add a new event source that will generate pointer events
+     */
+    registerSource : function(name, source) {
+        var newEvents = source.events;
+        if(newEvents) {
+            newEvents.forEach(function(e) {
+                source[e] && (this.eventMap[e] = function() { source[e].apply(source, arguments) });
+            }, this);
+            this.eventSourceList.push(source);
+        }
+    },
+
+    register : function(element) {
+        var len = this.eventSourceList.length;
+        for(var i = 0, es; (i < len) && (es = this.eventSourceList[i]); i++) {
+            // call eventsource register
+            es.register.call(es, element);
+        }
+    },
+
+    unregister : function(element) {
+        var l = this.eventSourceList.length;
+        for(var i = 0, es; (i < l) && (es = this.eventSourceList[i]); i++) {
+            // call eventsource register
+            es.unregister.call(es, element);
+        }
+    },
+
+    down : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerdown', event);
+    },
+
+    move : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointermove', event);
+    },
+
+    up : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerup', event);
+    },
+
+    enter : function(event) {
+        event.bubbles = false;
+        this.fireEvent('pointerenter', event);
+    },
+
+    leave : function(event) {
+        event.bubbles = false;
+        this.fireEvent('pointerleave', event);
+    },
+
+    over : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerover', event);
+    },
+
+    out : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerout', event);
+    },
+
+    cancel : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointercancel', event);
+    },
+
+    leaveOut : function(event) {
+        this.out(event);
+        if(!this.contains(event.target, event.relatedTarget)) {
+            this.leave(event);
+        }
+    },
+
+    enterOver : function(event) {
+        this.over(event);
+        if(!this.contains(event.target, event.relatedTarget)) {
+            this.enter(event);
+        }
+    },
+
+    contains : function(target, relatedTarget) {
+        return target === relatedTarget || $.contains(target, relatedTarget);
+    },
+
+    // LISTENER LOGIC
+    eventHandler : function(e) {
+        // This is used to prevent multiple dispatch of pointerevents from
+        // platform events. This can happen when two elements in different scopes
+        // are set up to create pointer events, which is relevant to Shadow DOM.
+        if(e._handledByPE) {
+            return;
+        }
+
+        var type = e.type, fn;
+        (fn = this.eventMap && this.eventMap[type]) && fn(e);
+
+        e._handledByPE = true;
+    },
+
+    /**
+     * Sets up event listeners
+     */
+    listen : function(target, events) {
+        events.forEach(function(e) {
+            this.addEvent(target, e);
+        }, this);
+    },
+
+    /**
+     * Removes event listeners
+     */
+    unlisten : function(target, events) {
+        events.forEach(function(e) {
+            this.removeEvent(target, e);
+        }, this);
+    },
+
+    addEvent : function(target, eventName) {
+        $(target).on(eventName, boundHandler);
+    },
+
+    removeEvent : function(target, eventName) {
+        $(target).off(eventName, boundHandler);
+    },
+
+    getTarget : function(event) {
+        return event._target;
+    },
+
+    /**
+     * Creates a new Event of type `type`, based on the information in `event`
+     */
+    makeEvent : function(type, event) {
+        var e = new PointerEvent(type, event);
+        if(event.preventDefault) {
+            e.preventDefault = event.preventDefault;
+        }
+
+        e._target = e._target || event.target;
+
+        return e;
+    },
+
+    /**
+     * Dispatches the event to its target
+     */
+    dispatchEvent : function(event) {
+        var target = this.getTarget(event);
+        if(target) {
+            return $(target).trigger(event);
+        }
+    },
+
+    /**
+     * Makes and dispatch an event in one call
+     */
+    fireEvent : function(type, event) {
+        var e = this.makeEvent(type, event);
+        return this.dispatchEvent(e);
+    }
+};
+
+function boundHandler() {
+    dispatcher.eventHandler.apply(dispatcher, arguments);
 }
 
-// init pointer events
-addPointerEvent('press', extendPointerPress);
-addPointerEvent('release', extendPointerRelease);
+var CLICK_COUNT_TIMEOUT = 200,
+    // Radius around touchend that swallows mouse events
+    MOUSE_DEDUP_DIST = 25,
+    MOUSE_POINTER_ID = 1,
+    // This should be long enough to ignore compat mouse events made by touch
+    TOUCH_DEDUP_TIMEOUT = 2500,
+    // A distance for which touchmove should fire pointercancel event
+    TOUCHMOVE_HYSTERESIS = 20;
+
+// handler block for native mouse events
+var mouseEvents = {
+    POINTER_TYPE : 'mouse',
+    events : [
+        'mousedown',
+        'mousemove',
+        'mouseup',
+        'mouseover',
+        'mouseout'
+    ],
+
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+
+    lastTouches : [],
+
+    // collide with the global mouse listener
+    isEventSimulatedFromTouch : function(event) {
+        var lts = this.lastTouches,
+            x = event.clientX,
+            y = event.clientY;
+
+        for(var i = 0, l = lts.length, t; i < l && (t = lts[i]); i++) {
+            // simulated mouse events will be swallowed near a primary touchend
+            var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
+            if(dx <= MOUSE_DEDUP_DIST && dy <= MOUSE_DEDUP_DIST) {
+                return true;
+            }
+        }
+    },
+
+    prepareEvent : function(event) {
+        var e = cloneEvent(event);
+        e.pointerId = MOUSE_POINTER_ID;
+        e.isPrimary = true;
+        e.pointerType = this.POINTER_TYPE;
+        return e;
+    },
+
+    mousedown : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            if(pointermap.has(MOUSE_POINTER_ID)) {
+                // http://crbug/149091
+                this.cancel(event);
+            }
+
+            pointermap.set(MOUSE_POINTER_ID, event);
+
+            var e = this.prepareEvent(event);
+            dispatcher.down(e);
+        }
+    },
+
+    mousemove : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.move(e);
+        }
+    },
+
+    mouseup : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var p = pointermap.get(MOUSE_POINTER_ID);
+            if(p && p.button === event.button) {
+                var e = this.prepareEvent(event);
+                dispatcher.up(e);
+                this.cleanupMouse();
+            }
+        }
+    },
+
+    mouseover : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.enterOver(e);
+        }
+    },
+
+    mouseout : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.leaveOut(e);
+        }
+    },
+
+    cancel : function(inEvent) {
+        var e = this.prepareEvent(inEvent);
+        dispatcher.cancel(e);
+        this.cleanupMouse();
+    },
+
+    cleanupMouse : function() {
+        pointermap['delete'](MOUSE_POINTER_ID);
+    }
+};
+
+var touchEvents = {
+    events : [
+        'touchstart',
+        'touchmove',
+        'touchend',
+        'touchcancel'
+    ],
+
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+
+    POINTER_TYPE : 'touch',
+    clickCount : 0,
+    resetId : null,
+    firstTouch : null,
+
+    isPrimaryTouch : function(touch) {
+        return this.firstTouch === touch.identifier;
+    },
+
+    /**
+     * Sets primary touch if there no pointers, or the only pointer is the mouse
+     */
+    setPrimaryTouch : function(touch) {
+        if(pointermap.pointers() === 0 ||
+                (pointermap.pointers() === 1 && pointermap.has(MOUSE_POINTER_ID))) {
+            this.firstTouch = touch.identifier;
+            this.firstXY = { X : touch.clientX, Y : touch.clientY };
+            this.scrolling = null;
+
+            this.cancelResetClickCount();
+        }
+    },
+
+    removePrimaryPointer : function(pointer) {
+        if(pointer.isPrimary) {
+            this.firstTouch = null;
+            //this.firstXY = null;
+            this.resetClickCount();
+        }
+    },
+
+    resetClickCount : function() {
+        var _this = this;
+        this.resetId = setTimeout(function() {
+            _this.clickCount = 0;
+            _this.resetId = null;
+        }, CLICK_COUNT_TIMEOUT);
+    },
+
+    cancelResetClickCount : function() {
+        this.resetId && clearTimeout(this.resetId);
+    },
+
+    typeToButtons : function(type) {
+        return type === 'touchstart' || type === 'touchmove'? 1 : 0;
+    },
+
+    findTarget : function(event) {
+        // Currently we don't interested in shadow dom handling
+        return doc.elementFromPoint(event.clientX, event.clientY);
+    },
+
+    touchToPointer : function(touch) {
+        var cte = this.currentTouchEvent,
+            e = cloneEvent(touch);
+
+        // Spec specifies that pointerId 1 is reserved for Mouse.
+        // Touch identifiers can start at 0.
+        // Add 2 to the touch identifier for compatibility.
+        e.pointerId = touch.identifier + 2;
+        e.target = this.findTarget(e);
+        e.bubbles = true;
+        e.cancelable = true;
+        e.detail = this.clickCount;
+        e.button = 0;
+        e.buttons = this.typeToButtons(cte.type);
+        e.width = touch.webkitRadiusX || touch.radiusX || 0;
+        e.height = touch.webkitRadiusY || touch.radiusY || 0;
+        e.pressure = touch.mozPressure || touch.webkitForce || touch.force || 0.5;
+        e.isPrimary = this.isPrimaryTouch(touch);
+        e.pointerType = this.POINTER_TYPE;
+
+        // forward touch preventDefaults
+        var _this = this;
+        e.preventDefault = function() {
+            _this.scrolling = false;
+            _this.firstXY = null;
+            cte.preventDefault();
+        };
+
+        return e;
+    },
+
+    processTouches : function(event, fn) {
+        var tl = event.originalEvent.changedTouches;
+        this.currentTouchEvent = event;
+        for(var i = 0, t; i < tl.length; i++) {
+            t = tl[i];
+            fn.call(this, this.touchToPointer(t));
+        }
+    },
+
+    shouldScroll : function(touchEvent) {
+        // return "true" for things to be much easier
+        return true;
+    },
+    
+    findTouch : function(touches, pointerId) {
+        for(var i = 0, l = touches.length, t; i < l && (t = touches[i]); i++) {
+            if(t.identifier === pointerId) {
+                return true;
+            }
+        }
+    },
+    
+    /**
+     * In some instances, a touchstart can happen without a touchend.
+     * This leaves the pointermap in a broken state.
+     * Therefore, on every touchstart, we remove the touches
+     * that did not fire a touchend event.
+     * 
+     * To keep state globally consistent, we fire a pointercancel
+     * for this "abandoned" touch
+     */
+    vacuumTouches : function(touchEvent) {
+        var touches = touchEvent.touches;
+        // pointermap.pointers() should be less than length of touches here, as the touchstart has not
+        // been processed yet.
+        if(pointermap.pointers() >= touches.length) {
+            var d = [];
+            
+            pointermap.forEach(function(pointer, pointerId) {
+                // Never remove pointerId == 1, which is mouse.
+                // Touch identifiers are 2 smaller than their pointerId, which is the
+                // index in pointermap.
+                if(pointerId === MOUSE_POINTER_ID || this.findTouch(touches, pointerId - 2)) return;
+                d.push(pointer.outEvent);
+            }, this);
+            
+            d.forEach(this.cancelOut, this);
+        }
+    },
+
+    /**
+     * Prevents synth mouse events from creating pointer events
+     */
+    dedupSynthMouse : function(touchEvent) {
+        var lts = mouseEvents.lastTouches,
+            t = touchEvent.changedTouches[0];
+
+        // only the primary finger will synth mouse events
+        if(this.isPrimaryTouch(t)) {
+            // remember x/y of last touch
+            var lt = { x : t.clientX, y : t.clientY };
+            lts.push(lt);
+
+            setTimeout(function() {
+                var i = lts.indexOf(lt);
+                i > -1 && lts.splice(i, 1);
+            }, TOUCH_DEDUP_TIMEOUT);
+        }
+    },
+    
+    touchstart : function(event) {
+        var touchEvent = event.originalEvent;
+
+        this.vacuumTouches(touchEvent);
+        this.setPrimaryTouch(touchEvent.changedTouches[0]);
+        this.dedupSynthMouse(touchEvent);
+        
+        if(!this.scrolling) {
+            this.clickCount++;
+            this.processTouches(event, this.overDown);
+        }
+    },
+    
+    touchmove : function(event) {
+        var touchEvent = event.originalEvent;
+        if(!this.scrolling) {
+            if(this.scrolling === null && this.shouldScroll(touchEvent)) {
+                this.scrolling = true;
+            } else {
+                event.preventDefault();
+                this.processTouches(event, this.moveOverOut);
+            }
+        } else if(this.firstXY) {
+            var firstXY = this.firstXY,
+                touch = touchEvent.changedTouches[0],
+                dx = touch.clientX - firstXY.X,
+                dy = touch.clientY - firstXY.Y,
+                dd = Math.sqrt(dx * dx + dy * dy);
+            if(dd >= TOUCHMOVE_HYSTERESIS) {
+                this.touchcancel(event);
+                this.scrolling = true;
+                this.firstXY = null;
+            }
+        }
+    },
+    
+    touchend : function(event) {
+        var touchEvent = event.originalEvent;
+        this.dedupSynthMouse(touchEvent);
+        this.processTouches(event, this.upOut);
+    },
+    
+    touchcancel : function(event) {
+        this.processTouches(event, this.cancelOut);
+    },
+    
+    overDown : function(pEvent) {
+        var target = pEvent.target;
+        pointermap.set(pEvent.pointerId, {
+            target : target,
+            outTarget : target,
+            outEvent : pEvent
+        });
+        dispatcher.over(pEvent);
+        dispatcher.enter(pEvent);
+        dispatcher.down(pEvent);
+    },
+
+    moveOverOut : function(pEvent) {
+        var pointer = pointermap.get(pEvent.pointerId);
+
+        // a finger drifted off the screen, ignore it
+        if(!pointer) {
+            return;
+        }
+
+        dispatcher.move(pEvent);
+
+        var outEvent = pointer.outEvent,
+            outTarget = pointer.outTarget;
+
+        if(outEvent && outTarget !== pEvent.target) {
+            pEvent.relatedTarget = outTarget;
+            outEvent.relatedTarget = pEvent.target;
+            // recover from retargeting by shadow
+            outEvent.target = outTarget;
+
+            if(pEvent.target) {
+                dispatcher.leaveOut(outEvent);
+                dispatcher.enterOver(pEvent);
+            } else {
+                // clean up case when finger leaves the screen
+                pEvent.target = outTarget;
+                pEvent.relatedTarget = null;
+                this.cancelOut(pEvent);
+            }
+        }
+
+        pointer.outEvent = pEvent;
+        pointer.outTarget = pEvent.target;
+    },
+
+    upOut : function(pEvent) {
+        dispatcher.up(pEvent);
+        dispatcher.out(pEvent);
+        dispatcher.leave(pEvent);
+
+        this.cleanUpPointer(pEvent);
+    },
+
+    cancelOut : function(pEvent) {
+        dispatcher.cancel(pEvent);
+        dispatcher.out(pEvent);
+        dispatcher.leave(pEvent);
+        this.cleanUpPointer(pEvent);
+    },
+
+    cleanUpPointer : function(pEvent) {
+        pointermap['delete'](pEvent.pointerId);
+        this.removePrimaryPointer(pEvent);
+    }
+};
+
+var msEvents = {
+    events : [
+        'MSPointerDown',
+        'MSPointerMove',
+        'MSPointerUp',
+        'MSPointerOut',
+        'MSPointerOver',
+        'MSPointerCancel'
+    ],
+    
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+    
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+    
+    POINTER_TYPES : [
+        '',
+        'unavailable',
+        'touch',
+        'pen',
+        'mouse'
+    ],
+    
+    prepareEvent : function(event) {
+        var e = cloneEvent(event);
+        HAS_BITMAP_TYPE && (e.pointerType = this.POINTER_TYPES[event.pointerType]);
+        return e;
+    },
+    
+    MSPointerDown : function(event) {
+        pointermap.set(event.pointerId, event);
+        var e = this.prepareEvent(event);
+        dispatcher.down(e);
+    },
+    
+    MSPointerMove : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.move(e);
+    },
+    
+    MSPointerUp : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.up(e);
+        this.cleanup(event.pointerId);
+    },
+    
+    MSPointerOut : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.leaveOut(e);
+    },
+    
+    MSPointerOver : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.enterOver(e);
+    },
+    
+    MSPointerCancel : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.cancel(e);
+        this.cleanup(event.pointerId);
+    },
+    
+    cleanup : function(id) {
+        pointermap['delete'](id);
+    }
+};
+
+var navigator = window.navigator;
+if(navigator.msPointerEnabled) {
+    dispatcher.registerSource('ms', msEvents);
+} else {
+    dispatcher.registerSource('mouse', mouseEvents);
+    if(typeof window.ontouchstart !== 'undefined') {
+        dispatcher.registerSource('touch', touchEvents);
+    }
+}
+
+dispatcher.register(doc);
+
+}));
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointernative.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
+modules.define('jquery', function(provide, $) {
+
+$.each({
+    pointerpress : 'pointerdown',
+    pointerrelease : 'pointerup pointercancel'
+}, function(spec, origEvent) {
+    function eventHandler(e) {
+        var res, origType = e.handleObj.origType;
+
+        if(!e.button) {
+            e.type = spec;
+            res = $.event.dispatch.apply(this, arguments);
+            e.type = origType;
+        }
+
+        return res;
+    }
+
+    $.event.special[spec] = {
+        setup : function() {
+            $(this).on(origEvent, eventHandler);
+            return false;
+        },
+        teardown : function() {
+            $(this).off(origEvent, eventHandler);
+            return false;
+        }
+    };
+});
 
 provide($);
 
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
-/* begin: ../../../common.blocks/base-control/base-control.js */
-/** @module base-control */
+/* begin: ../../../common.blocks/control/control.js */
+/** @module control */
 
 modules.define(
-    'base-control',
+    'control',
     ['i-bem__dom', 'dom', 'next-tick'],
     function(provide, BEMDOM, dom, nextTick) {
 
 /**
  * @exports
- * @class base-control
+ * @class control
  * @abstract
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -5245,7 +5448,7 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
     _blur : function() {
         this.elem('control').blur();
     }
-}, /** @lends base-control */{
+}, /** @lends control */{
     live : function() {
         this
             .liveBindTo('control', 'focusin', this.prototype._onFocus)
@@ -5266,7 +5469,7 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
 
 });
 
-/* end: ../../../common.blocks/base-control/base-control.js */
+/* end: ../../../common.blocks/control/control.js */
 /* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
 modules.define('link', function(provide, Link) {
 
@@ -5374,8 +5577,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize()
-                    ._ownerParents = null;
+                    ._unbindFromScrollAndResize();
+
+                if(this._owner) {
+                    this._ownerParents = null;
+                    this._isTargetVisible = undef;
+                }
             }
         }
     },
@@ -5384,7 +5591,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
      * Sets target
      * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
      * @param {Number} [top] y-coordinate
-     * @returns {this}
+     * @returns {popup} this
      */
     setTarget : function(left, top) {
         this
@@ -5428,7 +5635,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     /**
      * Sets content
      * @param {String|jQuery} content
-     * @returns {this}
+     * @returns {popup} this
      */
     setContent : function(content) {
         BEMDOM.update(this.domElem, content);
@@ -5437,7 +5644,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     /**
      * Redraws popup
-     * @returns {this}
+     * @returns {popup} this
      */
     redraw : function() {
         if(!this.hasMod('visible')) return this;
@@ -5476,8 +5683,75 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return this;
     },
 
+    /**
+     * Returns possible directions to draw with max available width and height.
+     * @returns {Array}
+     */
+    calcPossibleDrawingParams : function() {
+        var owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
+            params = this.params,
+            mainOffset = params.mainOffset,
+            secondaryOffset = params.secondaryOffset,
+            viewportOffset = params.viewportOffset;
+
+        return this.params.directions.map(function(direction) {
+            var subRes = {
+                    direction : direction,
+                    width : 0,
+                    height : 0,
+                    left : 0,
+                    top : 0
+                };
+
+            if(checkMainDirection(direction, 'bottom')) {
+                subRes.top = owner.top + owner.height + mainOffset;
+                subRes.height = viewport.bottom - subRes.top - viewportOffset;
+            } else if(checkMainDirection(direction, 'top')) {
+                subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
+                subRes.top = owner.top - subRes.height - mainOffset;
+            } else {
+                if(checkSecondaryDirection(direction, 'center')) {
+                    subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
+                    subRes.top = owner.top + owner.height / 2 - subRes.height / 2;
+                } else if(checkSecondaryDirection(direction, 'bottom')) {
+                    subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
+                    subRes.top = owner.top + owner.height - subRes.height - secondaryOffset;
+                } else if(checkSecondaryDirection(direction, 'top')) {
+                    subRes.top = owner.top + secondaryOffset;
+                    subRes.height = viewport.bottom - subRes.top - viewportOffset;
+                }
+
+                if(checkMainDirection(direction, 'left')) {
+                    subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
+                    subRes.left = owner.left - subRes.width - mainOffset;
+                } else {
+                    subRes.left = owner.left + owner.width + mainOffset;
+                    subRes.width = viewport.right - subRes.left - viewportOffset;
+                }
+            }
+
+            if(checkSecondaryDirection(direction, 'right')) {
+                subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
+                subRes.left = owner.left + owner.width - subRes.width - secondaryOffset;
+            } else if(checkSecondaryDirection(direction, 'left')) {
+                subRes.left = owner.left + secondaryOffset;
+                subRes.width = viewport.right - subRes.left - viewportOffset;
+            } else if(checkSecondaryDirection(direction, 'center')) {
+                if(checkMainDirection(direction, 'top', 'bottom')) {
+                    subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
+                    subRes.left = owner.left + owner.width / 2 - subRes.width / 2;
+                }
+            }
+
+            return subRes;
+        }, this);
+    },
+
     _calcBestDrawingParams : function() {
-        var dimensions = this._calcDimensions(),
+        var popup = this._calcPopupDimensions(),
+            owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
             directions = this.params.directions,
             i = 0,
             direction,
@@ -5488,8 +5762,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             bestViewportFactor;
 
         while(direction = directions[i++]) {
-            pos = this._calcPos(direction, dimensions);
-            viewportFactor = this._calcViewportFactor(pos, dimensions);
+            pos = this._calcPos(direction, owner, popup);
+            viewportFactor = this._calcViewportFactor(pos, viewport, popup);
             if(i === 1 ||
                     viewportFactor > bestViewportFactor ||
                     (!bestViewportFactor && this.hasMod('direction', direction))) {
@@ -5507,46 +5781,48 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         };
     },
 
-    _calcDimensions : function() {
+    _calcPopupDimensions : function() {
+        var popupWidth = this.domElem.outerWidth(),
+            popupHeight = this.domElem.outerHeight();
+
+        return {
+            width : popupWidth,
+            height : popupHeight,
+            area : popupWidth * popupHeight
+        };
+    },
+
+    _calcOwnerDimensions : function() {
         var pos = this._pos,
             owner = this._owner,
-            popupWidth = this.domElem.outerWidth(),
-            popupHeight = this.domElem.outerHeight(),
-            ownerPos = pos? pos : owner.offset(),
-            winTop = win.scrollTop(),
+            ownerPos = pos? pos : owner.offset();
+
+        return {
+            left : ownerPos.left,
+            top : ownerPos.top,
+            width : pos? 0 : owner.outerWidth(),
+            height : pos? 0 : owner.outerHeight()
+        };
+    },
+
+    _calcViewportDimensions : function() {
+        var winTop = win.scrollTop(),
             winLeft = win.scrollLeft(),
             winWidth = win.width(),
             winHeight = win.height();
 
         return {
-            popup : {
-                width : popupWidth,
-                height : popupHeight,
-                area : popupWidth * popupHeight
-            },
-
-            owner : {
-                left : ownerPos.left,
-                top : ownerPos.top,
-                width : pos? 0 : owner.outerWidth(),
-                height : pos? 0 : owner.outerHeight()
-            },
-
-            viewport : {
-                top : winTop,
-                left : winLeft,
-                bottom : winTop + winHeight,
-                right : winLeft + winWidth
-            }
+            top : winTop,
+            left : winLeft,
+            bottom : winTop + winHeight,
+            right : winLeft + winWidth
         };
     },
 
-    _calcPos : function(direction, dimensions) {
+    _calcPos : function(direction, owner, popup) {
         var res = {},
             mainOffset = this.params.mainOffset,
-            secondaryOffset = this.params.secondaryOffset,
-            owner = dimensions.owner,
-            popup = dimensions.popup;
+            secondaryOffset = this.params.secondaryOffset;
 
         if(checkMainDirection(direction, 'bottom')) {
             res.top = owner.top + owner.height + mainOffset;
@@ -5577,10 +5853,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return res;
     },
 
-    _calcViewportFactor : function(pos, dimensions) {
-        var viewport = dimensions.viewport,
-            popup = dimensions.popup,
-            viewportOffset = this.params.viewportOffset,
+    _calcViewportFactor : function(pos, viewport, popup) {
+        var viewportOffset = this.params.viewportOffset,
             intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
             intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
             intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
@@ -5622,15 +5896,28 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             if(this.tagName === 'BODY') return false;
 
             var parent = $(this),
-                parentOffset = parent.offset(),
-                parentTopOffset = Math.floor(parentOffset.top),
-                parentLeftOffset = Math.floor(parentOffset.left);
+                overflowY = parent.css('overflow-y'),
+                checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
+                overflowX = parent.css('overflow-x'),
+                checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
 
-            return res = !(
-                (vertBorder < parentTopOffset) ||
-                (parentTopOffset + parent.outerHeight() < vertBorder) ||
-                (horizBorder < parentLeftOffset) ||
-                (parentLeftOffset + parent.outerWidth() < horizBorder));
+            if(checkOverflowY || checkOverflowX) {
+                var parentOffset = parent.offset();
+
+                if(checkOverflowY) {
+                    var parentTopOffset = Math.floor(parentOffset.top);
+                    if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
+                        return res = false;
+                    }
+                }
+
+                if(checkOverflowX) {
+                    var parentLeftOffset = Math.floor(parentOffset.left);
+                    return res = !(
+                        horizBorder < parentLeftOffset ||
+                        parentLeftOffset + parent.outerWidth() < horizBorder);
+                }
+            }
         });
 
         return res;
@@ -5802,21 +6089,22 @@ provide(
     });
 
 });
+
 /* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
 /* begin: ../../../common.blocks/input/input.js */
 /**
  * @module input
  */
 
-modules.define('input', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
+modules.define('input', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class input
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends input.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -5839,7 +6127,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends i
      * Sets control value
      * @param {String} val value
      * @param {Object} [data] additional data
-     * @returns {this}
+     * @returns {input} this
      */
     setVal : function(val, data) {
         val = String(val);

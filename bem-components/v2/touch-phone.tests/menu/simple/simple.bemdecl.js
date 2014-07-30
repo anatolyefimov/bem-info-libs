@@ -23,7 +23,7 @@ exports.deps = [
     },
     {
         "block": "menu",
-        "mod": "select",
+        "mod": "mode",
         "val": "radio"
     },
     {
@@ -59,12 +59,12 @@ exports.deps = [
     },
     {
         "block": "menu",
-        "mod": "select",
+        "mod": "mode",
         "val": "check"
     },
     {
         "block": "menu",
-        "mod": "select",
+        "mod": "mode",
         "val": "radio-check"
     },
     {
@@ -107,6 +107,11 @@ exports.deps = [
         "elem": "icon",
         "mod": "social",
         "val": "vk"
+    },
+    {
+        "block": "menu",
+        "mod": "disabled",
+        "val": true
     },
     {
         "block": "menu",

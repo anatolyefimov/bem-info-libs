@@ -26,6 +26,11 @@ exports.deps = [
     {
         "block": "button",
         "mod": "type",
+        "val": "submit"
+    },
+    {
+        "block": "button",
+        "mod": "type",
         "val": "link"
     },
     {
@@ -109,6 +114,9 @@ exports.deps = [
         "block": "icon",
         "mod": "action",
         "val": "up"
+    },
+    {
+        "block": "image"
     },
     {
         "block": "button",

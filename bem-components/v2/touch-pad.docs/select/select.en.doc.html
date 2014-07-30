@@ -1,0 +1,839 @@
+<h1 id="button">button</h1>
+<p>The <code>button</code> block is used for different types of buttons creation. It allows you to manage size, sate, content and appearance of a button.</p>
+<h2 id="button-use-cases">Button use cases</h2>
+<ul>
+<li>button – is used to create the majority of web inteface buttons. Used by default.</li>
+<li>link-button – a button that provides link functionality. Must have a mandatory modifier <code>type</code> with <code>link</code> value.</li>
+<li>action button – a button designed to send data to the server (submit). Must be always located inside a form. Sets <code>type</code> modifier with <code>submit</code> value in BEMJSON to create an action button.</li>
+</ul>
+<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes could be specified in corresponding fields of block&#39;s BEMJSON file:</p>
+<table>
+    <tr>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Text of a button.</td>
+    </tr>
+    <tr>
+        <td>icon</td>
+        <td>
+            <code>BEMJSON</code>
+        </td>
+        <td>Button with an icon provided by an <code>icon</code> block.</td>
+    </tr>
+    <tr>
+        <td>url</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>URL address. It is used only if <code>button_type_link</code> modifier is specified. In this case a button
+            acts as a link and <code>url</code> value is represented as a <code>href</code> attribute.
+        </td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Unique identifier of a button.</td>
+    </tr>
+    <tr>
+        <td>tabindex</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Defines tab order between the buttons.</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Value to be sent to a server. It is empty by default.</td>
+    </tr>
+</table>
+
+<p>The other valid block&#39;s attributes could be specified in the <code>attrs</code> field in BEMJSON.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="_theme">_theme</h3>
+<p>The block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>theme</code> modifier is not specified, the native representation (<em>default</em>) of a control is available.</p>
+<p>Following examples demonstrate this:</p>
+<p><strong>default</strong></p>
+<!-- bem-example: touch-pad.examples/select/b7paW80CenjDPGtPNxSCdPuUKqg -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/select/8MGVemijL_tqZt4Z3DsedAxNwDo -->
+
+<p><strong>normal</strong></p>
+<!-- bem-example: touch-pad.examples/select/u1hTHzxMhorqFlZaZXNkPIBN4WU -->
+
+<h3 id="_size">_size</h3>
+<p>Mandatory modifier that is available for <em>normal</em> theme only.</p>
+<p>Provides all types of buttons with the <code>size</code> value.</p>
+<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
+<p>Following examples demonstrate this:</p>
+<table>
+  <tr>
+    <th>Size</th>
+    <th>Font size</th>
+    <th>Button height</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+        <th>S</th>
+        <td>13px</td>
+        <td>24px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;s&#39; },
+    text : &#39;Small&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>M</th>
+        <td>13px</td>
+        <td>28px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
+    text : &#39;Medium&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>L</th>
+        <td>15px</td>
+        <td>32px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
+    text : &#39;Large&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>XL</th>
+        <td>18px</td>
+        <td>38px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;xl&#39; },
+    text : &#39;X-large&#39;
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+<h3 id="_type">_type</h3>
+<p>The block could be represented as a <code>link-button</code> (<code>button_type_link</code>).</p>
+<p>This button type has mandatory attribute <code>url</code> that should be specified in BEMJSON input data. A link-button has an <code>&lt;a&gt;</code> attribute. <code>url</code> value becomes <code>href</code> attribute.</p>
+<pre><code>{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;link&#39; },
+    url : &#39;#&#39;,
+    text : &#39;Link-button&#39;
+}
+</code></pre><h3 id="button-s-states">Button&#39;s states</h3>
+<h4 id="_disabled">_disabled</h4>
+<p>If <code>disabled</code> modifier has <code>true</code> value, button is visible but not available for user action.</p>
+<p>Disabled button cannot be focused by pressing a <code>Tab</code> or on mouse click.</p>
+<pre><code class="lang-bemjsom">{
+    block : &#39;button&#39;,
+    text : &#39;Disabled&#39;,
+    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, disabled : true }
+}
+</code></pre>
+<h4 id="_focused">_focused</h4>
+<p>If <code>focused</code> modifier has <code>true</code> value, the button is always focused. You can click the focused button using <code>Space</code> or <code>Enter</code> button on your keyboard. To switch between controls use a <code>Tab</code> button.</p>
+<!-- bem-example: touch-pad.examples/select/UkvwYMbpDOkZaq5dm0uIlVbQ9GA -->
+
+<h4 id="_hovered">_hovered</h4>
+<p>Defines &quot;hover&quot; action.</p>
+<h4 id="_pressed">_pressed</h4>
+<p>Defines &quot;pressed&quot; state of a button.</p>
+<h4 id="_togglable">_togglable</h4>
+<p>Defines a state of the pressed button when the first click presses the button, and the second returns it to its original state.</p>
+<!-- bem-example: touch-pad.examples/select/xAkZMTZIyMq8S8Cc5mWrpqEj5Cc -->
+
+<h4 id="_action">_action</h4>
+<p>Visually highlights a button on a page.</p>
+<!-- bem-example: touch-pad.examples/select/X1_VUgD2DCMkTeRUN6Vd4diR7Yk -->
+
+<h4 id="_pseudo">_pseudo</h4>
+<p>If <code>pseudo</code> modifier has <code>true</code> value, the button background becomes transparent.</p>
+<!-- bem-example: touch-pad.examples/select/GVMyNpdJjINIl0Ab_qhtsWRf_YA -->
+If pseudo button is disabled, its boarders disappear.
+
+<!-- bem-example: touch-pad.examples/select/fc2vxXBIzzk2stACB-J9vRKlYQ4 -->
+
+<h2 id="block-s-elements">Block&#39;s elements</h2>
+<h3 id="__text">__text</h3>
+<p>This auxiliary element sets a text position inside the button.</p>
+<!-- bem-example: touch-pad.examples/select/t_3HDmaOrqYMmf-3NPSa4KJZWBY -->
+
+<h2 id="block-s-dependencies">Block&#39;s dependencies</h2>
+<ul>
+<li><code>control</code>, that provides public API for the controls</li>
+<li><code>i-bem__dom</code></li>
+<li><code>keyboard</code></li>
+</ul>
+
+<h1 id="control">control</h1>
+<p>Auxiliary block designed for common functionality implementation to provide the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library with <code>focused</code> and <code>disabled</code> states:</p>
+<ul>
+<li><a href="../attach/attach.en.md">attach</a></li>
+<li><a href="../button/button.en.md">button</a></li>
+<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
+<li><a href="../input/input.en.md">input</a></li>
+<li><a href="../link/link.en.md">link</a></li>
+<li><a href="../menu/menu.en.md">menu</a></li>
+<li><a href="../radio/radio.en.md">radio</a></li>
+</ul>
+<p>The <code>control</code> block provides valid <code>tabIndex</code> attribute value depending on the current state of a block.</p>
+<p>The block uses following methods:</p>
+<table>
+    <tr>
+        <th>Method</td>
+        <th>Description</td>
+    </tr>
+    <tr>
+        <td><code>getVal</code></td>
+        <td>Returns a control&#39;s value.</td>
+    </tr>
+    <tr>
+        <td><code>getName</code></td>
+        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
+    </tr>
+</table>
+
+<h1 id="menu">menu</h1>
+<p>A <code>menu</code> block is used for creation of various types of menus and lists. It allows to manage state, behavior and appearance of menus.</p>
+<p>As a result of BEMHTML transformations, a block will be rendered to a <code>&lt;div&gt;</code> HTML element, with <code>role=&quot;menu&quot;</code> attribute set. The block&#39;s HTML element contains a set of switches – the <code>menu-item</code> blocks.</p>
+<p>It allow to manage the appearance, state and size of a menu blocks as well as manage the nested <code>menu-items</code> block&#39;s appearance.</p>
+<h2 id="menu-use-cases">menu use cases</h2>
+<p>A <code>menu</code> block is used for creation of following menu types:</p>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Switch menu</td>
+        <td>Used for creation of lists with a single selectable item.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;,
+        size : &#39;m&#39;, 
+        mode : &#39;radio&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    <tr>
+        <td>A multi selectable list. (<code>_mode_check</code>)</td>
+        <td>Clicking on a list items will perform item&#39;s state switching to opposite. If an item was active it will be deactivated, and vice versa.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;m&#39;,
+        mode : &#39;check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+<tr>
+        <td>Basic list (with <code>_mode</code> modifier is unset)</td>
+        <td>Menu item&#39;s state will not change on mouse click. A <code>_cheked</code> state modifier will not be toggled.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;m&#39;
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to the block.</p>
+<p>For example:</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/select/vAAUvyJpkNyuM0yEru7LP3dZ7xE -->
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/select/JgK_lg3CEjumbM6ThTKEOcNpfH0 -->
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/select/MGiZ5_2bYS32yaxnY5iD9OevjVk -->
+
+<h3 id="the-sizes-_size-">The sizes <code>_size</code></h3>
+<p>Mandatory modifier. Available for <em>normal</em> theme only.
+Provides a size value to all types of radio groups.</p>
+<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
+<table>
+    <tr>
+        <th>A <code>_size</code> value</th>
+        <th>Font size</th>
+        <th>Line height <code>line-heigh</code></th>
+        <th>Left padding <code>padding-left</code></th>
+        <th>Global <code>padding</code></th>
+        <th>The tick&#39;s icon size for normal theme</code></th>
+    </tr>
+    <tr>
+        <td>s</td>
+        <td>13px</td>
+        <td>24px</td>
+        <td>30px</td>
+        <td>14px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        mode : &#39;check&#39;, 
+        size : &#39;s&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>13px</td>
+        <td>24px</td>
+        <td>30px</td>
+        <td>14px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        mode : &#39;check&#39;, 
+        size : &#39;m&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>l</td>
+        <td>15px</td>
+        <td>28px</td>
+        <td>34px</td>
+        <td>15px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        mode : &#39;check&#39;, 
+        size : &#39;l&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>xl</td>
+        <td>15px</td>
+        <td>32px</td>
+        <td>40px</td>
+        <td>15px</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        mode : &#39;check&#39;, 
+        size : &#39;xl&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+<h3 id="menu-item-selection-options-_mode-">Menu item selection options <code>_mode</code></h3>
+<p>A <code>_mode</code> modifier defines a menu item&#39;s reaction on mouse click. For example, it controls multiple items selectability.</p>
+<p>Following modifier values are available:</p>
+<ul>
+<li><code>check</code> – a selectable list. A menu item will change it&#39;s state to opposite on each mouse click. An active item will become inactive and vice versa. Multiple choice is available;</li>
+<li><code>radio</code> – a switcher. Inactive menu item will be activated on mouse click. On re-clicking the menu item will remain <strong>active</strong>. Multiple choice not available;</li>
+<li><code>radio-check</code> – a switcher. Inactive menu item will be activated on mouse click. On re-clicking the active menu item will become <strong>inactive</strong>. Multiple choice not available.</li>
+</ul>
+<p>Available for all block themes.</p>
+<table>
+    <tr>
+        <th>List items selectability</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Only one (<code>_mode_radio</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        mode : &#39;radio&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Plural selection or none (<code>_mode_check</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        mode : &#39;check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>One or none (<code>_mode_radio-check</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu&#39;,
+    mods : { 
+        theme : &#39;normal&#39;, 
+        size : &#39;l&#39;, 
+        mode : &#39;radio-check&#39; 
+    },
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;First item&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            mods : { checked : true },
+            val : 2,
+            content : &#39;Second item&#39;
+        }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+
+<h3 id="block-s-states">Block&#39;s states</h3>
+<h4 id="in-focus-_focused-">In focus <code>_focused</code></h4>
+<p>A <code>_focused</code> modifier is automatically toggles for the block when it is in focus. For example, on mouse click or by <code>Tab</code> key press.</p>
+<p>Available for all block themes.</p>
+<!-- bem-example: touch-pad.examples/select/2y_zCWFJ78bAFa8UEqIdsRPc3qM -->
+
+<h2 id="the-block-s-elements">The block&#39;s elements</h2>
+<p>The <code>menu</code> block is visually represented by following elements:</p>
+<h3 id="__group">__group</h3>
+<p>A <code>__group</code> element is used for menu items grouping. An Items that needed grouping should be placed to the element BEMJSON declaration&#39;s <code>content</code> field. The group elements are visually separated by a gray line.</p>
+<p>For example:</p>
+<!-- bem-example: touch-pad.examples/select/WSrgcU6mXH0StKcrKnckCnH3lrc -->
+
+
+<h3 id="__group-title">__group-title</h3>
+<p>This element allows to create a title for a menu items group, created using a <code>_group</code> element.</p>
+<p>For example:</p>
+<!-- bem-example: touch-pad.examples/select/8LCJ2Asb6uR2ZHALf5iscb_n2RU -->
+
+<h2 id="dependencies">Dependencies</h2>
+<p>The block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>menu-item</code></li>
+<li><code>dom</code></li>
+<li><code>keyboard</code></li>
+<li><code>control</code></li>
+</ul>
+
+<h1 id="menu-item">menu item</h1>
+<p>A <code>menu-item</code> block is used for creation of various types of menu and list items. It is used inside a <code>menu</code> block. The <code>menu-item</code> block allows to manage state, content and type of menu items.</p>
+<p>As a result of BEMHTML transformations block will be rendered to a <code>&lt;div&gt;</code> HTML element, with <code>role=&quot;menuitem&quot;</code> attribute set.</p>
+<h2 id="menu-item-use-cases">menu item use cases</h2>
+<p>The block helps to create following menu item types:</p>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>An example</th>
+    </tr>
+    <tr>
+        <td>A switch element</td>
+        <td>Is used to set up a dropdowns, tab menus, lists and menu items, etc.</td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu-item&#39;,
+    val : 1,
+    content : &#39;Selector value&#39;
+}
+            </code></pre>
+        </td>
+    <tr>
+        <td>A link element (<code>_type_link</code>)</td>
+        <td>An element with nested depended link. A <code>link</code> block should be placed into block&#39;s BEMJSON declaration <code>content</code> field. The <code>_type_link</code> modifier is required.
+        </td>
+        <td>
+            <pre><code>
+{
+    block : &#39;menu-item&#39;,
+    mods : { type : &#39;link&#39; },
+    val : 2,
+    content : {
+        block : &#39;link&#39;,
+        url : &#39;#&#39;,
+        content : &#39;Link 1&#39;
+    }
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
+
+<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes can be specified in the corresponding fields of block&#39;s BEMJSON declaration:</p>
+<table>
+    <tr>
+        <th align="center">Attributes</th>
+        <th align="center">Type</th>
+        <th align="center">Description</th>
+    </tr>
+    <tr>
+        <td>val</td>
+        <td><code>String|Number</code></td>
+        <td>A value returned by menu item if selected.</td>
+    </tr>
+</table>
+
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to the block.</p>
+<p>For example:</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/select/eV0q9qK02nCPsMxztjMtbDnRz7U -->
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/select/BxhdTuPatcCVRdT_1B8cW6OHGQ0 -->
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/select/snjxOm4SOT8_nFgCXdf2BKaL_Xs -->
+
+
+<h3 id="block-s-states">Block&#39;s states</h3>
+<h3 id="inactive-_disabled-">Inactive <code>_disabled</code></h3>
+<p>A <code>_disabled</code> modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  </p>
+<p>If a <code>_type_link</code> modifier is set for the block with a nested link, the link will not be followed on mouse click.</p>
+<p>Available for all block themes.</p>
+<!-- bem-example: touch-pad.examples/select/00ejmLqt61w5ksAsfBl7KgE4dBE -->
+
+
+<h4 id="mouse-over-_hovered-">Mouse over <code>_hovered</code></h4>
+<p>This modifier is automatically toggled when the mouse pointer is over the block. </p>
+<p>Available for all block themes.</p>
+<!-- bem-example: touch-pad.examples/select/Sgw4iIN4STar-QE05xyBmgntftw -->
+
+
+<h4 id="selected-menu-item-_checked-">Selected menu item <code>_checked</code></h4>
+<p>Modifier defines the selected menu item.</p>
+<!-- bem-example: touch-pad.examples/select/T77G-B0x1-Z9ZaPqpW_TAskNFI8 -->
+
+
+<p>For the <code>menu-item</code> blocks nested in a <code>menu</code> block <code>_checked</code> state toggles automatically on mouse click. </p>
+<!-- bem-example: touch-pad.examples/select/sURVY49aNm3TBC1XVeOG1Q5_vi8 -->
+
+<h2 id="dependencies">Dependencies</h2>
+<p>The block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>jquery</code></li>
+<li><code>dom</code></li>
+</ul>
+
+<h1 id="popup">popup</h1>
+<p>A <code>popup</code> block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.</p>
+<p>Popup can be displayed by different page elements like pseudo links or buttons.</p>
+<p>At the moment of first display (<code>_visible</code> modifier toggle) block&#39;s DOM element is created in the end of document <code>&lt;body&gt;</code>.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to block.</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/select/Uhdsvnf2MsxKNrQy7w6uLKTxdek -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/select/7PzT7oA6awlAKgFGXccAdhfz0n0 -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/select/L1MMDUGHLM4djlDaj5mhiKHvDH8 -->
+
+<h3 id="visibility-_visible-">Visibility <code>_visible</code></h3>
+<p>A <code>_visible</code> modifier allow to control block visibility. If it&#39;s not set, block will not be displayed.</p>
+<!-- bem-example: touch-pad.examples/select/m6WdfiXJP4RkxnBzEuzumr9C4w0 -->
+
+
+<h3 id="alignment-respect-to-its-parent-_direction-">Alignment respect to its parent <code>_direction</code></h3>
+<p>Modifier controls the position of popup window relative to the block which opened it – popup&#39;s alignment. Popup window&#39;s position is detected automatically basing on the admissible directions array and the parent block&#39;s position.</p>
+<p>Chosen alignment will affect the opening animation direction.</p>
+<p>By default following admissible directions array is used:</p>
+<table>
+    <tr>
+        <th> Direction </td>
+        <th> Index in array </td>
+    </tr>
+        <td> bottom-left </td>
+        <td> 0 </td>
+    </tr>
+    <tr>
+        <td> bottom-center </td>
+       <td> 1 </td>
+   </tr>
+    <tr>
+        <td> bottom-right</td>
+        <td> 2 </td>
+    </tr>
+    <tr>
+        <td> top-left </td>
+        <td> 3 </td>
+    </tr>
+    <tr>
+        <td> top-center </td>
+        <td> 4 </td>
+    </tr>
+    <tr>
+        <td> top-right </td>
+        <td> 5 </td>
+    </tr>
+    <tr>
+        <td> right-top </td>
+        <td> 6 </td>
+    </tr>
+    <tr>
+        <td> right-center </td>
+        <td> 7 </td>
+    </tr>
+    <tr>
+        <td> right-bottom </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <td> left-top </td>
+        <td> 9 </td>
+    </tr>
+    <tr>
+        <td> left-center </td>
+        <td> 10 </td>
+    </tr>
+    <tr>
+        <td> left-bottom </td>
+        <td> 11 </td>
+    </tr>
+</table>
+
+<p>To control the popup window position you can provide directions array with desired directions set only. According to parent block&#39;s position on a page the most suitable directions will be chosen among the provided values.</p>
+<p>For example, if the popup window should be opened at the top of the parent block:</p>
+<!-- bem-example: touch-pad.examples/select/ROJZHxrl71CFbWiWU5Ry_Q0Jbhw -->
+
+
+<p>Or if it should be opened strictly at the center-right position:</p>
+<!-- bem-example: touch-pad.examples/select/VE0JWgs-I2gVU8suKC3_eTK29EE -->
+
+
+<h3 id="automatic-closure-_autoclosable-">Automatic closure  <code>_autoclosable</code></h3>
+<p>With <code>_autoclosable</code> modifier toggled block will automatically hide away on mouse click outside popup window (<code>_visible</code> modifier will be removed).</p>
+<!-- bem-example: touch-pad.examples/select/M1T2dIuSVeBoluZEMgCmA90Stgc -->
+
+
+<h2 id="relations-between-popup-s">Relations between popup&#39;s</h2>
+<p>As long as popup&#39;s parent block itself can be nested in another popup block there is a need in a popup&#39;s relations handling. Block can handle Parent → [ Child, Child, ... ] relations by checking if the parent block is nested in another popup block. So, the children knows about the parent blocks existence.</p>
+<p>If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that <code>_autoclosable</code> modifier is set to <code>true</code>.</p>
+<p>This means that with <code>autoclosable</code> modifier toggled block will close itself and close all of it children on mouse click outside block&#39;s window or it child&#39;s window.</p>
+<p>Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>The block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>jquery</code></li>
+<li><code>dom</code></li>
+<li><code>objects</code></li>
+<li><code>functions__throttle</code></li>
+<li><code>keyboard</code></li>
+<li><code>ua</code></li>
+<li><code>jquery__event_pointer</code></li>
+</ul>

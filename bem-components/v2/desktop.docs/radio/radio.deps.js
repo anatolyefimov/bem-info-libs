@@ -60,7 +60,7 @@ exports.deps = [
         "val": "pointer"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "dom"

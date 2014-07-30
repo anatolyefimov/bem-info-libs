@@ -126,10 +126,16 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "link",

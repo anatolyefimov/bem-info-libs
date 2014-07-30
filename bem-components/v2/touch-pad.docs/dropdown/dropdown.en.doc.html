@@ -1,0 +1,218 @@
+<h1 id="dropdown">dropdown</h1>
+<p>A <code>dropdown</code> block is used to create different types of dropdowns.  It allows to manage state, behavior and appearance of dropdowns. Block consist of two components – the control component and the popup window (<code>popup</code> block). Popup window is displayed in front of all other page elements.</p>
+<p>On mouse click over control component it shows the popup window (toggles <code>_visible</code> modifier for the <code>popup</code> block).</p>
+<p>Depending on a <code>_switcher</code> modifier value, either link, pseudo link or button can be used as a control component.</p>
+<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
+<p>Valid block&#39;s attributes can be specified in a corresponding fields of block&#39;s BEMJSON declaration:</p>
+<table>
+    <tr>
+        <th align="center">Attributes</th>
+        <th align="center">Type</th>
+        <th align="center">Description</th>
+    </tr>
+    <tr>
+        <td>switcher</td>
+        <td><code>String|BEMJSON</code></td>
+        <td>Label for the control component. May contain a string with the text label or BEMJSON notation of nested BEM-entities. For example, it allows to wrap the control component with other block or pass it an additional attribute values.</td>
+    </tr>
+       <tr>
+        <td>popup</td>
+        <td><code>String|BEMJSON</code></td>
+        <td>Text value or BEMJSON description of popup window content. In runtime BEMJSON entities will be rendered into HTML.</td>
+    </tr>
+</table>
+
+<p>Also, BEMJSON declaration can contain an arbitrary fields used for templating.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to block.</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/dropdown/WcgFmT2l-N83y2w6hRJ-qqSpzkY -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/dropdown/3LxBJkGCYdsRIM3jgENaGnBRRuI -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/dropdown/7xwP-2BJ2nd_leTd5MyNfCK8-wA -->
+
+
+<h3 id="control-component-type-_switcher-">Control component type <code>_switcher</code></h3>
+<p>Mandatory modifier. It specifies which block to use as a control component. Next types are available:</p>
+<ul>
+<li><code>_switcher_link</code> - the pseudo link. <code>link</code> block is used as a base of the control component. </li>
+<li><code>_switcher_button</code> - the button. <code>button</code> block is used as a base of the control component. </li>
+</ul>
+<p>Available for all block themes.</p>
+<!-- bem-example: touch-pad.examples/dropdown/TZQCpS37p6PxRpc44EhMDX395AA -->
+
+
+<h3 id="-_disabled-"><code>_disabled</code></h3>
+<p>If a <code>_disabled</code> modifier is set, the dropdown is displayed but not available for user&#39;s actions.</p>
+<p>For such disabled block an <code>_opened</code> state will not be toggled on mouse click.</p>
+<p>If a <code>_disabled</code> modifier set, it prevents the block components from the following actions:</p>
+<ul>
+<li><code>popup</code> block – <code>_visible</code> modifier toggle;</li>
+<li><code>link</code> control component – <code>_focused</code> state toggle. Link does not obtain focus on mouse click or by <code>Tab</code> key press;</li>
+<li><code>button</code> control component:<ul>
+<li><code>_focused</code> state toggle. Button will not obtain focus on mouse click or by <code>Tab</code> key press;</li>
+<li><code>_hovered</code> state toggle on mouse pointer hover.</li>
+</ul>
+</li>
+</ul>
+<p>Available for all block themes.</p>
+<!-- bem-example: touch-pad.examples/dropdown/T2LPHF5xz8GwGt4VOGdjyOJF_lA -->
+
+
+<h3 id="dropdown-s-states">dropdown&#39;s states</h3>
+<h4 id="-_opened-"><code>_opened</code></h4>
+<p><code>_opened</code> modifier toggles automatically on mouse click on the control component.</p>
+<!-- bem-example: touch-pad.examples/dropdown/ZBE6qMuVVtpA4JVJk1Z0eHxMx2Y -->
+
+
+<p>Modifier can be removed by re-clicking on the control component or outside popup&#39;s window (in case of <code>_autoclosable</code> modifier availability for <code>popup</code> block).</p>
+<h2 id="bemjson-value-of-switcher-and-popup-attributes">BEMJSON value of <code>switcher</code> and <code>popup</code> attributes</h2>
+<p>As the control component and the popup attributes can contain BEM-entities it can be used for different purposes such as:</p>
+<ul>
+<li>control component warping or modifying;</li>
+<li>passing additional attribute values to control component;</li>
+<li>creating nested content in popup window.</li>
+</ul>
+<p>For example, you can make a control component&#39;s button toggleable:</p>
+<!-- bem-example: touch-pad.examples/dropdown/8Fm0DE_2FJy1NDrA8TqWefQAcRg -->
+
+
+<p>Or make dropdown list selector based on block:</p>
+<!-- bem-example: touch-pad.examples/dropdown/vkuviqNPhqQ2uV_ZhFfhVegfskc -->
+
+
+<h2 id="dependencies">Dependencies</h2>
+<p>The <code>dropdown</code> block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>dom</code></li>
+<li><code>popup</code></li>
+<li><code>button</code>/<code>link</code> (depending on <code>_switcher</code> control component type)</li>
+</ul>
+
+<h1 id="popup">popup</h1>
+<p>A <code>popup</code> block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.</p>
+<p>Popup can be displayed by different page elements like pseudo links or buttons.</p>
+<p>At the moment of first display (<code>_visible</code> modifier toggle) block&#39;s DOM element is created in the end of document <code>&lt;body&gt;</code>.</p>
+<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<ul>
+<li>simple</li>
+<li>normal</li>
+</ul>
+<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to block.</p>
+<h4 id="default">default</h4>
+<!-- bem-example: touch-pad.examples/dropdown/Uhdsvnf2MsxKNrQy7w6uLKTxdek -->
+
+
+<h4 id="simple">simple</h4>
+<!-- bem-example: touch-pad.examples/dropdown/7PzT7oA6awlAKgFGXccAdhfz0n0 -->
+
+
+<h4 id="normal">normal</h4>
+<!-- bem-example: touch-pad.examples/dropdown/L1MMDUGHLM4djlDaj5mhiKHvDH8 -->
+
+<h3 id="visibility-_visible-">Visibility <code>_visible</code></h3>
+<p>A <code>_visible</code> modifier allow to control block visibility. If it&#39;s not set, block will not be displayed.</p>
+<!-- bem-example: touch-pad.examples/dropdown/m6WdfiXJP4RkxnBzEuzumr9C4w0 -->
+
+
+<h3 id="alignment-respect-to-its-parent-_direction-">Alignment respect to its parent <code>_direction</code></h3>
+<p>Modifier controls the position of popup window relative to the block which opened it – popup&#39;s alignment. Popup window&#39;s position is detected automatically basing on the admissible directions array and the parent block&#39;s position.</p>
+<p>Chosen alignment will affect the opening animation direction.</p>
+<p>By default following admissible directions array is used:</p>
+<table>
+    <tr>
+        <th> Direction </td>
+        <th> Index in array </td>
+    </tr>
+        <td> bottom-left </td>
+        <td> 0 </td>
+    </tr>
+    <tr>
+        <td> bottom-center </td>
+       <td> 1 </td>
+   </tr>
+    <tr>
+        <td> bottom-right</td>
+        <td> 2 </td>
+    </tr>
+    <tr>
+        <td> top-left </td>
+        <td> 3 </td>
+    </tr>
+    <tr>
+        <td> top-center </td>
+        <td> 4 </td>
+    </tr>
+    <tr>
+        <td> top-right </td>
+        <td> 5 </td>
+    </tr>
+    <tr>
+        <td> right-top </td>
+        <td> 6 </td>
+    </tr>
+    <tr>
+        <td> right-center </td>
+        <td> 7 </td>
+    </tr>
+    <tr>
+        <td> right-bottom </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <td> left-top </td>
+        <td> 9 </td>
+    </tr>
+    <tr>
+        <td> left-center </td>
+        <td> 10 </td>
+    </tr>
+    <tr>
+        <td> left-bottom </td>
+        <td> 11 </td>
+    </tr>
+</table>
+
+<p>To control the popup window position you can provide directions array with desired directions set only. According to parent block&#39;s position on a page the most suitable directions will be chosen among the provided values.</p>
+<p>For example, if the popup window should be opened at the top of the parent block:</p>
+<!-- bem-example: touch-pad.examples/dropdown/ROJZHxrl71CFbWiWU5Ry_Q0Jbhw -->
+
+
+<p>Or if it should be opened strictly at the center-right position:</p>
+<!-- bem-example: touch-pad.examples/dropdown/VE0JWgs-I2gVU8suKC3_eTK29EE -->
+
+
+<h3 id="automatic-closure-_autoclosable-">Automatic closure  <code>_autoclosable</code></h3>
+<p>With <code>_autoclosable</code> modifier toggled block will automatically hide away on mouse click outside popup window (<code>_visible</code> modifier will be removed).</p>
+<!-- bem-example: touch-pad.examples/dropdown/M1T2dIuSVeBoluZEMgCmA90Stgc -->
+
+
+<h2 id="relations-between-popup-s">Relations between popup&#39;s</h2>
+<p>As long as popup&#39;s parent block itself can be nested in another popup block there is a need in a popup&#39;s relations handling. Block can handle Parent → [ Child, Child, ... ] relations by checking if the parent block is nested in another popup block. So, the children knows about the parent blocks existence.</p>
+<p>If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that <code>_autoclosable</code> modifier is set to <code>true</code>.</p>
+<p>This means that with <code>autoclosable</code> modifier toggled block will close itself and close all of it children on mouse click outside block&#39;s window or it child&#39;s window.</p>
+<p>Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>The block depends on:</p>
+<ul>
+<li><code>i-bem__dom</code></li>
+<li><code>jquery</code></li>
+<li><code>dom</code></li>
+<li><code>objects</code></li>
+<li><code>functions__throttle</code></li>
+<li><code>keyboard</code></li>
+<li><code>ua</code></li>
+<li><code>jquery__event_pointer</code></li>
+</ul>

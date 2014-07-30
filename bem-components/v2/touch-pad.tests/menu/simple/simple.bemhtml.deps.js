@@ -99,7 +99,7 @@ exports.deps = [
         "block": "menu"
     },
     {
-        "block": "base-control"
+        "block": "control"
     },
     {
         "block": "jquery",
@@ -126,6 +126,12 @@ exports.deps = [
         "block": "jquery",
         "elem": "event",
         "mod": "type",
+        "val": "pointernative"
+    },
+    {
+        "block": "jquery",
+        "elem": "event",
+        "mod": "type",
         "val": "pointerpressrelease"
     },
     {
@@ -146,11 +152,30 @@ exports.deps = [
     },
     {
         "block": "menu",
-        "mod": "select"
+        "elem": "group"
     },
     {
         "block": "menu",
-        "mod": "select",
+        "elem": "group-title"
+    },
+    {
+        "block": "menu",
+        "elem": "group",
+        "mod": "has-title"
+    },
+    {
+        "block": "menu",
+        "elem": "group",
+        "mod": "has-title",
+        "val": true
+    },
+    {
+        "block": "menu",
+        "mod": "mode"
+    },
+    {
+        "block": "menu",
+        "mod": "mode",
         "val": "radio"
     },
     {
@@ -243,12 +268,12 @@ exports.deps = [
     },
     {
         "block": "menu",
-        "mod": "select",
+        "mod": "mode",
         "val": "check"
     },
     {
         "block": "menu",
-        "mod": "select",
+        "mod": "mode",
         "val": "radio-check"
     },
     {
@@ -266,14 +291,6 @@ exports.deps = [
     {
         "block": "link",
         "mod": "disabled"
-    },
-    {
-        "block": "menu",
-        "elem": "group"
-    },
-    {
-        "block": "menu",
-        "elem": "group-title"
     },
     {
         "block": "icon"
@@ -312,6 +329,15 @@ exports.deps = [
         "elem": "icon",
         "mod": "social",
         "val": "vk"
+    },
+    {
+        "block": "menu",
+        "mod": "disabled"
+    },
+    {
+        "block": "menu",
+        "mod": "disabled",
+        "val": true
     },
     {
         "block": "menu",
