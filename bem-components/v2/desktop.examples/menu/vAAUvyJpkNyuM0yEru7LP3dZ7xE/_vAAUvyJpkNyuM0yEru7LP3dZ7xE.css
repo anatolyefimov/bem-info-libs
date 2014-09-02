@@ -1,10 +1,1 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
-.page {
-  padding: 20px;
-}
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/menu.styl:begin */
-.menu {
-  overflow-y: auto;
-}
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/menu.styl:end */
+.page{padding:20px}.menu{overflow-y:auto}

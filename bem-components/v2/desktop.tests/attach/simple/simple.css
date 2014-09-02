@@ -1,9 +1,9 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,15 +14,15 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/attach/attach.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/attach/attach.styl:begin */
 .attach__file,
 .attach__no-file,
 .attach .button__text {
   display: none;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/attach/attach.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/attach/attach.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
 .icon {
   display: inline-block;
   text-align: center;
@@ -42,13 +42,13 @@ html {
 /* 0.18 — magic number, empirically found */
   vertical-align: middle;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
 .icon {
   min-width: 1em;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/attach/_theme/attach_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/attach/_theme/attach_theme_simple.styl:begin */
 .attach_theme_simple {
   display: inline-block;
   white-space: nowrap;
@@ -95,8 +95,8 @@ html {
   display: inline;
   z-index: 1;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/attach/_theme/attach_theme_simple.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/attach/_theme/attach_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -180,8 +180,8 @@ html {
 .button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio {
   border-left-width: 1px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:begin */
 .icon_action_up,
 .icon_action_right,
 .icon_action_down,
@@ -203,4 +203,4 @@ html {
 .icon_action_download {
   background-image: url("../../../test.blocks/icon/_action/download.svg");
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */

@@ -1,9 +1,9 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
 .button_theme_normal {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -224,8 +224,8 @@ html {
   border-radius: 0 2px 2px 0;
   right: 1px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_normal.styl:begin */
 .checkbox_theme_normal {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -342,10 +342,10 @@ html {
 .checkbox_theme_normal.checkbox_type_line:last-child {
   margin-right: 0;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:begin */
 .checkbox.checkbox_type_button .checkbox__control {
   position: absolute;
   visibility: hidden;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:end */

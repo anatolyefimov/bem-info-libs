@@ -1,9 +1,9 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -87,4 +87,4 @@
 .button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio {
   border-left-width: 1px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */

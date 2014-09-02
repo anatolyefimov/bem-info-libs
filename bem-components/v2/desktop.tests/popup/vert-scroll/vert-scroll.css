@@ -17,12 +17,12 @@
 
     background-color: #999;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
 html {
   min-height: 100%;
 }
@@ -33,8 +33,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/link/link.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:begin */
 .link_pseudo:not([class*="link_theme"]) {
   cursor: pointer;
   color: #00f;
@@ -42,13 +42,13 @@ html {
 .link_pseudo:not([class*="link_theme"]):hover {
   color: #f00;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/link/link.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:begin */
 .popup {
   position: absolute;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/popup/popup.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:begin */
 .popup:not([class*="popup_theme"]) {
   display: none;
   background: #fff7db;
@@ -57,8 +57,8 @@ html {
 .popup_visible:not([class*="popup_theme"]) {
   display: block;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/popup/popup.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:begin */
 .popup_theme_simple {
   display: none;
   background: #fff;
@@ -67,8 +67,8 @@ html {
 .popup_theme_simple.popup_visible {
   display: block;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:begin */
 .input_theme_simple {
   display: inline-block;
 }
@@ -168,4 +168,4 @@ html {
 .input_theme_simple.input_type_textarea.input_has-clear .input__control {
   padding-right: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:end */

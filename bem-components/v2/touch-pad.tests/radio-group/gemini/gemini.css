@@ -1,9 +1,9 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,14 +14,14 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/touch-pad.tests/radio-group/gemini/blocks/test/test.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/touch-pad.tests/radio-group/gemini/blocks/test/test.styl:begin */
 .test {
   display: inline-block;
   margin: 0 55px 10px 0;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/touch-pad.tests/radio-group/gemini/blocks/test/test.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/touch-pad.tests/radio-group/gemini/blocks/test/test.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_normal.styl:begin */
 .radio-group_theme_normal {
   display: inline-block;
 }
@@ -38,8 +38,8 @@ html {
 .radio-group_theme_normal .radio_checked + .radio .button:before {
   left: 0;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
 .button_theme_normal {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -248,8 +248,8 @@ html {
   border-radius: 0 2px 2px 0;
   right: 1px;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_normal.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_normal.styl:begin */
 .radio_theme_normal {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -356,14 +356,14 @@ html {
 .radio_theme_normal.radio_type_line:last-child {
   margin-right: 0;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_normal.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_normal.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
 .radio.radio_type_button .radio__control {
   position: absolute;
   visibility: hidden;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
 .icon {
   display: inline-block;
   text-align: center;
@@ -383,17 +383,17 @@ html {
 /* 0.18 — magic number, empirically found */
   vertical-align: middle;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/icon/icon.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
 .icon {
   min-width: 1em;
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:begin */
 .icon_social_twitter {
   background-image: url("../../../test.blocks/icon/_social/twitter.png");
 }
 .icon_social_vk {
   background-image: url("../../../test.blocks/icon/_social/vk.png");
 }
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:end */

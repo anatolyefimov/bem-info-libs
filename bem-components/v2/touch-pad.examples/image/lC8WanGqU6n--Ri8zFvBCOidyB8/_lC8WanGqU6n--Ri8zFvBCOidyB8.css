@@ -1,10 +1,1 @@
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
-.page {
-  padding: 20px;
-}
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:begin */
-.image {
-  border: 0;
-}
-/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:end */
+.page{padding:20px}.image{border:0}
