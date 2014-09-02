@@ -5132,7 +5132,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5307,9 +5309,18 @@ provide(Control.decl({
 
 /* end: ../../../desktop.blocks/control/control.js */
 /* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
+/**
+ * @module link
+ */
+
 modules.define('link', function(provide, Link) {
 
-provide(Link.decl({ modName : 'pseudo', modVal : true }, {
+/**
+ * @exports
+ * @class link
+ * @bem
+ */
+provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     _onPointerClick : function(e) {
         e.preventDefault();
         this.__base.apply(this, arguments);

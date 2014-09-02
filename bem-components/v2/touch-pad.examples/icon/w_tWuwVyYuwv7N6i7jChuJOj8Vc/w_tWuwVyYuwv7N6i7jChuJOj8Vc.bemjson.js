@@ -1,0 +1,1 @@
+({"block":"page","title":"icon","head":[{"elem":"css","url":"_w_tWuwVyYuwv7N6i7jChuJOj8Vc.css"}],"scripts":[{"elem":"js","url":"_w_tWuwVyYuwv7N6i7jChuJOj8Vc.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"with icon","mods":{"theme":"normal","size":"m"},"icon":{"block":"icon","url":"../../../test.blocks/icon/_action/download.svg"}}})

@@ -1,1 +1,1 @@
-exports.deps = [{"block":"control-group"}];
+exports.blocks = [{"name":"control-group"}];

@@ -5471,7 +5471,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5790,14 +5792,23 @@ provide(/** @exports */{
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
 /* begin: ../../../common.blocks/radio/_type/radio_type_button.js */
-modules.define('radio', function(provide, Radio) {
+/**
+ * @module radio
+ */
 
-provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
+modules.define('radio', ['button'], function(provide, _, Radio) {
+
+/**
+ * @exports
+ * @class radio
+ * @bem
+ */
+provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockOn('button')
+                this._button = this.findBlockInside('button')
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -5815,6 +5826,11 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
             proxyModToButton.call(this, modName, modVal, false);
         }
     }
+}, /** @lends radio */{
+    live : function() {
+        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        return this.__base.apply(this, arguments);
+    }
 }));
 
 function proxyModToButton(modName, modVal, callBase) {
@@ -5830,15 +5846,24 @@ function proxyModFromButton(_, data) {
 
 /* end: ../../../common.blocks/radio/_type/radio_type_button.js */
 /* begin: ../../../common.blocks/radio-group/_mode/radio-group_mode_radio-check.js */
+/**
+ * @module radio-group
+ */
+
 modules.define('radio-group', function(provide, RadioGroup) {
 
 var undef;
 
-provide(RadioGroup.decl({ modName : 'mode', modVal : 'radio-check' }, {
+/**
+ * @exports
+ * @class radio-group
+ * @bem
+ */
+provide(RadioGroup.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
     _onRadioUncheck : function(e) {
         this._checkedRadio === e.target && this.setVal(undef);
     }
-}, {
+}, /** @lends radio-group */{
     live : function() {
         this.liveInitOnBlockInsideEvent(
             { modName : 'checked', modVal : '' },

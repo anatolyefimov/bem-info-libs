@@ -1,0 +1,1 @@
+({"block":"page","title":"dropdown","head":[{"elem":"css","url":"_4cC00wpa4_8BQD0MKgm8bNhV00A.css"}],"scripts":[{"elem":"js","url":"_4cC00wpa4_8BQD0MKgm8bNhV00A.js"}],"mods":{"theme":"normal"},"content":{"block":"dropdown","mods":{"switcher":"button","theme":"normal","size":"m","opened":true},"switcher":"Кнопка","popup":"Hello, world!"}})

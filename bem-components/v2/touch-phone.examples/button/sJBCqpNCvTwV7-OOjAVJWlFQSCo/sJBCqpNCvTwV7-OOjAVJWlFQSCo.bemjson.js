@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_sJBCqpNCvTwV7-OOjAVJWlFQSCo.css"}],"scripts":[{"elem":"js","url":"_sJBCqpNCvTwV7-OOjAVJWlFQSCo.js"}],"mods":{"theme":"normal"},"content":{"block":"button","type":"submit","text":"Промокнопка","mods":{"theme":"normal","size":"m","view":"action"}}})

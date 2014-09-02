@@ -1,0 +1,1 @@
+({"block":"page","title":"popup","head":[{"elem":"css","url":"_8_HCSFSpYHYyPnAfpx-ciI3mBTw.css"}],"scripts":[{"elem":"js","url":"_8_HCSFSpYHYyPnAfpx-ciI3mBTw.js"}],"mods":{"theme":"simple"},"content":{"block":"popup","mods":{"autoclosable":true,"theme":"simple"},"directions":["top-left","top-center","top-right"],"content":"Hello, world!"}})

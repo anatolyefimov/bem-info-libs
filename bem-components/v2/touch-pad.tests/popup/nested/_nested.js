@@ -1,3 +1,7597 @@
-!function(t){var e,n={NOT_RESOLVED:"NOT_RESOLVED",IN_RESOLVING:"IN_RESOLVING",RESOLVED:"RESOLVED"},i=function(){var d={trackCircularDependencies:!0,allowMultipleDeclarations:!0},f={},h=!1,p=[],m=function(t,i,o){o||(o=i,i=[]);var r=f[t];r||(r=f[t]={name:t,decl:e}),r.decl={name:t,prev:r.decl,fn:o,state:n.NOT_RESOLVED,deps:i,dependents:[],exports:e}},_=function(e,n,i){"string"==typeof e&&(e=[e]),h||(h=!0,l(y)),p.push({deps:e,cb:function(e,r){r?(i||o)(r):n.apply(t,e)}})},v=function(t){var e=f[t];return e?n[e.decl.state]:"NOT_DEFINED"},g=function(t){return!!f[t]},b=function(t){for(var e in t)t.hasOwnProperty(e)&&(d[e]=t[e])},y=function(){h=!1,E()},E=function(){var t,e=p,n=0;for(p=[];t=e[n++];)k(null,t.deps,[],t.cb)},k=function(t,e,i,o){var a=e.length;a||o([]);for(var u,l,h=[],p=0,m=a;m>p;){if(u=e[p++],"string"==typeof u){if(!f[u])return void o(null,r(u,t));l=f[u].decl}else l=u;if(l.state===n.IN_RESOLVING&&d.trackCircularDependencies&&c(l,i))return void o(null,s(l,i));h.push(l),w(l,i,function(t,e){if(e)return void o(null,e);if(!--a){for(var n,i=[],r=0;n=h[r++];)i.push(n.exports);o(i)}})}},w=function(e,i,o){if(e.state===n.RESOLVED)return void o(e.exports);if(e.dependents.push(o),e.state!==n.IN_RESOLVING){if(e.prev&&!d.allowMultipleDeclarations)return void T(e,u(e));d.trackCircularDependencies&&(i=i.slice()).push(e);var r=!1,s=e.prev?e.deps.concat([e.prev]):e.deps;e.state=n.IN_RESOLVING,k(e,s,i,function(n,i){return i?void T(e,i):(n.unshift(function(t,n){return r?void o(null,a(e)):(r=!0,void(n?T(e,n):M(e,t)))}),void e.fn.apply({name:e.name,deps:e.deps,global:t},n))})}},M=function(t,i){t.exports=i,t.state=n.RESOLVED;for(var o,r=0;o=t.dependents[r++];)o(i);t.dependents=e},T=function(t,e){t.state=n.NOT_RESOLVED;for(var i,o=0;i=t.dependents[o++];)i(null,e);t.dependents=[]};return{create:i,define:m,require:_,getState:v,isDefined:g,setOptions:b}},o=function(t){l(function(){throw t})},r=function(t,e){return Error(e?'Module "'+e.name+'": can\'t resolve dependence "'+t+'"':'Required module "'+t+"\" can't be resolved")},s=function(t,e){for(var n,i=[],o=0;n=e[o++];)i.push(n.name);return i.push(t.name),Error('Circular dependence has been detected: "'+i.join(" -> ")+'"')},a=function(t){return Error('Declaration of module "'+t.name+'" has already been provided')},u=function(t){return Error('Multiple declarations of module "'+t.name+'" have been detected')},c=function(t,e){for(var n,i=0;n=e[i++];)if(t===n)return!0;return!1},l=function(){var e=[],n=function(t){return 1===e.push(t)},i=function(){var t=e,n=0,i=e.length;for(e=[];i>n;)t[n++]()};if("object"==typeof process&&process.nextTick)return function(t){n(t)&&process.nextTick(i)};if(t.setImmediate)return function(e){n(e)&&t.setImmediate(i)};if(t.postMessage&&!t.opera){var o=!0;if(t.attachEvent){var r=function(){o=!1};t.attachEvent("onmessage",r),t.postMessage("__checkAsync","*"),t.detachEvent("onmessage",r)}if(o){var s="__modules"+ +new Date,a=function(t){t.data===s&&(t.stopPropagation&&t.stopPropagation(),i())};return t.addEventListener?t.addEventListener("message",a,!0):t.attachEvent("onmessage",a),function(e){n(e)&&t.postMessage(s,"*")}}}var u=t.document;if("onreadystatechange"in u.createElement("script")){var c=u.getElementsByTagName("head")[0],l=function(){var t=u.createElement("script");t.onreadystatechange=function(){t.parentNode.removeChild(t),t=t.onreadystatechange=null,i()},c.appendChild(t)};return function(t){n(t)&&l()}}return function(t){n(t)&&setTimeout(i,0)}}();"object"==typeof exports?module.exports=i():t.modules=i()}(this),"undefined"!=typeof module&&(modules=module.exports),function(t){var e=function(t){function e(t){try{return n(t||this,g)}catch(e){throw(t||this).xjstContext=e,e}}function n(t,e){var i=t._mode;if("attrs"===i){var o=_(t,e);if(o!==e)return o}else if("tag"===i){var o=v(t,e);if(o!==e)return o}else{if("content"===i){var i=t.block;if("input"===i){var i=!t.elem;if(i)return"undefined"!=typeof t.ctx.content?(t.__$a=0,t.ctx.content):(t.__$a=0,{elem:"box",content:{elem:"control"}})}else if("ua"===i){var i=!t.elem;if(i)return 5!==t.__$a?(t.__$a=0,[function(){var i;return t.__$a=5,i=n(t,e)}(),"(function(d,n){","d.documentElement.className+=",'" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");','})(document,"createElementNS");']):(t.__$a=0,["(function(e,c){",'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");','})(document.documentElement,"className");'])}else if("page"===i){if("head"===t.elem&&7!==t.__$a)return t.__$a=0,[function(){var i;return t.__$a=7,i=n(t,e)}(),{elem:"meta",attrs:{name:"viewport",content:"width=device-width,"+(t.ctx.zoom?"initial-scale=1":"maximum-scale=1,initial-scale=1,user-scalable=0")}},{elem:"meta",attrs:{name:"format-detection",content:"telephone=no"}},{elem:"link",attrs:{name:"apple-mobile-web-app-capable",content:"yes"}}];if(!t.elem&&8!==t.__$a)return t.__$a=0,[function(){var i;return t.__$a=8,i=n(t,e)}(),t.ctx.scripts]}return t.__$a=0,t.ctx.content}if("default"===i){var i=t.block;if("input"===i){if(!t.elem&&2!==t.__$a){t.__$a=0;var o=s(t,e);if(o!==e)return o}}else if("link"===i){if(!t.elem&&4!==t.__$a){t.__$a=0;var o=a(t,e);if(o!==e)return o}}else if("page"===i&&!t.elem&&!t._defPageApplied&&9!==t.__$a){t.__$a=0;var o=u(t,e);if(o!==e)return o}t.__$a=0;var o=c(t,e);if(o!==e)return o}else{if("js"===i){var i=t.block;if("input"===i){if(!t.elem)return t.__$a=0,!0}else if("popup"===i){if(!t.elem)return t.__$a=0,!0}else if("link"===i){var i=!t.elem;if(i){if(t.mods&&t.mods.disabled===!0&&3!==t.__$a){t.__$a=0;var o=t.extend(function(){var i;return t.__$a=3,i=n(t,e)}(),{url:t.ctx.url});if(o!==e)return o}return t.__$a=0,!0}}else if("ua"===i&&!t.elem)return t.__$a=0,!0;return void(t.__$a=0)}if("mix"===i){var i=t.block;if("link"===i){if(!t.elem)return t.__$a=0,[{elem:"control"}]}else if("page"===i&&!t.elem&&6!==t.__$a){t.__$a=0;var o=l(t,e);if(o!==e)return o}return void(t.__$a=0)}if("bem"===i){var i=t.block;if("ua"===i){if(!t.elem)return t.__$a=0,!1}else if("page"===i){var i=t.elem;if("js"===i)return t.__$a=0,!1;if("link"===i)return t.__$a=0,!1;if("css"===i)return t.__$a=0,!1;if("head"===i)return t.__$a=0,!1;if("favicon"===i)return t.__$a=0,!1;if("meta"===i)return t.__$a=0,!1}return void(t.__$a=0)}if("cls"===i)return void(t.__$a=0);if(""===i){if(t.ctx&&t.ctx._vow&&10!==t.__$a){t.__$a=0;var o=d(t,e);if(o!==e)return o}if(t.isSimple(t.ctx)){t.__$a=0;var o=f(t,e);if(o!==e)return o}if(!t.ctx){t.__$a=0;var o=h(t,e);if(o!==e)return o}if(t.isArray(t.ctx)){t.__$a=0;var o=p(t,e);if(o!==e)return o}t.__$a=0;var o=m(t,e);if(o!==e)return o}}}t.__$a=0}function i(t,e){t.__$a=0;var i=function(){var i,o=t.ctx,r=o._input__controlAttrs;o._input__controlAttrs=!0;var s;return t.__$a=1,s=n(t,e),i=s,o._input__controlAttrs=r,i}(),o=t.ctx.attrs||{};return o.autocomplete=o.autocomplete||"off",o.autocorrect=o.autocorrect||"off",o.autocapitalize=o.autocapitalize||"off",o.spellcheck=o.spellcheck||"false",t.extend(i,o)}function o(t){t.__$a=0;var e=t._input,n={id:e.id,name:e.name,value:e.val,maxlength:e.maxLength,tabindex:e.tabIndex,placeholder:e.placeholder};return e.autocomplete===!1&&(n.autocomplete="off"),t.mods.disabled&&(n.disabled="disabled"),n}function r(t){t.__$a=0;var e,n=t.ctx,i={};return t.mods.disabled||(n.url?(i.href=n.url,e=n.tabIndex):e=n.tabIndex||0),"undefined"==typeof e||(i.tabindex=e),n.title&&(i.title=n.title),n.target&&(i.target=n.target),i}function s(t,e){t.__$a=0;var i,o=t._input;t._input=t.ctx;var r;t.__$a=2,r=n(t,e),i=r,t._input=o}function a(t,e){t.__$a=0;var i=t.ctx;"object"==typeof i.url&&(i.url=t.reapply(i.url));var o;t.__$a=4,o=n(t,e)}function u(t,e){t.__$a=0,t._defPageApplied=!0;var i,o=t.ctx,r=t._mode;t._mode="";var s=t.ctx;t.ctx=[o.doctype||"<!DOCTYPE html>",{tag:"html",cls:"ua_js_no",content:[{elem:"head",content:[{tag:"meta",attrs:{charset:"utf-8"}},{tag:"title",content:o.title},{block:"ua"},o.head,o.styles,o.favicon?{elem:"favicon",url:o.favicon}:""]},o]}];var a;t.__$a=9,a=n(t,e),i=a,t._mode=r,t.ctx=s,t._defPageApplied=!1}function c(t,e){t.__$a=0;var i,o,r,s,a=t.BEM.INTERNAL,u=t.ctx,c=t._str;t._str="";var l,d=t.block,f=t._mode;if(t._mode="tag",l=n(t,e),t._mode=f,o=l,"undefined"!=typeof o||(o=u.tag),"undefined"!=typeof o||(o="div"),o){var h,p;if(d&&u.js!==!1){var m,_=t._mode;t._mode="js",m=n(t,e),t._mode=_,p=m,p=p?t.extend(u.js,p===!0?{}:p):u.js===!0?{}:u.js,p&&((h={})[a.buildClass(d,u.elem)]=p)}t._str+="<"+o;var v,g=t._mode;t._mode="bem",v=n(t,e),t._mode=g,i=v,"undefined"!=typeof i||(i="undefined"!=typeof u.bem?u.bem:u.block||u.elem);var b,y=t._mode;t._mode="cls",b=n(t,e),t._mode=y;var E=b;E||(E=u.cls);var k=u.block&&h;if(i||E){if(t._str+=' class="',i){t._str+=a.buildClasses(d,u.elem,u.elemMods||u.mods);var w,M=t._mode;t._mode="mix",w=n(t,e),t._mode=M;var T=w;if(u.mix&&(T=T?[].concat(T,u.mix):u.mix),T){var x={},S=function(t,e){return(t||"")+"__"+(e||"")};x[S(d,t.elem)]=!0,t.isArray(T)||(T=[T]);for(var P=0;P<T.length;P++){var O=T[P],C=O.block||O.elem,I=O.block||O._block||t.block,N=O.elem||O._elem||t.elem;if(C&&(t._str+=" "),t._str+=a[C?"buildClasses":"buildModsClasses"](I,O.elem||O._elem||(O.block?void 0:t.elem),O.elemMods||O.mods),O.js&&((h||(h={}))[a.buildClass(I,O.elem)]=O.js===!0?{}:O.js,k||(k=I&&!O.elem)),C&&!x[S(I,N)]){x[S(I,N)]=!0;var D,j=t._mode;t._mode="mix";var L=t.block;t.block=I;var $=t.elem;t.elem=N,D=n(t,e),t._mode=j,t.block=L,t.elem=$;var F=D;if(F)for(var B=0;B<F.length;B++){var A=F[B];(A.block||A.elem)&&x[S(A.block,A.elem)]||(A._block=I,A._elem=N,T.splice(P+1,0,A))}}}}}E&&(t._str+=i?" "+E:E),t._str+=k?' i-bem"':'"'}i&&h&&(t._str+=' data-bem="'+t.attrEscape(JSON.stringify(h))+'"');var V,R=t._mode;t._mode="attrs",V=n(t,e),t._mode=R;var q=V;if(q=t.extend(q,u.attrs)){var Y,z;for(Y in q)z=q[Y],"undefined"!=typeof z&&(t._str+=" "+Y+'="'+t.attrEscape(t.isSimple(z)?z:t.reapply(z))+'"')}}if(t.isShortTag(o))t._str+="/>";else{o&&(t._str+=">");var X,H=t._mode;t._mode="content",X=n(t,e),t._mode=H;var U=X;if(U||0===U){i=d||t.elem;var W,G=t._mode;t._mode="";var K=t._notNewList;t._notNewList=!1;var Q=t.position;t.position=i?1:t.position;var J=t._listLength;t._listLength=i?1:t._listLength;var Z=t.ctx;t.ctx=U,W=n(t,e),t._mode=G,t._notNewList=K,t.position=Q,t._listLength=J,t.ctx=Z}o&&(t._str+="</"+o+">")}r=t._str,s=void 0,t._str=c,t._buf.push(r)}function l(t,e){t.__$a=0;var i=function(){var i;return t.__$a=6,i=n(t,e)}(),o=[{block:"ua",js:!0}];return i?o.concat(i):o}function d(t,e){t.__$a=0;var i,o=t._mode;t._mode="";var r=t.ctx;t.ctx=t.ctx._value;var s;t.__$a=10,s=n(t,e),i=s,t._mode=o,t.ctx=r}function f(t){t.__$a=0,t._listLength--;var e=t.ctx;(e&&e!==!0||0===e)&&(t._str+=e+"")}function h(t){t.__$a=0,t._listLength--}function p(t,e){t.__$a=0;var i=t.ctx,o=i.length,r=0,s=t.position,a=t._notNewList;for(a?t._listLength+=o-1:(t.position=0,t._listLength=o),t._notNewList=!0;o>r;)!function(){var o,s=t.ctx;return t.ctx=i[r++],o=n(t,e),t.ctx=s,o}();a||(t.position=s)}function m(t,e){t.__$a=0,t.ctx||(t.ctx={});var i,o=t.ctx.block,r=t.ctx.elem,s=t._currBlock||t.block,a=t._mode;t._mode="default";var u=t.block;t.block=o||(r?s:void 0);var c=t._currBlock;t._currBlock=o||r?void 0:s;var l=t.elem;t.elem=r;var d=t.mods;t.mods=o?t.ctx.mods||(t.ctx.mods={}):t.mods;var f=t.elemMods;t.elemMods=t.ctx.elemMods||{},t.block||t.elem?t.position=(t.position||0)+1:t._listLength--,n(t,e),i=void 0,t._mode=a,t.block=u,t._currBlock=c,t.elem=l,t.mods=d,t.elemMods=f}function _(t,e){var n=t.block;if("input"===n){var n=t.elem;if("control"===n){if(!t.ctx._input__controlAttrs&&1!==t.__$a){t.__$a=0;var s=i(t,e);if(s!==e)return s}t.__$a=0;var s=o(t,e);if(s!==e)return s}}else if("link"===n){if(!t.elem){t.__$a=0;var s=r(t,e);if(s!==e)return s}}else if("page"===n){var n=t.elem;if("js"===n){if(t.ctx.url)return t.__$a=0,{src:t.ctx.url}}else if("css"===n){if(t.ctx.url)return t.__$a=0,{rel:"stylesheet",href:t.ctx.url}}else if("favicon"===n)return t.__$a=0,{rel:"shortcut icon",href:t.ctx.url}}return void(t.__$a=0)}function v(t,e){var n=t.block;if("input"===n){var n=t.elem;if("control"===n)return t.__$a=0,"input";if("box"===n)return t.__$a=0,"span";if(!t.elem)return t.__$a=0,"span"}else if("link"===n){var n=!t.elem;if(n)return t.mods&&t.mods.pseudo===!0&&!t.ctx.url?(t.__$a=0,"span"):(t.__$a=0,"a")}else if("ua"===n){if(!t.elem)return t.__$a=0,"script"}else if("page"===n){var n=t.elem;if("js"===n)return t.__$a=0,"script";if("link"===n)return t.__$a=0,"link";if("css"===n)return t.ctx.url?(t.__$a=0,"link"):(t.__$a=0,"style");if("head"===n)return t.__$a=0,"head";if("favicon"===n)return t.__$a=0,"link";if("meta"===n)return t.__$a=0,"meta";if(!t.elem)return t.__$a=0,"body"}return void(t.__$a=0)}var g={};return t.apply=e,[function(t,e){function n(t,e){this.ctx="undefined"==typeof t?"":t,this.apply=e,this._str="";var n=this;this._buf={push:function(){var t=s.call(arguments).join("");n._str+=t},join:function(){return this._str}},this._=this,this._start=!0,this._mode="",this._listLength=0,this._notNewList=!1,this.position=0,this.block=i,this.elem=i,this.mods=i,this.elemMods=i}var i,o={},r=Object.prototype.toString,s=Array.prototype.slice,a=Array.isArray||function(t){return"[object Array]"===r.call(t)},u={area:1,base:1,br:1,col:1,command:1,embed:1,hr:1,img:1,input:1,keygen:1,link:1,meta:1,param:1,source:1,wbr:1};!function(t){function e(t,e){var n=r+t;return e!==!0&&(n+=r+e),n}function n(t,n,i){var o=t;return i&&(o+=e(n,i)),o}function o(t,i,o,r){var a=n(t)+s+i;return r&&(a+=e(o,r)),a}var r="_",s="__",a="[a-zA-Z0-9-]+";t.INTERNAL={NAME_PATTERN:a,MOD_DELIM:r,ELEM_DELIM:s,buildModPostfix:e,buildClass:function(t,e,r,s){var a=typeof r;if("string"===a||"boolean"===a){var u=typeof s;"string"!==u&&"boolean"!==u&&(s=r,r=e,e=i)}else"undefined"!==a?r=i:e&&"string"!=typeof e&&(e=i);return e||r?e?o(t,e,r,s):n(t,r,s):t},buildModsClasses:function(t,e,i){var r="";if(i){var s;for(s in i)if(i.hasOwnProperty(s)){var a=i[s];(a||0===a)&&("boolean"!=typeof a&&(a+=""),r+=" "+(e?o(t,e,s,a):n(t,s,a)))}}return r},buildClasses:function(t,e,i){var r="";return r+=e?o(t,e):n(t),r+=this.buildModsClasses(t,e,i)}}}(o);var c={'"':"&quot;","&":"&amp;","<":"&lt;",">":"&gt;"},l=function(t){return c[t]||t},d=function(t){return t=new RegExp(t,"g"),function(e){return(""+e).replace(t,l)}};e.BEMContext=n,n.prototype.isArray=a,n.prototype.isSimple=function(t){if(!t||t===!0)return!0;var e=typeof t;return"string"===e||"number"===e},n.prototype.isShortTag=function(t){return u.hasOwnProperty(t)},n.prototype.extend=function(t,e){if(!t||!e)return t||e;var n,i={};for(n in t)t.hasOwnProperty(n)&&(i[n]=t[n]);for(n in e)e.hasOwnProperty(n)&&(i[n]=e[n]);return i};var f=0,h=+new Date,p="__"+h,m=function(){return"uniq"+h+ ++f};n.prototype.identify=function(t,e){return t?e||t[p]?t[p]:t[p]=m():m()},n.prototype.xmlEscape=d("[&<>]"),n.prototype.attrEscape=d('["&<>]'),n.prototype.BEM=o,n.prototype.isFirst=function(){return 1===this.position},n.prototype.isLast=function(){return this.position===this._listLength},n.prototype.generateId=function(){return this.identify(this.ctx)};var _=t.apply;t.apply=n.apply=function(t){var e=new n(t||this,_);return e.apply(),e._str},n.prototype.reapply=n.apply}].forEach(function(e){e(t,this)},{recordExtensions:function(t){t.ctx=void 0,t._input__controlAttrs=void 0,t.__$a=0,t._input=void 0,t._mode=void 0,t._str=void 0,t.block=void 0,t.elem=void 0,t._notNewList=void 0,t.position=void 0,t._listLength=void 0,t._currBlock=void 0,t.mods=void 0,t.elemMods=void 0}}),t}({}),n=!0;"object"==typeof exports&&(exports.BEMHTML=e,n=!1),"object"==typeof modules&&(modules.define("BEMHTML",function(t){t(e)}),n=!1),n&&(t.BEMHTML=e)}(this),modules.define("i-bem",["i-bem__internal","inherit","identify","next-tick","objects","functions","events"],function(t,e,n,i,o,r,s,a){function u(t,e,n,i){return"__"+t+(i?"__elem_"+i:"")+"__mod"+(e?"_"+e:"")+(n?"_"+n:"")}function c(t,e,n,i){if(s.isFunction(e))n[u(t,"*","*",i)]=e;else{var o,r,a;for(o in e)if(e.hasOwnProperty(o))if(a=e[o],s.isFunction(a))n[u(t,o,"*",i)]=a;else for(r in a)a.hasOwnProperty(r)&&(n[u(t,o,r,i)]=a[r])}}function l(t,e){return e?Array.isArray(e)?function(n){for(var i=0,o=e.length;o>i;)if(n.hasMod(t,e[i++]))return!0;return!1}:function(n){return n.hasMod(t,e)}:function(e){return e.hasMod(t)}}function d(t){t.beforeSetMod&&(c("before",t.beforeSetMod,t),delete t.beforeSetMod),t.onSetMod&&(c("after",t.onSetMod,t),delete t.onSetMod);var e;if(t.beforeElemSetMod){for(e in t.beforeElemSetMod)t.beforeElemSetMod.hasOwnProperty(e)&&c("before",t.beforeElemSetMod[e],t,e);delete t.beforeElemSetMod}if(t.onElemSetMod){for(e in t.onElemSetMod)t.onElemSetMod.hasOwnProperty(e)&&c("after",t.onElemSetMod[e],t,e);delete t.onElemSetMod}}var f,h=e.MOD_DELIM,p=e.ELEM_DELIM,m=[],_={},v=n(a.Emitter,{__constructor:function(t,e,n){this._modCache=t||{},this._processingMods={},this.params=r.extend(this.getDefaultParams(),e),n!==!1?this._init():m.push(this._init,this)},_init:function(){return this.setMod("js","inited")},on:function(t,e,n){return"object"==typeof t&&(s.isFunction(e)||s.isFunction(n))&&(t=this.__self._buildModEventName(t)),this.__base.apply(this,arguments)},un:function(t,e){return"object"==typeof t&&s.isFunction(e)&&(t=this.__self._buildModEventName(t)),this.__base.apply(this,arguments)},emit:function(t,e){var n=!1;return"object"!=typeof t||t instanceof a.Event||(n="js"===t.modName,t=this.__self._buildModEventName(t)),(n||this.hasMod("js","inited"))&&(this.__base(t=this._buildEvent(t),e),this._ctxEmit(t,e)),this},_ctxEmit:function(t,e){this.__self.emit(t,e)},_buildEvent:function(t){return"string"==typeof t?t=new a.Event(t,this):t.target||(t.target=this),t},hasMod:function(t,e,n){var i=arguments.length,o=!1;1===i?(n="",e=t,t=f,o=!0):2===i&&("string"==typeof t?(n=e,e=t,t=f):(n="",o=!0));var r=this.getMod(t,e)===n;return o?!r:r},getMod:function(t,e){var n=typeof t;if("string"===n||"undefined"===n){e=t||e;var i=this._modCache;return e in i?i[e]||"":i[e]=this._extractModVal(e)}return this._getElemMod(e,t)},_getElemMod:function(t,e,n){return this._extractModVal(t,e,n)},getMods:function(t){var e=t&&"string"!=typeof t,n=[].slice.call(arguments,e?1:0),i=this._extractMods(n,e?t:f);return e||(n.length?n.forEach(function(t){this._modCache[t]=i[t]},this):this._modCache=i),i},setMod:function(t,e,n){if("undefined"==typeof n&&("string"==typeof t?(n="undefined"==typeof e?!0:e,e=t,t=f):n=!0),!t||t[0]){n===!1&&(n="");var o=(t&&t[0]?i(t[0]):"")+"_"+e;if(this._processingMods[o])return this;var r,s=t?this._getElemMod(e,t,r=this.__self._extractElemNameFrom(t)):this.getMod(e);if(s===n)return this;this._processingMods[o]=!0;var a=!0,u=[e,n,s];t&&u.unshift(t);for(var c,l,d,h=[["*","*"],[e,"*"],[e,n]],p=["before","after"],m=0;c=p[m++];){for(l=0;d=h[l++];)if(this._callModFn(c,r,d[0],d[1],u)===!1){a=!1;break}if(!a)break;"before"===c&&(t||(this._modCache[e]=n),this._onSetMod(e,n,s,t,r))}this._processingMods[o]=null,a&&this._emitModChangeEvents(e,n,s,t,r)}return this},_onSetMod:function(){},_emitModChangeEvents:function(t,e,n,i,o){var r={modName:t,modVal:e,oldModVal:n};i&&(r.elem=i),this.emit({modName:t,modVal:"*",elem:o},r).emit({modName:t,modVal:e,elem:o},r)},toggleMod:function(t,e,n,i,o){"string"==typeof t&&(o=i,i=n,n=e,e=t,t=f),"undefined"==typeof n&&(n=!0),"undefined"==typeof i?i="":"boolean"==typeof i&&(o=i,i="");var r=this.getMod(t,e);return(r===n||r===i)&&this.setMod(t,e,"boolean"==typeof o?o?n:i:this.hasMod(t,e,n)?i:n),this},delMod:function(t,e){return e||(e=t,t=f),this.setMod(t,e,"")},_callModFn:function(t,e,n,i,o){var r=u(t,n,i,e);return this[r]?this[r].apply(this,o):f},_extractModVal:function(){return""},_extractMods:function(){return{}},getDefaultParams:function(){return{}},_destruct:function(){this.delMod("js")},nextTick:function(t){var e=this;return o(function(){e.hasMod("js","inited")&&t.call(e)}),this}},{_name:"i-bem",blocks:_,decl:function(t,e,i){"string"==typeof t&&(t={block:t}),arguments.length<=2&&"object"==typeof t&&(!t||"string"!=typeof t.block&&"string"!=typeof t.modName)&&(i=e,e=t,t={}),"undefined"==typeof t.block&&(t.block=this.getName());var o;if("undefined"==typeof t.baseBlock)o=_[t.block]||this;else if("string"==typeof t.baseBlock){if(o=_[t.baseBlock],!o)throw'baseBlock "'+t.baseBlock+'" for "'+t.block+'" is undefined'}else o=t.baseBlock;if(d(e||(e={})),t.modName){var a=l(t.modName,t.modVal);r.each(e,function(t,n){s.isFunction(t)&&(e[n]=function(){var e;if(a(this))e=t;else{var i=o.prototype[n];i&&i!==t&&(e=this.__base)}return e?e.apply(this,arguments):f})})}if(i&&"boolean"==typeof i.live){var u=i.live;i.live=function(){return u}}var c,h=o;return t.baseMix&&(h=[h],t.baseMix.forEach(function(e){if(!_[e])throw'mix block "'+e+'" for "'+t.block+'" is undefined';h.push(_[e])})),t.block===o.getName()?(c=n.self(h,e,i))._processLive(!0):((c=_[t.block]=n(h,e,i))._name=t.block,delete c._liveInitable),c},declMix:function(t,e,i){return d(e||(e={})),_[t]=n(e,i)},_processLive:function(){return!1},create:function(t,e){return"string"==typeof t&&(t={block:t}),new _[t.block](t.mods,e)},getName:function(){return this._name},on:function(t,e,n){return"object"==typeof t&&(s.isFunction(e)||s.isFunction(n))&&(t=this._buildModEventName(t)),this.__base.apply(this,arguments)},un:function(t,e){return"object"==typeof t&&s.isFunction(e)&&(t=this._buildModEventName(t)),this.__base.apply(this,arguments)},_buildModEventName:function(t){var e=h+t.modName+h+(t.modVal===!1?"":t.modVal);return t.elem&&(e=p+t.elem+e),e},_extractElemNameFrom:function(){},_runInitFns:function(){if(m.length){var t,e=m,n=0;for(m=[];t=e[n];)t.call(e[n+1]),n+=2}}});t(v)}),modules.define("i-bem__internal",function(t){function e(t){var e=typeof t;return"string"===e||"number"===e||"boolean"===e}function n(t,e){var n="";return null!=e&&e!==!1&&(n+=s+t,e!==!0&&(n+=s+e)),n}function i(t,e,i){return t+n(e,i)}function o(t,e,o,s){return i(t,r,r)+a+e+n(o,s)}var r,s="_",a="__",u="[a-zA-Z0-9-]+";t({NAME_PATTERN:u,MOD_DELIM:s,ELEM_DELIM:a,buildModPostfix:n,buildClass:function(t,n,s,a){return e(s)?e(a)||(a=s,s=n,n=r):"undefined"!=typeof s?s=r:n&&"string"!=typeof n&&(n=r),n||s?n?o(t,n,s,a):i(t,s,a):t},buildClasses:function(t,e,n){e&&"string"!=typeof e&&(n=e,e=r);var s=e?o(t,e,r,r):i(t,r,r);if(n)for(var a in n)n.hasOwnProperty(a)&&n[a]&&(s+=" "+(e?o(t,e,a,n[a]):i(t,a,n[a])));return s}})}),function(t){function e(t){var e=c(t);if(m)for(var n,i=0;n=g[i++];)t.hasOwnProperty(n)&&e.push(n);return e}function n(t,n,i){for(var o,s,a=e(i),u=0,c=a.length;c>u;)"__self"!==(o=a[u++])&&(s=i[o],n[o]=h(s)&&(!r||s.toString().indexOf(".__base")>-1)?function(e,i){var o=t[e]?t[e]:"__constructor"===e?n.__self.__parent:p;return function(){var t=this.__base;this.__base=o;var e=i.apply(this,arguments);return this.__base=t,e}}(o,s):s)}function i(t,e){for(var n,i=1;n=t[i++];)e?h(n)?o.self(e,n.prototype,n):o.self(e,n):e=h(n)?o(t[0],n.prototype,n):o(t[0],n);return e||t[0]}function o(){var t=arguments,e=f(t[0]),o=e||h(t[0]),r=o?e?i(t[0]):t[0]:s,a=t[o?1:0]||{},c=t[o?2:1],d=a.__constructor||o&&r.prototype.__constructor?function(){return this.__constructor.apply(this,arguments)}:o?function(){return r.apply(this,arguments)}:function(){};if(!o)return d.prototype=a,d.prototype.__self=d.prototype.constructor=d,l(d,c);l(d,r),d.__parent=r;var p=r.prototype,m=d.prototype=u(p);return m.__self=m.constructor=d,a&&n(p,m,a),c&&n(r,d,c),d}var r=function(){"_"}.toString().indexOf("_")>-1,s=function(){},a=Object.prototype.hasOwnProperty,u=Object.create||function(t){var e=function(){};return e.prototype=t,new e},c=Object.keys||function(t){var e=[];for(var n in t)a.call(t,n)&&e.push(n);return e},l=function(t,e){for(var n in e)a.call(e,n)&&(t[n]=e[n]);return t},d=Object.prototype.toString,f=Array.isArray||function(t){return"[object Array]"===d.call(t)},h=function(t){return"[object Function]"===d.call(t)},p=function(){},m=!0,_={toString:""};for(var v in _)_.hasOwnProperty(v)&&(m=!1);var g=m?["toString","valueOf"]:null;o.self=function(){var t=arguments,e=f(t[0]),o=e?i(t[0],t[0][0]):t[0],r=t[1],s=t[2],a=o.prototype;return r&&n(a,a,r),s&&n(o,o,s),o};var b=!0;"object"==typeof exports&&(module.exports=o,b=!1),"object"==typeof modules&&(modules.define("inherit",function(t){t(o)}),b=!1),"function"==typeof define&&(define(function(t,e,n){n.exports=o}),b=!1),b&&(t.inherit=o)}(this),modules.define("identify",function(t){var e=0,n="__"+ +new Date,i=function(){return"uniq"+ ++e};t(function(t,e){if(!t)return i();var o="uniqueID"in t?"uniqueID":n;return e||o in t?t[o]:t[o]=i()})}),modules.define("next-tick",function(t){var e=this.global,n=[],i=function(t){return 1===n.push(t)},o=function(){var t=n,e=0,i=n.length;for(n=[];i>e;)t[e++]()};if("object"==typeof process&&process.nextTick)return t(function(t){i(t)&&process.nextTick(o)});if(e.setImmediate)return t(function(t){i(t)&&e.setImmediate(o)});if(e.postMessage){var r=!0;if(e.attachEvent){var s=function(){r=!1};e.attachEvent("onmessage",s),e.postMessage("__checkAsync","*"),e.detachEvent("onmessage",s)}if(r){var a="__nextTick"+ +new Date,u=function(t){t.data===a&&(t.stopPropagation&&t.stopPropagation(),o())};return e.addEventListener?e.addEventListener("message",u,!0):e.attachEvent("onmessage",u),t(function(t){i(t)&&e.postMessage(a,"*")})}}var c=e.document;if("onreadystatechange"in c.createElement("script")){var l=c.getElementsByTagName("head")[0],d=function(){var t=c.createElement("script");t.onreadystatechange=function(){t.parentNode.removeChild(t),t=t.onreadystatechange=null,o()},l.appendChild(t)};return t(function(t){i(t)&&d()})}t(function(t){i(t)&&e.setTimeout(o,0)})}),modules.define("objects",function(t){var e=Object.prototype.hasOwnProperty;t({extend:function(t){"object"!=typeof t&&(t={});for(var n=1,i=arguments.length;i>n;n++){var o=arguments[n];if(o)for(var r in o)e.call(o,r)&&(t[r]=o[r])}return t},isEmpty:function(t){for(var n in t)if(e.call(t,n))return!1;return!0},each:function(t,n,i){for(var o in t)e.call(t,o)&&(i?n.call(i,t[o],o):n(t[o],o))}})}),modules.define("functions",function(t){var e=Object.prototype.toString;t({isFunction:function(t){return"[object Function]"===e.call(t)},noop:function(){}})}),modules.define("events",["identify","inherit","functions"],function(t,e,n,i){var o,r="__"+ +new Date+"storage",s=function(t,n){return e(t)+(n?e(n):"")},a=n({__constructor:function(t,e){this.type=t,this.target=e,this.result=o,this.data=o,this._isDefaultPrevented=!1,this._isPropagationStopped=!1},preventDefault:function(){this._isDefaultPrevented=!0},isDefaultPrevented:function(){return this._isDefaultPrevented},stopPropagation:function(){this._isPropagationStopped=!0},isPropagationStopped:function(){return this._isPropagationStopped}}),u={on:function(t,e,n,a,u){if("string"==typeof t){i.isFunction(e)&&(a=n,n=e,e=o);for(var c,l,d,f,h=s(n,a),p=this[r]||(this[r]={}),m=t.split(" "),_=0;c=m[_++];)f=p[c]||(p[c]={ids:{},list:{}}),h in f.ids||(l=f.list,d={fn:n,data:e,ctx:a,special:u},l.last?(l.last.next=d,d.prev=l.last):l.first=d,f.ids[h]=l.last=d)}else for(var v in t)t.hasOwnProperty(v)&&this.on(v,t[v],e,u);return this},once:function(t,e,n,i){return this.on(t,e,n,i,{once:!0})},un:function(t,e,n){if("string"==typeof t||"undefined"==typeof t){var i=this[r];if(i)if(t){for(var o,a=t.split(" "),u=0;t=a[u++];)if(o=i[t])if(e){var c=s(e,n),l=o.ids;if(c in l){var d=o.list,f=l[c],h=f.prev,p=f.next;h?h.next=p:f===d.first&&(d.first=p),p?p.prev=h:f===d.last&&(d.last=h),delete l[c]}}else delete this[r][t]}else delete this[r]}else for(var m in t)t.hasOwnProperty(m)&&this.un(m,t[m],e);return this},emit:function(t){var e=this[r],n=!1;if(e)for(var i,o,s=["string"==typeof t?t:t.type,"*"],u=0;i=s[u++];)if(o=e[i])for(var c,l=o.list.first,d=o.list.last;l&&(n||(n=!0,"string"==typeof t&&(t=new a(t)),t.target||(t.target=this)),t.data=l.data,c=l.fn.apply(l.ctx||this,arguments),"undefined"!=typeof c&&(t.result=c,c===!1&&(t.preventDefault(),t.stopPropagation())),l.special&&l.special.once&&this.un(t.type,l.fn,l.ctx),l!==d);)l=l.next;return this}},c=n(u,u);t({Emitter:c,Event:a})}),modules.define("i-bem__dom",["i-bem","i-bem__internal","identify","objects","functions","jquery","dom"],function(t,e,n,i,o,r,s,a){function u(t,e){var n,i=t[0],o=f(i);for(n in o)c(n,t,l(o[n],n,e))}function c(t,e,n,i,r){var a=e[0];n||(n=l(h(a,t),t));var u=n.uniqId,c=E[u];if(c)return c.domElem.index(a)<0&&(c.domElem=c.domElem.add(e),o.extend(c.params,n)),c;y[u]=y[u]?y[u].add(e):e;var d=a.parentNode;d&&11!==d.nodeType||s.unique(y[u]);var f=x[t]||F.decl(t,{},{live:!0},!0);return!(f._liveInitable=!!f._processLive())||i||n.live===!1?(i&&e.addClass(S),c=new f(y[u],n,!!i),delete y[u],r&&r.apply(c,Array.prototype.slice.call(arguments,4)),c):void 0}function l(t,e,n){return t.uniqId||(t.uniqId=(t.id?e+"-id-"+t.id:i())+(n||i())),t}function d(t,e,n){var i=t.find(e);return n?i:i.add(t.filter(e))}function f(t){var e=i(t);return w[e]||(w[e]=p(t))}function h(t,e){var n=f(t);return n[e]||(n[e]={})}function p(t){var e=t.getAttribute(O);return e?JSON.parse(e):{}}function m(t,e){1===t.domElem.length?t._destruct():t.domElem=t.domElem.not(e)}function _(t){t.each(function(){k[i(this)]=this.parentNode})}var v,g=s(window),b=s(document),y={},E={},k={},w={},M={},T={},x=e.blocks,S="i-bem",P="."+S,O="data-bem",C=n.NAME_PATTERN,I=n.MOD_DELIM,N=n.ELEM_DELIM,D=RegExp("[^"+I+"]"+I+"("+C+")(?:"+I+"("+C+"))?$"),j=n.buildModPostfix,L=n.buildClass,$=Array.prototype.reverse,F=e.decl("i-bem__dom",{__constructor:function(t,e,n){this.domElem=t,this._eventNameCache={},this._elemCache={},this._uniqId=e.uniqId,E[this._uniqId]=this,this._needSpecialUnbind=!1,this.__base(null,e,n)},findBlocksInside:function(t,e){return this._findBlocks("find",t,e)},findBlockInside:function(t,e){return this._findBlocks("find",t,e,!0)},findBlocksOutside:function(t,e){return this._findBlocks("parents",t,e)},findBlockOutside:function(t,e){return this._findBlocks("closest",t,e)[0]||null},findBlocksOn:function(t,e){return this._findBlocks("",t,e)},findBlockOn:function(t,e){return this._findBlocks("",t,e,!0)},_findBlocks:function(t,e,n,i){n||(n=e,e=v);var o=e?"string"==typeof e?this.findElem(e):e:this.domElem,r="string"==typeof n,a=r?n:n.block||n.blockName,u="."+(r?L(a):L(a,n.modName,n.modVal))+(i?":first":""),l=o.filter(u);if(t&&(l=l.add(o[t](u))),i)return l[0]?c(a,l.eq(0),v,!0):null;var d=[],f={};return l.each(function(t,e){var n=c(a,s(e),v,!0);f[n._uniqId]||(f[n._uniqId]=!0,d.push(n))}),d},bindToDomElem:function(t,e,n,i){return r.isFunction(n)&&(i=n,n=v),i?t.bind(this._buildEventName(e),n,s.proxy(i,this)):o.each(e,function(e,i){this.bindToDomElem(t,i,n,e)},this),this},bindToDoc:function(t,e,n){return this._needSpecialUnbind=!0,this.bindToDomElem(b,t,e,n)},bindToWin:function(t,e,n){return this._needSpecialUnbind=!0,this.bindToDomElem(g,t,e,n)},bindTo:function(t,e,n,i){var o=arguments.length;return 3===o?r.isFunction(n)&&(i=n,"object"==typeof e&&(n=e,e=t,t=this.domElem)):2===o?r.isFunction(e)?(i=e,e=t,t=this.domElem):"string"==typeof t||t instanceof s||(n=e,e=t,t=this.domElem):1===o&&(e=t,t=this.domElem),"string"==typeof t&&(t=this.elem(t)),this.bindToDomElem(t,e,n,i)},unbindFromDomElem:function(t,e,n){return"string"==typeof e?(e=this._buildEventName(e),n?t.unbind(e,n):t.unbind(e)):o.each(e,function(e,n){this.unbindFromDomElem(t,n,e)},this),this},unbindFromDoc:function(t,e){return this.unbindFromDomElem(b,t,e)},unbindFromWin:function(t,e){return this.unbindFromDomElem(g,t,e)},unbindFrom:function(t,e,n){var i=arguments.length;return 1===i?(e=t,t=this.domElem):2===i&&r.isFunction(e)?(n=e,e=t,t=this.domElem):"string"==typeof t&&(t=this.elem(t)),this.unbindFromDomElem(t,e,n)},_buildEventName:function(t){return t.indexOf(" ")>1?t.split(" ").map(function(t){return this._buildOneEventName(t)},this).join(" "):this._buildOneEventName(t)},_buildOneEventName:function(t){var e=this._eventNameCache;if(t in e)return e[t];var n="."+this._uniqId;if(t.indexOf(".")<0)return e[t]=t+n;var i=".bem_"+this.__self._name;return e[t]=t.split(".").map(function(t,e){return 0===e?t+i:i+"_"+t}).join("")+n},_ctxEmit:function(t,e){this.__base.apply(this,arguments);var n=this,r=M[n.__self._buildCtxEventName(t.type)],s={};r&&n.domElem.each(function(a,u){for(var c=r.counter;u&&c;){var l=i(u,!0);if(l){if(s[l])break;var d=r.ctxs[l];
-d&&(o.each(d,function(i){i.fn.call(i.ctx||n,t,e)}),c--),s[l]=!0}u=u.parentNode||k[l]}})},setMod:function(t,e,n){if(t&&"undefined"!=typeof n&&t.length>1){var i=this;return t.each(function(){var o=s(this);o.__bemElemName=t.__bemElemName,i.setMod(o,e,n)}),i}return this.__base(t,e,n)},_extractModVal:function(t,e,n){var i,o=(e||this.domElem)[0];return o&&(i=o.className.match(this.__self._buildModValRE(t,n||e))),i?i[2]||!0:""},_extractMods:function(t,e){var n={},i=!t.length,o=0;return((e||this.domElem)[0].className.match(this.__self._buildModValRE("("+(i?C:t.join("|"))+")",e,"g"))||[]).forEach(function(t){var e=t.match(D);n[e[1]]=e[2]||!0,++o}),o<t.length&&t.forEach(function(t){t in n||(n[t]="")}),n},_onSetMod:function(t,e,n,i,o){if("js"!==t||""!==e){var r=this.__self,a=r._buildModClassPrefix(t,o),u=r._buildModValRE(t,o),c=""===e||e===!1;(i||this.domElem).each(function(){var t=this.className,i=a;e!==!0&&(i+=I+e),(n===!0?u.test(t):t.indexOf(a+I)>-1)?this.className=t.replace(u,c?"":"$1"+i):c||s(this).addClass(i)}),o&&this.dropElemCache(o,t,n).dropElemCache(o,t,e)}this.__base.apply(this,arguments)},findElem:function(t,e,n,i,o){"string"==typeof t&&(o=i,i=n,n=e,e=t,t=this.domElem),"boolean"==typeof n&&(o=n,n=v);var r=this.__self,s="."+e.split(" ").map(function(t){return r.buildClass(t,n,i)}).join(",."),a=d(t,s);return o?this._filterFindElemResults(a):a},_filterFindElemResults:function(t){var e=this.buildSelector(),n=this.domElem;return t.filter(function(){return n.index(s(this).closest(e))>-1})},_elem:function(t,e,n){var i,o=t+j(e,n);return(i=this._elemCache[o])||(i=this._elemCache[o]=this.findElem(t,e,n),i.__bemElemName=t),i},elem:function(t,e,n){if(e&&"string"!=typeof e)return e.__bemElemName=t,e;if(t.indexOf(" ")<0)return this._elem(t,e,n);var i=s([]);return t.split(" ").forEach(function(t){i=i.add(this._elem(t,e,n))},this),i},closestElem:function(t,e){return t.closest(this.buildSelector(e))},dropElemCache:function(t,e,n){if(t){var i=j(e,n);t.indexOf(" ")<0?delete this._elemCache[t+i]:t.split(" ").forEach(function(t){delete this._elemCache[t+i]},this)}else this._elemCache={};return this},elemParams:function(t){var e;return"string"==typeof t?(e=t,t=this.elem(t)):e=this.__self._extractElemNameFrom(t),p(t[0])[this.__self.buildClass(e)]||{}},elemify:function(t,e){return(t=s(t)).__bemElemName=e,t},containsDomElem:function(t,e){return 1===arguments.length&&(e=t,t=this.domElem),a.contains(t,e)},buildSelector:function(t,e,n){return this.__self.buildSelector(t,e,n)},_destruct:function(){var t=this,e=t.__self;t._needSpecialUnbind&&e.doc.add(e.win).unbind("."+t._uniqId),t.__base(),delete E[t.un()._uniqId]}},{scope:null,doc:b,win:g,_processLive:function(t){var e=this._liveInitable;if("live"in this){var n="undefined"==typeof e;if(n^t){e=this.live()!==!1;var i=this.getName(),o=this.live;this.live=function(){return this.getName()===i?e:o.apply(this,arguments)}}}return e},init:function(t){"string"==typeof t?t=s(t):t||(t=F.scope);var e=i();return d(t,P).each(function(){u(s(this),e)}),this._runInitFns(),t},destruct:function(t,e){var n;e?(_(n=t.children()),t.empty()):(_(n=t),t.remove()),$.call(d(n,P)).each(function(t,e){var n=f(e);o.each(n,function(t){if(t.uniqId){var n=E[t.uniqId];n?m(n,e):delete y[t.uniqId]}}),delete w[i(e)]}),k={}},update:function(t,e){return this.destruct(t,!0),this.init(t.html(e))},replace:function(t,e){var n=t.prev(),i=t.parent();return this.destruct(t),this.init(n.length?s(e).insertAfter(n):s(e).prependTo(i))},append:function(t,e){return this.init(s(e).appendTo(t))},prepend:function(t,e){return this.init(s(e).prependTo(t))},before:function(t,e){return this.init(s(e).insertBefore(t))},after:function(t,e){return this.init(s(e).insertAfter(t))},_buildCtxEventName:function(t){return this._name+":"+t},_liveClassBind:function(t,e,n,o){if(e.indexOf(" ")>-1)e.split(" ").forEach(function(e){this._liveClassBind(t,e,n,o)},this);else{var r=T[e],a=i(n);r||(r=T[e]={},F.scope.bind(e,s.proxy(this._liveClassTrigger,this))),r=r[t]||(r[t]={uniqIds:{},fns:[]}),a in r.uniqIds||(r.fns.push({uniqId:a,fn:this._buildLiveEventFn(n,o)}),r.uniqIds[a]=r.fns.length-1)}return this},_liveClassUnbind:function(t,e,n){var o=T[e];if(o)if(n){if(o=o[t]){var r=i(n);if(r in o.uniqIds){var s=o.uniqIds[r],a=o.fns.length-1;for(o.fns.splice(s,1);a>s;)o.uniqIds[o.fns[s++].uniqId]=s-1;delete o.uniqIds[r]}}}else delete o[t];return this},_liveClassTrigger:function(t){var e=T[t.type];if(e){var n=t.target,i=[];for(var o in e)i.push(o);do for(var r=" "+n.className+" ",a=0;o=i[a++];)if(r.indexOf(" "+o+" ")>-1){for(var u,c=0,l=e[o].fns,d=!1;u=l[c++];)u.fn.call(s(n),t)===!1&&(d=!0);if(d&&t.preventDefault(),d||t.isPropagationStopped())return;i.splice(--a,1)}while(i.length&&(n=n.parentNode))}},_buildLiveEventFn:function(t,e){var n=this;return function(i){i.currentTarget=this;var o=[n._name,s(this).closest(n.buildSelector()),v,!0],r=c.apply(null,e?o.concat([t,i]):o);return r&&!e&&t?t.apply(r,arguments):void 0}},liveInitOnEvent:function(t,e,n){return this.liveBindTo(t,e,n,!0)},liveBindTo:function(t,e,n,i){return(!e||r.isFunction(e))&&(n=e,e=t,t=v),t&&"string"!=typeof t||(t={elem:t}),t.elem&&t.elem.indexOf(" ")>0?(t.elem.split(" ").forEach(function(o){this._liveClassBind(this.buildClass(o,t.modName,t.modVal),e,n,i)},this),this):this._liveClassBind(this.buildClass(t.elem,t.modName,t.modVal),e,n,i)},liveUnbindFrom:function(t,e,n){return(!e||r.isFunction(e))&&(n=e,e=t,t=v),t&&t.indexOf(" ")>1?(t.split(" ").forEach(function(t){this._liveClassUnbind(this.buildClass(t),e,n)},this),this):this._liveClassUnbind(this.buildClass(t),e,n)},_liveInitOnBlockEvent:function(t,e,n,i){var o=this._name;return x[e].on(t,function(t){var e=arguments,r=t.target[i](o);n&&r.forEach(function(t){n.apply(t,e)})}),this},liveInitOnBlockEvent:function(t,e,n){return this._liveInitOnBlockEvent(t,e,n,"findBlocksOn")},liveInitOnBlockInsideEvent:function(t,e,n){return this._liveInitOnBlockEvent(t,e,n,"findBlocksOutside")},on:function(t,e,n,i,o){return"object"==typeof t&&t.jquery?this._liveCtxBind(t,e,n,i,o):this.__base(t,e,n,i)},un:function(t,e,n,i){return"object"==typeof t&&t.jquery?this._liveCtxUnbind(t,e,n,i):this.__base(t,e,n)},_liveCtxBind:function(t,e,n,s,a){if("object"==typeof e){if(!r.isFunction(n)&&!r.isFunction(s))return o.each(e,function(e,i){this._liveCtxBind(t,i,e,n)},this),this;e=this._buildModEventName(e)}if(r.isFunction(n)&&(a=s,s=n,n=v),e.indexOf(" ")>-1)e.split(" ").forEach(function(e){this._liveCtxBind(t,e,n,s,a)},this);else{var u=this._buildCtxEventName(e),c=M[u]||(M[u]={counter:0,ctxs:{}});t.each(function(){var t=i(this),e=c.ctxs[t];e||(e=c.ctxs[t]={},++c.counter),e[i(s)+(a?i(a):"")]={fn:s,data:n,ctx:a}})}return this},_liveCtxUnbind:function(t,e,n,s){"object"==typeof e&&r.isFunction(n)&&(e=this._buildModEventName(e));var a=M[e=this._buildCtxEventName(e)];return a&&(t.each(function(){var t,e=i(this,!0);e&&(t=a.ctxs[e])&&(n&&delete t[i(n)+(s?i(s):"")],(!n||o.isEmpty(t))&&(a.counter--,delete a.ctxs[e]))}),a.counter||delete M[e]),this},_extractElemNameFrom:function(t){if(t.__bemElemName)return t.__bemElemName;var e=t[0].className.match(this._buildElemNameRE());return e?e[1]:v},_buildModClassPrefix:function(t,e){return this._name+(e?N+("string"==typeof e?e:this._extractElemNameFrom(e)):"")+I+t},_buildModValRE:function(t,e,n){return new RegExp("(\\s|^)"+this._buildModClassPrefix(t,e)+"(?:"+I+"("+C+"))?(?=\\s|$)",n)},_buildElemNameRE:function(){return new RegExp(this._name+N+"("+C+")(?:\\s|$)")},buildClass:function(t,e,n){return L(this._name,t,e,n)},buildSelector:function(t,e,n){return"."+this.buildClass(t,e,n)}});s.fn.bem=function(t,e){return c(t,this,e,!0)},s(function(){F.scope=s("body")}),t(F)}),function(){var t=modules.define;modules.define=function(e,n){t.apply(modules,arguments),"i-bem__dom_init"!==e&&arguments.length>2&&~n.indexOf("i-bem__dom")&&modules.define("i-bem__dom_init",[e],function(t,e,n){t(n)})}}(),modules.define("jquery",["loader_type_js","jquery__config"],function(t,e,n){function i(e){t(e?jQuery:jQuery.noConflict(!0))}"undefined"!=typeof jQuery?i(!0):e(n.url,i)}),modules.define("loader_type_js",function(t){var e={},n={},i=document.getElementsByTagName("head")[0],o=function(t){n[t]=!0;var i,o=e[t],r=0;for(delete e[t];i=o[r++];)i()};t(function(t,r){if(n[t])return void r();if(e[t])return void e[t].push(r);e[t]=[r];var s=document.createElement("script");s.type="text/javascript",s.charset="utf-8",s.src=("file:"!==location.protocol||t.indexOf("//")?"":"http:")+t,null===s.onreadystatechange?s.onreadystatechange=function(){var e=this.readyState;("loaded"===e||"complete"===e)&&(s.onreadystatechange=null,o(t))}:s.onload=s.onerror=function(){s.onload=s.onerror=null,o(t)},i.insertBefore(s,i.lastChild)})}),modules.define("jquery__config",function(t){t({url:"//yastatic.net/jquery/2.1.1/jquery.min.js"})}),modules.define("dom",["jquery"],function(t,e){t({contains:function(t,e){var n=!1;return e.each(function(){var e=this;do if(~t.index(e))return!(n=!0);while(e=e.parentNode);return n}),n},getFocused:function(){try{return e(document.activeElement)}catch(t){}},containsFocus:function(t){return this.contains(t,this.getFocused())},isFocusable:function(t){var e=t[0];if(!e)return!1;if(e.hasAttribute("tabindex"))return!0;switch(e.tagName.toLowerCase()){case"iframe":return!0;case"input":case"button":case"textarea":case"select":return!e.disabled;case"a":return!!e.href}return!1},isEditable:function(t){var e=t[0];if(!e)return!1;switch(e.tagName.toLowerCase()){case"input":var n=e.type;return!("text"!==n&&"password"!==n||e.disabled||e.readOnly);case"textarea":return!e.disabled&&!e.readOnly;default:return"true"===e.contentEditable}}})}),modules.define("i-bem__dom_init",["i-bem__dom"],function(t,e){t(function(t){return e.init(t)})}),modules.require(["i-bem__dom_init","jquery","next-tick"],function(t,e,n){e(function(){n(t)})}),modules.define("ua",["jquery"],function(t,e){var n,i=window,o=document,r=navigator.userAgent,s={},a={};(n=r.match(/Android\s+([\d.]+)/))?s.android=n[1]:r.match(/\sHTC[\s_].*AppleWebKit/)?s.android="2.3":(n=r.match(/iPhone\sOS\s([\d_]+)/))?(s.ios=n[1].replace(/_/g,"."),a.iphone=!0):(n=r.match(/iPad.*OS\s([\d_]+)/))?(s.ios=n[1].replace(/_/g,"."),a.ipad=!0):(n=r.match(/Bada\/([\d.]+)/))?s.bada=n[1]:(n=r.match(/Windows\sPhone.*\s([\d.]+)/))?s.wp=n[1]:s.other=!0;var u={};i.opera?u.opera=i.opera.version():(n=r.match(/\sCrMo\/([\d.]+)/))&&(u.chrome=n[1]);var c={},l=navigator.connection;if(l){var d={};d[l.ETHERNET]=d[l.WIFI]="wifi",d[l.CELL_3G]="3g",d[l.CELL_2G]="2g",c.connection=d[l.type]}var f=o.createElement("video");c.video=!(!f.canPlayType||!f.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/,"")),c.svg=!(!o.createElementNS||!o.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect);var h=navigator.plugins,p=h.length;if(h&&p)for(var m;m=h[--p];)if("Shockwave Flash"===m.name&&(n=m.description.match(/Flash ([\d.]+)/))){c.flash=n[1];break}var _=i.innerWidth>i.innerHeight,v=i.innerWidth,g=e(i).bind("resize",function(){var t=i.innerWidth,e=i.innerHeight,n=t>e;n!==_&&t!==v&&(g.trigger("orientchange",{landscape:n,width:t,height:e}),_=n,v=t)});t({ua:r,ios:s.ios,iphone:a.iphone,ipad:a.ipad,android:s.android,bada:s.bada,wp:s.wp,other:s.other,opera:u.opera,chrome:u.chrome,screenSize:screen.width>320?"large":screen.width<320?"small":"normal",dpr:i.devicePixelRatio||1,connection:c.connection,flash:c.flash,video:c.video,svg:c.svg,width:i.innerWidth,height:i.innerHeight,landscape:_})}),modules.define("ua",["i-bem__dom"],function(t,e,n){t(e.decl(this.name,{onSetMod:{js:{inited:function(){this.setMod("platform",n.ios?"ios":n.android?"android":n.bada?"bada":n.wp?"wp":n.opera?"opera":"other").setMod("browser",n.opera?"opera":n.chrome?"chrome":"").setMod("ios",n.ios?n.ios.charAt(0):"").setMod("android",n.android?n.android.charAt(0):"").setMod("ios-subversion",n.ios?n.ios.match(/(\d\.\d)/)[1].replace(".",""):"").setMod("screen-size",n.screenSize).setMod("svg",n.svg?"yes":"no").setMod("orient",n.landscape?"landscape":"portrait").bindToWin("orientchange",function(t,e){n.width=e.width,n.height=e.height,n.landscape=e.landscape,this.setMod("orient",e.landscape?"landscape":"portrait")})}}}},n))}),modules.define("test",["i-bem__dom"],function(t,e){t(e.decl(this.name,{onSetMod:{js:{inited:function(){var t=this.findBlockInside("link"),e=this.findBlockInside("popup").setTarget(t);t.on("click",function(){e.toggleMod("visible")})}}}}))}),modules.define("link",["i-bem__dom","control"],function(t,e,n){t(e.decl({block:this.name,baseBlock:n},{onSetMod:{js:{inited:function(){this._url=this.params.url||this.domElem.attr("href"),this.hasMod("disabled")&&this.domElem.removeAttr("href")}},disabled:{"true":function(){this.__base.apply(this,arguments),this.domElem.removeAttr("href")},"":function(){this.__base.apply(this,arguments),this.domElem.attr("href",this._url)}}},getUrl:function(){return this._url},setUrl:function(t){return this._url=t,this.hasMod("disabled")||this.domElem.attr("href",t),this},_onPointerClick:function(t){this.hasMod("disabled")?t.preventDefault():this.emit("click")}},{live:function(){return this.liveBindTo("control","pointerclick",this.prototype._onPointerClick),this.__base.apply(this,arguments)}}))}),modules.define("jquery",function(t,e){function n(t){"use strict";var e,i=this;if(this.trackingClick=!1,this.trackingClickStart=0,this.targetElement=null,this.touchStartX=0,this.touchStartY=0,this.lastTouchIdentifier=0,this.touchBoundary=10,this.layer=t,!t||!t.nodeType)throw new TypeError("Layer must be a document node");this.onClick=function(){return n.prototype.onClick.apply(i,arguments)},this.onMouse=function(){return n.prototype.onMouse.apply(i,arguments)},this.onTouchStart=function(){return n.prototype.onTouchStart.apply(i,arguments)},this.onTouchMove=function(){return n.prototype.onTouchMove.apply(i,arguments)},this.onTouchEnd=function(){return n.prototype.onTouchEnd.apply(i,arguments)},this.onTouchCancel=function(){return n.prototype.onTouchCancel.apply(i,arguments)},n.notNeeded(t)||(this.deviceIsAndroid&&(t.addEventListener("mouseover",this.onMouse,!0),t.addEventListener("mousedown",this.onMouse,!0),t.addEventListener("mouseup",this.onMouse,!0)),t.addEventListener("click",this.onClick,!0),t.addEventListener("touchstart",this.onTouchStart,!1),t.addEventListener("touchmove",this.onTouchMove,!1),t.addEventListener("touchend",this.onTouchEnd,!1),t.addEventListener("touchcancel",this.onTouchCancel,!1),Event.prototype.stopImmediatePropagation||(t.removeEventListener=function(e,n,i){var o=Node.prototype.removeEventListener;"click"===e?o.call(t,e,n.hijacked||n,i):o.call(t,e,n,i)},t.addEventListener=function(e,n,i){var o=Node.prototype.addEventListener;"click"===e?o.call(t,e,n.hijacked||(n.hijacked=function(t){t.propagationStopped||n(t)}),i):o.call(t,e,n,i)}),"function"==typeof t.onclick&&(e=t.onclick,t.addEventListener("click",function(t){e(t)},!1),t.onclick=null))}n.prototype.deviceIsAndroid=navigator.userAgent.indexOf("Android")>0,n.prototype.deviceIsIOS=/iP(ad|hone|od)/.test(navigator.userAgent),n.prototype.deviceIsIOS4=n.prototype.deviceIsIOS&&/OS 4_\d(_\d)?/.test(navigator.userAgent),n.prototype.deviceIsIOSWithBadTarget=n.prototype.deviceIsIOS&&/OS ([6-9]|\d{2})_\d/.test(navigator.userAgent),n.prototype.needsClick=function(t){"use strict";switch(t.nodeName.toLowerCase()){case"button":case"select":case"textarea":if(t.disabled)return!0;break;case"input":if(this.deviceIsIOS&&"file"===t.type||t.disabled)return!0;break;case"label":case"video":return!0}return/\bneedsclick\b/.test(t.className)},n.prototype.needsFocus=function(t){"use strict";switch(t.nodeName.toLowerCase()){case"textarea":return!0;case"select":return!this.deviceIsAndroid;case"input":switch(t.type){case"button":case"checkbox":case"file":case"image":case"radio":case"submit":return!1}return!t.disabled&&!t.readOnly;default:return/\bneedsfocus\b/.test(t.className)}},n.prototype.sendClick=function(t,e){"use strict";var n,i;document.activeElement&&document.activeElement!==t&&document.activeElement.blur(),i=e.changedTouches[0],n=document.createEvent("MouseEvents"),n.initMouseEvent(this.determineEventType(t),!0,!0,window,1,i.screenX,i.screenY,i.clientX,i.clientY,!1,!1,!1,!1,0,null),n.forwardedTouchEvent=!0,t.dispatchEvent(n)},n.prototype.determineEventType=function(t){"use strict";return this.deviceIsAndroid&&"select"===t.tagName.toLowerCase()?"mousedown":"click"},n.prototype.focus=function(t){"use strict";var e;this.deviceIsIOS&&t.setSelectionRange&&0!==t.type.indexOf("date")&&"time"!==t.type?(e=t.value.length,t.setSelectionRange(e,e)):t.focus()},n.prototype.updateScrollParent=function(t){"use strict";var e,n;if(e=t.fastClickScrollParent,!e||!e.contains(t)){n=t;do{if(n.scrollHeight>n.offsetHeight){e=n,t.fastClickScrollParent=n;break}n=n.parentElement}while(n)}e&&(e.fastClickLastScrollTop=e.scrollTop)},n.prototype.getTargetElementFromEventTarget=function(t){"use strict";return t.nodeType===Node.TEXT_NODE?t.parentNode:t},n.prototype.onTouchStart=function(t){"use strict";var e,n,i;if(t.targetTouches.length>1)return!0;if(e=this.getTargetElementFromEventTarget(t.target),n=t.targetTouches[0],this.deviceIsIOS){if(i=window.getSelection(),i.rangeCount&&!i.isCollapsed)return!0;if(!this.deviceIsIOS4){if(n.identifier===this.lastTouchIdentifier)return t.preventDefault(),!1;this.lastTouchIdentifier=n.identifier,this.updateScrollParent(e)}}return this.trackingClick=!0,this.trackingClickStart=t.timeStamp,this.targetElement=e,this.touchStartX=n.pageX,this.touchStartY=n.pageY,t.timeStamp-this.lastClickTime<200&&t.preventDefault(),!0},n.prototype.touchHasMoved=function(t){"use strict";var e=t.changedTouches[0],n=this.touchBoundary;return Math.abs(e.pageX-this.touchStartX)>n||Math.abs(e.pageY-this.touchStartY)>n?!0:!1},n.prototype.onTouchMove=function(t){"use strict";return this.trackingClick?((this.targetElement!==this.getTargetElementFromEventTarget(t.target)||this.touchHasMoved(t))&&(this.trackingClick=!1,this.targetElement=null),!0):!0},n.prototype.findControl=function(t){"use strict";return void 0!==t.control?t.control:t.htmlFor?document.getElementById(t.htmlFor):t.querySelector("button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea")},n.prototype.onTouchEnd=function(t){"use strict";var e,n,i,o,r,s=this.targetElement;if(!this.trackingClick)return!0;if(t.timeStamp-this.lastClickTime<200)return this.cancelNextClick=!0,!0;if(this.cancelNextClick=!1,this.lastClickTime=t.timeStamp,n=this.trackingClickStart,this.trackingClick=!1,this.trackingClickStart=0,this.deviceIsIOSWithBadTarget&&(r=t.changedTouches[0],s=document.elementFromPoint(r.pageX-window.pageXOffset,r.pageY-window.pageYOffset)||s,s.fastClickScrollParent=this.targetElement.fastClickScrollParent),i=s.tagName.toLowerCase(),"label"===i){if(e=this.findControl(s)){if(this.focus(s),this.deviceIsAndroid)return!1;s=e}}else if(this.needsFocus(s))return t.timeStamp-n>100||this.deviceIsIOS&&window.top!==window&&"input"===i?(this.targetElement=null,!1):(this.focus(s),this.deviceIsIOS4&&"select"===i||(this.targetElement=null,t.preventDefault()),!1);return this.deviceIsIOS&&!this.deviceIsIOS4&&(o=s.fastClickScrollParent,o&&o.fastClickLastScrollTop!==o.scrollTop)?!0:(this.needsClick(s)||(t.preventDefault(),this.sendClick(s,t)),!1)},n.prototype.onTouchCancel=function(){"use strict";this.trackingClick=!1,this.targetElement=null},n.prototype.onMouse=function(t){"use strict";return this.targetElement?t.forwardedTouchEvent?!0:t.cancelable&&(!this.needsClick(this.targetElement)||this.cancelNextClick)?(t.stopImmediatePropagation?t.stopImmediatePropagation():t.propagationStopped=!0,t.stopPropagation(),t.preventDefault(),!1):!0:!0},n.prototype.onClick=function(t){"use strict";var e;return this.trackingClick?(this.targetElement=null,this.trackingClick=!1,!0):"submit"===t.target.type&&0===t.detail?!0:(e=this.onMouse(t),e||(this.targetElement=null),e)},n.prototype.destroy=function(){"use strict";var t=this.layer;this.deviceIsAndroid&&(t.removeEventListener("mouseover",this.onMouse,!0),t.removeEventListener("mousedown",this.onMouse,!0),t.removeEventListener("mouseup",this.onMouse,!0)),t.removeEventListener("click",this.onClick,!0),t.removeEventListener("touchstart",this.onTouchStart,!1),t.removeEventListener("touchmove",this.onTouchMove,!1),t.removeEventListener("touchend",this.onTouchEnd,!1),t.removeEventListener("touchcancel",this.onTouchCancel,!1)},n.notNeeded=function(t){"use strict";var e;if("undefined"==typeof window.ontouchstart)return!0;if(/Chrome\/[0-9]+/.test(navigator.userAgent)){if(!n.prototype.deviceIsAndroid)return!0;if(e=document.querySelector("meta[name=viewport]"),e&&-1!==e.content.indexOf("user-scalable=no"))return!0}return"none"===t.style.msTouchAction?!0:!1},n.attach=function(t){"use strict";return new n(t)};var i=e.event.special.pointerclick={setup:function(){e(this).on("click",i.handler)},teardown:function(){e(this).off("click",i.handler)},handler:function(t){t.button||(t.type="pointerclick",e.event.dispatch.apply(this,arguments),t.type="click")}};e(function(){n.attach(document.body),t(e)})}),function(t,e){"object"==typeof modules&&modules.isDefined("jquery")?modules.define("jquery",function(t,n){e(this.global,n),t(n)}):"function"==typeof jQuery&&e(t,jQuery)}(this,function(t,e){function n(t){var n=e.extend(new e.Event,t);return t.preventDefault&&(n.preventDefault=function(){t.preventDefault()}),n}function i(t,n){n||(n={});for(var i,o=e.Event(t),r=0;f>r;r++)i=d[r],o[i]=n[i]||h[r];o.buttons=n.buttons||0,o.x=o.clientX,o.y=o.clientY;var s=0;return s=n.pressure?n.pressure:o.buttons?.5:0,o.pointerId=n.pointerId||0,o.width=n.width||0,o.height=n.height||0,o.pressure=s,o.tiltX=n.tiltX||0,o.tiltY=n.tiltY||0,o.pointerType=n.pointerType||"",o.hwTimestamp=n.hwTimestamp||0,o.isPrimary=n.isPrimary||!1,o.which=n.which,o}function o(){if(a){var t=new Map;return t.pointers=c,t}this.keys=[],this.values=[]}function r(){m.eventHandler.apply(m,arguments)}var s=document,a=t.Map&&t.Map.prototype.forEach,u=t.MSPointerEvent&&"number"==typeof t.MSPointerEvent.MSPOINTER_TYPE_MOUSE,c=function(){return this.size};delete e.event.special.pointerenter,delete e.event.special.pointerleave;var l={bubbles:!1,cancelable:!1,view:null,detail:null,screenX:0,screenY:0,clientX:0,clientY:0,ctrlKey:!1,altKey:!1,shiftKey:!1,metaKey:!1,button:0,relatedTarget:null,pageX:0,pageY:0},d=Object.keys(l),f=d.length,h=d.map(function(t){return l[t]});o.prototype={set:function(t,e){var n=this.keys.indexOf(t);n>-1?this.values[n]=e:(this.keys.push(t),this.values.push(e))},has:function(t){return this.keys.indexOf(t)>-1},"delete":function(t){var e=this.keys.indexOf(t);e>-1&&(this.keys.splice(e,1),this.values.splice(e,1))},get:function(t){var e=this.keys.indexOf(t);return this.values[e]},clear:function(){this.keys.length=0,this.values.length=0},forEach:function(t,e){var n=this.keys;this.values.forEach(function(i,o){t.call(e,i,n[o],this)},this)},pointers:function(){return this.keys.length}};var p=new o,m={eventMap:{},eventSourceList:[],registerSource:function(t,e){var n=e.events;n&&(n.forEach(function(t){e[t]&&(this.eventMap[t]=function(){e[t].apply(e,arguments)})},this),this.eventSourceList.push(e))},register:function(t){for(var e,n=this.eventSourceList.length,i=0;n>i&&(e=this.eventSourceList[i]);i++)e.register.call(e,t)},unregister:function(t){for(var e,n=this.eventSourceList.length,i=0;n>i&&(e=this.eventSourceList[i]);i++)e.unregister.call(e,t)},down:function(t){t.bubbles=!0,this.fireEvent("pointerdown",t)},move:function(t){t.bubbles=!0,this.fireEvent("pointermove",t)},up:function(t){t.bubbles=!0,this.fireEvent("pointerup",t)},enter:function(t){t.bubbles=!1,this.fireEvent("pointerenter",t)},leave:function(t){t.bubbles=!1,this.fireEvent("pointerleave",t)},over:function(t){t.bubbles=!0,this.fireEvent("pointerover",t)},out:function(t){t.bubbles=!0,this.fireEvent("pointerout",t)},cancel:function(t){t.bubbles=!0,this.fireEvent("pointercancel",t)},leaveOut:function(t){this.out(t),this.contains(t.target,t.relatedTarget)||this.leave(t)},enterOver:function(t){this.over(t),this.contains(t.target,t.relatedTarget)||this.enter(t)},contains:function(t,n){return t===n||e.contains(t,n)},eventHandler:function(t){if(!t._handledByPE){var e,n=t.type;(e=this.eventMap&&this.eventMap[n])&&e(t),t._handledByPE=!0}},listen:function(t,e){e.forEach(function(e){this.addEvent(t,e)},this)},unlisten:function(t,e){e.forEach(function(e){this.removeEvent(t,e)},this)},addEvent:function(t,n){e(t).on(n,r)},removeEvent:function(t,n){e(t).off(n,r)},getTarget:function(t){return t._target},makeEvent:function(t,e){var n=new i(t,e);return e.preventDefault&&(n.preventDefault=e.preventDefault),n._target=n._target||e.target,n},dispatchEvent:function(t){var n=this.getTarget(t);return n?e(n).trigger(t):void 0},fireEvent:function(t,e){var n=this.makeEvent(t,e);return this.dispatchEvent(n)}},_=200,v=25,g=1,b=2500,y=20,E={POINTER_TYPE:"mouse",events:["mousedown","mousemove","mouseup","mouseover","mouseout"],register:function(t){m.listen(t,this.events)},unregister:function(t){m.unlisten(t,this.events)},lastTouches:[],isEventSimulatedFromTouch:function(t){for(var e,n=this.lastTouches,i=t.clientX,o=t.clientY,r=0,s=n.length;s>r&&(e=n[r]);r++){var a=Math.abs(i-e.x),u=Math.abs(o-e.y);if(v>=a&&v>=u)return!0}},prepareEvent:function(t){var e=n(t);return e.pointerId=g,e.isPrimary=!0,e.pointerType=this.POINTER_TYPE,e},mousedown:function(t){if(!this.isEventSimulatedFromTouch(t)){p.has(g)&&this.cancel(t),p.set(g,t);var e=this.prepareEvent(t);m.down(e)}},mousemove:function(t){if(!this.isEventSimulatedFromTouch(t)){var e=this.prepareEvent(t);m.move(e)}},mouseup:function(t){if(!this.isEventSimulatedFromTouch(t)){var e=p.get(g);if(e&&e.button===t.button){var n=this.prepareEvent(t);m.up(n),this.cleanupMouse()}}},mouseover:function(t){if(!this.isEventSimulatedFromTouch(t)){var e=this.prepareEvent(t);m.enterOver(e)}},mouseout:function(t){if(!this.isEventSimulatedFromTouch(t)){var e=this.prepareEvent(t);m.leaveOut(e)}},cancel:function(t){var e=this.prepareEvent(t);m.cancel(e),this.cleanupMouse()},cleanupMouse:function(){p["delete"](g)}},k={events:["touchstart","touchmove","touchend","touchcancel"],register:function(t){m.listen(t,this.events)},unregister:function(t){m.unlisten(t,this.events)},POINTER_TYPE:"touch",clickCount:0,resetId:null,firstTouch:null,isPrimaryTouch:function(t){return this.firstTouch===t.identifier},setPrimaryTouch:function(t){(0===p.pointers()||1===p.pointers()&&p.has(g))&&(this.firstTouch=t.identifier,this.firstXY={X:t.clientX,Y:t.clientY},this.scrolling=null,this.cancelResetClickCount())},removePrimaryPointer:function(t){t.isPrimary&&(this.firstTouch=null,this.resetClickCount())},resetClickCount:function(){var t=this;this.resetId=setTimeout(function(){t.clickCount=0,t.resetId=null},_)},cancelResetClickCount:function(){this.resetId&&clearTimeout(this.resetId)},typeToButtons:function(t){return"touchstart"===t||"touchmove"===t?1:0},findTarget:function(t){return s.elementFromPoint(t.clientX,t.clientY)},touchToPointer:function(t){var e=this.currentTouchEvent,i=n(t);i.pointerId=t.identifier+2,i.target=this.findTarget(i),i.bubbles=!0,i.cancelable=!0,i.detail=this.clickCount,i.button=0,i.buttons=this.typeToButtons(e.type),i.width=t.webkitRadiusX||t.radiusX||0,i.height=t.webkitRadiusY||t.radiusY||0,i.pressure=t.mozPressure||t.webkitForce||t.force||.5,i.isPrimary=this.isPrimaryTouch(t),i.pointerType=this.POINTER_TYPE;var o=this;return i.preventDefault=function(){o.scrolling=!1,o.firstXY=null,e.preventDefault()},i},processTouches:function(t,e){var n=t.originalEvent.changedTouches;this.currentTouchEvent=t;for(var i,o=0;o<n.length;o++)i=n[o],e.call(this,this.touchToPointer(i))},shouldScroll:function(){return!0},findTouch:function(t,e){for(var n,i=0,o=t.length;o>i&&(n=t[i]);i++)if(n.identifier===e)return!0},vacuumTouches:function(t){var e=t.touches;if(p.pointers()>=e.length){var n=[];p.forEach(function(t,i){i===g||this.findTouch(e,i-2)||n.push(t.outEvent)},this),n.forEach(this.cancelOut,this)}},dedupSynthMouse:function(t){var e=E.lastTouches,n=t.changedTouches[0];if(this.isPrimaryTouch(n)){var i={x:n.clientX,y:n.clientY};e.push(i),setTimeout(function(){var t=e.indexOf(i);t>-1&&e.splice(t,1)},b)}},touchstart:function(t){var e=t.originalEvent;this.vacuumTouches(e),this.setPrimaryTouch(e.changedTouches[0]),this.dedupSynthMouse(e),this.scrolling||(this.clickCount++,this.processTouches(t,this.overDown))},touchmove:function(t){var e=t.originalEvent;if(this.scrolling){if(this.firstXY){var n=this.firstXY,i=e.changedTouches[0],o=i.clientX-n.X,r=i.clientY-n.Y,s=Math.sqrt(o*o+r*r);s>=y&&(this.touchcancel(t),this.scrolling=!0,this.firstXY=null)}}else null===this.scrolling&&this.shouldScroll(e)?this.scrolling=!0:(t.preventDefault(),this.processTouches(t,this.moveOverOut))},touchend:function(t){var e=t.originalEvent;this.dedupSynthMouse(e),this.processTouches(t,this.upOut)},touchcancel:function(t){this.processTouches(t,this.cancelOut)},overDown:function(t){var e=t.target;p.set(t.pointerId,{target:e,outTarget:e,outEvent:t}),m.over(t),m.enter(t),m.down(t)},moveOverOut:function(t){var e=p.get(t.pointerId);if(e){m.move(t);var n=e.outEvent,i=e.outTarget;n&&i!==t.target&&(t.relatedTarget=i,n.relatedTarget=t.target,n.target=i,t.target?(m.leaveOut(n),m.enterOver(t)):(t.target=i,t.relatedTarget=null,this.cancelOut(t))),e.outEvent=t,e.outTarget=t.target}},upOut:function(t){m.up(t),m.out(t),m.leave(t),this.cleanUpPointer(t)},cancelOut:function(t){m.cancel(t),m.out(t),m.leave(t),this.cleanUpPointer(t)},cleanUpPointer:function(t){p["delete"](t.pointerId),this.removePrimaryPointer(t)}},w={events:["MSPointerDown","MSPointerMove","MSPointerUp","MSPointerOut","MSPointerOver","MSPointerCancel"],register:function(t){m.listen(t,this.events)},unregister:function(t){m.unlisten(t,this.events)},POINTER_TYPES:["","unavailable","touch","pen","mouse"],prepareEvent:function(t){var e=n(t);return u&&(e.pointerType=this.POINTER_TYPES[t.pointerType]),e},MSPointerDown:function(t){p.set(t.pointerId,t);var e=this.prepareEvent(t);m.down(e)},MSPointerMove:function(t){var e=this.prepareEvent(t);m.move(e)},MSPointerUp:function(t){var e=this.prepareEvent(t);m.up(e),this.cleanup(t.pointerId)},MSPointerOut:function(t){var e=this.prepareEvent(t);m.leaveOut(e)},MSPointerOver:function(t){var e=this.prepareEvent(t);m.enterOver(e)},MSPointerCancel:function(t){var e=this.prepareEvent(t);m.cancel(e),this.cleanup(t.pointerId)},cleanup:function(t){p["delete"](t)}},M=t.navigator;M.msPointerEnabled?m.registerSource("ms",w):(m.registerSource("mouse",E),"undefined"!=typeof t.ontouchstart&&m.registerSource("touch",k)),m.register(s)}),modules.define("jquery",function(t,e){e.each({pointerpress:"pointerdown",pointerrelease:"pointerup pointercancel"},function(t,n){function i(n){var i,o=n.handleObj.origType;return n.button||(n.type=t,i=e.event.dispatch.apply(this,arguments),n.type=o),i}e.event.special[t]={setup:function(){return e(this).on(n,i),!1},teardown:function(){return e(this).off(n,i),!1}}}),t(e)}),modules.define("control",["i-bem__dom","dom","next-tick"],function(t,e,n,i){t(e.decl(this.name,{beforeSetMod:{focused:{"true":function(){return!this.hasMod("disabled")}}},onSetMod:{js:{inited:function(){this._focused=n.containsFocus(this.elem("control")),this._focused?this.setMod("focused"):this.hasMod("focused")&&this._focus(),this._tabIndex=this.elem("control").attr("tabindex"),this.hasMod("disabled")&&"undefined"!==this._tabIndex&&this.elem("control").removeAttr("tabindex")}},focused:{"true":function(){this._focused||this._focus()},"":function(){this._focused&&this._blur()}},disabled:{"*":function(t,e){this.elem("control").prop(t,!!e)},"true":function(){this.delMod("focused"),"undefined"!=typeof this._tabIndex&&this.elem("control").removeAttr("tabindex")},"":function(){"undefined"!=typeof this._tabIndex&&this.elem("control").attr("tabindex",this._tabIndex)}}},getName:function(){return this.elem("control").attr("name")||""},getVal:function(){return this.elem("control").val()},_onFocus:function(){this._focused=!0,this.setMod("focused")
-},_onBlur:function(){this._focused=!1,this.delMod("focused")},_focus:function(){n.isFocusable(this.elem("control"))&&this.elem("control").focus()},_blur:function(){this.elem("control").blur()}},{live:function(){this.liveBindTo("control","focusin",this.prototype._onFocus).liveBindTo("control","focusout",this.prototype._onBlur);var t=n.getFocused();if(t.hasClass(this.buildClass("control"))){var e=this;i(function(){if(t[0]===n.getFocused()[0]){var i=t.closest(e.buildSelector());i&&i.bem(e.getName())}})}}}))}),modules.define("link",function(t,e){t(e.decl({modName:"pseudo",modVal:!0},{_onPointerClick:function(t){t.preventDefault(),this.__base.apply(this,arguments)}}))}),modules.define("popup",["i-bem__dom","jquery","dom","objects","functions__throttle"],function(t,e,n,i,o,r){function s(){return _[_.push(_[_.length-1]+1)-1]}function a(t){_.splice(_.indexOf(t),1)}function u(t,e,n){return!t.indexOf(e)||n&&!t.indexOf(n)}function c(t,e){return~t.indexOf("-"+e)}var l,d=.99,f=["bottom-left","bottom-center","bottom-right","top-left","top-center","top-right","right-top","right-center","right-bottom","left-top","left-center","left-bottom"],h=1e4,p=100,m=e.win;t(e.decl(this.name,{beforeSetMod:{visible:{"true":function(){if(!this._owner&&!this._pos)throw Error("Can't show popup without target")}}},onSetMod:{js:{inited:function(){this._parentPopup=null,this._owner=null,this._ownerParents=null,this._popupOwner=null,this._pos=null,this._zIndex=null,this._isAttachedToScope=!1,this._isTargetVisible=l,this._lastDrawingCss={left:l,top:l,zIndex:l,display:l},this._updateIsTargetVisible=r(this._updateIsTargetVisible,p,!1,this)},"":function(){this._unbindFromPopupOwner().delMod("visible")}},visible:{"true":function(){this._zIndex=s(),this._owner&&(this._ownerParents=this._owner.parents()),this.bindTo("pointerclick",this._onPointerClick)._bindToParentPopup()._bindToScrollAndResize().redraw()},"":function(){a(this._zIndex),this.unbindFrom("pointerclick",this._onPointerClick)._unbindFromParentPopup()._unbindFromScrollAndResize(),this._owner&&(this._ownerParents=null,this._isTargetVisible=l)}}},setTarget:function(t,i){if(this._unbindFromScrollAndResize()._unbindFromParentPopup()._unbindFromPopupOwner(),1===arguments.length){if(this._owner=t instanceof e?t.domElem:t instanceof n?t:null,!this._owner)throw Error("Invalid arguments");this._pos=null,this._popupOwner=this._owner.bem("_"+this.__self.getName()+"-owner"),this._isTargetVisible=l,this._bindToPopupOwner(),this.hasMod("visible")?(this._ownerParents=this._owner.parents(),this._bindToScrollAndResize().redraw()):this._ownerParents=null}else this._pos={left:t,top:i},this._parentPopup=null,this._owner=null,this._ownerParents=null,this._popupOwner=null,this._isTargetVisible=!0;return this},setContent:function(t){return e.update(this.domElem,t),this.redraw()},redraw:function(){if(!this.hasMod("visible"))return this;this._isAttachedToScope||(e.scope.append(this.domElem),this._isAttachedToScope=!0);var t=this._calcBestDrawingParams();this.setMod("direction",t.direction),"undefined"==typeof this._isTargetVisible&&(this._isTargetVisible=this._calcIsTargetVisible());var n=this._lastDrawingCss,i=!1;return o.each({display:this._isTargetVisible?"":"none",left:t.left,top:t.top,zIndex:this._zIndex},function(t,e){n[e]!==t&&(n[e]=t,i=!0)}),i&&this.domElem.css(n),this},calcPossibleDrawingParams:function(){var t=this._calcOwnerDimensions(),e=this._calcViewportDimensions(),n=this.params,i=n.mainOffset,o=n.secondaryOffset,r=n.viewportOffset;return this.params.directions.map(function(n){var s={direction:n,width:0,height:0,left:0,top:0};return u(n,"bottom")?(s.top=t.top+t.height+i,s.height=e.bottom-s.top-r):u(n,"top")?(s.height=t.top-e.top-i-r,s.top=t.top-s.height-i):(c(n,"center")?(s.height=e.bottom-e.top-2*r,s.top=t.top+t.height/2-s.height/2):c(n,"bottom")?(s.height=t.top+t.height-e.top-o-r,s.top=t.top+t.height-s.height-o):c(n,"top")&&(s.top=t.top+o,s.height=e.bottom-s.top-r),u(n,"left")?(s.width=t.left-e.left-i-r,s.left=t.left-s.width-i):(s.left=t.left+t.width+i,s.width=e.right-s.left-r)),c(n,"right")?(s.width=t.left+t.width-e.left-o-r,s.left=t.left+t.width-s.width-o):c(n,"left")?(s.left=t.left+o,s.width=e.right-s.left-r):c(n,"center")&&u(n,"top","bottom")&&(s.width=e.right-e.left-2*r,s.left=t.left+t.width/2-s.width/2),s},this)},_calcBestDrawingParams:function(){for(var t,e,n,i,o,r,s=this._calcPopupDimensions(),a=this._calcOwnerDimensions(),u=this._calcViewportDimensions(),c=this.params.directions,l=0;(t=c[l++])&&(e=this._calcPos(t,a,s),n=this._calcViewportFactor(e,u,s),(1===l||n>r||!r&&this.hasMod("direction",t))&&(i=t,r=n,o=e),!(r>d)););return{direction:i,left:o.left,top:o.top}},_calcPopupDimensions:function(){var t=this.domElem.outerWidth(),e=this.domElem.outerHeight();return{width:t,height:e,area:t*e}},_calcOwnerDimensions:function(){var t=this._pos,e=this._owner,n=t?t:e.offset();return{left:n.left,top:n.top,width:t?0:e.outerWidth(),height:t?0:e.outerHeight()}},_calcViewportDimensions:function(){var t=m.scrollTop(),e=m.scrollLeft(),n=m.width(),i=m.height();return{top:t,left:e,bottom:t+i,right:e+n}},_calcPos:function(t,e,n){var i={},o=this.params.mainOffset,r=this.params.secondaryOffset;return u(t,"bottom")?i.top=e.top+e.height+o:u(t,"top")?i.top=e.top-n.height-o:u(t,"left")?i.left=e.left-n.width-o:u(t,"right")&&(i.left=e.left+e.width+o),c(t,"right")?i.left=e.left+e.width-n.width-r:c(t,"left")?i.left=e.left+r:c(t,"bottom")?i.top=e.top+e.height-n.height-r:c(t,"top")?i.top=e.top+r:c(t,"center")&&(u(t,"top","bottom")?i.left=e.left+e.width/2-n.width/2:u(t,"left","right")&&(i.top=e.top+e.height/2-n.height/2)),i},_calcViewportFactor:function(t,e,n){var i=this.params.viewportOffset,o=Math.max(t.left,e.left+i),r=Math.min(t.left+n.width,e.right-i),s=Math.max(t.top,e.top+i),a=Math.min(t.top+n.height,e.bottom-i);return r>o&&a>s?(r-o)*(a-s)/n.area:0},_calcIsTargetVisible:function(){var t=this._owner;if(!t)return!0;var e=t.offset(),i=e.left,o=e.top,r=i+t.outerWidth(),s=o+t.outerHeight(),a=this.getMod("direction"),l=Math.floor(u(a,"top")||c(a,"top")?o:s),d=Math.floor(u(a,"left")||c(a,"left")?i:r),f=!0;return this._ownerParents.each(function(){if("BODY"===this.tagName)return!1;var t=n(this),e=t.css("overflow-y"),i="scroll"===e||"hidden"===e||"auto"===e,o=t.css("overflow-x"),r="scroll"===o||"hidden"===o||"auto"===o;if(i||r){var s=t.offset();if(i){var a=Math.floor(s.top);if(a>l||a+t.outerHeight()<l)return f=!1}if(r){var u=Math.floor(s.left);return f=!(u>d||u+t.outerWidth()<d)}}}),f},_bindToScrollAndResize:function(){return this._ownerParents&&this.bindTo(this._ownerParents,"scroll",this._onScrollOrResize).bindToWin("scroll resize",this._onScrollOrResize),this},_unbindFromScrollAndResize:function(){return this._ownerParents&&this.unbindFrom(this._ownerParents,"scroll",this._onScrollOrResize).unbindFromWin("scroll resize",this._onScrollOrResize),this},_onScrollOrResize:function(){this.redraw()._updateIsTargetVisible()},_updateIsTargetVisible:function(){if(this.hasMod("js","inited")&&this.hasMod("visible")){var t=this._calcIsTargetVisible();t!==this._isTargetVisible&&(this._isTargetVisible=t,this.redraw())}},_onPointerClick:function(){var t=this;do t._inPopupPointerClick=!0;while(t=t._parentPopup)},_bindToParentPopup:function(){return this._owner&&(this._parentPopup=this.findBlockOutside(this._owner,this.__self.getName()))&&this._parentPopup.on({modName:"visible",modVal:""},this._onParentPopupHide,this),this},_unbindFromParentPopup:function(){return this._parentPopup&&(this._parentPopup.un({modName:"visible",modVal:""},this._onParentPopupHide,this),this._parentPopup=null),this},_onParentPopupHide:function(){this.delMod("visible")},_bindToPopupOwner:function(){return this._popupOwner&&this._popupOwner.on({modName:"js",modVal:""},this._onPopupOwnerDestruct,this),this},_unbindFromPopupOwner:function(){return this._popupOwner&&this._popupOwner.un({modName:"js",modVal:""},this._onPopupOwnerDestruct,this),this},_onPopupOwnerDestruct:function(){e.destruct(this.domElem)},getDefaultParams:function(){return{mainOffset:0,secondaryOffset:0,viewportOffset:0,directions:f}}},{live:!0}));var _=[h]}),modules.define("functions__throttle",function(t){var e=this.global;t(function(t,n,i,o){var r=typeof i;"undefined"===r?i=!0:3===arguments.length&&"boolean"!==r&&(o=i,i=!0);var s,a,u,c=function(){u?(t.apply(o,a),u=!1,s=e.setTimeout(c,n)):s=null};return function(){a=arguments,o||(o=this),u=!0,s||(i?c():s=e.setTimeout(c,n))}})}),modules.define("popup",["jquery","i-bem__dom","ua","dom","keyboard__codes"],function(t,e,n,i,o,r,s){function a(t){t.keyCode===r.ESC&&c.length&&!o.isEditable(e(t.target))&&c[0].delMod("visible")}var u=i.opera&&i.version<12.1?"keypress":"keydown",c=[];t(s.decl({modName:"autoclosable",modVal:!0},{onSetMod:{visible:{"true":function(){c.unshift(this),this.nextTick(function(){this.bindToDoc("pointerclick",this._onDocPointerClick)}).__base.apply(this,arguments)},"":function(){c.splice(c.indexOf(this),1),this.unbindFromDoc("pointerclick",this._onDocPointerClick).__base.apply(this,arguments)}}},_onDocPointerClick:function(t){this._owner&&o.contains(this._owner,e(t.target))||(this._inPopupPointerClick?this._inPopupPointerClick=null:this.delMod("visible"))}},{live:function(){n.doc.on(u,a)}}))}),modules.define("keyboard__codes",function(t){t({BACKSPACE:8,TAB:9,ENTER:13,CAPS_LOCK:20,ESC:27,SPACE:32,PAGE_UP:33,PAGE_DOWN:34,END:35,HOME:36,LEFT:37,UP:38,RIGHT:39,DOWN:40,INSERT:41,DELETE:42})}),modules.define("input",["i-bem__dom","control"],function(t,e,n){t(e.decl({block:this.name,baseBlock:n},{onSetMod:{js:{inited:function(){this.__base.apply(this,arguments),this._val=this.elem("control").val()}}},getVal:function(){return this._val},setVal:function(t,e){if(t=String(t),this._val!==t){this._val=t;var n=this.elem("control");n.val()!==t&&n.val(t),this.emit("change",e)}return this}},{live:function(){return this.__base.apply(this,arguments),!1}}))}),modules.define("input",function(t,e){t(e.decl({_onInputChanged:function(){this.setVal(this.elem("control").val())}},{live:function(){return this.liveBindTo("control","input",this.prototype._onInputChanged),this.__base.apply(this,arguments)}}))});
+/**
+ * Modules
+ *
+ * Copyright (c) 2013 Filatov Dmitry (dfilatov@yandex-team.ru)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * @version 0.1.0
+ */
+
+(function(global) {
+
+var undef,
+
+    DECL_STATES = {
+        NOT_RESOLVED : 'NOT_RESOLVED',
+        IN_RESOLVING : 'IN_RESOLVING',
+        RESOLVED     : 'RESOLVED'
+    },
+
+    /**
+     * Creates a new instance of modular system
+     * @returns {Object}
+     */
+    create = function() {
+        var curOptions = {
+                trackCircularDependencies : true,
+                allowMultipleDeclarations : true
+            },
+
+            modulesStorage = {},
+            waitForNextTick = false,
+            pendingRequires = [],
+
+            /**
+             * Defines module
+             * @param {String} name
+             * @param {String[]} [deps]
+             * @param {Function} declFn
+             */
+            define = function(name, deps, declFn) {
+                if(!declFn) {
+                    declFn = deps;
+                    deps = [];
+                }
+
+                var module = modulesStorage[name];
+                if(!module) {
+                    module = modulesStorage[name] = {
+                        name : name,
+                        decl : undef
+                    };
+                }
+
+                module.decl = {
+                    name       : name,
+                    prev       : module.decl,
+                    fn         : declFn,
+                    state      : DECL_STATES.NOT_RESOLVED,
+                    deps       : deps,
+                    dependents : [],
+                    exports    : undef
+                };
+            },
+
+            /**
+             * Requires modules
+             * @param {String|String[]} modules
+             * @param {Function} cb
+             * @param {Function} [errorCb]
+             */
+            require = function(modules, cb, errorCb) {
+                if(typeof modules === 'string') {
+                    modules = [modules];
+                }
+
+                if(!waitForNextTick) {
+                    waitForNextTick = true;
+                    nextTick(onNextTick);
+                }
+
+                pendingRequires.push({
+                    deps : modules,
+                    cb   : function(exports, error) {
+                        error?
+                            (errorCb || onError)(error) :
+                            cb.apply(global, exports);
+                    }
+                });
+            },
+
+            /**
+             * Returns state of module
+             * @param {String} name
+             * @returns {String} state, possible values are NOT_DEFINED, NOT_RESOLVED, IN_RESOLVING, RESOLVED
+             */
+            getState = function(name) {
+                var module = modulesStorage[name];
+                return module?
+                    DECL_STATES[module.decl.state] :
+                    'NOT_DEFINED';
+            },
+
+            /**
+             * Returns whether the module is defined
+             * @param {String} name
+             * @returns {Boolean}
+             */
+            isDefined = function(name) {
+                return !!modulesStorage[name];
+            },
+
+            /**
+             * Sets options
+             * @param {Object} options
+             */
+            setOptions = function(options) {
+                for(var name in options) {
+                    if(options.hasOwnProperty(name)) {
+                        curOptions[name] = options[name];
+                    }
+                }
+            },
+
+            onNextTick = function() {
+                waitForNextTick = false;
+                applyRequires();
+            },
+
+            applyRequires = function() {
+                var requiresToProcess = pendingRequires,
+                    i = 0, require;
+
+                pendingRequires = [];
+
+                while(require = requiresToProcess[i++]) {
+                    requireDeps(null, require.deps, [], require.cb);
+                }
+            },
+
+            requireDeps = function(fromDecl, deps, path, cb) {
+                var unresolvedDepsCnt = deps.length;
+                if(!unresolvedDepsCnt) {
+                    cb([]);
+                }
+
+                var decls = [],
+                    i = 0, len = unresolvedDepsCnt,
+                    dep, decl;
+
+                while(i < len) {
+                    dep = deps[i++];
+                    if(typeof dep === 'string') {
+                        if(!modulesStorage[dep]) {
+                            cb(null, buildModuleNotFoundError(dep, fromDecl));
+                            return;
+                        }
+
+                        decl = modulesStorage[dep].decl;
+                    }
+                    else {
+                        decl = dep;
+                    }
+
+                    if(decl.state === DECL_STATES.IN_RESOLVING &&
+                            curOptions.trackCircularDependencies &&
+                            isDependenceCircular(decl, path)) {
+                        cb(null, buildCircularDependenceError(decl, path));
+                        return;
+                    }
+
+                    decls.push(decl);
+
+                    startDeclResolving(
+                        decl,
+                        path,
+                        function(_, error) {
+                            if(error) {
+                                cb(null, error);
+                                return;
+                            }
+
+                            if(!--unresolvedDepsCnt) {
+                                var exports = [],
+                                    i = 0, decl;
+                                while(decl = decls[i++]) {
+                                    exports.push(decl.exports);
+                                }
+                                cb(exports);
+                            }
+                        });
+                }
+            },
+
+            startDeclResolving = function(decl, path, cb) {
+                if(decl.state === DECL_STATES.RESOLVED) {
+                    cb(decl.exports);
+                    return;
+                }
+                else {
+                    decl.dependents.push(cb);
+                }
+
+                if(decl.state === DECL_STATES.IN_RESOLVING) {
+                    return;
+                }
+
+                if(decl.prev && !curOptions.allowMultipleDeclarations) {
+                    provideError(decl, buildMultipleDeclarationError(decl));
+                    return;
+                }
+
+                curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
+
+                var isProvided = false,
+                    deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
+
+                decl.state = DECL_STATES.IN_RESOLVING;
+                requireDeps(
+                    decl,
+                    deps,
+                    path,
+                    function(depDeclsExports, error) {
+                        if(error) {
+                            provideError(decl, error);
+                            return;
+                        }
+
+                        depDeclsExports.unshift(function(exports, error) {
+                            if(isProvided) {
+                                cb(null, buildDeclAreadyProvidedError(decl));
+                                return;
+                            }
+
+                            isProvided = true;
+                            error?
+                                provideError(decl, error) :
+                                provideDecl(decl, exports);
+                        });
+
+                        decl.fn.apply(
+                            {
+                                name   : decl.name,
+                                deps   : decl.deps,
+                                global : global
+                            },
+                            depDeclsExports);
+                    });
+            },
+
+            provideDecl = function(decl, exports) {
+                decl.exports = exports;
+                decl.state = DECL_STATES.RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(exports);
+                }
+
+                decl.dependents = undef;
+            },
+
+            provideError = function(decl, error) {
+                decl.state = DECL_STATES.NOT_RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(null, error);
+                }
+
+                decl.dependents = [];
+            };
+
+        return {
+            create     : create,
+            define     : define,
+            require    : require,
+            getState   : getState,
+            isDefined  : isDefined,
+            setOptions : setOptions
+        };
+    },
+
+    onError = function(e) {
+        nextTick(function() {
+            throw e;
+        });
+    },
+
+    buildModuleNotFoundError = function(name, decl) {
+        return Error(decl?
+            'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
+            'Required module "' + name + '" can\'t be resolved');
+    },
+
+    buildCircularDependenceError = function(decl, path) {
+        var strPath = [],
+            i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            strPath.push(pathDecl.name);
+        }
+        strPath.push(decl.name);
+
+        return Error('Circular dependence has been detected: "' + strPath.join(' -> ') + '"');
+    },
+
+    buildDeclAreadyProvidedError = function(decl) {
+        return Error('Declaration of module "' + decl.name + '" has already been provided');
+    },
+
+    buildMultipleDeclarationError = function(decl) {
+        return Error('Multiple declarations of module "' + decl.name + '" have been detected');
+    },
+
+    isDependenceCircular = function(decl, path) {
+        var i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            if(decl === pathDecl) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    nextTick = (function() {
+        var fns = [],
+            enqueueFn = function(fn) {
+                return fns.push(fn) === 1;
+            },
+            callFns = function() {
+                var fnsToCall = fns, i = 0, len = fns.length;
+                fns = [];
+                while(i < len) {
+                    fnsToCall[i++]();
+                }
+            };
+
+        if(typeof process === 'object' && process.nextTick) { // nodejs
+            return function(fn) {
+                enqueueFn(fn) && process.nextTick(callFns);
+            };
+        }
+
+        if(global.setImmediate) { // ie10
+            return function(fn) {
+                enqueueFn(fn) && global.setImmediate(callFns);
+            };
+        }
+
+        if(global.postMessage && !global.opera) { // modern browsers
+            var isPostMessageAsync = true;
+            if(global.attachEvent) {
+                var checkAsync = function() {
+                        isPostMessageAsync = false;
+                    };
+                global.attachEvent('onmessage', checkAsync);
+                global.postMessage('__checkAsync', '*');
+                global.detachEvent('onmessage', checkAsync);
+            }
+
+            if(isPostMessageAsync) {
+                var msg = '__modules' + (+new Date()),
+                    onMessage = function(e) {
+                        if(e.data === msg) {
+                            e.stopPropagation && e.stopPropagation();
+                            callFns();
+                        }
+                    };
+
+                global.addEventListener?
+                    global.addEventListener('message', onMessage, true) :
+                    global.attachEvent('onmessage', onMessage);
+
+                return function(fn) {
+                    enqueueFn(fn) && global.postMessage(msg, '*');
+                };
+            }
+        }
+
+        var doc = global.document;
+        if('onreadystatechange' in doc.createElement('script')) { // ie6-ie8
+            var head = doc.getElementsByTagName('head')[0],
+                createScript = function() {
+                    var script = doc.createElement('script');
+                    script.onreadystatechange = function() {
+                        script.parentNode.removeChild(script);
+                        script = script.onreadystatechange = null;
+                        callFns();
+                    };
+                    head.appendChild(script);
+                };
+
+            return function(fn) {
+                enqueueFn(fn) && createScript();
+            };
+        }
+
+        return function(fn) { // old browsers
+            enqueueFn(fn) && setTimeout(callFns, 0);
+        };
+    })();
+
+if(typeof exports === 'object') {
+    module.exports = create();
+}
+else {
+    global.modules = create();
+}
+
+})(this);
+if(typeof module !== 'undefined') {modules = module.exports;}
+(function(g) {
+  var __bem_xjst = function(exports) {
+     var $$mode = "", $$block = "", $$elem = "", $$elemMods = null, $$mods = null;
+
+var __$ref = {};
+
+function apply(ctx) {
+    ctx = ctx || this;
+    $$mods = ctx["mods"];
+    $$elemMods = ctx["elemMods"];
+    $$elem = ctx["elem"];
+    $$block = ctx["block"];
+    $$mode = ctx["_mode"];
+    try {
+        return applyc(ctx, __$ref);
+    } catch (e) {
+        e.xjstContext = ctx;
+        throw e;
+    }
+}
+
+exports.apply = apply;
+
+function applyc(__$ctx, __$ref) {
+    var __$t = $$mode;
+    if (__$t === "attrs") {
+        var __$t = $$block;
+        if (__$t === "input") {
+            var __$t = $$elem;
+            if (__$t === "control") {
+                if ((__$ctx.__$a0 & 1) === 0) {
+                    var __$r = __$ctx.extend({
+                        autocomplete: "off",
+                        autocorrect: "off",
+                        autocapitalize: "off",
+                        spellcheck: "false"
+                    }, function __$lb__$0() {
+                        var __$r__$1;
+                        var __$l0__$2 = __$ctx.__$a0;
+                        __$ctx.__$a0 = __$ctx.__$a0 | 1;
+                        __$r__$1 = applyc(__$ctx, __$ref);
+                        __$ctx.__$a0 = __$l0__$2;
+                        return __$r__$1;
+                    }());
+                    if (__$r !== __$ref) return __$r;
+                }
+                var __$r = __$b2(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "link") {
+            if (!$$elem) {
+                var __$r = __$b3(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "page") {
+            var __$t = $$elem;
+            if (__$t === "js") {
+                if (__$ctx.ctx.url) {
+                    return {
+                        src: __$ctx.ctx.url
+                    };
+                }
+            } else if (__$t === "css") {
+                if (__$ctx.ctx.url) {
+                    return {
+                        rel: "stylesheet",
+                        href: __$ctx.ctx.url
+                    };
+                }
+            } else if (__$t === "favicon") {
+                return {
+                    rel: "shortcut icon",
+                    href: __$ctx.ctx.url
+                };
+            }
+        }
+        return undefined;
+    } else if (__$t === "tag") {
+        var __$r = __$g0(__$ctx, __$ref);
+        if (__$r !== __$ref) return __$r;
+    } else if (__$t === "content") {
+        var __$t = $$block;
+        if (__$t === "input") {
+            var __$t = !$$elem;
+            if (__$t) {
+                if (typeof __$ctx.ctx.content !== "undefined") {
+                    return __$ctx.ctx.content;
+                }
+                return {
+                    elem: "box",
+                    content: {
+                        elem: "control"
+                    }
+                };
+            }
+        } else if (__$t === "ua") {
+            var __$t = !$$elem;
+            if (__$t) {
+                if ((__$ctx.__$a0 & 16) === 0) {
+                    return [ function __$lb__$22() {
+                        var __$r__$23;
+                        var __$l0__$24 = __$ctx.__$a0;
+                        __$ctx.__$a0 = __$ctx.__$a0 | 16;
+                        __$r__$23 = applyc(__$ctx, __$ref);
+                        __$ctx.__$a0 = __$l0__$24;
+                        return __$r__$23;
+                    }(), "(function(d,n){", "d.documentElement.className+=", '" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");', '})(document,"createElementNS");' ];
+                }
+                return [ "(function(e,c){", 'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");', '})(document.documentElement,"className");' ];
+            }
+        } else if (__$t === "page") {
+            if ($$elem === "head" && (__$ctx.__$a0 & 64) === 0) {
+                return [ function __$lb__$30() {
+                    var __$r__$31;
+                    var __$l0__$32 = __$ctx.__$a0;
+                    __$ctx.__$a0 = __$ctx.__$a0 | 64;
+                    __$r__$31 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$32;
+                    return __$r__$31;
+                }(), {
+                    elem: "meta",
+                    attrs: {
+                        name: "viewport",
+                        content: "width=device-width," + (__$ctx.ctx.zoom ? "initial-scale=1" : "maximum-scale=1,initial-scale=1,user-scalable=0")
+                    }
+                }, {
+                    elem: "meta",
+                    attrs: {
+                        name: "format-detection",
+                        content: "telephone=no"
+                    }
+                }, {
+                    elem: "link",
+                    attrs: {
+                        name: "apple-mobile-web-app-capable",
+                        content: "yes"
+                    }
+                } ];
+            }
+            if (!$$elem && (__$ctx.__$a0 & 128) === 0) {
+                return [ function __$lb__$33() {
+                    var __$r__$34;
+                    var __$l0__$35 = __$ctx.__$a0;
+                    __$ctx.__$a0 = __$ctx.__$a0 | 128;
+                    __$r__$34 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$35;
+                    return __$r__$34;
+                }(), __$ctx.ctx.scripts ];
+            }
+        }
+        return __$ctx.ctx.content;
+    } else if (__$t === "default") {
+        var __$t = $$block;
+        if (__$t === "input") {
+            if (!$$elem && (__$ctx.__$a0 & 2) === 0) {
+                var __$r = __$b30(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "link") {
+            if (!$$elem && (__$ctx.__$a0 & 8) === 0) {
+                var __$r = __$b31(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "page") {
+            if (!$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 256) === 0) {
+                var __$r = __$b32(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        }
+        var __$r = __$b33(__$ctx, __$ref);
+        if (__$r !== __$ref) return __$r;
+    } else if (__$t === "js") {
+        var __$t = $$block;
+        if (__$t === "input") {
+            if (!$$elem) {
+                return true;
+            }
+        } else if (__$t === "popup") {
+            if (!$$elem) {
+                var __$r = __$b35(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "link") {
+            var __$t = !$$elem;
+            if (__$t) {
+                if ($$mods && $$mods["disabled"] === true && (__$ctx.__$a0 & 4) === 0) {
+                    var __$r = __$ctx.extend(function __$lb__$12() {
+                        var __$r__$13;
+                        var __$l0__$14 = __$ctx.__$a0;
+                        __$ctx.__$a0 = __$ctx.__$a0 | 4;
+                        __$r__$13 = applyc(__$ctx, __$ref);
+                        __$ctx.__$a0 = __$l0__$14;
+                        return __$r__$13;
+                    }(), {
+                        url: __$ctx.ctx.url
+                    });
+                    if (__$r !== __$ref) return __$r;
+                }
+                return true;
+            }
+        } else if (__$t === "ua") {
+            if (!$$elem) {
+                return true;
+            }
+        }
+        return undefined;
+    } else if (__$t === "mix") {
+        var __$t = $$block;
+        if (__$t === "link") {
+            if (!$$elem) {
+                return [ {
+                    elem: "control"
+                } ];
+            }
+        } else if (__$t === "page") {
+            if (!$$elem && (__$ctx.__$a0 & 32) === 0) {
+                var __$r = __$b41(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        }
+        return undefined;
+    } else if (__$t === "bem") {
+        var __$t = $$block;
+        if (__$t === "ua") {
+            if (!$$elem) {
+                return false;
+            }
+        } else if (__$t === "page") {
+            var __$t = $$elem;
+            if (__$t === "js") {
+                return false;
+            } else if (__$t === "link") {
+                return false;
+            } else if (__$t === "css") {
+                return false;
+            } else if (__$t === "head") {
+                return false;
+            } else if (__$t === "favicon") {
+                return false;
+            } else if (__$t === "meta") {
+                return false;
+            }
+        }
+        return undefined;
+    } else if (__$t === "cls") {
+        return undefined;
+    } else if (__$t === "") {
+        if (__$ctx.ctx && __$ctx.ctx._vow && (__$ctx.__$a0 & 512) === 0) {
+            var __$r = __$b52(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
+        if (__$ctx.isSimple(__$ctx.ctx)) {
+            var __$r = __$b53(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
+        if (!__$ctx.ctx) {
+            var __$r = __$b54(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
+        if (__$ctx.isArray(__$ctx.ctx)) {
+            var __$r = __$b55(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
+        var __$r = __$b56(__$ctx, __$ref);
+        if (__$r !== __$ref) return __$r;
+    }
+}
+
+[ function(exports, context) {
+    var undef, BEM_ = {}, toString = Object.prototype.toString, slice = Array.prototype.slice, isArray = Array.isArray || function(obj) {
+        return toString.call(obj) === "[object Array]";
+    }, SHORT_TAGS = {
+        area: 1,
+        base: 1,
+        br: 1,
+        col: 1,
+        command: 1,
+        embed: 1,
+        hr: 1,
+        img: 1,
+        input: 1,
+        keygen: 1,
+        link: 1,
+        meta: 1,
+        param: 1,
+        source: 1,
+        wbr: 1
+    };
+    (function(BEM, undefined) {
+        var MOD_DELIM = "_", ELEM_DELIM = "__", NAME_PATTERN = "[a-zA-Z0-9-]+";
+        function buildModPostfix(modName, modVal) {
+            var res = MOD_DELIM + modName;
+            if (modVal !== true) res += MOD_DELIM + modVal;
+            return res;
+        }
+        function buildBlockClass(name, modName, modVal) {
+            var res = name;
+            if (modVal) res += buildModPostfix(modName, modVal);
+            return res;
+        }
+        function buildElemClass(block, name, modName, modVal) {
+            var res = buildBlockClass(block) + ELEM_DELIM + name;
+            if (modVal) res += buildModPostfix(modName, modVal);
+            return res;
+        }
+        BEM.INTERNAL = {
+            NAME_PATTERN: NAME_PATTERN,
+            MOD_DELIM: MOD_DELIM,
+            ELEM_DELIM: ELEM_DELIM,
+            buildModPostfix: buildModPostfix,
+            buildClass: function(block, elem, modName, modVal) {
+                var typeOfModName = typeof modName;
+                if (typeOfModName === "string" || typeOfModName === "boolean") {
+                    var typeOfModVal = typeof modVal;
+                    if (typeOfModVal !== "string" && typeOfModVal !== "boolean") {
+                        modVal = modName;
+                        modName = elem;
+                        elem = undef;
+                    }
+                } else if (typeOfModName !== "undefined") {
+                    modName = undef;
+                } else if (elem && typeof elem !== "string") {
+                    elem = undef;
+                }
+                if (!(elem || modName)) {
+                    return block;
+                }
+                return elem ? buildElemClass(block, elem, modName, modVal) : buildBlockClass(block, modName, modVal);
+            },
+            buildModsClasses: function(block, elem, mods) {
+                var res = "";
+                if (mods) {
+                    var modName;
+                    for (modName in mods) {
+                        if (!mods.hasOwnProperty(modName)) continue;
+                        var modVal = mods[modName];
+                        if (!modVal && modVal !== 0) continue;
+                        typeof modVal !== "boolean" && (modVal += "");
+                        res += " " + (elem ? buildElemClass(block, elem, modName, modVal) : buildBlockClass(block, modName, modVal));
+                    }
+                }
+                return res;
+            },
+            buildClasses: function(block, elem, mods) {
+                var res = "";
+                res += elem ? buildElemClass(block, elem) : buildBlockClass(block);
+                res += this.buildModsClasses(block, elem, mods);
+                return res;
+            }
+        };
+    })(BEM_);
+    var ts = {
+        '"': "&quot;",
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;"
+    }, f = function(t) {
+        return ts[t] || t;
+    };
+    var buildEscape = function(r) {
+        r = new RegExp(r, "g");
+        return function(s) {
+            return ("" + s).replace(r, f);
+        };
+    };
+    context.BEMContext = BEMContext;
+    function BEMContext(context, apply_) {
+        this.ctx = typeof context === "undefined" ? "" : context;
+        this.apply = apply_;
+        this._str = "";
+        var _this = this;
+        this._buf = {
+            push: function() {
+                var chunks = slice.call(arguments).join("");
+                _this._str += chunks;
+            },
+            join: function() {
+                return this._str;
+            }
+        };
+        this._ = this;
+        this._start = true;
+        this._mode = "";
+        this._listLength = 0;
+        this._notNewList = false;
+        this.position = 0;
+        this.block = undef;
+        this.elem = undef;
+        this.mods = undef;
+        this.elemMods = undef;
+    }
+    BEMContext.prototype.isArray = isArray;
+    BEMContext.prototype.isSimple = function isSimple(obj) {
+        if (!obj || obj === true) return true;
+        var t = typeof obj;
+        return t === "string" || t === "number";
+    };
+    BEMContext.prototype.isShortTag = function isShortTag(t) {
+        return SHORT_TAGS.hasOwnProperty(t);
+    };
+    BEMContext.prototype.extend = function extend(o1, o2) {
+        if (!o1 || !o2) return o1 || o2;
+        var res = {}, n;
+        for (n in o1) o1.hasOwnProperty(n) && (res[n] = o1[n]);
+        for (n in o2) o2.hasOwnProperty(n) && (res[n] = o2[n]);
+        return res;
+    };
+    var cnt = 0, id = +new Date(), expando = "__" + id, get = function() {
+        return "uniq" + id + ++cnt;
+    };
+    BEMContext.prototype.identify = function(obj, onlyGet) {
+        if (!obj) return get();
+        if (onlyGet || obj[expando]) {
+            return obj[expando];
+        } else {
+            return obj[expando] = get();
+        }
+    };
+    BEMContext.prototype.xmlEscape = buildEscape("[&<>]");
+    BEMContext.prototype.attrEscape = buildEscape('["&<>]');
+    BEMContext.prototype.BEM = BEM_;
+    BEMContext.prototype.isFirst = function isFirst() {
+        return this.position === 1;
+    };
+    BEMContext.prototype.isLast = function isLast() {
+        return this.position === this._listLength;
+    };
+    BEMContext.prototype.generateId = function generateId() {
+        return this.identify(this.ctx);
+    };
+    var oldApply = exports.apply;
+    exports.apply = BEMContext.apply = function BEMContext_apply(context) {
+        var ctx = new BEMContext(context || this, oldApply);
+        ctx.apply();
+        return ctx._str;
+    };
+    BEMContext.prototype.reapply = BEMContext.apply;
+} ].forEach(function(fn) {
+    fn(exports, this);
+}, {
+    recordExtensions: function(ctx) {
+        ctx["__$a0"] = 0;
+        ctx["_input"] = undefined;
+        ctx["_mode"] = undefined;
+        ctx["ctx"] = undefined;
+        ctx["_str"] = undefined;
+        ctx["block"] = undefined;
+        ctx["elem"] = undefined;
+        ctx["_notNewList"] = undefined;
+        ctx["position"] = undefined;
+        ctx["_listLength"] = undefined;
+        ctx["_currBlock"] = undefined;
+        ctx["mods"] = undefined;
+        ctx["elemMods"] = undefined;
+    },
+    resetApplyNext: function(ctx) {
+        ctx["__$a0"] = 0;
+    }
+});
+
+function __$b2(__$ctx, __$ref) {
+    var input__$3 = __$ctx._input, attrs__$4 = {
+        id: input__$3.id,
+        name: input__$3.name,
+        value: input__$3.val,
+        maxlength: input__$3.maxLength,
+        tabindex: input__$3.tabIndex,
+        placeholder: input__$3.placeholder
+    };
+    input__$3.autocomplete === false && (attrs__$4.autocomplete = "off");
+    $$mods.disabled && (attrs__$4.disabled = "disabled");
+    return attrs__$4;
+}
+
+function __$b3(__$ctx, __$ref) {
+    var ctx__$15 = __$ctx.ctx, attrs__$16 = {}, tabIndex__$17;
+    if (!$$mods.disabled) {
+        if (ctx__$15.url) {
+            attrs__$16.href = ctx__$15.url;
+            tabIndex__$17 = ctx__$15.tabIndex;
+        } else {
+            tabIndex__$17 = ctx__$15.tabIndex || 0;
+        }
+    }
+    typeof tabIndex__$17 === "undefined" || (attrs__$16.tabindex = tabIndex__$17);
+    ctx__$15.title && (attrs__$16.title = ctx__$15.title);
+    ctx__$15.target && (attrs__$16.target = ctx__$15.target);
+    return attrs__$16;
+}
+
+function __$b30(__$ctx, __$ref) {
+    var __$r__$6;
+    var __$l0__$7 = __$ctx._input;
+    __$ctx._input = __$ctx.ctx;
+    var __$r__$9;
+    var __$l1__$10 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 2;
+    __$r__$9 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$10;
+    __$r__$6 = __$r__$9;
+    __$ctx._input = __$l0__$7;
+    return;
+}
+
+function __$b31(__$ctx, __$ref) {
+    var ctx__$18 = __$ctx.ctx;
+    typeof ctx__$18.url === "object" && (ctx__$18.url = __$ctx.reapply(ctx__$18.url));
+    var __$r__$20;
+    var __$l0__$21 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 8;
+    __$r__$20 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l0__$21;
+    return;
+}
+
+function __$b32(__$ctx, __$ref) {
+    __$ctx._defPageApplied = true;
+    var ctx__$36 = __$ctx.ctx;
+    var __$r__$38;
+    var __$l0__$39 = $$mode;
+    $$mode = "";
+    var __$l1__$40 = __$ctx.ctx;
+    __$ctx.ctx = [ ctx__$36.doctype || "<!DOCTYPE html>", {
+        tag: "html",
+        cls: "ua_js_no",
+        content: [ {
+            elem: "head",
+            content: [ {
+                tag: "meta",
+                attrs: {
+                    charset: "utf-8"
+                }
+            }, {
+                tag: "title",
+                content: ctx__$36.title
+            }, {
+                block: "ua"
+            }, ctx__$36.head, ctx__$36.styles, ctx__$36.favicon ? {
+                elem: "favicon",
+                url: ctx__$36.favicon
+            } : "" ]
+        }, ctx__$36 ]
+    } ];
+    var __$r__$42;
+    var __$l2__$43 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 256;
+    __$r__$42 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$43;
+    __$r__$38 = __$r__$42;
+    $$mode = __$l0__$39;
+    __$ctx.ctx = __$l1__$40;
+    __$ctx._defPageApplied = false;
+    return;
+}
+
+function __$b33(__$ctx, __$ref) {
+    var BEM_INTERNAL__$44 = __$ctx.BEM.INTERNAL, ctx__$45 = __$ctx.ctx, isBEM__$46, tag__$47, res__$48;
+    var __$r__$50;
+    var __$l0__$51 = __$ctx._str;
+    __$ctx._str = "";
+    var vBlock__$52 = $$block;
+    var __$r__$54;
+    var __$l1__$55 = $$mode;
+    $$mode = "tag";
+    __$r__$54 = applyc(__$ctx, __$ref);
+    $$mode = __$l1__$55;
+    tag__$47 = __$r__$54;
+    typeof tag__$47 !== "undefined" || (tag__$47 = ctx__$45.tag);
+    typeof tag__$47 !== "undefined" || (tag__$47 = "div");
+    if (tag__$47) {
+        var jsParams__$56, js__$57;
+        if (vBlock__$52 && ctx__$45.js !== false) {
+            var __$r__$58;
+            var __$l2__$59 = $$mode;
+            $$mode = "js";
+            __$r__$58 = applyc(__$ctx, __$ref);
+            $$mode = __$l2__$59;
+            js__$57 = __$r__$58;
+            js__$57 = js__$57 ? __$ctx.extend(ctx__$45.js, js__$57 === true ? {} : js__$57) : ctx__$45.js === true ? {} : ctx__$45.js;
+            js__$57 && ((jsParams__$56 = {})[BEM_INTERNAL__$44.buildClass(vBlock__$52, ctx__$45.elem)] = js__$57);
+        }
+        __$ctx._str += "<" + tag__$47;
+        var __$r__$60;
+        var __$l3__$61 = $$mode;
+        $$mode = "bem";
+        __$r__$60 = applyc(__$ctx, __$ref);
+        $$mode = __$l3__$61;
+        isBEM__$46 = __$r__$60;
+        typeof isBEM__$46 !== "undefined" || (isBEM__$46 = typeof ctx__$45.bem !== "undefined" ? ctx__$45.bem : ctx__$45.block || ctx__$45.elem);
+        var __$r__$63;
+        var __$l4__$64 = $$mode;
+        $$mode = "cls";
+        __$r__$63 = applyc(__$ctx, __$ref);
+        $$mode = __$l4__$64;
+        var cls__$62 = __$r__$63;
+        cls__$62 || (cls__$62 = ctx__$45.cls);
+        var addJSInitClass__$65 = ctx__$45.block && jsParams__$56;
+        if (isBEM__$46 || cls__$62) {
+            __$ctx._str += ' class="';
+            if (isBEM__$46) {
+                __$ctx._str += BEM_INTERNAL__$44.buildClasses(vBlock__$52, ctx__$45.elem, ctx__$45.elemMods || ctx__$45.mods);
+                var __$r__$67;
+                var __$l5__$68 = $$mode;
+                $$mode = "mix";
+                __$r__$67 = applyc(__$ctx, __$ref);
+                $$mode = __$l5__$68;
+                var mix__$66 = __$r__$67;
+                ctx__$45.mix && (mix__$66 = mix__$66 ? [].concat(mix__$66, ctx__$45.mix) : ctx__$45.mix);
+                if (mix__$66) {
+                    var visited__$69 = {}, visitedKey__$70 = function(block, elem) {
+                        return (block || "") + "__" + (elem || "");
+                    };
+                    visited__$69[visitedKey__$70(vBlock__$52, $$elem)] = true;
+                    __$ctx.isArray(mix__$66) || (mix__$66 = [ mix__$66 ]);
+                    for (var i__$71 = 0; i__$71 < mix__$66.length; i__$71++) {
+                        var mixItem__$72 = mix__$66[i__$71], hasItem__$73 = mixItem__$72.block || mixItem__$72.elem, mixBlock__$74 = mixItem__$72.block || mixItem__$72._block || $$block, mixElem__$75 = mixItem__$72.elem || mixItem__$72._elem || $$elem;
+                        hasItem__$73 && (__$ctx._str += " ");
+                        __$ctx._str += BEM_INTERNAL__$44[hasItem__$73 ? "buildClasses" : "buildModsClasses"](mixBlock__$74, mixItem__$72.elem || mixItem__$72._elem || (mixItem__$72.block ? undefined : $$elem), mixItem__$72.elemMods || mixItem__$72.mods);
+                        if (mixItem__$72.js) {
+                            (jsParams__$56 || (jsParams__$56 = {}))[BEM_INTERNAL__$44.buildClass(mixBlock__$74, mixItem__$72.elem)] = mixItem__$72.js === true ? {} : mixItem__$72.js;
+                            addJSInitClass__$65 || (addJSInitClass__$65 = mixBlock__$74 && !mixItem__$72.elem);
+                        }
+                        if (hasItem__$73 && !visited__$69[visitedKey__$70(mixBlock__$74, mixElem__$75)]) {
+                            visited__$69[visitedKey__$70(mixBlock__$74, mixElem__$75)] = true;
+                            var __$r__$77;
+                            var __$l6__$78 = $$mode;
+                            $$mode = "mix";
+                            var __$l7__$79 = $$block;
+                            $$block = mixBlock__$74;
+                            var __$l8__$80 = $$elem;
+                            $$elem = mixElem__$75;
+                            __$r__$77 = applyc(__$ctx, __$ref);
+                            $$mode = __$l6__$78;
+                            $$block = __$l7__$79;
+                            $$elem = __$l8__$80;
+                            var nestedMix__$76 = __$r__$77;
+                            if (nestedMix__$76) {
+                                for (var j__$81 = 0; j__$81 < nestedMix__$76.length; j__$81++) {
+                                    var nestedItem__$82 = nestedMix__$76[j__$81];
+                                    if (!nestedItem__$82.block && !nestedItem__$82.elem || !visited__$69[visitedKey__$70(nestedItem__$82.block, nestedItem__$82.elem)]) {
+                                        nestedItem__$82._block = mixBlock__$74;
+                                        nestedItem__$82._elem = mixElem__$75;
+                                        mix__$66.splice(i__$71 + 1, 0, nestedItem__$82);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            cls__$62 && (__$ctx._str += isBEM__$46 ? " " + cls__$62 : cls__$62);
+            __$ctx._str += addJSInitClass__$65 ? ' i-bem"' : '"';
+        }
+        if (isBEM__$46 && jsParams__$56) {
+            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$56)) + '"';
+        }
+        var __$r__$84;
+        var __$l9__$85 = $$mode;
+        $$mode = "attrs";
+        __$r__$84 = applyc(__$ctx, __$ref);
+        $$mode = __$l9__$85;
+        var attrs__$83 = __$r__$84;
+        attrs__$83 = __$ctx.extend(attrs__$83, ctx__$45.attrs);
+        if (attrs__$83) {
+            var name__$86, attr__$87;
+            for (name__$86 in attrs__$83) {
+                attr__$87 = attrs__$83[name__$86];
+                if (typeof attr__$87 === "undefined") continue;
+                __$ctx._str += " " + name__$86 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$87) ? attr__$87 : __$ctx.reapply(attr__$87)) + '"';
+            }
+        }
+    }
+    if (__$ctx.isShortTag(tag__$47)) {
+        __$ctx._str += "/>";
+    } else {
+        tag__$47 && (__$ctx._str += ">");
+        var __$r__$89;
+        var __$l10__$90 = $$mode;
+        $$mode = "content";
+        __$r__$89 = applyc(__$ctx, __$ref);
+        $$mode = __$l10__$90;
+        var content__$88 = __$r__$89;
+        if (content__$88 || content__$88 === 0) {
+            isBEM__$46 = vBlock__$52 || $$elem;
+            var __$r__$91;
+            var __$l11__$92 = $$mode;
+            $$mode = "";
+            var __$l12__$93 = __$ctx._notNewList;
+            __$ctx._notNewList = false;
+            var __$l13__$94 = __$ctx.position;
+            __$ctx.position = isBEM__$46 ? 1 : __$ctx.position;
+            var __$l14__$95 = __$ctx._listLength;
+            __$ctx._listLength = isBEM__$46 ? 1 : __$ctx._listLength;
+            var __$l15__$96 = __$ctx.ctx;
+            __$ctx.ctx = content__$88;
+            __$r__$91 = applyc(__$ctx, __$ref);
+            $$mode = __$l11__$92;
+            __$ctx._notNewList = __$l12__$93;
+            __$ctx.position = __$l13__$94;
+            __$ctx._listLength = __$l14__$95;
+            __$ctx.ctx = __$l15__$96;
+        }
+        tag__$47 && (__$ctx._str += "</" + tag__$47 + ">");
+    }
+    res__$48 = __$ctx._str;
+    __$r__$50 = undefined;
+    __$ctx._str = __$l0__$51;
+    __$ctx._buf.push(res__$48);
+    return;
+}
+
+function __$b35(__$ctx, __$ref) {
+    var ctx__$11 = __$ctx.ctx;
+    return {
+        mainOffset: ctx__$11.mainOffset,
+        secondaryOffset: ctx__$11.secondaryOffset,
+        viewportOffset: ctx__$11.viewportOffset,
+        directions: ctx__$11.directions,
+        zIndexGroupLevel: ctx__$11.zIndexGroupLevel
+    };
+}
+
+function __$b41(__$ctx, __$ref) {
+    var mix__$25 = function __$lb__$26() {
+        var __$r__$27;
+        var __$l0__$28 = __$ctx.__$a0;
+        __$ctx.__$a0 = __$ctx.__$a0 | 32;
+        __$r__$27 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$28;
+        return __$r__$27;
+    }(), uaMix__$29 = [ {
+        block: "ua",
+        js: true
+    } ];
+    return mix__$25 ? uaMix__$29.concat(mix__$25) : uaMix__$29;
+}
+
+function __$b52(__$ctx, __$ref) {
+    var __$r__$98;
+    var __$l0__$99 = $$mode;
+    $$mode = "";
+    var __$l1__$100 = __$ctx.ctx;
+    __$ctx.ctx = __$ctx.ctx._value;
+    var __$r__$102;
+    var __$l2__$103 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 512;
+    __$r__$102 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$103;
+    __$r__$98 = __$r__$102;
+    $$mode = __$l0__$99;
+    __$ctx.ctx = __$l1__$100;
+    return;
+}
+
+function __$b53(__$ctx, __$ref) {
+    __$ctx._listLength--;
+    var ctx__$104 = __$ctx.ctx;
+    if (ctx__$104 && ctx__$104 !== true || ctx__$104 === 0) {
+        __$ctx._str += ctx__$104 + "";
+    }
+    return;
+}
+
+function __$b54(__$ctx, __$ref) {
+    __$ctx._listLength--;
+    return;
+}
+
+function __$b55(__$ctx, __$ref) {
+    var ctx__$105 = __$ctx.ctx, len__$106 = ctx__$105.length, i__$107 = 0, prevPos__$108 = __$ctx.position, prevNotNewList__$109 = __$ctx._notNewList;
+    if (prevNotNewList__$109) {
+        __$ctx._listLength += len__$106 - 1;
+    } else {
+        __$ctx.position = 0;
+        __$ctx._listLength = len__$106;
+    }
+    __$ctx._notNewList = true;
+    while (i__$107 < len__$106) (function __$lb__$110() {
+        var __$r__$111;
+        var __$l0__$112 = __$ctx.ctx;
+        __$ctx.ctx = ctx__$105[i__$107++];
+        __$r__$111 = applyc(__$ctx, __$ref);
+        __$ctx.ctx = __$l0__$112;
+        return __$r__$111;
+    })();
+    prevNotNewList__$109 || (__$ctx.position = prevPos__$108);
+    return;
+}
+
+function __$b56(__$ctx, __$ref) {
+    __$ctx.ctx || (__$ctx.ctx = {});
+    var vBlock__$113 = __$ctx.ctx.block, vElem__$114 = __$ctx.ctx.elem, block__$115 = __$ctx._currBlock || $$block;
+    var __$r__$117;
+    var __$l0__$118 = $$mode;
+    $$mode = "default";
+    var __$l1__$119 = $$block;
+    $$block = vBlock__$113 || (vElem__$114 ? block__$115 : undefined);
+    var __$l2__$120 = __$ctx._currBlock;
+    __$ctx._currBlock = vBlock__$113 || vElem__$114 ? undefined : block__$115;
+    var __$l3__$121 = $$elem;
+    $$elem = vElem__$114;
+    var __$l4__$122 = $$mods;
+    $$mods = vBlock__$113 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
+    var __$l5__$123 = $$elemMods;
+    $$elemMods = __$ctx.ctx.elemMods || {};
+    $$block || $$elem ? __$ctx.position = (__$ctx.position || 0) + 1 : __$ctx._listLength--;
+    applyc(__$ctx, __$ref);
+    __$r__$117 = undefined;
+    $$mode = __$l0__$118;
+    $$block = __$l1__$119;
+    __$ctx._currBlock = __$l2__$120;
+    $$elem = __$l3__$121;
+    $$mods = __$l4__$122;
+    $$elemMods = __$l5__$123;
+    return;
+}
+
+function __$g0(__$ctx, __$ref) {
+    var __$t = $$block;
+    if (__$t === "input") {
+        var __$t = $$elem;
+        if (__$t === "control") {
+            return "input";
+        } else if (__$t === "box") {
+            return "span";
+        }
+        if (!$$elem) {
+            return "span";
+        }
+    } else if (__$t === "link") {
+        var __$t = !$$elem;
+        if (__$t) {
+            if ($$mods && $$mods["pseudo"] === true && !__$ctx.ctx.url) {
+                return "span";
+            }
+            return "a";
+        }
+    } else if (__$t === "ua") {
+        if (!$$elem) {
+            return "script";
+        }
+    } else if (__$t === "page") {
+        var __$t = $$elem;
+        if (__$t === "js") {
+            return "script";
+        } else if (__$t === "link") {
+            return "link";
+        } else if (__$t === "css") {
+            if (__$ctx.ctx.url) {
+                return "link";
+            }
+            return "style";
+        } else if (__$t === "head") {
+            return "head";
+        } else if (__$t === "favicon") {
+            return "link";
+        } else if (__$t === "meta") {
+            return "meta";
+        }
+        if (!$$elem) {
+            return "body";
+        }
+    }
+    return undefined;
+    return __$ref;
+};
+     return exports;
+  }
+  var defineAsGlobal = true;
+  if(typeof exports === "object") {
+    exports["BEMHTML"] = __bem_xjst({});
+    defineAsGlobal = false;
+  }
+  if(typeof modules === "object") {
+    modules.define("BEMHTML",
+      function(provide) {
+        provide(__bem_xjst({})) });
+    defineAsGlobal = false;
+  }
+  defineAsGlobal && (g["BEMHTML"] = __bem_xjst({}));
+})(this);
+/* begin: ../../../libs/bem-core/common.blocks/i-bem/i-bem.vanilla.js */
+/**
+ * @module i-bem
+ */
+
+modules.define(
+    'i-bem',
+    [
+        'i-bem__internal',
+        'inherit',
+        'identify',
+        'next-tick',
+        'objects',
+        'functions',
+        'events'
+    ],
+    function(
+        provide,
+        INTERNAL,
+        inherit,
+        identify,
+        nextTick,
+        objects,
+        functions,
+        events) {
+
+var undef,
+
+    MOD_DELIM = INTERNAL.MOD_DELIM,
+    ELEM_DELIM = INTERNAL.ELEM_DELIM,
+
+    /**
+     * Storage for block init functions
+     * @private
+     * @type Array
+     */
+    initFns = [],
+
+    /**
+     * Storage for block declarations (hash by block name)
+     * @private
+     * @type Object
+     */
+    blocks = {};
+
+/**
+ * Builds the name of the handler method for setting a modifier
+ * @param {String} prefix
+ * @param {String} modName Modifier name
+ * @param {String} modVal Modifier value
+ * @param {String} [elemName] Element name
+ * @returns {String}
+ */
+function buildModFnName(prefix, modName, modVal, elemName) {
+    return '__' + prefix +
+        (elemName? '__elem_' + elemName : '') +
+       '__mod' +
+       (modName? '_' + modName : '') +
+       (modVal? '_' + modVal : '');
+}
+
+/**
+ * Transforms a hash of modifier handlers to methods
+ * @param {String} prefix
+ * @param {Object} modFns
+ * @param {Object} props
+ * @param {String} [elemName]
+ */
+function modFnsToProps(prefix, modFns, props, elemName) {
+    if(functions.isFunction(modFns)) {
+        props[buildModFnName(prefix, '*', '*', elemName)] = modFns;
+    } else {
+        var modName, modVal, modFn;
+        for(modName in modFns) {
+            if(modFns.hasOwnProperty(modName)) {
+                modFn = modFns[modName];
+                if(functions.isFunction(modFn)) {
+                    props[buildModFnName(prefix, modName, '*', elemName)] = modFn;
+                } else {
+                    for(modVal in modFn) {
+                        if(modFn.hasOwnProperty(modVal)) {
+                            props[buildModFnName(prefix, modName, modVal, elemName)] = modFn[modVal];
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function buildCheckMod(modName, modVal) {
+    return modVal?
+        Array.isArray(modVal)?
+            function(block) {
+                var i = 0, len = modVal.length;
+                while(i < len)
+                    if(block.hasMod(modName, modVal[i++]))
+                        return true;
+                return false;
+            } :
+            function(block) {
+                return block.hasMod(modName, modVal);
+            } :
+        function(block) {
+            return block.hasMod(modName);
+        };
+}
+
+function convertModHandlersToMethods(props) {
+    if(props.beforeSetMod) {
+        modFnsToProps('before', props.beforeSetMod, props);
+        delete props.beforeSetMod;
+    }
+
+    if(props.onSetMod) {
+        modFnsToProps('after', props.onSetMod, props);
+        delete props.onSetMod;
+    }
+
+    var elemName;
+    if(props.beforeElemSetMod) {
+        for(elemName in props.beforeElemSetMod) {
+            if(props.beforeElemSetMod.hasOwnProperty(elemName)) {
+                modFnsToProps('before', props.beforeElemSetMod[elemName], props, elemName);
+            }
+        }
+        delete props.beforeElemSetMod;
+    }
+
+    if(props.onElemSetMod) {
+        for(elemName in props.onElemSetMod) {
+            if(props.onElemSetMod.hasOwnProperty(elemName)) {
+                modFnsToProps('after', props.onElemSetMod[elemName], props, elemName);
+            }
+        }
+        delete props.onElemSetMod;
+    }
+}
+
+/**
+ * @class BEM
+ * @description Base block for creating BEM blocks
+ * @augments events:Emitter
+ * @exports
+ */
+var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ {
+    /**
+     * @constructor
+     * @private
+     * @param {Object} mods Block modifiers
+     * @param {Object} params Block parameters
+     * @param {Boolean} [initImmediately=true]
+     */
+    __constructor : function(mods, params, initImmediately) {
+        /**
+         * Cache of block modifiers
+         * @member {Object}
+         * @private
+         */
+        this._modCache = mods || {};
+
+        /**
+         * Current modifiers in the stack
+         * @member {Object}
+         * @private
+         */
+        this._processingMods = {};
+
+        /**
+         * Block parameters, taking into account the defaults
+         * @member {Object}
+         * @readonly
+         */
+        this.params = objects.extend(this.getDefaultParams(), params);
+
+        initImmediately !== false?
+            this._init() :
+            initFns.push(this._init, this);
+    },
+
+    /**
+     * Initializes the block
+     * @private
+     */
+    _init : function() {
+        return this.setMod('js', 'inited');
+    },
+
+    /**
+     * Adds an event handler
+     * @param {String|Object} e Event type
+     * @param {Object} [data] Additional data that the handler gets as e.data
+     * @param {Function} fn Handler
+     * @param {Object} [ctx] Handler context
+     * @returns {BEM} this
+     */
+    on : function(e, data, fn, ctx) {
+        if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
+            e = this.__self._buildModEventName(e);
+        }
+
+        return this.__base.apply(this, arguments);
+    },
+
+    /**
+     * Removes event handler or handlers
+     * @param {String|Object} [e] Event type
+     * @param {Function} [fn] Handler
+     * @param {Object} [ctx] Handler context
+     * @returns {BEM} this
+     */
+    un : function(e, fn, ctx) {
+        if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
+            e = this.__self._buildModEventName(e);
+        }
+
+        return this.__base.apply(this, arguments);
+    },
+
+    /**
+     * Executes the block's event handlers and live event handlers
+     * @protected
+     * @param {String} e Event name
+     * @param {Object} [data] Additional information
+     * @returns {BEM} this
+     */
+    emit : function(e, data) {
+        var isModJsEvent = false;
+        if(typeof e === 'object' && !(e instanceof events.Event)) {
+            isModJsEvent = e.modName === 'js';
+            e = this.__self._buildModEventName(e);
+        }
+
+        if(isModJsEvent || this.hasMod('js', 'inited')) {
+            this.__base(e = this._buildEvent(e), data);
+            this._ctxEmit(e, data);
+        }
+
+        return this;
+    },
+
+    _ctxEmit : function(e, data) {
+        this.__self.emit(e, data);
+    },
+
+    /**
+     * Builds event
+     * @private
+     * @param {String|events:Event} e
+     * @returns {events:Event}
+     */
+    _buildEvent : function(e) {
+        typeof e === 'string'?
+            e = new events.Event(e, this) :
+            e.target || (e.target = this);
+
+        return e;
+    },
+
+    /**
+     * Checks whether a block or nested element has a modifier
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {Boolean}
+     */
+    hasMod : function(elem, modName, modVal) {
+        var len = arguments.length,
+            invert = false;
+
+        if(len === 1) {
+            modVal = '';
+            modName = elem;
+            elem = undef;
+            invert = true;
+        } else if(len === 2) {
+            if(typeof elem === 'string') {
+                modVal = modName;
+                modName = elem;
+                elem = undef;
+            } else {
+                modVal = '';
+                invert = true;
+            }
+        }
+
+        var res = this.getMod(elem, modName) === modVal;
+        return invert? !res : res;
+    },
+
+    /**
+     * Returns the value of the modifier of the block/nested element
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @returns {String} Modifier value
+     */
+    getMod : function(elem, modName) {
+        var type = typeof elem;
+        if(type === 'string' || type === 'undefined') { // elem either omitted or undefined
+            modName = elem || modName;
+            var modCache = this._modCache;
+            return modName in modCache?
+                modCache[modName] || '' :
+                modCache[modName] = this._extractModVal(modName);
+        }
+
+        return this._getElemMod(modName, elem);
+    },
+
+    /**
+     * Returns the value of the modifier of the nested element
+     * @private
+     * @param {String} modName Modifier name
+     * @param {Object} elem Nested element
+     * @param {Object} [elemName] Nested element name
+     * @returns {String} Modifier value
+     */
+    _getElemMod : function(modName, elem, elemName) {
+        return this._extractModVal(modName, elem, elemName);
+    },
+
+    /**
+     * Returns values of modifiers of the block/nested element
+     * @param {Object} [elem] Nested element
+     * @param {String} [...modNames] Modifier names
+     * @returns {Object} Hash of modifier values
+     */
+    getMods : function(elem) {
+        var hasElem = elem && typeof elem !== 'string',
+            modNames = [].slice.call(arguments, hasElem? 1 : 0),
+            res = this._extractMods(modNames, hasElem? elem : undef);
+
+        if(!hasElem) { // caching
+            modNames.length?
+                modNames.forEach(function(name) {
+                    this._modCache[name] = res[name];
+                }, this) :
+                this._modCache = res;
+        }
+
+        return res;
+    },
+
+    /**
+     * Sets the modifier for a block/nested element
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} modVal Modifier value
+     * @returns {BEM} this
+     */
+    setMod : function(elem, modName, modVal) {
+        if(typeof modVal === 'undefined') {
+            if(typeof elem === 'string') { // if no elem
+                modVal = typeof modName === 'undefined'?
+                    true :  // e.g. setMod('focused')
+                    modName; // e.g. setMod('js', 'inited')
+                modName = elem;
+                elem = undef;
+            } else { // if elem
+                modVal = true; // e.g. setMod(elem, 'focused')
+            }
+        }
+
+        if(!elem || elem[0]) {
+            modVal === false && (modVal = '');
+
+            var modId = (elem && elem[0]? identify(elem[0]) : '') + '_' + modName;
+
+            if(this._processingMods[modId])
+                return this;
+
+            var elemName,
+                curModVal = elem?
+                    this._getElemMod(modName, elem, elemName = this.__self._extractElemNameFrom(elem)) :
+                    this.getMod(modName);
+
+            if(curModVal === modVal)
+                return this;
+
+            this._processingMods[modId] = true;
+
+            var needSetMod = true,
+                modFnParams = [modName, modVal, curModVal];
+
+            elem && modFnParams.unshift(elem);
+
+            var modVars = [['*', '*'], [modName, '*'], [modName, modVal]],
+                prefixes = ['before', 'after'],
+                i = 0, prefix, j, modVar;
+
+            while(prefix = prefixes[i++]) {
+                j = 0;
+                while(modVar = modVars[j++]) {
+                    if(this._callModFn(prefix, elemName, modVar[0], modVar[1], modFnParams) === false) {
+                        needSetMod = false;
+                        break;
+                    }
+                }
+
+                if(!needSetMod) break;
+
+                if(prefix === 'before') {
+                    elem || (this._modCache[modName] = modVal); // cache only block mods
+                    this._onSetMod(modName, modVal, curModVal, elem, elemName);
+                }
+            }
+
+            this._processingMods[modId] = null;
+            needSetMod && this._emitModChangeEvents(modName, modVal, curModVal, elem, elemName);
+        }
+
+        return this;
+    },
+
+    /**
+     * Function after successfully changing the modifier of the block/nested element
+     * @protected
+     * @param {String} modName Modifier name
+     * @param {String} modVal Modifier value
+     * @param {String} oldModVal Old modifier value
+     * @param {Object} [elem] Nested element
+     * @param {String} [elemName] Element name
+     */
+    _onSetMod : function(modName, modVal, oldModVal, elem, elemName) {},
+
+    _emitModChangeEvents : function(modName, modVal, oldModVal, elem, elemName) {
+        var eventData = { modName : modName, modVal : modVal, oldModVal : oldModVal };
+        elem && (eventData.elem = elem);
+        this
+            .emit({ modName : modName, modVal : '*', elem : elemName }, eventData)
+            .emit({ modName : modName, modVal : modVal, elem : elemName }, eventData);
+    },
+
+    /**
+     * Sets a modifier for a block/nested element, depending on conditions.
+     * If the condition parameter is passed: when true, modVal1 is set; when false, modVal2 is set.
+     * If the condition parameter is not passed: modVal1 is set if modVal2 was set, or vice versa.
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} modVal1 First modifier value
+     * @param {String} [modVal2] Second modifier value
+     * @param {Boolean} [condition] Condition
+     * @returns {BEM} this
+     */
+    toggleMod : function(elem, modName, modVal1, modVal2, condition) {
+        if(typeof elem === 'string') { // if this is a block
+            condition = modVal2;
+            modVal2 = modVal1;
+            modVal1 = modName;
+            modName = elem;
+            elem = undef;
+        }
+
+        if(typeof modVal1 === 'undefined') { // boolean mod
+            modVal1 = true;
+        }
+
+        if(typeof modVal2 === 'undefined') {
+            modVal2 = '';
+        } else if(typeof modVal2 === 'boolean') {
+            condition = modVal2;
+            modVal2 = '';
+        }
+
+        var modVal = this.getMod(elem, modName);
+        (modVal === modVal1 || modVal === modVal2) &&
+            this.setMod(
+                elem,
+                modName,
+                typeof condition === 'boolean'?
+                    (condition? modVal1 : modVal2) :
+                    this.hasMod(elem, modName, modVal1)? modVal2 : modVal1);
+
+        return this;
+    },
+
+    /**
+     * Removes a modifier from a block/nested element
+     * @protected
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @returns {BEM} this
+     */
+    delMod : function(elem, modName) {
+        if(!modName) {
+            modName = elem;
+            elem = undef;
+        }
+
+        return this.setMod(elem, modName, '');
+    },
+
+    /**
+     * Executes handlers for setting modifiers
+     * @private
+     * @param {String} prefix
+     * @param {String} elemName Element name
+     * @param {String} modName Modifier name
+     * @param {String} modVal Modifier value
+     * @param {Array} modFnParams Handler parameters
+     */
+    _callModFn : function(prefix, elemName, modName, modVal, modFnParams) {
+        var modFnName = buildModFnName(prefix, modName, modVal, elemName);
+        return this[modFnName]?
+           this[modFnName].apply(this, modFnParams) :
+           undef;
+    },
+
+    /**
+     * Retrieves the value of the modifier
+     * @private
+     * @param {String} modName Modifier name
+     * @param {Object} [elem] Element
+     * @returns {String} Modifier value
+     */
+    _extractModVal : function(modName, elem) {
+        return '';
+    },
+
+    /**
+     * Retrieves name/value for a list of modifiers
+     * @private
+     * @param {Array} modNames Names of modifiers
+     * @param {Object} [elem] Element
+     * @returns {Object} Hash of modifier values by name
+     */
+    _extractMods : function(modNames, elem) {
+        return {};
+    },
+
+    /**
+     * Returns a block's default parameters
+     * @protected
+     * @returns {Object}
+     */
+    getDefaultParams : function() {
+        return {};
+    },
+
+    /**
+     * Deletes a block
+     * @private
+     */
+    _destruct : function() {
+        this.delMod('js');
+    },
+
+    /**
+     * Executes given callback on next turn eventloop in block's context
+     * @protected
+     * @param {Function} fn callback
+     * @returns {BEM} this
+     */
+    nextTick : function(fn) {
+        var _this = this;
+        nextTick(function() {
+            _this.hasMod('js', 'inited') && fn.call(_this);
+        });
+        return this;
+    }
+}, /** @lends BEM */{
+
+    _name : 'i-bem',
+
+    /**
+     * Storage for block declarations (hash by block name)
+     * @type Object
+     */
+    blocks : blocks,
+
+    /**
+     * Declares blocks and creates a block class
+     * @param {String|Object} decl Block name (simple syntax) or description
+     * @param {String} decl.block|decl.name Block name
+     * @param {String} [decl.baseBlock] Name of the parent block
+     * @param {Array} [decl.baseMix] Mixed block names
+     * @param {String} [decl.modName] Modifier name
+     * @param {String|Array} [decl.modVal] Modifier value
+     * @param {Object} [props] Methods
+     * @param {Object} [staticProps] Static methods
+     * @returns {Function}
+     */
+    decl : function(decl, props, staticProps) {
+        // string as block
+        typeof decl === 'string' && (decl = { block : decl });
+        // inherit from itself
+        if(arguments.length <= 2 &&
+                typeof decl === 'object' &&
+                (!decl || (typeof decl.block !== 'string' && typeof decl.modName !== 'string'))) {
+            staticProps = props;
+            props = decl;
+            decl = {};
+        }
+        typeof decl.block === 'undefined' && (decl.block = this.getName());
+
+        var baseBlock;
+        if(typeof decl.baseBlock === 'undefined') {
+            baseBlock = blocks[decl.block] || this;
+        } else if(typeof decl.baseBlock === 'string') {
+            baseBlock = blocks[decl.baseBlock];
+            if(!baseBlock)
+                throw('baseBlock "' + decl.baseBlock + '" for "' + decl.block + '" is undefined');
+        } else {
+            baseBlock = decl.baseBlock;
+        }
+
+        convertModHandlersToMethods(props || (props = {}));
+
+        if(decl.modName) {
+            var checkMod = buildCheckMod(decl.modName, decl.modVal);
+            objects.each(props, function(prop, name) {
+                functions.isFunction(prop) &&
+                    (props[name] = function() {
+                        var method;
+                        if(checkMod(this)) {
+                            method = prop;
+                        } else {
+                            var baseMethod = baseBlock.prototype[name];
+                            baseMethod && baseMethod !== prop &&
+                                (method = this.__base);
+                        }
+                        return method?
+                            method.apply(this, arguments) :
+                            undef;
+                    });
+            });
+        }
+
+        if(staticProps && typeof staticProps.live === 'boolean') {
+            var live = staticProps.live;
+            staticProps.live = function() {
+                return live;
+            };
+        }
+
+        var block, baseBlocks = baseBlock;
+        if(decl.baseMix) {
+            baseBlocks = [baseBlocks];
+            decl.baseMix.forEach(function(mixedBlock) {
+                if(!blocks[mixedBlock]) {
+                    throw('mix block "' + mixedBlock + '" for "' + decl.block + '" is undefined');
+                }
+                baseBlocks.push(blocks[mixedBlock]);
+            });
+        }
+
+        if(decl.block === baseBlock.getName()) {
+            // makes a new "live" if the old one was already executed
+            (block = inherit.self(baseBlocks, props, staticProps))._processLive(true);
+        } else {
+            (block = blocks[decl.block] = inherit(baseBlocks, props, staticProps))._name = decl.block;
+            delete block._liveInitable;
+        }
+
+        return block;
+    },
+
+    declMix : function(block, props, staticProps) {
+        convertModHandlersToMethods(props || (props = {}));
+        return blocks[block] = inherit(props, staticProps);
+    },
+
+    /**
+     * Processes a block's live properties
+     * @private
+     * @param {Boolean} [heedLive=false] Whether to take into account that the block already processed its live properties
+     * @returns {Boolean} Whether the block is a live block
+     */
+    _processLive : function(heedLive) {
+        return false;
+    },
+
+    /**
+     * Factory method for creating an instance of the block named
+     * @param {String|Object} block Block name or description
+     * @param {Object} [params] Block parameters
+     * @returns {BEM}
+     */
+    create : function(block, params) {
+        typeof block === 'string' && (block = { block : block });
+
+        return new blocks[block.block](block.mods, params);
+    },
+
+    /**
+     * Returns the name of the current block
+     * @returns {String}
+     */
+    getName : function() {
+        return this._name;
+    },
+
+    /**
+     * Adds an event handler
+     * @param {String|Object} e Event type
+     * @param {Object} [data] Additional data that the handler gets as e.data
+     * @param {Function} fn Handler
+     * @param {Object} [ctx] Handler context
+     * @returns {Function} this
+     */
+    on : function(e, data, fn, ctx) {
+        if(typeof e === 'object' && (functions.isFunction(data) || functions.isFunction(fn))) { // mod change event
+            e = this._buildModEventName(e);
+        }
+
+        return this.__base.apply(this, arguments);
+    },
+
+    /**
+     * Removes event handler or handlers
+     * @param {String|Object} [e] Event type
+     * @param {Function} [fn] Handler
+     * @param {Object} [ctx] Handler context
+     * @returns {Function} this
+     */
+    un : function(e, fn, ctx) {
+        if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
+            e = this._buildModEventName(e);
+        }
+
+        return this.__base.apply(this, arguments);
+    },
+
+    _buildModEventName : function(modEvent) {
+        var res = MOD_DELIM + modEvent.modName + MOD_DELIM + (modEvent.modVal === false? '' : modEvent.modVal);
+        modEvent.elem && (res = ELEM_DELIM + modEvent.elem + res);
+        return res;
+    },
+
+    /**
+     * Retrieves the name of an element nested in a block
+     * @private
+     * @param {Object} elem Nested element
+     * @returns {String|undefined}
+     */
+    _extractElemNameFrom : function(elem) {},
+
+    /**
+     * Executes the block init functions
+     * @private
+     */
+    _runInitFns : function() {
+        if(initFns.length) {
+            var fns = initFns,
+                fn, i = 0;
+
+            initFns = [];
+            while(fn = fns[i]) {
+                fn.call(fns[i + 1]);
+                i += 2;
+            }
+        }
+    }
+});
+
+provide(BEM);
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/i-bem/i-bem.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/i-bem/__internal/i-bem__internal.vanilla.js */
+/**
+ * @module i-bem__internal
+ */
+
+modules.define('i-bem__internal', function(provide) {
+
+var undef,
+    /**
+     * Separator for modifiers and their values
+     * @const
+     * @type String
+     */
+    MOD_DELIM = '_',
+
+    /**
+     * Separator between names of a block and a nested element
+     * @const
+     * @type String
+     */
+    ELEM_DELIM = '__',
+
+    /**
+     * Pattern for acceptable element and modifier names
+     * @const
+     * @type String
+     */
+    NAME_PATTERN = '[a-zA-Z0-9-]+';
+
+function isSimple(obj) {
+    var typeOf = typeof obj;
+    return typeOf === 'string' || typeOf === 'number' || typeOf === 'boolean';
+}
+
+function buildModPostfix(modName, modVal) {
+    var res = '';
+    /* jshint eqnull: true */
+    if(modVal != null && modVal !== false) {
+        res += MOD_DELIM + modName;
+        modVal !== true && (res += MOD_DELIM + modVal);
+    }
+    return res;
+}
+
+function buildBlockClass(name, modName, modVal) {
+    return name + buildModPostfix(modName, modVal);
+}
+
+function buildElemClass(block, name, modName, modVal) {
+    return buildBlockClass(block, undef, undef) +
+        ELEM_DELIM + name +
+        buildModPostfix(modName, modVal);
+}
+
+provide(/** @exports */{
+    NAME_PATTERN : NAME_PATTERN,
+
+    MOD_DELIM : MOD_DELIM,
+    ELEM_DELIM : ELEM_DELIM,
+
+    buildModPostfix : buildModPostfix,
+
+    /**
+     * Builds the class of a block or element with a modifier
+     * @param {String} block Block name
+     * @param {String} [elem] Element name
+     * @param {String} [modName] Modifier name
+     * @param {String|Number} [modVal] Modifier value
+     * @returns {String} Class
+     */
+    buildClass : function(block, elem, modName, modVal) {
+        if(isSimple(modName)) {
+            if(!isSimple(modVal)) {
+                modVal = modName;
+                modName = elem;
+                elem = undef;
+            }
+        } else if(typeof modName !== 'undefined') {
+            modName = undef;
+        } else if(elem && typeof elem !== 'string') {
+            elem = undef;
+        }
+
+        if(!(elem || modName)) { // optimization for simple case
+            return block;
+        }
+
+        return elem?
+            buildElemClass(block, elem, modName, modVal) :
+            buildBlockClass(block, modName, modVal);
+    },
+
+    /**
+     * Builds full classes for a buffer or element with modifiers
+     * @param {String} block Block name
+     * @param {String} [elem] Element name
+     * @param {Object} [mods] Modifiers
+     * @returns {String} Class
+     */
+    buildClasses : function(block, elem, mods) {
+        if(elem && typeof elem !== 'string') {
+            mods = elem;
+            elem = undef;
+        }
+
+        var res = elem?
+            buildElemClass(block, elem, undef, undef) :
+            buildBlockClass(block, undef, undef);
+
+        if(mods) {
+            for(var modName in mods) {
+                if(mods.hasOwnProperty(modName) && mods[modName]) {
+                    res += ' ' + (elem?
+                        buildElemClass(block, elem, modName, mods[modName]) :
+                        buildBlockClass(block, modName, mods[modName]));
+                }
+            }
+        }
+
+        return res;
+    }
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/i-bem/__internal/i-bem__internal.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/inherit/inherit.vanilla.js */
+/**
+ * @module inherit
+ * @version 2.2.1
+ * @author Filatov Dmitry <dfilatov@yandex-team.ru>
+ * @description This module provides some syntax sugar for "class" declarations, constructors, mixins, "super" calls and static members.
+ */
+
+(function(global) {
+
+var hasIntrospection = (function(){'_';}).toString().indexOf('_') > -1,
+    emptyBase = function() {},
+    hasOwnProperty = Object.prototype.hasOwnProperty,
+    objCreate = Object.create || function(ptp) {
+        var inheritance = function() {};
+        inheritance.prototype = ptp;
+        return new inheritance();
+    },
+    objKeys = Object.keys || function(obj) {
+        var res = [];
+        for(var i in obj) {
+            hasOwnProperty.call(obj, i) && res.push(i);
+        }
+        return res;
+    },
+    extend = function(o1, o2) {
+        for(var i in o2) {
+            hasOwnProperty.call(o2, i) && (o1[i] = o2[i]);
+        }
+
+        return o1;
+    },
+    toStr = Object.prototype.toString,
+    isArray = Array.isArray || function(obj) {
+        return toStr.call(obj) === '[object Array]';
+    },
+    isFunction = function(obj) {
+        return toStr.call(obj) === '[object Function]';
+    },
+    noOp = function() {},
+    needCheckProps = true,
+    testPropObj = { toString : '' };
+
+for(var i in testPropObj) { // fucking ie hasn't toString, valueOf in for
+    testPropObj.hasOwnProperty(i) && (needCheckProps = false);
+}
+
+var specProps = needCheckProps? ['toString', 'valueOf'] : null;
+
+function getPropList(obj) {
+    var res = objKeys(obj);
+    if(needCheckProps) {
+        var specProp, i = 0;
+        while(specProp = specProps[i++]) {
+            obj.hasOwnProperty(specProp) && res.push(specProp);
+        }
+    }
+
+    return res;
+}
+
+function override(base, res, add) {
+    var addList = getPropList(add),
+        j = 0, len = addList.length,
+        name, prop;
+    while(j < len) {
+        if((name = addList[j++]) === '__self') {
+            continue;
+        }
+        prop = add[name];
+        if(isFunction(prop) &&
+                (!hasIntrospection || prop.toString().indexOf('.__base') > -1)) {
+            res[name] = (function(name, prop) {
+                var baseMethod = base[name]?
+                        base[name] :
+                        name === '__constructor'? // case of inheritance from plane function
+                            res.__self.__parent :
+                            noOp;
+                return function() {
+                    var baseSaved = this.__base;
+                    this.__base = baseMethod;
+                    var res = prop.apply(this, arguments);
+                    this.__base = baseSaved;
+                    return res;
+                };
+            })(name, prop);
+        } else {
+            res[name] = prop;
+        }
+    }
+}
+
+function applyMixins(mixins, res) {
+    var i = 1, mixin;
+    while(mixin = mixins[i++]) {
+        res?
+            isFunction(mixin)?
+                inherit.self(res, mixin.prototype, mixin) :
+                inherit.self(res, mixin) :
+            res = isFunction(mixin)?
+                inherit(mixins[0], mixin.prototype, mixin) :
+                inherit(mixins[0], mixin);
+    }
+    return res || mixins[0];
+}
+
+/**
+* Creates class
+* @exports
+* @param {Function|Array} [baseClass|baseClassAndMixins] class (or class and mixins) to inherit from
+* @param {Object} prototypeFields
+* @param {Object} [staticFields]
+* @returns {Function} class
+*/
+function inherit() {
+    var args = arguments,
+        withMixins = isArray(args[0]),
+        hasBase = withMixins || isFunction(args[0]),
+        base = hasBase? withMixins? applyMixins(args[0]) : args[0] : emptyBase,
+        props = args[hasBase? 1 : 0] || {},
+        staticProps = args[hasBase? 2 : 1],
+        res = props.__constructor || (hasBase && base.prototype.__constructor)?
+            function() {
+                return this.__constructor.apply(this, arguments);
+            } :
+            hasBase?
+                function() {
+                    return base.apply(this, arguments);
+                } :
+                function() {};
+
+    if(!hasBase) {
+        res.prototype = props;
+        res.prototype.__self = res.prototype.constructor = res;
+        return extend(res, staticProps);
+    }
+
+    extend(res, base);
+
+    res.__parent = base;
+
+    var basePtp = base.prototype,
+        resPtp = res.prototype = objCreate(basePtp);
+
+    resPtp.__self = resPtp.constructor = res;
+
+    props && override(basePtp, resPtp, props);
+    staticProps && override(base, res, staticProps);
+
+    return res;
+}
+
+inherit.self = function() {
+    var args = arguments,
+        withMixins = isArray(args[0]),
+        base = withMixins? applyMixins(args[0], args[0][0]) : args[0],
+        props = args[1],
+        staticProps = args[2],
+        basePtp = base.prototype;
+
+    props && override(basePtp, basePtp, props);
+    staticProps && override(base, base, staticProps);
+
+    return base;
+};
+
+var defineAsGlobal = true;
+if(typeof exports === 'object') {
+    module.exports = inherit;
+    defineAsGlobal = false;
+}
+
+if(typeof modules === 'object') {
+    modules.define('inherit', function(provide) {
+        provide(inherit);
+    });
+    defineAsGlobal = false;
+}
+
+if(typeof define === 'function') {
+    define(function(require, exports, module) {
+        module.exports = inherit;
+    });
+    defineAsGlobal = false;
+}
+
+defineAsGlobal && (global.inherit = inherit);
+
+})(this);
+
+/* end: ../../../libs/bem-core/common.blocks/inherit/inherit.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/identify/identify.vanilla.js */
+/**
+ * @module identify
+ */
+
+modules.define('identify', function(provide) {
+
+var counter = 0,
+    expando = '__' + (+new Date),
+    get = function() {
+        return 'uniq' + (++counter);
+    };
+
+provide(
+    /**
+     * Makes unique ID
+     * @exports
+     * @param {Object} obj Object that needs to be identified
+     * @param {Boolean} [onlyGet=false] Return a unique value only if it had already been assigned before
+     * @returns {String} ID
+     */
+    function(obj, onlyGet) {
+        if(!obj) return get();
+
+        var key = 'uniqueID' in obj? 'uniqueID' : expando; // Use when possible native uniqueID for elements in IE
+
+        return onlyGet || key in obj?
+            obj[key] :
+            obj[key] = get();
+    }
+);
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/identify/identify.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/next-tick/next-tick.vanilla.js */
+/**
+ * @module next-tick
+ */
+
+modules.define('next-tick', function(provide) {
+
+/**
+ * Executes given function on next tick.
+ * @exports
+ * @type Function
+ * @param {Function} fn
+ */
+
+var global = this.global,
+    fns = [],
+    enqueueFn = function(fn) {
+        return fns.push(fn) === 1;
+    },
+    callFns = function() {
+        var fnsToCall = fns, i = 0, len = fns.length;
+        fns = [];
+        while(i < len) {
+            fnsToCall[i++]();
+        }
+    };
+
+    /* global process */
+    if(typeof process === 'object' && process.nextTick) { // nodejs
+        return provide(function(fn) {
+            enqueueFn(fn) && process.nextTick(callFns);
+        });
+    }
+
+    if(global.setImmediate) { // ie10
+        return provide(function(fn) {
+            enqueueFn(fn) && global.setImmediate(callFns);
+        });
+    }
+
+    if(global.postMessage) { // modern browsers
+        var isPostMessageAsync = true;
+        if(global.attachEvent) {
+            var checkAsync = function() {
+                    isPostMessageAsync = false;
+                };
+            global.attachEvent('onmessage', checkAsync);
+            global.postMessage('__checkAsync', '*');
+            global.detachEvent('onmessage', checkAsync);
+        }
+
+        if(isPostMessageAsync) {
+            var msg = '__nextTick' + (+new Date),
+                onMessage = function(e) {
+                    if(e.data === msg) {
+                        e.stopPropagation && e.stopPropagation();
+                        callFns();
+                    }
+                };
+
+            global.addEventListener?
+                global.addEventListener('message', onMessage, true) :
+                global.attachEvent('onmessage', onMessage);
+
+            return provide(function(fn) {
+                enqueueFn(fn) && global.postMessage(msg, '*');
+            });
+        }
+    }
+
+    var doc = global.document;
+    if('onreadystatechange' in doc.createElement('script')) { // ie6-ie8
+        var head = doc.getElementsByTagName('head')[0],
+            createScript = function() {
+                var script = doc.createElement('script');
+                script.onreadystatechange = function() {
+                    script.parentNode.removeChild(script);
+                    script = script.onreadystatechange = null;
+                    callFns();
+                };
+                head.appendChild(script);
+            };
+
+        return provide(function(fn) {
+            enqueueFn(fn) && createScript();
+        });
+    }
+
+    provide(function(fn) { // old browsers
+        enqueueFn(fn) && global.setTimeout(callFns, 0);
+    });
+});
+
+/* end: ../../../libs/bem-core/common.blocks/next-tick/next-tick.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/objects/objects.vanilla.js */
+/**
+ * @module objects
+ * @description A set of helpers to work with JavaScript objects
+ */
+
+modules.define('objects', function(provide) {
+
+var hasOwnProp = Object.prototype.hasOwnProperty;
+
+provide(/** @exports */{
+    /**
+     * Extends a given target by
+     * @param {Object} target object to extend
+     * @param {...Object} source
+     * @returns {Object}
+     */
+    extend : function(target, source) {
+        typeof target !== 'object' && (target = {});
+
+        for(var i = 1, len = arguments.length; i < len; i++) {
+            var obj = arguments[i];
+            if(obj) {
+                for(var key in obj) {
+                    hasOwnProp.call(obj, key) && (target[key] = obj[key]);
+                }
+            }
+        }
+
+        return target;
+    },
+
+    /**
+     * Check whether a given object is empty (contains no enumerable properties)
+     * @param {Object} obj
+     * @returns {Boolean}
+     */
+    isEmpty : function(obj) {
+        for(var key in obj) {
+            if(hasOwnProp.call(obj, key)) {
+                return false;
+            }
+        }
+
+        return true;
+    },
+
+    /**
+     * Generic iterator function over object
+     * @param {Object} obj object to iterate
+     * @param {Function} fn callback
+     * @param {Object} [ctx] callbacks's context
+     */
+    each : function(obj, fn, ctx) {
+        for(var key in obj) {
+            if(hasOwnProp.call(obj, key)) {
+                ctx? fn.call(ctx, obj[key], key) : fn(obj[key], key);
+            }
+        }
+    }
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/objects/objects.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/functions/functions.vanilla.js */
+/**
+ * @module functions
+ * @description A set of helpers to work with JavaScript functions
+ */
+
+modules.define('functions', function(provide) {
+
+var toStr = Object.prototype.toString;
+
+provide(/** @exports */{
+    /**
+     * Checks whether a given object is function
+     * @param {*} obj
+     * @returns {Boolean}
+     */
+    isFunction : function(obj) {
+        return toStr.call(obj) === '[object Function]';
+    },
+
+    /**
+     * Empty function
+     */
+    noop : function() {}
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/functions/functions.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/**
+ * @module events
+ */
+
+modules.define(
+    'events',
+    ['identify', 'inherit', 'functions'],
+    function(provide, identify, inherit, functions) {
+
+var undef,
+    storageExpando = '__' + (+new Date) + 'storage',
+    getFnId = function(fn, ctx) {
+        return identify(fn) + (ctx? identify(ctx) : '');
+    },
+
+    /**
+     * @class Event
+     * @exports events:Event
+     */
+    Event = inherit(/** @lends Event.prototype */{
+        /**
+         * @constructor
+         * @param {String} type
+         * @param {Object} target
+         */
+        __constructor : function(type, target) {
+            /**
+             * Type
+             * @member {String} Event
+             */
+            this.type = type;
+
+            /**
+             * Target
+             * @member {String} Event
+             */
+            this.target = target;
+
+            /**
+             * Result
+             * @member {*}
+             */
+            this.result = undef;
+
+            /**
+             * Data
+             * @member {*}
+             */
+            this.data = undef;
+
+            this._isDefaultPrevented = false;
+            this._isPropagationStopped = false;
+        },
+
+        /**
+         * Prevents default action
+         */
+        preventDefault : function() {
+            this._isDefaultPrevented = true;
+        },
+
+        /**
+         * Returns whether is default action prevented
+         * @returns {Boolean}
+         */
+        isDefaultPrevented : function() {
+            return this._isDefaultPrevented;
+        },
+
+        /**
+         * Stops propagation
+         */
+        stopPropagation : function() {
+            this._isPropagationStopped = true;
+        },
+
+        /**
+         * Returns whether is propagation stopped
+         * @returns {Boolean}
+         */
+        isPropagationStopped : function() {
+            return this._isPropagationStopped;
+        }
+    }),
+
+    /**
+     * @lends Emitter
+     * @lends Emitter.prototype
+     */
+    EmitterProps = {
+        /**
+         * Adds an event handler
+         * @param {String} e Event type
+         * @param {Object} [data] Additional data that the handler gets as e.data
+         * @param {Function} fn Handler
+         * @param {Object} [ctx] Handler context
+         * @returns {Emitter} this
+         */
+        on : function(e, data, fn, ctx, _special) {
+            if(typeof e === 'string') {
+                if(functions.isFunction(data)) {
+                    ctx = fn;
+                    fn = data;
+                    data = undef;
+                }
+
+                var id = getFnId(fn, ctx),
+                    storage = this[storageExpando] || (this[storageExpando] = {}),
+                    eventTypes = e.split(' '), eventType,
+                    i = 0, list, item,
+                    eventStorage;
+
+                while(eventType = eventTypes[i++]) {
+                    eventStorage = storage[eventType] || (storage[eventType] = { ids : {}, list : {} });
+                    if(!(id in eventStorage.ids)) {
+                        list = eventStorage.list;
+                        item = { fn : fn, data : data, ctx : ctx, special : _special };
+                        if(list.last) {
+                            list.last.next = item;
+                            item.prev = list.last;
+                        } else {
+                            list.first = item;
+                        }
+                        eventStorage.ids[id] = list.last = item;
+                    }
+                }
+            } else {
+                for(var key in e) {
+                    e.hasOwnProperty(key) && this.on(key, e[key], data, _special);
+                }
+            }
+
+            return this;
+        },
+
+        /**
+         * Adds a one time handler for the event.
+         * Handler is executed only the next time the event is fired, after which it is removed.
+         * @param {String} e Event type
+         * @param {Object} [data] Additional data that the handler gets as e.data
+         * @param {Function} fn Handler
+         * @param {Object} [ctx] Handler context
+         * @returns {Emitter} this
+         */
+        once : function(e, data, fn, ctx) {
+            return this.on(e, data, fn, ctx, { once : true });
+        },
+
+        /**
+         * Removes event handler or handlers
+         * @param {String} [e] Event type
+         * @param {Function} [fn] Handler
+         * @param {Object} [ctx] Handler context
+         * @returns {Emitter} this
+         */
+        un : function(e, fn, ctx) {
+            if(typeof e === 'string' || typeof e === 'undefined') {
+                var storage = this[storageExpando];
+                if(storage) {
+                    if(e) { // if event type was passed
+                        var eventTypes = e.split(' '),
+                            i = 0, eventStorage;
+                        while(e = eventTypes[i++]) {
+                            if(eventStorage = storage[e]) {
+                                if(fn) {  // if specific handler was passed
+                                    var id = getFnId(fn, ctx),
+                                        ids = eventStorage.ids;
+                                    if(id in ids) {
+                                        var list = eventStorage.list,
+                                            item = ids[id],
+                                            prev = item.prev,
+                                            next = item.next;
+
+                                        if(prev) {
+                                            prev.next = next;
+                                        } else if(item === list.first) {
+                                            list.first = next;
+                                        }
+
+                                        if(next) {
+                                            next.prev = prev;
+                                        } else if(item === list.last) {
+                                            list.last = prev;
+                                        }
+
+                                        delete ids[id];
+                                    }
+                                } else {
+                                    delete this[storageExpando][e];
+                                }
+                            }
+                        }
+                    } else {
+                        delete this[storageExpando];
+                    }
+                }
+            } else {
+                for(var key in e) {
+                    e.hasOwnProperty(key) && this.un(key, e[key], fn);
+                }
+            }
+
+            return this;
+        },
+
+        /**
+         * Fires event handlers
+         * @param {String|events:Event} e Event
+         * @param {Object} [data] Additional data
+         * @returns {Emitter} this
+         */
+        emit : function(e, data) {
+            var storage = this[storageExpando],
+                eventInstantiated = false;
+
+            if(storage) {
+                var eventTypes = [typeof e === 'string'? e : e.type, '*'],
+                    i = 0, eventType, eventStorage;
+                while(eventType = eventTypes[i++]) {
+                    if(eventStorage = storage[eventType]) {
+                        var item = eventStorage.list.first,
+                            lastItem = eventStorage.list.last,
+                            res;
+                        while(item) {
+                            if(!eventInstantiated) { // instantiate Event only on demand
+                                eventInstantiated = true;
+                                typeof e === 'string' && (e = new Event(e));
+                                e.target || (e.target = this);
+                            }
+
+                            e.data = item.data;
+                            res = item.fn.apply(item.ctx || this, arguments);
+                            if(typeof res !== 'undefined') {
+                                e.result = res;
+                                if(res === false) {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                }
+                            }
+
+                            item.special && item.special.once &&
+                                this.un(e.type, item.fn, item.ctx);
+
+                            if(item === lastItem) {
+                                break;
+                            }
+
+                            item = item.next;
+                        }
+                    }
+                }
+            }
+
+            return this;
+        }
+    },
+    /**
+     * @class Emitter
+     * @exports events:Emitter
+     */
+    Emitter = inherit(
+        EmitterProps,
+        EmitterProps);
+
+provide({
+    Emitter : Emitter,
+    Event : Event
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
+/**
+ * @module functions__throttle
+ */
+
+modules.define('functions__throttle', function(provide) {
+
+var global = this.global;
+
+provide(
+    /**
+     * Throttle given function
+     * @exports
+     * @param {Function} fn function to throttle
+     * @param {Number} timeout throttle interval
+     * @param {Boolean} [invokeAsap=true] invoke before first interval
+     * @param {Object} [ctx] context of function invocation
+     * @returns {Function} throttled function
+     */
+    function(fn, timeout, invokeAsap, ctx) {
+        var typeofInvokeAsap = typeof invokeAsap;
+        if(typeofInvokeAsap === 'undefined') {
+            invokeAsap = true;
+        } else if(arguments.length === 3 && typeofInvokeAsap !== 'boolean') {
+            ctx = invokeAsap;
+            invokeAsap = true;
+        }
+
+        var timer, args, needInvoke,
+            wrapper = function() {
+                if(needInvoke) {
+                    fn.apply(ctx, args);
+                    needInvoke = false;
+                    timer = global.setTimeout(wrapper, timeout);
+                } else {
+                    timer = null;
+                }
+            };
+
+        return function() {
+            args = arguments;
+            ctx || (ctx = this);
+            needInvoke = true;
+
+            if(!timer) {
+                invokeAsap?
+                    wrapper() :
+                    timer = global.setTimeout(wrapper, timeout);
+            }
+        };
+    });
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
+/**
+ * @module i-bem__dom
+ */
+
+modules.define(
+    'i-bem__dom',
+    ['i-bem', 'i-bem__internal', 'identify', 'objects', 'functions', 'jquery', 'dom'],
+    function(provide, BEM, INTERNAL, identify, objects, functions, $, dom) {
+
+var undef,
+    win = $(window),
+    doc = $(document),
+
+    /**
+     * Storage for DOM elements by unique key
+     * @type Object
+     */
+    uniqIdToDomElems = {},
+
+    /**
+     * Storage for blocks by unique key
+     * @type Object
+     */
+    uniqIdToBlock = {},
+
+    /**
+     * Storage for DOM element's parent nodes
+     * @type Object
+     */
+    domNodesToParents = {},
+
+    /**
+     * Storage for block parameters
+     * @type Object
+     */
+    domElemToParams = {},
+
+    /**
+     * Storage for liveCtx event handlers
+     * @type Object
+     */
+    liveEventCtxStorage = {},
+
+    /**
+     * Storage for liveClass event handlers
+     * @type Object
+     */
+    liveClassEventStorage = {},
+
+    blocks = BEM.blocks,
+
+    BEM_CLASS = 'i-bem',
+    BEM_SELECTOR = '.' + BEM_CLASS,
+    BEM_PARAMS_ATTR = 'data-bem',
+
+    NAME_PATTERN = INTERNAL.NAME_PATTERN,
+
+    MOD_DELIM = INTERNAL.MOD_DELIM,
+    ELEM_DELIM = INTERNAL.ELEM_DELIM,
+
+    EXTRACT_MODS_RE = RegExp(
+        '[^' + MOD_DELIM + ']' + MOD_DELIM + '(' + NAME_PATTERN + ')' +
+        '(?:' + MOD_DELIM + '(' + NAME_PATTERN + '))?$'),
+
+    buildModPostfix = INTERNAL.buildModPostfix,
+    buildClass = INTERNAL.buildClass,
+
+    reverse = Array.prototype.reverse;
+
+/**
+ * Initializes blocks on a DOM element
+ * @param {jQuery} domElem DOM element
+ * @param {String} uniqInitId ID of the "initialization wave"
+ */
+function initBlocks(domElem, uniqInitId) {
+    var domNode = domElem[0],
+        params = getParams(domNode),
+        blockName;
+
+    for(blockName in params)
+        initBlock(
+            blockName,
+            domElem,
+            processParams(params[blockName], blockName, uniqInitId));
+}
+
+/**
+ * Initializes a specific block on a DOM element, or returns the existing block if it was already created
+ * @param {String} blockName Block name
+ * @param {jQuery} domElem DOM element
+ * @param {Object} [params] Initialization parameters
+ * @param {Boolean} [forceLive=false] Force live initialization
+ * @param {Function} [callback] Handler to call after complete initialization
+ */
+function initBlock(blockName, domElem, params, forceLive, callback) {
+    var domNode = domElem[0];
+
+    params || (params = processParams(getBlockParams(domNode, blockName), blockName));
+
+    var uniqId = params.uniqId,
+        block = uniqIdToBlock[uniqId];
+
+    if(block) {
+        if(block.domElem.index(domNode) < 0) {
+            block.domElem = block.domElem.add(domElem);
+            objects.extend(block.params, params);
+        }
+
+        return block;
+    }
+
+    uniqIdToDomElems[uniqId] = uniqIdToDomElems[uniqId]?
+        uniqIdToDomElems[uniqId].add(domElem) :
+        domElem;
+
+    var parentDomNode = domNode.parentNode;
+    if(!parentDomNode || parentDomNode.nodeType === 11) { // jquery doesn't unique disconnected node
+        $.unique(uniqIdToDomElems[uniqId]);
+    }
+
+    var blockClass = blocks[blockName] || DOM.decl(blockName, {}, { live : true }, true);
+    if(!(blockClass._liveInitable = !!blockClass._processLive()) || forceLive || params.live === false) {
+        forceLive && domElem.addClass(BEM_CLASS); // add css class for preventing memory leaks in further destructing
+
+        block = new blockClass(uniqIdToDomElems[uniqId], params, !!forceLive);
+
+        delete uniqIdToDomElems[uniqId];
+        callback && callback.apply(block, Array.prototype.slice.call(arguments, 4));
+        return block;
+    }
+}
+
+/**
+ * Processes and adds necessary block parameters
+ * @param {Object} params Initialization parameters
+ * @param {String} blockName Block name
+ * @param {String} [uniqInitId] ID of the "initialization wave"
+ */
+function processParams(params, blockName, uniqInitId) {
+    params.uniqId ||
+        (params.uniqId = (params.id?
+            blockName + '-id-' + params.id :
+            identify()) + (uniqInitId || identify()));
+
+    return params;
+}
+
+/**
+ * Helper for searching for a DOM element using a selector inside the context, including the context itself
+ * @param {jQuery} ctx Context
+ * @param {String} selector CSS selector
+ * @param {Boolean} [excludeSelf=false] Exclude context from search
+ * @returns {jQuery}
+ */
+function findDomElem(ctx, selector, excludeSelf) {
+    var res = ctx.find(selector);
+    return excludeSelf?
+       res :
+       res.add(ctx.filter(selector));
+}
+
+/**
+ * Returns parameters of a block's DOM element
+ * @param {HTMLElement} domNode DOM node
+ * @returns {Object}
+ */
+function getParams(domNode, blockName) {
+    var uniqId = identify(domNode);
+    return domElemToParams[uniqId] ||
+        (domElemToParams[uniqId] = extractParams(domNode));
+}
+
+/**
+ * Returns parameters of a block extracted from DOM node
+ * @param {HTMLElement} domNode DOM node
+ * @param {String} blockName
+ * @returns {Object}
+ */
+
+function getBlockParams(domNode, blockName) {
+    var params = getParams(domNode);
+    return params[blockName] || (params[blockName] = {});
+}
+
+/**
+ * Retrieves block parameters from a DOM element
+ * @param {HTMLElement} domNode DOM node
+ * @returns {Object}
+ */
+function extractParams(domNode) {
+    var attrVal = domNode.getAttribute(BEM_PARAMS_ATTR);
+    return attrVal? JSON.parse(attrVal) : {};
+}
+
+/**
+ * Uncouple DOM node from the block. If this is the last node, then destroys the block.
+ * @param {BEMDOM} block block
+ * @param {HTMLElement} domNode DOM node
+ */
+function removeDomNodeFromBlock(block, domNode) {
+    block.domElem.length === 1?
+        block._destruct() :
+        block.domElem = block.domElem.not(domNode);
+}
+
+/**
+ * Fills DOM node's parent nodes to the storage
+ * @param {jQuery} domElem
+ */
+function storeDomNodeParents(domElem) {
+    domElem.each(function() {
+        domNodesToParents[identify(this)] = this.parentNode;
+    });
+}
+
+/**
+ * @class BEMDOM
+ * @description Base block for creating BEM blocks that have DOM representation
+ * @exports
+ */
+
+var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
+    /**
+     * @constructor
+     * @private
+     * @param {jQuery} domElem DOM element that the block is created on
+     * @param {Object} params Block parameters
+     * @param {Boolean} [initImmediately=true]
+     */
+    __constructor : function(domElem, params, initImmediately) {
+        /**
+         * DOM elements of block
+         * @member {jQuery}
+         * @readonly
+         */
+        this.domElem = domElem;
+
+        /**
+         * Cache for names of events on DOM elements
+         * @member {Object}
+         * @private
+         */
+        this._eventNameCache = {};
+
+        /**
+         * Cache for elements
+         * @member {Object}
+         * @private
+         */
+        this._elemCache = {};
+
+        /**
+         * @member {String} Unique block ID
+         * @private
+         */
+        this._uniqId = params.uniqId;
+
+        uniqIdToBlock[this._uniqId] = this;
+
+        /**
+         * @member {Boolean} Flag for whether it's necessary to unbind from the document and window when destroying the block
+         * @private
+         */
+        this._needSpecialUnbind = false;
+
+        this.__base(null, params, initImmediately);
+    },
+
+    /**
+     * Finds blocks inside the current block or its elements (including context)
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM[]}
+     */
+    findBlocksInside : function(elem, block) {
+        return this._findBlocks('find', elem, block);
+    },
+
+    /**
+     * Finds the first block inside the current block or its elements (including context)
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM}
+     */
+    findBlockInside : function(elem, block) {
+        return this._findBlocks('find', elem, block, true);
+    },
+
+    /**
+     * Finds blocks outside the current block or its elements (including context)
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM[]}
+     */
+    findBlocksOutside : function(elem, block) {
+        return this._findBlocks('parents', elem, block);
+    },
+
+    /**
+     * Finds the first block outside the current block or its elements (including context)
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM}
+     */
+    findBlockOutside : function(elem, block) {
+        return this._findBlocks('closest', elem, block)[0] || null;
+    },
+
+    /**
+     * Finds blocks on DOM elements of the current block or its elements
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM[]}
+     */
+    findBlocksOn : function(elem, block) {
+        return this._findBlocks('', elem, block);
+    },
+
+    /**
+     * Finds the first block on DOM elements of the current block or its elements
+     * @param {String|jQuery} [elem] Block element
+     * @param {String|Object} block Name or description (block,modName,modVal) of the block to find
+     * @returns {BEMDOM}
+     */
+    findBlockOn : function(elem, block) {
+        return this._findBlocks('', elem, block, true);
+    },
+
+    _findBlocks : function(select, elem, block, onlyFirst) {
+        if(!block) {
+            block = elem;
+            elem = undef;
+        }
+
+        var ctxElem = elem?
+                (typeof elem === 'string'? this.findElem(elem) : elem) :
+                this.domElem,
+            isSimpleBlock = typeof block === 'string',
+            blockName = isSimpleBlock? block : (block.block || block.blockName),
+            selector = '.' +
+                (isSimpleBlock?
+                    buildClass(blockName) :
+                    buildClass(blockName, block.modName, block.modVal)) +
+                (onlyFirst? ':first' : ''),
+            domElems = ctxElem.filter(selector);
+
+        select && (domElems = domElems.add(ctxElem[select](selector)));
+
+        if(onlyFirst) {
+            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true) : null;
+        }
+
+        var res = [],
+            uniqIds = {};
+
+        domElems.each(function(i, domElem) {
+            var block = initBlock(blockName, $(domElem), undef, true);
+            if(!uniqIds[block._uniqId]) {
+                uniqIds[block._uniqId] = true;
+                res.push(block);
+            }
+        });
+
+        return res;
+    },
+
+    /**
+     * Adds an event handler for any DOM element
+     * @protected
+     * @param {jQuery} domElem DOM element where the event will be listened for
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
+     * @param {Function} fn Handler function, which will be executed in the block's context
+     * @returns {BEMDOM} this
+     */
+    bindToDomElem : function(domElem, event, data, fn) {
+        if(functions.isFunction(data)) {
+            fn = data;
+            data = undef;
+        }
+
+        fn?
+            domElem.bind(
+                this._buildEventName(event),
+                data,
+                $.proxy(fn, this)) :
+            objects.each(event, function(fn, event) {
+                this.bindToDomElem(domElem, event, data, fn);
+            }, this);
+
+        return this;
+    },
+
+    /**
+     * Adds an event handler to the document
+     * @protected
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
+     * @param {Function} fn Handler function, which will be executed in the block's context
+     * @returns {BEMDOM} this
+     */
+    bindToDoc : function(event, data, fn) {
+        this._needSpecialUnbind = true;
+        return this.bindToDomElem(doc, event, data, fn);
+    },
+
+    /**
+     * Adds an event handler to the window
+     * @protected
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
+     * @param {Function} fn Handler function, which will be executed in the block's context
+     * @returns {BEMDOM} this
+     */
+    bindToWin : function(event, data, fn) {
+        this._needSpecialUnbind = true;
+        return this.bindToDomElem(win, event, data, fn);
+    },
+
+    /**
+     * Adds an event handler to the block's main DOM elements or its nested elements
+     * @protected
+     * @param {jQuery|String} [elem] Element
+     * @param {String|Object} event Event name or event object
+     * @param {Object} [data] Additional event data
+     * @param {Function} fn Handler function, which will be executed in the block's context
+     * @returns {BEMDOM} this
+     */
+    bindTo : function(elem, event, data, fn) {
+        var len = arguments.length;
+        if(len === 3) {
+            if(functions.isFunction(data)) {
+                fn = data;
+                if(typeof event === 'object') {
+                    data = event;
+                    event = elem;
+                    elem = this.domElem;
+                }
+            }
+        } else if(len === 2) {
+            if(functions.isFunction(event)) {
+                fn = event;
+                event = elem;
+                elem = this.domElem;
+            } else if(!(typeof elem === 'string' || elem instanceof $)) {
+                data = event;
+                event = elem;
+                elem = this.domElem;
+            }
+        } else if(len === 1) {
+            event = elem;
+            elem = this.domElem;
+        }
+
+        typeof elem === 'string' && (elem = this.elem(elem));
+
+        return this.bindToDomElem(elem, event, data, fn);
+    },
+
+    /**
+     * Removes event handlers from any DOM element
+     * @protected
+     * @param {jQuery} domElem DOM element where the event was being listened for
+     * @param {String|Object} event Event name or event object
+     * @param {Function} [fn] Handler function
+     * @returns {BEMDOM} this
+     */
+    unbindFromDomElem : function(domElem, event, fn) {
+        if(typeof event === 'string') {
+            event = this._buildEventName(event);
+            fn?
+                domElem.unbind(event, fn) :
+                domElem.unbind(event);
+        } else {
+            objects.each(event, function(fn, event) {
+                this.unbindFromDomElem(domElem, event, fn);
+            }, this);
+        }
+
+        return this;
+    },
+
+    /**
+     * Removes event handler from document
+     * @protected
+     * @param {String|Object} event Event name or event object
+     * @param {Function} [fn] Handler function
+     * @returns {BEMDOM} this
+     */
+    unbindFromDoc : function(event, fn) {
+        return this.unbindFromDomElem(doc, event, fn);
+    },
+
+    /**
+     * Removes event handler from window
+     * @protected
+     * @param {String|Object} event Event name or event object
+     * @param {Function} [fn] Handler function
+     * @returns {BEMDOM} this
+     */
+    unbindFromWin : function(event, fn) {
+        return this.unbindFromDomElem(win, event, fn);
+    },
+
+    /**
+     * Removes event handlers from the block's main DOM elements or its nested elements
+     * @protected
+     * @param {jQuery|String} [elem] Nested element
+     * @param {String|Object} event Event name or event object
+     * @param {Function} [fn] Handler function
+     * @returns {BEMDOM} this
+     */
+    unbindFrom : function(elem, event, fn) {
+        var argLen = arguments.length;
+        if(argLen === 1) {
+            event = elem;
+            elem = this.domElem;
+        } else if(argLen === 2 && functions.isFunction(event)) {
+            fn = event;
+            event = elem;
+            elem = this.domElem;
+        } else if(typeof elem === 'string') {
+            elem = this.elem(elem);
+        }
+
+        return this.unbindFromDomElem(elem, event, fn);
+    },
+
+    /**
+     * Builds a full name for an event
+     * @private
+     * @param {String} event Event name
+     * @returns {String}
+     */
+    _buildEventName : function(event) {
+        return event.indexOf(' ') > 1?
+            event.split(' ').map(function(e) {
+                return this._buildOneEventName(e);
+            }, this).join(' ') :
+            this._buildOneEventName(event);
+    },
+
+    /**
+     * Builds a full name for a single event
+     * @private
+     * @param {String} event Event name
+     * @returns {String}
+     */
+    _buildOneEventName : function(event) {
+        var eventNameCache = this._eventNameCache;
+
+        if(event in eventNameCache) return eventNameCache[event];
+
+        var uniq = '.' + this._uniqId;
+
+        if(event.indexOf('.') < 0) return eventNameCache[event] = event + uniq;
+
+        var lego = '.bem_' + this.__self._name;
+
+        return eventNameCache[event] = event.split('.').map(function(e, i) {
+            return i === 0? e + lego : lego + '_' + e;
+        }).join('') + uniq;
+    },
+
+    _ctxEmit : function(e, data) {
+        this.__base.apply(this, arguments);
+
+        var _this = this,
+            storage = liveEventCtxStorage[_this.__self._buildCtxEventName(e.type)],
+            ctxIds = {};
+
+        storage && _this.domElem.each(function(_, ctx) {
+            var counter = storage.counter;
+            while(ctx && counter) {
+                var ctxId = identify(ctx, true);
+                if(ctxId) {
+                    if(ctxIds[ctxId]) break;
+                    var storageCtx = storage.ctxs[ctxId];
+                    if(storageCtx) {
+                        objects.each(storageCtx, function(handler) {
+                            handler.fn.call(
+                                handler.ctx || _this,
+                                e,
+                                data);
+                        });
+                        counter--;
+                    }
+                    ctxIds[ctxId] = true;
+                }
+                ctx = ctx.parentNode || domNodesToParents[ctxId];
+            }
+        });
+    },
+
+    /**
+     * Sets a modifier for a block/nested element
+     * @param {jQuery} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} modVal Modifier value
+     * @returns {BEMDOM} this
+     */
+    setMod : function(elem, modName, modVal) {
+        if(elem && typeof modVal !== 'undefined' && elem.length > 1) {
+            var _this = this;
+            elem.each(function() {
+                var item = $(this);
+                item.__bemElemName = elem.__bemElemName;
+                _this.setMod(item, modName, modVal);
+            });
+            return _this;
+        }
+        return this.__base(elem, modName, modVal);
+    },
+
+    /**
+     * Retrieves modifier value from the DOM node's CSS class
+     * @private
+     * @param {String} modName Modifier name
+     * @param {jQuery} [elem] Nested element
+     * @param {String} [elemName] Name of the nested element
+     * @returns {String} Modifier value
+     */
+    _extractModVal : function(modName, elem, elemName) {
+        var domNode = (elem || this.domElem)[0],
+            matches;
+
+        domNode &&
+            (matches = domNode.className
+                .match(this.__self._buildModValRE(modName, elemName || elem)));
+
+        return matches? matches[2] || true : '';
+    },
+
+    /**
+     * Retrieves a name/value list of modifiers
+     * @private
+     * @param {Array} [modNames] Names of modifiers
+     * @param {Object} [elem] Element
+     * @returns {Object} Hash of modifier values by names
+     */
+    _extractMods : function(modNames, elem) {
+        var res = {},
+            extractAll = !modNames.length,
+            countMatched = 0;
+
+        ((elem || this.domElem)[0].className
+            .match(this.__self._buildModValRE(
+                '(' + (extractAll? NAME_PATTERN : modNames.join('|')) + ')',
+                elem,
+                'g')) || []).forEach(function(className) {
+                    var matches = className.match(EXTRACT_MODS_RE);
+                    res[matches[1]] = matches[2] || true;
+                    ++countMatched;
+                });
+
+        // empty modifier values are not reflected in classes; they must be filled with empty values
+        countMatched < modNames.length && modNames.forEach(function(modName) {
+            modName in res || (res[modName] = '');
+        });
+
+        return res;
+    },
+
+    /**
+     * Sets a modifier's CSS class for a block's DOM element or nested element
+     * @private
+     * @param {String} modName Modifier name
+     * @param {String} modVal Modifier value
+     * @param {String} oldModVal Old modifier value
+     * @param {jQuery} [elem] Element
+     * @param {String} [elemName] Element name
+     */
+    _onSetMod : function(modName, modVal, oldModVal, elem, elemName) {
+        if(modName !== 'js' || modVal !== '') {
+            var _self = this.__self,
+                classPrefix = _self._buildModClassPrefix(modName, elemName),
+                classRE = _self._buildModValRE(modName, elemName),
+                needDel = modVal === '' || modVal === false;
+
+            (elem || this.domElem).each(function() {
+                var className = this.className,
+                    modClassName = classPrefix;
+
+                modVal !== true && (modClassName += MOD_DELIM + modVal);
+
+                (oldModVal === true?
+                    classRE.test(className) :
+                    className.indexOf(classPrefix + MOD_DELIM) > -1)?
+                        this.className = className.replace(
+                            classRE,
+                            (needDel? '' : '$1' + modClassName)) :
+                        needDel || $(this).addClass(modClassName);
+            });
+
+            elemName && this
+                .dropElemCache(elemName, modName, oldModVal)
+                .dropElemCache(elemName, modName, modVal);
+        }
+
+        this.__base.apply(this, arguments);
+    },
+
+    /**
+     * Finds elements nested in a block
+     * @param {jQuery} [ctx=this.domElem] Element where search is being performed
+     * @param {String} names Nested element name (or names separated by spaces)
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @param {Boolean} [strictMode=false]
+     * @returns {jQuery} DOM elements
+     */
+    findElem : function(ctx, names, modName, modVal, strictMode) {
+        if(typeof ctx === 'string') {
+            strictMode = modVal;
+            modVal = modName;
+            modName = names;
+            names = ctx;
+            ctx = this.domElem;
+        }
+
+        if(typeof modName === 'boolean') {
+            strictMode = modName;
+            modName = undef;
+        }
+
+        var _self = this.__self,
+            selector = '.' +
+                names.split(' ').map(function(name) {
+                    return _self.buildClass(name, modName, modVal);
+                }).join(',.'),
+            res = findDomElem(ctx, selector);
+
+        return strictMode? this._filterFindElemResults(res) : res;
+    },
+
+    /**
+     * Filters results of findElem helper execution in strict mode
+     * @param {jQuery} res DOM elements
+     * @returns {jQuery} DOM elements
+     */
+    _filterFindElemResults : function(res) {
+        var blockSelector = this.buildSelector(),
+            domElem = this.domElem;
+        return res.filter(function() {
+            return domElem.index($(this).closest(blockSelector)) > -1;
+        });
+    },
+
+    /**
+     * Finds elements nested in a block
+     * @private
+     * @param {String} name Nested element name
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {jQuery} DOM elements
+     */
+    _elem : function(name, modName, modVal) {
+        var key = name + buildModPostfix(modName, modVal),
+            res;
+
+        if(!(res = this._elemCache[key])) {
+            res = this._elemCache[key] = this.findElem(name, modName, modVal);
+            res.__bemElemName = name;
+        }
+
+        return res;
+    },
+
+    /**
+     * Lazy search for elements nested in a block (caches results)
+     * @param {String} names Nested element name (or names separated by spaces)
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {jQuery} DOM elements
+     */
+    elem : function(names, modName, modVal) {
+        if(modName && typeof modName !== 'string') {
+            modName.__bemElemName = names;
+            return modName;
+        }
+
+        if(names.indexOf(' ') < 0) {
+            return this._elem(names, modName, modVal);
+        }
+
+        var res = $([]);
+        names.split(' ').forEach(function(name) {
+            res = res.add(this._elem(name, modName, modVal));
+        }, this);
+        return res;
+    },
+
+    /**
+     * Finds elements outside the context
+     * @param {jQuery} ctx context
+     * @param {String} elemName Element name
+     * @returns {jQuery} DOM elements
+     */
+    closestElem : function(ctx, elemName) {
+        return ctx.closest(this.buildSelector(elemName));
+    },
+
+    /**
+     * Clearing the cache for elements
+     * @protected
+     * @param {String} [names] Nested element name (or names separated by spaces)
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {BEMDOM} this
+     */
+    dropElemCache : function(names, modName, modVal) {
+        if(names) {
+            var modPostfix = buildModPostfix(modName, modVal);
+            names.indexOf(' ') < 0?
+                delete this._elemCache[names + modPostfix] :
+                names.split(' ').forEach(function(name) {
+                    delete this._elemCache[name + modPostfix];
+                }, this);
+        } else {
+            this._elemCache = {};
+        }
+
+        return this;
+    },
+
+    /**
+     * Retrieves parameters of a block element
+     * @param {String|jQuery} elem Element
+     * @returns {Object} Parameters
+     */
+    elemParams : function(elem) {
+        var elemName;
+        if(typeof elem === 'string') {
+            elemName = elem;
+            elem = this.elem(elem);
+        } else {
+            elemName = this.__self._extractElemNameFrom(elem);
+        }
+
+        return extractParams(elem[0])[this.__self.buildClass(elemName)] || {};
+    },
+
+    /**
+     * Elemify given element
+     * @param {jQuery} elem Element
+     * @param {String} elemName Name
+     * @returns {jQuery}
+     */
+    elemify : function(elem, elemName) {
+        (elem = $(elem)).__bemElemName = elemName;
+        return elem;
+    },
+
+    /**
+     * Checks whether a DOM element is in a block
+     * @protected
+     * @param {jQuery} [ctx=this.domElem] Element where check is being performed
+     * @param {jQuery} domElem DOM element
+     * @returns {Boolean}
+     */
+    containsDomElem : function(ctx, domElem) {
+        if(arguments.length === 1) {
+            domElem = ctx;
+            ctx = this.domElem;
+        }
+
+        return dom.contains(ctx, domElem);
+    },
+
+    /**
+     * Builds a CSS selector corresponding to a block/element and modifier
+     * @param {String} [elem] Element name
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {String}
+     */
+    buildSelector : function(elem, modName, modVal) {
+        return this.__self.buildSelector(elem, modName, modVal);
+    },
+
+    /**
+     * Destructs a block
+     * @private
+     */
+    _destruct : function() {
+        var _this = this,
+            _self = _this.__self;
+
+        _this._needSpecialUnbind && _self.doc.add(_self.win).unbind('.' + _this._uniqId);
+
+        _this.__base();
+
+        delete uniqIdToBlock[_this.un()._uniqId];
+    }
+
+}, /** @lends BEMDOM */{
+
+    /**
+     * Scope, will be set on onDomReady to `<body>`
+     * @type jQuery
+     */
+    scope : null,
+
+    /**
+     * Document shortcut
+     * @type jQuery
+     */
+    doc : doc,
+
+    /**
+     * Window shortcut
+     * @type jQuery
+     */
+    win : win,
+
+    /**
+     * Processes a block's live properties
+     * @private
+     * @param {Boolean} [heedLive=false] Whether to take into account that the block already processed its live properties
+     * @returns {Boolean} Whether the block is a live block
+     */
+    _processLive : function(heedLive) {
+        var res = this._liveInitable;
+
+        if('live' in this) {
+            var noLive = typeof res === 'undefined';
+
+            if(noLive ^ heedLive) { // should be opposite to each other
+                res = this.live() !== false;
+
+                var blockName = this.getName(),
+                    origLive = this.live;
+
+                this.live = function() {
+                    return this.getName() === blockName?
+                        res :
+                        origLive.apply(this, arguments);
+                };
+            }
+        }
+
+        return res;
+    },
+
+    /**
+     * Initializes blocks on a fragment of the DOM tree
+     * @param {jQuery|String} [ctx=scope] Root DOM node
+     * @returns {jQuery} ctx Initialization context
+     */
+    init : function(ctx) {
+        if(typeof ctx === 'string') {
+            ctx = $(ctx);
+        } else if(!ctx) ctx = DOM.scope;
+
+        var uniqInitId = identify();
+        findDomElem(ctx, BEM_SELECTOR).each(function() {
+            initBlocks($(this), uniqInitId);
+        });
+
+        this._runInitFns();
+
+        return ctx;
+    },
+
+    /**
+     * Destroys blocks on a fragment of the DOM tree
+     * @param {jQuery} ctx Root DOM node
+     * @param {Boolean} [excludeSelf=false] Exclude the main domElem
+     */
+    destruct : function(ctx, excludeSelf) {
+        var _ctx;
+        if(excludeSelf) {
+            storeDomNodeParents(_ctx = ctx.children());
+            ctx.empty();
+        } else {
+            storeDomNodeParents(_ctx = ctx);
+            ctx.remove();
+        }
+
+        reverse.call(findDomElem(_ctx, BEM_SELECTOR)).each(function(_, domNode) {
+            var params = getParams(domNode);
+            objects.each(params, function(blockParams) {
+                if(blockParams.uniqId) {
+                    var block = uniqIdToBlock[blockParams.uniqId];
+                    block?
+                        removeDomNodeFromBlock(block, domNode) :
+                        delete uniqIdToDomElems[blockParams.uniqId];
+                }
+            });
+            delete domElemToParams[identify(domNode)];
+        });
+
+        // flush parent nodes storage that has been filled above
+        domNodesToParents = {};
+    },
+
+    /**
+     * Replaces a fragment of the DOM tree inside the context, destroying old blocks and intializing new ones
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content New content
+     * @returns {jQuery} Updated root DOM node
+     */
+    update : function(ctx, content) {
+        this.destruct(ctx, true);
+        return this.init(ctx.html(content));
+    },
+
+    /**
+     * Changes a fragment of the DOM tree including the context and initializes blocks.
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} New content
+     */
+    replace : function(ctx, content) {
+        var prev = ctx.prev(),
+            parent = ctx.parent();
+
+        this.destruct(ctx);
+
+        return this.init(prev.length?
+            $(content).insertAfter(prev) :
+            $(content).prependTo(parent));
+    },
+
+    /**
+     * Adds a fragment of the DOM tree at the end of the context and initializes blocks
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} New content
+     */
+    append : function(ctx, content) {
+        return this.init($(content).appendTo(ctx));
+    },
+
+    /**
+     * Adds a fragment of the DOM tree at the beginning of the context and initializes blocks
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} New content
+     */
+    prepend : function(ctx, content) {
+        return this.init($(content).prependTo(ctx));
+    },
+
+    /**
+     * Adds a fragment of the DOM tree before the context and initializes blocks
+     * @param {jQuery} ctx Contextual DOM node
+     * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} New content
+     */
+    before : function(ctx, content) {
+        return this.init($(content).insertBefore(ctx));
+    },
+
+    /**
+     * Adds a fragment of the DOM tree after the context and initializes blocks
+     * @param {jQuery} ctx Contextual DOM node
+     * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} New content
+     */
+    after : function(ctx, content) {
+        return this.init($(content).insertAfter(ctx));
+    },
+
+    /**
+     * Builds a full name for a live event
+     * @private
+     * @param {String} e Event name
+     * @returns {String}
+     */
+    _buildCtxEventName : function(e) {
+        return this._name + ':' + e;
+    },
+
+    _liveClassBind : function(className, e, callback, invokeOnInit) {
+        if(e.indexOf(' ') > -1) {
+            e.split(' ').forEach(function(e) {
+                this._liveClassBind(className, e, callback, invokeOnInit);
+            }, this);
+        } else {
+            var storage = liveClassEventStorage[e],
+                uniqId = identify(callback);
+
+            if(!storage) {
+                storage = liveClassEventStorage[e] = {};
+                DOM.scope.bind(e, $.proxy(this._liveClassTrigger, this));
+            }
+
+            storage = storage[className] || (storage[className] = { uniqIds : {}, fns : [] });
+
+            if(!(uniqId in storage.uniqIds)) {
+                storage.fns.push({ uniqId : uniqId, fn : this._buildLiveEventFn(callback, invokeOnInit) });
+                storage.uniqIds[uniqId] = storage.fns.length - 1;
+            }
+        }
+
+        return this;
+    },
+
+    _liveClassUnbind : function(className, e, callback) {
+        var storage = liveClassEventStorage[e];
+        if(storage) {
+            if(callback) {
+                if(storage = storage[className]) {
+                    var uniqId = identify(callback);
+                    if(uniqId in storage.uniqIds) {
+                        var i = storage.uniqIds[uniqId],
+                            len = storage.fns.length - 1;
+                        storage.fns.splice(i, 1);
+                        while(i < len) storage.uniqIds[storage.fns[i++].uniqId] = i - 1;
+                        delete storage.uniqIds[uniqId];
+                    }
+                }
+            } else {
+                delete storage[className];
+            }
+        }
+
+        return this;
+    },
+
+    _liveClassTrigger : function(e) {
+        var storage = liveClassEventStorage[e.type];
+        if(storage) {
+            var node = e.target, classNames = [];
+            for(var className in storage) {
+                classNames.push(className);
+            }
+            do {
+                var nodeClassName = ' ' + node.className + ' ', i = 0;
+                while(className = classNames[i++]) {
+                    if(nodeClassName.indexOf(' ' + className + ' ') > -1) {
+                        var j = 0, fns = storage[className].fns, fn, stopPropagationAndPreventDefault = false;
+                        while(fn = fns[j++])
+                            if(fn.fn.call($(node), e) === false) stopPropagationAndPreventDefault = true;
+
+                        stopPropagationAndPreventDefault && e.preventDefault();
+                        if(stopPropagationAndPreventDefault || e.isPropagationStopped()) return;
+
+                        classNames.splice(--i, 1);
+                    }
+                }
+            } while(classNames.length && (node = node.parentNode));
+        }
+    },
+
+    _buildLiveEventFn : function(callback, invokeOnInit) {
+        var _this = this;
+        return function(e) {
+            e.currentTarget = this;
+            var args = [
+                    _this._name,
+                    $(this).closest(_this.buildSelector()),
+                    undef,
+                    true
+                ],
+                block = initBlock.apply(null, invokeOnInit? args.concat([callback, e]) : args);
+
+            if(block && !invokeOnInit && callback)
+                return callback.apply(block, arguments);
+        };
+    },
+
+    /**
+     * Helper for live initialization for an event on DOM elements of a block or its elements
+     * @protected
+     * @param {String} [elemName] Element name or names (separated by spaces)
+     * @param {String} event Event name
+     * @param {Function} [callback] Handler to call after successful initialization
+     */
+    liveInitOnEvent : function(elemName, event, callback) {
+        return this.liveBindTo(elemName, event, callback, true);
+    },
+
+    /**
+     * Helper for subscribing to live events on DOM elements of a block or its elements
+     * @protected
+     * @param {String|Object} [to] Description (object with modName, modVal, elem) or name of the element or elements (space-separated)
+     * @param {String} event Event name
+     * @param {Function} [callback] Handler
+     */
+    liveBindTo : function(to, event, callback, invokeOnInit) {
+        if(!event || functions.isFunction(event)) {
+            callback = event;
+            event = to;
+            to = undef;
+        }
+
+        if(!to || typeof to === 'string') {
+            to = { elem : to };
+        }
+
+        if(to.elem && to.elem.indexOf(' ') > 0) {
+            to.elem.split(' ').forEach(function(elem) {
+                this._liveClassBind(
+                    this.buildClass(elem, to.modName, to.modVal),
+                    event,
+                    callback,
+                    invokeOnInit);
+            }, this);
+            return this;
+        }
+
+        return this._liveClassBind(
+            this.buildClass(to.elem, to.modName, to.modVal),
+            event,
+            callback,
+            invokeOnInit);
+    },
+
+    /**
+     * Helper for unsubscribing from live events on DOM elements of a block or its elements
+     * @protected
+     * @param {String} [elem] Name of the element or elements (space-separated)
+     * @param {String} event Event name
+     * @param {Function} [callback] Handler
+     */
+    liveUnbindFrom : function(elem, event, callback) {
+
+        if(!event || functions.isFunction(event)) {
+            callback = event;
+            event = elem;
+            elem = undef;
+        }
+
+        if(elem && elem.indexOf(' ') > 1) {
+            elem.split(' ').forEach(function(elem) {
+                this._liveClassUnbind(
+                    this.buildClass(elem),
+                    event,
+                    callback);
+            }, this);
+            return this;
+        }
+
+        return this._liveClassUnbind(
+            this.buildClass(elem),
+            event,
+            callback);
+    },
+
+    /**
+     * Helper for live initialization when a different block is initialized
+     * @private
+     * @param {String} event Event name
+     * @param {String} blockName Name of the block that should trigger a reaction when initialized
+     * @param {Function} callback Handler to be called after successful initialization in the new block's context
+     * @param {String} findFnName Name of the method for searching
+     */
+    _liveInitOnBlockEvent : function(event, blockName, callback, findFnName) {
+        var name = this._name;
+        blocks[blockName].on(event, function(e) {
+            var args = arguments,
+                blocks = e.target[findFnName](name);
+
+            callback && blocks.forEach(function(block) {
+                callback.apply(block, args);
+            });
+        });
+        return this;
+    },
+
+    /**
+     * Helper for live initialization for a different block's event on the current block's DOM element
+     * @protected
+     * @param {String} event Event name
+     * @param {String} blockName Name of the block that should trigger a reaction when initialized
+     * @param {Function} callback Handler to be called after successful initialization in the new block's context
+     */
+    liveInitOnBlockEvent : function(event, blockName, callback) {
+        return this._liveInitOnBlockEvent(event, blockName, callback, 'findBlocksOn');
+    },
+
+    /**
+     * Helper for live initialization for a different block's event inside the current block
+     * @protected
+     * @param {String} event Event name
+     * @param {String} blockName Name of the block that should trigger a reaction when initialized
+     * @param {Function} [callback] Handler to be called after successful initialization in the new block's context
+     */
+    liveInitOnBlockInsideEvent : function(event, blockName, callback) {
+        return this._liveInitOnBlockEvent(event, blockName, callback, 'findBlocksOutside');
+    },
+
+    /**
+     * Adds a live event handler to a block, based on a specified element where the event will be listened for
+     * @param {jQuery} [ctx] The element in which the event will be listened for
+     * @param {String} e Event name
+     * @param {Object} [data] Additional information that the handler gets as e.data
+     * @param {Function} fn Handler
+     * @param {Object} [fnCtx] Handler's context
+     */
+    on : function(ctx, e, data, fn, fnCtx) {
+        return typeof ctx === 'object' && ctx.jquery?
+            this._liveCtxBind(ctx, e, data, fn, fnCtx) :
+            this.__base(ctx, e, data, fn);
+    },
+
+    /**
+     * Removes the live event handler from a block, based on a specified element where the event was being listened for
+     * @param {jQuery} [ctx] The element in which the event was being listened for
+     * @param {String} e Event name
+     * @param {Function} [fn] Handler
+     * @param {Object} [fnCtx] Handler context
+     */
+    un : function(ctx, e, fn, fnCtx) {
+        return typeof ctx === 'object' && ctx.jquery?
+            this._liveCtxUnbind(ctx, e, fn, fnCtx) :
+            this.__base(ctx, e, fn);
+    },
+
+    /**
+     * Adds a live event handler to a block, based on a specified element where the event will be listened for
+     * @private
+     * @param {jQuery} ctx The element in which the event will be listened for
+     * @param {String} e  Event name
+     * @param {Object} [data] Additional information that the handler gets as e.data
+     * @param {Function} fn Handler
+     * @param {Object} [fnCtx] Handler context
+     * @returns {BEMDOM} this
+     */
+    _liveCtxBind : function(ctx, e, data, fn, fnCtx) {
+        if(typeof e === 'object') {
+            if(functions.isFunction(data) || functions.isFunction(fn)) { // mod change event
+                e = this._buildModEventName(e);
+            } else {
+                objects.each(e, function(fn, e) {
+                    this._liveCtxBind(ctx, e, fn, data);
+                }, this);
+                return this;
+            }
+        }
+
+        if(functions.isFunction(data)) {
+            fnCtx = fn;
+            fn = data;
+            data = undef;
+        }
+
+        if(e.indexOf(' ') > -1) {
+            e.split(' ').forEach(function(e) {
+                this._liveCtxBind(ctx, e, data, fn, fnCtx);
+            }, this);
+        } else {
+            var ctxE = this._buildCtxEventName(e),
+                storage = liveEventCtxStorage[ctxE] ||
+                    (liveEventCtxStorage[ctxE] = { counter : 0, ctxs : {} });
+
+            ctx.each(function() {
+                var ctxId = identify(this),
+                    ctxStorage = storage.ctxs[ctxId];
+                if(!ctxStorage) {
+                    ctxStorage = storage.ctxs[ctxId] = {};
+                    ++storage.counter;
+                }
+                ctxStorage[identify(fn) + (fnCtx? identify(fnCtx) : '')] = {
+                    fn : fn,
+                    data : data,
+                    ctx : fnCtx
+                };
+            });
+        }
+
+        return this;
+    },
+
+    /**
+     * Removes a live event handler from a block, based on a specified element where the event was being listened for
+     * @private
+     * @param {jQuery} ctx The element in which the event was being listened for
+     * @param {String|Object} e Event name
+     * @param {Function} [fn] Handler
+     * @param {Object} [fnCtx] Handler context
+     */
+    _liveCtxUnbind : function(ctx, e, fn, fnCtx) {
+        if(typeof e === 'object' && functions.isFunction(fn)) { // mod change event
+            e = this._buildModEventName(e);
+        }
+
+        var storage = liveEventCtxStorage[e = this._buildCtxEventName(e)];
+
+        if(storage) {
+            ctx.each(function() {
+                var ctxId = identify(this, true),
+                    ctxStorage;
+                if(ctxId && (ctxStorage = storage.ctxs[ctxId])) {
+                    fn && delete ctxStorage[identify(fn) + (fnCtx? identify(fnCtx) : '')];
+                    if(!fn || objects.isEmpty(ctxStorage)) {
+                        storage.counter--;
+                        delete storage.ctxs[ctxId];
+                    }
+                }
+            });
+            storage.counter || delete liveEventCtxStorage[e];
+        }
+
+        return this;
+    },
+
+    /**
+     * Retrieves the name of an element nested in a block
+     * @private
+     * @param {jQuery} elem Nested element
+     * @returns {String|undef}
+     */
+    _extractElemNameFrom : function(elem) {
+        if(elem.__bemElemName) return elem.__bemElemName;
+
+        var matches = elem[0].className.match(this._buildElemNameRE());
+        return matches? matches[1] : undef;
+    },
+
+    /**
+     * Builds a prefix for the CSS class of a DOM element or nested element of the block, based on modifier name
+     * @private
+     * @param {String} modName Modifier name
+     * @param {jQuery|String} [elem] Element
+     * @returns {String}
+     */
+    _buildModClassPrefix : function(modName, elem) {
+        return this._name +
+               (elem?
+                   ELEM_DELIM + (typeof elem === 'string'? elem : this._extractElemNameFrom(elem)) :
+                   '') +
+               MOD_DELIM + modName;
+    },
+
+    /**
+     * Builds a regular expression for extracting modifier values from a DOM element or nested element of a block
+     * @private
+     * @param {String} modName Modifier name
+     * @param {jQuery|String} [elem] Element
+     * @param {String} [quantifiers] Regular expression quantifiers
+     * @returns {RegExp}
+     */
+    _buildModValRE : function(modName, elem, quantifiers) {
+        return new RegExp(
+            '(\\s|^)' +
+            this._buildModClassPrefix(modName, elem) +
+            '(?:' + MOD_DELIM + '(' + NAME_PATTERN + '))?(?=\\s|$)',
+            quantifiers);
+    },
+
+    /**
+     * Builds a regular expression for extracting names of elements nested in a block
+     * @private
+     * @returns {RegExp}
+     */
+    _buildElemNameRE : function() {
+        return new RegExp(this._name + ELEM_DELIM + '(' + NAME_PATTERN + ')(?:\\s|$)');
+    },
+
+    /**
+     * Builds a CSS class corresponding to the block/element and modifier
+     * @param {String} [elem] Element name
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {String}
+     */
+    buildClass : function(elem, modName, modVal) {
+        return buildClass(this._name, elem, modName, modVal);
+    },
+
+    /**
+     * Builds a CSS selector corresponding to the block/element and modifier
+     * @param {String} [elem] Element name
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {String}
+     */
+    buildSelector : function(elem, modName, modVal) {
+        return '.' + this.buildClass(elem, modName, modVal);
+    }
+});
+
+/**
+ * Returns a block on a DOM element and initializes it if necessary
+ * @param {String} blockName Block name
+ * @param {Object} params Block parameters
+ * @returns {BEMDOM}
+ */
+$.fn.bem = function(blockName, params) {
+    return initBlock(blockName, this, params, true);
+};
+
+// Set default scope after DOM ready
+$(function() {
+    DOM.scope = $('body');
+});
+
+provide(DOM);
+
+});
+
+(function() {
+
+var origDefine = modules.define;
+
+modules.define = function(name, deps, decl) {
+    origDefine.apply(modules, arguments);
+
+    name !== 'i-bem__dom_init' && arguments.length > 2 && ~deps.indexOf('i-bem__dom') &&
+        modules.define('i-bem__dom_init', [name], function(provide, _, prev) {
+            provide(prev);
+        });
+};
+
+})();
+
+/* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/jquery.js */
+/**
+ * @module jquery
+ * @description Provide jQuery (load if it does not exist).
+ */
+
+modules.define(
+    'jquery',
+    ['loader_type_js', 'jquery__config'],
+    function(provide, loader, cfg) {
+
+/* global jQuery */
+
+function doProvide(preserveGlobal) {
+    /**
+     * @exports
+     * @type Function
+     */
+    provide(preserveGlobal? jQuery : jQuery.noConflict(true));
+}
+
+typeof jQuery !== 'undefined'?
+    doProvide(true) :
+    loader(cfg.url, doProvide);
+});
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/jquery.js */
+/* begin: ../../../libs/bem-core/common.blocks/loader/_type/loader_type_js.js */
+/**
+ * @module loader_type_js
+ * @description Load JS from external URL.
+ */
+
+modules.define('loader_type_js', function(provide) {
+
+var loading = {},
+    loaded = {},
+    head = document.getElementsByTagName('head')[0],
+    onLoad = function(path) {
+        loaded[path] = true;
+        var cbs = loading[path], cb, i = 0;
+        delete loading[path];
+        while(cb = cbs[i++]) {
+            cb();
+        }
+    };
+
+provide(
+    /**
+     * @exports
+     * @param {String} path resource link
+     * @param {Function} cb executes when resource is loaded
+     */
+    function(path, cb) {
+        if(loaded[path]) {
+            cb();
+            return;
+        }
+
+        if(loading[path]) {
+            loading[path].push(cb);
+            return;
+        }
+
+        loading[path] = [cb];
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        script.src = (location.protocol === 'file:' && !path.indexOf('//')? 'http:' : '') + path;
+        script.onreadystatechange === null?
+            script.onreadystatechange = function() {
+                var readyState = this.readyState;
+                if(readyState === 'loaded' || readyState === 'complete') {
+                    script.onreadystatechange = null;
+                    onLoad(path);
+                }
+            } :
+            script.onload = script.onerror = function() {
+                script.onload = script.onerror = null;
+                onLoad(path);
+            };
+
+        head.insertBefore(script, head.lastChild);
+    }
+);
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/loader/_type/loader_type_js.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__config/jquery__config.js */
+/**
+ * @module jquery__config
+ * @description Configuration for jQuery
+ */
+
+modules.define('jquery__config', function(provide) {
+
+provide(/** @exports */{
+    /**
+     * URL for loading jQuery if it does not exist
+     */
+    url : '//yastatic.net/jquery/2.1.1/jquery.min.js'
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/__config/jquery__config.js */
+/* begin: ../../../libs/bem-core/common.blocks/dom/dom.js */
+/**
+ * @module dom
+ * @description some DOM utils
+ */
+
+modules.define('dom', ['jquery'], function(provide, $) {
+
+provide(/** @exports */{
+    /**
+     * Checks whether a DOM elem is in a context
+     * @param {jQuery} ctx DOM elem where check is being performed
+     * @param {jQuery} domElem DOM elem to check
+     * @returns {Boolean}
+     */
+    contains : function(ctx, domElem) {
+        var res = false;
+
+        domElem.each(function() {
+            var domNode = this;
+            do {
+                if(~ctx.index(domNode)) return !(res = true);
+            } while(domNode = domNode.parentNode);
+
+            return res;
+        });
+
+        return res;
+    },
+
+    /**
+     * Returns current focused DOM elem in document
+     * @returns {jQuery}
+     */
+    getFocused : function() {
+        // "Error: Unspecified error." in iframe in IE9
+        try { return $(document.activeElement); } catch(e) {}
+    },
+
+    /**
+     * Checks whether a DOM element contains focus
+     * @param {jQuery} domElem
+     * @returns {Boolean}
+     */
+    containsFocus : function(domElem) {
+        return this.contains(domElem, this.getFocused());
+    },
+
+    /**
+    * Checks whether a browser currently can set focus on DOM elem
+    * @param {jQuery} domElem
+    * @returns {Boolean}
+    */
+    isFocusable : function(domElem) {
+        var domNode = domElem[0];
+
+        if(!domNode) return false;
+        if(domNode.hasAttribute('tabindex')) return true;
+
+        switch(domNode.tagName.toLowerCase()) {
+            case 'iframe':
+                return true;
+
+            case 'input':
+            case 'button':
+            case 'textarea':
+            case 'select':
+                return !domNode.disabled;
+
+            case 'a':
+                return !!domNode.href;
+        }
+
+        return false;
+    },
+
+    /**
+    * Checks whether a domElem is intended to edit text
+    * @param {jQuery} domElem
+    * @returns {Boolean}
+    */
+    isEditable : function(domElem) {
+        var domNode = domElem[0];
+
+        if(!domNode) return false;
+
+        switch(domNode.tagName.toLowerCase()) {
+            case 'input':
+                var type = domNode.type;
+                return (type === 'text' || type === 'password') && !domNode.disabled && !domNode.readOnly;
+
+            case 'textarea':
+                return !domNode.disabled && !domNode.readOnly;
+
+            default:
+                return domNode.contentEditable === 'true';
+        }
+    }
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/dom/dom.js */
+/* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init.js */
+/**
+ * @module i-bem__dom_init
+ */
+
+modules.define('i-bem__dom_init', ['i-bem__dom'], function(provide, BEMDOM) {
+
+provide(
+    /**
+     * Initializes blocks on a fragment of the DOM tree
+     * @exports
+     * @param {jQuery} [ctx=scope] Root DOM node
+     * @returns {jQuery} ctx Initialization context
+     */
+    function(ctx) {
+        return BEMDOM.init(ctx);
+    });
+});
+
+/* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init.js */
+/* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
+/**
+ * Auto initialization on DOM ready
+ */
+
+modules.require(
+    ['i-bem__dom_init', 'jquery', 'next-tick'],
+    function(init, $, nextTick) {
+
+$(function() {
+    nextTick(init);
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/ua.js */
+/**
+ * @module ua
+ * @description Detect some user agent features
+ */
+
+modules.define('ua', ['jquery'], function(provide, $) {
+
+var win = window,
+    doc = document,
+    ua = navigator.userAgent,
+    platform = {},
+    device = {},
+    match;
+
+if(match = ua.match(/Android\s+([\d.]+)/)) {
+    platform.android = match[1];
+} else if(ua.match(/\sHTC[\s_].*AppleWebKit/)) {
+    // фэйковый десктопный UA по умолчанию у некоторых HTC (например, HTC Sensation)
+    platform.android = '2.3';
+} else if(match = ua.match(/iPhone\sOS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.iphone = true;
+} else if(match = ua.match(/iPad.*OS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.ipad = true;
+} else if(match = ua.match(/Bada\/([\d.]+)/)) {
+    platform.bada = match[1];
+} else if(match = ua.match(/Windows\sPhone.*\s([\d.]+)/)) {
+    platform.wp = match[1];
+} else {
+    platform.other = true;
+}
+
+var browser = {};
+if(win.opera) {
+    browser.opera = win.opera.version();
+} else if(match = ua.match(/\sCrMo\/([\d.]+)/)) {
+    browser.chrome = match[1];
+}
+
+var support = {},
+    connection = navigator.connection;
+
+if(connection) {
+    var connections = {};
+    connections[connection.ETHERNET] = connections[connection.WIFI] = 'wifi';
+    connections[connection.CELL_3G] = '3g';
+    connections[connection.CELL_2G] = '2g';
+    support.connection = connections[connection.type];
+}
+
+var videoElem = doc.createElement('video');
+support.video = !!(videoElem.canPlayType && videoElem.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+
+support.svg = !!(doc.createElementNS && doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+
+var plugins = navigator.plugins,
+    i = plugins.length;
+if(plugins && i) {
+    var plugin;
+    while(plugin = plugins[--i])
+        if(plugin.name === 'Shockwave Flash' && (match = plugin.description.match(/Flash ([\d.]+)/))) {
+            support.flash = match[1];
+            break;
+        }
+}
+
+// http://stackoverflow.com/a/6603537
+var lastOrient = win.innerWidth > win.innerHeight,
+    lastWidth = win.innerWidth,
+    $win = $(win).bind('resize', function() {
+        var width = win.innerWidth,
+            height = win.innerHeight,
+            landscape = width > height;
+
+        // http://alxgbsn.co.uk/2012/08/27/trouble-with-web-browser-orientation/
+        // check previous device width to disallow Android shrink page and change orientation on opening software keyboard
+        if(landscape !== lastOrient && width !== lastWidth) {
+            $win.trigger('orientchange', {
+                landscape : landscape,
+                width : width,
+                height : height
+            });
+
+            lastOrient = landscape;
+            lastWidth = width;
+        }
+    });
+
+provide(/** @exports */{
+    /**
+     * User agent
+     * @type String
+     */
+    ua : ua,
+
+    /**
+     * iOS version
+     * @type String|undefined
+     */
+    ios : platform.ios,
+
+    /**
+     * Is iPhone
+     * @type Boolean|undefined
+     */
+    iphone : device.iphone,
+
+    /**
+     * Is iPad
+     * @type Boolean|undefined
+     */
+    ipad : device.ipad,
+
+    /**
+     * Android version
+     * @type String|undefined
+     */
+    android : platform.android,
+
+    /**
+     * Bada version
+     * @type String|undefined
+     */
+    bada : platform.bada,
+
+    /**
+     * Windows Phone version
+     * @type String|undefined
+     */
+    wp : platform.wp,
+
+    /**
+     * Undetected platform
+     * @type Boolean|undefined
+     */
+    other : platform.other,
+
+    /**
+     * Opera version
+     * @type String|undefined
+     */
+    opera : browser.opera,
+
+    /**
+     * Chrome version
+     * @type String|undefined
+     */
+    chrome : browser.chrome,
+
+    /**
+     * Screen size, one of: large, normal, small
+     * @type String
+     */
+    screenSize : screen.width > 320? 'large' : screen.width < 320? 'small' : 'normal',
+
+    /**
+     * Device pixel ratio
+     * @type Number
+     */
+    dpr : win.devicePixelRatio || 1,
+
+    /**
+     * Connection type, one of: wifi, 3g, 2g
+     * @type String
+     */
+    connection : support.connection,
+
+    /**
+     * Flash version
+     * @type String|undefined
+     */
+    flash : support.flash,
+
+    /**
+     * Is video supported?
+     * @type Boolean
+     */
+    video : support.video,
+
+    /**
+     * Is SVG supported?
+     * @type Boolean
+     */
+    svg : support.svg,
+
+    /**
+     * Viewport width
+     * @type Number
+     */
+    width : win.innerWidth,
+
+    /**
+     * Viewport height
+     * @type Number
+     */
+    height : win.innerHeight,
+
+    /**
+     * Is landscape oriented?
+     * @type Boolean
+     */
+    landscape : lastOrient
+});
+
+});
+
+/* end: ../../../libs/bem-core/touch.blocks/ua/ua.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
+/**
+ * @module ua
+ * @description Use ua module for provide user agent features by modifiers and update some on orient change
+ */
+modules.define('ua', ['i-bem__dom'], function(provide, BEMDOM, ua) {
+
+/**
+ * @exports ua
+ * @class ua
+ * @bem
+ */
+provide(BEMDOM.decl(this.name,
+    {
+        onSetMod : {
+            'js' : {
+                'inited' : function() {
+                    this
+                        .setMod('platform',
+                            ua.ios? 'ios' :
+                                ua.android? 'android' :
+                                    ua.bada? 'bada' :
+                                        ua.wp? 'wp' :
+                                            ua.opera? 'opera' :
+                                                'other')
+                        .setMod('browser',
+                            ua.opera? 'opera' :
+                                ua.chrome? 'chrome' :
+                                    '')
+                        .setMod('ios', ua.ios? ua.ios.charAt(0) : '')
+                        .setMod('android', ua.android? ua.android.charAt(0) : '')
+                        .setMod('ios-subversion', ua.ios? ua.ios.match(/(\d\.\d)/)[1].replace('.', '') : '')
+                        .setMod('screen-size', ua.screenSize)
+                        .setMod('svg', ua.svg? 'yes' : 'no')
+                        .setMod('orient', ua.landscape? 'landscape' : 'portrait')
+                        .bindToWin(
+                            'orientchange',
+                            function(e, data) {
+                                ua.width = data.width;
+                                ua.height = data.height;
+                                ua.landscape = data.landscape;
+                                this.setMod('orient', data.landscape? 'landscape' : 'portrait');
+                            });
+                }
+            }
+        }
+    },
+    ua));
+
+});
+
+/* end: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
+/* begin: ./blocks/test/test.js */
+modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+
+provide(BEMDOM.decl(this.name, {
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                var link = this.findBlockInside('link'),
+                    popup = this.findBlockInside('popup').setTarget(link);
+
+                link.on('click', function() {
+                    popup.toggleMod('visible');
+                });
+            }
+        }
+    }
+}));
+
+});
+
+/* end: ./blocks/test/test.js */
+/* begin: ../../../common.blocks/link/link.js */
+/**
+ * @module link
+ */
+
+modules.define('link', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+
+/**
+ * @exports
+ * @class link
+ * @augments control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._url = this.params.url || this.domElem.attr('href');
+
+                this.hasMod('disabled') && this.domElem.removeAttr('href');
+            }
+        },
+
+        'disabled' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('href');
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.attr('href', this._url);
+            }
+        }
+    },
+
+    /**
+     * Returns url
+     * @returns {String}
+     */
+    getUrl : function() {
+        return this._url;
+    },
+
+    /**
+     * Sets url
+     * @param {String} url
+     * @returns {link} this
+     */
+    setUrl : function(url) {
+        this._url = url;
+        this.hasMod('disabled') || this.domElem.attr('href', url);
+        return this;
+    },
+
+    _onPointerClick : function(e) {
+        this.hasMod('disabled')?
+            e.preventDefault() :
+            this.emit('click');
+    }
+}, /** @lends link */{
+    live : function() {
+        this.liveBindTo('control', 'pointerclick', this.prototype._onPointerClick);
+        return this.__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/link/link.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
+/**
+ * FastClick to jQuery module wrapper.
+ * @see https://github.com/ftlabs/fastclick
+ */
+modules.define('jquery', function(provide, $) {
+
+/**
+ * FastClick: polyfill to remove click delays on browsers with touch UIs.
+ *
+ * @version 0.6.11
+ * @copyright The Financial Times Limited [All Rights Reserved]
+ * @license MIT License (see LICENSE.txt)
+ */
+
+/**
+ * @class FastClick
+ */
+
+/**
+ * Instantiate fast-clicking listeners on the specificed layer.
+ *
+ * @constructor
+ * @param {Element} layer The layer to listen on
+ */
+function FastClick(layer) {
+    'use strict';
+    var oldOnClick, self = this;
+
+
+    /**
+     * Whether a click is currently being tracked.
+     *
+     * @type boolean
+     */
+    this.trackingClick = false;
+
+
+    /**
+     * Timestamp for when when click tracking started.
+     *
+     * @type number
+     */
+    this.trackingClickStart = 0;
+
+
+    /**
+     * The element being tracked for a click.
+     *
+     * @type EventTarget
+     */
+    this.targetElement = null;
+
+
+    /**
+     * X-coordinate of touch start event.
+     *
+     * @type number
+     */
+    this.touchStartX = 0;
+
+
+    /**
+     * Y-coordinate of touch start event.
+     *
+     * @type number
+     */
+    this.touchStartY = 0;
+
+
+    /**
+     * ID of the last touch, retrieved from Touch.identifier.
+     *
+     * @type number
+     */
+    this.lastTouchIdentifier = 0;
+
+
+    /**
+     * Touchmove boundary, beyond which a click will be cancelled.
+     *
+     * @type number
+     */
+    this.touchBoundary = 10;
+
+
+    /**
+     * The FastClick layer.
+     *
+     * @type Element
+     */
+    this.layer = layer;
+
+    if (!layer || !layer.nodeType) {
+        throw new TypeError('Layer must be a document node');
+    }
+
+    /** @type function() */
+    this.onClick = function() { return FastClick.prototype.onClick.apply(self, arguments); };
+
+    /** @type function() */
+    this.onMouse = function() { return FastClick.prototype.onMouse.apply(self, arguments); };
+
+    /** @type function() */
+    this.onTouchStart = function() { return FastClick.prototype.onTouchStart.apply(self, arguments); };
+
+    /** @type function() */
+    this.onTouchMove = function() { return FastClick.prototype.onTouchMove.apply(self, arguments); };
+
+    /** @type function() */
+    this.onTouchEnd = function() { return FastClick.prototype.onTouchEnd.apply(self, arguments); };
+
+    /** @type function() */
+    this.onTouchCancel = function() { return FastClick.prototype.onTouchCancel.apply(self, arguments); };
+
+    if (FastClick.notNeeded(layer)) {
+        return;
+    }
+
+    // Set up event handlers as required
+    if (this.deviceIsAndroid) {
+        layer.addEventListener('mouseover', this.onMouse, true);
+        layer.addEventListener('mousedown', this.onMouse, true);
+        layer.addEventListener('mouseup', this.onMouse, true);
+    }
+
+    layer.addEventListener('click', this.onClick, true);
+    layer.addEventListener('touchstart', this.onTouchStart, false);
+    layer.addEventListener('touchmove', this.onTouchMove, false);
+    layer.addEventListener('touchend', this.onTouchEnd, false);
+    layer.addEventListener('touchcancel', this.onTouchCancel, false);
+
+    // Hack is required for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+    // which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick
+    // layer when they are cancelled.
+    if (!Event.prototype.stopImmediatePropagation) {
+        layer.removeEventListener = function(type, callback, capture) {
+            var rmv = Node.prototype.removeEventListener;
+            if (type === 'click') {
+                rmv.call(layer, type, callback.hijacked || callback, capture);
+            } else {
+                rmv.call(layer, type, callback, capture);
+            }
+        };
+
+        layer.addEventListener = function(type, callback, capture) {
+            var adv = Node.prototype.addEventListener;
+            if (type === 'click') {
+                adv.call(layer, type, callback.hijacked || (callback.hijacked = function(event) {
+                    if (!event.propagationStopped) {
+                        callback(event);
+                    }
+                }), capture);
+            } else {
+                adv.call(layer, type, callback, capture);
+            }
+        };
+    }
+
+    // If a handler is already declared in the element's onclick attribute, it will be fired before
+    // FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
+    // adding it as listener.
+    if (typeof layer.onclick === 'function') {
+
+        // Android browser on at least 3.2 requires a new reference to the function in layer.onclick
+        // - the old one won't work if passed to addEventListener directly.
+        oldOnClick = layer.onclick;
+        layer.addEventListener('click', function(event) {
+            oldOnClick(event);
+        }, false);
+        layer.onclick = null;
+    }
+}
+
+
+/**
+ * Android requires exceptions.
+ *
+ * @type boolean
+ */
+FastClick.prototype.deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0;
+
+
+/**
+ * iOS requires exceptions.
+ *
+ * @type boolean
+ */
+FastClick.prototype.deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent);
+
+
+/**
+ * iOS 4 requires an exception for select elements.
+ *
+ * @type boolean
+ */
+FastClick.prototype.deviceIsIOS4 = FastClick.prototype.deviceIsIOS && (/OS 4_\d(_\d)?/).test(navigator.userAgent);
+
+
+/**
+ * iOS 6.0(+?) requires the target element to be manually derived
+ *
+ * @type boolean
+ */
+FastClick.prototype.deviceIsIOSWithBadTarget = FastClick.prototype.deviceIsIOS && (/OS ([6-9]|\d{2})_\d/).test(navigator.userAgent);
+
+
+/**
+ * Determine whether a given element requires a native click.
+ *
+ * @param {EventTarget|Element} target Target DOM element
+ * @returns {boolean} Returns true if the element needs a native click
+ */
+FastClick.prototype.needsClick = function(target) {
+    'use strict';
+    switch (target.nodeName.toLowerCase()) {
+
+    // Don't send a synthetic click to disabled inputs (issue #62)
+    case 'button':
+    case 'select':
+    case 'textarea':
+        if (target.disabled) {
+            return true;
+        }
+
+        break;
+    case 'input':
+
+        // File inputs need real clicks on iOS 6 due to a browser bug (issue #68)
+        if ((this.deviceIsIOS && target.type === 'file') || target.disabled) {
+            return true;
+        }
+
+        break;
+    case 'label':
+    case 'video':
+        return true;
+    }
+
+    return (/\bneedsclick\b/).test(target.className);
+};
+
+
+/**
+ * Determine whether a given element requires a call to focus to simulate click into element.
+ *
+ * @param {EventTarget|Element} target Target DOM element
+ * @returns {boolean} Returns true if the element requires a call to focus to simulate native click.
+ */
+FastClick.prototype.needsFocus = function(target) {
+    'use strict';
+    switch (target.nodeName.toLowerCase()) {
+    case 'textarea':
+        return true;
+    case 'select':
+        return !this.deviceIsAndroid;
+    case 'input':
+        switch (target.type) {
+        case 'button':
+        case 'checkbox':
+        case 'file':
+        case 'image':
+        case 'radio':
+        case 'submit':
+            return false;
+        }
+
+        // No point in attempting to focus disabled inputs
+        return !target.disabled && !target.readOnly;
+    default:
+        return (/\bneedsfocus\b/).test(target.className);
+    }
+};
+
+
+/**
+ * Send a click event to the specified element.
+ *
+ * @param {EventTarget|Element} targetElement
+ * @param {Event} event
+ */
+FastClick.prototype.sendClick = function(targetElement, event) {
+    'use strict';
+    var clickEvent, touch;
+
+    // On some Android devices activeElement needs to be blurred otherwise the synthetic click will have no effect (#24)
+    if (document.activeElement && document.activeElement !== targetElement) {
+        document.activeElement.blur();
+    }
+
+    touch = event.changedTouches[0];
+
+    // Synthesise a click event, with an extra attribute so it can be tracked
+    clickEvent = document.createEvent('MouseEvents');
+    clickEvent.initMouseEvent(this.determineEventType(targetElement), true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+    clickEvent.forwardedTouchEvent = true;
+    targetElement.dispatchEvent(clickEvent);
+};
+
+FastClick.prototype.determineEventType = function(targetElement) {
+    'use strict';
+
+    //Issue #159: Android Chrome Select Box does not open with a synthetic click event
+    if (this.deviceIsAndroid && targetElement.tagName.toLowerCase() === 'select') {
+        return 'mousedown';
+    }
+
+    return 'click';
+};
+
+
+/**
+ * @param {EventTarget|Element} targetElement
+ */
+FastClick.prototype.focus = function(targetElement) {
+    'use strict';
+    var length;
+
+    // Issue #160: on iOS 7, some input elements (e.g. date datetime) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
+    if (this.deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time') {
+        length = targetElement.value.length;
+        targetElement.setSelectionRange(length, length);
+    } else {
+        targetElement.focus();
+    }
+};
+
+
+/**
+ * Check whether the given target element is a child of a scrollable layer and if so, set a flag on it.
+ *
+ * @param {EventTarget|Element} targetElement
+ */
+FastClick.prototype.updateScrollParent = function(targetElement) {
+    'use strict';
+    var scrollParent, parentElement;
+
+    scrollParent = targetElement.fastClickScrollParent;
+
+    // Attempt to discover whether the target element is contained within a scrollable layer. Re-check if the
+    // target element was moved to another parent.
+    if (!scrollParent || !scrollParent.contains(targetElement)) {
+        parentElement = targetElement;
+        do {
+            if (parentElement.scrollHeight > parentElement.offsetHeight) {
+                scrollParent = parentElement;
+                targetElement.fastClickScrollParent = parentElement;
+                break;
+            }
+
+            parentElement = parentElement.parentElement;
+        } while (parentElement);
+    }
+
+    // Always update the scroll top tracker if possible.
+    if (scrollParent) {
+        scrollParent.fastClickLastScrollTop = scrollParent.scrollTop;
+    }
+};
+
+
+/**
+ * @param {EventTarget} targetElement
+ * @returns {Element|EventTarget}
+ */
+FastClick.prototype.getTargetElementFromEventTarget = function(eventTarget) {
+    'use strict';
+
+    // On some older browsers (notably Safari on iOS 4.1 - see issue #56) the event target may be a text node.
+    if (eventTarget.nodeType === Node.TEXT_NODE) {
+        return eventTarget.parentNode;
+    }
+
+    return eventTarget;
+};
+
+
+/**
+ * On touch start, record the position and scroll offset.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.onTouchStart = function(event) {
+    'use strict';
+    var targetElement, touch, selection;
+
+    // Ignore multiple touches, otherwise pinch-to-zoom is prevented if both fingers are on the FastClick element (issue #111).
+    if (event.targetTouches.length > 1) {
+        return true;
+    }
+
+    targetElement = this.getTargetElementFromEventTarget(event.target);
+    touch = event.targetTouches[0];
+
+    if (this.deviceIsIOS) {
+
+        // Only trusted events will deselect text on iOS (issue #49)
+        selection = window.getSelection();
+        if (selection.rangeCount && !selection.isCollapsed) {
+            return true;
+        }
+
+        if (!this.deviceIsIOS4) {
+
+            // Weird things happen on iOS when an alert or confirm dialog is opened from a click event callback (issue #23):
+            // when the user next taps anywhere else on the page, new touchstart and touchend events are dispatched
+            // with the same identifier as the touch event that previously triggered the click that triggered the alert.
+            // Sadly, there is an issue on iOS 4 that causes some normal touch events to have the same identifier as an
+            // immediately preceeding touch event (issue #52), so this fix is unavailable on that platform.
+            if (touch.identifier === this.lastTouchIdentifier) {
+                event.preventDefault();
+                return false;
+            }
+
+            this.lastTouchIdentifier = touch.identifier;
+
+            // If the target element is a child of a scrollable layer (using -webkit-overflow-scrolling: touch) and:
+            // 1) the user does a fling scroll on the scrollable layer
+            // 2) the user stops the fling scroll with another tap
+            // then the event.target of the last 'touchend' event will be the element that was under the user's finger
+            // when the fling scroll was started, causing FastClick to send a click event to that layer - unless a check
+            // is made to ensure that a parent layer was not scrolled before sending a synthetic click (issue #42).
+            this.updateScrollParent(targetElement);
+        }
+    }
+
+    this.trackingClick = true;
+    this.trackingClickStart = event.timeStamp;
+    this.targetElement = targetElement;
+
+    this.touchStartX = touch.pageX;
+    this.touchStartY = touch.pageY;
+
+    // Prevent phantom clicks on fast double-tap (issue #36)
+    if ((event.timeStamp - this.lastClickTime) < 200) {
+        event.preventDefault();
+    }
+
+    return true;
+};
+
+
+/**
+ * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.touchHasMoved = function(event) {
+    'use strict';
+    var touch = event.changedTouches[0], boundary = this.touchBoundary;
+
+    if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
+        return true;
+    }
+
+    return false;
+};
+
+
+/**
+ * Update the last position.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.onTouchMove = function(event) {
+    'use strict';
+    if (!this.trackingClick) {
+        return true;
+    }
+
+    // If the touch has moved, cancel the click tracking
+    if (this.targetElement !== this.getTargetElementFromEventTarget(event.target) || this.touchHasMoved(event)) {
+        this.trackingClick = false;
+        this.targetElement = null;
+    }
+
+    return true;
+};
+
+
+/**
+ * Attempt to find the labelled control for the given label element.
+ *
+ * @param {EventTarget|HTMLLabelElement} labelElement
+ * @returns {Element|null}
+ */
+FastClick.prototype.findControl = function(labelElement) {
+    'use strict';
+
+    // Fast path for newer browsers supporting the HTML5 control attribute
+    if (labelElement.control !== undefined) {
+        return labelElement.control;
+    }
+
+    // All browsers under test that support touch events also support the HTML5 htmlFor attribute
+    if (labelElement.htmlFor) {
+        return document.getElementById(labelElement.htmlFor);
+    }
+
+    // If no for attribute exists, attempt to retrieve the first labellable descendant element
+    // the list of which is defined here: http://www.w3.org/TR/html5/forms.html#category-label
+    return labelElement.querySelector('button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea');
+};
+
+
+/**
+ * On touch end, determine whether to send a click event at once.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.onTouchEnd = function(event) {
+    'use strict';
+    var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
+
+    if (!this.trackingClick) {
+        return true;
+    }
+
+    // Prevent phantom clicks on fast double-tap (issue #36)
+    if ((event.timeStamp - this.lastClickTime) < 200) {
+        this.cancelNextClick = true;
+        return true;
+    }
+
+    // Reset to prevent wrong click cancel on input (issue #156).
+    this.cancelNextClick = false;
+
+    this.lastClickTime = event.timeStamp;
+
+    trackingClickStart = this.trackingClickStart;
+    this.trackingClick = false;
+    this.trackingClickStart = 0;
+
+    // On some iOS devices, the targetElement supplied with the event is invalid if the layer
+    // is performing a transition or scroll, and has to be re-detected manually. Note that
+    // for this to function correctly, it must be called *after* the event target is checked!
+    // See issue #57; also filed as rdar://13048589 .
+    if (this.deviceIsIOSWithBadTarget) {
+        touch = event.changedTouches[0];
+
+        // In certain cases arguments of elementFromPoint can be negative, so prevent setting targetElement to null
+        targetElement = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset) || targetElement;
+        targetElement.fastClickScrollParent = this.targetElement.fastClickScrollParent;
+    }
+
+    targetTagName = targetElement.tagName.toLowerCase();
+    if (targetTagName === 'label') {
+        forElement = this.findControl(targetElement);
+        if (forElement) {
+            this.focus(targetElement);
+            if (this.deviceIsAndroid) {
+                return false;
+            }
+
+            targetElement = forElement;
+        }
+    } else if (this.needsFocus(targetElement)) {
+
+        // Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.
+        // Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won't be visible even though the value attribute is updated as the user types (issue #37).
+        if ((event.timeStamp - trackingClickStart) > 100 || (this.deviceIsIOS && window.top !== window && targetTagName === 'input')) {
+            this.targetElement = null;
+            return false;
+        }
+
+        this.focus(targetElement);
+
+        // Select elements need the event to go through on iOS 4, otherwise the selector menu won't open.
+        if (!this.deviceIsIOS4 || targetTagName !== 'select') {
+            this.targetElement = null;
+            event.preventDefault();
+        }
+
+        return false;
+    }
+
+    if (this.deviceIsIOS && !this.deviceIsIOS4) {
+
+        // Don't send a synthetic click event if the target element is contained within a parent layer that was scrolled
+        // and this tap is being used to stop the scrolling (usually initiated by a fling - issue #42).
+        scrollParent = targetElement.fastClickScrollParent;
+        if (scrollParent && scrollParent.fastClickLastScrollTop !== scrollParent.scrollTop) {
+            return true;
+        }
+    }
+
+    // Prevent the actual click from going though - unless the target node is marked as requiring
+    // real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted.
+    if (!this.needsClick(targetElement)) {
+        event.preventDefault();
+        this.sendClick(targetElement, event);
+    }
+
+    return false;
+};
+
+
+/**
+ * On touch cancel, stop tracking the click.
+ *
+ * @returns {void}
+ */
+FastClick.prototype.onTouchCancel = function() {
+    'use strict';
+    this.trackingClick = false;
+    this.targetElement = null;
+};
+
+
+/**
+ * Determine mouse events which should be permitted.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.onMouse = function(event) {
+    'use strict';
+
+    // If a target element was never set (because a touch event was never fired) allow the event
+    if (!this.targetElement) {
+        return true;
+    }
+
+    if (event.forwardedTouchEvent) {
+        return true;
+    }
+
+    // Programmatically generated events targeting a specific element should be permitted
+    if (!event.cancelable) {
+        return true;
+    }
+
+    // Derive and check the target element to see whether the mouse event needs to be permitted;
+    // unless explicitly enabled, prevent non-touch click events from triggering actions,
+    // to prevent ghost/doubleclicks.
+    if (!this.needsClick(this.targetElement) || this.cancelNextClick) {
+
+        // Prevent any user-added listeners declared on FastClick element from being fired.
+        if (event.stopImmediatePropagation) {
+            event.stopImmediatePropagation();
+        } else {
+
+            // Part of the hack for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+            event.propagationStopped = true;
+        }
+
+        // Cancel the event
+        event.stopPropagation();
+        event.preventDefault();
+
+        return false;
+    }
+
+    // If the mouse event is permitted, return true for the action to go through.
+    return true;
+};
+
+
+/**
+ * On actual clicks, determine whether this is a touch-generated click, a click action occurring
+ * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or
+ * an actual click which should be permitted.
+ *
+ * @param {Event} event
+ * @returns {boolean}
+ */
+FastClick.prototype.onClick = function(event) {
+    'use strict';
+    var permitted;
+
+    // It's possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.
+    if (this.trackingClick) {
+        this.targetElement = null;
+        this.trackingClick = false;
+        return true;
+    }
+
+    // Very odd behaviour on iOS (issue #18): if a submit element is present inside a form and the user hits enter in the iOS simulator or clicks the Go button on the pop-up OS keyboard the a kind of 'fake' click event will be triggered with the submit-type input element as the target.
+    if (event.target.type === 'submit' && event.detail === 0) {
+        return true;
+    }
+
+    permitted = this.onMouse(event);
+
+    // Only unset targetElement if the click is not permitted. This will ensure that the check for !targetElement in onMouse fails and the browser's click doesn't go through.
+    if (!permitted) {
+        this.targetElement = null;
+    }
+
+    // If clicks are permitted, return true for the action to go through.
+    return permitted;
+};
+
+
+/**
+ * Remove all FastClick's event listeners.
+ *
+ * @returns {void}
+ */
+FastClick.prototype.destroy = function() {
+    'use strict';
+    var layer = this.layer;
+
+    if (this.deviceIsAndroid) {
+        layer.removeEventListener('mouseover', this.onMouse, true);
+        layer.removeEventListener('mousedown', this.onMouse, true);
+        layer.removeEventListener('mouseup', this.onMouse, true);
+    }
+
+    layer.removeEventListener('click', this.onClick, true);
+    layer.removeEventListener('touchstart', this.onTouchStart, false);
+    layer.removeEventListener('touchmove', this.onTouchMove, false);
+    layer.removeEventListener('touchend', this.onTouchEnd, false);
+    layer.removeEventListener('touchcancel', this.onTouchCancel, false);
+};
+
+
+/**
+ * Check whether FastClick is needed.
+ *
+ * @param {Element} layer The layer to listen on
+ */
+FastClick.notNeeded = function(layer) {
+    'use strict';
+    var metaViewport;
+
+    // Devices that don't support touch don't need FastClick
+    if (typeof window.ontouchstart === 'undefined') {
+        return true;
+    }
+
+    if ((/Chrome\/[0-9]+/).test(navigator.userAgent)) {
+
+        // Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
+        if (FastClick.prototype.deviceIsAndroid) {
+            metaViewport = document.querySelector('meta[name=viewport]');
+            if (metaViewport && metaViewport.content.indexOf('user-scalable=no') !== -1) {
+                return true;
+            }
+
+        // Chrome desktop doesn't need FastClick (issue #15)
+        } else {
+            return true;
+        }
+    }
+
+    // IE10 with -ms-touch-action: none, which disables double-tap-to-zoom (issue #97)
+    if (layer.style.msTouchAction === 'none') {
+        return true;
+    }
+
+    return false;
+};
+
+
+/**
+ * Factory method for creating a FastClick object
+ *
+ * @param {Element} layer The layer to listen on
+ */
+FastClick.attach = function(layer) {
+    'use strict';
+    return new FastClick(layer);
+};
+
+var event = $.event.special.pointerclick = {
+        setup : function() {
+            $(this).on('click', event.handler);
+        },
+
+        teardown : function() {
+            $(this).off('click', event.handler);
+        },
+
+        handler : function(e) {
+            if(!e.button) {
+                e.type = 'pointerclick';
+                $.event.dispatch.apply(this, arguments);
+                e.type = 'click';
+            }
+        }
+    };
+
+$(function() {
+    FastClick.attach(document.body);
+    provide($);
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointernative.js */
+/**
+ * Basic pointer events polyfill
+ */
+;(function(global, factory) {
+
+if(typeof modules === 'object' && modules.isDefined('jquery')) {
+    modules.define('jquery', function(provide, $) {
+        factory(this.global, $);
+        provide($);
+    });
+} else if(typeof jQuery === 'function') {
+    factory(global, jQuery);
+}
+
+}(this, function(window, $) {
+
+// include "jquery-pointerevents.js"
+/*!
+ * Most of source code is taken from PointerEvents Polyfill
+ * written by Polymer Team (https://github.com/Polymer/PointerEvents)
+ * and licensed under the BSD License.
+ */
+
+var doc = document,
+    USE_NATIVE_MAP = window.Map && window.Map.prototype.forEach,
+    HAS_BITMAP_TYPE = window.MSPointerEvent && typeof window.MSPointerEvent.MSPOINTER_TYPE_MOUSE === 'number',
+    POINTERS_FN = function() { return this.size };
+
+// NOTE: Remove jQuery special fixes for pointerevents – we fix them ourself
+delete $.event.special.pointerenter;
+delete $.event.special.pointerleave;
+
+/**
+ * Returns a snapshot of inEvent, with writable properties.
+ *
+ * @param {Event} event An event that contains properties to copy.
+ * @returns {Object} An object containing shallow copies of `inEvent`'s
+ *    properties.
+ */
+function cloneEvent(event) {
+    var eventCopy = $.extend(new $.Event(), event);
+    if(event.preventDefault) {
+        eventCopy.preventDefault = function() {
+            event.preventDefault();
+        };
+    }
+    return eventCopy;
+}
+
+var MOUSE_PROPS = {
+        bubbles : false,
+        cancelable : false,
+        view : null,
+        detail : null,
+        screenX : 0,
+        screenY : 0,
+        clientX : 0,
+        clientY : 0,
+        ctrlKey : false,
+        altKey : false,
+        shiftKey : false,
+        metaKey : false,
+        button : 0,
+        relatedTarget : null,
+        pageX : 0,
+        pageY : 0
+    },
+    mouseProps = Object.keys(MOUSE_PROPS),
+    mousePropsLen = mouseProps.length,
+    mouseDefaults = mouseProps.map(function(prop) { return MOUSE_PROPS[prop] });
+
+/**
+ * Pointer event constructor
+ *
+ * @param {String} type
+ * @param {Object} [params]
+ * @returns {Event}
+ * @constructor
+ */
+function PointerEvent(type, params) {
+    params || (params = {});
+
+    var e = $.Event(type);
+
+    // define inherited MouseEvent properties
+    for(var i = 0, p; i < mousePropsLen; i++) {
+        p = mouseProps[i];
+        e[p] = params[p] || mouseDefaults[i];
+    }
+
+    e.buttons = params.buttons || 0;
+
+    // add x/y properties aliased to clientX/Y
+    e.x = e.clientX;
+    e.y = e.clientY;
+
+    // Spec requires that pointers without pressure specified use 0.5 for down
+    // state and 0 for up state.
+    var pressure = 0;
+    if(params.pressure) {
+        pressure = params.pressure;
+    } else {
+        pressure = e.buttons? 0.5 : 0;
+    }
+
+    // define the properties of the PointerEvent interface
+    e.pointerId = params.pointerId || 0;
+    e.width = params.width || 0;
+    e.height = params.height || 0;
+    e.pressure = pressure;
+    e.tiltX = params.tiltX || 0;
+    e.tiltY = params.tiltY || 0;
+    e.pointerType = params.pointerType || '';
+    e.hwTimestamp = params.hwTimestamp || 0;
+    e.isPrimary = params.isPrimary || false;
+
+    // add some common jQuery properties
+    e.which = params.which;
+
+    return e;
+}
+
+/**
+ * Implements a map of pointer states
+ * @returns {PointerMap}
+ * @constructor
+ */
+function PointerMap() {
+    if(USE_NATIVE_MAP) {
+        var m = new Map();
+        m.pointers = POINTERS_FN;
+        return m;
+    }
+
+    this.keys = [];
+    this.values = [];
+}
+
+PointerMap.prototype = {
+    set : function(id, event) {
+        var i = this.keys.indexOf(id);
+        if(i > -1) {
+            this.values[i] = event;
+        } else {
+            this.keys.push(id);
+            this.values.push(event);
+        }
+    },
+
+    has : function(id) {
+        return this.keys.indexOf(id) > -1;
+    },
+
+    'delete' : function(id) {
+        var i = this.keys.indexOf(id);
+        if(i > -1) {
+            this.keys.splice(i, 1);
+            this.values.splice(i, 1);
+        }
+    },
+
+    get : function(id) {
+        var i = this.keys.indexOf(id);
+        return this.values[i];
+    },
+
+    clear : function() {
+        this.keys.length = 0;
+        this.values.length = 0;
+    },
+
+    forEach : function(callback, ctx) {
+        var keys = this.keys;
+        this.values.forEach(function(v, i) {
+            callback.call(ctx, v, keys[i], this);
+        }, this);
+    },
+
+    pointers : function() {
+        return this.keys.length;
+    }
+};
+
+var pointermap = new PointerMap();
+
+var dispatcher = {
+    eventMap : {},
+    eventSourceList : [],
+
+    /**
+     * Add a new event source that will generate pointer events
+     */
+    registerSource : function(name, source) {
+        var newEvents = source.events;
+        if(newEvents) {
+            newEvents.forEach(function(e) {
+                source[e] && (this.eventMap[e] = function() { source[e].apply(source, arguments) });
+            }, this);
+            this.eventSourceList.push(source);
+        }
+    },
+
+    register : function(element) {
+        var len = this.eventSourceList.length;
+        for(var i = 0, es; (i < len) && (es = this.eventSourceList[i]); i++) {
+            // call eventsource register
+            es.register.call(es, element);
+        }
+    },
+
+    unregister : function(element) {
+        var l = this.eventSourceList.length;
+        for(var i = 0, es; (i < l) && (es = this.eventSourceList[i]); i++) {
+            // call eventsource register
+            es.unregister.call(es, element);
+        }
+    },
+
+    down : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerdown', event);
+    },
+
+    move : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointermove', event);
+    },
+
+    up : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerup', event);
+    },
+
+    enter : function(event) {
+        event.bubbles = false;
+        this.fireEvent('pointerenter', event);
+    },
+
+    leave : function(event) {
+        event.bubbles = false;
+        this.fireEvent('pointerleave', event);
+    },
+
+    over : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerover', event);
+    },
+
+    out : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointerout', event);
+    },
+
+    cancel : function(event) {
+        event.bubbles = true;
+        this.fireEvent('pointercancel', event);
+    },
+
+    leaveOut : function(event) {
+        this.out(event);
+        if(!this.contains(event.target, event.relatedTarget)) {
+            this.leave(event);
+        }
+    },
+
+    enterOver : function(event) {
+        this.over(event);
+        if(!this.contains(event.target, event.relatedTarget)) {
+            this.enter(event);
+        }
+    },
+
+    contains : function(target, relatedTarget) {
+        return target === relatedTarget || $.contains(target, relatedTarget);
+    },
+
+    // LISTENER LOGIC
+    eventHandler : function(e) {
+        // This is used to prevent multiple dispatch of pointerevents from
+        // platform events. This can happen when two elements in different scopes
+        // are set up to create pointer events, which is relevant to Shadow DOM.
+        if(e._handledByPE) {
+            return;
+        }
+
+        var type = e.type, fn;
+        (fn = this.eventMap && this.eventMap[type]) && fn(e);
+
+        e._handledByPE = true;
+    },
+
+    /**
+     * Sets up event listeners
+     */
+    listen : function(target, events) {
+        events.forEach(function(e) {
+            this.addEvent(target, e);
+        }, this);
+    },
+
+    /**
+     * Removes event listeners
+     */
+    unlisten : function(target, events) {
+        events.forEach(function(e) {
+            this.removeEvent(target, e);
+        }, this);
+    },
+
+    addEvent : function(target, eventName) {
+        $(target).on(eventName, boundHandler);
+    },
+
+    removeEvent : function(target, eventName) {
+        $(target).off(eventName, boundHandler);
+    },
+
+    getTarget : function(event) {
+        return event._target;
+    },
+
+    /**
+     * Creates a new Event of type `type`, based on the information in `event`
+     */
+    makeEvent : function(type, event) {
+        var e = new PointerEvent(type, event);
+        if(event.preventDefault) {
+            e.preventDefault = event.preventDefault;
+        }
+
+        e._target = e._target || event.target;
+
+        return e;
+    },
+
+    /**
+     * Dispatches the event to its target
+     */
+    dispatchEvent : function(event) {
+        var target = this.getTarget(event);
+        if(target) {
+            return $(target).trigger(event);
+        }
+    },
+
+    /**
+     * Makes and dispatch an event in one call
+     */
+    fireEvent : function(type, event) {
+        var e = this.makeEvent(type, event);
+        return this.dispatchEvent(e);
+    }
+};
+
+function boundHandler() {
+    dispatcher.eventHandler.apply(dispatcher, arguments);
+}
+
+var CLICK_COUNT_TIMEOUT = 200,
+    // Radius around touchend that swallows mouse events
+    MOUSE_DEDUP_DIST = 25,
+    MOUSE_POINTER_ID = 1,
+    // This should be long enough to ignore compat mouse events made by touch
+    TOUCH_DEDUP_TIMEOUT = 2500,
+    // A distance for which touchmove should fire pointercancel event
+    TOUCHMOVE_HYSTERESIS = 20;
+
+// handler block for native mouse events
+var mouseEvents = {
+    POINTER_TYPE : 'mouse',
+    events : [
+        'mousedown',
+        'mousemove',
+        'mouseup',
+        'mouseover',
+        'mouseout'
+    ],
+
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+
+    lastTouches : [],
+
+    // collide with the global mouse listener
+    isEventSimulatedFromTouch : function(event) {
+        var lts = this.lastTouches,
+            x = event.clientX,
+            y = event.clientY;
+
+        for(var i = 0, l = lts.length, t; i < l && (t = lts[i]); i++) {
+            // simulated mouse events will be swallowed near a primary touchend
+            var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
+            if(dx <= MOUSE_DEDUP_DIST && dy <= MOUSE_DEDUP_DIST) {
+                return true;
+            }
+        }
+    },
+
+    prepareEvent : function(event) {
+        var e = cloneEvent(event);
+        e.pointerId = MOUSE_POINTER_ID;
+        e.isPrimary = true;
+        e.pointerType = this.POINTER_TYPE;
+        return e;
+    },
+
+    mousedown : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            if(pointermap.has(MOUSE_POINTER_ID)) {
+                // http://crbug/149091
+                this.cancel(event);
+            }
+
+            pointermap.set(MOUSE_POINTER_ID, event);
+
+            var e = this.prepareEvent(event);
+            dispatcher.down(e);
+        }
+    },
+
+    mousemove : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.move(e);
+        }
+    },
+
+    mouseup : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var p = pointermap.get(MOUSE_POINTER_ID);
+            if(p && p.button === event.button) {
+                var e = this.prepareEvent(event);
+                dispatcher.up(e);
+                this.cleanupMouse();
+            }
+        }
+    },
+
+    mouseover : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.enterOver(e);
+        }
+    },
+
+    mouseout : function(event) {
+        if(!this.isEventSimulatedFromTouch(event)) {
+            var e = this.prepareEvent(event);
+            dispatcher.leaveOut(e);
+        }
+    },
+
+    cancel : function(inEvent) {
+        var e = this.prepareEvent(inEvent);
+        dispatcher.cancel(e);
+        this.cleanupMouse();
+    },
+
+    cleanupMouse : function() {
+        pointermap['delete'](MOUSE_POINTER_ID);
+    }
+};
+
+var touchEvents = {
+    events : [
+        'touchstart',
+        'touchmove',
+        'touchend',
+        'touchcancel'
+    ],
+
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+
+    POINTER_TYPE : 'touch',
+    clickCount : 0,
+    resetId : null,
+    firstTouch : null,
+
+    isPrimaryTouch : function(touch) {
+        return this.firstTouch === touch.identifier;
+    },
+
+    /**
+     * Sets primary touch if there no pointers, or the only pointer is the mouse
+     */
+    setPrimaryTouch : function(touch) {
+        if(pointermap.pointers() === 0 ||
+                (pointermap.pointers() === 1 && pointermap.has(MOUSE_POINTER_ID))) {
+            this.firstTouch = touch.identifier;
+            this.firstXY = { X : touch.clientX, Y : touch.clientY };
+            this.scrolling = null;
+
+            this.cancelResetClickCount();
+        }
+    },
+
+    removePrimaryPointer : function(pointer) {
+        if(pointer.isPrimary) {
+            this.firstTouch = null;
+            //this.firstXY = null;
+            this.resetClickCount();
+        }
+    },
+
+    resetClickCount : function() {
+        var _this = this;
+        this.resetId = setTimeout(function() {
+            _this.clickCount = 0;
+            _this.resetId = null;
+        }, CLICK_COUNT_TIMEOUT);
+    },
+
+    cancelResetClickCount : function() {
+        this.resetId && clearTimeout(this.resetId);
+    },
+
+    typeToButtons : function(type) {
+        return type === 'touchstart' || type === 'touchmove'? 1 : 0;
+    },
+
+    findTarget : function(event) {
+        // Currently we don't interested in shadow dom handling
+        return doc.elementFromPoint(event.clientX, event.clientY);
+    },
+
+    touchToPointer : function(touch) {
+        var cte = this.currentTouchEvent,
+            e = cloneEvent(touch);
+
+        // Spec specifies that pointerId 1 is reserved for Mouse.
+        // Touch identifiers can start at 0.
+        // Add 2 to the touch identifier for compatibility.
+        e.pointerId = touch.identifier + 2;
+        e.target = this.findTarget(e);
+        e.bubbles = true;
+        e.cancelable = true;
+        e.detail = this.clickCount;
+        e.button = 0;
+        e.buttons = this.typeToButtons(cte.type);
+        e.width = touch.webkitRadiusX || touch.radiusX || 0;
+        e.height = touch.webkitRadiusY || touch.radiusY || 0;
+        e.pressure = touch.mozPressure || touch.webkitForce || touch.force || 0.5;
+        e.isPrimary = this.isPrimaryTouch(touch);
+        e.pointerType = this.POINTER_TYPE;
+
+        // forward touch preventDefaults
+        var _this = this;
+        e.preventDefault = function() {
+            _this.scrolling = false;
+            _this.firstXY = null;
+            cte.preventDefault();
+        };
+
+        return e;
+    },
+
+    processTouches : function(event, fn) {
+        var tl = event.originalEvent.changedTouches;
+        this.currentTouchEvent = event;
+        for(var i = 0, t; i < tl.length; i++) {
+            t = tl[i];
+            fn.call(this, this.touchToPointer(t));
+        }
+    },
+
+    shouldScroll : function(touchEvent) {
+        // return "true" for things to be much easier
+        return true;
+    },
+    
+    findTouch : function(touches, pointerId) {
+        for(var i = 0, l = touches.length, t; i < l && (t = touches[i]); i++) {
+            if(t.identifier === pointerId) {
+                return true;
+            }
+        }
+    },
+    
+    /**
+     * In some instances, a touchstart can happen without a touchend.
+     * This leaves the pointermap in a broken state.
+     * Therefore, on every touchstart, we remove the touches
+     * that did not fire a touchend event.
+     * 
+     * To keep state globally consistent, we fire a pointercancel
+     * for this "abandoned" touch
+     */
+    vacuumTouches : function(touchEvent) {
+        var touches = touchEvent.touches;
+        // pointermap.pointers() should be less than length of touches here, as the touchstart has not
+        // been processed yet.
+        if(pointermap.pointers() >= touches.length) {
+            var d = [];
+            
+            pointermap.forEach(function(pointer, pointerId) {
+                // Never remove pointerId == 1, which is mouse.
+                // Touch identifiers are 2 smaller than their pointerId, which is the
+                // index in pointermap.
+                if(pointerId === MOUSE_POINTER_ID || this.findTouch(touches, pointerId - 2)) return;
+                d.push(pointer.outEvent);
+            }, this);
+            
+            d.forEach(this.cancelOut, this);
+        }
+    },
+
+    /**
+     * Prevents synth mouse events from creating pointer events
+     */
+    dedupSynthMouse : function(touchEvent) {
+        var lts = mouseEvents.lastTouches,
+            t = touchEvent.changedTouches[0];
+
+        // only the primary finger will synth mouse events
+        if(this.isPrimaryTouch(t)) {
+            // remember x/y of last touch
+            var lt = { x : t.clientX, y : t.clientY };
+            lts.push(lt);
+
+            setTimeout(function() {
+                var i = lts.indexOf(lt);
+                i > -1 && lts.splice(i, 1);
+            }, TOUCH_DEDUP_TIMEOUT);
+        }
+    },
+    
+    touchstart : function(event) {
+        var touchEvent = event.originalEvent;
+
+        this.vacuumTouches(touchEvent);
+        this.setPrimaryTouch(touchEvent.changedTouches[0]);
+        this.dedupSynthMouse(touchEvent);
+        
+        if(!this.scrolling) {
+            this.clickCount++;
+            this.processTouches(event, this.overDown);
+        }
+    },
+    
+    touchmove : function(event) {
+        var touchEvent = event.originalEvent;
+        if(!this.scrolling) {
+            if(this.scrolling === null && this.shouldScroll(touchEvent)) {
+                this.scrolling = true;
+            } else {
+                event.preventDefault();
+                this.processTouches(event, this.moveOverOut);
+            }
+        } else if(this.firstXY) {
+            var firstXY = this.firstXY,
+                touch = touchEvent.changedTouches[0],
+                dx = touch.clientX - firstXY.X,
+                dy = touch.clientY - firstXY.Y,
+                dd = Math.sqrt(dx * dx + dy * dy);
+            if(dd >= TOUCHMOVE_HYSTERESIS) {
+                this.touchcancel(event);
+                this.scrolling = true;
+                this.firstXY = null;
+            }
+        }
+    },
+    
+    touchend : function(event) {
+        var touchEvent = event.originalEvent;
+        this.dedupSynthMouse(touchEvent);
+        this.processTouches(event, this.upOut);
+    },
+    
+    touchcancel : function(event) {
+        this.processTouches(event, this.cancelOut);
+    },
+    
+    overDown : function(pEvent) {
+        var target = pEvent.target;
+        pointermap.set(pEvent.pointerId, {
+            target : target,
+            outTarget : target,
+            outEvent : pEvent
+        });
+        dispatcher.over(pEvent);
+        dispatcher.enter(pEvent);
+        dispatcher.down(pEvent);
+    },
+
+    moveOverOut : function(pEvent) {
+        var pointer = pointermap.get(pEvent.pointerId);
+
+        // a finger drifted off the screen, ignore it
+        if(!pointer) {
+            return;
+        }
+
+        dispatcher.move(pEvent);
+
+        var outEvent = pointer.outEvent,
+            outTarget = pointer.outTarget;
+
+        if(outEvent && outTarget !== pEvent.target) {
+            pEvent.relatedTarget = outTarget;
+            outEvent.relatedTarget = pEvent.target;
+            // recover from retargeting by shadow
+            outEvent.target = outTarget;
+
+            if(pEvent.target) {
+                dispatcher.leaveOut(outEvent);
+                dispatcher.enterOver(pEvent);
+            } else {
+                // clean up case when finger leaves the screen
+                pEvent.target = outTarget;
+                pEvent.relatedTarget = null;
+                this.cancelOut(pEvent);
+            }
+        }
+
+        pointer.outEvent = pEvent;
+        pointer.outTarget = pEvent.target;
+    },
+
+    upOut : function(pEvent) {
+        dispatcher.up(pEvent);
+        dispatcher.out(pEvent);
+        dispatcher.leave(pEvent);
+
+        this.cleanUpPointer(pEvent);
+    },
+
+    cancelOut : function(pEvent) {
+        dispatcher.cancel(pEvent);
+        dispatcher.out(pEvent);
+        dispatcher.leave(pEvent);
+        this.cleanUpPointer(pEvent);
+    },
+
+    cleanUpPointer : function(pEvent) {
+        pointermap['delete'](pEvent.pointerId);
+        this.removePrimaryPointer(pEvent);
+    }
+};
+
+var msEvents = {
+    events : [
+        'MSPointerDown',
+        'MSPointerMove',
+        'MSPointerUp',
+        'MSPointerOut',
+        'MSPointerOver',
+        'MSPointerCancel'
+    ],
+    
+    register : function(target) {
+        dispatcher.listen(target, this.events);
+    },
+    
+    unregister : function(target) {
+        dispatcher.unlisten(target, this.events);
+    },
+    
+    POINTER_TYPES : [
+        '',
+        'unavailable',
+        'touch',
+        'pen',
+        'mouse'
+    ],
+    
+    prepareEvent : function(event) {
+        var e = cloneEvent(event);
+        HAS_BITMAP_TYPE && (e.pointerType = this.POINTER_TYPES[event.pointerType]);
+        return e;
+    },
+    
+    MSPointerDown : function(event) {
+        pointermap.set(event.pointerId, event);
+        var e = this.prepareEvent(event);
+        dispatcher.down(e);
+    },
+    
+    MSPointerMove : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.move(e);
+    },
+    
+    MSPointerUp : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.up(e);
+        this.cleanup(event.pointerId);
+    },
+    
+    MSPointerOut : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.leaveOut(e);
+    },
+    
+    MSPointerOver : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.enterOver(e);
+    },
+    
+    MSPointerCancel : function(event) {
+        var e = this.prepareEvent(event);
+        dispatcher.cancel(e);
+        this.cleanup(event.pointerId);
+    },
+    
+    cleanup : function(id) {
+        pointermap['delete'](id);
+    }
+};
+
+var navigator = window.navigator;
+if(navigator.msPointerEnabled) {
+    dispatcher.registerSource('ms', msEvents);
+} else {
+    dispatcher.registerSource('mouse', mouseEvents);
+    if(typeof window.ontouchstart !== 'undefined') {
+        dispatcher.registerSource('touch', touchEvents);
+    }
+}
+
+dispatcher.register(doc);
+
+}));
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointernative.js */
+/* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
+modules.define('jquery', function(provide, $) {
+
+$.each({
+    pointerpress : 'pointerdown',
+    pointerrelease : 'pointerup pointercancel'
+}, function(spec, origEvent) {
+    function eventHandler(e) {
+        var res, origType = e.handleObj.origType;
+
+        if(!e.button) {
+            e.type = spec;
+            res = $.event.dispatch.apply(this, arguments);
+            e.type = origType;
+        }
+
+        return res;
+    }
+
+    $.event.special[spec] = {
+        setup : function() {
+            $(this).on(origEvent, eventHandler);
+            return false;
+        },
+        teardown : function() {
+            $(this).off(origEvent, eventHandler);
+            return false;
+        }
+    };
+});
+
+provide($);
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
+/* begin: ../../../common.blocks/control/control.js */
+/**
+ * @module control
+ */
+
+modules.define(
+    'control',
+    ['i-bem__dom', 'dom', 'next-tick'],
+    function(provide, BEMDOM, dom, nextTick) {
+
+/**
+ * @exports
+ * @class control
+ * @abstract
+ * @bem
+ */
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+    beforeSetMod : {
+        'focused' : {
+            'true' : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._focused = dom.containsFocus(this.elem('control'));
+                this._focused?
+                    // if control is already in focus, we need to set focused mod
+                    this.setMod('focused') :
+                    // if block already has focused mod, we need to focus control
+                    this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
+            }
+        },
+
+        'focused' : {
+            'true' : function() {
+                this._focused || this._focus();
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+            }
+        },
+
+        'disabled' : {
+            '*' : function(modName, modVal) {
+                this.elem('control').prop(modName, !!modVal);
+            },
+
+            'true' : function() {
+                this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
+            }
+        }
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name') || '';
+    },
+
+    /**
+     * Returns control value
+     * @returns {String}
+     */
+    getVal : function() {
+        return this.elem('control').val();
+    },
+
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
+    },
+
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
+    },
+
+    _focus : function() {
+        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
+    },
+
+    _blur : function() {
+        this.elem('control').blur();
+    }
+}, /** @lends control */{
+    live : function() {
+        this
+            .liveBindTo('control', 'focusin', this.prototype._onFocus)
+            .liveBindTo('control', 'focusout', this.prototype._onBlur);
+
+        var focused = dom.getFocused();
+        if(focused.hasClass(this.buildClass('control'))) {
+            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
+            nextTick(function() {
+                if(focused[0] === dom.getFocused()[0]) {
+                    var block = focused.closest(_this.buildSelector());
+                    block && block.bem(_this.getName());
+                }
+            });
+        }
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/control/control.js */
+/* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
+/**
+ * @module link
+ */
+
+modules.define('link', function(provide, Link) {
+
+/**
+ * @exports
+ * @class link
+ * @bem
+ */
+provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
+    _onPointerClick : function(e) {
+        e.preventDefault();
+        this.__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/link/_pseudo/link_pseudo.js */
+/* begin: ../../../common.blocks/popup/popup.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['i-bem__dom', 'jquery', 'dom', 'objects', 'functions__throttle'],
+    function(provide, BEMDOM, $, dom, objects, throttle) {
+
+var VIEWPORT_ACCURACY_FACTOR = 0.99,
+    DEFAULT_DIRECTIONS = [
+        'bottom-left', 'bottom-center', 'bottom-right',
+        'top-left', 'top-center', 'top-right',
+        'right-top', 'right-center', 'right-bottom',
+        'left-top', 'left-center', 'left-bottom'
+    ],
+    ZINDEX_FACTOR = 1000,
+    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
+
+    win = BEMDOM.win,
+    undef;
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ *
+ * @param {Number} [mainOffset=0] offset along the main direction
+ * @param {Number} [secondaryOffset=0] offset along the secondary direction
+ * @param {Number} [viewportOffset=0] offset from the viewport (window)
+ * @param {Array[String]} [directions] allowed directions
+ *
+ * @bemmod visible Represents visible state
+ */
+provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
+    beforeSetMod : {
+        'visible' : {
+            'true' : function() {
+                if(!this._owner && !this._pos)
+                    throw Error('Can\'t show popup without target');
+            }
+        }
+    },
+
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._parentPopup = null;
+                this._owner = null;
+                this._ownerParents = null;
+                this._popupOwner = null;
+                this._pos = null;
+                this._zIndex = null;
+                this._zIndexGroupLevel = undef;
+                this._isAttachedToScope = false;
+                this._isTargetVisible = undef;
+                this._lastDrawingCss = {
+                        left : undef,
+                        top : undef,
+                        zIndex : undef,
+                        display : undef
+                    };
+                this._updateIsTargetVisible = throttle(
+                    this._updateIsTargetVisible,
+                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
+                    false,
+                    this);
+            },
+
+            '' : function() {
+                this
+                    ._unbindFromPopupOwner()
+                    .delMod('visible');
+            }
+        },
+
+        'visible' : {
+            'true' : function() {
+                this._zIndex = captureZIndex(
+                    typeof this._zIndexGroupLevel === 'undefined'?
+                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                        this._zIndexGroupLevel);
+                this._owner && (this._ownerParents = this._owner.parents());
+
+                this
+                    .bindTo('pointerpress', this._onPointerPress)
+                    ._bindToParentPopup()
+                    ._bindToScrollAndResize()
+                    .redraw();
+            },
+
+            '' : function() {
+                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
+
+                this
+                    .unbindFrom('pointerpress', this._onPointerPress)
+                    ._unbindFromParentPopup()
+                    ._unbindFromScrollAndResize();
+
+                if(this._owner) {
+                    this._ownerParents = null;
+                    this._isTargetVisible = undef;
+                }
+            }
+        }
+    },
+
+    /**
+     * Sets target
+     * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
+     * @param {Number} [top] y-coordinate
+     * @returns {popup} this
+     */
+    setTarget : function(left, top) {
+        this
+            ._unbindFromScrollAndResize()
+            ._unbindFromParentPopup()
+            ._unbindFromPopupOwner();
+
+        if(arguments.length === 1) {
+            this._owner = left instanceof BEMDOM?
+                    left.domElem :
+                    left instanceof $?
+                        left : null;
+            if(!this._owner) throw Error('Invalid arguments');
+
+            this._pos = null;
+            this._popupOwner = this._owner.bem('_' + this.__self.getName() + '-owner');
+            this._isTargetVisible = undef;
+
+            this._bindToPopupOwner();
+
+            if(this.hasMod('visible')){
+                this._ownerParents = this._owner.parents();
+                this
+                    ._bindToScrollAndResize()
+                    .redraw();
+            } else {
+                this._ownerParents = null;
+            }
+        } else {
+            this._pos = { left : left, top : top };
+            this._parentPopup = null;
+            this._owner = null;
+            this._ownerParents = null;
+            this._popupOwner = null;
+            this._isTargetVisible = true;
+        }
+
+        this._zIndexGroupLevel = undef;
+
+        return this;
+    },
+
+    /**
+     * Sets content
+     * @param {String|jQuery} content
+     * @returns {popup} this
+     */
+    setContent : function(content) {
+        BEMDOM.update(this.domElem, content);
+        return this.redraw();
+    },
+
+    /**
+     * Redraws popup
+     * @returns {popup} this
+     */
+    redraw : function() {
+        if(!this.hasMod('visible')) return this;
+
+        if(!this._isAttachedToScope) {
+            BEMDOM.scope.append(this.domElem);
+            this._isAttachedToScope = true;
+        }
+
+        var bestDrawingParams = this._calcBestDrawingParams();
+
+        this.setMod('direction', bestDrawingParams.direction);
+
+        typeof this._isTargetVisible === 'undefined' &&
+            (this._isTargetVisible = this._calcIsTargetVisible());
+
+        var lastDrawingCss = this._lastDrawingCss,
+            needUpdateCss = false;
+
+        objects.each(
+            {
+                display : this._isTargetVisible? '' : 'none',
+                left : bestDrawingParams.left,
+                top : bestDrawingParams.top,
+                zIndex : this._zIndex
+            },
+            function(val, name) {
+                if(lastDrawingCss[name] !== val) {
+                    lastDrawingCss[name] = val;
+                    needUpdateCss = true;
+                }
+            });
+
+        needUpdateCss && this.domElem.css(lastDrawingCss);
+
+        return this;
+    },
+
+    /**
+     * Returns possible directions to draw with max available width and height.
+     * @returns {Array}
+     */
+    calcPossibleDrawingParams : function() {
+        var owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
+            params = this.params,
+            mainOffset = params.mainOffset,
+            secondaryOffset = params.secondaryOffset,
+            viewportOffset = params.viewportOffset;
+
+        return this.params.directions.map(function(direction) {
+            var subRes = {
+                    direction : direction,
+                    width : 0,
+                    height : 0,
+                    left : 0,
+                    top : 0
+                };
+
+            if(checkMainDirection(direction, 'bottom')) {
+                subRes.top = owner.top + owner.height + mainOffset;
+                subRes.height = viewport.bottom - subRes.top - viewportOffset;
+            } else if(checkMainDirection(direction, 'top')) {
+                subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
+                subRes.top = owner.top - subRes.height - mainOffset;
+            } else {
+                if(checkSecondaryDirection(direction, 'center')) {
+                    subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
+                    subRes.top = owner.top + owner.height / 2 - subRes.height / 2;
+                } else if(checkSecondaryDirection(direction, 'bottom')) {
+                    subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
+                    subRes.top = owner.top + owner.height - subRes.height - secondaryOffset;
+                } else if(checkSecondaryDirection(direction, 'top')) {
+                    subRes.top = owner.top + secondaryOffset;
+                    subRes.height = viewport.bottom - subRes.top - viewportOffset;
+                }
+
+                if(checkMainDirection(direction, 'left')) {
+                    subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
+                    subRes.left = owner.left - subRes.width - mainOffset;
+                } else {
+                    subRes.left = owner.left + owner.width + mainOffset;
+                    subRes.width = viewport.right - subRes.left - viewportOffset;
+                }
+            }
+
+            if(checkSecondaryDirection(direction, 'right')) {
+                subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
+                subRes.left = owner.left + owner.width - subRes.width - secondaryOffset;
+            } else if(checkSecondaryDirection(direction, 'left')) {
+                subRes.left = owner.left + secondaryOffset;
+                subRes.width = viewport.right - subRes.left - viewportOffset;
+            } else if(checkSecondaryDirection(direction, 'center')) {
+                if(checkMainDirection(direction, 'top', 'bottom')) {
+                    subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
+                    subRes.left = owner.left + owner.width / 2 - subRes.width / 2;
+                }
+            }
+
+            return subRes;
+        }, this);
+    },
+
+    _calcBestDrawingParams : function() {
+        var popup = this._calcPopupDimensions(),
+            owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
+            directions = this.params.directions,
+            i = 0,
+            direction,
+            pos,
+            viewportFactor,
+            bestDirection,
+            bestPos,
+            bestViewportFactor;
+
+        while(direction = directions[i++]) {
+            pos = this._calcPos(direction, owner, popup);
+            viewportFactor = this._calcViewportFactor(pos, viewport, popup);
+            if(i === 1 ||
+                    viewportFactor > bestViewportFactor ||
+                    (!bestViewportFactor && this.hasMod('direction', direction))) {
+                bestDirection = direction;
+                bestViewportFactor = viewportFactor;
+                bestPos = pos;
+            }
+            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
+        }
+
+        return {
+            direction : bestDirection,
+            left : bestPos.left,
+            top : bestPos.top
+        };
+    },
+
+    _calcPopupDimensions : function() {
+        var popupWidth = this.domElem.outerWidth(),
+            popupHeight = this.domElem.outerHeight();
+
+        return {
+            width : popupWidth,
+            height : popupHeight,
+            area : popupWidth * popupHeight
+        };
+    },
+
+    _calcOwnerDimensions : function() {
+        var pos = this._pos,
+            owner = this._owner,
+            ownerPos = pos? pos : owner.offset();
+
+        return {
+            left : ownerPos.left,
+            top : ownerPos.top,
+            width : pos? 0 : owner.outerWidth(),
+            height : pos? 0 : owner.outerHeight()
+        };
+    },
+
+    _calcViewportDimensions : function() {
+        var winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            winWidth = win.width(),
+            winHeight = win.height();
+
+        return {
+            top : winTop,
+            left : winLeft,
+            bottom : winTop + winHeight,
+            right : winLeft + winWidth
+        };
+    },
+
+    _calcPos : function(direction, owner, popup) {
+        var res = {},
+            mainOffset = this.params.mainOffset,
+            secondaryOffset = this.params.secondaryOffset;
+
+        if(checkMainDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height + mainOffset;
+        } else if(checkMainDirection(direction, 'top')) {
+            res.top = owner.top - popup.height - mainOffset;
+        } else if(checkMainDirection(direction, 'left')) {
+            res.left = owner.left - popup.width - mainOffset;
+        } else if(checkMainDirection(direction, 'right')) {
+            res.left = owner.left + owner.width + mainOffset;
+        }
+
+        if(checkSecondaryDirection(direction, 'right')) {
+            res.left = owner.left + owner.width - popup.width - secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'left')) {
+            res.left = owner.left + secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height - popup.height - secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'top')) {
+            res.top = owner.top + secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'center')) {
+            if(checkMainDirection(direction, 'top', 'bottom')) {
+                res.left = owner.left + owner.width / 2 - popup.width / 2;
+            } else if(checkMainDirection(direction, 'left', 'right')) {
+                res.top = owner.top + owner.height / 2 - popup.height / 2;
+            }
+        }
+
+        return res;
+    },
+
+    _calcViewportFactor : function(pos, viewport, popup) {
+        var viewportOffset = this.params.viewportOffset,
+            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
+            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
+            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
+            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
+
+        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
+            (intersectionRight - intersectionLeft) *
+                (intersectionBottom - intersectionTop) /
+                popup.area :
+            0;
+    },
+
+    /**
+     * Calculates target visibility state
+     * @private
+     * @returns {Boolean} Whether state is visible
+     */
+    _calcIsTargetVisible : function() {
+        var owner = this._owner;
+        if(!owner) return true;
+
+        var ownerOffset = owner.offset(),
+            ownerLeft = ownerOffset.left,
+            ownerTop = ownerOffset.top,
+            ownerRight = ownerLeft + owner.outerWidth(),
+            ownerBottom = ownerTop + owner.outerHeight(),
+            direction = this.getMod('direction'),
+            vertBorder = Math.floor(checkMainDirection(direction, 'top') ||
+                    checkSecondaryDirection(direction, 'top')?
+                ownerTop :
+                ownerBottom),
+            horizBorder = Math.floor(checkMainDirection(direction, 'left') ||
+                    checkSecondaryDirection(direction, 'left')?
+                ownerLeft :
+                ownerRight),
+            res = true;
+
+        this._ownerParents.each(function() {
+            if(this.tagName === 'BODY') return false;
+
+            var parent = $(this),
+                overflowY = parent.css('overflow-y'),
+                checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
+                overflowX = parent.css('overflow-x'),
+                checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
+
+            if(checkOverflowY || checkOverflowX) {
+                var parentOffset = parent.offset();
+
+                if(checkOverflowY) {
+                    var parentTopOffset = Math.floor(parentOffset.top);
+                    if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
+                        return res = false;
+                    }
+                }
+
+                if(checkOverflowX) {
+                    var parentLeftOffset = Math.floor(parentOffset.left);
+                    return res = !(
+                        horizBorder < parentLeftOffset ||
+                        parentLeftOffset + parent.outerWidth() < horizBorder);
+                }
+            }
+        });
+
+        return res;
+    },
+
+    _calcZIndexGroupLevel : function() {
+        var res = this.params.zIndexGroupLevel;
+        return this._popupOwner?
+            this._popupOwner.findBlocksOutside('z-index-group').reduce(
+                function(res, zIndexGroup) {
+                    return res + Number(zIndexGroup.getMod('level'));
+                },
+                res) :
+            res;
+    },
+
+    _bindToScrollAndResize : function() {
+        this._ownerParents &&
+            this
+                .bindTo(this._ownerParents, 'scroll', this._onScrollOrResize)
+                .bindToWin('scroll resize', this._onScrollOrResize);
+
+        return this;
+    },
+
+    _unbindFromScrollAndResize : function() {
+        this._ownerParents &&
+            this
+                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
+                .unbindFromWin('scroll resize', this._onScrollOrResize);
+
+        return this;
+    },
+
+    _onScrollOrResize : function() {
+        this
+            .redraw()
+            ._updateIsTargetVisible();
+    },
+
+    _updateIsTargetVisible : function() {
+        if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
+            return;
+
+        var isTargetVisible = this._calcIsTargetVisible();
+        if(isTargetVisible !== this._isTargetVisible) {
+            this._isTargetVisible = isTargetVisible;
+            this.redraw();
+        }
+    },
+
+    _onPointerPress : function() {
+        var curPopup = this;
+        do {
+            curPopup._inPopupPointerPress = true;
+        } while(curPopup = curPopup._parentPopup);
+    },
+
+    _bindToParentPopup : function() {
+        this._owner &&
+            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
+            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+
+        return this;
+    },
+
+    _unbindFromParentPopup : function() {
+        if(this._parentPopup) {
+            this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+            this._parentPopup = null;
+        }
+
+        return this;
+    },
+
+    _onParentPopupHide : function() {
+        this.delMod('visible');
+    },
+
+    _bindToPopupOwner : function() {
+        this._popupOwner &&
+            this._popupOwner.on({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
+        return this;
+    },
+
+    _unbindFromPopupOwner : function() {
+        this._popupOwner &&
+            this._popupOwner.un({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
+        return this;
+    },
+
+    _onPopupOwnerDestruct : function() {
+        BEMDOM.destruct(this.domElem);
+    },
+
+    getDefaultParams : function() {
+        return {
+            mainOffset : 0,
+            secondaryOffset : 0,
+            viewportOffset : 0,
+            directions : DEFAULT_DIRECTIONS,
+            zIndexGroupLevel : 0
+        };
+    }
+}, /** @lends popup */{
+    live : true
+}));
+
+var visiblePopupsZIndexes = {};
+
+function captureZIndex(level) {
+    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
+    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
+}
+
+function releaseZIndex(level, zIndex) {
+    var zIndexes = visiblePopupsZIndexes[level];
+    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
+}
+
+function checkMainDirection(direction, mainDirection1, mainDirection2) {
+    return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
+}
+
+function checkSecondaryDirection(direction, secondaryDirection) {
+    return ~direction.indexOf('-' + secondaryDirection);
+}
+
+});
+
+/* end: ../../../common.blocks/popup/popup.js */
+/* begin: ../../../common.blocks/popup/_autoclosable/popup_autoclosable.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['jquery', 'i-bem__dom', 'ua', 'dom', 'keyboard__codes'],
+    function(provide, $, BEMDOM, ua, dom, keyCodes, Popup) {
+
+var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
+    visiblePopupsStack = [];
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ */
+provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
+    onSetMod : {
+        'visible' : {
+            'true' : function() {
+                visiblePopupsStack.unshift(this);
+                this
+                    // NOTE: nextTick because of event bubbling to document
+                    .nextTick(function() {
+                        this.bindToDoc('pointerclick', this._onDocPointerClick);
+                    })
+                    .__base.apply(this, arguments);
+            },
+
+            '' : function() {
+                visiblePopupsStack.splice(visiblePopupsStack.indexOf(this), 1);
+                this
+                    .unbindFromDoc('pointerclick', this._onDocPointerClick)
+                    .__base.apply(this, arguments);
+            }
+        }
+    },
+
+    _onDocPointerClick : function(e) {
+        if(this._owner && dom.contains(this._owner, $(e.target)))
+            return;
+
+        this._inPopupPointerPress?
+           this._inPopupPointerPress = null :
+           this.delMod('visible');
+    }
+}, /** @lends popup */{
+    live : function() {
+        BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyPress);
+    }
+}));
+
+function onDocKeyPress(e) {
+    e.keyCode === keyCodes.ESC &&
+        // omit ESC in inputs, selects and etc.
+        visiblePopupsStack.length &&
+        !dom.isEditable($(e.target)) &&
+            visiblePopupsStack[0].delMod('visible');
+}
+
+});
+
+/* end: ../../../common.blocks/popup/_autoclosable/popup_autoclosable.js */
+/* begin: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
+/**
+ * @module keyboard__codes
+ */
+modules.define('keyboard__codes', function(provide) {
+
+provide(/** @exports */{
+    BACKSPACE : 8,
+    TAB : 9,
+    ENTER : 13,
+    CAPS_LOCK : 20,
+    ESC : 27,
+    SPACE : 32,
+    PAGE_UP : 33,
+    PAGE_DOWN : 34,
+    END : 35,
+    HOME : 36,
+    LEFT : 37,
+    UP : 38,
+    RIGHT : 39,
+    DOWN : 40,
+    INSERT : 41,
+    DELETE : 42
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
+/* begin: ../../../common.blocks/input/input.js */
+/**
+ * @module input
+ */
+
+modules.define('input', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+
+/**
+ * @exports
+ * @class input
+ * @augments control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+                this._val = this.elem('control').val();
+            }
+        }
+    },
+
+    /**
+     * Returns control value
+     * @returns {String}
+     * @override
+     */
+    getVal : function() {
+        return this._val;
+    },
+
+    /**
+     * Sets control value
+     * @param {String} val value
+     * @param {Object} [data] additional data
+     * @returns {input} this
+     */
+    setVal : function(val, data) {
+        val = String(val);
+
+        if(this._val !== val) {
+            this._val = val;
+
+            var control = this.elem('control');
+            control.val() !== val && control.val(val);
+
+            this.emit('change', data);
+        }
+
+        return this;
+    }
+}, /** @lends input */{
+    live : function() {
+        this.__base.apply(this, arguments);
+        return false;
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/input/input.js */
+/* begin: ../../../touch.blocks/input/input.js */
+/**
+ * @module input
+ */
+
+modules.define('input', function(provide, Input) {
+
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl( /** @lends input.prototype */{
+    _onInputChanged : function() {
+        this.setVal(this.elem('control').val());
+    }
+}, /** @lends input */{
+    live : function() {
+        this.liveBindTo('control', 'input', this.prototype._onInputChanged);
+        return this.__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../touch.blocks/input/input.js */

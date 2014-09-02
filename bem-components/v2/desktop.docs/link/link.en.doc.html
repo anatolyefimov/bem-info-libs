@@ -1,152 +1,64 @@
 <h1 id="link">link</h1>
-<p>A <code>link</code> block is used for a various types of links creation. It allows to manage state, behaviour and appearance of a links.</p>
-<h2 id="link-use-cases">link use cases</h2>
-<p>The block is used for creation of following link types:</p>
-<table>
+<p><code>link</code> block is used to create various types of links, manage their states, behaviour and appearance on a page.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
     <tr>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Basic link</td>
-        <td>Is used to set up various kinds of links. A default type.</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;link&#39;,
-    url : &#39; #&#39;,
-    content : &#39;link&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Pseudo link</td>
-        <td>The variation of link that will not be followed by a browser on click. Used mainly for scripts invocation.
-        </td>
-        <td>
-            <pre><code>
-{
-    block : &#39;link&#39;,
-    mods : { pseudo : true, theme: &#39;normal&#39; },
-    content : &#39;pseudo&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes can be specified in the corresponding fields of block&#39;s BEMJSON declaration:</p>
-<table>
-    <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
     </tr>
     <tr>
         <td>url</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Link&#39;s URL. If presented an <code>url</code> value, will renders to <code>href</code> HTML attribute. Is mandatory for a normal link. If BEMJSON is passed as the value, it will be processed and will return the string.</td>
+        <td><code>String</code></td>
+        <td>Specifies <code>href</code> HTML attribute to a link.</td>
     </tr>
     <tr>
         <td>title</td>
         <td><code>String</code></td>
-        <td>Popup label&#39;s text.</td>
-    </tr><br>    <tr>
+        <td>Specifies <code>title</code> HTML attribute to a link.</td>
+    </tr>
+    <tr>
         <td>target</td>
         <td><code>String</code></td>
-        <td>Target window. Mainly used with a <code>_blank</code> value to open the link in new window.</td>
+        <td>Target window. Used <code>blank</code> value to open link in a new window.
+            <br>Specifies <code>target</code> HTML attribute to a link.</td>
     </tr>
     <tr>
         <td>tabIndex</td>
         <td><code>Number</code></td>
-        <td>Index to define an order of links focusing on <code>Tab</code> key press. Will be rendered to native <code>tabindex</code> HTML attribute.</td>
+        <td>Defines tab order. Specifies <code>tabindex</code> HTML attribute to a link.</td>
     </tr>
-</table>
+</table></div>
 
-
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
 <li>normal</li>
 </ul>
-<p>If a <code>_theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to the block.</p>
-<p>For example:</p>
-<h4 id="default">default</h4>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
 <!-- bem-example: desktop.examples/link/Y3yr9bNzwYkA9sSkV8EkqO30JYI -->
 
-
-<h4 id="simple">simple</h4>
+<p><strong>simple</strong></p>
 <!-- bem-example: desktop.examples/link/rVrcuNJ0PMv5S2Q4KNH4HsM6Zds -->
 
-
-<h4 id="normal">normal</h4>
+<p><strong>normal</strong></p>
 <!-- bem-example: desktop.examples/link/v4bNHfaIobOFWcneUxLQDbb4T9g -->
 
+<h3 id="_pseudo">_pseudo</h3>
+<p>A link type that does not lead to a new webpage.</p>
+<!-- bem-example: desktop.examples/link/hQPjpMjmUrgvLsQaV83jo1FK3s8 -->
 
-<h3 id="pseudo-link-_pseudo-">Pseudo link <code>_pseudo</code></h3>
-<!-- bem-example: desktop.examples/link/chWrNSQqHxfoi-xep8pjJQnF124 -->
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<!-- bem-example: desktop.examples/link/Qk4lt1jp0pxu2NheiBKaf-xT8FM -->
 
-
-<h3 id="link-s-states">Link&#39;s states</h3>
-<h4 id="in-focus-_focused-">In focus <code>_focused</code></h4>
-<p>A <code>_focused</code> modifier is automaticly toggles to the block when it is in focus. For example, on mouse click or by <code>Tab</code> key press. Focused link can be followed by Enter key press.</p>
-<p>Available for all block themes.</p>
-<pre><code>{
-    block : &#39;link&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        focused : true
-    },
-    url : &#39;#&#39;,
-    content : &#39;_focused&#39;
-}
-</code></pre><h3 id="inactive-_disabled-">Inactive <code>_disabled</code></h3>
-<p>A <code>_disabled</code> modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  </p>
-<p>For such a link will not be performed:</p>
-<ul>
-<li><code>_focused</code> state modifier toggling, when in focus;</li>
-<li>redirection to the link address if an <code>url</code> attribute is provided;</li>
-<li><code>click</code> BEM event emiting.</li>
-</ul>
-<p>Available for all block themes.</p>
-<!-- bem-example: desktop.examples/link/MlN17lxDfpZbuzsh5l2N1VNo16U -->
-
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
-<ul>
-<li><code>control</code></li>
-<li><code>i-bem__dom</code></li>
-</ul>
-
-<h1 id="control">control</h1>
-<p>Auxiliary block designed for common functionality implementation to provide the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library with <code>focused</code> and <code>disabled</code> states:</p>
-<ul>
-<li><a href="../attach/attach.en.md">attach</a></li>
-<li><a href="../button/button.en.md">button</a></li>
-<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
-<li><a href="../input/input.en.md">input</a></li>
-<li><a href="../link/link.en.md">link</a></li>
-<li><a href="../menu/menu.en.md">menu</a></li>
-<li><a href="../radio/radio.en.md">radio</a></li>
-</ul>
-<p>The <code>control</code> block provides valid <code>tabIndex</code> attribute value depending on the current state of a block.</p>
-<p>The block uses following methods:</p>
-<table>
-    <tr>
-        <th>Method</td>
-        <th>Description</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Returns a control&#39;s value.</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
-    </tr>
-</table>
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>

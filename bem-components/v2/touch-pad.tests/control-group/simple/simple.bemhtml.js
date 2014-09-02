@@ -1,19 +1,20 @@
 (function(g) {
-  var __bem_xjst = (function(exports) {
+  var __bem_xjst = function(exports) {
      /// -------------------------------------
 /// ---------- Bootstrap start ----------
 /// -------------------------------------
-function run(templates, context, ignore) {
-  if (!ignore)
-    ignore = {};
+var __$$globalCtx = {"mode":"","block":"","elem":"","elemMods":null,"mods":null};
+function run(templates, context) {
+  var ignore = context.$ignore;
+  var globalCtx = __$$globalCtx;
+  if (!ignore) {
+    context.$ignore = [];
+    ignore = context.$ignore;
+  }
+
   var index = 0;
   var currentId = null;
   var last = null;
-
-  Object.keys(ignore).forEach(function(key) {
-    if (ignore[key] > 0)
-      ignore[key]--;
-  });
 
   function template() {
     var id = index++;
@@ -28,7 +29,7 @@ function run(templates, context, ignore) {
     });
 
     // Respect applyNext
-    if (match && ignore[id]) match = false;
+    if (match && ignore.indexOf(id) !== -1) match = false;
 
     // Ignore body if match failed
     if (!match) return function() {};
@@ -49,13 +50,25 @@ function run(templates, context, ignore) {
 
   function local() {
     var backup = [];
+    var args = Array.prototype.slice.call(arguments);
 
-    Array.prototype.forEach.call(arguments, function(change) {
+    args.forEach(function(change) {
+      if (change === null)
+        return;
+
+      if (typeof change !== 'object')
+        throw new Error('apply() and local() accepts only object literals');
+
       Object.keys(change).forEach(function(key) {
         var parts = key.split('.'),
             newValue = change[key],
             oldValue,
-            subContext = context;
+            isGlobal = parts[0] === '$$global',
+            subContext = isGlobal ? globalCtx : context;
+
+        if (isGlobal) {
+          parts.shift();
+        }
 
         // Dive inside
         for (var i = 0; i < parts.length - 1; i++) {
@@ -68,6 +81,7 @@ function run(templates, context, ignore) {
 
         // Push old value to backup list
         backup.push({
+          isGlobal: isGlobal,
           key: parts,
           value: oldValue
         });
@@ -79,7 +93,7 @@ function run(templates, context, ignore) {
 
       // Rollback old values
       for (var i = backup.length - 1; i >= 0; i--) {
-        var subContext = context,
+        var subContext = backup[i].isGlobal ? globalCtx : context,
             change = backup[i];
 
         // Dive inside
@@ -97,27 +111,65 @@ function run(templates, context, ignore) {
 
   function apply() {
     return local.apply(this, arguments)(function() {
-      return run(templates, context, ignore);
+      return run(templates, context);
     });
   };
 
   function applyNext() {
     return local.apply(this, arguments)(function() {
-      ignore[currentId] = 2;
-      return run(templates, context, ignore);
+      var len = ignore.push(currentId);
+      var ret = run(templates, context);
+      if (len === ignore.length)
+        ignore.pop();
+      return ret;
     });
   };
 
   function oninit(cb) {
-    if (context.$init) cb(exports, context.$context);
+    if (context.$init) {
+      if (context.$context && !context.$context.resetApplyNext) {
+        context.$context.resetApplyNext = function(context) {
+          context.$ignore.length = 0;
+        };
+      }
+
+      cb(exports, context.$context);
+    }
   }
 
-  templates.call(context, template, local, apply, applyNext, oninit);
+  function fetch(name) {
+    var parts = name.split('.'),
+        value = globalCtx;
+
+    // Dive inside
+    for (var i = 0; i < parts.length; i++) {
+      value = value[parts[i]];
+    }
+
+    return value;
+  }
+
+  function set(name, val) {
+    var parts = name.split('.'),
+        value = globalCtx;
+
+    // Dive inside
+    for (var i = 0; i < parts.length - 1; i++) {
+      value = value[parts[i]];
+    }
+    value[parts[i]] = val;
+
+    return value;
+  };
+
+  templates.call(context, template, local, apply, applyNext, oninit, fetch,
+                 set);
 
   if (!last) {
     if (context.$init) return;
     throw new Error('Match failed');
   }
+
   return last.body();
 };
 exports.apply = function apply(ctx) {
@@ -132,14 +184,16 @@ exports.apply = function apply(ctx) {
 };
 try {
   applyc({
-    $init:true,
+    $init: true,
     $exports: exports,
-    $context: { recordExtensions: function() {} }
+    $context: {
+      recordExtensions: function() {}
+    }
   });
 } catch (e) {
   // Just ignore any errors
 }
-function templates(template, local, apply, applyNext, oninit) {
+function templates(template, local, apply, applyNext, oninit, __$$fetch, __$$set) {
 /// -------------------------------------
 /// ---------- Bootstrap end ------------
 /// -------------------------------------
@@ -988,6 +1042,7 @@ block('checkbox-group')(
                     name : ctx.name,
                     val : option.val,
                     text : option.text,
+                    title : option.title,
                     icon : option.icon
                 }
             ];
@@ -1121,37 +1176,34 @@ block('button').mod('focused', true).js()(function() {
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/button/_focused/button_focused.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.bemhtml */
 block('checkbox').mod('type', 'button')(
-    def()(function() {
+    content()(function() {
         var ctx = this.ctx,
-            mods = this.mods,
-            buttonMods = {
+            mods = this.mods;
+
+        return [{
+            block : 'button',
+            mods : {
                 togglable : 'check',
                 checked : mods.checked,
                 disabled : mods.disabled,
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'checkbox',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
-                },
-                ctx.icon
-            ];
-
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
-
-        applyCtx({
-            block : 'button',
-            mix : [{ block : 'checkbox', mods : mods, js : ctx.js || true }].concat(ctx.mix || []),
-            mods : buttonMods,
-            content : buttonContent
-        });
+            title : ctx.title,
+            content : [
+                ctx.icon,
+                typeof ctx.text !== 'undefined'?
+                    { elem : 'text', content : ctx.text } :
+                    ''
+            ]
+        }, {
+            block : 'checkbox',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : ctx.name,
+            val : ctx.val
+        }];
     })
 );
 
@@ -1184,6 +1236,7 @@ block('radio-group')(
                     name : ctx.name,
                     val : option.val,
                     text : option.text,
+                    title : option.title,
                     icon : option.icon
                 }
             ];
@@ -1243,10 +1296,13 @@ block('radio').elem('control')(
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/__control/radio__control.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.bemhtml */
 block('radio').mod('type', 'button')(
-    def()(function() {
+    content()(function() {
         var ctx = this.ctx,
-            mods = this.mods,
-            buttonMods = {
+            mods = this.mods;
+
+        return [{
+            block : 'button',
+            mods : {
                 togglable : mods.mode === 'radio-check'?
                     'check' :
                     'radio',
@@ -1255,27 +1311,21 @@ block('radio').mod('type', 'button')(
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'radio',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
-                },
-                ctx.icon
-            ];
-
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
-
-        applyCtx({
-            block : 'button',
-            mix : { block : 'radio', mods : mods, js : true },
-            mods : buttonMods,
-            content : buttonContent
-        });
+            title : ctx.title,
+            content : [
+                ctx.icon,
+                typeof ctx.text !== 'undefined'?
+                    { elem : 'text', content : ctx.text } :
+                    ''
+            ]
+        }, {
+            block : 'radio',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : ctx.name,
+            val : ctx.val
+        }];
     })
 );
 
@@ -1338,16 +1388,13 @@ block('input').elem('control')(
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/touch.blocks/input/__control/input__control.bemhtml */
 block('input').elem('control')(
 
-    attrs().match(function() { return !this.ctx._input__controlAttrs; })(function() {
-        var baseAttrs = applyNext({ 'ctx._input__controlAttrs' : true }),
-            attrs = this.ctx.attrs || {};
-
-        attrs.autocomplete = attrs.autocomplete || 'off';
-        attrs.autocorrect = attrs.autocorrect || 'off';
-        attrs.autocapitalize = attrs.autocapitalize || 'off';
-        attrs.spellcheck = attrs.spellcheck || 'false';
-
-        return this.extend(baseAttrs, attrs);
+    attrs()(function() {
+        return this.extend({
+            autocomplete : 'off',
+            autocorrect : 'off',
+            autocapitalize : 'off',
+            spellcheck : 'false'
+        }, applyNext());
     })
 
 );
@@ -1402,7 +1449,7 @@ block('select')(
             {
                 block : 'popup',
                 mods : { theme : this.mods.theme, autoclosable : true },
-                js : { directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'] },
+                directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                 content : { block : this.block, mods : this.mods, elem : 'menu' }
             }
         ];
@@ -1570,7 +1617,16 @@ block('menu').elem('group-title').attrs()({ role : 'presentation' });
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
 /* begin: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.bemhtml */
 block('popup')(
-    js()(true)
+    js()(function() {
+        var ctx = this.ctx;
+        return {
+            mainOffset : ctx.mainOffset,
+            secondaryOffset : ctx.secondaryOffset,
+            viewportOffset : ctx.viewportOffset,
+            directions : ctx.directions,
+            zIndexGroupLevel : ctx.zIndexGroupLevel
+        };
+    })
 );
 
 /* end: /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/popup/popup.bemhtml */
@@ -1614,16 +1670,17 @@ __$flush();
 /// -------------------------------------
 };;
      return exports;
-  })({});
+  }
   var defineAsGlobal = true;
   if(typeof exports === "object") {
-    exports["BEMHTML"] = __bem_xjst;
+    exports["BEMHTML"] = __bem_xjst({});
     defineAsGlobal = false;
   }
   if(typeof modules === "object") {
     modules.define("BEMHTML",
-                   function(provide) { provide(__bem_xjst) });
+      function(provide) {
+        provide(__bem_xjst({})) });
     defineAsGlobal = false;
   }
-  defineAsGlobal && (g["BEMHTML"] = __bem_xjst);
+  defineAsGlobal && (g["BEMHTML"] = __bem_xjst({}));
 })(this);

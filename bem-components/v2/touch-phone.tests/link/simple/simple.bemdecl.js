@@ -1,52 +1,134 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "link"
+        "name": "link"
     },
     {
-        "block": "link",
-        "mod": "disabled",
-        "val": true
+        "name": "link",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link-content"
+        "name": "link-content"
     },
     {
-        "block": "link",
-        "mod": "pseudo",
-        "val": true
+        "name": "link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "download"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "download"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link",
-        "mod": "theme",
-        "val": "simple"
+        "name": "link",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link",
-        "mod": "theme",
-        "val": "normal"
+        "name": "link",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "link",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "minor"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "link",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "external"
+                    }
+                ]
+            }
+        ]
     }
 ];

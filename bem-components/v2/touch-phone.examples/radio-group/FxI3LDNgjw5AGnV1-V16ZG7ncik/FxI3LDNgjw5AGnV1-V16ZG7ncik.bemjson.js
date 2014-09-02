@@ -1,0 +1,1 @@
+({"block":"page","title":"radio-group","head":[{"elem":"css","url":"_FxI3LDNgjw5AGnV1-V16ZG7ncik.css"}],"scripts":[{"elem":"js","url":"_FxI3LDNgjw5AGnV1-V16ZG7ncik.js"}],"mods":{"theme":"normal"},"content":{"block":"radio-group","mods":{"theme":"normal","size":"m","type":"line"},"name":"radio-line","options":[{"val":1,"text":"first"},{"val":2,"text":"second"}]}})

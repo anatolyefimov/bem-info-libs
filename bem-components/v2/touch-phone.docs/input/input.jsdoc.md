@@ -31,19 +31,13 @@ Sets control value
 
 this
 
-# control Module
+# input Module
 
-## control Block
+## input Block
+
+Aughtments {control}
 
 ### Instance methods
-
-#### getName () → {String}
-
-Returns name of control
-
-##### Returns:
-
-{String}
 
 #### getVal () → {String}
 
@@ -52,4 +46,21 @@ Returns control value
 ##### Returns:
 
 {String}
+
+#### setVal ( val, [data] ) → {input}
+
+Sets control value
+
+##### Parameters:
+
+* val {String}<br/>
+  value
+* [data] {Object}<br/>
+  additional data
+
+##### Returns:
+
+{input}
+
+this
 

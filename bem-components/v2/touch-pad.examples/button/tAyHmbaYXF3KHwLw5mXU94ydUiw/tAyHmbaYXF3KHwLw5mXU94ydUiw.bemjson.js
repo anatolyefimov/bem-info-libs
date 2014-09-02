@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_tAyHmbaYXF3KHwLw5mXU94ydUiw.css"}],"scripts":[{"elem":"js","url":"_tAyHmbaYXF3KHwLw5mXU94ydUiw.js"}],"mods":{"theme":"simple"},"content":{"block":"button","text":"Theme simple","mods":{"theme":"simple"}}})

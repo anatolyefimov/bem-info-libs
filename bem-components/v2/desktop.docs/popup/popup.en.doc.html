@@ -1,116 +1,114 @@
 <h1 id="popup">popup</h1>
-<p>A <code>popup</code> block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.</p>
-<p>Popup can be displayed by different page elements like pseudo links or buttons.</p>
-<p>At the moment of first display (<code>_visible</code> modifier toggle) block&#39;s DOM element is created in the end of document <code>&lt;body&gt;</code>.</p>
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<p><code>popup</code> block is used to create and manage state, behavior and appearance of popups. It can be triggered by a button or a pseudo link. Popup is always displayed above all other elements on a page.</p>
+<p>When <code>popup</code> is opened for the first time (<code>visible</code> modifier with <code>true</code> value is set) block&#39;s DOM element is created in the end of the document <code>&lt;body&gt;</code>.</p>
+<h2 id="Initialization-of-a-block">Initialization of a block</h2>
+<p>To display <code>popup</code> when <code>visible</code> modifier is assigned, block should be initialized to <code>setTarget</code> method. <code>setTarget</code> needs to determine the popup position on a page. It can be performed:</p>
+<ul>
+<li>according to a parent block position. In this case the parent DOM element or BEM block should be passed as an argument to <code>setTarget</code>;</li>
+<li>by direct coordinates defining. The first and the second arguments passed to <code>setTarget</code> define left and top margins on a page: <code>setTarget(x-coordinate, y-coordinate)</code>.</li>
+</ul>
+<p>The method returns <code>this</code>.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="#direction">directions</a></td>
+        <td>
+            <code>Array</code>
+        </td>
+        <td>Specifies position (e.g., <code>bottom-left</code>, where <code>bottom</code> is main direction and <code>left</code> - secondary) of <code>popup</code> relative to the element that triggers it.</td>
+    </tr>
+    <tr>
+        <td>mainOffset</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies offset along the main direction.</td>
+    </tr>
+    <tr>
+        <td>secondaryOffset</td>
+        <td>
+            <code>String</code></td>
+        <td>Specifies offset along the secondary direction.</td>
+    </tr>
+    <tr>
+        <td>viewportOffset</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies offset from the viewport (browser window).</td>
+    </tr>
+    <tr>
+        <td>zIndexGroupLevel</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies level of a layer for popups&#39; opening. Uses <a href="../z-index-group/z-index.group.ru.md">z-index-group</a> block.</td>
+    </tr>
+</table></div>
+
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
 <li>normal</li>
 </ul>
-<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to block.</p>
-<h4 id="default">default</h4>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
 <!-- bem-example: desktop.examples/popup/Uhdsvnf2MsxKNrQy7w6uLKTxdek -->
 
-
-<h4 id="simple">simple</h4>
+<p><strong>simple</strong></p>
 <!-- bem-example: desktop.examples/popup/7PzT7oA6awlAKgFGXccAdhfz0n0 -->
 
-
-<h4 id="normal">normal</h4>
+<p><strong>normal</strong></p>
 <!-- bem-example: desktop.examples/popup/L1MMDUGHLM4djlDaj5mhiKHvDH8 -->
 
-<h3 id="visibility-_visible-">Visibility <code>_visible</code></h3>
-<p>A <code>_visible</code> modifier allow to control block visibility. If it&#39;s not set, block will not be displayed.</p>
-<!-- bem-example: desktop.examples/popup/m6WdfiXJP4RkxnBzEuzumr9C4w0 -->
-
-
-<h3 id="alignment-respect-to-its-parent-_direction-">Alignment respect to its parent <code>_direction</code></h3>
-<p>Modifier controls the position of popup window relative to the block which opened it – popup&#39;s alignment. Popup window&#39;s position is detected automatically basing on the admissible directions array and the parent block&#39;s position.</p>
-<p>Chosen alignment will affect the opening animation direction.</p>
-<p>By default following admissible directions array is used:</p>
-<table>
-    <tr>
-        <th> Direction </td>
-        <th> Index in array </td>
-    </tr>
-        <td> bottom-left </td>
-        <td> 0 </td>
-    </tr>
-    <tr>
-        <td> bottom-center </td>
-       <td> 1 </td>
-   </tr>
-    <tr>
-        <td> bottom-right</td>
-        <td> 2 </td>
-    </tr>
-    <tr>
-        <td> top-left </td>
-        <td> 3 </td>
-    </tr>
-    <tr>
-        <td> top-center </td>
-        <td> 4 </td>
-    </tr>
-    <tr>
-        <td> top-right </td>
-        <td> 5 </td>
-    </tr>
-    <tr>
-        <td> right-top </td>
-        <td> 6 </td>
-    </tr>
-    <tr>
-        <td> right-center </td>
-        <td> 7 </td>
-    </tr>
-    <tr>
-        <td> right-bottom </td>
-        <td> 8 </td>
-    </tr>
-    <tr>
-        <td> left-top </td>
-        <td> 9 </td>
-    </tr>
-    <tr>
-        <td> left-center </td>
-        <td> 10 </td>
-    </tr>
-    <tr>
-        <td> left-bottom </td>
-        <td> 11 </td>
-    </tr>
-</table>
-
-<p>To control the popup window position you can provide directions array with desired directions set only. According to parent block&#39;s position on a page the most suitable directions will be chosen among the provided values.</p>
-<p>For example, if the popup window should be opened at the top of the parent block:</p>
-<!-- bem-example: desktop.examples/popup/ROJZHxrl71CFbWiWU5Ry_Q0Jbhw -->
-
-
-<p>Or if it should be opened strictly at the center-right position:</p>
-<!-- bem-example: desktop.examples/popup/VE0JWgs-I2gVU8suKC3_eTK29EE -->
-
-
-<h3 id="automatic-closure-_autoclosable-">Automatic closure  <code>_autoclosable</code></h3>
-<p>With <code>_autoclosable</code> modifier toggled block will automatically hide away on mouse click outside popup window (<code>_visible</code> modifier will be removed).</p>
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_visible">_visible</h4>
+<p><code>visible</code> modifier is set automatically when <code>popup</code> is displayed. When <code>popup</code> is hidden, <code>visible</code> modofier is removed.</p>
+<p><strong>NB:</strong> this block&#39;s version does not support manual selection of <code>visible</code> modifier in BEMJSON.</p>
+<h4 id="`_autoscalable`"><code>_autoscalable</code></h4>
+<p>When <code>autoscalable</code> modifier with <code>true</code> is set to <code>popup</code> block, mouse click outside the popup area hides it automatically.</p>
 <!-- bem-example: desktop.examples/popup/M1T2dIuSVeBoluZEMgCmA90Stgc -->
 
-
-<h2 id="relations-between-popup-s">Relations between popup&#39;s</h2>
-<p>As long as popup&#39;s parent block itself can be nested in another popup block there is a need in a popup&#39;s relations handling. Block can handle Parent → [ Child, Child, ... ] relations by checking if the parent block is nested in another popup block. So, the children knows about the parent blocks existence.</p>
-<p>If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that <code>_autoclosable</code> modifier is set to <code>true</code>.</p>
-<p>This means that with <code>autoclosable</code> modifier toggled block will close itself and close all of it children on mouse click outside block&#39;s window or it child&#39;s window.</p>
-<p>Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.</p>
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
+<p><a name="direction"></p>
+<h2 id="Popup-opening-direction-`_direction`">Popup opening direction <code>_direction</code></h2>
+<p>This modifier controls position of <code>popup</code> relative to the element that triggers it.</p>
+<p>By default the following admissible directions are available:</p>
 <ul>
-<li><code>i-bem__dom</code></li>
-<li><code>jquery</code></li>
-<li><code>dom</code></li>
-<li><code>objects</code></li>
-<li><code>functions__throttle</code></li>
-<li><code>keyboard</code></li>
-<li><code>ua</code></li>
-<li><code>jquery__event_pointer</code></li>
+<li>bottom-left</li>
+<li>bottom-center</li>
+<li>bottom-right</li>
+<li>top-left</li>
+<li>top-center</li>
+<li>top-right</li>
+<li>right-top</li>
+<li>right-center</li>
+<li>right-bottom</li>
+<li>left-top</li>
+<li>left-center</li>
+<li>left-bottom</li>
 </ul>
+<p>Required popup positions can be listed as JS parameters with <code>direction</code> key in BEMJSON declaration. The most suitable directions will be chosen among provided values  according to a parent block position on a page</p>
+<p>For example, to open <code>popup</code> at the top of the parent block use <code>top-left</code>, <code>top-center</code> and <code>top-right</code> values:</p>
+<!-- bem-example: desktop.examples/popup/8_HCSFSpYHYyPnAfpx-ciI3mBTw -->
+
+<p>To open <code>popup</code> strictly at the <code>center-right</code> position do the following:</p>
+<!-- bem-example: desktop.examples/popup/BV6kHEObxjS1U4zXg-y0QR8FAlU -->
+
+<p>Use <code>mainOffset</code> and/or <code>secondaryOffset</code> parameters to manage the offset direction:</p>
+<!-- bem-example: desktop.examples/popup/Br3MoMREk42dtU6k4eBAEkIsvl0 -->
+
+<h2 id="Relationship-between-popups">Relationship between popups</h2>
+<p><code>popup</code> block supports nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.</p>
+<p>If <code>autoscalable</code> modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.</p>
+<p>Child popup blocks can be regarded as a chain of <code>1</code> → <code>2</code> → <code>3</code> → <code>4</code>. By clicking on the second element of a chain, third and forth will be closed. By clicking on the first – the second, third and forth will be closed. Clicking outside any popup area of the chain elements will close all popups.</p>

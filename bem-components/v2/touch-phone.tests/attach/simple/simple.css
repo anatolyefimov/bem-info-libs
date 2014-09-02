@@ -72,7 +72,7 @@ html {
 .attach_theme_simple .attach__file .icon {
   width: 1em;
   margin-right: 0.3em;
-  background-image: url(../../../design/common.blocks/attach/_theme/icon_simple.png);
+  background-image: url("../../../design/common.blocks/attach/_theme/icon_simple.png");
 }
 .attach_theme_simple .attach__clear {
   margin-left: 5px;
@@ -186,7 +186,7 @@ html {
 .icon_action_right,
 .icon_action_down,
 .icon_action_left {
-  background-image: url(../../../test.blocks/icon/_action/arrow.svg);
+  background-image: url("../../../test.blocks/icon/_action/arrow.svg");
 }
 .icon_action_up {
   -webkit-transform: rotate(180deg);
@@ -201,6 +201,6 @@ html {
   transform: rotate(90deg);
 }
 .icon_action_download {
-  background-image: url(../../../test.blocks/icon/_action/download.svg);
+  background-image: url("../../../test.blocks/icon/_action/download.svg");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */

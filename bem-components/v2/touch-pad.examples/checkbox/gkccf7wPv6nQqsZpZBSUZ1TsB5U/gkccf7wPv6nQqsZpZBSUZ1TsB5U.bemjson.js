@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_gkccf7wPv6nQqsZpZBSUZ1TsB5U.css"}],"scripts":[{"elem":"js","url":"_gkccf7wPv6nQqsZpZBSUZ1TsB5U.js"}],"mods":{"theme":"simple"},"content":{"block":"checkbox","text":"Тема simple","name":"simple","val":"2","mods":{"theme":"simple"}}})

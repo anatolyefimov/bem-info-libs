@@ -1,64 +1,144 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "checkbox"
+        "name": "checkbox"
     },
     {
-        "block": "checkbox",
-        "mod": "checked",
-        "val": true
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "checked",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "disabled",
-        "val": true
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "theme",
-        "val": "simple"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "type",
-        "val": "button"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "theme",
-        "val": "normal"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "size",
-        "val": "m"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "size",
-        "val": "l"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     }
 ];

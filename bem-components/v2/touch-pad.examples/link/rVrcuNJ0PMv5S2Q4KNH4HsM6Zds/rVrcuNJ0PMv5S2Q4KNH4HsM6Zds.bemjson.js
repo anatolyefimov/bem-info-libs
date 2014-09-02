@@ -1,0 +1,1 @@
+({"block":"page","title":"link","head":[{"elem":"css","url":"_rVrcuNJ0PMv5S2Q4KNH4HsM6Zds.css"}],"scripts":[{"elem":"js","url":"_rVrcuNJ0PMv5S2Q4KNH4HsM6Zds.js"}],"mods":{"theme":"simple"},"content":{"block":"link","mods":{"theme":"simple"},"url":"#","content":"link"}})

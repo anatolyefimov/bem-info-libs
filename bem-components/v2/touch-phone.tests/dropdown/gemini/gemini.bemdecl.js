@@ -1,75 +1,163 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test"
+        "name": "test"
     },
     {
-        "block": "dropdown"
+        "name": "dropdown"
     },
     {
-        "block": "dropdown",
-        "mod": "switcher",
-        "val": "link"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "switcher",
+                "vals": [
+                    {
+                        "name": "link"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup"
+        "name": "popup"
     },
     {
-        "block": "popup",
-        "mod": "autoclosable",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "autoclosable",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "default-link",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "default-link",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "switcher",
-        "val": "button"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "switcher",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "default-button",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "default-button",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "separator"
+        "name": "separator"
     },
     {
-        "block": "dropdown",
-        "mod": "theme",
-        "val": "normal"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "normal-link",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "normal-link",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "size",
-        "val": "s"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "normal-button",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "normal-button",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     }
 ];

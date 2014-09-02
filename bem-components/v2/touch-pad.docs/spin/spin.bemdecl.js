@@ -1,1 +1,1 @@
-exports.deps = [{"block":"spin"}];
+exports.blocks = [{"name":"spin"}];

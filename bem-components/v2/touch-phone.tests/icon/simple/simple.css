@@ -46,7 +46,7 @@ html {
 .icon_action_right,
 .icon_action_down,
 .icon_action_left {
-  background-image: url(../../../test.blocks/icon/_action/arrow.svg);
+  background-image: url("../../../test.blocks/icon/_action/arrow.svg");
 }
 .icon_action_up {
   -webkit-transform: rotate(180deg);
@@ -61,7 +61,7 @@ html {
   transform: rotate(90deg);
 }
 .icon_action_download {
-  background-image: url(../../../test.blocks/icon/_action/download.svg);
+  background-image: url("../../../test.blocks/icon/_action/download.svg");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:begin */

@@ -1,14 +1,14 @@
 <h1 id="checkbox">checkbox</h1>
-<p>Блок <code>checkbox</code> («чекбокс») позволяет управлять параметром выбора с двумя состояниями – включено и выключено. Используется, когда необходимо выбрать более одного варианта из предложенных.</p>
-<p>Блок создает контейнер, содержащий нативный контрол чекбокс (элемент <code>control</code>) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot;&gt;</code>, который скрывается при использовании модификатора <code>theme</code>.</p>
+<p>Блок <code>checkbox</code> («чекбокс», «флажок», «переключатель») позволяет управлять параметром выбора с двумя состояниями – включено и выключено. Используется, когда необходимо выбрать от нуля и более вариантов из предложенных.</p>
+<p>Блок создает контейнер, содержащий нативный контрол чекбокс (элемент <code>control</code>) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot;&gt;</code>, который скрывается при использовании модификатора <a href="#theme">theme</a>.</p>
 <p>Атрибут <code>autocomplete</code> принудительно переведен в состояние <code>off</code> для обеспечения корректной работы блока.</p>
 <!-- bem-example: desktop.examples/checkbox/XI4uPzI90-UiMiWRig9noeu3mrg -->
 
-<h2 id="-">Допустимые атрибуты блока</h2>
-<p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON:</p>
-<table>
+<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<p>Список зарезервированных полей входного BEMJSON:</p>
+<div class="table-container"><table>
     <tr>
-        <th>Атрибут</th>
+        <th>Поле</th>
         <th>Тип</th>
         <th>Описание</th>
     </tr>
@@ -17,21 +17,21 @@
         <td>
             <code>String</code>
         </td>
-        <td>Задает значение текстовой строке чекбокса.</td>
+        <td>Задает текст чекбоксу.</td>
     </tr>
     <tr>
         <td>name</td>
         <td>
             <code>String</code>
         </td>
-        <td>Задает имя чекбокса. Обязательный атрибут. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
+        <td>Имя чекбокса, предназначено для того, чтобы обработчик формы мог его идентифицировать. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
     </tr>
     <tr>
         <td>val</td>
         <td>
             <code>String</code>
         </td>
-        <td>Задает значение чекбокса. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
+        <td>Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом <code>name</code> тега <code><input></code>, а значение — ключом <code>val</code>. Определяет каждый элемент, с тем, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.</td>
     </tr>
     <tr>
         <td>icon</td>
@@ -40,135 +40,86 @@
         </td>
         <td>Иконка, которая отображается с помощью блока <code>icon</code>.</td>
     </tr>
-</table>
+</table></div>
 
-<h2 id="-">Модификаторы блока</h2>
-<h3 id="-_theme-">Темы <code>_theme</code></h3>
+<p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
+<h2 id="Модификаторы-блока">Модификаторы блока</h2>
+<p><a name="theme"></a></p>
+<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>Важно:</strong> При выборе темы <code>normal</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
 </ul>
-<p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
+<p>Без указания модификатора темы отображается <a href="#native">нативный</a> вид контрола.</p>
 <p>Наглядно показано на примерах ниже:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: desktop.examples/checkbox/sae-WwdkdYcrwwgUC5hw2NDih4 -->
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: desktop.examples/checkbox/hfC4WkU9SSa-WV6DlkfA7eBYSl0 -->
 
 <p><strong>simple</strong></p>
-<!-- bem-example: desktop.examples/checkbox/SojNrUmXHg8qOEVNxLMELyPxf1I -->
+<!-- bem-example: desktop.examples/checkbox/gkccf7wPv6nQqsZpZBSUZ1TsB5U -->
 
 <p><strong>normal</strong></p>
-<!-- bem-example: desktop.examples/checkbox/Sgn48vD0-J9Y9jIc1geFcHu6qVA -->
+<!-- bem-example: desktop.examples/checkbox/fBEdxpG8IDf8PLVhT6fzwod_HLc -->
+<a name="size"></a>
+### Размеры <code>_size</code>
 
-<h3 id="-_size-">Размер <code>_size</code></h3>
-<p>Задает размер шрифта.</p>
-<p>Обязательный модификатор. Реализован только в теме <em>normal</em>.</p>
-<p>Доступно два размера реализации блока: <strong>M</strong>, <strong>L</strong>.</p>
-<table>
+Задает размер шрифта.
+
+Модификатор реализован только в теме <em>normal</em>.
+
+Доступно два размера реализации блока: <strong>m</strong>, <strong>l</strong>.
+
+<div class="table-container"><table>
     <tr>
         <th>Размер<br>блока</th>
         <th>Размер<br>шрифта</th>
         <th>Высота строки<br>элемента <code>__box</code></th>
-        <th>Пример</th>
     </tr>
     <tr>
-        <th>M</th>
+        <th>m</th>
         <td>13px</td>
         <td>14px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;m&#39;
-    },
-    text : &#39;Размер M&#39;,
-    name: &#39;name2&#39;,
-    val: &#39;2&#39;
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>L</th>
+        <th>l</th>
         <td>15px</td>
         <td>17px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;l&#39;
-    },
-    text : &#39;Размер L&#39;,
-    name: &#39;name3&#39;,
-    val: &#39;3&#39;
-}
-            </code></pre>
-        </td>
     </tr>
-</table>
+</table></div>
 
-<h3 id="-_type-">Тип <code>_type</code></h3>
+<!-- bem-example: desktop.examples/checkbox/nVzqplxPhx6oAfRkPQFD_3IRM40 -->
+
+<!-- bem-example: desktop.examples/checkbox/Pp62u4u3BG0wLA70aPTXvox4SZI -->
+
+<h3 id="Типы-`_type`">Типы <code>_type</code></h3>
 <p>Блок может быть представлен в виде кнопки (модификатор <code>type</code> в значении <code>button</code>). В таком случае выбор элемента происходит нажатием на кнопку.</p>
-<!-- bem-example: desktop.examples/checkbox/GSqTjc8TX7KG5JpqDbcpS1N0CZM -->
+<p> Такой тип чекбокса приобретает все доступные модификаторы блока <a href="..button/button.ru.md">button</a>.</p>
+<!-- bem-example: desktop.examples/checkbox/0DD8VVrsI62eoAyRbnBLkp0KrBg -->
 
-<h3 id="-">Состояния</h3>
-<h4 id="-_focused-">В фокусе <code>_focused</code></h4>
-<p>В состоянии блока <code>focused</code> со значением <code>true</code> чекбокс всегда находится в фокусе. Если блок представлен в виде кнопки, она приобретает желтую тень. Нажатие по чекбоксу можно выполнить клавишей <code>Space</code> или <code>Enter</code>. Переход по контролам формы осуществляется клавишей <code>Tab</code>.</p>
-<!-- bem-example: desktop.examples/checkbox/79qZiqVxBY5r5ZaX_gUFH7MMT5Y -->
-
-<!-- bem-example: desktop.examples/checkbox/tU4ymq_plszDwGgrM91feVLkv6s -->
-
-<h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
-<p>В состоянии «неактивен» чекбокс виден, но недоступен для действий пользователя.</p>
-<p>Такой чекбос не может получить фокус путем нажатия на клавишу <code>Tab</code> мышью или другими способами.</p>
-<!-- bem-example: desktop.examples/checkbox/GiSyOjElYwkWa_mbNQ4LvfexC8o -->
-
-<!-- bem-example: desktop.examples/checkbox/MiwyveGqb-Q3hDh6b5dvanmXUc0 -->
-
-<h4 id="-_checked-">Отмечен <code>_checked</code></h4>
+<h3 id="Состояния">Состояния</h3>
+<h4 id="Выбран-`_checked`">Выбран <code>_checked</code></h4>
 <p>Модификатор <code>checked</code> в значении <code>true</code> определяет, что чекбокс отмечен (выбран).</p>
 <p>Модификатор <code>checked</code> может быть применен ко всем чекбоксам в группе.</p>
-<!-- bem-example: desktop.examples/checkbox/IMYtMHFDZhN_agFpLXmNIDTAK4Q -->
+<!-- bem-example: desktop.examples/checkbox/dQAKHwJh_-G-kZ9WvG1AX9EKbHg -->
 
-<!-- bem-example: desktop.examples/checkbox/ZWO500NSNVuNcdNcItDCWIHDH3o -->
+<!-- bem-example: desktop.examples/checkbox/FAXacj1ZljlBz1UQj08wJ2HixWg -->
+#### Неактивен <code>_disabled</code>
 
-<h2 id="-">Элементы блока</h2>
-<h3 id="-__box-"><code>__box</code></h3>
+В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
+
+<!-- bem-example: desktop.examples/checkbox/xekPR0JOdqk2BpHBifWVDSz0dDE -->
+
+<!-- bem-example: desktop.examples/checkbox/PEluHj0R5QBmDlSFhtiihCkzKA8 -->
+
+<h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
+<p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
+<p>Чекбокс, реализованный с помощью кнопки, при получении модификатора <code>focused</code>, приобретает желтую тень.</p>
+<h2 id="Элементы-блока">Элементы блока</h2>
+<h3 id="`__box`"><code>__box</code></h3>
 <p>Элемент <code>box</code> служит для отрисовки чекбокса, нативный чекбокс скрыт.</p>
 <p>Добавляется блоку на уровне шаблонизатора.</p>
-<h3 id="-__control-">Контрол <code>__control</code></h3>
+<h3 id="Контрол-`__control`">Контрол <code>__control</code></h3>
 <p>Элемент <code>control</code> служит для использования функциональности нативного контрола чекбокса.</p>
 <p>Добавляется блоку на уровне шаблонизатора.</p>
-
-<h1 id="control">control</h1>
-<p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
-<ul>
-<li><a href="../attach/attach.ru.md">attach</a></li>
-<li><a href="../button/button.ru.md">button</a></li>
-<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
-<li><a href="../input/input.ru.md">input</a></li>
-<li><a href="../link/link.ru.md">link</a></li>
-<li><a href="../menu/menu.ru.md">menu</a></li>
-<li><a href="../radio/radio.ru.md">radio</a></li>
-</ul>
-<p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
-Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>
-<p>Блок использует следующие методы:</p>
-<table>
-    <tr>
-        <th>Метод</td>
-        <th>Описание</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Возвращает имя контрола при его наличии. В обратном случае должен вернуть пустую строку.</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Возвращает значение контрола.</td>
-    </tr>
-</table>

@@ -1571,6 +1571,60 @@ provide({
 });
 
 /* end: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/strings/__escape/strings__escape.vanilla.js */
+/**
+ * @module strings__escape
+ * @description A set of string escaping functions
+ */
+
+modules.define('strings__escape', function(provide) {
+
+var symbols = {
+        '"' : '&quot;',
+        '\'' : '&apos;',
+        '&' : '&amp;',
+        '<' : '&lt;',
+        '>' : '&gt;'
+    },
+    mapSymbol = function(s) {
+        return symbols[s] || s;
+    },
+    buildEscape = function(regexp) {
+        regexp = new RegExp(regexp, 'g');
+        return function(str) {
+            return ('' + str).replace(regexp, mapSymbol);
+        };
+    };
+
+provide(/** @exports */{
+    /**
+     * Escape string to use in XML
+     * @type Function
+     * @param {String} str
+     * @returns {String}
+     */
+    xml : buildEscape('[&<>]'),
+
+    /**
+     * Escape string to use in HTML
+     * @type Function
+     * @param {String} str
+     * @returns {String}
+     */
+    html : buildEscape('[&<>]'),
+
+    /**
+     * Escape string to use in attributes
+     * @type Function
+     * @param {String} str
+     * @returns {String}
+     */
+    attr : buildEscape('["\'&<>]')
+});
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/strings/__escape/strings__escape.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
 /**
  * @module i-bem__dom
@@ -3542,7 +3596,9 @@ function extractExtensionFromFileName(fileName) {
 
 /* end: ../../../common.blocks/attach/attach.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5580,57 +5636,3 @@ provide(/** @exports */{
 });
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/* begin: ../../../libs/bem-core/common.blocks/strings/__escape/strings__escape.vanilla.js */
-/**
- * @module strings__escape
- * @description A set of string escaping functions
- */
-
-modules.define('strings__escape', function(provide) {
-
-var symbols = {
-        '"' : '&quot;',
-        '\'' : '&apos;',
-        '&' : '&amp;',
-        '<' : '&lt;',
-        '>' : '&gt;'
-    },
-    mapSymbol = function(s) {
-        return symbols[s] || s;
-    },
-    buildEscape = function(regexp) {
-        regexp = new RegExp(regexp, 'g');
-        return function(str) {
-            return ('' + str).replace(regexp, mapSymbol);
-        };
-    };
-
-provide(/** @exports */{
-    /**
-     * Escape string to use in XML
-     * @type Function
-     * @param {String} str
-     * @returns {String}
-     */
-    xml : buildEscape('[&<>]'),
-
-    /**
-     * Escape string to use in HTML
-     * @type Function
-     * @param {String} str
-     * @returns {String}
-     */
-    html : buildEscape('[&<>]'),
-
-    /**
-     * Escape string to use in attributes
-     * @type Function
-     * @param {String} str
-     * @returns {String}
-     */
-    attr : buildEscape('["\'&<>]')
-});
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/strings/__escape/strings__escape.vanilla.js */

@@ -5095,7 +5095,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5467,14 +5469,23 @@ provide(/** @exports */{
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
 /* begin: ../../../common.blocks/checkbox/_type/checkbox_type_button.js */
-modules.define('checkbox', function(provide, Checkbox) {
+/**
+ * @module checkbox
+ */
 
-provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
+modules.define('checkbox', ['button'], function(provide, _, Checkbox) {
+
+/**
+ * @exports
+ * @class checkbox
+ * @bem
+ */
+provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockOn('button')
+                this._button = this.findBlockInside('button')
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -5491,6 +5502,11 @@ provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
         'focused' : function(modName, modVal) {
             proxyModToButton.call(this, modName, modVal, false);
         }
+    }
+}, /** @lends checkbox */{
+    live : function() {
+        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        return this.__base.apply(this, arguments);
     }
 }));
 

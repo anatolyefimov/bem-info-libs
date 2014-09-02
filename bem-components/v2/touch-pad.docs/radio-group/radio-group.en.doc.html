@@ -1,329 +1,53 @@
 <h1 id="radio-group">radio-group</h1>
-<p>A <code>radio-group</code> block is a set of dependent switches – radio buttons (a <code>radio</code> block). It is used for a single option selection from the list of options. </p>
-<p>On a web page, a <code>radio-group</code> block will be rendered to a <code>&lt;span&gt;</code> HTML element, with nested set of a switches (radio buttons).</p>
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes can be specified in the corresponding fields of block&#39;s BEMJSON declaration:</p>
-<table>
+<p><code>radio-group</code> block is a set of related radio switches (block <a href="../radio/radio.en.md">radio</a>). It allows a user to select a single option from a group of options.</p>
+<p>On a page, a <code>radio-group</code> block is represented as <code>&lt;span&gt;</code> HTML element with nested set of radio switches.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
     <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>name</td>
         <td><code>String</code></td>
-        <td>Radio button group&#39;s name. Renders to the nested <code>input</code> block&#39;s <code>name</code> HTML attribute.</td>
+        <td><code>radio-group</code> name that is used for its identification. Specifies <code>name</code> HTML attribute to a nested <code>input</code> block.</td>
     </tr>
     <tr>
         <td>options</td>
         <td><code>Array</code></td>
-        <td>Option objects array. Each object in the array are corresponds to one switch and contains it&#39;s attributes set.</td>
-    </tr><br></table>
-
-<p>Among the attributes passing to an <code>option</code> field for the switch the following are mandatory:</p>
-<ul>
-<li><code>val</code> (<code>String</code> | <code>Number</code>) – value returned by selected switcher (a &#39;radio__control&#39; element);</li>
-<li><code>text</code> (<code>String</code>) – a text label for the current switch.</li>
-</ul>
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-theme-">The themes <code>theme</code></h3>
-<ul>
-<li>simple</li>
-<li>normal</li>
-</ul>
-<p>If a <code>theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to the block.</p>
-<p>For example:</p>
-<h4 id="default">default</h4>
-<!-- bem-example: touch-pad.examples/radio-group/7DyHwAbpYHpT5TcturqqL57OMbA -->
-
-
-<h4 id="simple">simple</h4>
-<!-- bem-example: touch-pad.examples/radio-group/3eOE97EmaqvVB-6XycKG7cpGY5Y -->
-
-
-<h4 id="normal">normal</h4>
-<!-- bem-example: touch-pad.examples/radio-group/3iTePRGPbj1_dKvtQGd2bMai-Ac -->
-
-
-<h3 id="the-sizes-size-">The sizes <code>size</code></h3>
-<p>Mandatory modifier. Available for <em>normal</em> theme only.
-Provides the size value to all types of radio groups.</p>
-<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
-<p>Depending on a <code>type</code> modifier value following sizes are available:</p>
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Normal radio group</th>
-        <th>Button radio group (<code>_type_button</code>)</th>
+        <td>An array of pairs that maps <code>text</code> to <code>val</code> for each switch in radio-group. Each pair <code>name=val</code> within the array corresponds to one radio switch. Pair <code>name=val</code> is sent to a server, where name of a radio group is set by <code>name</code> field and value of each radio switch – by <code>val</code> field.
+            <br><code>disabled</code> modifier of <code>radio</code> block could be propagated to each radio switch of <code>options</code> array.</td>
     </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
+</table></div>
 
-
-<p>Here are some examples with <em>normal</em> theme and and with set <code>radio-group_type_button</code> modifier:</p>
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;s&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;radio-S&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;radio-M&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;radio-L&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;xl&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;radio-XL&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h3 id="radio-group-type-type-">Radio group type <code>type</code></h3>
-<p>A <code>type</code> modifier can have following values:</p>
-<ul>
-<li><code>button</code>. It is used for creation of a button radio group – a block of button switcher;</li>
-<li><code>line</code>. Is used for a line-aligned radio group creation. Right gap is automatically added after each switch of the group except the last one. Available only for <em>normal</em> theme.</li>
-</ul>
-<table>
-    <tr>
-        <th>Type</th>
-
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Normal radio group</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
-    name : &#39;radio-normal&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Button radio group</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;radio-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Line-aligned radio group (<code>_type_line</code>)</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;line&#39; 
-    },
-    name : &#39;radio-line&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr><br></table>
-
-
-<h3 id="inactive-disabled-">Inactive <code>disabled</code></h3>
-<p>A <code>radio-group_disabled</code> modifier is used for an inactive radio group creation. An inactive group is displayed but not available for user actions.  </p>
-<p>Such a group will not obtain focus (<code>radio-group_focused</code> modifier will not be toggled).</p>
-<p>When a <code>disabled</code> modifier is set to the group all it&#39;s switches will also be disabled. As a result, for the group&#39;s switches will not be performed:</p>
-<ul>
-<li>state modifiers <code>hovered</code>, <code>pressed</code> and <code>focused</code> toggling;</li>
-<li>switching between <code>checked</code> modifier&#39;s values.</li>
-</ul>
-<p>Modifier is available for all block themes.</p>
-<!-- bem-example: touch-pad.examples/radio-group/z74-X9bjA8-9fMUlFI8AH9R8Dfo -->
-
-
-<h3 id="radio-group-s-states">Radio group&#39;s states</h3>
-<h4 id="-focused-"><code>focused</code></h4>
-<p>A <code>radio-group_focused</code> modifier is automaticly toggles when one of the block elements is in focus. For example, on mouse click or by <code>Tab</code> key press. </p>
-<p>Available for all block themes.</p>
-<!-- bem-example: touch-pad.examples/radio-group/8YPfPGsfRbco7RPs63oF47Bj5d8 -->
-
-
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>radio</code></li>
-<li><code>jquery</code></li>
-<li><code>radio-group_type_button</code> (which is depends on <code>button</code> block)</li>
-</ul>
-
-<h1 id="radio">radio</h1>
-<p>A <code>radio</code> block is used for creating of a single radio switch. A switch can be represented by the radio switch or by the button. The <code>radio</code> block allows to manage state, content and type of a radio switches.</p>
-<p>The <code>radio</code> blocks are used inside a <code>radio-group</code> block as a group elements.</p>
-<p>As a result of block&#39;s template application, it will be rendered to a <code>&lt;label&gt;</code> HTML element, with following set of nested items:</p>
-<ul>
-<li>a <code>radio__box</code> element with hidden nested <code>input</code> HTML element (a <code>__control</code> element);</li>
-<li>a radio switch label, if the <code>text</code> BEMJSON attribute is passed.</li>
-</ul>
-<p>Block&#39;s implementation use the logic of a native <code>input</code> HTML element with set <code>radio</code> control type: <code>&lt;input name=&quot;name&quot; type=&quot;radio&quot;&gt;</code>. If a <code>theme</code> modifier is set, the <code>input</code> element is hidden by default.</p>
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes can be specified in the corresponding fields of block&#39;s BEMJSON declaration:</p>
-<table>
-    <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
-    </tr>
-    <tr>
-        <td><code>name</code></td>
-        <td><code>String|Number</code></td>
-        <td>Radio switch name. Renders to a nested <code>input</code> block&#39;s <code>name</code> HTML attribute.</td>
-    </tr>
-    <tr>
-        <td><code>text</code></td>
-        <td><code>String|Number</code></td>
-        <td>A label for the radio switch.</td>
-    </tr>
-    <tr>
-        <td><code>val</code></td>
-        <td><code>String|Number</code></td>
-        <td>A value which the selected radio switch will return. Renders to a nested <code>input</code> block&#39;s <code>value</code> HTML attribute.</td>
-    </tr>
-</table>
-
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-theme-">The themes <code>theme</code></h3>
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>NB!</strong> Choosing a theme <code>normal</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
 </ul>
-<p>If a <code>theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to the block.</p>
-<p>For example:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: touch-pad.examples/radio-group/xr-zTTUYS3DD_e4xJV6Yn3a3BPI -->
-
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
 <p><strong>simple</strong></p>
-<!-- bem-example: touch-pad.examples/radio-group/pPPjX0UcGCQBYmUNCpE27JADBCU -->
-
 <p><strong>normal</strong></p>
-<!-- bem-example: touch-pad.examples/radio-group/L98T9NertqtVCJpvDLdlKg6huWI -->
-
-<h3 id="the-sizes-size-">The sizes <code>size</code></h3>
-<p>Mandatory modifier. Available for <em>normal</em> theme only.
-Provides all types of radio switches with the size value.</p>
-<p>The set of available sizes depends on a <code>type</code> modifier&#39;s value. Following sizes are available:</p>
-<table>
+<p><a name="size"></a></p>
+<h3 id="_size">_size</h3>
+<p>Implemented only for theme <code>normal</code>.</p>
+<p>Provides to all types of <code>radio-group</code> with the size value.</p>
+<p>There are four sizes available: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<p>Depending on a <a href="#types">type</a> modifier value following sizes are available:</p>
+<div class="table-container"><table>
     <tr>
         <th>Size</th>
-        <th>Default radio switch</th>
-        <th>Button radio switch (<code>_type_button</code>)</th>
+        <th>Default radio group</th>
+        <th>Button-based radio group
+            <br>(<code>radio-group_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -344,123 +68,24 @@ Provides all types of radio switches with the size value.</p>
         <th>xl</th>
         <td>–</td>
         <td>+</td>
-</table>
+</table></div>
 
-<h3 id="radio-switch-type-type-">Radio switch type <code>type</code></h3>
-<p>A <code>type</code> modifier can be set to a <code>button</code> state for creating a button radio switch – the <code>button</code> block with a <code>button_togglable_radio</code> modifier set.</p>
-<p>The <code>radio</code> block is mixed up to the <code>button</code> block with nested <code>radio__control</code> element.</p>
-<p>In addition a <code>role=&quot;button&quot;</code> HTML attribute is set for the block.</p>
-<table>
-    <tr>
-        <th>Type</th>
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Default radio switch</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
-    name : &#39;radio-normal&#39;,
-    text : &#39;Lonely switch&#39;
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Button radio switch</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;l&#39;,
-        type : &#39;button&#39;
-    },
-    name : &#39;radio-normal&#39;,
-    text : &#39;Lonely switch2&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h3 id="block-s-states">Block&#39;s states</h3>
-<h4 id="inactive-disabled-">Inactive <code>disabled</code></h4>
-<p>A <code>disabled</code> modifier is used for an inactive radio switch creation. An inactive radio switch is displayed but not available for user actions.  </p>
-<p>Inactive radio switch will not obtain focus (a <code>focused</code> modifier toggle) on mouse click or by <code>Tab</code> key press.</p>
-<p>For such a inactive block will not be performed:</p>
+<p>See following examples:</p>
+<p><a name="types"></a></p>
+<h3 id="_type">_type</h3>
+<p>The following types of <code>radio-group</code> block are available:</p>
 <ul>
-<li><code>hovered</code>, <code>pressed</code> and <code>focused</code> state modifier toggling;</li>
-<li><code>checked</code> modifier value changing.</li>
+<li><code>button</code>-based. Use <code>type</code> modifier with <code>button</code> value to create <code>radio-group</code> block implemented by <a href="..button/button.en.md">button</a> block. Button-based radio switches of a group are always aligned in a line.</li>
 </ul>
-<!-- bem-example: touch-pad.examples/radio-group/RBPWsSDN_yrB6HXtmtrnXB3WSMY -->
-
-
-<h4 id="in-focus-focused-">In focus <code>focused</code></h4>
-<p>A <code>focused</code> modifier is automatically toggled to the block when it is in focus. For example, on mouse click or by <code>Tab</code> key press.</p>
-<p>Available for all block themes.</p>
-<!-- bem-example: touch-pad.examples/radio-group/wEYcA7ioT134yNzBSljZyhtiyg8 -->
-
-
-<h4 id="selected-radio-switch-checked-">Selected radio switch <code>checked</code></h4>
-<p>Modifier defines the selected radio switch.</p>
-<p>The modifier is toggling on:</p>
 <ul>
-<li>mouse click (on re-clicking modifier state remains);</li>
-<li><code>Enter</code> and <code>Space</code> key press (an option of <code>Enter</code> usage depends on a browser), if radio switch is in focus (a <code>focused</code> modifier is toggled);</li>
-<li>arrow key press, if one of the neighbour <code>radio</code> switches is in focus. Neighbour switch can be either a part of the same radio group or independent switch nested in the same block.</li>
+<li><code>line</code>-aligned. Use <code>type</code> modifier with <code>line</code> value to align all radio switches in the group in a line. Right gap is automatically added after each switch in the group except for the last one. Implemented only for theme <code>normal</code>.</li>
 </ul>
-<!-- bem-example: touch-pad.examples/radio-group/yLi2X_E9s0cnYS8x7h0IvQ3Jmhw -->
-
-
-<h4 id="states-available-with-a-radio_type_button-modifier">States available with a <code>radio_type_button</code> modifier</h4>
-<p>If a <code>radio_type_button</code> modifier is set, a <code>radio</code> block is mixed up to a <code>button</code> block. As a result, for the <code>radio</code> block with the <code>radio_type_button</code> modifier are available following <code>button</code> block&#39;s states:</p>
-<ul>
-<li><code>hovered</code> – mouse pointer over the block;</li>
-<li><code>pressed</code> – button is pressed.</li>
-</ul>
-<h2 id="block-s-elements">Block&#39;s elements</h2>
-<h3 id="-__box-"><code>__box</code></h3>
-<p>A <code>__box</code> element is used in basic block&#39;s implementation as a container with nested control element (a <code>__control</code> element). It renders to a <code>&lt;span&gt;</code> HTML element.</p>
-<h3 id="-__control-"><code>__control</code></h3>
-<p>A <code>__control</code> element is a radio switch controller. It renders to an <code>&lt;input&gt;</code> HTML element with the <code>type=&quot;radio&quot;</code> attribute is set. In all block themes it is hidden by default. Block uses only the control&#39;s logic.</p>
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>control</code></li>
-<li><code>jquery__event</code></li>
-<li><code>__box</code></li>
-<li><code>__control</code></li>
-</ul>
-
-<h1 id="control">control</h1>
-<p>Auxiliary block designed for common functionality implementation to provide the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library with <code>focused</code> and <code>disabled</code> states:</p>
-<ul>
-<li><a href="../attach/attach.en.md">attach</a></li>
-<li><a href="../button/button.en.md">button</a></li>
-<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
-<li><a href="../input/input.en.md">input</a></li>
-<li><a href="../link/link.en.md">link</a></li>
-<li><a href="../menu/menu.en.md">menu</a></li>
-<li><a href="../radio/radio.en.md">radio</a></li>
-</ul>
-<p>The <code>control</code> block provides valid <code>tabIndex</code> attribute value depending on the current state of a block.</p>
-<p>The block uses following methods:</p>
-<table>
-    <tr>
-        <th>Method</td>
-        <th>Description</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Returns a control&#39;s value.</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
-    </tr>
-</table>
+<h3 id="_mode">_mode</h3>
+<p><code>mode</code> modifier with <code>radio-check</code> value is implemented only for <a href="#types"><code>button</code>-based</a> radio group (<code>radio-group_type_button</code>). This mode allows a user to check only one item from the group or leave all items unchecked. Click on a button changes its value to the opposite.</p>
+<h3 id="States-of-a-block">States of a block</h3>
+<h3 id="_disabled">_disabled</h3>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused, pressed or hovered. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<p>If <code>checkbox-group</code> block is disabled, all checkboxes within this group are also disabled. <code>checked</code> modifier value cannot be changed in <code>disabled</code> state.</p>
+<p>You can apply <code>disabled</code> modifier to separate switches in a group.</p>
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>

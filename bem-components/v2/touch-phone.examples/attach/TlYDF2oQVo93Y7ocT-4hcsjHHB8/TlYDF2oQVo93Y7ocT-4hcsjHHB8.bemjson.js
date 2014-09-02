@@ -1,0 +1,1 @@
+({"block":"page","title":"attach","head":[{"elem":"css","url":"_TlYDF2oQVo93Y7ocT-4hcsjHHB8.css"}],"scripts":[{"elem":"js","url":"_TlYDF2oQVo93Y7ocT-4hcsjHHB8.js"}],"mods":{"theme":"simple"},"content":{"block":"attach","mods":{"theme":"simple","disabled":true},"button":"Выберите файл","noFileText":"файл не выбран"}})

@@ -1,57 +1,133 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "spin"
+        "name": "spin"
     },
     {
-        "block": "spin",
-        "mod": "paused",
-        "val": true
+        "name": "spin",
+        "mods": [
+            {
+                "name": "paused",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "theme",
-        "val": "normal"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "progress",
-        "val": true
+        "name": "spin",
+        "mods": [
+            {
+                "name": "progress",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "size",
-        "val": "xs"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xs"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "size",
-        "val": "s"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "size",
-        "val": "m"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "size",
-        "val": "l"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "spin",
-        "mod": "size",
-        "val": "xl"
+        "name": "spin",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xl"
+                    }
+                ]
+            }
+        ]
     }
 ];

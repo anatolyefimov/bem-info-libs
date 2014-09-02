@@ -3642,7 +3642,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
         return this;
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.__base.apply(this, arguments);
         return false;
@@ -3653,13 +3653,22 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
 /* end: ../../../common.blocks/input/input.js */
 /* begin: ../../../touch.blocks/input/input.js */
+/**
+ * @module input
+ */
+
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl( /** @lends input.prototype */{
     _onInputChanged : function() {
         this.setVal(this.elem('control').val());
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.liveBindTo('control', 'input', this.prototype._onInputChanged);
         return this.__base.apply(this, arguments);
@@ -3670,7 +3679,9 @@ provide(Input.decl({
 
 /* end: ../../../touch.blocks/input/input.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5459,9 +5470,18 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/input/_has-clear/input_has-clear.js */
+/**
+ * @module input
+ */
+
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({ modName : 'has-clear', modVal : true }, {
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -5483,7 +5503,7 @@ provide(Input.decl({ modName : 'has-clear', modVal : true }, {
     _updateClear : function() {
         this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.liveBindTo('clear', 'pointerclick', function() {
             this._onClearClick();

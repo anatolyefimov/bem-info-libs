@@ -1571,6 +1571,76 @@ provide({
 });
 
 /* end: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/tick/tick.vanilla.js */
+/**
+ * @module tick
+ * @description Helpers for polling anything
+ */
+
+modules.define('tick', ['inherit', 'events'], function(provide, inherit, events) {
+
+var TICK_INTERVAL = 50,
+    global = this.global,
+
+    /**
+     * @class Tick
+     * @augments events:Emitter
+     */
+    Tick = inherit(events.Emitter, /** @lends Tick.prototype */{
+        /**
+         * @constructor
+         */
+        __constructor : function() {
+            this._timer = null;
+            this._isStarted = false;
+        },
+
+        /**
+         * Starts polling
+         */
+        start : function() {
+            if(!this._isStarted) {
+                this._isStarted = true;
+                this._scheduleTick();
+            }
+        },
+
+        /**
+         * Stops polling
+         */
+        stop : function() {
+            if(this._isStarted) {
+                this._isStarted = false;
+                global.clearTimeout(this._timer);
+            }
+        },
+
+        _scheduleTick : function() {
+            var _this = this;
+            this._timer = global.setTimeout(
+                function() {
+                    _this._onTick();
+                },
+                TICK_INTERVAL);
+        },
+
+        _onTick : function() {
+            this
+                .emit('tick')
+                ._scheduleTick();
+        }
+    });
+
+provide(
+    /**
+     * @exports
+     * @type Tick
+     */
+    new Tick());
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/tick/tick.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
 /**
  * @module i-bem__dom
@@ -3446,7 +3516,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
         return this;
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.__base.apply(this, arguments);
         return false;
@@ -3457,6 +3527,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
 /* end: ../../../common.blocks/input/input.js */
 /* begin: ../../../desktop.blocks/input/input.js */
+/**
+ * @module input
+ */
+
 modules.define('input', ['tick', 'idle'], function(provide, tick, idle, Input) {
 
 var instances = [],
@@ -3484,7 +3558,12 @@ var instances = [],
         }
     };
 
-provide(Input.decl({
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl( /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -3529,7 +3608,9 @@ provide(Input.decl({
 
 /* end: ../../../desktop.blocks/input/input.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5370,76 +5451,6 @@ provide($);
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
-/* begin: ../../../libs/bem-core/common.blocks/tick/tick.vanilla.js */
-/**
- * @module tick
- * @description Helpers for polling anything
- */
-
-modules.define('tick', ['inherit', 'events'], function(provide, inherit, events) {
-
-var TICK_INTERVAL = 50,
-    global = this.global,
-
-    /**
-     * @class Tick
-     * @augments events:Emitter
-     */
-    Tick = inherit(events.Emitter, /** @lends Tick.prototype */{
-        /**
-         * @constructor
-         */
-        __constructor : function() {
-            this._timer = null;
-            this._isStarted = false;
-        },
-
-        /**
-         * Starts polling
-         */
-        start : function() {
-            if(!this._isStarted) {
-                this._isStarted = true;
-                this._scheduleTick();
-            }
-        },
-
-        /**
-         * Stops polling
-         */
-        stop : function() {
-            if(this._isStarted) {
-                this._isStarted = false;
-                global.clearTimeout(this._timer);
-            }
-        },
-
-        _scheduleTick : function() {
-            var _this = this;
-            this._timer = global.setTimeout(
-                function() {
-                    _this._onTick();
-                },
-                TICK_INTERVAL);
-        },
-
-        _onTick : function() {
-            this
-                .emit('tick')
-                ._scheduleTick();
-        }
-    });
-
-provide(
-    /**
-     * @exports
-     * @type Tick
-     */
-    new Tick());
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/tick/tick.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/idle/idle.js */
 /**
  * @module idle
@@ -5533,9 +5544,18 @@ provide(
 
 /* end: ../../../libs/bem-core/common.blocks/idle/idle.js */
 /* begin: ../../../common.blocks/input/_has-clear/input_has-clear.js */
+/**
+ * @module input
+ */
+
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({ modName : 'has-clear', modVal : true }, {
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -5557,7 +5577,7 @@ provide(Input.decl({ modName : 'has-clear', modVal : true }, {
     _updateClear : function() {
         this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.liveBindTo('clear', 'pointerclick', function() {
             this._onClearClick();

@@ -1,1 +1,1 @@
-exports.deps = [{"block":"radio"}];
+exports.blocks = [{"name":"radio"}];

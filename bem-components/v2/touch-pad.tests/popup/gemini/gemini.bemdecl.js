@@ -1,83 +1,140 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test-nested"
+        "name": "test-nested"
     },
     {
-        "block": "link"
+        "name": "link"
     },
     {
-        "block": "link",
-        "mod": "pseudo",
-        "val": true
+        "name": "link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup"
+        "name": "popup"
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "simple"
+        "name": "popup",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "autoclosable",
-        "val": true
+        "name": "test-wrap"
     },
     {
-        "block": "popup",
-        "mod": "visible",
-        "val": true
+        "name": "test"
     },
     {
-        "block": "test-wrap"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "all"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "bottom"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "all"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "top"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "normal"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "right"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "bottom"
-    },
-    {
-        "block": "test",
-        "mod": "direction",
-        "val": "top"
-    },
-    {
-        "block": "test",
-        "mod": "direction",
-        "val": "right"
-    },
-    {
-        "block": "test",
-        "mod": "direction",
-        "val": "left"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "left"
+                    }
+                ]
+            }
+        ]
     }
 ];

@@ -1,114 +1,250 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "checkbox-group"
+        "name": "checkbox-group"
     },
     {
-        "block": "checkbox-group",
-        "mod": "theme",
-        "val": "normal"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "size",
-        "val": "m"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "type",
-        "val": "button"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group"
+        "name": "radio-group"
     },
     {
-        "block": "radio-group",
-        "mod": "theme",
-        "val": "normal"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "size",
-        "val": "m"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "type",
-        "val": "button"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "control-group"
+        "name": "control-group"
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "normal"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "m"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "down"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "down"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input"
+        "name": "input"
     },
     {
-        "block": "input",
-        "mod": "theme",
-        "val": "normal"
+        "name": "input",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "size",
-        "val": "m"
+        "name": "input",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "type",
-        "val": "search"
+        "name": "input",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "search"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "select"
+        "name": "select"
     },
     {
-        "block": "select",
-        "mod": "mode",
-        "val": "radio"
+        "name": "select",
+        "mods": [
+            {
+                "name": "mode",
+                "vals": [
+                    {
+                        "name": "radio"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "select",
-        "mod": "theme",
-        "val": "normal"
+        "name": "select",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "select",
-        "mod": "size",
-        "val": "m"
+        "name": "select",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     }
 ];

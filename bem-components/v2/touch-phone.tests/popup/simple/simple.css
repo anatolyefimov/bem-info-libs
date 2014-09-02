@@ -642,12 +642,12 @@ html {
 .input_theme_normal.input_size_m .input__clear {
   width: 24px;
   height: 24px;
-  background-image: url(../../../design/common.blocks/input/_theme/_normal/clear_size_s.svg);
+  background-image: url("../../../design/common.blocks/input/_theme/_normal/clear_size_s.svg");
   background-position: 7px 50%;
 }
 .input_theme_normal.input_size_s {
   font-size: 13px;
-  line-height: 15px;
+  line-height: 16px;
 }
 .input_theme_normal.input_size_s .input__control {
   height: 24px;
@@ -658,7 +658,7 @@ html {
 }
 .input_theme_normal.input_size_m {
   font-size: 13px;
-  line-height: 15px;
+  line-height: 16px;
 }
 .input_theme_normal.input_size_m .input__control {
   height: 28px;
@@ -676,12 +676,12 @@ html {
 .input_theme_normal.input_size_xl .input__clear {
   width: 32px;
   height: 32px;
-  background-image: url(../../../design/common.blocks/input/_theme/_normal/clear_size_l.svg);
+  background-image: url("../../../design/common.blocks/input/_theme/_normal/clear_size_l.svg");
   background-position: 9px 50%;
 }
 .input_theme_normal.input_size_l {
   font-size: 15px;
-  line-height: 17px;
+  line-height: 18px;
 }
 .input_theme_normal.input_size_l .input__control {
   height: 32px;

@@ -1571,6 +1571,61 @@ provide({
 });
 
 /* end: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
+/**
+ * @module functions__throttle
+ */
+
+modules.define('functions__throttle', function(provide) {
+
+var global = this.global;
+
+provide(
+    /**
+     * Throttle given function
+     * @exports
+     * @param {Function} fn function to throttle
+     * @param {Number} timeout throttle interval
+     * @param {Boolean} [invokeAsap=true] invoke before first interval
+     * @param {Object} [ctx] context of function invocation
+     * @returns {Function} throttled function
+     */
+    function(fn, timeout, invokeAsap, ctx) {
+        var typeofInvokeAsap = typeof invokeAsap;
+        if(typeofInvokeAsap === 'undefined') {
+            invokeAsap = true;
+        } else if(arguments.length === 3 && typeofInvokeAsap !== 'boolean') {
+            ctx = invokeAsap;
+            invokeAsap = true;
+        }
+
+        var timer, args, needInvoke,
+            wrapper = function() {
+                if(needInvoke) {
+                    fn.apply(ctx, args);
+                    needInvoke = false;
+                    timer = global.setTimeout(wrapper, timeout);
+                } else {
+                    timer = null;
+                }
+            };
+
+        return function() {
+            args = arguments;
+            ctx || (ctx = this);
+            needInvoke = true;
+
+            if(!timer) {
+                invokeAsap?
+                    wrapper() :
+                    timer = global.setTimeout(wrapper, timeout);
+            }
+        };
+    });
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
 /**
  * @module i-bem__dom
@@ -5349,7 +5404,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5471,9 +5528,18 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 
 /* end: ../../../common.blocks/control/control.js */
 /* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
+/**
+ * @module link
+ */
+
 modules.define('link', function(provide, Link) {
 
-provide(Link.decl({ modName : 'pseudo', modVal : true }, {
+/**
+ * @exports
+ * @class link
+ * @bem
+ */
+provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     _onPointerClick : function(e) {
         e.preventDefault();
         this.__base.apply(this, arguments);
@@ -5500,7 +5566,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000,
+    ZINDEX_FACTOR = 1000,
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
@@ -5537,6 +5603,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._popupOwner = null;
                 this._pos = null;
                 this._zIndex = null;
+                this._zIndexGroupLevel = undef;
                 this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
                 this._lastDrawingCss = {
@@ -5561,21 +5628,24 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex();
+                this._zIndex = captureZIndex(
+                    typeof this._zIndexGroupLevel === 'undefined'?
+                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                        this._zIndexGroupLevel);
                 this._owner && (this._ownerParents = this._owner.parents());
 
                 this
-                    .bindTo('pointerclick', this._onPointerClick)
+                    .bindTo('pointerpress', this._onPointerPress)
                     ._bindToParentPopup()
                     ._bindToScrollAndResize()
                     .redraw();
             },
 
             '' : function() {
-                releaseZIndex(this._zIndex);
+                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
 
                 this
-                    .unbindFrom('pointerclick', this._onPointerClick)
+                    .unbindFrom('pointerpress', this._onPointerPress)
                     ._unbindFromParentPopup()
                     ._unbindFromScrollAndResize();
 
@@ -5628,6 +5698,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             this._popupOwner = null;
             this._isTargetVisible = true;
         }
+
+        this._zIndexGroupLevel = undef;
 
         return this;
     },
@@ -5923,6 +5995,17 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return res;
     },
 
+    _calcZIndexGroupLevel : function() {
+        var res = this.params.zIndexGroupLevel;
+        return this._popupOwner?
+            this._popupOwner.findBlocksOutside('z-index-group').reduce(
+                function(res, zIndexGroup) {
+                    return res + Number(zIndexGroup.getMod('level'));
+                },
+                res) :
+            res;
+    },
+
     _bindToScrollAndResize : function() {
         this._ownerParents &&
             this
@@ -5958,10 +6041,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         }
     },
 
-    _onPointerClick : function() {
+    _onPointerPress : function() {
         var curPopup = this;
         do {
-            curPopup._inPopupPointerClick = true;
+            curPopup._inPopupPointerPress = true;
         } while(curPopup = curPopup._parentPopup);
     },
 
@@ -6007,22 +6090,24 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             mainOffset : 0,
             secondaryOffset : 0,
             viewportOffset : 0,
-            directions : DEFAULT_DIRECTIONS
+            directions : DEFAULT_DIRECTIONS,
+            zIndexGroupLevel : 0
         };
     }
 }, /** @lends popup */{
     live : true
 }));
 
-var visiblePopupsZIndexes = [BASE_ZINDEX];
+var visiblePopupsZIndexes = {};
 
-function captureZIndex() {
-    return visiblePopupsZIndexes[
-        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
+function captureZIndex(level) {
+    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
+    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
 }
 
-function releaseZIndex(zIndex) {
-    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
+function releaseZIndex(level, zIndex) {
+    var zIndexes = visiblePopupsZIndexes[level];
+    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
 }
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {
@@ -6036,61 +6121,6 @@ function checkSecondaryDirection(direction, secondaryDirection) {
 });
 
 /* end: ../../../common.blocks/popup/popup.js */
-/* begin: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
-/**
- * @module functions__throttle
- */
-
-modules.define('functions__throttle', function(provide) {
-
-var global = this.global;
-
-provide(
-    /**
-     * Throttle given function
-     * @exports
-     * @param {Function} fn function to throttle
-     * @param {Number} timeout throttle interval
-     * @param {Boolean} [invokeAsap=true] invoke before first interval
-     * @param {Object} [ctx] context of function invocation
-     * @returns {Function} throttled function
-     */
-    function(fn, timeout, invokeAsap, ctx) {
-        var typeofInvokeAsap = typeof invokeAsap;
-        if(typeofInvokeAsap === 'undefined') {
-            invokeAsap = true;
-        } else if(arguments.length === 3 && typeofInvokeAsap !== 'boolean') {
-            ctx = invokeAsap;
-            invokeAsap = true;
-        }
-
-        var timer, args, needInvoke,
-            wrapper = function() {
-                if(needInvoke) {
-                    fn.apply(ctx, args);
-                    needInvoke = false;
-                    timer = global.setTimeout(wrapper, timeout);
-                } else {
-                    timer = null;
-                }
-            };
-
-        return function() {
-            args = arguments;
-            ctx || (ctx = this);
-            needInvoke = true;
-
-            if(!timer) {
-                invokeAsap?
-                    wrapper() :
-                    timer = global.setTimeout(wrapper, timeout);
-            }
-        };
-    });
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
 /* begin: ../../../common.blocks/input/input.js */
 /**
  * @module input
@@ -6143,7 +6173,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
         return this;
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.__base.apply(this, arguments);
         return false;
@@ -6154,13 +6184,22 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
 /* end: ../../../common.blocks/input/input.js */
 /* begin: ../../../touch.blocks/input/input.js */
+/**
+ * @module input
+ */
+
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl( /** @lends input.prototype */{
     _onInputChanged : function() {
         this.setVal(this.elem('control').val());
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.liveBindTo('control', 'input', this.prototype._onInputChanged);
         return this.__base.apply(this, arguments);

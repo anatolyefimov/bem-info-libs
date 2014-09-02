@@ -1,42 +1,82 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "attach"
+        "name": "attach"
     },
     {
-        "block": "attach",
-        "mod": "disabled",
-        "val": true
+        "name": "attach",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "attach",
-        "mod": "theme",
-        "val": "simple"
+        "name": "attach",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "download"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "download"
+                    }
+                ]
+            }
+        ]
     }
 ];

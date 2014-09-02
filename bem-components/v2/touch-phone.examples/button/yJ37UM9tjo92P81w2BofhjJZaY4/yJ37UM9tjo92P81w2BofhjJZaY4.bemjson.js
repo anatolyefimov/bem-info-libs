@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_yJ37UM9tjo92P81w2BofhjJZaY4.css"}],"scripts":[{"elem":"js","url":"_yJ37UM9tjo92P81w2BofhjJZaY4.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Disabled","mods":{"theme":"normal","size":"m","view":"pseudo","disabled":true}}})

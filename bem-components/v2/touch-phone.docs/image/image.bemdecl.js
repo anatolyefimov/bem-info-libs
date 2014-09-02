@@ -1,1 +1,1 @@
-exports.deps = [{"block":"image"}];
+exports.blocks = [{"name":"image"}];

@@ -55,7 +55,7 @@ html {
 .icon_action_right,
 .icon_action_down,
 .icon_action_left {
-  background-image: url(../../../test.blocks/icon/_action/arrow.svg);
+  background-image: url("../../../test.blocks/icon/_action/arrow.svg");
 }
 .icon_action_up {
   -webkit-transform: rotate(180deg);
@@ -70,7 +70,7 @@ html {
   transform: rotate(90deg);
 }
 .icon_action_download {
-  background-image: url(../../../test.blocks/icon/_action/download.svg);
+  background-image: url("../../../test.blocks/icon/_action/download.svg");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_simple.styl:begin */
@@ -97,6 +97,12 @@ html {
   transition: color 0.15s ease-out;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+}
+.link_theme_normal.link_view_minor {
+  color: #669;
+}
+.link_theme_normal.link_view_external {
+  color: #070;
 }
 .link_theme_normal:hover {
   color: #e00;

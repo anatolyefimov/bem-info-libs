@@ -692,6 +692,12 @@ html {
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
 }
+.link_theme_normal.link_view_minor {
+  color: #669;
+}
+.link_theme_normal.link_view_external {
+  color: #070;
+}
 .link_theme_normal:hover {
   color: #e00;
 }
@@ -730,6 +736,9 @@ html {
          */
   position: relative;
   display: inline-block;
+}
+.button_theme_normal .icon {
+  position: relative;
 }
 .button_theme_normal.button_type_link {
   text-decoration: none;
@@ -771,43 +780,43 @@ html {
 .button_theme_normal.button_checked.button_hovered {
   background: rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_action {
+.button_theme_normal.button_view_action {
   background: rgba(191,153,0,0.8);
 }
-.button_theme_normal.button_action:before {
+.button_theme_normal.button_view_action:before {
   background: #ffdb4d;
 }
-.button_theme_normal.button_action.button_pressed:before {
+.button_theme_normal.button_view_action.button_pressed:before {
   background: #fc0;
 }
-.button_theme_normal.button_action.button_hovered {
+.button_theme_normal.button_view_action.button_hovered {
   background: rgba(159,127,0,0.8);
 }
-.button_theme_normal.button_pseudo {
+.button_theme_normal.button_view_pseudo {
   overflow: hidden;
   background: 0;
 }
-.button_theme_normal.button_pseudo:before {
+.button_theme_normal.button_view_pseudo:before {
   background: 0;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
 }
-.button_theme_normal.button_pseudo.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
 }
-.button_theme_normal.button_pseudo.button_focused-hard:before {
+.button_theme_normal.button_view_pseudo.button_focused-hard:before {
   box-shadow: 0 0 0 1px rgba(178,142,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_pressed:before {
   background: rgba(0,0,0,0.05);
 }
-.button_theme_normal.button_pseudo.button_checked:before {
+.button_theme_normal.button_view_pseudo.button_checked:before {
   background: #ffeba0;
   box-shadow: 0 0 0 1px rgba(153,122,0,0.5);
 }
-.button_theme_normal.button_pseudo.button_checked.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_checked.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_pressed:before {
   background: #fee481;
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
@@ -883,9 +892,6 @@ html {
 .control-group .button_theme_normal.button_checked:before {
   left: 1px;
   right: 1px;
-}
-.control-group .button_theme_normal.button_checked + .button:before {
-  left: 0;
 }
 .control-group > .button_theme_normal:first-child,
 .control-group > :first-child .button_theme_normal {

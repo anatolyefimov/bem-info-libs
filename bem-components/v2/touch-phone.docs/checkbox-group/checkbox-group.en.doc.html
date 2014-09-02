@@ -1,446 +1,95 @@
 <h1 id="checkbox-group">checkbox-group</h1>
-<p>A <code>checkbox-group</code> block is a set of independed switches – checkboxes (a <code>checkbox</code> block). Any of group&#39;s switches can be either active or not regardless of other switches state.</p>
-<p>The block allows to manage the appearance and state of a nested switches.</p>
-<p>On a web page <code>checkbox-group</code> block will be rendered to <code>&lt;span&gt;</code> HTML element, with a nested set of checkboxes and their labels.</p>
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes could be specified in the corresponding fields of block BEMJSON declaration:</p>
-<table>
+<p><code>checkbox-group</code> block is a set of independent checkboxes (<a href="../checkbox/checkbox.en.md">checkbox</a> block).</p>
+<p>Block implementation allows a user to manage the appearance and state of nested checkboxes.</p>
+<p>On a page <code>checkbox-group</code> block will be represented by <code>&lt;span&gt;</code> HTML element, with a nested set of checkboxes and their labels.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
     <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td><code>String</code></td>
-        <td>The checkbox group name. Renders to nested <code>input</code> block&#39;s <code>name</code> HTML attribute.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td><code>Array</code></td>
-        <td>The option objects array. Each object within the array corresponds to one switch and contains it&#39;s attributes set.</td>
-    </tr><br></table>
-
-<p>Following attributes should be passed in an <code>option</code> field for each switch:</p>
-<ul>
-<li><code>val</code> (<code>String</code> | <code>Number</code>) – value returned by selected switcher (a &#39;checkbox__control&#39; element);</li>
-<li><code>text</code> (<code>String</code>) – a text label for the current switch.</li>
-</ul>
-<p>In an <code>options</code> array any valid <code>checkbox</code> block attributes can be passed. For example, a <code>_checked</code> or <code>_disabled</code> modifiers can be set for the <code>checkbox</code>.</p>
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
-<ul>
-<li>simple</li>
-<li>normal</li>
-</ul>
-<p>If a <code>_theme</code> modifier is not set, browser defaults (<code>default</code>) will be applied to the block.</p>
-<p>For example:</p>
-<h4 id="default">default</h4>
-<!-- bem-example: touch-phone.examples/checkbox-group/tnfPsUBEHfiKv4Ay-bSkmy06NTs -->
-
-
-<h4 id="simple">simple</h4>
-<!-- bem-example: touch-phone.examples/checkbox-group/E4bazg4TDlm1W1tmOFMVgeAT1k0 -->
-
-
-<h4 id="normal">normal</h4>
-<!-- bem-example: touch-phone.examples/checkbox-group/uf6KFu6RRJ3CJRzlZj5THp-53ss -->
-
-
-<h3 id="the-sizes-_size-">The sizes <code>_size</code></h3>
-<p>Mandatory modifier. Available for <em>normal</em> theme only.
-Provides all types of checkbox groups with the size value.</p>
-<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
-<p>Depending on a <code>_type</code> modifier value following sizes are available:</p>
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Normal checkbox group and <code>_type_line</code></th>
-        <th>Button checkbox group (<code>_type_button</code>)</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-
-<p>Here are some examples with <em>normal</em> theme and the <code>_type_button</code> modifier is set:</p>
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Example</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;s&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;checkbox-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;m&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;checkbox-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;checkbox-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;xl&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;checkbox-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h3 id="checkbox-group-type-_type-">Checkbox group type <code>_type</code></h3>
-<p>A <code>_type</code> modifier can have following values:</p>
-<ul>
-<li><code>button</code>. It is used for creation of button checkbox group – a block of button switches;</li>
-<li><code>line</code>. It is used for line-aligned checkbox group creation. Right gap is automatically added after each switch of the group except the last one. Available only for <em>normal</em> theme.</li>
-</ul>
-<p>Modifier is available for all block themes.</p>
-<table>
-    <tr>
-        <th>Type</th>
-
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Normal checkbox group</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
-    name : &#39;checkbox-normal&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Button checkbox group</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;button&#39; 
-    },
-    name : &#39;checkbox-button&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Line-aligned checkbox group (<code>_type_line</code>)</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox-group&#39;,
-    mods : { 
-        theme : &#39;normal&#39;, 
-        size : &#39;l&#39;, 
-        type : &#39;line&#39; 
-    },
-    name : &#39;checkbox-line&#39;,
-    options : [
-        { val : 1, text : &#39;first&#39; },
-        { val : 2, text : &#39;second&#39; }
-    ]
-}
-            </code></pre>
-        </td>
-    </tr><br></table>
-
-
-<h3 id="inactive-_disabled-">Inactive <code>_disabled</code></h3>
-<p>A <code>_disabled</code> modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.</p>
-<p>Such a group will not obtain a focus (<code>_focused</code> modifier will not be toggled).</p>
-<p>When a <code>_disabled</code> modifier is set for the group, all it&#39;s switches also will be disabled. As a result, the following will not be performed on switches:</p>
-<ul>
-<li>state modifiers <code>_hovered</code>, <code>_pressed</code> and <code>_focused</code> toggling;</li>
-<li>switching between <code>_checked</code> modifier&#39;s values.</li>
-</ul>
-<p>Modifier is available for all block themes.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/0fQuAArjlUOj9blciZz3wIEpK-4 -->
-
-
-<h3 id="block-s-states">Block&#39;s states</h3>
-<h4 id="-_focused-"><code>_focused</code></h4>
-<p>A <code>_focused</code> 
-_focused modifier is automatically toggled when one of the block&#39;s elements is in focus. For example, on mouse click or by <code>Tab</code> key press. </p>
-<p>Available for all block themes.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/sXOo9d9aGajzFuorGRIhhEViolU -->
-
-
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>checkbox</code></li>
-<li><code>jquery</code></li>
-</ul>
-
-<h1 id="checkbox">checkbox</h1>
-<p>Block <code>checkbox</code> is a graphical user interface element that allows user to make a binary choice. The block is used when more then one case should be selected.</p>
-<p>Block creates a container that includes a native checkbox control (<code>control</code> element) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot; attributes&gt;</code> that is hidden if a <code>theme</code> modifier is specified.</p>
-<p><code>autocomplete</code> attribute is forced to <code>off</code> state to provide correct behavior of the block.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/XI4uPzI90-UiMiWRig9noeu3mrg -->
-
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes could be specified within the corresponding fields of the block BEMJSON file:</p>
-<table>
-    <tr>
-        <th>Attribute</th>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
     </tr>
     <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies text string value of a checkbox.</td>
-    </tr>
-    <tr>
         <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies a checkbox name. A mandatory attribute. The name part of the name/val pair associated with this element for form&#39;s submission purposes.</td>
+        <td><code>String</code></td>
+        <td>Checkbox group name. Represented by HTML attribute <code>name</code> of a nested block <code>input</code>.</td>
     </tr>
     <tr>
-        <td>val</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies a checkbox value. Value part of the name/val pair associated with this element for the form&#39;s submission purposes.</td>
+        <td>options</td>
+        <td><code>Array</code></td>
+        <td>An array of pairs that maps <code>text</code> to <code>val</code> for each checkbox. Each pair <code>name=val</code> within the array corresponds to one checkbox. Pair <code>name=val</code> is sent to a server, where name of a checkbox group is set by <code>name</code> field and its value – by <code>val</code> field.
+            <br>The following <code>checkbox</code> block modifiers can be propagated to each checkbox of <code>options</code> array: <code>checked</code>, <code>disabled</code>.</td>
     </tr>
-    <tr>
-        <td>icon</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>An icon that is rendered using an <code>icon</code> block.</td>
-    </tr>
-</table>
+</table></div>
 
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<p>The following <code>checkbox-group</code> modifiers are propagated to each checkbox within the group:</p>
 <h3 id="_theme">_theme</h3>
-<p>Block supports following themes:</p>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>NB!</strong> Choosing a theme <code>normal</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
 </ul>
-<p>If a <code>theme</code> modifier is not specified, the native representation (<em>default</em>) of a control is available.</p>
-<p>See the following examples for demonstration:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: touch-phone.examples/checkbox-group/sae-WwdkdYcrwwgUC5hw2NDih4 -->
-
-<p><strong>simple</strong></p>
-<!-- bem-example: touch-phone.examples/checkbox-group/SojNrUmXHg8qOEVNxLMELyPxf1I -->
-
-<p><strong>normal</strong></p>
-<!-- bem-example: touch-phone.examples/checkbox-group/Sgn48vD0-J9Y9jIc1geFcHu6qVA -->
-
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a></p>
+<h4 id="default">default</h4>
+<h4 id="simple">simple</h4>
+<h4 id="normal">normal</h4>
 <h3 id="_size">_size</h3>
-<p>Mandatory modifier for <em>normal</em> theme only.
-Provides checkbox text elements with font size value.</p>
-<p>There are two sizes available: <strong>M</strong>, <strong>L</strong>.</p>
-<p>See the following examples for demonstration:</p>
-<table>
+<p>Implemented only for theme <code>normal</code>.</p>
+<p>Provides all types of checkbox groups with the size value.</p>
+<p>There are four sizes available: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<p>Depending on a <a href="#type">type</a> modifier value the following sizes are available:</p>
+<div class="table-container"><table>
     <tr>
-        <th>Block size</th>
-        <th>Font size</th>
-        <th>String height<br>of <code>__box</code></th>
-        <th>Example</th>
+        <th>Size</th>
+        <th>Plain checkbox-group and
+            <br>checkbox-group with
+            <br><code>type</code> modifier
+            <br>with <code>line</code> value
+            <br>(<code>checkbox-group_type_line</code>).</th>
+        <th>Checkbox group implemented
+            <br>by <code>button</code> block
+            <br>(<code>checkbox-group_type_button</code>).</th>
     </tr>
     <tr>
-        <th>M</th>
-        <td>13px</td>
-        <td>14px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;m&#39;
-    },
-    text : &#39;Size M&#39;,
-    name: &#39;name2&#39;,
-    val: &#39;2&#39;
-}
-            </code></pre>
-        </td>
+        <th>s</th>
+        <td>–</td>
+        <td>+</td>
     </tr>
     <tr>
-        <th>L</th>
-        <td>15px</td>
-        <td>17px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;checkbox&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;l&#39;
-    },
-    text : &#39;Size L&#39;,
-    name: &#39;name3&#39;,
-    val: &#39;3&#39;
-}
-            </code></pre>
-        </td>
+        <th>m</th>
+        <td>+</td>
+        <td>+</td>
     </tr>
-</table>
+    <tr>
+        <th>l</th>
+        <td>+</td>
+        <td>+</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>–</td>
+        <td>+</td>
+</table></div>
 
+<p>See following examples:</p>
+<p><a name="type"></a></p>
 <h3 id="_type">_type</h3>
-<p>The <code>checkbox</code> block can be rendered as a button. If needed, use <code>type</code> modifier with <code>button</code> value. In this case <code>checked</code> state of a checkbox is defined by clicking the button.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/jnUIxNLmi2Ktczi3mi_QWJt7-cc -->
-
-<h3 id="states-of-a-checkbox">States of a checkbox</h3>
-<h4 id="_focused">_focused</h4>
-<p>Checkbox is focused if block has <code>focused</code> modifier with <code>true</code> value. If block is designed as a button, in <code>focused</code> state it has a yellow shadow.</p>
-<p>You can tick off the focused checkbox using <code>Space</code> or <code>Enter</code> button on your keyboard. To switch between controls use a <code>Tab</code> button.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/dOZ5XkX9ojCi2r9kiY4DJa4YWvA -->
-
-<!-- bem-example: touch-phone.examples/checkbox-group/v-9BRGnxLdDNcDKCfuStYG9PRYU -->
-
-<h4 id="-_disabled-"><code>_disabled</code></h4>
-<p>If <code>disabled</code> modifier has <code>true</code> value, the checkbox is visible but not available for user&#39;s action.</p>
-<p>Disabled checkbox cannot be focused by pressing <code>Tab</code> or on mouse click.</p>
-<!-- bem-example: touch-phone.examples/checkbox-group/Dz3sVcJ6LQvatoLktNJM35QPIso -->
-
-<!-- bem-example: touch-phone.examples/checkbox-group/Lc_qQBikKsf-9GuBeR0FLc4-3k0 -->
-#### <code>_checked</code>
-
-<code>checked</code> modifier with <code>true</code> value defines checkbox as checked.
-
-<code>checked</code> modifier can be used for all checkboxes within the group.
-
-<!-- bem-example: touch-phone.examples/checkbox-group/QcTYyDncRH6DrvinlVti5iujuxU -->
-
-<!-- bem-example: touch-phone.examples/checkbox-group/9OMss9AsUlfFVAPsG8SlTTcVlLI -->
-
-<h2 id="block-s-elements">Block&#39;s elements</h2>
-<h3 id="-__box-"><code>__box</code></h3>
-<p><code>box</code> element is used to draw the checkbox. Native checkbox is hidden.</p>
-<p><code>box</code> element is added to the block on template engine level.</p>
-<h3 id="-__control-"><code>__control</code></h3>
-<p><code>control</code> element is used to provide native control checkbox functionality.</p>
-<p><code>control</code> element is added to the block on template engine level.</p>
-
-<h1 id="control">control</h1>
-<p>Auxiliary block designed for common functionality implementation to provide the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library with <code>focused</code> and <code>disabled</code> states:</p>
+<p>The following types of <code>checkbox-group</code> block are available:</p>
 <ul>
-<li><a href="../attach/attach.en.md">attach</a></li>
-<li><a href="../button/button.en.md">button</a></li>
-<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
-<li><a href="../input/input.en.md">input</a></li>
-<li><a href="../link/link.en.md">link</a></li>
-<li><a href="../menu/menu.en.md">menu</a></li>
-<li><a href="../radio/radio.en.md">radio</a></li>
+<li><code>button</code>-based. Use <code>type</code> modifier with <code>button</code> value to create <code>checkbox-group</code> block implemented by <a href="..button/button.en.md">button</a> block. Button-based checkboxes of a group are always aligned in line.</li>
 </ul>
-<p>The <code>control</code> block provides valid <code>tabIndex</code> attribute value depending on the current state of a block.</p>
-<p>The block uses following methods:</p>
-<table>
-    <tr>
-        <th>Method</td>
-        <th>Description</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Returns a control&#39;s value.</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
-    </tr>
-</table>
+<ul>
+<li><code>line</code>-aligned. Use <code>type</code> modifier with <code>line</code> value to align all checkboxes of the group in a line. Right gap is automatically added after each checkbox of the group except the last one. Implemented only for theme <code>normal</code>.</li>
+</ul>
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<p>If <code>checkbox-group</code> block is disabled, all checkboxes within this group are also disabled. <code>checked</code> modifier value cannot be changed in disabled state.</p>
+<p>You can apply <code>disabled</code> modifier to a separate checkbox of a group.</p>
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>

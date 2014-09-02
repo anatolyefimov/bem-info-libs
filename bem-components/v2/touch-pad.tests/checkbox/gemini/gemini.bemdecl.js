@@ -1,80 +1,152 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test"
+        "name": "test"
     },
     {
-        "block": "checkbox"
+        "name": "checkbox"
     },
     {
-        "block": "checkbox",
-        "mod": "disabled",
-        "val": true
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "checked",
-        "val": true
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "checked",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "theme",
-        "val": "normal"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "size",
-        "val": "m"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "size",
-        "val": "l"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox",
-        "mod": "type",
-        "val": "button"
+        "name": "checkbox",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "normal-button-enabled"
+        "name": "normal-button-enabled"
     },
     {
-        "block": "normal-button-disabled"
+        "name": "normal-button-disabled"
     },
     {
-        "block": "normal-button-disabled-checked"
+        "name": "normal-button-disabled-checked"
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "normal-button-icon-enabled"
+        "name": "normal-button-icon-enabled"
     },
     {
-        "block": "normal-button-icon-disabled"
+        "name": "normal-button-icon-disabled"
     },
     {
-        "block": "normal-button-icon-disabled-checked"
+        "name": "normal-button-icon-disabled-checked"
     }
 ];

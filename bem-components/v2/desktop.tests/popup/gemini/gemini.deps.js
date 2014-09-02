@@ -166,20 +166,7 @@ exports.deps = [
     {
         "block": "popup",
         "mod": "theme",
-        "val": "simple"
-    },
-    {
-        "block": "popup",
-        "mod": "autoclosable"
-    },
-    {
-        "block": "keyboard",
-        "elem": "codes"
-    },
-    {
-        "block": "popup",
-        "mod": "autoclosable",
-        "val": true
+        "val": "normal"
     },
     {
         "block": "test-wrap"
@@ -195,11 +182,6 @@ exports.deps = [
         "block": "test",
         "mod": "direction",
         "val": "all"
-    },
-    {
-        "block": "popup",
-        "mod": "theme",
-        "val": "normal"
     },
     {
         "block": "test",

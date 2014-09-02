@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"_fdVCT2P7HsGeXiG5_8VlWSi79Gg.css"}],"scripts":[{"elem":"js","url":"_fdVCT2P7HsGeXiG5_8VlWSi79Gg.js"}],"mods":{"theme":"normal"},"content":{"block":"input","mods":{"theme":"normal","size":"m","type":"password"},"placeholder":"Password field"}})

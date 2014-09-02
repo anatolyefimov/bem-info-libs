@@ -1,69 +1,157 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "button",
-        "mod": "disabled",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "type",
-        "val": "link"
+        "name": "button",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "link"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "normal"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "m"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "pseudo",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "pseudo"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "action",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "action"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "s"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "download"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "download"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "togglable",
-        "val": "check"
+        "name": "button",
+        "mods": [
+            {
+                "name": "togglable",
+                "vals": [
+                    {
+                        "name": "check"
+                    }
+                ]
+            }
+        ]
     }
 ];

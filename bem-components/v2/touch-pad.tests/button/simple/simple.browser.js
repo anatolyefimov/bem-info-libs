@@ -5455,7 +5455,9 @@ provide(/** @exports */{
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5577,8 +5579,17 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 
 /* end: ../../../common.blocks/control/control.js */
 /* begin: ../../../common.blocks/button/_type/button_type_link.js */
+/**
+ * @module button
+ */
+
 modules.define('button', function(provide, Button) {
 
+/**
+ * @exports
+ * @class button
+ * @bem
+ */
 provide(Button.decl({ modName : 'type', modVal : 'link' }, {
     onSetMod : {
         'js' : {

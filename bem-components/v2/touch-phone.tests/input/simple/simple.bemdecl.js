@@ -1,81 +1,193 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "input"
+        "name": "input"
     },
     {
-        "block": "input",
-        "mod": "disabled",
-        "val": true
+        "name": "input",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "type",
-        "val": "search"
+        "name": "input",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "search"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "type",
-        "val": "textarea"
+        "name": "input",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "textarea"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "theme",
-        "val": "simple"
+        "name": "input",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "has-clear",
-        "val": true
+        "name": "input",
+        "mods": [
+            {
+                "name": "has-clear",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "width",
-        "val": "available"
+        "name": "input",
+        "mods": [
+            {
+                "name": "width",
+                "vals": [
+                    {
+                        "name": "available"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "size",
-        "val": "m"
+        "name": "input",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "theme",
-        "val": "normal"
+        "name": "input",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "type",
-        "val": "password"
+        "name": "input",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "password"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "size",
-        "val": "s"
+        "name": "input",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "size",
-        "val": "l"
+        "name": "input",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "size",
-        "val": "xl"
+        "name": "input",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xl"
+                    }
+                ]
+            }
+        ]
     }
 ];

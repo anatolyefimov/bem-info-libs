@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_PF5uWuBFduCzJjxkyznMZJagWJ8.css"}],"scripts":[{"elem":"js","url":"_PF5uWuBFduCzJjxkyznMZJagWJ8.js"}],"mods":{},"content":{"block":"button","text":"No theme"}})

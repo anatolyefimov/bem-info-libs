@@ -35,6 +35,9 @@ html {
   display: inline-block;
   white-space: nowrap;
 }
+.radio-group_theme_normal .radio_checked + .radio .button:before {
+  left: 0;
+}
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_normal.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
 .button_theme_normal {
@@ -70,6 +73,9 @@ html {
          */
   position: relative;
   display: inline-block;
+}
+.button_theme_normal .icon {
+  position: relative;
 }
 .button_theme_normal.button_type_link {
   text-decoration: none;
@@ -111,43 +117,43 @@ html {
 .button_theme_normal.button_checked.button_hovered {
   background: rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_action {
+.button_theme_normal.button_view_action {
   background: rgba(191,153,0,0.8);
 }
-.button_theme_normal.button_action:before {
+.button_theme_normal.button_view_action:before {
   background: #ffdb4d;
 }
-.button_theme_normal.button_action.button_pressed:before {
+.button_theme_normal.button_view_action.button_pressed:before {
   background: #fc0;
 }
-.button_theme_normal.button_action.button_hovered {
+.button_theme_normal.button_view_action.button_hovered {
   background: rgba(159,127,0,0.8);
 }
-.button_theme_normal.button_pseudo {
+.button_theme_normal.button_view_pseudo {
   overflow: hidden;
   background: 0;
 }
-.button_theme_normal.button_pseudo:before {
+.button_theme_normal.button_view_pseudo:before {
   background: 0;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
 }
-.button_theme_normal.button_pseudo.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
 }
-.button_theme_normal.button_pseudo.button_focused-hard:before {
+.button_theme_normal.button_view_pseudo.button_focused-hard:before {
   box-shadow: 0 0 0 1px rgba(178,142,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_pressed:before {
   background: rgba(0,0,0,0.05);
 }
-.button_theme_normal.button_pseudo.button_checked:before {
+.button_theme_normal.button_view_pseudo.button_checked:before {
   background: #ffeba0;
   box-shadow: 0 0 0 1px rgba(153,122,0,0.5);
 }
-.button_theme_normal.button_pseudo.button_checked.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_checked.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_pressed:before {
   background: #fee481;
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
@@ -224,9 +230,6 @@ html {
   left: 1px;
   right: 1px;
 }
-.control-group .button_theme_normal.button_checked + .button:before {
-  left: 0;
-}
 .control-group > .button_theme_normal:first-child,
 .control-group > :first-child .button_theme_normal {
   border-radius: 3px 0 0 3px;
@@ -253,7 +256,7 @@ html {
   cursor: pointer;
 }
 .radio_theme_normal .radio__control {
-  position: relative;
+  position: absolute;
   z-index: -1;
   margin: 0;
   opacity: 0;
@@ -279,6 +282,7 @@ html {
 }
 .radio_theme_normal.radio_size_m .radio__box {
   line-height: 14px;
+  top: 2px;
   width: 14px;
   height: 14px;
   margin-right: 5px;
@@ -294,6 +298,7 @@ html {
 }
 .radio_theme_normal.radio_size_l .radio__box {
   line-height: 17px;
+  top: 3px;
   width: 17px;
   height: 17px;
   margin-right: 7px;
@@ -341,9 +346,6 @@ html {
 .radio_theme_normal.radio_type_button {
   display: inline-block;
 }
-.radio_theme_normal.radio_type_button .radio__control {
-  position: absolute;
-}
 .radio_theme_normal.radio_type_line.radio_size_m {
   margin-right: 13px;
 }
@@ -355,7 +357,8 @@ html {
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_normal.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
-.radio_type_button .radio__control {
+.radio.radio_type_button .radio__control {
+  position: absolute;
   visibility: hidden;
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
@@ -387,9 +390,9 @@ html {
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:begin */
 .icon_social_twitter {
-  background-image: url(../../../test.blocks/icon/_social/twitter.png);
+  background-image: url("../../../test.blocks/icon/_social/twitter.png");
 }
 .icon_social_vk {
-  background-image: url(../../../test.blocks/icon/_social/vk.png);
+  background-image: url("../../../test.blocks/icon/_social/vk.png");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:end */

@@ -1,1 +1,1 @@
-exports.deps = [{"block":"icon"}];
+exports.blocks = [{"name":"icon"}];

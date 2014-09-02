@@ -1,88 +1,192 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test-wrap"
+        "name": "test-wrap"
     },
     {
-        "block": "test"
+        "name": "test"
     },
     {
-        "block": "link"
+        "name": "link"
     },
     {
-        "block": "link",
-        "mod": "pseudo",
-        "val": true
+        "name": "link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup"
+        "name": "popup"
     },
     {
-        "block": "popup",
-        "mod": "autoclosable",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "autoclosable",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "simple"
+        "name": "popup",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input"
+        "name": "input"
     },
     {
-        "block": "input",
-        "mod": "theme",
-        "val": "simple"
+        "name": "input",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "all"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "all"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "bottom"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "bottom"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "top"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "top"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "right"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "right"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "test",
-        "mod": "direction",
-        "val": "left"
+        "name": "test",
+        "mods": [
+            {
+                "name": "direction",
+                "vals": [
+                    {
+                        "name": "left"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "normal"
+        "name": "popup",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "input",
-        "mod": "theme",
-        "val": "normal"
+        "name": "input",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     }
 ];

@@ -1,1 +1,1 @@
-exports.deps = [{"block":"checkbox"}];
+exports.blocks = [{"name":"checkbox"}];

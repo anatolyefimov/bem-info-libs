@@ -1571,6 +1571,61 @@ provide({
 });
 
 /* end: ../../../libs/bem-core/common.blocks/events/events.vanilla.js */
+/* begin: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
+/**
+ * @module functions__throttle
+ */
+
+modules.define('functions__throttle', function(provide) {
+
+var global = this.global;
+
+provide(
+    /**
+     * Throttle given function
+     * @exports
+     * @param {Function} fn function to throttle
+     * @param {Number} timeout throttle interval
+     * @param {Boolean} [invokeAsap=true] invoke before first interval
+     * @param {Object} [ctx] context of function invocation
+     * @returns {Function} throttled function
+     */
+    function(fn, timeout, invokeAsap, ctx) {
+        var typeofInvokeAsap = typeof invokeAsap;
+        if(typeofInvokeAsap === 'undefined') {
+            invokeAsap = true;
+        } else if(arguments.length === 3 && typeofInvokeAsap !== 'boolean') {
+            ctx = invokeAsap;
+            invokeAsap = true;
+        }
+
+        var timer, args, needInvoke,
+            wrapper = function() {
+                if(needInvoke) {
+                    fn.apply(ctx, args);
+                    needInvoke = false;
+                    timer = global.setTimeout(wrapper, timeout);
+                } else {
+                    timer = null;
+                }
+            };
+
+        return function() {
+            args = arguments;
+            ctx || (ctx = this);
+            needInvoke = true;
+
+            if(!timer) {
+                invokeAsap?
+                    wrapper() :
+                    timer = global.setTimeout(wrapper, timeout);
+            }
+        };
+    });
+
+});
+
+/* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/__dom/i-bem__dom.js */
 /**
  * @module i-bem__dom
@@ -5153,7 +5208,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5328,9 +5385,18 @@ provide(Control.decl({
 
 /* end: ../../../desktop.blocks/control/control.js */
 /* begin: ../../../common.blocks/link/_pseudo/link_pseudo.js */
+/**
+ * @module link
+ */
+
 modules.define('link', function(provide, Link) {
 
-provide(Link.decl({ modName : 'pseudo', modVal : true }, {
+/**
+ * @exports
+ * @class link
+ * @bem
+ */
+provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     _onPointerClick : function(e) {
         e.preventDefault();
         this.__base.apply(this, arguments);
@@ -5357,7 +5423,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000,
+    ZINDEX_FACTOR = 1000,
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
@@ -5394,6 +5460,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._popupOwner = null;
                 this._pos = null;
                 this._zIndex = null;
+                this._zIndexGroupLevel = undef;
                 this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
                 this._lastDrawingCss = {
@@ -5418,21 +5485,24 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex();
+                this._zIndex = captureZIndex(
+                    typeof this._zIndexGroupLevel === 'undefined'?
+                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                        this._zIndexGroupLevel);
                 this._owner && (this._ownerParents = this._owner.parents());
 
                 this
-                    .bindTo('pointerclick', this._onPointerClick)
+                    .bindTo('pointerpress', this._onPointerPress)
                     ._bindToParentPopup()
                     ._bindToScrollAndResize()
                     .redraw();
             },
 
             '' : function() {
-                releaseZIndex(this._zIndex);
+                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
 
                 this
-                    .unbindFrom('pointerclick', this._onPointerClick)
+                    .unbindFrom('pointerpress', this._onPointerPress)
                     ._unbindFromParentPopup()
                     ._unbindFromScrollAndResize();
 
@@ -5485,6 +5555,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             this._popupOwner = null;
             this._isTargetVisible = true;
         }
+
+        this._zIndexGroupLevel = undef;
 
         return this;
     },
@@ -5780,6 +5852,17 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return res;
     },
 
+    _calcZIndexGroupLevel : function() {
+        var res = this.params.zIndexGroupLevel;
+        return this._popupOwner?
+            this._popupOwner.findBlocksOutside('z-index-group').reduce(
+                function(res, zIndexGroup) {
+                    return res + Number(zIndexGroup.getMod('level'));
+                },
+                res) :
+            res;
+    },
+
     _bindToScrollAndResize : function() {
         this._ownerParents &&
             this
@@ -5815,10 +5898,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         }
     },
 
-    _onPointerClick : function() {
+    _onPointerPress : function() {
         var curPopup = this;
         do {
-            curPopup._inPopupPointerClick = true;
+            curPopup._inPopupPointerPress = true;
         } while(curPopup = curPopup._parentPopup);
     },
 
@@ -5864,22 +5947,24 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             mainOffset : 0,
             secondaryOffset : 0,
             viewportOffset : 0,
-            directions : DEFAULT_DIRECTIONS
+            directions : DEFAULT_DIRECTIONS,
+            zIndexGroupLevel : 0
         };
     }
 }, /** @lends popup */{
     live : true
 }));
 
-var visiblePopupsZIndexes = [BASE_ZINDEX];
+var visiblePopupsZIndexes = {};
 
-function captureZIndex() {
-    return visiblePopupsZIndexes[
-        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
+function captureZIndex(level) {
+    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
+    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
 }
 
-function releaseZIndex(zIndex) {
-    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
+function releaseZIndex(level, zIndex) {
+    var zIndexes = visiblePopupsZIndexes[level];
+    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
 }
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {
@@ -5893,154 +5978,23 @@ function checkSecondaryDirection(direction, secondaryDirection) {
 });
 
 /* end: ../../../common.blocks/popup/popup.js */
-/* begin: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
-/**
- * @module functions__throttle
- */
+/* begin: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
+modules.define('popup', ['objects'], function(provide, objects, Popup) {
 
-modules.define('functions__throttle', function(provide) {
-
-var global = this.global;
-
-provide(
-    /**
-     * Throttle given function
-     * @exports
-     * @param {Function} fn function to throttle
-     * @param {Number} timeout throttle interval
-     * @param {Boolean} [invokeAsap=true] invoke before first interval
-     * @param {Object} [ctx] context of function invocation
-     * @returns {Function} throttled function
-     */
-    function(fn, timeout, invokeAsap, ctx) {
-        var typeofInvokeAsap = typeof invokeAsap;
-        if(typeofInvokeAsap === 'undefined') {
-            invokeAsap = true;
-        } else if(arguments.length === 3 && typeofInvokeAsap !== 'boolean') {
-            ctx = invokeAsap;
-            invokeAsap = true;
-        }
-
-        var timer, args, needInvoke,
-            wrapper = function() {
-                if(needInvoke) {
-                    fn.apply(ctx, args);
-                    needInvoke = false;
-                    timer = global.setTimeout(wrapper, timeout);
-                } else {
-                    timer = null;
-                }
-            };
-
-        return function() {
-            args = arguments;
-            ctx || (ctx = this);
-            needInvoke = true;
-
-            if(!timer) {
-                invokeAsap?
-                    wrapper() :
-                    timer = global.setTimeout(wrapper, timeout);
-            }
-        };
-    });
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/functions/__throttle/functions__throttle.vanilla.js */
-/* begin: ../../../common.blocks/popup/_autoclosable/popup_autoclosable.js */
-/**
- * @module popup
- */
-
-modules.define(
-    'popup',
-    ['jquery', 'i-bem__dom', 'ua', 'dom', 'keyboard__codes'],
-    function(provide, $, BEMDOM, ua, dom, keyCodes, Popup) {
-
-var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
-    visiblePopupsStack = [];
-
-/**
- * @exports
- * @class popup
- * @bem
- */
-provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
-    onSetMod : {
-        'visible' : {
-            'true' : function() {
-                visiblePopupsStack.unshift(this);
-                this
-                    // NOTE: nextTick because of event bubbling to document
-                    .nextTick(function() {
-                        this.bindToDoc('pointerclick', this._onDocPointerClick);
-                    })
-                    .__base.apply(this, arguments);
-            },
-
-            '' : function() {
-                visiblePopupsStack.splice(visiblePopupsStack.indexOf(this), 1);
-                this
-                    .unbindFromDoc('pointerclick', this._onDocPointerClick)
-                    .__base.apply(this, arguments);
-            }
-        }
-    },
-
-    _onDocPointerClick : function(e) {
-        if(this._owner && dom.contains(this._owner, $(e.target)))
-            return;
-
-        this._inPopupPointerClick?
-           this._inPopupPointerClick = null :
-           this.delMod('visible');
-    }
-}, {
-    live : function() {
-        BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyDown);
+provide(Popup.decl({ modName : 'theme', modVal : 'normal' }, {
+    getDefaultParams : function() {
+        return objects.extend(
+            this.__base(),
+            {
+                mainOffset : 5,
+                viewportOffset : 5
+            });
     }
 }));
 
-function onDocKeyDown(e) {
-    e.keyCode === keyCodes.ESC &&
-        // omit ESC in inputs, selects and etc.
-        visiblePopupsStack.length &&
-        !dom.isEditable($(e.target)) &&
-            visiblePopupsStack[0].delMod('visible');
-}
-
 });
 
-/* end: ../../../common.blocks/popup/_autoclosable/popup_autoclosable.js */
-/* begin: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/**
- * @module keyboard__codes
- */
-modules.define('keyboard__codes', function(provide) {
-
-provide(/** @exports */{
-    BACKSPACE : 8,
-    TAB : 9,
-    ENTER : 13,
-    CAPS_LOCK : 20,
-    ESC : 27,
-    SPACE : 32,
-    PAGE_UP : 33,
-    PAGE_DOWN : 34,
-    END : 35,
-    HOME : 36,
-    LEFT : 37,
-    UP : 38,
-    RIGHT : 39,
-    DOWN : 40,
-    INSERT : 41,
-    DELETE : 42
-});
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
+/* end: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
 /* begin: ./blocks/test/test.js */
 modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
 
@@ -6072,20 +6026,3 @@ provide(BEMDOM.decl(this.name, {
 });
 
 /* end: ./blocks/test/test.js */
-/* begin: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
-modules.define('popup', ['objects'], function(provide, objects, Popup) {
-
-provide(Popup.decl({ modName : 'theme', modVal : 'normal' }, {
-    getDefaultParams : function() {
-        return objects.extend(
-            this.__base(),
-            {
-                mainOffset : 5,
-                viewportOffset : 5
-            });
-    }
-}));
-
-});
-
-/* end: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */

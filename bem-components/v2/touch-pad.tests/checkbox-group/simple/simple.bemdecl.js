@@ -1,69 +1,157 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "checkbox-group"
+        "name": "checkbox-group"
     },
     {
-        "block": "checkbox-group",
-        "mod": "disabled",
-        "val": true
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "theme",
-        "val": "simple"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "type",
-        "val": "button"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "vk"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "vk"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "theme",
-        "val": "normal"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "size",
-        "val": "m"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "size",
-        "val": "l"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "checkbox-group",
-        "mod": "type",
-        "val": "line"
+        "name": "checkbox-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "line"
+                    }
+                ]
+            }
+        ]
     }
 ];

@@ -177,5 +177,19 @@ exports.deps = [
         "block": "link",
         "mod": "theme",
         "val": "normal"
+    },
+    {
+        "block": "link",
+        "mod": "view"
+    },
+    {
+        "block": "link",
+        "mod": "view",
+        "val": "minor"
+    },
+    {
+        "block": "link",
+        "mod": "view",
+        "val": "external"
     }
 ];

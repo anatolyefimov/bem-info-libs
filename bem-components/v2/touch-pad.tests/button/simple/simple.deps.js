@@ -236,21 +236,17 @@ exports.deps = [
     },
     {
         "block": "button",
-        "mod": "pseudo"
+        "mod": "view"
     },
     {
         "block": "button",
-        "mod": "pseudo",
-        "val": true
+        "mod": "view",
+        "val": "pseudo"
     },
     {
         "block": "button",
-        "mod": "action"
-    },
-    {
-        "block": "button",
-        "mod": "action",
-        "val": true
+        "mod": "view",
+        "val": "action"
     },
     {
         "block": "button",

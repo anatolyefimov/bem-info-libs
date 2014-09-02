@@ -1,0 +1,1 @@
+({"block":"page","title":"radio","head":[{"elem":"css","url":"_qd7kVWa5uuXrBEEX-u56oM9f9Ws.css"}],"scripts":[{"elem":"js","url":"_qd7kVWa5uuXrBEEX-u56oM9f9Ws.js"}],"mods":{"theme":"normal"},"content":{"block":"radio","mods":{"theme":"normal","size":"m","type":"button"},"name":"radio-normal","text":"radio switch"}})

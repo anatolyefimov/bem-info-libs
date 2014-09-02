@@ -1,131 +1,311 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "button",
-        "mod": "disabled",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "type",
-        "val": "submit"
+        "name": "button",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "submit"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "type",
-        "val": "link"
+        "name": "button",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "link"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "simple"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "vk"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "vk"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "normal"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "m"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "pseudo",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "pseudo"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "action",
-        "val": true
+        "name": "button",
+        "mods": [
+            {
+                "name": "view",
+                "vals": [
+                    {
+                        "name": "action"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "s"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "l"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "xl"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xl"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "download"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "download"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "elem": "text"
+        "name": "button",
+        "elems": [
+            {
+                "name": "text"
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "down"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "down"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "left"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "left"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "right"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "right"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "action",
-        "val": "up"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "up"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "image"
+        "name": "image"
     },
     {
-        "block": "button",
-        "mod": "togglable",
-        "val": "check"
+        "name": "button",
+        "mods": [
+            {
+                "name": "togglable",
+                "vals": [
+                    {
+                        "name": "check"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "togglable",
-        "val": "radio"
+        "name": "button",
+        "mods": [
+            {
+                "name": "togglable",
+                "vals": [
+                    {
+                        "name": "radio"
+                    }
+                ]
+            }
+        ]
     }
 ];

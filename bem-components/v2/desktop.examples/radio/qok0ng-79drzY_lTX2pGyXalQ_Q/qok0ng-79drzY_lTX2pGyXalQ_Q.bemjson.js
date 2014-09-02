@@ -1,0 +1,1 @@
+({"block":"page","title":"radio","head":[{"elem":"css","url":"_qok0ng-79drzY_lTX2pGyXalQ_Q.css"}],"scripts":[{"elem":"js","url":"_qok0ng-79drzY_lTX2pGyXalQ_Q.js"}],"mods":{"theme":"normal"},"content":{"block":"radio","mods":{"theme":"normal","size":"m","type":"button","disabled":true},"name":"radio-normal","text":"disabled"}})

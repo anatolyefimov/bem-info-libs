@@ -37,6 +37,12 @@ html {
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
 }
+.link_theme_normal.link_view_minor {
+  color: #669;
+}
+.link_theme_normal.link_view_external {
+  color: #070;
+}
 .link_theme_normal:hover {
   color: #e00;
 }

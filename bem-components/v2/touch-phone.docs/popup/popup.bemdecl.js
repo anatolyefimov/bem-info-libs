@@ -1,1 +1,1 @@
-exports.deps = [{"block":"popup"}];
+exports.blocks = [{"name":"popup"}];

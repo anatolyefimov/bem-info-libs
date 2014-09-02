@@ -1,121 +1,273 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test"
+        "name": "test"
     },
     {
-        "block": "menu"
+        "name": "menu"
     },
     {
-        "block": "menu",
-        "mod": "mode",
-        "val": "radio"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "mode",
+                "vals": [
+                    {
+                        "name": "radio"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "focused",
-        "val": true
+        "name": "menu",
+        "mods": [
+            {
+                "name": "focused",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "theme",
-        "val": "simple"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "size",
-        "val": "m"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu-item"
+        "name": "menu-item"
     },
     {
-        "block": "menu-item",
-        "mod": "checked",
-        "val": true
+        "name": "menu-item",
+        "mods": [
+            {
+                "name": "checked",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu-item",
-        "mod": "disabled",
-        "val": true
+        "name": "menu-item",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "menu",
-        "mod": "mode",
-        "val": "check"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "mode",
+                "vals": [
+                    {
+                        "name": "check"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "mode",
-        "val": "radio-check"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "mode",
+                "vals": [
+                    {
+                        "name": "radio-check"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu-item",
-        "mod": "type",
-        "val": "link"
+        "name": "menu-item",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "link"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link"
+        "name": "link"
     },
     {
-        "block": "menu",
-        "elem": "group"
+        "name": "menu",
+        "elems": [
+            {
+                "name": "group"
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "vk"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "vk"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu-item",
-        "elem": "icon"
+        "name": "menu-item",
+        "elems": [
+            {
+                "name": "icon"
+            }
+        ]
     },
     {
-        "block": "menu-item",
-        "elem": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "menu-item",
+        "elems": [
+            {
+                "name": "icon",
+                "mods": [
+                    {
+                        "name": "social",
+                        "vals": [
+                            {
+                                "name": "twitter"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu-item",
-        "elem": "icon",
-        "mod": "social",
-        "val": "vk"
+        "name": "menu-item",
+        "elems": [
+            {
+                "name": "icon",
+                "mods": [
+                    {
+                        "name": "social",
+                        "vals": [
+                            {
+                                "name": "vk"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "disabled",
-        "val": true
+        "name": "menu",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "menu",
-        "mod": "theme",
-        "val": "normal"
+        "name": "menu",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     }
 ];

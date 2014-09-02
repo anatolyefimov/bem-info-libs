@@ -1,1 +1,1 @@
-exports.deps = [{"block":"attach"}];
+exports.blocks = [{"name":"attach"}];

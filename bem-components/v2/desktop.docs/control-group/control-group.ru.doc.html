@@ -1,37 +1,33 @@
 <h1 id="control-group">control-group</h1>
 <p>Блок <code>control-group</code> – это обертка, предназначенная для визуальной группировки других блоков. Группируемые блоки помещаются в поле <code>content</code> BEMJSON декларации.</p>
-<p>Блок реализован в технологии CSS и не вводит никакой дополнительной логики. Для вложенных блоков должна быть установлена тема <em>normal</em>.</p>
-<p>В результате применения шаблонов, блок <code>control-group</code> становится на странице HTML-элементом с тегом <code>&lt;div&gt;</code>.</p>
-<h2 id="-">Варианты использования</h2>
+<p>Блок реализован только в технологии CSS. Для всех вложенных блоков должна быть установлена тема <code>normal</code>.</p>
+<p>В результате применения шаблонов блок <code>control-group</code> становится на странице HTML-элементом с тегом <code>&lt;div&gt;</code>.</p>
+<h2 id="Варианты-использования">Варианты использования</h2>
 <p>Блок позволяет визуально группировать следующие блоки:</p>
 <ul>
-<li><code>input</code> – поле ввода;</li>
-<li><code>button</code> – кнопка.</li>
+<li><a href="../input/input.ru.md">input</a></li>
+<li><a href="../button/button.ru.md">button</a></li>
 </ul>
-<p>Например:</p>
-<!-- bem-example: desktop.examples/control-group/fejhOE157s9FNaOpEk9kSMdri-o -->
+<!-- bem-example: desktop.examples/control-group/gruLmPuBK_ibd6MnF2DnE6pnOXg -->
 
-
-<p>Кроме того, можно группировать блоки, использующие <code>input</code> или <code>button</code>, как один из компонентов. Например, в группу можно включить блок <code>select</code>, управляющим компонентом для которого служит блок <code>button</code>: </p>
+<p>Кроме того, можно группировать блоки, использующие <code>input</code> или <code>button</code> как один из компонентов. Например, в группу можно включить блок <code>select</code>, управляющим компонентом которого служит блок <code>button</code>:</p>
 <!-- bem-example: desktop.examples/control-group/lHp4oG073ZGY5eBJUg8oGuaTzJY -->
 
-<p>Могут быть сгруппированы следующие блоки, использующие в качестве компонента блок <code>button</code>:</p>
+<p>Блоки, использующие в качестве компонента блок <code>button</code>, могут быть сгруппированы:</p>
 <ul>
-<li><code>select</code>;</li>
-<li><code>dropdown</code> (с модификатором <code>dropdown_switcher_button</code>);</li>
-<li><code>checkbox</code> (с модификатором <code>checkbox_type_button</code>);</li>
-<li><code>radio</code> (с модификатором <code>radio_type_button</code>).</li>
+<li><a href="../select/select.ru.md">select</a>;</li>
+<li><a href="../dropdown/dropdown.ru.md">dropdown</a> (с модификатором <code>dropdown_switcher_button</code>);</li>
+<li><a href="../checkbox/checkbox.ru.md">checkbox</a> (с модификатором <code>checkbox_type_button</code>);</li>
+<li><a href="../radio/radio.ru.md">radio</a> (с модификатором <code>radio_type_button</code>).</li>
 </ul>
-<h2 id="-">Влияние группировки на блоки</h2>
-<h3 id="-input-"><code>input</code></h3>
-<p>Для всех сгруппированных блоков <code>input</code>, кроме последнего, не отображается правая граница (CSS свойство <code>right</code> устанавливается равным нулю для псевдоэлемента <code>:before</code>). Для последнего блока группы толщина правой границы равна 1px.</p>
-<p>Например:</p>
-<!-- bem-example: desktop.examples/control-group/Vn0lE-sI73yNqDW_-Ki-KHmd-HE -->
+<h2 id="Влияние-группировки-на-блоки">Влияние группировки на блоки</h2>
+<h3 id="Болк-`input`">Болк <code>input</code></h3>
+<p>Для всех сгруппированных блоков <code>input</code>, кроме последнего, не отображается правая граница (CSS свойство <code>right</code> устанавливается равным нулю для псевдоэлемента <code>:before</code>). У последнего блока группы толщина правой границы равна 1px.</p>
+<!-- bem-example: desktop.examples/control-group/Kn9zKheC4wDT5xR_OlFpv9GFAH8 -->
 
-
-<h3 id="-button-"><code>button</code></h3>
-<p>Для блоков <code>button</code> группировка влияет на скругление углов и наличие правой границы. Внешний вид зависит от положения блока <code>button</code> внутри группы – первый и последний элементы группы визуально отличаются от прочих:</p>
-<table>
+<h3 id="Блок-`button`">Блок <code>button</code></h3>
+<p>Для блоков <code>button</code> группировка влияет на скругление углов и наличие правой границы. Внешний вид зависит от положения блока <code>button</code> в группе – первый и последний элементы группы визуально отличаются от остальных:</p>
+<div class="table-container"><table>
     <tr>
         <th>Положение в группе</th>
         <th>Скругление углов</th>
@@ -48,10 +44,11 @@
         <td>+</td>
     </tr>
     <tr>
-        <td>Не из крайних</td>
+        <td>В середине</td>
         <td>Без скругления углов</td>
         <td>-</td>
-    </tr><br></table>
+    </tr>
+</table></div>
 
 <p>Например:</p>
-<!-- bem-example: desktop.examples/control-group/1bLuZM-NN_21QWtOqEuefvxxCuE -->
+<!-- bem-example: desktop.examples/control-group/WcWq3lKuqUV4ZBXKEq8dYnEWebY -->

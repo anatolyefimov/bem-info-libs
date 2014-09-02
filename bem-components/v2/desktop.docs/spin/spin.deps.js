@@ -1,8 +1,1 @@
-exports.deps = [
-    {
-        "block": "i-bem"
-    },
-    {
-        "block": "spin"
-    }
-];
+exports.deps = [{"block":"spin"}];

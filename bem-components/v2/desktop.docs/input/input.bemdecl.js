@@ -1,1 +1,1 @@
-exports.deps = [{"block":"input"}];
+exports.blocks = [{"name":"input"}];

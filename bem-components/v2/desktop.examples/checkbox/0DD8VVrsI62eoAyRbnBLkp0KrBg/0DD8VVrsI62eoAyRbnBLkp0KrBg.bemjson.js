@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_0DD8VVrsI62eoAyRbnBLkp0KrBg.css"}],"scripts":[{"elem":"js","url":"_0DD8VVrsI62eoAyRbnBLkp0KrBg.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox","text":"Кнопка-чекбокс","name":"button","val":"1","mods":{"theme":"normal","size":"s","type":"button"}}})

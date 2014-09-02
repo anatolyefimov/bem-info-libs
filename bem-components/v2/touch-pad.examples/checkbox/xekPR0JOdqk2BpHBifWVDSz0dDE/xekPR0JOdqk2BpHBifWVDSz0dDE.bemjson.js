@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_xekPR0JOdqk2BpHBifWVDSz0dDE.css"}],"scripts":[{"elem":"js","url":"_xekPR0JOdqk2BpHBifWVDSz0dDE.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox","text":"Неактивен","name":"name1","val":1,"mods":{"theme":"normal","size":"m","disabled":true}}})

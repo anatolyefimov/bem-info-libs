@@ -1,63 +1,61 @@
 <h1 id="radio">radio</h1>
-<p>Блок <code>radio</code> – «радиопереключатель», «радиокнопка». Используется для создания одиночных радиобоксов.</p>
+<p>Блок <code>radio</code> – «радиопереключатель», «радиокнопка». Используется для создания одиночных радиопереключателей.</p>
 <p>В реализации блока используется функциональность нативного контрола <code>input</code> с атрибутом <code>type=&quot;radio&quot;</code> – <code>&lt;input name=&quot;name&quot; type=&quot;radio&quot;&gt;</code>, который скрывается при использовании модификатора <code>theme</code>.</p>
-<p>В результате применения шаблонов блок <code>radio</code> отображается на странице как HTML-тег <code>&lt;label&gt;</code> – контейнер, содержащий:</p>
+<p>В результате применения шаблонов, блок <code>radio</code> отображается на странице как HTML-тег <code>&lt;label&gt;</code>, содержащий:</p>
 <ul>
-<li>элемент <code>radio__box</code>, содержащий скрытый контрол <code>input</code> (элемент <code>__control</code>);</li>
-<li>подпись к радиокнопке, если задан BEMJSON-параметр <code>text</code>.</li>
+<li>элемент <code>box</code> со скрытым контролом <code>input</code> (элемент <code>control</code>);</li>
+<li>подпись к радиопереключателю, если задан BEMJSON-параметр <code>text</code>.</li>
 </ul>
-<h2 id="-">Допустимые атрибуты</h2>
-<p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON-блока:</p>
-<table>
+<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<p>Список зарезервированных полей входного BEMJSON:</p>
+<div class="table-container"><table>
     <tr>
-        <th>Атрибут</th>
+        <th>Поле</th>
         <th>Тип</th>
         <th>Описание</th>
     </tr>
     <tr>
         <td><code>name</code></td>
-        <td><code>String|Number</code></td>
-        <td>Имя радиокнопки. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
-    </tr>
-    <tr>
-        <td><code>text</code></td>
-        <td><code>String|Number</code></td>
-        <td>Подпись, отображаемая для радиокнопки.</td>
+        <td><code>String</code></td>
+        <td>Имя радиопереключателя, предназначено для того, чтобы обработчик формы мог его идентифицировать. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
     </tr>
     <tr>
         <td><code>val</code></td>
-        <td><code>String|Number</code></td>
-        <td>Значение, возвращаемое контролом радиопереключателя <code>radio__control</code>, если выбрана текущая радиокнопка. Преобразуется в HTML-атрибут <code>value</code> вложенного блока <code>input</code>.</td>
+        <td><code>String</code></td>
+        <td>Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом <code>name</code> тега <code><input></code>, а значение — ключом <code>val</code>.
+            <br>Преобразуется в HTML-атрибут <code>value</code> вложенного блока <code>input</code>.</td>
     </tr>
-</table>
+    <tr>
+        <td><code>text</code></td>
+        <td><code>String</code></td>
+        <td>Подпись к радиопереключателю.</td>
+    </tr>
+</table></div>
 
-<h2 id="-">Модификаторы блока</h2>
-<h3 id="-theme-">Темы <code>theme</code></h3>
+<p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
+<h2 id="Модификаторы-блока">Модификаторы блока</h2>
+<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>Важно:</strong> При выборе темы <code>normal</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
 </ul>
-<p>Без указания темы к блоку отображается нативный вид контрола (<em>default</em>).</p>
-<p>Наглядно видно на примерах ниже:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: touch-phone.examples/radio/xr-zTTUYS3DD_e4xJV6Yn3a3BPI -->
-
+<p>Без указания модификатора <code>theme</code> отображается <a href="#native">нативный</a> вид контрола.</p>
+<p>Наглядно показано на примерах ниже:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
 <p><strong>simple</strong></p>
-<!-- bem-example: touch-phone.examples/radio/pPPjX0UcGCQBYmUNCpE27JADBCU -->
-
 <p><strong>normal</strong></p>
-<!-- bem-example: touch-phone.examples/radio/L98T9NertqtVCJpvDLdlKg6huWI -->
-
-<h3 id="-size-">Размеры радиопереключателя <code>size</code></h3>
-<p>Обязательный модификатор. Задает размер всем типам радиопереключателей.</p>
-<p>Реализован только в теме <em>normal</em>.</p>
+<p><a name="size"></a></p>
+<h3 id="Размеры-`_size`">Размеры <code>_size</code></h3>
+<p>Реализован только в теме <code>normal</code>.</p>
 <p>В зависимости от значения модификатора <code>type</code> доступны следующие размеры реализации блока:</p>
-<table>
+<div class="table-container"><table>
     <tr>
         <th>Размер</th>
         <th>Обычный радиопереключатель</th>
-        <th>Кнопочный радиопереключатель (<code>radio_type_button</code>)</th>
+        <th>Кнопочный радиопереключатель
+            <br>(<code>radio_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -78,121 +76,37 @@
         <th>xl</th>
         <td>–</td>
         <td>+</td>
-</table>
+</table></div>
 
 
-<h3 id="-type-">Тип радиопереключателя <code>type</code></h3>
-<p>Модификатор <code>type</code> со значением <code>button</code> используется для создания кнопочного радиопереключателя – кнопки (блок <code>button</code>) с установленным модификатором <code>button_togglable_radio</code>.</p>
-<p>При этом к блоку <code>button</code> примешивается блок <code>radio</code>, а контентом кнопки становится <code>radio__control</code>.</p>
-<p>Кроме того, при установленном модификаторе <code>radio_type_button</code> для блока задается HTML-атрибут <code>role=&quot;button&quot;</code>.</p>
-<table>
-    <tr>
-        <th>Тип</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <td>Обычный радиопереключатель</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
-    name : &#39;radio-normal&#39;,
-    text : &#39;Lonely switch&#39;
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Кнопочный радиопереключатель</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;radio&#39;,
-    mods : {
-        theme : &#39;normal&#39;,
-        size : &#39;l&#39;,
-        type : &#39;button&#39;
-    },
-    name : &#39;radio-normal&#39;,
-    text : &#39;Lonely switch2&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h3 id="-disabled-">Неактивен <code>disabled</code></h3>
-<p>В состоянии «неактивен» радиопереключатель отображается, но недоступен для действий пользователя.</p>
-<p>Такой радиопереключатель не будет получать фокус (модификатор <code>focused</code>).</p>
+<h3 id="Тип-`_type`">Тип <code>_type</code></h3>
+<p>Модификатор <code>type</code> со значением <code>button</code> используется для создания кнопочного радиопереключателя, реализованного на основе блока <a href="../button/button.ru.md">button</a> с модификатором <code>button_togglable_radio</code>.</p>
+<p>При этом к блоку <code>button</code> примешивается блок <code>radio</code>, а контентом кнопки становится эелемент <code>control</code>. Как следствие, для блока с модификатором <code>radio_type_button</code> доступны состояния блока <code>button</code>:</p>
+<ul>
+<li><code>hovered</code> – под курсором;</li>
+<li><code>pressed</code> – кнопка нажата.</li>
+</ul>
+<p>При установленном модификаторе <code>radio_type_button</code> блоку задается HTML-атрибут <code>role=&quot;button&quot;</code>.</p>
+<h3 id="Состояния">Состояния</h3>
+<h4 id="Выбран-`_checked`">Выбран <code>_checked</code></h4>
+<p>Модификатор <code>checked</code> указывает на то, что радиопереключатель выбран.</p>
+<p>Модификатор устанавливается по:</p>
+<ul>
+<li>щелчку мыши (при повторных щелчках модификатор сохраняется);</li>
+<li>нажатию клавиш <code>Enter</code> или <code>Space</code>, если радиокнопка находится в фокусе (возможность использования клавиши <code>Enter</code> зависит от браузера);</li>
+<li>нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков <code>radio</code>.</li>
+</ul>
+<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
+<p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
 <p>При установке модификатора <code>disabled</code> для радиопереключателя не будут:</p>
 <ul>
 <li>устанавливаться модификаторы состояния <code>hovered</code>, <code>pressed</code> и <code>focused</code>;</li>
 <li>изменяться значение модификатора <code>checked</code>.</li>
 </ul>
-<!-- bem-example: touch-phone.examples/radio/RBPWsSDN_yrB6HXtmtrnXB3WSMY -->
-
-<h3 id="-">Состояния</h3>
-<h4 id="-focused-">В фокусе <code>focused</code></h4>
+<h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
-<!-- bem-example: touch-phone.examples/radio/wEYcA7ioT134yNzBSljZyhtiyg8 -->
-
-<h4 id="-checked-">Выбран <code>checked</code></h4>
-<p>Модификатор <code>checked</code> указывает на то, что радиопереключатель выбран (отмечен).</p>
-<p>Модификатор устанавливается по:</p>
-<ul>
-<li>щелчку мыши по блоку (при повторных щелчках модификатор сохраняется);</li>
-<li>нажатию клавиш <code>Enter</code> или <code>Space</code> (возможность использования клавиши <code>Enter</code> зависит от браузера), если радиопереключатель находится в фокусе (модификатор <code>focused</code>);</li>
-<li>нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков <code>radio</code>.</li>
-</ul>
-<!-- bem-example: touch-phone.examples/radio/TLM9QTv-Pjlfq-MNpduxyTgw0cg -->
-
-<h4 id="-radio_type_button-">Состояния, доступные с модификатором <code>radio_type_button</code></h4>
-<p>При установленном модификаторе <code>radio_type_button</code> к блоку <code>button</code> примешивается блок <code>radio</code>. Как следствие, для блока с модификатором <code>radio_type_button</code> доступны состояния блока <code>button</code>:</p>
-<ul>
-<li><code>hovered</code> – под курсором;</li>
-<li><code>pressed</code> – кнопка нажата.</li>
-</ul>
-<h2 id="-">Элементы</h2>
-<h3 id="-__box-"><code>__box</code></h3>
-<p>Элемент <code>__box</code> используется в стандартной реализации блока как контейнер, содержащий контрол радиокнопки (элемент <code>__control</code>). В результате BEMHTML-преобразований становится HTML-элементом <code>&lt;span&gt;</code>.</p>
-<h3 id="-__control-"><code>__control</code></h3>
-<p>Элемент <code>__control</code> – контрол радиокнопки. В результате BEMHTML-преобразований становится HTML-элементом <code>&lt;input&gt;</code> с атрибутом <code>type=&quot;radio&quot;</code>. По умолчанию элемент скрыт. В блоке используется только его функциональность.</p>
-<h2 id="-">Зависимости</h2>
-<p>Блок <code>radio</code> зависит от следующего набора блоков и элементов:</p>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>control</code></li>
-<li><code>jquery__event</code></li>
-<li><code>__box</code></li>
-<li><code>__control</code></li>
-</ul>
-
-<h1 id="control">control</h1>
-<p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
-<ul>
-<li><a href="../attach/attach.ru.md">attach</a></li>
-<li><a href="../button/button.ru.md">button</a></li>
-<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
-<li><a href="../input/input.ru.md">input</a></li>
-<li><a href="../link/link.ru.md">link</a></li>
-<li><a href="../menu/menu.ru.md">menu</a></li>
-<li><a href="../radio/radio.ru.md">radio</a></li>
-</ul>
-<p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
-Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>
-<p>Блок использует следующие методы:</p>
-<table>
-    <tr>
-        <th>Метод</td>
-        <th>Описание</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Возвращает имя контрола при его наличии. В обратном случае должен вернуть пустую строку.</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Возвращает значение контрола.</td>
-    </tr>
-</table>
+<h2 id="Элементы">Элементы</h2>
+<h3 id="`__box`"><code>__box</code></h3>
+<p>Элемент <code>box</code> используется в стандартной реализации блока как контейнер, содержащий контрол радиокнопки (элемент <code>control</code>). Вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом <code>&lt;span&gt;</code>.</p>
+<h3 id="`__control`"><code>__control</code></h3>
+<p>Элемент <code>control</code> – вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом <code>&lt;input&gt;</code> с атрибутом <code>type=&quot;radio&quot;</code>.</p>

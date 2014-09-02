@@ -5471,7 +5471,9 @@ provide($);
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
 /* begin: ../../../common.blocks/control/control.js */
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',
@@ -5790,14 +5792,23 @@ provide(/** @exports */{
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
 /* begin: ../../../common.blocks/radio/_type/radio_type_button.js */
-modules.define('radio', function(provide, Radio) {
+/**
+ * @module radio
+ */
 
-provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
+modules.define('radio', ['button'], function(provide, _, Radio) {
+
+/**
+ * @exports
+ * @class radio
+ * @bem
+ */
+provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockOn('button')
+                this._button = this.findBlockInside('button')
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -5814,6 +5825,11 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
         'focused' : function(modName, modVal) {
             proxyModToButton.call(this, modName, modVal, false);
         }
+    }
+}, /** @lends radio */{
+    live : function() {
+        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        return this.__base.apply(this, arguments);
     }
 }));
 

@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox-group","head":[{"elem":"css","url":"_NkXyroybBlp16XIUwa_xtlxbotk.css"}],"scripts":[{"elem":"js","url":"_NkXyroybBlp16XIUwa_xtlxbotk.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox-group","mods":{"theme":"normal","size":"m","type":"line"},"name":"checkbox-line","options":[{"val":1,"text":"first"},{"val":2,"text":"second"}]}})

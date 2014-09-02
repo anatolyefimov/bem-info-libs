@@ -6,11 +6,11 @@
 <li>password field;</li>
 <li>search form.</li>
 </ul>
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes could be specified within corresponding fields of block&#39;s BEMJSON file:</p>
-<table>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
     <tr>
-        <th>Attribute</th>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
     </tr>
@@ -19,28 +19,28 @@
         <td>
             <code>String</code>
         </td>
-        <td>Value to be sent to server. It is empty by default.</td>
-    </tr>
-    <tr>
-        <td>placeholder</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>A short hint that describes expected value of an input field.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique block identifier. The value is generated randomly by default. Could be specified manually in BEMJSON file.</td>
+        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.</td>
     </tr>
     <tr>
         <td>name</td>
         <td>
             <code>String</code>
         </td>
-        <td>Defines name of an input field.</td>
+        <td>Defines name of an input field that is used for its identification.</td>
+    </tr>
+    <tr>
+        <td>placeholder</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>A hint that describes expected value of an input field.</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Unique block identifier. Should be specified manually in BEMJSON file.</td>
     </tr>
     <tr>
         <td>maxLength</td>
@@ -56,206 +56,82 @@
         </td>
         <td>Specifies the position of current <code>input</code> block in the tabbing order for current page.</td>
     </tr>
-</table>
+</table></div>
 
-<p>Other valid block&#39;s attributes could be specified in <code>attrs</code> field in BEMJSON.</p>
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
 <h3 id="_theme">_theme</h3>
-<p>Block supports following themes:</p>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>NB!</strong> Choosing a theme <code>normal</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
 </ul>
-<p>If a <code>theme</code> modifier is not specified, native representation (<em>default</em>) of a control is available.</p>
-<p>See the following examples for demonstration:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: touch-phone.examples/input/hwtIQVRUxvCPVxAJgWKBqBRt6Is -->
-<strong>simple</strong>
-
-<!-- bem-example: touch-phone.examples/input/yAehEbulTw29FYJa_ye7ntQkTkU -->
-<strong>normal</strong>
-
-<!-- bem-example: touch-phone.examples/input/m1GvVMb4ZI4DvaKjyQWVNZLyquA -->
-
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<p><strong>simple</strong></p>
+<p><strong>normal</strong></p>
+<p><a name="size"></a></p>
 <h3 id="_size">_size</h3>
-<p>Mandatory modifier. Available for <em>normal</em> theme only.</p>
-<p>Provides size values to all types of text fields.</p>
-<p>There are four sizes available: <strong>S</strong>, <strong>M</strong>, <strong>L</strong>, <strong>XL</strong>.</p>
-<p>See the following examples for demonstration:</p>
-<table>
+<p>Implemented only for theme <code>normal</code>.</p>
+<p>Provides with size values to all types of text fields.</p>
+<p>There are four sizes available: <strong>s</strong>, <strong>s</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<div class="table-container"><table>
     <tr>
         <th>Size</th>
         <th>Font size</th>
         <th>String height</th>
-        <th>Example</th>
     </tr>
     <tr>
-        <th>S</th>
+        <th>s</th>
         <td>13px</td>
         <td>24px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size: &#39;s&#39; },
-    placeholder : &#39;Small&#39;
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>M</th>
+        <th>m</th>
         <td>13px</td>
         <td>28px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size: &#39;m&#39; },
-    placeholder : &#39;Medium&#39;
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>L</th>
+        <th>l</th>
         <td>15px</td>
         <td>32px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size: &#39;l&#39; },
-    placeholder : &#39;Large&#39;
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>XL</th>
+        <th>xl</th>
         <td>18px</td>
         <td>38px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size: &#39;xl&#39; },
-    placeholder : &#39;X-Large&#39;
-}
-            </code></pre>
-        </td>
     </tr>
-</table>
+</table></div>
 
+<p>See following examples:</p>
 <h3 id="_type">_type</h3>
 <p>Following types of <code>input</code> block are available:</p>
 <ul>
-<li>text area (use <code>textarea</code> modifier);</li>
-<li>password field (use <code>password</code> modifier);</li>
-<li>search form (use <code>search</code> modifier).</li>
+<li>text area (<code>input_type_textarea</code>)</li>
 </ul>
-<p>If a <code>type</code> modifier is not specified, the <code>input</code> block obtains <code>&lt;input type=&quot;text&quot;/&gt;</code> value by default.</p>
-<table>
-    <tr>
-        <th>Type</th>
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>
-            <code>_textarea</code>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;textarea&#39; },
-    placeholder : &#39;Text area&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <code>_password</code>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size: &#39;m&#39;, type : &#39;password&#39; },
-    placeholder : &#39;Password field&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <code>_search</code>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : &#39;input&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39;, type : &#39;search&#39; },
-    placeholder : &#39;Search form&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-<h3 id="block-s-state">Block&#39;s state</h3>
-<h4 id="_disabled">_disabled</h4>
-<p>If block is disabled, all its elements become unavailable for user&#39;s action.</p>
-<p><code>input</code> block is active by default even if <code>disabled</code> modifier is not specified.</p>
-<!-- bem-example: touch-phone.examples/input/K-P-esXffR8hGOoR7jna6S2YiJQ -->
-
-<h4 id="_focused">_focused</h4>
-<p>An input field is focused if a block has a <code>focused</code> modifier with <code>true</code> value.</p>
-<!-- bem-example: touch-phone.examples/input/qCSnME17SEWdiXIYzAUquHUowlo -->
-
-<h3 id="_has-clear">_has-clear</h3>
-<p><code>clear</code> cross element (<code>clear</code>) appears in input field if a block has <code>has-clear</code> modifier with <code>true</code> value.</p>
-<!-- bem-example: touch-phone.examples/input/_9h_vL43Yf85tOZ7QzUlcBNd-PE -->
-
-<h2 id="block-s-elements">Block&#39;s elements</h2>
-<p>The following elements provide visual representation of <code>input</code> block:</p>
-<h3 id="__box">__box</h3>
-<p>An element for grouping native <code>&lt;input&gt;</code> field and additional elements (e.g <code>__clear</code>).</p>
-<h3 id="__clear">__clear</h3>
-<p>A button (cross element) intended to clear an <code>input</code> field content.</p>
-<p>To add a cross element into an <code>input</code> field specify <code>has-clear</code> modifier with <code>true</code> value in BEMJSON file.</p>
-<p>Cross element is unavailable if block has not <code>has-clear</code> modifier or if <code>has-clear</code> modifier has <code>false</code> value.</p>
-<!-- bem-example: touch-phone.examples/input/oL605Mco7dZbQOD7Rga3BNjDmUY -->
-
-<h3 id="__control">__control</h3>
-<p>Mandatory element.</p>
-<p>This element is processed by BEMHTML or BH template engine to native <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> control.</p>
-
-<h1 id="control">control</h1>
-<p>Auxiliary block designed for common functionality implementation to provide the most blocks of <a href="https://github.com/bem/bem-components">bem-components</a> library with <code>focused</code> and <code>disabled</code> states:</p>
 <ul>
-<li><a href="../attach/attach.en.md">attach</a></li>
-<li><a href="../button/button.en.md">button</a></li>
-<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
-<li><a href="../input/input.en.md">input</a></li>
-<li><a href="../link/link.en.md">link</a></li>
-<li><a href="../menu/menu.en.md">menu</a></li>
-<li><a href="../radio/radio.en.md">radio</a></li>
+<li>password field (<code>input_type_password</code>)</li>
 </ul>
-<p>The <code>control</code> block provides valid <code>tabIndex</code> attribute value depending on the current state of a block.</p>
-<p>The block uses following methods:</p>
-<table>
-    <tr>
-        <th>Method</td>
-        <th>Description</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Returns a control&#39;s value.</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
-    </tr>
-</table>
+<ul>
+<li>search form (<code>input_type_search</code>)</li>
+</ul>
+<p>If <code>type</code> modifier is not specified, <code>input</code> block obtains <code>&lt;input type=&quot;text&quot;/&gt;</code> value by default.</p>
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
+<h3 id="_has-clear">_has-clear</h3>
+<p><code>has-clear</code> modifier is set automatically when some data is entered into an input field. This modifier is used to add <a href="#clear_elem"><code>clear</code></a> element.</p>
+<h2 id="Block-elements">Block elements</h2>
+<p>The following elements provide visual representation of <code>input</code> block:</p>
+<p><a name="clear_elem"></a></p>
+<h3 id="__clear">__clear</h3>
+<p>This element is used to clear <code>input</code> field content.</p>
+<h3 id="__box">__box</h3>
+<p>Element for grouping native <code>&lt;input&gt;</code> field and additional elements (e.g <code>clear</code>).</p>
+<p>An auxiliary element is added to the block on template engine level.</p>
+<h3 id="__control">__control</h3>
+<p>An auxiliary element is added to the block on template engine level.</p>

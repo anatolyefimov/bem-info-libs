@@ -1,283 +1,49 @@
 <h1 id="attach">attach</h1>
 <p>Блок <code>attach</code> служит для загрузки файла, предназначенного для отправки на сервер.</p>
-<p>По умолчанию блок визуально представлен кнопкой на основе блока <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a>, открывающей системное окно загрузки файла, и текстовым сообщением «Файл не выбран». После загрузки файла отображаются следующие элементы:</p>
+<p>По умолчанию блок визуально представлен кнопкой на основе блока <a href="../button/button.ru.md">button</a>, открывающей системное окно загрузки файла, и текстовым сообщением (например, «Файл не выбран»). После загрузки файла отображаются следующие элементы:</p>
 <ul>
 <li>иконка файла (блок <code>icon</code>);</li>
 <li>имя файла (элемент <code>text</code>);</li>
 <li>крестик для отмены (элемент <code>clear</code>).</li>
 </ul>
-<p>Не позволяет прикреплять несколько файлов и не поддерживает drag-and-drop.</p>
-<h2 id="-">Модификаторы блока</h2>
-<h3 id="-_theme-">Темы оформления  <code>_theme</code></h3>
-<p>Блок представлен только в теме <em>simple</em>.</p>
-<p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
+<p>Реализация блока не позволяет прикреплять несколько файлов и не поддерживает drag-and-drop.</p>
+<h2 id="Модификаторы-блока">Модификаторы блока</h2>
+<h3 id="Темы-оформления--`_theme`">Темы оформления  <code>_theme</code></h3>
+<p>Блок представлен только в теме <code>simple</code>.</p>
+<p>Без указания модификатора темы отображается <a href="#native">нативный</a> вид контрола.</p>
 <p>Наглядно показано на примерах ниже:</p>
 <p><strong>default</strong></p>
+<p><a name="native"></a>
 <!-- bem-example: desktop.examples/attach/2LkwTGo-4d7fxgnG4skRO2tHoic -->
-<strong>simple</strong>
-
+<strong>simple</strong></p>
 <!-- bem-example: desktop.examples/attach/nwytMff5nyXPoczzUvwVbgD7YQQ -->
 
-<h3 id="-">Состояния блока</h3>
-<h4 id="-_disabled-">Неактивен <code>_disabled</code></h4>
-<p>В состоянии блока «неактивен» кнопка выбора становится недоступной для действий пользователя.</p>
-<p>Если модификатор <code>disabled</code> не выбран, кнопка по умолчанию активна.</p>
+<h3 id="Состояния-блока">Состояния блока</h3>
+<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
+<p>В неактивном состоянии блока кнопка выбора видна, но недоступна для действий пользователя. Также блок не может получить следующие модификаторы: <code>focused</code>, <code>pressed</code> и <code>hovered</code>.</p>
 <!-- bem-example: desktop.examples/attach/TlYDF2oQVo93Y7ocT-4hcsjHHB8 -->
 
-<h2 id="-">Элементы блока</h2>
-<p>Визуально представлен следующими элементами:</p>
+<h2 id="Элементы-блока">Элементы блока</h2>
 <h3 id="__button">__button</h3>
 <p>Обязательный элемент.
-Кнопка выбора файла. Открывает системное окно загрузки файла. Создается на основе блока <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md">button</a> и использует его поведение (JS) и внешний вид (CSS). Контент кнопки задается во входных данных.</p>
+Кнопка выбора файла, которая открывает системное окно загрузки файла. Реализована на основе блока <a href="../button/button.ru.md">button</a> и использует его поведение (JS) и внешний вид (CSS). Контент кнопки задается во входных данных.</p>
 <!-- bem-example: desktop.examples/attach/c3tTTsQQpS_wyaTRUODJQMWC3x8 -->
 
 <h3 id="__control">__control</h3>
 <p>Нативный контрол «прикрепить файл».</p>
-<p>Преобразуется BEMHTML- и BH-шаблонами в нативный элемент прикрепления файла с атрибутами <code>&lt;input class=&quot;attach__control&quot; type=&quot;file&quot;&gt;</code>.</p>
+<p>Вспомогательный элемент. Добавляется блоку на уровне шаблонизатора.</p>
 <h3 id="__no-file">__no-file</h3>
-<p>Элемент для отображения текста, когда файл не выбран.</p>
-<p>Если тема <em>simple</em> не указана для блока <code>attach</code>, будет отображаться значение нативного контрола «Файл не выбран».</p>
+<p>Вспомогательный элемент для отображения текста, когда файл не выбран. Добавляется блоку на уровне шаблонизатора.</p>
 <h3 id="__file">__file</h3>
 <p>Контейнер с информацией о прикрепленном файле.</p>
 <p>Формируется из следующих элементов блока:</p>
 <ul>
-<li><code>__text</code></li>
-<li><code>__clear</code></li>
+<li><code>text</code></li>
+<li><code>clear</code></li>
 </ul>
-<p>Может содержать блок <code>icon</code>. В зависимости от типа файла блоку <code>icon</code> добавляется соответствующий модификатор, которому будет назначена иконка типа файла.</p>
+<p>Может содержать блок <code>icon</code>. В зависимости от типа файла блоку <code>icon</code> добавляется модификатор, которому будет назначена иконка, соответствующая типу файла.</p>
 <h3 id="__text">__text</h3>
 <p>Имя файла. Появляется после прикрепления файла.</p>
 <h3 id="__clear">__clear</h3>
-<p>Кнопка отмены выбранного файла (крестик). Появляется после прикрепления файла.</p>
-<p>Элемент реализован для темы <em>simple</em>.</p>
-
-<h1 id="control">control</h1>
-<p>Вспомогательный блок. Используется для работы большинства блоков библиотеки <a href="https://github.com/bem/bem-components">bem-components</a>:</p>
-<ul>
-<li><a href="../attach/attach.ru.md">attach</a></li>
-<li><a href="../button/button.ru.md">button</a></li>
-<li><a href="../checkbox/checkbox.ru.md">checkbox</a></li>
-<li><a href="../input/input.ru.md">input</a></li>
-<li><a href="../link/link.ru.md">link</a></li>
-<li><a href="../menu/menu.ru.md">menu</a></li>
-<li><a href="../radio/radio.ru.md">radio</a></li>
-</ul>
-<p>Предназначен для реализации общей функциональности данных блоков, предоставляющей состояния <code>focused</code> и <code>disabled</code>.
-Следит за значением атрибута <code>tabIndex</code> в зависимости от текущего состояния блока.</p>
-<p>Блок использует следующие методы:</p>
-<table>
-    <tr>
-        <th>Метод</td>
-        <th>Описание</td>
-    </tr>
-    <tr>
-        <td><code>getName</code></td>
-        <td>Возвращает имя контрола при его наличии. В обратном случае должен вернуть пустую строку.</td>
-    </tr>
-    <tr>
-        <td><code>getVal</code></td>
-        <td>Возвращает значение контрола.</td>
-    </tr>
-</table>
-
-<h1 id="button">button</h1>
-<p>Блок <code>button</code> используется для создания различных типов кнопок и предоставляет возможность изменять их размер, состояние, содержимое и внешний вид.</p>
-<h2 id="-">Варианты использования кнопок</h2>
-<ul>
-<li>Обычная кнопка – применяется для любых кнопок веб-интерфейса. Используется по умолчанию.</li>
-<li>Кнопка-ссылка – применяется для перехода по ссылке. Задается модификатором <code>type</code> со значением <code>link</code>.</li>
-<li>Кнопка отправки формы – предназначена для отправки данных формы на сервер (submit). Задается модификатором <code>type</code> со значением <code>submit</code>.</li>
-</ul>
-<h2 id="-">Допустимые атрибуты блока</h2>
-<p>Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON блока:</p>
-<table>
-    <tr>
-        <th>Атрибут</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает текст кнопки.</td>
-    </tr>
-    <tr>
-        <td>icon</td>
-        <td>
-            <code>BEMJSON</code></td>
-        <td>Кнопка с иконкой, которая формируется блоком <code>icon</code>.</td>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Адрес ссылки. Применяется только при наличии модификатора блока <code>button_type_link</code>. Кнопка становится ссылкой, а значение <code>url</code> – атрибутом <code>href</code>.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Уникальный идентификатор кнопки.</td>
-    </tr>
-    <tr>
-        <td>tabindex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Определяет последовательность перехода между кнопками при нажатии на <code>Tab</code>.</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Значение, отправляемое на сервер. По умолчанию пустое.</td>
-    </tr>
-</table>
-
-<p>Другие допустимые атрибуты блока могут задаваться в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
-<h2 id="-">Модификаторы блока</h2>
-<h3 id="-_theme-">Темы <code>_theme</code></h3>
-<p>Блок представлен в следующих темах:</p>
-<ul>
-<li>simple</li>
-<li>normal</li>
-</ul>
-<p>Без указания модификатора темы отображается нативный вид контрола (<em>default</em>).</p>
-<p>Наглядно показано на примерах ниже:</p>
-<p><strong>default</strong></p>
-<!-- bem-example: desktop.examples/attach/pxTNfkqsHxpJmDhwS0QK2QBs3ZY -->
-
-<p><strong>simple</strong></p>
-<!-- bem-example: desktop.examples/attach/KtCevfKa_rzm7MTQMzA65Z0ZREU -->
-
-<p><strong>normal</strong></p>
-<!-- bem-example: desktop.examples/attach/Rb77AVqNcSM2UUBxbCkUkHULKWc -->
-
-<h3 id="-_size-">Размеры кнопок <code>_size</code></h3>
-<p>Обязательный модификатор. Задает размер всем типам кнопок.</p>
-<p>Реализован только в теме <em>normal</em>.</p>
-<p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
-<table>
-    <tr>
-        <th>Размер<br>кнопки</th>
-        <th>Размер<br>шрифта</th>
-        <th>Высота<br>кнопки</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <th>S</th>
-        <td>13px</td>
-        <td>24px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;s&#39; },
-    text : &#39;Small&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>M</th>
-        <td>13px</td>
-        <td>28px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;m&#39; },
-    text : &#39;Medium&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>L</th>
-        <td>15px</td>
-        <td>32px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;l&#39; },
-    text : &#39;Large&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>XL</th>
-        <td>18px</td>
-        <td>38px</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;button&#39;,
-    mods : { theme : &#39;normal&#39;, size : &#39;xl&#39; },
-    text : &#39;X-large&#39;
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-<h3 id="-_type-">Типы кнопок <code>_type</code></h3>
-<p>Блок может быть представлен в виде кнопки-ссылки (<code>_type_link</code>) и кнопки отправки формы (<code>_type_submit</code>).
-В случак кнопки-ссылки, дополнительно во входных данных необходимо указать обязательный атрибут <code>url</code>. В таком случае кнопка получает тег <code>&lt;a&gt;</code>, а значение <code>url</code> становится атрибутом <code>href</code>.</p>
-<p><strong>Кнопка-ссылка</strong></p>
-<!-- bem-example: desktop.examples/attach/El0pc_bZgByjhimDRiJmaUa0ubw -->
-
-<p><strong>Кнопка отправки формы</strong></p>
-<!-- bem-example: desktop.examples/attach/gtF_RY9_ivjSx1sADQLwlLOSzmo -->
-
-<h3 id="-">Состояния</h3>
-<h4 id="-_disabled-">Неактивна <code>_disabled</code></h4>
-<p>В состоянии «неактивна» кнопка видна, но недоступна для действий пользователя.</p>
-<p>Такая кнопка не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами.</p>
-<!-- bem-example: desktop.examples/attach/VrNTsucLZEWlatBulG8rqd0wHxQ -->
-
-<h4 id="-_focused-">В фокусе <code>_focused</code></h4>
-<p>В состоянии блока <code>focused</code> со значением <code>true</code> кнопка всегда находится в фокусе. Нажатие по ней можно выполнить клавишей <code>Space</code> или <code>Enter</code>.</p>
-<!-- bem-example: desktop.examples/attach/ByAZ1dHx4rZKUf9zbxuHmfOmGNs -->
-
-<h4 id="-_hovered-">Наведение курсором <code>_hovered</code></h4>
-<p>Определяет действие «наведение курсором» на кнопку.</p>
-<h4 id="-_pressed-">Нажатие <code>_pressed</code></h4>
-<p>Определяет состояние «нажатие на кнопку» (действие).</p>
-<h4 id="-_togglable-">Залипание <code>_togglable</code></h4>
-<p>Позволяет реализовать залипание кнопки. Допустимые значения: <code>check</code> и <code>radio</code>.</p>
-<!-- bem-example: desktop.examples/attach/NYbJzppv5-r9T8LQ0_-SaNLJWds -->
-
-<h4 id="-_action-">Визуальное выделение <code>_action</code></h4>
-<p>Визуально выделяет кнопку на странице.</p>
-<!-- bem-example: desktop.examples/attach/X1_VUgD2DCMkTeRUN6Vd4diR7Yk -->
-
-<h4 id="-_pseudo-">Псевдокнопка <code>_pseudo</code></h4>
-<p>При выборе модификатора <code>pseudo</code> со значением <code>true</code>, кнопка получает прозрачный фон.</p>
-<!-- bem-example: desktop.examples/attach/h_ijyu_mqbPaJBB22OxZERaFyZA -->
-
-<p>В неактивном состоянии границы псевдокнопки исчезают и она сливается со страницей.</p>
-<!-- bem-example: desktop.examples/attach/igxPz7KCvCVG6TTxlXRYzE2_5pI -->
-
-<h2 id="-">Элементы блока</h2>
-<h3 id="__text">__text</h3>
-<p>Технический элемент. Обрамляет текст кнопки.
-Нужен для позиционирования текста внутри кнопки, в том числе для случаев использования вместе с иконкой.</p>
-<!-- bem-example: desktop.examples/attach/RQ8YcvhxhqjSwO3I3VjLBOanRns -->
-
-<h1 id="icon">icon</h1>
-<p>Блок <code>icon</code> используется в качестве графического элемента в других блоках. В HTML представлен тегом <code>&lt;i&gt;</code>. Иконка задается через свойство <code>background</code> и, соответственно, не имеет возможности фоллбека.</p>
-<p>Иконку можно передать как через модификатор, так и через поле <code>url</code>:</p>
-<!-- bem-example: desktop.examples/attach/b2PchFG0vbxDCGt-_1VzrN-GK0 -->
-
-<!-- bem-example: desktop.examples/attach/bek_pi0vSgei-mm8QD-H3qy_E0c -->
-
-<!-- bem-example: desktop.examples/attach/bqsLdaiup-wWnOz-fYrlos47T_c -->
-
-<!-- bem-example: desktop.examples/attach/w_tWuwVyYuwv7N6i7jChuJOj8Vc -->
+<p>Элемент отмены выбранного файла. Появляется после прикрепления файла.</p>
+<p>Элемент реализован для темы <code>simple</code>.</p>

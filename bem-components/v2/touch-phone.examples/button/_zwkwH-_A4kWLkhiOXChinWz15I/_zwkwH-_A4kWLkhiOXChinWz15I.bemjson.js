@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"__zwkwH-_A4kWLkhiOXChinWz15I.css"}],"scripts":[{"elem":"js","url":"__zwkwH-_A4kWLkhiOXChinWz15I.js"}],"mods":{"theme":"normal"},"content":{"block":"button","url":"#","text":"Кнопка-ссылка","mods":{"theme":"normal","size":"m","type":"link"}}})

@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_VrNTsucLZEWlatBulG8rqd0wHxQ.css"}],"scripts":[{"elem":"js","url":"_VrNTsucLZEWlatBulG8rqd0wHxQ.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Неактивна","mods":{"theme":"normal","size":"m","disabled":true}}})

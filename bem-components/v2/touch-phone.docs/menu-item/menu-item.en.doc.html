@@ -1,107 +1,42 @@
-<h1 id="menu-item">menu item</h1>
-<p>A <code>menu-item</code> block is used for creation of various types of menu and list items. It is used inside a <code>menu</code> block. The <code>menu-item</code> block allows to manage state, content and type of menu items.</p>
-<p>As a result of BEMHTML transformations block will be rendered to a <code>&lt;div&gt;</code> HTML element, with <code>role=&quot;menuitem&quot;</code> attribute set.</p>
-<h2 id="menu-item-use-cases">menu item use cases</h2>
-<p>The block helps to create following menu item types:</p>
-<table>
+<h1 id="menu-item">menu-item</h1>
+<p><code>menu-item</code> block is used as independent switch element to form dropdowns, tab menus, lists and menu items. <code>menu-item</code> block allows to manage state, content and type of menu items.</p>
+<p>Block is represented as <code>&lt;div&gt;</code> HTML element with <code>role=&quot;menuitem&quot;</code> attribute.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
     <tr>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
-        <th>An example</th>
-    </tr>
-    <tr>
-        <td>A switch element</td>
-        <td>Is used to set up a dropdowns, tab menus, lists and menu items, etc.</td>
-        <td>
-            <pre><code>
-{
-    block : &#39;menu-item&#39;,
-    val : 1,
-    content : &#39;Selector value&#39;
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>A link element (<code>_type_link</code>)</td>
-        <td>An element with nested depended link. A <code>link</code> block should be placed into block&#39;s BEMJSON declaration <code>content</code> field. The <code>_type_link</code> modifier is required.
-        </td>
-        <td>
-            <pre><code>
-{
-    block : &#39;menu-item&#39;,
-    mods : { type : &#39;link&#39; },
-    val : 2,
-    content : {
-        block : &#39;link&#39;,
-        url : &#39;#&#39;,
-        content : &#39;Link 1&#39;
-    }
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-<h2 id="valid-block-s-attributes">Valid block&#39;s attributes</h2>
-<p>Valid block&#39;s attributes can be specified in the corresponding fields of block&#39;s BEMJSON declaration:</p>
-<table>
-    <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
     </tr>
     <tr>
         <td>val</td>
-        <td><code>String|Number</code></td>
-        <td>A value returned by menu item if selected.</td>
+        <td><code>String</code></td>
+        <td>Value to be sent to a server if <code>menu-item</code> is selected.</td>
     </tr>
-</table>
+</table></div>
 
-<h2 id="block-s-modifiers">Block&#39;s modifiers</h2>
-<h3 id="the-themes-_theme-">The themes <code>_theme</code></h3>
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
-<li>normal</li>
+<li>normal (<strong>NB!</strong> Choosing a theme <code>normal</code> requires additional modifier <code>size</code>.)</li>
 </ul>
-<p>If a <code>_theme</code> modifier is not set, the browser defaults (<code>default</code>) will be applied to the block.</p>
-<p>For example:</p>
-<h4 id="default">default</h4>
-<!-- bem-example: touch-phone.examples/menu-item/eV0q9qK02nCPsMxztjMtbDnRz7U -->
-
-<h4 id="simple">simple</h4>
-<!-- bem-example: touch-phone.examples/menu-item/BxhdTuPatcCVRdT_1B8cW6OHGQ0 -->
-
-<h4 id="normal">normal</h4>
-<!-- bem-example: touch-phone.examples/menu-item/snjxOm4SOT8_nFgCXdf2BKaL_Xs -->
-
-
-<h3 id="block-s-states">Block&#39;s states</h3>
-<h3 id="inactive-_disabled-">Inactive <code>_disabled</code></h3>
-<p>A <code>_disabled</code> modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  </p>
-<p>If a <code>_type_link</code> modifier is set for the block with a nested link, the link will not be followed on mouse click.</p>
-<p>Available for all block themes.</p>
-<!-- bem-example: touch-phone.examples/menu-item/00ejmLqt61w5ksAsfBl7KgE4dBE -->
-
-
-<h4 id="mouse-over-_hovered-">Mouse over <code>_hovered</code></h4>
-<p>This modifier is automatically toggled when the mouse pointer is over the block. </p>
-<p>Available for all block themes.</p>
-<!-- bem-example: touch-phone.examples/menu-item/Sgw4iIN4STar-QE05xyBmgntftw -->
-
-
-<h4 id="selected-menu-item-_checked-">Selected menu item <code>_checked</code></h4>
-<p>Modifier defines the selected menu item.</p>
-<!-- bem-example: touch-phone.examples/menu-item/T77G-B0x1-Z9ZaPqpW_TAskNFI8 -->
-
-
-<p>For the <code>menu-item</code> blocks nested in a <code>menu</code> block <code>_checked</code> state toggles automatically on mouse click. </p>
-<!-- bem-example: touch-phone.examples/menu-item/sURVY49aNm3TBC1XVeOG1Q5_vi8 -->
-
-<h2 id="dependencies">Dependencies</h2>
-<p>The block depends on:</p>
-<ul>
-<li><code>i-bem__dom</code></li>
-<li><code>jquery</code></li>
-<li><code>dom</code></li>
-</ul>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<p><strong>simple</strong></p>
+<p><strong>normal</strong></p>
+<h3 id="_type">_type</h3>
+<p>Use <code>type</code> modifier with <code>link</code> value to create <code>menu-item</code> based on <a href="../link/link.en.md"><code>link</code></a> block. In this case link is used instead of switch element. All modifiers of <code>link</code> block could be propagated to this type of <code>menu-item</code>.</p>
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_checked">_checked</h4>
+<p>This modifier defines the selected menu item.</p>
+<p>For <code>menu-item</code> blocks nested in <code>menu</code> block <code>checked</code> state can be set on mouse click automatically.</p>
+<h3 id="_disabled">_disabled</h3>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<h4 id="_hovered">_hovered</h4>
+<p>This modifier is automatically set to <code>menu-item</code> when mouse pointer is over the block.</p>

@@ -43,9 +43,9 @@ html {
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:begin */
 .icon_social_twitter {
-  background-image: url(../../../test.blocks/icon/_social/twitter.png);
+  background-image: url("../../../test.blocks/icon/_social/twitter.png");
 }
 .icon_social_vk {
-  background-image: url(../../../test.blocks/icon/_social/vk.png);
+  background-image: url("../../../test.blocks/icon/_social/vk.png");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:end */

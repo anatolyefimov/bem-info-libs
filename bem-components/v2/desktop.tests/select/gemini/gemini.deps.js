@@ -284,6 +284,15 @@ exports.deps = [
         "mod": "theme"
     },
     {
+        "block": "button",
+        "mod": "theme"
+    },
+    {
+        "block": "button",
+        "mod": "theme",
+        "val": "normal"
+    },
+    {
         "block": "select",
         "mod": "theme",
         "val": "normal"
@@ -312,15 +321,6 @@ exports.deps = [
     },
     {
         "block": "menu-item",
-        "mod": "theme",
-        "val": "normal"
-    },
-    {
-        "block": "button",
-        "mod": "theme"
-    },
-    {
-        "block": "button",
         "mod": "theme",
         "val": "normal"
     },

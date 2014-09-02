@@ -1,1 +1,22 @@
-.page{padding:20px}html{min-height:100%}.page_theme_normal{font:13px/15px Arial,Helvetica,sans-serif;min-height:100%;margin:0;color:#000;background:#fff}.image{border:0}
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:begin */
+.page {
+  padding: 20px;
+}
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+html {
+  min-height: 100%;
+}
+.page_theme_normal {
+  font: 13px/15px Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  margin: 0;
+  color: #000;
+  background: #fff;
+}
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:begin */
+.image {
+  border: 0;
+}
+/* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:end */

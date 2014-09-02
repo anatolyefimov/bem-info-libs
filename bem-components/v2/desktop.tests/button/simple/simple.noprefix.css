@@ -128,10 +128,10 @@ html {
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/icon.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:begin */
 .icon_social_twitter {
-  background-image: url(../../../test.blocks/icon/_social/twitter.png);
+  background-image: url("../../../test.blocks/icon/_social/twitter.png");
 }
 .icon_social_vk {
-  background-image: url(../../../test.blocks/icon/_social/vk.png);
+  background-image: url("../../../test.blocks/icon/_social/vk.png");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_social/icon_social.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
@@ -168,6 +168,9 @@ html {
          */
   position: relative;
   display: inline-block;
+}
+.button_theme_normal .icon {
+  position: relative;
 }
 .button_theme_normal.button_type_link {
   text-decoration: none;
@@ -209,43 +212,43 @@ html {
 .button_theme_normal.button_checked.button_hovered {
   background: rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_action {
+.button_theme_normal.button_view_action {
   background: rgba(191,153,0,0.8);
 }
-.button_theme_normal.button_action:before {
+.button_theme_normal.button_view_action:before {
   background: #ffdb4d;
 }
-.button_theme_normal.button_action.button_pressed:before {
+.button_theme_normal.button_view_action.button_pressed:before {
   background: #fc0;
 }
-.button_theme_normal.button_action.button_hovered {
+.button_theme_normal.button_view_action.button_hovered {
   background: rgba(159,127,0,0.8);
 }
-.button_theme_normal.button_pseudo {
+.button_theme_normal.button_view_pseudo {
   overflow: hidden;
   background: 0;
 }
-.button_theme_normal.button_pseudo:before {
+.button_theme_normal.button_view_pseudo:before {
   background: 0;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
 }
-.button_theme_normal.button_pseudo.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
 }
-.button_theme_normal.button_pseudo.button_focused-hard:before {
+.button_theme_normal.button_view_pseudo.button_focused-hard:before {
   box-shadow: 0 0 0 1px rgba(178,142,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_pressed:before {
   background: rgba(0,0,0,0.05);
 }
-.button_theme_normal.button_pseudo.button_checked:before {
+.button_theme_normal.button_view_pseudo.button_checked:before {
   background: #ffeba0;
   box-shadow: 0 0 0 1px rgba(153,122,0,0.5);
 }
-.button_theme_normal.button_pseudo.button_checked.button_hovered:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_pseudo.button_checked.button_pressed:before {
+.button_theme_normal.button_view_pseudo.button_checked.button_pressed:before {
   background: #fee481;
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
@@ -322,9 +325,6 @@ html {
   left: 1px;
   right: 1px;
 }
-.control-group .button_theme_normal.button_checked + .button:before {
-  left: 0;
-}
 .control-group > .button_theme_normal:first-child,
 .control-group > :first-child .button_theme_normal {
   border-radius: 3px 0 0 3px;
@@ -348,7 +348,7 @@ html {
 .icon_action_right,
 .icon_action_down,
 .icon_action_left {
-  background-image: url(../../../test.blocks/icon/_action/arrow.svg);
+  background-image: url("../../../test.blocks/icon/_action/arrow.svg");
 }
 .icon_action_up {
   transform: rotate(180deg);
@@ -360,7 +360,7 @@ html {
   transform: rotate(90deg);
 }
 .icon_action_download {
-  background-image: url(../../../test.blocks/icon/_action/download.svg);
+  background-image: url("../../../test.blocks/icon/_action/download.svg");
 }
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/test.blocks/icon/_action/icon_action.styl:end */
 /* /Users/user/Work/bds-bem-info/content/bem-components/v2/common.blocks/image/image.styl:begin */

@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"__rQiPCz_bRgjryQQWFEhXhyJnyM.css"}],"scripts":[{"elem":"js","url":"__rQiPCz_bRgjryQQWFEhXhyJnyM.js"}],"mods":{"theme":"normal"},"content":{"block":"input","mods":{"theme":"normal","size":"m","disabled":true},"val":"Неактивно"}})

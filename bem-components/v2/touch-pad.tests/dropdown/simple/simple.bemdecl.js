@@ -1,126 +1,286 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "test"
+        "name": "test"
     },
     {
-        "block": "dropdown"
+        "name": "dropdown"
     },
     {
-        "block": "dropdown",
-        "mod": "switcher",
-        "val": "link"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "switcher",
+                "vals": [
+                    {
+                        "name": "link"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "switcher",
-        "val": "button"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "switcher",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "disabled",
-        "val": true
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "theme",
-        "val": "simple"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link"
+        "name": "link"
     },
     {
-        "block": "link",
-        "mod": "pseudo",
-        "val": true
+        "name": "link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "link",
-        "mod": "bla",
-        "val": "bla"
+        "name": "link",
+        "mods": [
+            {
+                "name": "bla",
+                "vals": [
+                    {
+                        "name": "bla"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "simple"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup"
+        "name": "popup"
     },
     {
-        "block": "popup",
-        "mod": "autoclosable",
-        "val": true
+        "name": "popup",
+        "mods": [
+            {
+                "name": "autoclosable",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "simple"
+        "name": "popup",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "theme",
-        "val": "normal"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "theme",
-        "val": "normal"
+        "name": "button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "xl"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xl"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "size",
-        "val": "s"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "popup",
-        "mod": "theme",
-        "val": "normal"
+        "name": "popup",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "bla"
+        "name": "bla"
     },
     {
-        "block": "button",
-        "mod": "size",
-        "val": "m"
+        "name": "button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "size",
-        "val": "l"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "button",
-        "mod": "togglable",
-        "val": "check"
+        "name": "button",
+        "mods": [
+            {
+                "name": "togglable",
+                "vals": [
+                    {
+                        "name": "check"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "dropdown",
-        "mod": "size",
-        "val": "xl"
+        "name": "dropdown",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "xl"
+                    }
+                ]
+            }
+        ]
     }
 ];

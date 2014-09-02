@@ -1,74 +1,170 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "page"
+        "name": "page"
     },
     {
-        "block": "page",
-        "mod": "theme",
-        "val": "normal"
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "css"
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "page",
-        "elem": "js"
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "radio-group"
+        "name": "radio-group"
     },
     {
-        "block": "radio-group",
-        "mod": "disabled",
-        "val": true
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "disabled",
+                "vals": [
+                    {
+                        "name": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "theme",
-        "val": "simple"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "simple"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "type",
-        "val": "button"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "button"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon"
+        "name": "icon"
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "vk"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "vk"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "icon",
-        "mod": "social",
-        "val": "twitter"
+        "name": "icon",
+        "mods": [
+            {
+                "name": "social",
+                "vals": [
+                    {
+                        "name": "twitter"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "theme",
-        "val": "normal"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "size",
-        "val": "m"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "size",
-        "val": "l"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "l"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "type",
-        "val": "line"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "line"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "radio-group",
-        "mod": "mode",
-        "val": "radio-check"
+        "name": "radio-group",
+        "mods": [
+            {
+                "name": "mode",
+                "vals": [
+                    {
+                        "name": "radio-check"
+                    }
+                ]
+            }
+        ]
     }
 ];

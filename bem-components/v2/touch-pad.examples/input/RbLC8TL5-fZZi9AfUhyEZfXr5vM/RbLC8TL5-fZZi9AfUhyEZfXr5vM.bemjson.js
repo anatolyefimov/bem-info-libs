@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"_RbLC8TL5-fZZi9AfUhyEZfXr5vM.css"}],"scripts":[{"elem":"js","url":"_RbLC8TL5-fZZi9AfUhyEZfXr5vM.js"}],"mods":{"theme":"normal"},"content":{"block":"input","mods":{"theme":"normal","size":"s"},"placeholder":"Small"}})
