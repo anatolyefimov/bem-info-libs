@@ -672,7 +672,7 @@ var BEMHTML = function() {
             typeof _$4isBEM != 'undefined' || (_$4isBEM = typeof _$4v.bem != 'undefined' ? _$4v.bem : _$4v.block || _$4v.elem);
             var _$4cls = ('', __r8 = $$mode, $$mode = 'cls', __r9 = $117(__$ctx), $$mode = __r8, '', __r9);
             _$4cls || (_$4cls = _$4v.cls);
-            var _$4addJSInitClass = _$4v.block && _$4jsParams;
+            var _$4addJSInitClass = _$4v.block && _$4jsParams && !_$4v.elem;
             if (_$4isBEM || _$4cls) {
                 _$4buf.push(' class="');
                 if (_$4isBEM) {

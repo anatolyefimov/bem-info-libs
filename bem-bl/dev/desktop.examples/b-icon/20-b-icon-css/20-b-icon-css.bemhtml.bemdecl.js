@@ -1,1 +1,0 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"b-icon"},{"block":"b-icon","mod":"action","val":"images"}];

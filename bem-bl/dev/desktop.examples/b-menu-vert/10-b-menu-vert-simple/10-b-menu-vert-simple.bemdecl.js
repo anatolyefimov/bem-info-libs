@@ -1,1 +1,72 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"b-menu-vert"},{"block":"b-menu-vert","elem":"title"},{"block":"b-menu-vert","elem":"item"},{"block":"b-menu-vert","elem":"item","mod":"state","val":"current"},{"block":"b-link"},{"block":"b-menu-vert","elem":"separator"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert"
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "title"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-link"
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "separator"
+            }
+        ]
+    }
+];

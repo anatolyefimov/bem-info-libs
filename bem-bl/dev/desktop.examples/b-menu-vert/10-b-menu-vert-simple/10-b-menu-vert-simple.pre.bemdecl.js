@@ -1,33 +1,61 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert"
+        "name": "b-menu-vert"
     },
     {
-        "block": "b-menu-vert",
-        "elem": "title"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "title"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item",
-        "mod": "state",
-        "val": "current"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     },
     {
-        "block": "b-menu-vert",
-        "elem": "separator"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "separator"
+            }
+        ]
     }
 ];

@@ -1,61 +1,129 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "mod": "exp",
-        "val": "ololo"
+        "name": "b-page",
+        "mods": [
+            {
+                "name": "exp",
+                "vals": [
+                    {
+                        "name": "ololo"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "aaa"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "aaa"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "abab"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "abab"
+            }
+        ]
     },
     {
-        "block": "b1"
+        "name": "b1"
     },
     {
-        "block": "b-page",
-        "elem": "bbb"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "bbb"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "bbb",
-        "mod": "m1",
-        "val": "v1"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "bbb",
+                "mods": [
+                    {
+                        "name": "m1",
+                        "vals": [
+                            {
+                                "name": "v1"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-bla"
+        "name": "b-bla"
     },
     {
-        "block": "b-bla",
-        "mod": "m2",
-        "val": "v2"
+        "name": "b-bla",
+        "mods": [
+            {
+                "name": "m2",
+                "vals": [
+                    {
+                        "name": "v2"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-bla",
-        "mod": "m3",
-        "val": "v3"
+        "name": "b-bla",
+        "mods": [
+            {
+                "name": "m3",
+                "vals": [
+                    {
+                        "name": "v3"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b1",
-        "mod": "mm",
-        "val": "vv"
+        "name": "b1",
+        "mods": [
+            {
+                "name": "mm",
+                "vals": [
+                    {
+                        "name": "vv"
+                    }
+                ]
+            }
+        ]
     }
 ];

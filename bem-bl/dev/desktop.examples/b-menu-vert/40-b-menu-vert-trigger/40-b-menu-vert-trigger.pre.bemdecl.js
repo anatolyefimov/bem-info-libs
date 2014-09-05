@@ -1,87 +1,187 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert"
+        "name": "b-menu-vert"
     },
     {
-        "block": "b-menu-vert",
-        "elem": "title"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "title"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item",
-        "mod": "state",
-        "val": "current"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     },
     {
-        "block": "b-link",
-        "mod": "pseudo",
-        "val": "yes"
+        "name": "b-link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": "yes"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link",
-        "mod": "inner",
-        "val": "yes"
+        "name": "b-link",
+        "mods": [
+            {
+                "name": "inner",
+                "vals": [
+                    {
+                        "name": "yes"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "trigger"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "trigger"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "trigger",
-        "mod": "state",
-        "val": "opened"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "trigger",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "opened"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-icon"
+        "name": "b-icon"
     },
     {
-        "block": "b-menu-vert",
-        "elem": "trigger-icon"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "trigger-icon"
+            }
+        ]
     },
     {
-        "block": "b-link",
-        "elem": "inner"
+        "name": "b-link",
+        "elems": [
+            {
+                "name": "inner"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item-content"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item-content"
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "item-content",
-        "mod": "visibility",
-        "val": "visible"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item-content",
+                "mods": [
+                    {
+                        "name": "visibility",
+                        "vals": [
+                            {
+                                "name": "visible"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "mod": "type",
-        "val": "submenu"
+        "name": "b-menu-vert",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "submenu"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-vert",
-        "elem": "separator"
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "separator"
+            }
+        ]
     }
 ];

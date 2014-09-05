@@ -1,5 +1,1 @@
-exports.deps = [
-    {
-        "block": "i-geolocation"
-    }
-];
+exports.deps = [{"block":"i-geolocation"}];

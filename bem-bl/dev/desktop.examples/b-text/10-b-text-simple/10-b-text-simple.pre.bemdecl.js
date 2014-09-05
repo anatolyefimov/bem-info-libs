@@ -1,56 +1,104 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-text"
+        "name": "b-text"
     },
     {
-        "block": "b-text",
-        "elem": "h1"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h1"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "h2"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h2"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "h3"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h3"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "h4"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h4"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "p"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "p"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "ul"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "ul"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "li"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "li"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "ol"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "ol"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "blockquote"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "blockquote"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "pre"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "pre"
+            }
+        ]
     }
 ];

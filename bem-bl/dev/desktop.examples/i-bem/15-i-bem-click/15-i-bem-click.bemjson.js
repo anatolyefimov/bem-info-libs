@@ -1,1 +1,14 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/i-bem/i-bem.examples/15-i-bem-click.bemjson.js
+({
+    block: 'b-page',
+    title: 'Обработчик события click',
+    head: [
+        { elem: 'css', url: '_15-i-bem-click.css', ie: false },
+        { elem: 'css', url: '_15-i-bem-click.ie.css', ie: 'lt IE 8' },
+        { block: 'i-jquery', elem: 'core' },
+        { elem: 'js', url: '_15-i-bem-click.js' }
+    ],
+    content: {
+        block: 'b-square',
+        js: true
+    }
+})

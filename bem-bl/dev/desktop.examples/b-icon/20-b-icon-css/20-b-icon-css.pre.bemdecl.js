@@ -1,17 +1,29 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "b-icon"
+        "name": "b-icon"
     },
     {
-        "block": "b-icon",
-        "mod": "action",
-        "val": "images"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "images"
+                    }
+                ]
+            }
+        ]
     }
 ];

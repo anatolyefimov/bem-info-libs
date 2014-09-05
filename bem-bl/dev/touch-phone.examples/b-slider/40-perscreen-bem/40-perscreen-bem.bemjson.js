@@ -1,1 +1,91 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-touch/b-slider/b-slider.examples/40-perscreen-bem.bemjson.js
+({
+    block: 'b-page',
+    title: 'заголовок',
+    head: [
+        {
+            elem: 'css',
+            url: '_40-perscreen-bem.css'
+        },
+        {
+            elem: 'css',
+            ie: true,
+            url: '_40-perscreen-bem.ie.css'
+        },
+        {
+            block: 'i-jquery',
+            elem: 'core'
+        },
+        {
+            elem: 'js',
+            url: '_40-perscreen-bem.pub.js'
+        }
+    ],
+    content: {
+        block: 'b-slider',
+        mods: {
+            type: 'per-screen'
+        },
+        mix: [{
+            block: 'b-my-slider'
+        }],
+        content: [
+            {
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            }
+        ]
+     }
+})

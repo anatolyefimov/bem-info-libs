@@ -1,35 +1,71 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "b-layout-table"
+        "name": "b-layout-table"
     },
     {
-        "block": "b-layout-table",
-        "mod": "layout",
-        "val": "60-40"
+        "name": "b-layout-table",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "60-40"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-layout-table",
-        "elem": "row"
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "row"
+            }
+        ]
     },
     {
-        "block": "b-layout-table",
-        "elem": "cell"
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell"
+            }
+        ]
     },
     {
-        "block": "b-layout-table",
-        "elem": "inner"
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "inner"
+            }
+        ]
     },
     {
-        "block": "b-layout-table",
-        "elem": "cell",
-        "mod": "position",
-        "val": "r"
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell",
+                "mods": [
+                    {
+                        "name": "position",
+                        "vals": [
+                            {
+                                "name": "r"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ];

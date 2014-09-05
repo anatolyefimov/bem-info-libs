@@ -1,57 +1,121 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz"
+        "name": "b-menu-horiz"
     },
     {
-        "block": "b-menu-horiz",
-        "mod": "layout",
-        "val": "normal"
+        "name": "b-menu-horiz",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "normal"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "title"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "title"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item",
-        "mod": "state",
-        "val": "current"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     },
     {
-        "block": "b-link",
-        "mod": "pseudo",
-        "val": "yes"
+        "name": "b-link",
+        "mods": [
+            {
+                "name": "pseudo",
+                "vals": [
+                    {
+                        "name": "yes"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item-selector"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item-selector"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item",
-        "mod": "state",
-        "val": "disabled"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "disabled"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ];

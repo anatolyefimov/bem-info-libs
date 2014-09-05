@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"b-text-list"}];

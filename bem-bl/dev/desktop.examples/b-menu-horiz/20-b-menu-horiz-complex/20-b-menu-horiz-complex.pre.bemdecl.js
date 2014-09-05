@@ -1,83 +1,191 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz"
+        "name": "b-menu-horiz"
     },
     {
-        "block": "b-menu-horiz",
-        "mod": "layout",
-        "val": "complex"
+        "name": "b-menu-horiz",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "complex"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item",
-        "mod": "state",
-        "val": "current"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-icon"
+        "name": "b-icon"
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "compose"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "compose"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "check"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "check"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "separator"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "separator"
+            }
+        ]
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "forward"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "forward"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "delete"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "delete"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item",
-        "mod": "state",
-        "val": "disabled"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "disabled"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "spam"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "spam"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-icon",
-        "mod": "type",
-        "val": "read"
+        "name": "b-icon",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "read"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "gap"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "gap"
+            }
+        ]
     },
     {
-        "block": "b-menu-horiz",
-        "elem": "item",
-        "mod": "type",
-        "val": "bottom"
+        "name": "b-menu-horiz",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "type",
+                        "vals": [
+                            {
+                                "name": "bottom"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ];

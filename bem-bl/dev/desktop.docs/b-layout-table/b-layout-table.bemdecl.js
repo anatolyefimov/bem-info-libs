@@ -1,1 +1,1 @@
-exports.deps = [{"block":"b-layout-table"}];
+exports.blocks = [{"name":"b-layout-table"}];

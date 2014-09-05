@@ -783,7 +783,7 @@ var BEMHTML = function() {
             typeof _$4isBEM != 'undefined' || (_$4isBEM = typeof _$4v.bem != 'undefined' ? _$4v.bem : _$4v.block || _$4v.elem);
             var _$4cls = ('', __r8 = $$mode, $$mode = 'cls', __r9 = $140(__$ctx), $$mode = __r8, '', __r9);
             _$4cls || (_$4cls = _$4v.cls);
-            var _$4addJSInitClass = _$4v.block && _$4jsParams;
+            var _$4addJSInitClass = _$4v.block && _$4jsParams && !_$4v.elem;
             if (_$4isBEM || _$4cls) {
                 _$4buf.push(' class="');
                 if (_$4isBEM) {
@@ -2268,10 +2268,13 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
         }
 
         var block;
-        decl.block == baseBlock._name?
+        if(decl.block == baseBlock._name) {
             // makes a new "live" if the old one was already executed
-            (block = $.inheritSelf(baseBlock, props, staticProps))._processLive(true) :
+            (block = $.inheritSelf(baseBlock, props, staticProps))._processLive(true);
+        } else {
             (block = blocks[decl.block] = $.inherit(baseBlock, props, staticProps))._name = decl.block;
+            delete block._liveInitable;
+        }
 
         return block;
 
@@ -3815,7 +3818,15 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
             if(noLive ^ heedLive) {
                 res = _this.live() !== false;
-                _this.live = function() {};
+
+                var blockName = _this.getName(),
+                    origLive = _this.live;
+
+                _this.live = function() {
+                    return this.getName() === blockName?
+                        res :
+                        origLive.apply(this, arguments);
+                };
             }
         }
 

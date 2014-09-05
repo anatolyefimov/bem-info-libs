@@ -1,5 +1,1 @@
-exports.deps = [
-    {
-        "block": "i-ecma"
-    }
-];
+exports.deps = [{"block":"i-ecma"}];

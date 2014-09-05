@@ -1,1 +1,1 @@
-exports.deps = [{"block":"i-ecma"}];
+exports.blocks = [{"name":"i-ecma"}];

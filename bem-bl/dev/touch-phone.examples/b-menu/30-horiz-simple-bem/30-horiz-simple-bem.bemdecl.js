@@ -1,1 +1,88 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"i-jquery","elem":"core"},{"block":"b-page","elem":"js"},{"block":"b-menu"},{"block":"b-menu","mod":"layout","val":"horiz-simple"},{"block":"b-menu","elem":"item"},{"block":"b-menu","elem":"item","mod":"state","val":"current"},{"block":"b-link"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "i-jquery"
+    },
+    {
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
+    },
+    {
+        "name": "b-menu"
+    },
+    {
+        "name": "b-menu",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "horiz-simple"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-menu",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
+    },
+    {
+        "name": "b-menu",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-link"
+    }
+];

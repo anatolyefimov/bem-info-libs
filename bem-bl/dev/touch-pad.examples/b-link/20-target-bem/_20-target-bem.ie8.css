@@ -1,0 +1,26 @@
+/* ../../../blocks-touch/b-page/b-page.css: begin */ /**/
+    .b-page
+    {
+        font: 12px Helvetica, Arial, sans-serif;
+    
+        margin: 0;
+    
+        background: #fff;
+        -webkit-text-size-adjust: none;
+    }
+/* ../../../blocks-touch/b-page/b-page.css: end */ /**/
+
+/* ../../../blocks-touch/b-link/b-link.css: begin */ /**/
+    .b-link__text
+    {
+        vertical-align: middle;
+    }
+    
+    .b-link > .b-icon
+    {
+        margin: 0 5px 0 0;
+    
+        vertical-align: middle;
+    }
+    
+/* ../../../blocks-touch/b-link/b-link.css: end */ /**/

@@ -1,5 +1,3 @@
-You can make **item-content** element visible using this modificator.
-
 This block makes HTML markup for a vertical menu. It is based on a helper block `i-menu`.
 
 There are two types of elements in this block:

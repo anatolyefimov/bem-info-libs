@@ -1,1 +1,152 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-touch/b-slider/b-slider.examples/60-simple-two-bem.bemjson.js
+({
+    block: 'b-page',
+    title: 'заголовок',
+    head: [
+        {
+            elem: 'css',
+            url: '_60-simple-two-bem.css'
+        },
+        {
+            elem: 'css',
+            ie: true,
+            url: '_60-simple-two-bem.ie.css'
+        },
+        {
+            block: 'i-jquery',
+            elem: 'core'
+        },
+        {
+            elem: 'js',
+            url: '_60-simple-two-bem.pub.js'
+        }
+    ],
+    content: [{
+        block: 'b-slider',
+        mix: [{
+            block: 'b-my-slider'
+        }],
+        content: [
+            {
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            }
+        ]
+     },{
+        block: 'b-slider',
+        mix: [{
+            block: 'b-my-slider'
+        }],
+        content: [
+            {
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Уиии! Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер Я.Слайдер!'
+                }
+            },{
+                elem: 'item',
+                content: {
+                    block: 'b-link',
+                    url: 'http://ya.ru',
+                    content: 'Я.Слайдер'
+                }
+            }
+        ]
+     }]
+})

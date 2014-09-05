@@ -1,1 +1,115 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"i-jquery","elem":"core"},{"block":"b-page","elem":"js"},{"block":"b-menu-vert"},{"block":"b-menu-vert","elem":"item"},{"block":"b-menu-vert","elem":"trigger"},{"block":"b-icon"},{"block":"b-menu-vert","elem":"trigger-icon"},{"block":"b-menu-vert","elem":"item-content"},{"block":"b-menu-vert","mod":"type","val":"submenu"},{"block":"b-link"},{"block":"b-menu-vert","elem":"item","mod":"state","val":"current"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "i-jquery"
+    },
+    {
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert"
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "trigger"
+            }
+        ]
+    },
+    {
+        "name": "b-icon"
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "trigger-icon"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item-content"
+            }
+        ]
+    },
+    {
+        "name": "b-menu-vert",
+        "mods": [
+            {
+                "name": "type",
+                "vals": [
+                    {
+                        "name": "submenu"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-link"
+    },
+    {
+        "name": "b-menu-vert",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+];

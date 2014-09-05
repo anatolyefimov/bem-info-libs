@@ -1,1 +1,10 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-page/b-page.examples/40-b-page-with-level.bemjson.js
+({
+    block: 'b-page',
+    title: 'Page with extra level of definition',
+    head: [
+        { elem: 'css', url: '_40-b-page-with-level.css' }
+    ],
+    content: [
+        'Page content'
+    ]
+})

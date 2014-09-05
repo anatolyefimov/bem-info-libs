@@ -1,42 +1,82 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-menu"
+        "name": "b-menu"
     },
     {
-        "block": "b-menu",
-        "mod": "layout",
-        "val": "horiz"
+        "name": "b-menu",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "horiz"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-menu",
-        "elem": "title"
+        "name": "b-menu",
+        "elems": [
+            {
+                "name": "title"
+            }
+        ]
     },
     {
-        "block": "b-menu",
-        "elem": "item"
+        "name": "b-menu",
+        "elems": [
+            {
+                "name": "item"
+            }
+        ]
     },
     {
-        "block": "b-menu",
-        "elem": "item",
-        "mod": "state",
-        "val": "current"
+        "name": "b-menu",
+        "elems": [
+            {
+                "name": "item",
+                "mods": [
+                    {
+                        "name": "state",
+                        "vals": [
+                            {
+                                "name": "current"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     }
 ];

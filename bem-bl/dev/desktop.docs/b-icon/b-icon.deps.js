@@ -1,5 +1,1 @@
-exports.deps = [
-    {
-        "block": "b-icon"
-    }
-];
+exports.deps = [{"block":"b-icon"}];

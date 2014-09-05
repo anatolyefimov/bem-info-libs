@@ -1,1 +1,118 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"b-layout-table"},{"block":"b-layout-table","mod":"layout","val":"18-20-60"},{"block":"b-layout-table","elem":"row"},{"block":"b-layout-table","elem":"gap"},{"block":"b-layout-table","elem":"cell"},{"block":"b-layout-table","elem":"cell","mod":"position","val":"r"},{"block":"b-layout-table","elem":"cell","mod":"position","val":"l"},{"block":"b-layout-table","elem":"cell","mod":"position","val":"m"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table"
+    },
+    {
+        "name": "b-layout-table",
+        "mods": [
+            {
+                "name": "layout",
+                "vals": [
+                    {
+                        "name": "18-20-60"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "row"
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "gap"
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell"
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell",
+                "mods": [
+                    {
+                        "name": "position",
+                        "vals": [
+                            {
+                                "name": "r"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell",
+                "mods": [
+                    {
+                        "name": "position",
+                        "vals": [
+                            {
+                                "name": "l"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "b-layout-table",
+        "elems": [
+            {
+                "name": "cell",
+                "mods": [
+                    {
+                        "name": "position",
+                        "vals": [
+                            {
+                                "name": "m"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+];

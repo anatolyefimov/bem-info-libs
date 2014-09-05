@@ -1,1 +1,11 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-icon/b-icon.examples/20-b-icon-css.bemjson.js
+({
+    block: 'b-page',
+    title: 'b-icon',
+    head: [
+        { elem: 'css', url: '_20-b-icon-css.css' }
+    ],
+    content: {
+        block: 'b-icon',
+        mods: { action: 'images' }
+    }
+})

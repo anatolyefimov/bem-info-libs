@@ -1,56 +1,116 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-form-select"
+        "name": "b-form-select"
     },
     {
-        "block": "b-form-select",
-        "mod": "size",
-        "val": "s"
+        "name": "b-form-select",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-form-select",
-        "mod": "theme",
-        "val": "grey"
+        "name": "b-form-select",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "grey"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-form-button"
+        "name": "b-form-button"
     },
     {
-        "block": "b-form-button",
-        "mod": "size",
-        "val": "s"
+        "name": "b-form-button",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-form-button",
-        "mod": "theme",
-        "val": "grey-s"
+        "name": "b-form-button",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "grey-s"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-form-button",
-        "mod": "valign",
-        "val": "middle"
+        "name": "b-form-button",
+        "mods": [
+            {
+                "name": "valign",
+                "vals": [
+                    {
+                        "name": "middle"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "block": "b-form-select",
-        "elem": "select"
+        "name": "b-form-select",
+        "elems": [
+            {
+                "name": "select"
+            }
+        ]
     },
     {
-        "block": "b-form-select",
-        "elem": "option"
+        "name": "b-form-select",
+        "elems": [
+            {
+                "name": "option"
+            }
+        ]
     }
 ];

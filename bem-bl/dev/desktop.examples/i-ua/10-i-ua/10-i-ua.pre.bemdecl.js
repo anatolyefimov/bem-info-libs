@@ -1,54 +1,94 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "h3"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h3"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "table"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "table"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "thead"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "thead"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "tr"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "tr"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "th"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "th"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "tbody"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "tbody"
+            }
+        ]
     },
     {
-        "block": "b-text",
-        "elem": "td"
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "td"
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     },
     {
-        "block": "button"
+        "name": "button"
     },
     {
-        "block": "checkbox"
+        "name": "checkbox"
     }
 ];

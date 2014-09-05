@@ -1,31 +1,51 @@
-exports.deps = [
+exports.blocks = [
     {
-        "block": "b-page"
+        "name": "b-page"
     },
     {
-        "block": "b-page",
-        "elem": "css"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
     },
     {
-        "block": "i-jquery",
-        "elem": "core"
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
     },
     {
-        "block": "b-page",
-        "elem": "js"
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
     },
     {
-        "block": "b-search"
+        "name": "b-search"
     },
     {
-        "block": "b-search",
-        "elem": "input"
+        "name": "b-search",
+        "elems": [
+            {
+                "name": "input"
+            }
+        ]
     },
     {
-        "block": "b-search",
-        "elem": "button"
+        "name": "b-search",
+        "elems": [
+            {
+                "name": "button"
+            }
+        ]
     },
     {
-        "block": "b-link"
+        "name": "b-link"
     }
 ];

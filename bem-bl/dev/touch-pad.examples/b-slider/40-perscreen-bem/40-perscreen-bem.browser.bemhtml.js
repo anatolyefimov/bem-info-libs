@@ -548,7 +548,7 @@ var BEMHTML = function() {
         return '', __r0 = __$ctx['__$anflg1'], __$ctx['__$anflg1'] = true, __r4 = ('', __r1 = __$ctx.ctx, __$ctx.ctx = {
             block: 'b-page',
             elem: 'js',
-            url: 'http://yastatic.net/jquery/1.8.3/jquery.min.js'
+            url: '//yastatic.net/jquery/1.8.3/jquery.min.js'
         }, __r2 = $$mode, $$mode = '', __r3 = $200(__$ctx), __$ctx.ctx = __r1, $$mode = __r2, '', __r3), __$ctx['__$anflg1'] = __r0, '', __r4;
         return;
     }
@@ -804,7 +804,7 @@ var BEMHTML = function() {
             typeof _$4isBEM != 'undefined' || (_$4isBEM = typeof _$4v.bem != 'undefined' ? _$4v.bem : _$4v.block || _$4v.elem);
             var _$4cls = ('', __r8 = $$mode, $$mode = 'cls', __r9 = $190(__$ctx), $$mode = __r8, '', __r9);
             _$4cls || (_$4cls = _$4v.cls);
-            var _$4addJSInitClass = _$4v.block && _$4jsParams;
+            var _$4addJSInitClass = _$4v.block && _$4jsParams && !_$4v.elem;
             if (_$4isBEM || _$4cls) {
                 _$4buf.push(' class="');
                 if (_$4isBEM) {

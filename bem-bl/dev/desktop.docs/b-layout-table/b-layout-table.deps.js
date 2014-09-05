@@ -1,5 +1,1 @@
-exports.deps = [
-    {
-        "block": "b-layout-table"
-    }
-];
+exports.deps = [{"block":"b-layout-table"}];

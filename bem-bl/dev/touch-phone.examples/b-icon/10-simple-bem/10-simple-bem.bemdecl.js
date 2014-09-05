@@ -1,1 +1,46 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"i-jquery","elem":"core"},{"block":"b-page","elem":"js"},{"block":"b-icon"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "i-jquery"
+    },
+    {
+        "name": "i-jquery",
+        "elems": [
+            {
+                "name": "core"
+            }
+        ]
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
+    },
+    {
+        "name": "b-icon"
+    }
+];

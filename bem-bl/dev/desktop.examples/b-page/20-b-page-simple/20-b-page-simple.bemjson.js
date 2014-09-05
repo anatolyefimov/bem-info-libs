@@ -1,1 +1,10 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-page/b-page.examples/20-b-page-simple.bemjson.js
+({
+    block: 'b-page',
+    title: 'Page with css file linked',
+    head: [
+        { elem: 'css', url: '_20-b-page-simple.css' }
+    ],
+    content: [
+        'Page content'
+    ]
+})

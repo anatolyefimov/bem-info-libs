@@ -1,1 +1,30 @@
-/Users/user/Work/bds-bem-info/content/bem-bl/dev/blocks-desktop/b-layout-table/b-layout-table.examples/10-b-layout-table.bemjson.js
+({
+    block: 'b-page',
+    title: 'b-layout-table',
+    head: [
+        { elem: 'css', url: '_10-b-layout-table.css' }
+    ],
+    content: [
+        {
+            block: 'b-layout-table',
+            mods: { layout: '60-40'},
+            content: {
+                elem: 'row',
+                content: [
+                    {
+                        elem: 'cell',
+                        content: {
+                            elem: 'inner',
+                            content: 'First cell'
+                        }
+                    },
+                    {
+                        elem: 'cell',
+                        elemMods: { position: 'r'},
+                        content: 'Second cell'
+                    }
+                ]
+            }
+        }
+    ]
+})

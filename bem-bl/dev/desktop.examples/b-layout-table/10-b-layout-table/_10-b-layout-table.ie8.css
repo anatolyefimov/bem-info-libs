@@ -1,0 +1,41 @@
+/* ../../../blocks-desktop/b-layout-table/b-layout-table.css: begin */ /**/
+    .b-layout-table
+    {
+        font-size: 100%;
+    
+        width: 100%;
+    
+        border-collapse: collapse;
+    }
+    
+    .b-layout-table__gap,
+    .b-layout-table__cell
+    {
+        padding: 0;
+    
+        vertical-align: top;
+    }
+    
+/* ../../../blocks-desktop/b-layout-table/b-layout-table.css: end */ /**/
+
+/* ./blocks/b-layout-table/_layout/b-layout-table_layout_60-40.css: begin */ /**/
+    .b-layout-table_layout_60-40 .b-layout-table__cell
+    {
+        width: 60%;
+        padding: 0.4em 0;
+    
+        background: #9c0;
+    }
+    
+    .b-layout-table_layout_60-40 .b-layout-table__cell_position_r
+    {
+        width: 40%;
+    
+        background: #f3a828;
+    }
+    
+    .b-layout-table_layout_60-40 .b-layout-table__inner
+    {
+        margin-right: 20px;
+    }
+/* ./blocks/b-layout-table/_layout/b-layout-table_layout_60-40.css: end */ /**/

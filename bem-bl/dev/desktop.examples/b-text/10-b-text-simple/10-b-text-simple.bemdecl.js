@@ -1,1 +1,115 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"},{"block":"b-page"},{"block":"b-page","elem":"css"},{"block":"b-page","elem":"js"},{"block":"b-text"},{"block":"b-text","elem":"h1"},{"block":"b-text","elem":"h2"},{"block":"b-text","elem":"h3"},{"block":"b-text","elem":"h4"},{"block":"b-text","elem":"p"},{"block":"b-text","elem":"ul"},{"block":"b-text","elem":"li"},{"block":"b-text","elem":"ol"},{"block":"b-text","elem":"blockquote"},{"block":"b-text","elem":"pre"}];
+exports.blocks = [
+    {
+        "name": "i-bem"
+    },
+    {
+        "name": "i-bem",
+        "elems": [
+            {
+                "name": "i18n"
+            }
+        ]
+    },
+    {
+        "name": "b-page"
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "b-page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
+    },
+    {
+        "name": "b-text"
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h1"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h2"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h3"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "h4"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "p"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "ul"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "li"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "ol"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "blockquote"
+            }
+        ]
+    },
+    {
+        "name": "b-text",
+        "elems": [
+            {
+                "name": "pre"
+            }
+        ]
+    }
+];

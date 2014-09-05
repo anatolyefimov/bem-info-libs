@@ -1,1 +1,1 @@
-exports.deps = [{"block":"i-bem","elem":"i18n"}];
+exports.blocks = [{"name":"i-bem","elems":[{"name":"i18n"}]}];

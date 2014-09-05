@@ -1,1 +1,1 @@
-exports.deps = [{"block":"i-jquery"}];
+exports.blocks = [{"name":"i-jquery"}];

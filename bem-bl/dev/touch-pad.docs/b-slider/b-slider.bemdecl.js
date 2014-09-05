@@ -1,1 +1,1 @@
-exports.deps = [{"block":"b-slider"}];
+exports.blocks = [{"name":"b-slider"}];
