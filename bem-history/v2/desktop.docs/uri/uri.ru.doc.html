@@ -1,0 +1,20 @@
+<h2 id="uri">uri</h2>
+<p>Блок для парсинга url.</p>
+<h3 id="Использование">Использование</h3>
+<pre><code class="lang-js">modules.require([&#39;uri&#39;], function(Uri) {
+
+    // Парсим url
+    var u = Uri.parse(&#39;http://example.org:8080/path?test=1&amp;test=2&amp;param2=22&#39;);
+
+    // Изменяем порт
+    u.setPort(80);
+
+    // Изменяем параметры запроса
+    u.deleteParam(&#39;test&#39;, &#39;2&#39;);
+    u.replaceParam(&#39;param2&#39;, 2);
+
+    // Обратно сериализуем url
+    u.toString(); // &quot;http://example.org:8080/path?test=1&amp;param2=2&quot;
+
+});
+</code></pre>

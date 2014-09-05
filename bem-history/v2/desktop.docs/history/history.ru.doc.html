@@ -1,0 +1,18 @@
+<h2 id="history">history</h2>
+<p>Блок, обеспечивающий взаимодействие с браузерным History API с помощью двух модификаторов:</p>
+<ul>
+<li><code>provider_history-api</code> – если есть встроенная поддержка History API;</li>
+<li><code>provider_hashchange</code> – реализация с помощью фолбэка hashchange.</li>
+</ul>
+<h3 id="Использование">Использование</h3>
+<pre><code class="lang-js">modules.require([&#39;history&#39;], function(History) {
+
+    // Создаем инстанс history
+    var history = new History();
+
+    // Добавляем запись или заменяем текущее состояние с помощью методов pushState/replaceState
+    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });
+    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });
+
+});
+</code></pre>

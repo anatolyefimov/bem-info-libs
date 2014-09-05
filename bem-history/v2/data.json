@@ -1,0 +1,109 @@
+{
+    "repo": "bem-history",
+    "ref": "v2",
+    "enb": true,
+    "url": "http://github.com/bem/bem-history",
+    "custom": [],
+    "docs": {
+        "readme": {
+            "title": {
+                "en": "Readme",
+                "ru": "Readme"
+            },
+            "content": {
+                "en": "<h1 id=\"bem-history\">bem-history</h1>\n<h2 id=\"What-is-this-\">What is this?</h2>\n<p>BEM wrap for History API:</p>\n<ul>\n<li>supports browsers with a native History API and hashchange event;</li>\n<li>provides manipulations with url, browser location and history in the terms of <a href=\"http://bem.info/\">BEM</a>.</li>\n</ul>\n<h2 id=\"Components\">Components</h2>\n<h3 id=\"Blocks\">Blocks</h3>\n<ul>\n<li><code>uri</code> – module for an url parsing;</li>\n<li><code>history</code> – module provides work with a browser History with two modificators:<ul>\n<li><code>provider_history-api</code> – supports a native History API;</li>\n<li><code>provider_hashchange</code> – supports fallback on the hashchange event;</li>\n</ul>\n</li>\n<li><code>location</code> – high-level module for a <code>window.location</code> change.</li>\n</ul>\n<h2 id=\"Scheme-of-library-work\">Scheme of library work</h2>\n<p><img src=\"https://dl.dropboxusercontent.com/u/1122837/bem-history_from-browser.svg\" alt=\"bem-history workflow\"></p>\n<h2 id=\"Usage\">Usage</h2>\n<h3 id=\"uri\">uri</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;uri&#39;], function(Uri) {\n\n    // Parse url\n    var u = Uri.parse(&#39;http://example.org:8080/path?test=1&amp;test=2&amp;param2=22&#39;);\n\n    // Change port\n    u.setPort(80);\n\n    // Change query params\n    u.deleteParam(&#39;test&#39;, &#39;2&#39;);\n    u.replaceParam(&#39;param2&#39;, 2);\n\n    // Serialize url\n    u.toString(); // &quot;http://example.org:8080/path?test=1&amp;param2=2&quot;\n\n});\n</code></pre>\n<h3 id=\"history\">history</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;history&#39;], function(History) {\n\n    // Create history instance\n    var history = new History();\n\n    // Push new or replace history state\n    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });\n    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });\n\n});\n</code></pre>\n<h3 id=\"location\">location</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;location&#39;], function(location) {\n\n    // Change `window.location` using a full url\n    location.change({ url: &#39;http://example.org:8080/path&#39; });\n\n    // Change current location using only the new query params\n    location.change({ params: { param1: [11,12], param2: &#39;ololo&#39; } });\n    window.location.href; // &quot;http://example.org:8080/path?param1=11&amp;param1=12&amp;param2=ololo&quot;\n\n});\n</code></pre>\n",
+                "ru": "<h1 id=\"bem-history\">bem-history</h1>\n<h2 id=\"Что-это-\">Что это?</h2>\n<p>БЭМ-обертка над History API:</p>\n<ul>\n<li>работает в браузерах со встроенной поддержкой History API и с возможностью фолбэка на событие <code>hashchange</code>;</li>\n<li>позволяет работать с <code>url</code>, <code>location</code> и <code>history</code> браузера в терминах <a href=\"http:/ru.bem.info/\">БЭМ</a>.</li>\n</ul>\n<h2 id=\"Состав\">Состав</h2>\n<h3 id=\"Блоки\">Блоки</h3>\n<ul>\n<li><code>uri</code> – блок для парсинга url;</li>\n<li><code>history</code> – блок, обеспечивающий взаимодействие с браузерным History API с помощью двух модификаторов:<ul>\n<li><code>provider_history-api</code> – если есть встроенная поддержка History API;</li>\n<li><code>provider_hashchange</code> – реализация с помощью фолбэка hashchange;</li>\n</ul>\n</li>\n<li><code>location</code> – высокоуровневый блок для изменения <code>window.location</code>.</li>\n</ul>\n<h2 id=\"Схема-работы\">Схема работы</h2>\n<p><img src=\"https://dl.dropboxusercontent.com/u/1122837/bem-history_from-browser.svg\" alt=\"bem-history workflow\"></p>\n<h2 id=\"Использование\">Использование</h2>\n<h3 id=\"uri\">uri</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;uri&#39;], function(Uri) {\n\n    // Парсим url\n    var u = Uri.parse(&#39;http://example.org:8080/path?test=1&amp;test=2&amp;param2=22&#39;);\n\n    // Изменяем порт\n    u.setPort(80);\n\n    // Изменяем параметры запроса\n    u.deleteParam(&#39;test&#39;, &#39;2&#39;);\n    u.replaceParam(&#39;param2&#39;, 2);\n\n    // Обратно сериализуем url\n    u.toString(); // &quot;http://example.org:8080/path?test=1&amp;param2=2&quot;\n\n});\n</code></pre>\n<h3 id=\"history\">history</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;history&#39;], function(History) {\n\n    // Создаем инстанс history\n    var history = new History();\n\n    // Добавляем запись или заменяем текущее состояние с помощью методов pushState/replaceState\n    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });\n    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });\n\n});\n</code></pre>\n<h3 id=\"location\">location</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;location&#39;], function(location) {\n\n    // Изменяем `window.location` с помощью полного url\n    location.change({ url: &#39;http://example.org:8080/path&#39; });\n\n    // Изменяем текущий location, используя только новые параметры запроса\n    location.change({ params: { param1: [11,12], param2: &#39;ololo&#39; } });\n    window.location.href; // &quot;http://example.org:8080/path?param1=11&amp;param1=12&amp;param2=ololo&quot;\n\n});\n</code></pre>\n"
+            }
+        }
+    },
+    "deps": {
+        "bem-core": "git://github.com/bem/bem-core.git#~2.2.4"
+    },
+    "levels": [
+        {
+            "name": "desktop.docs",
+            "blocks": [
+                {
+                    "name": "history",
+                    "jsdoc": null,
+                    "data": {
+                        "ru": {
+                            "name": "history",
+                            "examples": [],
+                            "description": "<h2 id=\"history\">history</h2>\n<p>Блок, обеспечивающий взаимодействие с браузерным History API с помощью двух модификаторов:</p>\n<ul>\n<li><code>provider_history-api</code> – если есть встроенная поддержка History API;</li>\n<li><code>provider_hashchange</code> – реализация с помощью фолбэка hashchange.</li>\n</ul>\n<h3 id=\"Использование\">Использование</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;history&#39;], function(History) {\n\n    // Создаем инстанс history\n    var history = new History();\n\n    // Добавляем запись или заменяем текущее состояние с помощью методов pushState/replaceState\n    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });\n    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });\n\n});\n</code></pre>\n"
+                        },
+                        "en": {
+                            "name": "history",
+                            "examples": [],
+                            "description": "<h2 id=\"history\">history</h2>\n<p>Module provides work with browser History with two modificators:</p>\n<ul>\n<li><code>provider_history-api</code> – supports native History API;</li>\n<li><code>provider_hashchange</code> – supports fallback on hashchange event.</li>\n</ul>\n<h3 id=\"Usage\">Usage</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;history&#39;], function(History) {\n\n    // Create history instance\n    var history = new History();\n\n    // Push new or replace history state\n    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });\n    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });\n\n});\n</code></pre>\n"
+                        }
+                    }
+                },
+                {
+                    "name": "location",
+                    "jsdoc": null,
+                    "data": {
+                        "ru": {
+                            "name": "location",
+                            "examples": [
+                                {
+                                    "name": "simple",
+                                    "path": "desktop.examples/location/simple",
+                                    "notation": {
+                                        "block": "simple"
+                                    }
+                                }
+                            ],
+                            "description": "<h2 id=\"location\">location</h2>\n<p>Высокоуровневый блок для изменения <code>window.location</code>.</p>\n<h3 id=\"Использование\">Использование</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;location&#39;], function(location) {\n\n    // Изменяем `window.location` с помощью полного url\n    location.change({ url: &#39;http://example.org:8080/path&#39; });\n\n    // Изменяем текущий location, используя только новые параметры запроса\n    location.change({ params: { param1: [11,12], param2: &#39;ololo&#39; } });\n    window.location.href; // &quot;http://example.org:8080/path?param1=11&amp;param1=12&amp;param2=ololo&quot;\n\n});\n</code></pre>\n"
+                        },
+                        "en": {
+                            "name": "location",
+                            "examples": [
+                                {
+                                    "name": "simple",
+                                    "path": "desktop.examples/location/simple",
+                                    "notation": {
+                                        "block": "simple"
+                                    }
+                                }
+                            ],
+                            "description": "<h2 id=\"location\">location</h2>\n<p>High-level module for a <code>window.location</code> change.</p>\n<h3 id=\"Usage\">Usage</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;location&#39;], function(location) {\n\n    // Change `window.location` using a full url\n    location.change({ url: &#39;http://example.org:8080/path&#39; });\n\n    // Change current location using only the new query params\n    location.change({ params: { param1: [11,12], param2: &#39;ololo&#39; } });\n    window.location.href; // &quot;http://example.org:8080/path?param1=11&amp;param1=12&amp;param2=ololo&quot;\n\n});\n</code></pre>\n"
+                        }
+                    }
+                },
+                {
+                    "name": "uri",
+                    "jsdoc": null,
+                    "data": {
+                        "ru": {
+                            "name": "uri",
+                            "examples": [
+                                {
+                                    "name": "simple",
+                                    "path": "desktop.examples/uri/simple",
+                                    "notation": {
+                                        "block": "simple"
+                                    }
+                                }
+                            ],
+                            "description": "<h2 id=\"uri\">uri</h2>\n<p>Блок для парсинга url.</p>\n<h3 id=\"Использование\">Использование</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;uri&#39;], function(Uri) {\n\n    // Парсим url\n    var u = Uri.parse(&#39;http://example.org:8080/path?test=1&amp;test=2&amp;param2=22&#39;);\n\n    // Изменяем порт\n    u.setPort(80);\n\n    // Изменяем параметры запроса\n    u.deleteParam(&#39;test&#39;, &#39;2&#39;);\n    u.replaceParam(&#39;param2&#39;, 2);\n\n    // Обратно сериализуем url\n    u.toString(); // &quot;http://example.org:8080/path?test=1&amp;param2=2&quot;\n\n});\n</code></pre>\n"
+                        },
+                        "en": {
+                            "name": "uri",
+                            "examples": [
+                                {
+                                    "name": "simple",
+                                    "path": "desktop.examples/uri/simple",
+                                    "notation": {
+                                        "block": "simple"
+                                    }
+                                }
+                            ],
+                            "description": "<h2 id=\"uri\">uri</h2>\n<p>Module for an url parsing.</p>\n<h3 id=\"Usage\">Usage</h3>\n<pre><code class=\"lang-js\">modules.require([&#39;uri&#39;], function(Uri) {\n\n    // Parse url\n    var u = Uri.parse(&#39;http://example.org:8080/path?test=1&amp;test=2&amp;param2=22&#39;);\n\n    // Change port\n    u.setPort(80);\n\n    // Change query params\n    u.deleteParam(&#39;test&#39;, &#39;2&#39;);\n    u.replaceParam(&#39;param2&#39;, 2);\n\n    // Serialize url\n    u.toString(); // &quot;http://example.org:8080/path?test=1&amp;param2=2&quot;\n\n});\n</code></pre>\n"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

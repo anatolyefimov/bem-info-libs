@@ -1,0 +1,18 @@
+<h2 id="history">history</h2>
+<p>Module provides work with browser History with two modificators:</p>
+<ul>
+<li><code>provider_history-api</code> – supports native History API;</li>
+<li><code>provider_hashchange</code> – supports fallback on hashchange event.</li>
+</ul>
+<h3 id="Usage">Usage</h3>
+<pre><code class="lang-js">modules.require([&#39;history&#39;], function(History) {
+
+    // Create history instance
+    var history = new History();
+
+    // Push new or replace history state
+    history.changeState(&#39;push&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path&#39; });
+    history.changeState(&#39;replace&#39;, { title: &#39;Title&#39;, url: &#39;http://example.org:8080/path?test=1&#39; });
+
+});
+</code></pre>

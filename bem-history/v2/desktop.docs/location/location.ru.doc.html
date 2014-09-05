@@ -1,0 +1,14 @@
+<h2 id="location">location</h2>
+<p>Высокоуровневый блок для изменения <code>window.location</code>.</p>
+<h3 id="Использование">Использование</h3>
+<pre><code class="lang-js">modules.require([&#39;location&#39;], function(location) {
+
+    // Изменяем `window.location` с помощью полного url
+    location.change({ url: &#39;http://example.org:8080/path&#39; });
+
+    // Изменяем текущий location, используя только новые параметры запроса
+    location.change({ params: { param1: [11,12], param2: &#39;ololo&#39; } });
+    window.location.href; // &quot;http://example.org:8080/path?param1=11&amp;param1=12&amp;param2=ololo&quot;
+
+});
+</code></pre>
