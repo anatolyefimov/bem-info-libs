@@ -71,8 +71,14 @@
 <p>Наглядно показано на примерах ниже:</p>
 <p><a name="custom"></a>
 <strong>custom</strong></p>
+<!-- bem-example: touch-pad.examples/select/o8vqoJD1pJAQbGfuytlJWTdR4uA -->
+
 <p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/select/c95aYUap9WktRmnDR-fEHY1mJ_c -->
+
 <p><strong>normal</strong></p>
+<!-- bem-example: touch-pad.examples/select/inVqpd2D58FhGcfxpYVX1bI0wNw -->
+
 <h3 id="Типы-`_mode`">Типы <code>_mode</code></h3>
 <p>Обязательный модификатор.</p>
 <p>Блок представлен следующими типами:</p>
@@ -80,18 +86,26 @@
 <ul>
 <li>селект с множественным выбором, который позволяет оставить список без выбранных элементов (<code>select_mode_check</code>). При щелчке мышью по пункту списка его состояние меняется на противоположное.</li>
 </ul>
+<!-- bem-example: touch-pad.examples/select/hpUbeKC_5hYtmemMemDzuUiqED8 -->
+
 <p><a name="radio-select"></a></p>
 <ul>
 <li>меню-переключатель (<code>select_mode_radio</code>). Применяется для создания селектов, которые позволяют выбрать только один пункт из списка.
 Для этого типа селекта текст в кнопке устанавливается в зависимости от выбранного элемента. Если элемент не выбран, то по умолчанию выбирается первый пункт из списка.</li>
 </ul>
+<!-- bem-example: touch-pad.examples/select/zeJPZbtVz42oYU7GxOeTA7fv-ag -->
+
 <p><a name="single-choice"></a></p>
 <ul>
 <li>селект с одиночным выбором, который позволяет оставить список без выбранных элементов (<code>select_mode_radio-check</code>). При щелчке мышью по пункту списка, его состояние меняется на противоположное.</li>
 </ul>
+<!-- bem-example: touch-pad.examples/select/ilW6j3BEgfKcwzfrYVtoANn-atA -->
+
 <h3 id="Состояния-блока">Состояния блока</h3>
 <h4 id="Ширина-кнопки-селекта-`_width`">Ширина кнопки селекта <code>_width</code></h4>
 <p>Модификатор <code>width</code> в значении <code>available</code> растягивает кнопку селекта по ширине в зависимости от длины выбранного пункта.</p>
+<!-- bem-example: touch-pad.examples/select/JkxdmzpYd197HKLlAB6yPUU4Vgg -->
+
 <h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
 <h2 id="Элементы-блока">Элементы блока</h2>
@@ -114,6 +128,10 @@
 <li><code>checkedText</code> – текст, отображаемый вместо названия пункта в кнопке селекта. Задается только для блока <code>select</code> с возможностью <a href="#multiple-choice">множественного выбора</a>.</li>
 <li><code>icon</code> – графический элемент (иконка).</li>
 </ul>
+<!-- bem-example: touch-pad.examples/select/TUaceOlKTkiAy0Ojt7LQba4Yc_A -->
+
 <p>Элементы списка могут быть объединены в группы. Для группировки пунктов выбора служит элемент <code>group</code>, в который вкладываются необходимые элементы списка. Название группы задается через атрибут <code>title</code>.</p>
+<!-- bem-example: touch-pad.examples/select/CAWbbXgQYp4XtKAtpvG9UGnGOFU -->
+
 <h2 id="Контрол-`__control`">Контрол <code>__control</code></h2>
 <p>Вспомогательный скрытый элемент, который отвечает за формирование элементов списка выбора. Добавляется блоку на уровне шаблонизатора.</p>

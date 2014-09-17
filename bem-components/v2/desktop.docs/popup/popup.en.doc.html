@@ -64,23 +64,34 @@
 <p>See following examples:</p>
 <p><a name="native"></a>
 <strong>default</strong></p>
-<!-- bem-example: desktop.examples/popup/Uhdsvnf2MsxKNrQy7w6uLKTxdek -->
-
-<p><strong>simple</strong></p>
-<!-- bem-example: desktop.examples/popup/7PzT7oA6awlAKgFGXccAdhfz0n0 -->
-
-<p><strong>normal</strong></p>
-<!-- bem-example: desktop.examples/popup/L1MMDUGHLM4djlDaj5mhiKHvDH8 -->
-
-<h3 id="States-of-a-block">States of a block</h3>
+<pre><code>{
+    block : &#39;popup&#39;,
+    content : &#39;default&#39;
+}
+</code></pre><p><strong>simple</strong></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;simple&#39; },
+    content : &#39;simple&#39;
+}
+</code></pre><p><strong>normal</strong></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39; },
+    content : &#39;normal&#39;
+}
+</code></pre><h3 id="States-of-a-block">States of a block</h3>
 <h4 id="_visible">_visible</h4>
 <p><code>visible</code> modifier is set automatically when <code>popup</code> is displayed. When <code>popup</code> is hidden, <code>visible</code> modofier is removed.</p>
 <p><strong>NB:</strong> this block&#39;s version does not support manual selection of <code>visible</code> modifier in BEMJSON.</p>
 <h4 id="`_autoscalable`"><code>_autoscalable</code></h4>
 <p>When <code>autoscalable</code> modifier with <code>true</code> is set to <code>popup</code> block, mouse click outside the popup area hides it automatically.</p>
-<!-- bem-example: desktop.examples/popup/M1T2dIuSVeBoluZEMgCmA90Stgc -->
-
-<p><a name="direction"></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39;, autoclosable : true },
+    content : &#39;normal&#39;
+}
+</code></pre><p><a name="direction"></p>
 <h2 id="Popup-opening-direction-`_direction`">Popup opening direction <code>_direction</code></h2>
 <p>This modifier controls position of <code>popup</code> relative to the element that triggers it.</p>
 <p>By default the following admissible directions are available:</p>
@@ -100,15 +111,29 @@
 </ul>
 <p>Required popup positions can be listed as JS parameters with <code>direction</code> key in BEMJSON declaration. The most suitable directions will be chosen among provided values  according to a parent block position on a page</p>
 <p>For example, to open <code>popup</code> at the top of the parent block use <code>top-left</code>, <code>top-center</code> and <code>top-right</code> values:</p>
-<!-- bem-example: desktop.examples/popup/8_HCSFSpYHYyPnAfpx-ciI3mBTw -->
-
-<p>To open <code>popup</code> strictly at the <code>center-right</code> position do the following:</p>
-<!-- bem-example: desktop.examples/popup/BV6kHEObxjS1U4zXg-y0QR8FAlU -->
-
-<p>Use <code>mainOffset</code> and/or <code>secondaryOffset</code> parameters to manage the offset direction:</p>
-<!-- bem-example: desktop.examples/popup/Br3MoMREk42dtU6k4eBAEkIsvl0 -->
-
-<h2 id="Relationship-between-popups">Relationship between popups</h2>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    directions : [&#39;top-left&#39;, &#39;top-center&#39;, &#39;top-right&#39;],
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><p>To open <code>popup</code> strictly at the <code>center-right</code> position do the following:</p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><p>Use <code>mainOffset</code> and/or <code>secondaryOffset</code> parameters to manage the offset direction:</p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;normal&#39; },
+    direction : [&#39;right-center&#39;],
+    mainOffset : 100,
+    secondaryOffset : 100,
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><h2 id="Relationship-between-popups">Relationship between popups</h2>
 <p><code>popup</code> block supports nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.</p>
 <p>If <code>autoscalable</code> modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.</p>
 <p>Child popup blocks can be regarded as a chain of <code>1</code> → <code>2</code> → <code>3</code> → <code>4</code>. By clicking on the second element of a chain, third and forth will be closed. By clicking on the first – the second, third and forth will be closed. Clicking outside any popup area of the chain elements will close all popups.</p>

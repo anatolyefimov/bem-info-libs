@@ -65,14 +65,33 @@
 <p>Наглядно видно на примерах ниже:</p>
 <p><a name="native"></a>
 <strong>default</strong></p>
-<p><strong>simple</strong></p>
-<p><strong>normal</strong></p>
-<h3 id="Видимый-`_visible`">Видимый <code>_visible</code></h3>
+<pre><code>{
+    block : &#39;popup&#39;,
+    content : &#39;default&#39;
+}
+</code></pre><p><strong>simple</strong></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;simple&#39; },
+    content : &#39;simple&#39;
+}
+</code></pre><p><strong>normal</strong></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39; },
+    content : &#39;normal&#39;
+}
+</code></pre><h3 id="Видимый-`_visible`">Видимый <code>_visible</code></h3>
 <p>Модификатор <code>visible</code> выставляется блоку автоматически при открытии попапа. Когда попап скрыт, модификатор удаляется.</p>
 <p><strong>NB:</strong> данная реализация блока не поддерживает принудительную установку модификатора <code>visible</code> в BEMJSON-декларации.</p>
 <h4 id="`_autoscalable`"><code>_autoscalable</code></h4>
 <p>Модификатор <code>autoscalable</code> скрывает блок по щелчку мыши вне зоны попапа.</p>
-<p><a href="direction"></a></p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;normal&#39;, autoclosable : true },
+    content : &#39;normal&#39;
+}
+</code></pre><p><a href="direction"></a></p>
 <h2 id="Расположение-относительно-родителя-`_direction`">Расположение относительно родителя <code>_direction</code></h2>
 <p>Поле <code>direction</code> управляет направлением открытия попапа на странице относительно вызвавшего его элемета. Расположение блока определяется автоматически, исходя из массива допустимых направлений и положения родителя на странице.</p>
 <p>По умолчанию используется следующий массив допустимых направлений:</p>
@@ -92,9 +111,29 @@
 </ul>
 <p>Чтобы управлять расположением попапа, можно ограничить массив направлений открытия, оставив только требуемые. Пользовательский массив нужно передать в качестве JS-параметра с ключом <code>directions</code>. При этом из значений массива будет выбрано наиболее подходящее, исходя из положения родителя на странице.</p>
 <p>Например, если требуется, чтобы попап раскрывался над родителем:</p>
-<p>Или небходимо разместить попап справа по центру:</p>
-<p>Используйте поля <code>mainOffset</code> и/или <code>secondaryOffset</code> для управления направлением смещения.</p>
-<h2 id="Взаимосвязи-между-popup-ами">Взаимосвязи между popup&#39;ами</h2>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    directions : [&#39;top-left&#39;, &#39;top-center&#39;, &#39;top-right&#39;],
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><p>Или небходимо разместить попап справа по центру:</p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;simple&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><p>Используйте поля <code>mainOffset</code> и/или <code>secondaryOffset</code> для управления направлением смещения.</p>
+<pre><code>{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;normal&#39; },
+    direction : [&#39;right-center&#39;],
+    mainOffset : 100,
+    secondaryOffset : 100,
+    content : &#39;Hello, world!&#39;
+}
+</code></pre><h2 id="Взаимосвязи-между-popup-ами">Взаимосвязи между popup&#39;ами</h2>
 <p>Блок <code>popup</code> поддерживает вложенную структуру нескольких одновременно открытых попапов. Это означает, что один попап может вызывать второй, а второй, соответственно, может вызвать третий и так далее. И при этом все попапы будут оставаться открытыми.</p>
 <p>Если установлен модификатор <code>autoscalable</code> в значении <code>true</code>, то при щелчке мышью вне зоны попапа, попап закроется сам и закроет свои дочерние блоки.</p>
 <p>Дочерние блоки popup можно рассматривать в виде цепочки <code>1</code> → <code>2</code> → <code>3</code> → <code>4</code>. При клике на втором попапе – закрываются третий и четвертый. При клике в первом – закрываются второй, третий, четвертый. При клике за пределами любого попапа из цепочки – закроются все.</p>

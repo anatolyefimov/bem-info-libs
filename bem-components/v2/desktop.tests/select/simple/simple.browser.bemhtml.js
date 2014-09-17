@@ -328,19 +328,19 @@ function __$b2(__$ctx, __$ref) {
 }
 
 function __$b9(__$ctx, __$ref) {
-    var ctx__$58 = __$ctx.ctx, content__$59 = [ ctx__$58.icon ];
-    "text" in ctx__$58 && content__$59.push({
+    var ctx__$59 = __$ctx.ctx, content__$60 = [ ctx__$59.icon ];
+    "text" in ctx__$59 && content__$60.push({
         elem: "text",
-        content: ctx__$58.text
+        content: ctx__$59.text
     });
-    return content__$59;
+    return content__$60;
 }
 
 function __$b19(__$ctx, __$ref) {
-    var ctx__$86 = __$ctx.ctx;
+    var ctx__$87 = __$ctx.ctx;
     return {
-        name: ctx__$86.name,
-        optionsMaxHeight: ctx__$86.optionsMaxHeight
+        name: ctx__$87.name,
+        optionsMaxHeight: ctx__$87.optionsMaxHeight
     };
 }
 
@@ -356,48 +356,48 @@ function __$b22(__$ctx, __$ref) {
 }
 
 function __$b27(__$ctx, __$ref) {
-    var val__$82 = __$ctx.ctx.val;
+    var val__$83 = __$ctx.ctx.val;
     return {
         type: "hidden",
         name: __$ctx._select.name,
-        value: __$ctx.isSimple(val__$82) ? val__$82 : JSON.stringify(val__$82),
+        value: __$ctx.isSimple(val__$83) ? val__$83 : JSON.stringify(val__$83),
         disabled: $$mods.disabled ? "disabled" : undefined
     };
 }
 
 function __$b29(__$ctx, __$ref) {
-    var ctx__$60 = __$ctx.ctx, attrs__$61 = {
+    var ctx__$61 = __$ctx.ctx, attrs__$62 = {
         type: $$mods.type || "button",
-        name: ctx__$60.name,
-        value: ctx__$60.val
+        name: ctx__$61.name,
+        value: ctx__$61.val
     };
-    $$mods.disabled && (attrs__$61.disabled = "disabled");
-    return __$ctx.extend(function __$lb__$62() {
-        var __$r__$63;
-        var __$l0__$64 = __$ctx.__$a0;
+    $$mods.disabled && (attrs__$62.disabled = "disabled");
+    return __$ctx.extend(function __$lb__$63() {
+        var __$r__$64;
+        var __$l0__$65 = __$ctx.__$a0;
         __$ctx.__$a0 = __$ctx.__$a0 | 8192;
-        __$r__$63 = applyc(__$ctx, __$ref);
-        __$ctx.__$a0 = __$l0__$64;
-        return __$r__$63;
-    }(), attrs__$61);
+        __$r__$64 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$65;
+        return __$r__$64;
+    }(), attrs__$62);
 }
 
 function __$b30(__$ctx, __$ref) {
-    var ctx__$65 = __$ctx.ctx;
+    var ctx__$66 = __$ctx.ctx;
     return {
         role: "button",
-        tabindex: ctx__$65.tabIndex,
-        id: ctx__$65.id,
-        title: ctx__$65.title
+        tabindex: ctx__$66.tabIndex,
+        id: ctx__$66.id,
+        title: ctx__$66.title
     };
 }
 
 function __$b35(__$ctx, __$ref) {
-    var attrs__$38 = {
+    var attrs__$39 = {
         role: "menu"
     };
-    $$mods.disabled || (attrs__$38.tabindex = 0);
-    return attrs__$38;
+    $$mods.disabled || (attrs__$39.tabindex = 0);
+    return attrs__$39;
 }
 
 function __$b55(__$ctx, __$ref) {
@@ -420,11 +420,11 @@ function __$b55(__$ctx, __$ref) {
 }
 
 function __$b56(__$ctx, __$ref) {
-    var mods__$72 = $$mods;
-    var __$r__$74;
-    var __$l0__$75 = $$mode;
+    var mods__$73 = $$mods;
+    var __$r__$75;
+    var __$l0__$76 = $$mode;
     $$mode = "";
-    var __$l1__$76 = __$ctx.ctx;
+    var __$l1__$77 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "button",
         mix: {
@@ -432,21 +432,21 @@ function __$b56(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$72.size,
-            theme: mods__$72.theme,
-            focused: mods__$72.focused,
-            disabled: mods__$72.disabled,
-            checked: mods__$72.mode !== "radio" && !!__$ctx._checkedOptions.length
+            size: mods__$73.size,
+            theme: mods__$73.theme,
+            focused: mods__$73.focused,
+            disabled: mods__$73.disabled,
+            checked: mods__$73.mode !== "radio" && !!__$ctx._checkedOptions.length
         },
         id: __$ctx._select.id,
         textMaxWidth: __$ctx._select.textMaxWidth,
-        content: [ function __$lb__$77() {
-            var __$r__$78;
-            var __$l3__$79 = $$mode;
+        content: [ function __$lb__$78() {
+            var __$r__$79;
+            var __$l3__$80 = $$mode;
             $$mode = "content";
-            __$r__$78 = applyc(__$ctx, __$ref);
-            $$mode = __$l3__$79;
-            return __$r__$78;
+            __$r__$79 = applyc(__$ctx, __$ref);
+            $$mode = __$l3__$80;
+            return __$r__$79;
         }(), {
             block: "icon",
             mix: {
@@ -455,20 +455,20 @@ function __$b56(__$ctx, __$ref) {
             }
         } ]
     };
-    var __$r__$80;
-    var __$l2__$81 = __$ctx.__$a0;
+    var __$r__$81;
+    var __$l2__$82 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 32768;
-    __$r__$80 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$81;
-    __$r__$74 = __$r__$80;
-    $$mode = __$l0__$75;
-    __$ctx.ctx = __$l1__$76;
+    __$r__$81 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$82;
+    __$r__$75 = __$r__$81;
+    $$mode = __$l0__$76;
+    __$ctx.ctx = __$l1__$77;
     return;
 }
 
 function __$b57(__$ctx, __$ref) {
-    var mods__$45 = $$mods, optionToMenuItem__$46 = function(option) {
-        var res__$47 = {
+    var mods__$46 = $$mods, optionToMenuItem__$47 = function(option) {
+        var res__$48 = {
             block: "menu-item",
             mods: {
                 checked: option.checked,
@@ -481,15 +481,15 @@ function __$b57(__$ctx, __$ref) {
             content: option.text
         };
         if (option.icon) {
-            res__$47.js.text = option.text;
-            res__$47.content = [ option.icon, res__$47.content ];
+            res__$48.js.text = option.text;
+            res__$48.content = [ option.icon, res__$48.content ];
         }
-        return res__$47;
+        return res__$48;
     };
-    var __$r__$49;
-    var __$l0__$50 = $$mode;
+    var __$r__$50;
+    var __$l0__$51 = $$mode;
     $$mode = "";
-    var __$l1__$51 = __$ctx.ctx;
+    var __$l1__$52 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "menu",
         mix: {
@@ -497,10 +497,10 @@ function __$b57(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$45.size,
-            theme: mods__$45.theme,
-            disabled: mods__$45.disabled,
-            mode: mods__$45.mode
+            size: mods__$46.size,
+            theme: mods__$46.theme,
+            disabled: mods__$46.disabled,
+            mode: mods__$46.mode
         },
         attrs: {
             tabindex: undefined
@@ -512,147 +512,148 @@ function __$b57(__$ctx, __$ref) {
                     "has-title": !!optionOrGroup.title
                 },
                 title: optionOrGroup.title,
-                content: optionOrGroup.group.map(optionToMenuItem__$46)
-            } : optionToMenuItem__$46(optionOrGroup);
+                content: optionOrGroup.group.map(optionToMenuItem__$47)
+            } : optionToMenuItem__$47(optionOrGroup);
         })
     };
-    var __$r__$53;
-    var __$l2__$54 = __$ctx.__$a0;
+    var __$r__$54;
+    var __$l2__$55 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 2048;
-    __$r__$53 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$54;
-    __$r__$49 = __$r__$53;
-    $$mode = __$l0__$50;
-    __$ctx.ctx = __$l1__$51;
+    __$r__$54 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$55;
+    __$r__$50 = __$r__$54;
+    $$mode = __$l0__$51;
+    __$ctx.ctx = __$l1__$52;
     return;
 }
 
 function __$b58(__$ctx, __$ref) {
     if (!$$mods.mode) throw Error("Can't build select without mode modifier");
-    var options__$87 = __$ctx.ctx.options, i__$88 = 0, j__$89, optionOrGroup__$90, option__$91, firstOption__$92, checkedOptions__$93 = [];
-    while (optionOrGroup__$90 = options__$87[i__$88++]) {
-        if (optionOrGroup__$90.group) {
-            j__$89 = 0;
-            while (option__$91 = optionOrGroup__$90.group[j__$89++]) {
-                i__$88 === 1 && j__$89 === 1 && (firstOption__$92 = option__$91);
-                option__$91.checked && checkedOptions__$93.push(option__$91);
+    var options__$88 = __$ctx.ctx.options, i__$89 = 0, j__$90, optionOrGroup__$91, option__$92, firstOption__$93, checkedOptions__$94 = [];
+    while (optionOrGroup__$91 = options__$88[i__$89++]) {
+        if (optionOrGroup__$91.group) {
+            j__$90 = 0;
+            while (option__$92 = optionOrGroup__$91.group[j__$90++]) {
+                i__$89 === 1 && j__$90 === 1 && (firstOption__$93 = option__$92);
+                option__$92.checked && checkedOptions__$94.push(option__$92);
             }
         } else {
-            i__$88 === 1 && (firstOption__$92 = optionOrGroup__$90);
-            optionOrGroup__$90.checked && checkedOptions__$93.push(optionOrGroup__$90);
+            i__$89 === 1 && (firstOption__$93 = optionOrGroup__$91);
+            optionOrGroup__$91.checked && checkedOptions__$94.push(optionOrGroup__$91);
         }
     }
-    var __$r__$95;
-    var __$l0__$96 = __$ctx._select;
+    var __$r__$96;
+    var __$l0__$97 = __$ctx._select;
     __$ctx._select = __$ctx.ctx;
-    var __$l1__$97 = __$ctx._checkedOptions;
-    __$ctx._checkedOptions = checkedOptions__$93;
-    var __$l2__$98 = __$ctx._firstOption;
-    __$ctx._firstOption = firstOption__$92;
-    var __$r__$100;
-    var __$l3__$101 = __$ctx.__$a0;
+    var __$l1__$98 = __$ctx._checkedOptions;
+    __$ctx._checkedOptions = checkedOptions__$94;
+    var __$l2__$99 = __$ctx._firstOption;
+    __$ctx._firstOption = firstOption__$93;
+    var __$r__$101;
+    var __$l3__$102 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 131072;
-    __$r__$100 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l3__$101;
-    __$r__$95 = __$r__$100;
-    __$ctx._select = __$l0__$96;
-    __$ctx._checkedOptions = __$l1__$97;
-    __$ctx._firstOption = __$l2__$98;
+    __$r__$101 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l3__$102;
+    __$r__$96 = __$r__$101;
+    __$ctx._select = __$l0__$97;
+    __$ctx._checkedOptions = __$l1__$98;
+    __$ctx._firstOption = __$l2__$99;
     return;
 }
 
 function __$b59(__$ctx, __$ref) {
-    var __$r__$67;
-    var __$l0__$68 = __$ctx._button;
+    var __$r__$68;
+    var __$l0__$69 = __$ctx._button;
     __$ctx._button = __$ctx.ctx;
-    var __$r__$70;
-    var __$l1__$71 = __$ctx.__$a0;
+    var __$r__$71;
+    var __$l1__$72 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 16384;
-    __$r__$70 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$71;
-    __$r__$67 = __$r__$70;
-    __$ctx._button = __$l0__$68;
+    __$r__$71 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$72;
+    __$r__$68 = __$r__$71;
+    __$ctx._button = __$l0__$69;
     return;
 }
 
 function __$b60(__$ctx, __$ref) {
-    var __$r__$40;
-    var __$l0__$41 = __$ctx._menuMods;
+    var __$r__$41;
+    var __$l0__$42 = __$ctx._menuMods;
     __$ctx._menuMods = {
         theme: $$mods.theme,
         disabled: $$mods.disabled
     };
-    var __$r__$43;
-    var __$l1__$44 = __$ctx.__$a0;
+    var __$r__$44;
+    var __$l1__$45 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 1024;
-    __$r__$43 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$44;
-    __$r__$40 = __$r__$43;
-    __$ctx._menuMods = __$l0__$41;
+    __$r__$44 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$45;
+    __$r__$41 = __$r__$44;
+    __$ctx._menuMods = __$l0__$42;
     delete __$ctx._menuTheme;
     return;
 }
 
 function __$b61(__$ctx, __$ref) {
-    $$mods.theme = __$ctx._menuMods.theme;
-    $$mods.disabled = $$mods.disabled || __$ctx._menuMods.disabled;
-    var __$r__$36;
-    var __$l0__$37 = __$ctx.__$a0;
+    var mods__$35 = $$mods;
+    mods__$35.theme = mods__$35.theme || __$ctx._menuMods.theme;
+    mods__$35.disabled = mods__$35.disabled || __$ctx._menuMods.disabled;
+    var __$r__$37;
+    var __$l0__$38 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 512;
-    __$r__$36 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l0__$37;
+    __$r__$37 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l0__$38;
     return;
 }
 
 function __$b62(__$ctx, __$ref) {
-    var url__$105 = __$ctx.ctx.url;
-    var __$r__$107;
-    var __$l0__$108 = $$mode;
+    var url__$106 = __$ctx.ctx.url;
+    var __$r__$108;
+    var __$l0__$109 = $$mode;
     $$mode = "";
-    var __$l1__$109 = __$ctx.ctx;
+    var __$l1__$110 = __$ctx.ctx;
     __$ctx.ctx = [ 6, 7, 8, 9 ].map(function(v) {
         return {
             elem: "css",
-            url: url__$105 + ".ie" + v + ".css",
+            url: url__$106 + ".ie" + v + ".css",
             ie: "IE " + v
         };
     });
-    var __$r__$111;
-    var __$l2__$112 = __$ctx.__$a0;
+    var __$r__$112;
+    var __$l2__$113 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 524288;
-    __$r__$111 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$112;
-    __$r__$107 = __$r__$111;
-    $$mode = __$l0__$108;
-    __$ctx.ctx = __$l1__$109;
+    __$r__$112 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$113;
+    __$r__$108 = __$r__$112;
+    $$mode = __$l0__$109;
+    __$ctx.ctx = __$l1__$110;
     return;
 }
 
 function __$b63(__$ctx, __$ref) {
-    var ie__$113 = __$ctx.ctx.ie, hideRule__$114 = !ie__$113 ? [ "gt IE 9", "<!-->", "<!--" ] : ie__$113 === "!IE" ? [ ie__$113, "<!-->", "<!--" ] : [ ie__$113, "", "" ];
-    var __$r__$116;
-    var __$l0__$117 = $$mode;
+    var ie__$114 = __$ctx.ctx.ie, hideRule__$115 = !ie__$114 ? [ "gt IE 9", "<!-->", "<!--" ] : ie__$114 === "!IE" ? [ ie__$114, "<!-->", "<!--" ] : [ ie__$114, "", "" ];
+    var __$r__$117;
+    var __$l0__$118 = $$mode;
     $$mode = "";
-    var __$l3__$118 = __$ctx.ctx;
-    var __$l1__$119 = __$l3__$118._ieCommented;
-    __$l3__$118._ieCommented = true;
-    var __$l2__$120 = __$ctx.ctx;
-    __$ctx.ctx = [ "<!--[if " + hideRule__$114[0] + "]>" + hideRule__$114[1], __$ctx.ctx, hideRule__$114[2] + "<![endif]-->" ];
-    __$r__$116 = applyc(__$ctx, __$ref);
-    $$mode = __$l0__$117;
-    __$l3__$118._ieCommented = __$l1__$119;
-    __$ctx.ctx = __$l2__$120;
+    var __$l3__$119 = __$ctx.ctx;
+    var __$l1__$120 = __$l3__$119._ieCommented;
+    __$l3__$119._ieCommented = true;
+    var __$l2__$121 = __$ctx.ctx;
+    __$ctx.ctx = [ "<!--[if " + hideRule__$115[0] + "]>" + hideRule__$115[1], __$ctx.ctx, hideRule__$115[2] + "<![endif]-->" ];
+    __$r__$117 = applyc(__$ctx, __$ref);
+    $$mode = __$l0__$118;
+    __$l3__$119._ieCommented = __$l1__$120;
+    __$ctx.ctx = __$l2__$121;
     return;
 }
 
 function __$b64(__$ctx, __$ref) {
     __$ctx._defPageApplied = true;
-    var ctx__$127 = __$ctx.ctx;
-    var __$r__$129;
-    var __$l0__$130 = $$mode;
+    var ctx__$128 = __$ctx.ctx;
+    var __$r__$130;
+    var __$l0__$131 = $$mode;
     $$mode = "";
-    var __$l1__$131 = __$ctx.ctx;
-    __$ctx.ctx = [ ctx__$127.doctype || "<!DOCTYPE html>", {
+    var __$l1__$132 = __$ctx.ctx;
+    __$ctx.ctx = [ ctx__$128.doctype || "<!DOCTYPE html>", {
         tag: "html",
         cls: "ua_js_no",
         content: [ {
@@ -664,115 +665,115 @@ function __$b64(__$ctx, __$ref) {
                 }
             }, {
                 tag: "title",
-                content: ctx__$127.title
+                content: ctx__$128.title
             }, {
                 block: "ua"
-            }, ctx__$127.head, ctx__$127.styles, ctx__$127.favicon ? {
+            }, ctx__$128.head, ctx__$128.styles, ctx__$128.favicon ? {
                 elem: "favicon",
-                url: ctx__$127.favicon
+                url: ctx__$128.favicon
             } : "" ]
-        }, ctx__$127 ]
+        }, ctx__$128 ]
     } ];
-    var __$r__$133;
-    var __$l2__$134 = __$ctx.__$a0;
+    var __$r__$134;
+    var __$l2__$135 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 4194304;
-    __$r__$133 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$134;
-    __$r__$129 = __$r__$133;
-    $$mode = __$l0__$130;
-    __$ctx.ctx = __$l1__$131;
+    __$r__$134 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$135;
+    __$r__$130 = __$r__$134;
+    $$mode = __$l0__$131;
+    __$ctx.ctx = __$l1__$132;
     __$ctx._defPageApplied = false;
     return;
 }
 
 function __$b65(__$ctx, __$ref) {
-    var BEM_INTERNAL__$135 = __$ctx.BEM.INTERNAL, ctx__$136 = __$ctx.ctx, isBEM__$137, tag__$138, res__$139;
-    var __$r__$141;
-    var __$l0__$142 = __$ctx._str;
+    var BEM_INTERNAL__$136 = __$ctx.BEM.INTERNAL, ctx__$137 = __$ctx.ctx, isBEM__$138, tag__$139, res__$140;
+    var __$r__$142;
+    var __$l0__$143 = __$ctx._str;
     __$ctx._str = "";
-    var vBlock__$143 = $$block;
-    var __$r__$145;
-    var __$l1__$146 = $$mode;
+    var vBlock__$144 = $$block;
+    var __$r__$146;
+    var __$l1__$147 = $$mode;
     $$mode = "tag";
-    __$r__$145 = applyc(__$ctx, __$ref);
-    $$mode = __$l1__$146;
-    tag__$138 = __$r__$145;
-    typeof tag__$138 !== "undefined" || (tag__$138 = ctx__$136.tag);
-    typeof tag__$138 !== "undefined" || (tag__$138 = "div");
-    if (tag__$138) {
-        var jsParams__$147, js__$148;
-        if (vBlock__$143 && ctx__$136.js !== false) {
-            var __$r__$149;
-            var __$l2__$150 = $$mode;
+    __$r__$146 = applyc(__$ctx, __$ref);
+    $$mode = __$l1__$147;
+    tag__$139 = __$r__$146;
+    typeof tag__$139 !== "undefined" || (tag__$139 = ctx__$137.tag);
+    typeof tag__$139 !== "undefined" || (tag__$139 = "div");
+    if (tag__$139) {
+        var jsParams__$148, js__$149;
+        if (vBlock__$144 && ctx__$137.js !== false) {
+            var __$r__$150;
+            var __$l2__$151 = $$mode;
             $$mode = "js";
-            __$r__$149 = applyc(__$ctx, __$ref);
-            $$mode = __$l2__$150;
-            js__$148 = __$r__$149;
-            js__$148 = js__$148 ? __$ctx.extend(ctx__$136.js, js__$148 === true ? {} : js__$148) : ctx__$136.js === true ? {} : ctx__$136.js;
-            js__$148 && ((jsParams__$147 = {})[BEM_INTERNAL__$135.buildClass(vBlock__$143, ctx__$136.elem)] = js__$148);
+            __$r__$150 = applyc(__$ctx, __$ref);
+            $$mode = __$l2__$151;
+            js__$149 = __$r__$150;
+            js__$149 = js__$149 ? __$ctx.extend(ctx__$137.js, js__$149 === true ? {} : js__$149) : ctx__$137.js === true ? {} : ctx__$137.js;
+            js__$149 && ((jsParams__$148 = {})[BEM_INTERNAL__$136.buildClass(vBlock__$144, ctx__$137.elem)] = js__$149);
         }
-        __$ctx._str += "<" + tag__$138;
-        var __$r__$151;
-        var __$l3__$152 = $$mode;
+        __$ctx._str += "<" + tag__$139;
+        var __$r__$152;
+        var __$l3__$153 = $$mode;
         $$mode = "bem";
-        __$r__$151 = applyc(__$ctx, __$ref);
-        $$mode = __$l3__$152;
-        isBEM__$137 = __$r__$151;
-        typeof isBEM__$137 !== "undefined" || (isBEM__$137 = typeof ctx__$136.bem !== "undefined" ? ctx__$136.bem : ctx__$136.block || ctx__$136.elem);
-        var __$r__$154;
-        var __$l4__$155 = $$mode;
+        __$r__$152 = applyc(__$ctx, __$ref);
+        $$mode = __$l3__$153;
+        isBEM__$138 = __$r__$152;
+        typeof isBEM__$138 !== "undefined" || (isBEM__$138 = typeof ctx__$137.bem !== "undefined" ? ctx__$137.bem : ctx__$137.block || ctx__$137.elem);
+        var __$r__$155;
+        var __$l4__$156 = $$mode;
         $$mode = "cls";
-        __$r__$154 = applyc(__$ctx, __$ref);
-        $$mode = __$l4__$155;
-        var cls__$153 = __$r__$154;
-        cls__$153 || (cls__$153 = ctx__$136.cls);
-        var addJSInitClass__$156 = ctx__$136.block && jsParams__$147;
-        if (isBEM__$137 || cls__$153) {
+        __$r__$155 = applyc(__$ctx, __$ref);
+        $$mode = __$l4__$156;
+        var cls__$154 = __$r__$155;
+        cls__$154 || (cls__$154 = ctx__$137.cls);
+        var addJSInitClass__$157 = ctx__$137.block && jsParams__$148;
+        if (isBEM__$138 || cls__$154) {
             __$ctx._str += ' class="';
-            if (isBEM__$137) {
-                __$ctx._str += BEM_INTERNAL__$135.buildClasses(vBlock__$143, ctx__$136.elem, ctx__$136.elemMods || ctx__$136.mods);
-                var __$r__$158;
-                var __$l5__$159 = $$mode;
+            if (isBEM__$138) {
+                __$ctx._str += BEM_INTERNAL__$136.buildClasses(vBlock__$144, ctx__$137.elem, ctx__$137.elemMods || ctx__$137.mods);
+                var __$r__$159;
+                var __$l5__$160 = $$mode;
                 $$mode = "mix";
-                __$r__$158 = applyc(__$ctx, __$ref);
-                $$mode = __$l5__$159;
-                var mix__$157 = __$r__$158;
-                ctx__$136.mix && (mix__$157 = mix__$157 ? [].concat(mix__$157, ctx__$136.mix) : ctx__$136.mix);
-                if (mix__$157) {
-                    var visited__$160 = {}, visitedKey__$161 = function(block, elem) {
+                __$r__$159 = applyc(__$ctx, __$ref);
+                $$mode = __$l5__$160;
+                var mix__$158 = __$r__$159;
+                ctx__$137.mix && (mix__$158 = mix__$158 ? [].concat(mix__$158, ctx__$137.mix) : ctx__$137.mix);
+                if (mix__$158) {
+                    var visited__$161 = {}, visitedKey__$162 = function(block, elem) {
                         return (block || "") + "__" + (elem || "");
                     };
-                    visited__$160[visitedKey__$161(vBlock__$143, $$elem)] = true;
-                    __$ctx.isArray(mix__$157) || (mix__$157 = [ mix__$157 ]);
-                    for (var i__$162 = 0; i__$162 < mix__$157.length; i__$162++) {
-                        var mixItem__$163 = mix__$157[i__$162], hasItem__$164 = mixItem__$163.block || mixItem__$163.elem, mixBlock__$165 = mixItem__$163.block || mixItem__$163._block || $$block, mixElem__$166 = mixItem__$163.elem || mixItem__$163._elem || $$elem;
-                        hasItem__$164 && (__$ctx._str += " ");
-                        __$ctx._str += BEM_INTERNAL__$135[hasItem__$164 ? "buildClasses" : "buildModsClasses"](mixBlock__$165, mixItem__$163.elem || mixItem__$163._elem || (mixItem__$163.block ? undefined : $$elem), mixItem__$163.elemMods || mixItem__$163.mods);
-                        if (mixItem__$163.js) {
-                            (jsParams__$147 || (jsParams__$147 = {}))[BEM_INTERNAL__$135.buildClass(mixBlock__$165, mixItem__$163.elem)] = mixItem__$163.js === true ? {} : mixItem__$163.js;
-                            addJSInitClass__$156 || (addJSInitClass__$156 = mixBlock__$165 && !mixItem__$163.elem);
+                    visited__$161[visitedKey__$162(vBlock__$144, $$elem)] = true;
+                    __$ctx.isArray(mix__$158) || (mix__$158 = [ mix__$158 ]);
+                    for (var i__$163 = 0; i__$163 < mix__$158.length; i__$163++) {
+                        var mixItem__$164 = mix__$158[i__$163], hasItem__$165 = mixItem__$164.block || mixItem__$164.elem, mixBlock__$166 = mixItem__$164.block || mixItem__$164._block || $$block, mixElem__$167 = mixItem__$164.elem || mixItem__$164._elem || $$elem;
+                        hasItem__$165 && (__$ctx._str += " ");
+                        __$ctx._str += BEM_INTERNAL__$136[hasItem__$165 ? "buildClasses" : "buildModsClasses"](mixBlock__$166, mixItem__$164.elem || mixItem__$164._elem || (mixItem__$164.block ? undefined : $$elem), mixItem__$164.elemMods || mixItem__$164.mods);
+                        if (mixItem__$164.js) {
+                            (jsParams__$148 || (jsParams__$148 = {}))[BEM_INTERNAL__$136.buildClass(mixBlock__$166, mixItem__$164.elem)] = mixItem__$164.js === true ? {} : mixItem__$164.js;
+                            addJSInitClass__$157 || (addJSInitClass__$157 = mixBlock__$166 && !mixItem__$164.elem);
                         }
-                        if (hasItem__$164 && !visited__$160[visitedKey__$161(mixBlock__$165, mixElem__$166)]) {
-                            visited__$160[visitedKey__$161(mixBlock__$165, mixElem__$166)] = true;
-                            var __$r__$168;
-                            var __$l6__$169 = $$mode;
+                        if (hasItem__$165 && !visited__$161[visitedKey__$162(mixBlock__$166, mixElem__$167)]) {
+                            visited__$161[visitedKey__$162(mixBlock__$166, mixElem__$167)] = true;
+                            var __$r__$169;
+                            var __$l6__$170 = $$mode;
                             $$mode = "mix";
-                            var __$l7__$170 = $$block;
-                            $$block = mixBlock__$165;
-                            var __$l8__$171 = $$elem;
-                            $$elem = mixElem__$166;
-                            __$r__$168 = applyc(__$ctx, __$ref);
-                            $$mode = __$l6__$169;
-                            $$block = __$l7__$170;
-                            $$elem = __$l8__$171;
-                            var nestedMix__$167 = __$r__$168;
-                            if (nestedMix__$167) {
-                                for (var j__$172 = 0; j__$172 < nestedMix__$167.length; j__$172++) {
-                                    var nestedItem__$173 = nestedMix__$167[j__$172];
-                                    if (!nestedItem__$173.block && !nestedItem__$173.elem || !visited__$160[visitedKey__$161(nestedItem__$173.block, nestedItem__$173.elem)]) {
-                                        nestedItem__$173._block = mixBlock__$165;
-                                        nestedItem__$173._elem = mixElem__$166;
-                                        mix__$157.splice(i__$162 + 1, 0, nestedItem__$173);
+                            var __$l7__$171 = $$block;
+                            $$block = mixBlock__$166;
+                            var __$l8__$172 = $$elem;
+                            $$elem = mixElem__$167;
+                            __$r__$169 = applyc(__$ctx, __$ref);
+                            $$mode = __$l6__$170;
+                            $$block = __$l7__$171;
+                            $$elem = __$l8__$172;
+                            var nestedMix__$168 = __$r__$169;
+                            if (nestedMix__$168) {
+                                for (var j__$173 = 0; j__$173 < nestedMix__$168.length; j__$173++) {
+                                    var nestedItem__$174 = nestedMix__$168[j__$173];
+                                    if (!nestedItem__$174.block && !nestedItem__$174.elem || !visited__$161[visitedKey__$162(nestedItem__$174.block, nestedItem__$174.elem)]) {
+                                        nestedItem__$174._block = mixBlock__$166;
+                                        nestedItem__$174._elem = mixElem__$167;
+                                        mix__$158.splice(i__$163 + 1, 0, nestedItem__$174);
                                     }
                                 }
                             }
@@ -780,89 +781,89 @@ function __$b65(__$ctx, __$ref) {
                     }
                 }
             }
-            cls__$153 && (__$ctx._str += isBEM__$137 ? " " + cls__$153 : cls__$153);
-            __$ctx._str += addJSInitClass__$156 ? ' i-bem"' : '"';
+            cls__$154 && (__$ctx._str += isBEM__$138 ? " " + cls__$154 : cls__$154);
+            __$ctx._str += addJSInitClass__$157 ? ' i-bem"' : '"';
         }
-        if (isBEM__$137 && jsParams__$147) {
-            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$147)) + '"';
+        if (isBEM__$138 && jsParams__$148) {
+            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$148)) + '"';
         }
-        var __$r__$175;
-        var __$l9__$176 = $$mode;
+        var __$r__$176;
+        var __$l9__$177 = $$mode;
         $$mode = "attrs";
-        __$r__$175 = applyc(__$ctx, __$ref);
-        $$mode = __$l9__$176;
-        var attrs__$174 = __$r__$175;
-        attrs__$174 = __$ctx.extend(attrs__$174, ctx__$136.attrs);
-        if (attrs__$174) {
-            var name__$177, attr__$178;
-            for (name__$177 in attrs__$174) {
-                attr__$178 = attrs__$174[name__$177];
-                if (typeof attr__$178 === "undefined") continue;
-                __$ctx._str += " " + name__$177 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$178) ? attr__$178 : __$ctx.reapply(attr__$178)) + '"';
+        __$r__$176 = applyc(__$ctx, __$ref);
+        $$mode = __$l9__$177;
+        var attrs__$175 = __$r__$176;
+        attrs__$175 = __$ctx.extend(attrs__$175, ctx__$137.attrs);
+        if (attrs__$175) {
+            var name__$178, attr__$179;
+            for (name__$178 in attrs__$175) {
+                attr__$179 = attrs__$175[name__$178];
+                if (typeof attr__$179 === "undefined") continue;
+                __$ctx._str += " " + name__$178 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$179) ? attr__$179 : __$ctx.reapply(attr__$179)) + '"';
             }
         }
     }
-    if (__$ctx.isShortTag(tag__$138)) {
+    if (__$ctx.isShortTag(tag__$139)) {
         __$ctx._str += "/>";
     } else {
-        tag__$138 && (__$ctx._str += ">");
-        var __$r__$180;
-        var __$l10__$181 = $$mode;
+        tag__$139 && (__$ctx._str += ">");
+        var __$r__$181;
+        var __$l10__$182 = $$mode;
         $$mode = "content";
-        __$r__$180 = applyc(__$ctx, __$ref);
-        $$mode = __$l10__$181;
-        var content__$179 = __$r__$180;
-        if (content__$179 || content__$179 === 0) {
-            isBEM__$137 = vBlock__$143 || $$elem;
-            var __$r__$182;
-            var __$l11__$183 = $$mode;
+        __$r__$181 = applyc(__$ctx, __$ref);
+        $$mode = __$l10__$182;
+        var content__$180 = __$r__$181;
+        if (content__$180 || content__$180 === 0) {
+            isBEM__$138 = vBlock__$144 || $$elem;
+            var __$r__$183;
+            var __$l11__$184 = $$mode;
             $$mode = "";
-            var __$l12__$184 = __$ctx._notNewList;
+            var __$l12__$185 = __$ctx._notNewList;
             __$ctx._notNewList = false;
-            var __$l13__$185 = __$ctx.position;
-            __$ctx.position = isBEM__$137 ? 1 : __$ctx.position;
-            var __$l14__$186 = __$ctx._listLength;
-            __$ctx._listLength = isBEM__$137 ? 1 : __$ctx._listLength;
-            var __$l15__$187 = __$ctx.ctx;
-            __$ctx.ctx = content__$179;
-            __$r__$182 = applyc(__$ctx, __$ref);
-            $$mode = __$l11__$183;
-            __$ctx._notNewList = __$l12__$184;
-            __$ctx.position = __$l13__$185;
-            __$ctx._listLength = __$l14__$186;
-            __$ctx.ctx = __$l15__$187;
+            var __$l13__$186 = __$ctx.position;
+            __$ctx.position = isBEM__$138 ? 1 : __$ctx.position;
+            var __$l14__$187 = __$ctx._listLength;
+            __$ctx._listLength = isBEM__$138 ? 1 : __$ctx._listLength;
+            var __$l15__$188 = __$ctx.ctx;
+            __$ctx.ctx = content__$180;
+            __$r__$183 = applyc(__$ctx, __$ref);
+            $$mode = __$l11__$184;
+            __$ctx._notNewList = __$l12__$185;
+            __$ctx.position = __$l13__$186;
+            __$ctx._listLength = __$l14__$187;
+            __$ctx.ctx = __$l15__$188;
         }
-        tag__$138 && (__$ctx._str += "</" + tag__$138 + ">");
+        tag__$139 && (__$ctx._str += "</" + tag__$139 + ">");
     }
-    res__$139 = __$ctx._str;
-    __$r__$141 = undefined;
-    __$ctx._str = __$l0__$142;
-    __$ctx._buf.push(res__$139);
+    res__$140 = __$ctx._str;
+    __$r__$142 = undefined;
+    __$ctx._str = __$l0__$143;
+    __$ctx._buf.push(res__$140);
     return;
 }
 
 function __$b78(__$ctx, __$ref) {
-    var __$r__$189;
-    var __$l0__$190 = $$mode;
+    var __$r__$190;
+    var __$l0__$191 = $$mode;
     $$mode = "";
-    var __$l1__$191 = __$ctx.ctx;
+    var __$l1__$192 = __$ctx.ctx;
     __$ctx.ctx = __$ctx.ctx._value;
-    var __$r__$193;
-    var __$l2__$194 = __$ctx.__$a0;
+    var __$r__$194;
+    var __$l2__$195 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 8388608;
-    __$r__$193 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$194;
-    __$r__$189 = __$r__$193;
-    $$mode = __$l0__$190;
-    __$ctx.ctx = __$l1__$191;
+    __$r__$194 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$195;
+    __$r__$190 = __$r__$194;
+    $$mode = __$l0__$191;
+    __$ctx.ctx = __$l1__$192;
     return;
 }
 
 function __$b79(__$ctx, __$ref) {
     __$ctx._listLength--;
-    var ctx__$195 = __$ctx.ctx;
-    if (ctx__$195 && ctx__$195 !== true || ctx__$195 === 0) {
-        __$ctx._str += ctx__$195 + "";
+    var ctx__$196 = __$ctx.ctx;
+    if (ctx__$196 && ctx__$196 !== true || ctx__$196 === 0) {
+        __$ctx._str += ctx__$196 + "";
     }
     return;
 }
@@ -873,51 +874,51 @@ function __$b80(__$ctx, __$ref) {
 }
 
 function __$b81(__$ctx, __$ref) {
-    var ctx__$196 = __$ctx.ctx, len__$197 = ctx__$196.length, i__$198 = 0, prevPos__$199 = __$ctx.position, prevNotNewList__$200 = __$ctx._notNewList;
-    if (prevNotNewList__$200) {
-        __$ctx._listLength += len__$197 - 1;
+    var ctx__$197 = __$ctx.ctx, len__$198 = ctx__$197.length, i__$199 = 0, prevPos__$200 = __$ctx.position, prevNotNewList__$201 = __$ctx._notNewList;
+    if (prevNotNewList__$201) {
+        __$ctx._listLength += len__$198 - 1;
     } else {
         __$ctx.position = 0;
-        __$ctx._listLength = len__$197;
+        __$ctx._listLength = len__$198;
     }
     __$ctx._notNewList = true;
-    while (i__$198 < len__$197) (function __$lb__$201() {
-        var __$r__$202;
-        var __$l0__$203 = __$ctx.ctx;
-        __$ctx.ctx = ctx__$196[i__$198++];
-        __$r__$202 = applyc(__$ctx, __$ref);
-        __$ctx.ctx = __$l0__$203;
-        return __$r__$202;
+    while (i__$199 < len__$198) (function __$lb__$202() {
+        var __$r__$203;
+        var __$l0__$204 = __$ctx.ctx;
+        __$ctx.ctx = ctx__$197[i__$199++];
+        __$r__$203 = applyc(__$ctx, __$ref);
+        __$ctx.ctx = __$l0__$204;
+        return __$r__$203;
     })();
-    prevNotNewList__$200 || (__$ctx.position = prevPos__$199);
+    prevNotNewList__$201 || (__$ctx.position = prevPos__$200);
     return;
 }
 
 function __$b82(__$ctx, __$ref) {
     __$ctx.ctx || (__$ctx.ctx = {});
-    var vBlock__$204 = __$ctx.ctx.block, vElem__$205 = __$ctx.ctx.elem, block__$206 = __$ctx._currBlock || $$block;
-    var __$r__$208;
-    var __$l0__$209 = $$mode;
+    var vBlock__$205 = __$ctx.ctx.block, vElem__$206 = __$ctx.ctx.elem, block__$207 = __$ctx._currBlock || $$block;
+    var __$r__$209;
+    var __$l0__$210 = $$mode;
     $$mode = "default";
-    var __$l1__$210 = $$block;
-    $$block = vBlock__$204 || (vElem__$205 ? block__$206 : undefined);
-    var __$l2__$211 = __$ctx._currBlock;
-    __$ctx._currBlock = vBlock__$204 || vElem__$205 ? undefined : block__$206;
-    var __$l3__$212 = $$elem;
-    $$elem = vElem__$205;
-    var __$l4__$213 = $$mods;
-    $$mods = vBlock__$204 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
-    var __$l5__$214 = $$elemMods;
+    var __$l1__$211 = $$block;
+    $$block = vBlock__$205 || (vElem__$206 ? block__$207 : undefined);
+    var __$l2__$212 = __$ctx._currBlock;
+    __$ctx._currBlock = vBlock__$205 || vElem__$206 ? undefined : block__$207;
+    var __$l3__$213 = $$elem;
+    $$elem = vElem__$206;
+    var __$l4__$214 = $$mods;
+    $$mods = vBlock__$205 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
+    var __$l5__$215 = $$elemMods;
     $$elemMods = __$ctx.ctx.elemMods || {};
     $$block || $$elem ? __$ctx.position = (__$ctx.position || 0) + 1 : __$ctx._listLength--;
     applyc(__$ctx, __$ref);
-    __$r__$208 = undefined;
-    $$mode = __$l0__$209;
-    $$block = __$l1__$210;
-    __$ctx._currBlock = __$l2__$211;
-    $$elem = __$l3__$212;
-    $$mods = __$l4__$213;
-    $$elemMods = __$l5__$214;
+    __$r__$209 = undefined;
+    $$mode = __$l0__$210;
+    $$block = __$l1__$211;
+    __$ctx._currBlock = __$l2__$212;
+    $$elem = __$l3__$213;
+    $$mods = __$l4__$214;
+    $$elemMods = __$l5__$215;
     return;
 }
 
@@ -983,6 +984,7 @@ function __$g0(__$ctx, __$ref) {
             }, {
                 block: "popup",
                 mods: {
+                    target: "anchor",
                     theme: $$mods.theme,
                     autoclosable: true
                 },
@@ -1021,13 +1023,13 @@ function __$g0(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ((__$ctx.__$a0 & 262144) === 0) {
-                return [ function __$lb__$102() {
-                    var __$r__$103;
-                    var __$l0__$104 = __$ctx.__$a0;
+                return [ function __$lb__$103() {
+                    var __$r__$104;
+                    var __$l0__$105 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 262144;
-                    __$r__$103 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$104;
-                    return __$r__$103;
+                    __$r__$104 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$105;
+                    return __$r__$104;
                 }(), "(function(d,n){", "d.documentElement.className+=", '" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");', '})(document,"createElementNS");' ];
             }
             return [ "(function(e,c){", 'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");', '})(document.documentElement,"className");' ];
@@ -1040,23 +1042,23 @@ function __$g0(__$ctx, __$ref) {
                     "http-equiv": "X-UA-Compatible",
                     content: __$ctx.ctx["x-ua-compatible"] || "IE=edge"
                 }
-            }, function __$lb__$121() {
-                var __$r__$122;
-                var __$l0__$123 = __$ctx.__$a0;
+            }, function __$lb__$122() {
+                var __$r__$123;
+                var __$l0__$124 = __$ctx.__$a0;
                 __$ctx.__$a0 = __$ctx.__$a0 | 1048576;
-                __$r__$122 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$123;
-                return __$r__$122;
+                __$r__$123 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$124;
+                return __$r__$123;
             }() ];
         }
         if (!$$elem && (__$ctx.__$a0 & 2097152) === 0) {
-            return [ function __$lb__$124() {
-                var __$r__$125;
-                var __$l0__$126 = __$ctx.__$a0;
+            return [ function __$lb__$125() {
+                var __$r__$126;
+                var __$l0__$127 = __$ctx.__$a0;
                 __$ctx.__$a0 = __$ctx.__$a0 | 2097152;
-                __$r__$125 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$126;
-                return __$r__$125;
+                __$r__$126 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$127;
+                return __$r__$126;
             }(), __$ctx.ctx.scripts ];
         }
     }
@@ -1102,13 +1104,13 @@ function __$g1(__$ctx, __$ref) {
                     }
                 }
                 if ($$mods["focused"] === true && (__$ctx.__$a0 & 65536) === 0) {
-                    var __$r = __$ctx.extend(function __$lb__$83() {
-                        var __$r__$84;
-                        var __$l0__$85 = __$ctx.__$a0;
+                    var __$r = __$ctx.extend(function __$lb__$84() {
+                        var __$r__$85;
+                        var __$l0__$86 = __$ctx.__$a0;
                         __$ctx.__$a0 = __$ctx.__$a0 | 65536;
-                        __$r__$84 = applyc(__$ctx, __$ref);
-                        __$ctx.__$a0 = __$l0__$85;
-                        return __$r__$84;
+                        __$r__$85 = applyc(__$ctx, __$ref);
+                        __$ctx.__$a0 = __$l0__$86;
+                        return __$r__$85;
                     }(), {
                         live: false
                     });
@@ -1122,13 +1124,13 @@ function __$g1(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ($$mods && $$mods["focused"] === true && (__$ctx.__$a0 & 4096) === 0) {
-                var __$r = __$ctx.extend(function __$lb__$55() {
-                    var __$r__$56;
-                    var __$l0__$57 = __$ctx.__$a0;
+                var __$r = __$ctx.extend(function __$lb__$56() {
+                    var __$r__$57;
+                    var __$l0__$58 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 4096;
-                    __$r__$56 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$57;
-                    return __$r__$56;
+                    __$r__$57 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$58;
+                    return __$r__$57;
                 }(), {
                     live: false
                 });

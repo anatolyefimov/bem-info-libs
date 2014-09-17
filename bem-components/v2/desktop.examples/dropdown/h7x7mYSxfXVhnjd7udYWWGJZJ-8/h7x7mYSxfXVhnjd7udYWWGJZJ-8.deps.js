@@ -116,6 +116,15 @@ exports.deps = [
         "mod": "autoclosable"
     },
     {
+        "block": "popup",
+        "mod": "target"
+    },
+    {
+        "block": "popup",
+        "mod": "target",
+        "val": "anchor"
+    },
+    {
         "block": "jquery",
         "elem": "event"
     },

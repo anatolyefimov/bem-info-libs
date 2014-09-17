@@ -1,1 +1,1 @@
-.page{padding:20px}.select{display:inline-block}.menu{overflow-y:auto}.popup{position:absolute}.popup:not([class*=popup_theme]){display:none;background:#fff7db;box-shadow:inset 0 0 1px red}.popup_visible:not([class*=popup_theme]){display:block}
+.page{padding:20px}.select{display:inline-block}.page{min-height:150px}.menu{overflow-y:auto}.popup{position:absolute}.popup:not([class*=popup_theme]){display:none;background:#fff7db;box-shadow:inset 0 0 1px red}.popup_visible:not([class*=popup_theme]){display:block}

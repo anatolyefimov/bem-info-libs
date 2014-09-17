@@ -89,6 +89,9 @@ exports.deps = [
         "elem": "svg"
     },
     {
+        "block": "test-wrapper"
+    },
+    {
         "block": "test"
     },
     {
@@ -173,6 +176,15 @@ exports.deps = [
     },
     {
         "block": "popup",
+        "mod": "target"
+    },
+    {
+        "block": "popup",
+        "mod": "target",
+        "val": "anchor"
+    },
+    {
+        "block": "popup",
         "mod": "theme"
     },
     {
@@ -218,5 +230,13 @@ exports.deps = [
         "block": "input",
         "mod": "theme",
         "val": "normal"
+    },
+    {
+        "block": "test-wrapper",
+        "elem": "summoner"
+    },
+    {
+        "block": "test-wrapper",
+        "elem": "summon"
     }
 ];

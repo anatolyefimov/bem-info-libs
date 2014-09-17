@@ -60,6 +60,19 @@ exports.blocks = [
         "name": "popup",
         "mods": [
             {
+                "name": "target",
+                "vals": [
+                    {
+                        "name": "position"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "popup",
+        "mods": [
+            {
                 "name": "autoclosable",
                 "vals": [
                     {
@@ -106,6 +119,19 @@ exports.blocks = [
                 "vals": [
                     {
                         "name": "all"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "popup",
+        "mods": [
+            {
+                "name": "target",
+                "vals": [
+                    {
+                        "name": "anchor"
                     }
                 ]
             }

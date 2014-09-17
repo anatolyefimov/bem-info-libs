@@ -57,6 +57,19 @@ exports.blocks = [
         "name": "popup",
         "mods": [
             {
+                "name": "target",
+                "vals": [
+                    {
+                        "name": "anchor"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "popup",
+        "mods": [
+            {
                 "name": "theme",
                 "vals": [
                     {

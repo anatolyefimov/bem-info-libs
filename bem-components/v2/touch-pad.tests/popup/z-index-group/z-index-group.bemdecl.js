@@ -32,6 +32,9 @@ exports.blocks = [
         ]
     },
     {
+        "name": "test-wrapper"
+    },
+    {
         "name": "test"
     },
     {
@@ -73,6 +76,19 @@ exports.blocks = [
         "name": "popup",
         "mods": [
             {
+                "name": "target",
+                "vals": [
+                    {
+                        "name": "anchor"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "popup",
+        "mods": [
+            {
                 "name": "theme",
                 "vals": [
                     {
@@ -108,6 +124,22 @@ exports.blocks = [
                         "name": "normal"
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "name": "test-wrapper",
+        "elems": [
+            {
+                "name": "summoner"
+            }
+        ]
+    },
+    {
+        "name": "test-wrapper",
+        "elems": [
+            {
+                "name": "summon"
             }
         ]
     }

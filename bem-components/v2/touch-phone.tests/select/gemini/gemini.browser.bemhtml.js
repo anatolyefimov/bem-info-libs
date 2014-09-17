@@ -53,8 +53,8 @@ function applyc(__$ctx, __$ref) {
                 } ];
             }
         } else if (__$t === "page") {
-            if (!$$elem && (__$ctx.__$a0 & 524288) === 0) {
-                var __$r = __$b68(__$ctx, __$ref);
+            if (!$$elem && (__$ctx.__$a0 & 1048576) === 0) {
+                var __$r = __$b69(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         }
@@ -85,23 +85,23 @@ function applyc(__$ctx, __$ref) {
     } else if (__$t === "cls") {
         return undefined;
     } else if (__$t === "") {
-        if (__$ctx.ctx && __$ctx.ctx._vow && (__$ctx.__$a0 & 8388608) === 0) {
-            var __$r = __$b79(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-        if (__$ctx.isSimple(__$ctx.ctx)) {
+        if (__$ctx.ctx && __$ctx.ctx._vow && (__$ctx.__$a0 & 16777216) === 0) {
             var __$r = __$b80(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
-        if (!__$ctx.ctx) {
+        if (__$ctx.isSimple(__$ctx.ctx)) {
             var __$r = __$b81(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
-        if (__$ctx.isArray(__$ctx.ctx)) {
+        if (!__$ctx.ctx) {
             var __$r = __$b82(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
-        var __$r = __$b83(__$ctx, __$ref);
+        if (__$ctx.isArray(__$ctx.ctx)) {
+            var __$r = __$b83(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
+        var __$r = __$b84(__$ctx, __$ref);
         if (__$r !== __$ref) return __$r;
     }
 }
@@ -285,6 +285,7 @@ function applyc(__$ctx, __$ref) {
         ctx["_mode"] = undefined;
         ctx["ctx"] = undefined;
         ctx["_button"] = undefined;
+        ctx["_selectCls"] = undefined;
         ctx["_select"] = undefined;
         ctx["_checkedOptions"] = undefined;
         ctx["_firstOption"] = undefined;
@@ -331,24 +332,24 @@ function __$b2(__$ctx, __$ref) {
     } ];
 }
 
-function __$b10(__$ctx, __$ref) {
-    var ctx__$58 = __$ctx.ctx, content__$59 = [ ctx__$58.icon ];
-    "text" in ctx__$58 && content__$59.push({
+function __$b9(__$ctx, __$ref) {
+    var ctx__$59 = __$ctx.ctx, content__$60 = [ ctx__$59.icon ];
+    "text" in ctx__$59 && content__$60.push({
         elem: "text",
-        content: ctx__$58.text
+        content: ctx__$59.text
     });
-    return content__$59;
+    return content__$60;
 }
 
-function __$b20(__$ctx, __$ref) {
-    var ctx__$86 = __$ctx.ctx;
+function __$b19(__$ctx, __$ref) {
+    var ctx__$93 = __$ctx.ctx;
     return {
-        name: ctx__$86.name,
-        optionsMaxHeight: ctx__$86.optionsMaxHeight
+        name: ctx__$93.name,
+        optionsMaxHeight: ctx__$93.optionsMaxHeight
     };
 }
 
-function __$b23(__$ctx, __$ref) {
+function __$b22(__$ctx, __$ref) {
     var ctx__$25 = __$ctx.ctx;
     return {
         mainOffset: ctx__$25.mainOffset,
@@ -359,7 +360,7 @@ function __$b23(__$ctx, __$ref) {
     };
 }
 
-function __$b29(__$ctx, __$ref) {
+function __$b28(__$ctx, __$ref) {
     var checkedOptions__$11 = __$ctx._checkedOptions, firstOption__$12 = __$ctx._firstOption;
     if (!checkedOptions__$11.length) {
         firstOption__$12.checked = true;
@@ -378,12 +379,12 @@ function __$b29(__$ctx, __$ref) {
     return;
 }
 
-function __$b30(__$ctx, __$ref) {
-    var mods__$72 = $$mods;
-    var __$r__$74;
-    var __$l0__$75 = $$mode;
+function __$b29(__$ctx, __$ref) {
+    var mods__$73 = $$mods;
+    var __$r__$75;
+    var __$l0__$76 = $$mode;
     $$mode = "";
-    var __$l1__$76 = __$ctx.ctx;
+    var __$l1__$77 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "button",
         mix: {
@@ -391,21 +392,21 @@ function __$b30(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$72.size,
-            theme: mods__$72.theme,
-            focused: mods__$72.focused,
-            disabled: mods__$72.disabled,
-            checked: mods__$72.mode !== "radio" && !!__$ctx._checkedOptions.length
+            size: mods__$73.size,
+            theme: mods__$73.theme,
+            focused: mods__$73.focused,
+            disabled: mods__$73.disabled,
+            checked: mods__$73.mode !== "radio" && !!__$ctx._checkedOptions.length
         },
         id: __$ctx._select.id,
         textMaxWidth: __$ctx._select.textMaxWidth,
-        content: [ function __$lb__$77() {
-            var __$r__$78;
-            var __$l3__$79 = $$mode;
+        content: [ function __$lb__$78() {
+            var __$r__$79;
+            var __$l3__$80 = $$mode;
             $$mode = "content";
-            __$r__$78 = applyc(__$ctx, __$ref);
-            $$mode = __$l3__$79;
-            return __$r__$78;
+            __$r__$79 = applyc(__$ctx, __$ref);
+            $$mode = __$l3__$80;
+            return __$r__$79;
         }(), {
             block: "icon",
             mix: {
@@ -414,20 +415,20 @@ function __$b30(__$ctx, __$ref) {
             }
         } ]
     };
-    var __$r__$80;
-    var __$l2__$81 = __$ctx.__$a0;
+    var __$r__$81;
+    var __$l2__$82 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 32768;
-    __$r__$80 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$81;
-    __$r__$74 = __$r__$80;
-    $$mode = __$l0__$75;
-    __$ctx.ctx = __$l1__$76;
+    __$r__$81 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$82;
+    __$r__$75 = __$r__$81;
+    $$mode = __$l0__$76;
+    __$ctx.ctx = __$l1__$77;
     return;
 }
 
-function __$b31(__$ctx, __$ref) {
-    var mods__$45 = $$mods, optionToMenuItem__$46 = function(option) {
-        var res__$47 = {
+function __$b30(__$ctx, __$ref) {
+    var mods__$46 = $$mods, optionToMenuItem__$47 = function(option) {
+        var res__$48 = {
             block: "menu-item",
             mods: {
                 checked: option.checked,
@@ -440,15 +441,15 @@ function __$b31(__$ctx, __$ref) {
             content: option.text
         };
         if (option.icon) {
-            res__$47.js.text = option.text;
-            res__$47.content = [ option.icon, res__$47.content ];
+            res__$48.js.text = option.text;
+            res__$48.content = [ option.icon, res__$48.content ];
         }
-        return res__$47;
+        return res__$48;
     };
-    var __$r__$49;
-    var __$l0__$50 = $$mode;
+    var __$r__$50;
+    var __$l0__$51 = $$mode;
     $$mode = "";
-    var __$l1__$51 = __$ctx.ctx;
+    var __$l1__$52 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "menu",
         mix: {
@@ -456,10 +457,10 @@ function __$b31(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$45.size,
-            theme: mods__$45.theme,
-            disabled: mods__$45.disabled,
-            mode: mods__$45.mode
+            size: mods__$46.size,
+            theme: mods__$46.theme,
+            disabled: mods__$46.disabled,
+            mode: mods__$46.mode
         },
         attrs: {
             tabindex: undefined
@@ -471,106 +472,128 @@ function __$b31(__$ctx, __$ref) {
                     "has-title": !!optionOrGroup.title
                 },
                 title: optionOrGroup.title,
-                content: optionOrGroup.group.map(optionToMenuItem__$46)
-            } : optionToMenuItem__$46(optionOrGroup);
+                content: optionOrGroup.group.map(optionToMenuItem__$47)
+            } : optionToMenuItem__$47(optionOrGroup);
         })
     };
-    var __$r__$53;
-    var __$l2__$54 = __$ctx.__$a0;
+    var __$r__$54;
+    var __$l2__$55 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 2048;
-    __$r__$53 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$54;
-    __$r__$49 = __$r__$53;
-    $$mode = __$l0__$50;
-    __$ctx.ctx = __$l1__$51;
+    __$r__$54 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$55;
+    __$r__$50 = __$r__$54;
+    $$mode = __$l0__$51;
+    __$ctx.ctx = __$l1__$52;
+    return;
+}
+
+function __$b31(__$ctx, __$ref) {
+    var __$r__$88;
+    var __$l0__$89 = __$ctx._selectCls;
+    __$ctx._selectCls = __$ctx.ctx.cls;
+    var __$r__$91;
+    var __$l1__$92 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 131072;
+    __$r__$91 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$92;
+    __$r__$88 = __$r__$91;
+    __$ctx._selectCls = __$l0__$89;
     return;
 }
 
 function __$b32(__$ctx, __$ref) {
     if (!$$mods.mode) throw Error("Can't build select without mode modifier");
-    var options__$87 = __$ctx.ctx.options, i__$88 = 0, j__$89, optionOrGroup__$90, option__$91, firstOption__$92, checkedOptions__$93 = [];
-    while (optionOrGroup__$90 = options__$87[i__$88++]) {
-        if (optionOrGroup__$90.group) {
-            j__$89 = 0;
-            while (option__$91 = optionOrGroup__$90.group[j__$89++]) {
-                i__$88 === 1 && j__$89 === 1 && (firstOption__$92 = option__$91);
-                option__$91.checked && checkedOptions__$93.push(option__$91);
+    var options__$94 = __$ctx.ctx.options, i__$95 = 0, j__$96, optionOrGroup__$97, option__$98, firstOption__$99, checkedOptions__$100 = [];
+    while (optionOrGroup__$97 = options__$94[i__$95++]) {
+        if (optionOrGroup__$97.group) {
+            j__$96 = 0;
+            while (option__$98 = optionOrGroup__$97.group[j__$96++]) {
+                i__$95 === 1 && j__$96 === 1 && (firstOption__$99 = option__$98);
+                option__$98.checked && checkedOptions__$100.push(option__$98);
             }
         } else {
-            i__$88 === 1 && (firstOption__$92 = optionOrGroup__$90);
-            optionOrGroup__$90.checked && checkedOptions__$93.push(optionOrGroup__$90);
+            i__$95 === 1 && (firstOption__$99 = optionOrGroup__$97);
+            optionOrGroup__$97.checked && checkedOptions__$100.push(optionOrGroup__$97);
         }
     }
-    var __$r__$95;
-    var __$l0__$96 = __$ctx._select;
+    var __$r__$102;
+    var __$l0__$103 = __$ctx._select;
     __$ctx._select = __$ctx.ctx;
-    var __$l1__$97 = __$ctx._checkedOptions;
-    __$ctx._checkedOptions = checkedOptions__$93;
-    var __$l2__$98 = __$ctx._firstOption;
-    __$ctx._firstOption = firstOption__$92;
-    var __$r__$100;
-    var __$l3__$101 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 131072;
-    __$r__$100 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l3__$101;
-    __$r__$95 = __$r__$100;
-    __$ctx._select = __$l0__$96;
-    __$ctx._checkedOptions = __$l1__$97;
-    __$ctx._firstOption = __$l2__$98;
+    var __$l1__$104 = __$ctx._checkedOptions;
+    __$ctx._checkedOptions = checkedOptions__$100;
+    var __$l2__$105 = __$ctx._firstOption;
+    __$ctx._firstOption = firstOption__$99;
+    var __$r__$107;
+    var __$l3__$108 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 262144;
+    __$r__$107 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l3__$108;
+    __$r__$102 = __$r__$107;
+    __$ctx._select = __$l0__$103;
+    __$ctx._checkedOptions = __$l1__$104;
+    __$ctx._firstOption = __$l2__$105;
     return;
 }
 
 function __$b33(__$ctx, __$ref) {
-    var __$r__$67;
-    var __$l0__$68 = __$ctx._button;
+    var __$r__$68;
+    var __$l0__$69 = __$ctx._button;
     __$ctx._button = __$ctx.ctx;
-    var __$r__$70;
-    var __$l1__$71 = __$ctx.__$a0;
+    var __$r__$71;
+    var __$l1__$72 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 16384;
-    __$r__$70 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$71;
-    __$r__$67 = __$r__$70;
-    __$ctx._button = __$l0__$68;
+    __$r__$71 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$72;
+    __$r__$68 = __$r__$71;
+    __$ctx._button = __$l0__$69;
     return;
 }
 
 function __$b34(__$ctx, __$ref) {
-    var __$r__$40;
-    var __$l0__$41 = __$ctx._menuMods;
-    __$ctx._menuMods = {
-        theme: $$mods.theme,
-        disabled: $$mods.disabled
-    };
-    var __$r__$43;
-    var __$l1__$44 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 1024;
-    __$r__$43 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$44;
-    __$r__$40 = __$r__$43;
-    __$ctx._menuMods = __$l0__$41;
-    delete __$ctx._menuTheme;
+    __$ctx.ctx.cls = __$ctx._selectCls + "-popup";
+    delete __$ctx._selectCls;
+    applyc(__$ctx, __$ref);
     return;
 }
 
 function __$b35(__$ctx, __$ref) {
-    $$mods.theme = __$ctx._menuMods.theme;
-    $$mods.disabled = $$mods.disabled || __$ctx._menuMods.disabled;
-    var __$r__$36;
-    var __$l0__$37 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 512;
-    __$r__$36 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l0__$37;
+    var __$r__$41;
+    var __$l0__$42 = __$ctx._menuMods;
+    __$ctx._menuMods = {
+        theme: $$mods.theme,
+        disabled: $$mods.disabled
+    };
+    var __$r__$44;
+    var __$l1__$45 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 1024;
+    __$r__$44 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$45;
+    __$r__$41 = __$r__$44;
+    __$ctx._menuMods = __$l0__$42;
+    delete __$ctx._menuTheme;
     return;
 }
 
 function __$b36(__$ctx, __$ref) {
+    var mods__$35 = $$mods;
+    mods__$35.theme = mods__$35.theme || __$ctx._menuMods.theme;
+    mods__$35.disabled = mods__$35.disabled || __$ctx._menuMods.disabled;
+    var __$r__$37;
+    var __$l0__$38 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 512;
+    __$r__$37 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l0__$38;
+    return;
+}
+
+function __$b37(__$ctx, __$ref) {
     __$ctx._defPageApplied = true;
-    var ctx__$116 = __$ctx.ctx;
-    var __$r__$118;
-    var __$l0__$119 = $$mode;
+    var ctx__$123 = __$ctx.ctx;
+    var __$r__$125;
+    var __$l0__$126 = $$mode;
     $$mode = "";
-    var __$l1__$120 = __$ctx.ctx;
-    __$ctx.ctx = [ ctx__$116.doctype || "<!DOCTYPE html>", {
+    var __$l1__$127 = __$ctx.ctx;
+    __$ctx.ctx = [ ctx__$123.doctype || "<!DOCTYPE html>", {
         tag: "html",
         cls: "ua_js_no",
         content: [ {
@@ -582,115 +605,115 @@ function __$b36(__$ctx, __$ref) {
                 }
             }, {
                 tag: "title",
-                content: ctx__$116.title
+                content: ctx__$123.title
             }, {
                 block: "ua"
-            }, ctx__$116.head, ctx__$116.styles, ctx__$116.favicon ? {
+            }, ctx__$123.head, ctx__$123.styles, ctx__$123.favicon ? {
                 elem: "favicon",
-                url: ctx__$116.favicon
+                url: ctx__$123.favicon
             } : "" ]
-        }, ctx__$116 ]
+        }, ctx__$123 ]
     } ];
-    var __$r__$122;
-    var __$l2__$123 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 4194304;
-    __$r__$122 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$123;
-    __$r__$118 = __$r__$122;
-    $$mode = __$l0__$119;
-    __$ctx.ctx = __$l1__$120;
+    var __$r__$129;
+    var __$l2__$130 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 8388608;
+    __$r__$129 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$130;
+    __$r__$125 = __$r__$129;
+    $$mode = __$l0__$126;
+    __$ctx.ctx = __$l1__$127;
     __$ctx._defPageApplied = false;
     return;
 }
 
-function __$b37(__$ctx, __$ref) {
-    var BEM_INTERNAL__$124 = __$ctx.BEM.INTERNAL, ctx__$125 = __$ctx.ctx, isBEM__$126, tag__$127, res__$128;
-    var __$r__$130;
-    var __$l0__$131 = __$ctx._str;
+function __$b38(__$ctx, __$ref) {
+    var BEM_INTERNAL__$131 = __$ctx.BEM.INTERNAL, ctx__$132 = __$ctx.ctx, isBEM__$133, tag__$134, res__$135;
+    var __$r__$137;
+    var __$l0__$138 = __$ctx._str;
     __$ctx._str = "";
-    var vBlock__$132 = $$block;
-    var __$r__$134;
-    var __$l1__$135 = $$mode;
+    var vBlock__$139 = $$block;
+    var __$r__$141;
+    var __$l1__$142 = $$mode;
     $$mode = "tag";
-    __$r__$134 = applyc(__$ctx, __$ref);
-    $$mode = __$l1__$135;
-    tag__$127 = __$r__$134;
-    typeof tag__$127 !== "undefined" || (tag__$127 = ctx__$125.tag);
-    typeof tag__$127 !== "undefined" || (tag__$127 = "div");
-    if (tag__$127) {
-        var jsParams__$136, js__$137;
-        if (vBlock__$132 && ctx__$125.js !== false) {
-            var __$r__$138;
-            var __$l2__$139 = $$mode;
+    __$r__$141 = applyc(__$ctx, __$ref);
+    $$mode = __$l1__$142;
+    tag__$134 = __$r__$141;
+    typeof tag__$134 !== "undefined" || (tag__$134 = ctx__$132.tag);
+    typeof tag__$134 !== "undefined" || (tag__$134 = "div");
+    if (tag__$134) {
+        var jsParams__$143, js__$144;
+        if (vBlock__$139 && ctx__$132.js !== false) {
+            var __$r__$145;
+            var __$l2__$146 = $$mode;
             $$mode = "js";
-            __$r__$138 = applyc(__$ctx, __$ref);
-            $$mode = __$l2__$139;
-            js__$137 = __$r__$138;
-            js__$137 = js__$137 ? __$ctx.extend(ctx__$125.js, js__$137 === true ? {} : js__$137) : ctx__$125.js === true ? {} : ctx__$125.js;
-            js__$137 && ((jsParams__$136 = {})[BEM_INTERNAL__$124.buildClass(vBlock__$132, ctx__$125.elem)] = js__$137);
+            __$r__$145 = applyc(__$ctx, __$ref);
+            $$mode = __$l2__$146;
+            js__$144 = __$r__$145;
+            js__$144 = js__$144 ? __$ctx.extend(ctx__$132.js, js__$144 === true ? {} : js__$144) : ctx__$132.js === true ? {} : ctx__$132.js;
+            js__$144 && ((jsParams__$143 = {})[BEM_INTERNAL__$131.buildClass(vBlock__$139, ctx__$132.elem)] = js__$144);
         }
-        __$ctx._str += "<" + tag__$127;
-        var __$r__$140;
-        var __$l3__$141 = $$mode;
+        __$ctx._str += "<" + tag__$134;
+        var __$r__$147;
+        var __$l3__$148 = $$mode;
         $$mode = "bem";
-        __$r__$140 = applyc(__$ctx, __$ref);
-        $$mode = __$l3__$141;
-        isBEM__$126 = __$r__$140;
-        typeof isBEM__$126 !== "undefined" || (isBEM__$126 = typeof ctx__$125.bem !== "undefined" ? ctx__$125.bem : ctx__$125.block || ctx__$125.elem);
-        var __$r__$143;
-        var __$l4__$144 = $$mode;
+        __$r__$147 = applyc(__$ctx, __$ref);
+        $$mode = __$l3__$148;
+        isBEM__$133 = __$r__$147;
+        typeof isBEM__$133 !== "undefined" || (isBEM__$133 = typeof ctx__$132.bem !== "undefined" ? ctx__$132.bem : ctx__$132.block || ctx__$132.elem);
+        var __$r__$150;
+        var __$l4__$151 = $$mode;
         $$mode = "cls";
-        __$r__$143 = applyc(__$ctx, __$ref);
-        $$mode = __$l4__$144;
-        var cls__$142 = __$r__$143;
-        cls__$142 || (cls__$142 = ctx__$125.cls);
-        var addJSInitClass__$145 = ctx__$125.block && jsParams__$136;
-        if (isBEM__$126 || cls__$142) {
+        __$r__$150 = applyc(__$ctx, __$ref);
+        $$mode = __$l4__$151;
+        var cls__$149 = __$r__$150;
+        cls__$149 || (cls__$149 = ctx__$132.cls);
+        var addJSInitClass__$152 = ctx__$132.block && jsParams__$143;
+        if (isBEM__$133 || cls__$149) {
             __$ctx._str += ' class="';
-            if (isBEM__$126) {
-                __$ctx._str += BEM_INTERNAL__$124.buildClasses(vBlock__$132, ctx__$125.elem, ctx__$125.elemMods || ctx__$125.mods);
-                var __$r__$147;
-                var __$l5__$148 = $$mode;
+            if (isBEM__$133) {
+                __$ctx._str += BEM_INTERNAL__$131.buildClasses(vBlock__$139, ctx__$132.elem, ctx__$132.elemMods || ctx__$132.mods);
+                var __$r__$154;
+                var __$l5__$155 = $$mode;
                 $$mode = "mix";
-                __$r__$147 = applyc(__$ctx, __$ref);
-                $$mode = __$l5__$148;
-                var mix__$146 = __$r__$147;
-                ctx__$125.mix && (mix__$146 = mix__$146 ? [].concat(mix__$146, ctx__$125.mix) : ctx__$125.mix);
-                if (mix__$146) {
-                    var visited__$149 = {}, visitedKey__$150 = function(block, elem) {
+                __$r__$154 = applyc(__$ctx, __$ref);
+                $$mode = __$l5__$155;
+                var mix__$153 = __$r__$154;
+                ctx__$132.mix && (mix__$153 = mix__$153 ? [].concat(mix__$153, ctx__$132.mix) : ctx__$132.mix);
+                if (mix__$153) {
+                    var visited__$156 = {}, visitedKey__$157 = function(block, elem) {
                         return (block || "") + "__" + (elem || "");
                     };
-                    visited__$149[visitedKey__$150(vBlock__$132, $$elem)] = true;
-                    __$ctx.isArray(mix__$146) || (mix__$146 = [ mix__$146 ]);
-                    for (var i__$151 = 0; i__$151 < mix__$146.length; i__$151++) {
-                        var mixItem__$152 = mix__$146[i__$151], hasItem__$153 = mixItem__$152.block || mixItem__$152.elem, mixBlock__$154 = mixItem__$152.block || mixItem__$152._block || $$block, mixElem__$155 = mixItem__$152.elem || mixItem__$152._elem || $$elem;
-                        hasItem__$153 && (__$ctx._str += " ");
-                        __$ctx._str += BEM_INTERNAL__$124[hasItem__$153 ? "buildClasses" : "buildModsClasses"](mixBlock__$154, mixItem__$152.elem || mixItem__$152._elem || (mixItem__$152.block ? undefined : $$elem), mixItem__$152.elemMods || mixItem__$152.mods);
-                        if (mixItem__$152.js) {
-                            (jsParams__$136 || (jsParams__$136 = {}))[BEM_INTERNAL__$124.buildClass(mixBlock__$154, mixItem__$152.elem)] = mixItem__$152.js === true ? {} : mixItem__$152.js;
-                            addJSInitClass__$145 || (addJSInitClass__$145 = mixBlock__$154 && !mixItem__$152.elem);
+                    visited__$156[visitedKey__$157(vBlock__$139, $$elem)] = true;
+                    __$ctx.isArray(mix__$153) || (mix__$153 = [ mix__$153 ]);
+                    for (var i__$158 = 0; i__$158 < mix__$153.length; i__$158++) {
+                        var mixItem__$159 = mix__$153[i__$158], hasItem__$160 = mixItem__$159.block || mixItem__$159.elem, mixBlock__$161 = mixItem__$159.block || mixItem__$159._block || $$block, mixElem__$162 = mixItem__$159.elem || mixItem__$159._elem || $$elem;
+                        hasItem__$160 && (__$ctx._str += " ");
+                        __$ctx._str += BEM_INTERNAL__$131[hasItem__$160 ? "buildClasses" : "buildModsClasses"](mixBlock__$161, mixItem__$159.elem || mixItem__$159._elem || (mixItem__$159.block ? undefined : $$elem), mixItem__$159.elemMods || mixItem__$159.mods);
+                        if (mixItem__$159.js) {
+                            (jsParams__$143 || (jsParams__$143 = {}))[BEM_INTERNAL__$131.buildClass(mixBlock__$161, mixItem__$159.elem)] = mixItem__$159.js === true ? {} : mixItem__$159.js;
+                            addJSInitClass__$152 || (addJSInitClass__$152 = mixBlock__$161 && !mixItem__$159.elem);
                         }
-                        if (hasItem__$153 && !visited__$149[visitedKey__$150(mixBlock__$154, mixElem__$155)]) {
-                            visited__$149[visitedKey__$150(mixBlock__$154, mixElem__$155)] = true;
-                            var __$r__$157;
-                            var __$l6__$158 = $$mode;
+                        if (hasItem__$160 && !visited__$156[visitedKey__$157(mixBlock__$161, mixElem__$162)]) {
+                            visited__$156[visitedKey__$157(mixBlock__$161, mixElem__$162)] = true;
+                            var __$r__$164;
+                            var __$l6__$165 = $$mode;
                             $$mode = "mix";
-                            var __$l7__$159 = $$block;
-                            $$block = mixBlock__$154;
-                            var __$l8__$160 = $$elem;
-                            $$elem = mixElem__$155;
-                            __$r__$157 = applyc(__$ctx, __$ref);
-                            $$mode = __$l6__$158;
-                            $$block = __$l7__$159;
-                            $$elem = __$l8__$160;
-                            var nestedMix__$156 = __$r__$157;
-                            if (nestedMix__$156) {
-                                for (var j__$161 = 0; j__$161 < nestedMix__$156.length; j__$161++) {
-                                    var nestedItem__$162 = nestedMix__$156[j__$161];
-                                    if (!nestedItem__$162.block && !nestedItem__$162.elem || !visited__$149[visitedKey__$150(nestedItem__$162.block, nestedItem__$162.elem)]) {
-                                        nestedItem__$162._block = mixBlock__$154;
-                                        nestedItem__$162._elem = mixElem__$155;
-                                        mix__$146.splice(i__$151 + 1, 0, nestedItem__$162);
+                            var __$l7__$166 = $$block;
+                            $$block = mixBlock__$161;
+                            var __$l8__$167 = $$elem;
+                            $$elem = mixElem__$162;
+                            __$r__$164 = applyc(__$ctx, __$ref);
+                            $$mode = __$l6__$165;
+                            $$block = __$l7__$166;
+                            $$elem = __$l8__$167;
+                            var nestedMix__$163 = __$r__$164;
+                            if (nestedMix__$163) {
+                                for (var j__$168 = 0; j__$168 < nestedMix__$163.length; j__$168++) {
+                                    var nestedItem__$169 = nestedMix__$163[j__$168];
+                                    if (!nestedItem__$169.block && !nestedItem__$169.elem || !visited__$156[visitedKey__$157(nestedItem__$169.block, nestedItem__$169.elem)]) {
+                                        nestedItem__$169._block = mixBlock__$161;
+                                        nestedItem__$169._elem = mixElem__$162;
+                                        mix__$153.splice(i__$158 + 1, 0, nestedItem__$169);
                                     }
                                 }
                             }
@@ -698,204 +721,204 @@ function __$b37(__$ctx, __$ref) {
                     }
                 }
             }
-            cls__$142 && (__$ctx._str += isBEM__$126 ? " " + cls__$142 : cls__$142);
-            __$ctx._str += addJSInitClass__$145 ? ' i-bem"' : '"';
+            cls__$149 && (__$ctx._str += isBEM__$133 ? " " + cls__$149 : cls__$149);
+            __$ctx._str += addJSInitClass__$152 ? ' i-bem"' : '"';
         }
-        if (isBEM__$126 && jsParams__$136) {
-            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$136)) + '"';
+        if (isBEM__$133 && jsParams__$143) {
+            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$143)) + '"';
         }
-        var __$r__$164;
-        var __$l9__$165 = $$mode;
+        var __$r__$171;
+        var __$l9__$172 = $$mode;
         $$mode = "attrs";
-        __$r__$164 = applyc(__$ctx, __$ref);
-        $$mode = __$l9__$165;
-        var attrs__$163 = __$r__$164;
-        attrs__$163 = __$ctx.extend(attrs__$163, ctx__$125.attrs);
-        if (attrs__$163) {
-            var name__$166, attr__$167;
-            for (name__$166 in attrs__$163) {
-                attr__$167 = attrs__$163[name__$166];
-                if (typeof attr__$167 === "undefined") continue;
-                __$ctx._str += " " + name__$166 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$167) ? attr__$167 : __$ctx.reapply(attr__$167)) + '"';
+        __$r__$171 = applyc(__$ctx, __$ref);
+        $$mode = __$l9__$172;
+        var attrs__$170 = __$r__$171;
+        attrs__$170 = __$ctx.extend(attrs__$170, ctx__$132.attrs);
+        if (attrs__$170) {
+            var name__$173, attr__$174;
+            for (name__$173 in attrs__$170) {
+                attr__$174 = attrs__$170[name__$173];
+                if (typeof attr__$174 === "undefined") continue;
+                __$ctx._str += " " + name__$173 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$174) ? attr__$174 : __$ctx.reapply(attr__$174)) + '"';
             }
         }
     }
-    if (__$ctx.isShortTag(tag__$127)) {
+    if (__$ctx.isShortTag(tag__$134)) {
         __$ctx._str += "/>";
     } else {
-        tag__$127 && (__$ctx._str += ">");
-        var __$r__$169;
-        var __$l10__$170 = $$mode;
+        tag__$134 && (__$ctx._str += ">");
+        var __$r__$176;
+        var __$l10__$177 = $$mode;
         $$mode = "content";
-        __$r__$169 = applyc(__$ctx, __$ref);
-        $$mode = __$l10__$170;
-        var content__$168 = __$r__$169;
-        if (content__$168 || content__$168 === 0) {
-            isBEM__$126 = vBlock__$132 || $$elem;
-            var __$r__$171;
-            var __$l11__$172 = $$mode;
+        __$r__$176 = applyc(__$ctx, __$ref);
+        $$mode = __$l10__$177;
+        var content__$175 = __$r__$176;
+        if (content__$175 || content__$175 === 0) {
+            isBEM__$133 = vBlock__$139 || $$elem;
+            var __$r__$178;
+            var __$l11__$179 = $$mode;
             $$mode = "";
-            var __$l12__$173 = __$ctx._notNewList;
+            var __$l12__$180 = __$ctx._notNewList;
             __$ctx._notNewList = false;
-            var __$l13__$174 = __$ctx.position;
-            __$ctx.position = isBEM__$126 ? 1 : __$ctx.position;
-            var __$l14__$175 = __$ctx._listLength;
-            __$ctx._listLength = isBEM__$126 ? 1 : __$ctx._listLength;
-            var __$l15__$176 = __$ctx.ctx;
-            __$ctx.ctx = content__$168;
-            __$r__$171 = applyc(__$ctx, __$ref);
-            $$mode = __$l11__$172;
-            __$ctx._notNewList = __$l12__$173;
-            __$ctx.position = __$l13__$174;
-            __$ctx._listLength = __$l14__$175;
-            __$ctx.ctx = __$l15__$176;
+            var __$l13__$181 = __$ctx.position;
+            __$ctx.position = isBEM__$133 ? 1 : __$ctx.position;
+            var __$l14__$182 = __$ctx._listLength;
+            __$ctx._listLength = isBEM__$133 ? 1 : __$ctx._listLength;
+            var __$l15__$183 = __$ctx.ctx;
+            __$ctx.ctx = content__$175;
+            __$r__$178 = applyc(__$ctx, __$ref);
+            $$mode = __$l11__$179;
+            __$ctx._notNewList = __$l12__$180;
+            __$ctx.position = __$l13__$181;
+            __$ctx._listLength = __$l14__$182;
+            __$ctx.ctx = __$l15__$183;
         }
-        tag__$127 && (__$ctx._str += "</" + tag__$127 + ">");
+        tag__$134 && (__$ctx._str += "</" + tag__$134 + ">");
     }
-    res__$128 = __$ctx._str;
-    __$r__$130 = undefined;
-    __$ctx._str = __$l0__$131;
-    __$ctx._buf.push(res__$128);
+    res__$135 = __$ctx._str;
+    __$r__$137 = undefined;
+    __$ctx._str = __$l0__$138;
+    __$ctx._buf.push(res__$135);
     return;
 }
 
-function __$b38(__$ctx, __$ref) {
-    var val__$82 = __$ctx.ctx.val;
+function __$b39(__$ctx, __$ref) {
+    var val__$83 = __$ctx.ctx.val;
     return {
         type: "hidden",
         name: __$ctx._select.name,
-        value: __$ctx.isSimple(val__$82) ? val__$82 : JSON.stringify(val__$82),
+        value: __$ctx.isSimple(val__$83) ? val__$83 : JSON.stringify(val__$83),
         disabled: $$mods.disabled ? "disabled" : undefined
     };
 }
 
-function __$b40(__$ctx, __$ref) {
-    var ctx__$60 = __$ctx.ctx, attrs__$61 = {
+function __$b41(__$ctx, __$ref) {
+    var ctx__$61 = __$ctx.ctx, attrs__$62 = {
         type: $$mods.type || "button",
-        name: ctx__$60.name,
-        value: ctx__$60.val
+        name: ctx__$61.name,
+        value: ctx__$61.val
     };
-    $$mods.disabled && (attrs__$61.disabled = "disabled");
-    return __$ctx.extend(function __$lb__$62() {
-        var __$r__$63;
-        var __$l0__$64 = __$ctx.__$a0;
+    $$mods.disabled && (attrs__$62.disabled = "disabled");
+    return __$ctx.extend(function __$lb__$63() {
+        var __$r__$64;
+        var __$l0__$65 = __$ctx.__$a0;
         __$ctx.__$a0 = __$ctx.__$a0 | 8192;
-        __$r__$63 = applyc(__$ctx, __$ref);
-        __$ctx.__$a0 = __$l0__$64;
-        return __$r__$63;
-    }(), attrs__$61);
+        __$r__$64 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$65;
+        return __$r__$64;
+    }(), attrs__$62);
 }
 
-function __$b41(__$ctx, __$ref) {
-    var ctx__$65 = __$ctx.ctx;
+function __$b42(__$ctx, __$ref) {
+    var ctx__$66 = __$ctx.ctx;
     return {
         role: "button",
-        tabindex: ctx__$65.tabIndex,
-        id: ctx__$65.id,
-        title: ctx__$65.title
+        tabindex: ctx__$66.tabIndex,
+        id: ctx__$66.id,
+        title: ctx__$66.title
     };
 }
 
-function __$b46(__$ctx, __$ref) {
-    var attrs__$38 = {
+function __$b47(__$ctx, __$ref) {
+    var attrs__$39 = {
         role: "menu"
     };
-    $$mods.disabled || (attrs__$38.tabindex = 0);
-    return attrs__$38;
+    $$mods.disabled || (attrs__$39.tabindex = 0);
+    return attrs__$39;
 }
 
-function __$b68(__$ctx, __$ref) {
-    var mix__$105 = function __$lb__$106() {
-        var __$r__$107;
-        var __$l0__$108 = __$ctx.__$a0;
-        __$ctx.__$a0 = __$ctx.__$a0 | 524288;
-        __$r__$107 = applyc(__$ctx, __$ref);
-        __$ctx.__$a0 = __$l0__$108;
-        return __$r__$107;
-    }(), uaMix__$109 = [ {
+function __$b69(__$ctx, __$ref) {
+    var mix__$112 = function __$lb__$113() {
+        var __$r__$114;
+        var __$l0__$115 = __$ctx.__$a0;
+        __$ctx.__$a0 = __$ctx.__$a0 | 1048576;
+        __$r__$114 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$115;
+        return __$r__$114;
+    }(), uaMix__$116 = [ {
         block: "ua",
         js: true
     } ];
-    return mix__$105 ? uaMix__$109.concat(mix__$105) : uaMix__$109;
-}
-
-function __$b79(__$ctx, __$ref) {
-    var __$r__$178;
-    var __$l0__$179 = $$mode;
-    $$mode = "";
-    var __$l1__$180 = __$ctx.ctx;
-    __$ctx.ctx = __$ctx.ctx._value;
-    var __$r__$182;
-    var __$l2__$183 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 8388608;
-    __$r__$182 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$183;
-    __$r__$178 = __$r__$182;
-    $$mode = __$l0__$179;
-    __$ctx.ctx = __$l1__$180;
-    return;
+    return mix__$112 ? uaMix__$116.concat(mix__$112) : uaMix__$116;
 }
 
 function __$b80(__$ctx, __$ref) {
-    __$ctx._listLength--;
-    var ctx__$184 = __$ctx.ctx;
-    if (ctx__$184 && ctx__$184 !== true || ctx__$184 === 0) {
-        __$ctx._str += ctx__$184 + "";
-    }
+    var __$r__$185;
+    var __$l0__$186 = $$mode;
+    $$mode = "";
+    var __$l1__$187 = __$ctx.ctx;
+    __$ctx.ctx = __$ctx.ctx._value;
+    var __$r__$189;
+    var __$l2__$190 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 16777216;
+    __$r__$189 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$190;
+    __$r__$185 = __$r__$189;
+    $$mode = __$l0__$186;
+    __$ctx.ctx = __$l1__$187;
     return;
 }
 
 function __$b81(__$ctx, __$ref) {
     __$ctx._listLength--;
+    var ctx__$191 = __$ctx.ctx;
+    if (ctx__$191 && ctx__$191 !== true || ctx__$191 === 0) {
+        __$ctx._str += ctx__$191 + "";
+    }
     return;
 }
 
 function __$b82(__$ctx, __$ref) {
-    var ctx__$185 = __$ctx.ctx, len__$186 = ctx__$185.length, i__$187 = 0, prevPos__$188 = __$ctx.position, prevNotNewList__$189 = __$ctx._notNewList;
-    if (prevNotNewList__$189) {
-        __$ctx._listLength += len__$186 - 1;
-    } else {
-        __$ctx.position = 0;
-        __$ctx._listLength = len__$186;
-    }
-    __$ctx._notNewList = true;
-    while (i__$187 < len__$186) (function __$lb__$190() {
-        var __$r__$191;
-        var __$l0__$192 = __$ctx.ctx;
-        __$ctx.ctx = ctx__$185[i__$187++];
-        __$r__$191 = applyc(__$ctx, __$ref);
-        __$ctx.ctx = __$l0__$192;
-        return __$r__$191;
-    })();
-    prevNotNewList__$189 || (__$ctx.position = prevPos__$188);
+    __$ctx._listLength--;
     return;
 }
 
 function __$b83(__$ctx, __$ref) {
+    var ctx__$192 = __$ctx.ctx, len__$193 = ctx__$192.length, i__$194 = 0, prevPos__$195 = __$ctx.position, prevNotNewList__$196 = __$ctx._notNewList;
+    if (prevNotNewList__$196) {
+        __$ctx._listLength += len__$193 - 1;
+    } else {
+        __$ctx.position = 0;
+        __$ctx._listLength = len__$193;
+    }
+    __$ctx._notNewList = true;
+    while (i__$194 < len__$193) (function __$lb__$197() {
+        var __$r__$198;
+        var __$l0__$199 = __$ctx.ctx;
+        __$ctx.ctx = ctx__$192[i__$194++];
+        __$r__$198 = applyc(__$ctx, __$ref);
+        __$ctx.ctx = __$l0__$199;
+        return __$r__$198;
+    })();
+    prevNotNewList__$196 || (__$ctx.position = prevPos__$195);
+    return;
+}
+
+function __$b84(__$ctx, __$ref) {
     __$ctx.ctx || (__$ctx.ctx = {});
-    var vBlock__$193 = __$ctx.ctx.block, vElem__$194 = __$ctx.ctx.elem, block__$195 = __$ctx._currBlock || $$block;
-    var __$r__$197;
-    var __$l0__$198 = $$mode;
+    var vBlock__$200 = __$ctx.ctx.block, vElem__$201 = __$ctx.ctx.elem, block__$202 = __$ctx._currBlock || $$block;
+    var __$r__$204;
+    var __$l0__$205 = $$mode;
     $$mode = "default";
-    var __$l1__$199 = $$block;
-    $$block = vBlock__$193 || (vElem__$194 ? block__$195 : undefined);
-    var __$l2__$200 = __$ctx._currBlock;
-    __$ctx._currBlock = vBlock__$193 || vElem__$194 ? undefined : block__$195;
-    var __$l3__$201 = $$elem;
-    $$elem = vElem__$194;
-    var __$l4__$202 = $$mods;
-    $$mods = vBlock__$193 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
-    var __$l5__$203 = $$elemMods;
+    var __$l1__$206 = $$block;
+    $$block = vBlock__$200 || (vElem__$201 ? block__$202 : undefined);
+    var __$l2__$207 = __$ctx._currBlock;
+    __$ctx._currBlock = vBlock__$200 || vElem__$201 ? undefined : block__$202;
+    var __$l3__$208 = $$elem;
+    $$elem = vElem__$201;
+    var __$l4__$209 = $$mods;
+    $$mods = vBlock__$200 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
+    var __$l5__$210 = $$elemMods;
     $$elemMods = __$ctx.ctx.elemMods || {};
     $$block || $$elem ? __$ctx.position = (__$ctx.position || 0) + 1 : __$ctx._listLength--;
     applyc(__$ctx, __$ref);
-    __$r__$197 = undefined;
-    $$mode = __$l0__$198;
-    $$block = __$l1__$199;
-    __$ctx._currBlock = __$l2__$200;
-    $$elem = __$l3__$201;
-    $$mods = __$l4__$202;
-    $$elemMods = __$l5__$203;
+    __$r__$204 = undefined;
+    $$mode = __$l0__$205;
+    $$block = __$l1__$206;
+    __$ctx._currBlock = __$l2__$207;
+    $$elem = __$l3__$208;
+    $$mods = __$l4__$209;
+    $$elemMods = __$l5__$210;
     return;
 }
 
@@ -964,29 +987,13 @@ function __$g0(__$ctx, __$ref) {
                 content: (__$ctx._checkedOptions[0] || __$ctx._select).text
             } ];
         }
-        var __$t = !$$elem;
-        if (__$t) {
+        if (!$$elem) {
             return [ {
                 elem: "button"
             }, {
                 block: "popup",
                 mods: {
-                    theme: $$mods.theme,
-                    autoclosable: true
-                },
-                cls: __$ctx.ctx.cls + "-popup",
-                directions: [ "bottom-left", "bottom-right", "top-left", "top-right" ],
-                content: {
-                    block: $$block,
-                    mods: $$mods,
-                    elem: "menu"
-                }
-            } ];
-            return [ {
-                elem: "button"
-            }, {
-                block: "popup",
-                mods: {
+                    target: "anchor",
                     theme: $$mods.theme,
                     autoclosable: true
                 },
@@ -1004,7 +1011,7 @@ function __$g0(__$ctx, __$ref) {
             if (typeof __$ctx.ctx.content !== "undefined") {
                 return __$ctx.ctx.content;
             }
-            var __$r = __$b10(__$ctx, __$ref);
+            var __$r = __$b9(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "menu") {
@@ -1024,27 +1031,27 @@ function __$g0(__$ctx, __$ref) {
     } else if (__$t === "ua") {
         var __$t = !$$elem;
         if (__$t) {
-            if ((__$ctx.__$a0 & 262144) === 0) {
-                return [ function __$lb__$102() {
-                    var __$r__$103;
-                    var __$l0__$104 = __$ctx.__$a0;
-                    __$ctx.__$a0 = __$ctx.__$a0 | 262144;
-                    __$r__$103 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$104;
-                    return __$r__$103;
+            if ((__$ctx.__$a0 & 524288) === 0) {
+                return [ function __$lb__$109() {
+                    var __$r__$110;
+                    var __$l0__$111 = __$ctx.__$a0;
+                    __$ctx.__$a0 = __$ctx.__$a0 | 524288;
+                    __$r__$110 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$111;
+                    return __$r__$110;
                 }(), "(function(d,n){", "d.documentElement.className+=", '" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");', '})(document,"createElementNS");' ];
             }
             return [ "(function(e,c){", 'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");', '})(document.documentElement,"className");' ];
         }
     } else if (__$t === "page") {
-        if ($$elem === "head" && (__$ctx.__$a0 & 1048576) === 0) {
-            return [ function __$lb__$110() {
-                var __$r__$111;
-                var __$l0__$112 = __$ctx.__$a0;
-                __$ctx.__$a0 = __$ctx.__$a0 | 1048576;
-                __$r__$111 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$112;
-                return __$r__$111;
+        if ($$elem === "head" && (__$ctx.__$a0 & 2097152) === 0) {
+            return [ function __$lb__$117() {
+                var __$r__$118;
+                var __$l0__$119 = __$ctx.__$a0;
+                __$ctx.__$a0 = __$ctx.__$a0 | 2097152;
+                __$r__$118 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$119;
+                return __$r__$118;
             }(), {
                 elem: "meta",
                 attrs: {
@@ -1065,14 +1072,14 @@ function __$g0(__$ctx, __$ref) {
                 }
             } ];
         }
-        if (!$$elem && (__$ctx.__$a0 & 2097152) === 0) {
-            return [ function __$lb__$113() {
-                var __$r__$114;
-                var __$l0__$115 = __$ctx.__$a0;
-                __$ctx.__$a0 = __$ctx.__$a0 | 2097152;
-                __$r__$114 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$115;
-                return __$r__$114;
+        if (!$$elem && (__$ctx.__$a0 & 4194304) === 0) {
+            return [ function __$lb__$120() {
+                var __$r__$121;
+                var __$l0__$122 = __$ctx.__$a0;
+                __$ctx.__$a0 = __$ctx.__$a0 | 4194304;
+                __$r__$121 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$122;
+                return __$r__$121;
             }(), __$ctx.ctx.scripts ];
         }
     }
@@ -1118,33 +1125,33 @@ function __$g1(__$ctx, __$ref) {
                     }
                 }
                 if ($$mods["focused"] === true && (__$ctx.__$a0 & 65536) === 0) {
-                    var __$r = __$ctx.extend(function __$lb__$83() {
-                        var __$r__$84;
-                        var __$l0__$85 = __$ctx.__$a0;
+                    var __$r = __$ctx.extend(function __$lb__$84() {
+                        var __$r__$85;
+                        var __$l0__$86 = __$ctx.__$a0;
                         __$ctx.__$a0 = __$ctx.__$a0 | 65536;
-                        __$r__$84 = applyc(__$ctx, __$ref);
-                        __$ctx.__$a0 = __$l0__$85;
-                        return __$r__$84;
+                        __$r__$85 = applyc(__$ctx, __$ref);
+                        __$ctx.__$a0 = __$l0__$86;
+                        return __$r__$85;
                     }(), {
                         live: false
                     });
                     if (__$r !== __$ref) return __$r;
                 }
             }
-            var __$r = __$b20(__$ctx, __$ref);
+            var __$r = __$b19(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "button") {
         var __$t = !$$elem;
         if (__$t) {
             if ($$mods && $$mods["focused"] === true && (__$ctx.__$a0 & 4096) === 0) {
-                var __$r = __$ctx.extend(function __$lb__$55() {
-                    var __$r__$56;
-                    var __$l0__$57 = __$ctx.__$a0;
+                var __$r = __$ctx.extend(function __$lb__$56() {
+                    var __$r__$57;
+                    var __$l0__$58 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 4096;
-                    __$r__$56 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$57;
-                    return __$r__$56;
+                    __$r__$57 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$58;
+                    return __$r__$57;
                 }(), {
                     live: false
                 });
@@ -1154,7 +1161,7 @@ function __$g1(__$ctx, __$ref) {
         }
     } else if (__$t === "popup") {
         if (!$$elem) {
-            var __$r = __$b23(__$ctx, __$ref);
+            var __$r = __$b22(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "menu") {
@@ -1194,47 +1201,59 @@ function __$g2(__$ctx, __$ref) {
     var __$t = $$block;
     if (__$t === "select") {
         if (!$$elem && $$mods && $$mods["mode"] === "radio" && __$ctx._checkedOptions && (__$ctx.__$a0 & 8) === 0) {
-            var __$r = __$b29(__$ctx, __$ref);
+            var __$r = __$b28(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
         var __$t = $$elem;
         if (__$t === "button") {
             if ((__$ctx.__$a0 & 32768) === 0) {
-                var __$r = __$b30(__$ctx, __$ref);
+                var __$r = __$b29(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         } else if (__$t === "menu") {
             if ((__$ctx.__$a0 & 2048) === 0) {
-                var __$r = __$b31(__$ctx, __$ref);
+                var __$r = __$b30(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         }
-        if (!$$elem && !__$ctx._select && (__$ctx.__$a0 & 131072) === 0) {
-            var __$r = __$b32(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
+        var __$t = !$$elem;
+        if (__$t) {
+            if ((__$ctx.__$a0 & 131072) === 0) {
+                var __$r = __$b31(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+            if (!__$ctx._select && (__$ctx.__$a0 & 262144) === 0) {
+                var __$r = __$b32(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
         }
     } else if (__$t === "button") {
         if (!$$elem && (__$ctx.__$a0 & 16384) === 0) {
             var __$r = __$b33(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
+    } else if (__$t === "popup") {
+        if (!$$elem && __$ctx._selectCls) {
+            var __$r = __$b34(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
     } else if (__$t === "menu") {
         if (!$$elem && (__$ctx.__$a0 & 1024) === 0) {
-            var __$r = __$b34(__$ctx, __$ref);
+            var __$r = __$b35(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "menu-item") {
         if (!$$elem && __$ctx._menuMods && (__$ctx.__$a0 & 512) === 0) {
-            var __$r = __$b35(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-    } else if (__$t === "page") {
-        if (!$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 4194304) === 0) {
             var __$r = __$b36(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
+    } else if (__$t === "page") {
+        if (!$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 8388608) === 0) {
+            var __$r = __$b37(__$ctx, __$ref);
+            if (__$r !== __$ref) return __$r;
+        }
     }
-    var __$r = __$b37(__$ctx, __$ref);
+    var __$r = __$b38(__$ctx, __$ref);
     if (__$r !== __$ref) return __$r;
     return __$ref;
 }
@@ -1243,7 +1262,7 @@ function __$g3(__$ctx, __$ref) {
     var __$t = $$block;
     if (__$t === "select") {
         if ($$elem === "control") {
-            var __$r = __$b38(__$ctx, __$ref);
+            var __$r = __$b39(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "button") {
@@ -1255,10 +1274,10 @@ function __$g3(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ((!$$mods.type || $$mods.type === "submit") && (__$ctx.__$a0 & 8192) === 0) {
-                var __$r = __$b40(__$ctx, __$ref);
+                var __$r = __$b41(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
-            var __$r = __$b41(__$ctx, __$ref);
+            var __$r = __$b42(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "icon") {
@@ -1292,7 +1311,7 @@ function __$g3(__$ctx, __$ref) {
             };
         }
         if (!$$elem) {
-            var __$r = __$b46(__$ctx, __$ref);
+            var __$r = __$b47(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
     } else if (__$t === "menu-item") {

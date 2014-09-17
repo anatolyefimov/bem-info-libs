@@ -1,24 +1,29 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/select/select.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/select/select.styl:begin */
 .select {
   display: inline-block;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/select/select.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/select/select.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/select/select.styl:begin */
+.page {
+  min-height: 150px;
+}
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/select/select.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/menu/menu.styl:begin */
 .menu {
   overflow-y: auto;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/menu/menu.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/popup/popup.styl:begin */
 .popup {
   position: absolute;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/common.blocks/popup/popup.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/popup/popup.styl:begin */
 .popup:not([class*="popup_theme"]) {
   display: none;
   background: #fff7db;
@@ -27,8 +32,8 @@
 .popup_visible:not([class*="popup_theme"]) {
   display: block;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/popup/popup.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:begin */
 .popup_theme_simple {
   display: none;
   background: #fff;
@@ -37,8 +42,8 @@
 .popup_theme_simple.popup_visible {
   display: block;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_simple.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_simple.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_simple.styl:begin */
 .menu_theme_simple {
   outline: 0;
 }
@@ -50,8 +55,8 @@
   font-style: italic;
   padding: 4px 10px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_simple.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_simple.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_simple.styl:begin */
 .menu-item_theme_simple {
   padding: 4px 10px;
   white-space: nowrap;
@@ -80,8 +85,8 @@
   margin-right: 0.4em;
   vertical-align: top;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_simple.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -140,29 +145,4 @@
 .button_theme_simple .icon:last-child {
   margin-right: -0.7em;
 }
-.button_theme_simple.button_togglable_radio:first-of-type,
-.button_theme_simple.button_togglable_radio ~ .button_togglable_radio {
-  border-right-width: 0;
-}
-.button_theme_simple.button_togglable_radio ~ .button_togglable_radio {
-  border-radius: 0;
-}
-.button_theme_simple.button_togglable_radio:first-of-type {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.button_theme_simple.button_togglable_radio:last-of-type {
-  border-right-width: 1px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.button_theme_simple.button_togglable_radio.button_hovered {
-  border-right-width: 1px;
-}
-.button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio {
-  border-left-width: 0;
-}
-.button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio {
-  border-left-width: 1px;
-}
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */

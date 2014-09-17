@@ -297,6 +297,15 @@ exports.deps = [
     },
     {
         "block": "popup",
+        "mod": "target"
+    },
+    {
+        "block": "popup",
+        "mod": "target",
+        "val": "anchor"
+    },
+    {
+        "block": "popup",
         "mod": "autoclosable",
         "val": true
     },

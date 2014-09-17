@@ -729,70 +729,70 @@ function applyc(__$ctx, __$ref) {
 });
 
 function __$b1(__$ctx, __$ref) {
-    var ctx__$85 = __$ctx.ctx, mods__$86 = $$mods;
+    var ctx__$86 = __$ctx.ctx, mods__$87 = $$mods;
     return [ {
         block: "button",
         mods: {
-            togglable: mods__$86.mode === "radio-check" ? "check" : "radio",
-            checked: mods__$86.checked,
-            disabled: mods__$86.disabled,
-            theme: mods__$86.theme,
-            size: mods__$86.size
+            togglable: mods__$87.mode === "radio-check" ? "check" : "radio",
+            checked: mods__$87.checked,
+            disabled: mods__$87.disabled,
+            theme: mods__$87.theme,
+            size: mods__$87.size
         },
-        title: ctx__$85.title,
-        content: [ ctx__$85.icon, typeof ctx__$85.text !== "undefined" ? {
+        title: ctx__$86.title,
+        content: [ ctx__$86.icon, typeof ctx__$86.text !== "undefined" ? {
             elem: "text",
-            content: ctx__$85.text
+            content: ctx__$86.text
         } : "" ]
     }, {
         block: "radio",
         elem: "control",
-        checked: mods__$86.checked,
-        disabled: mods__$86.disabled,
-        name: ctx__$85.name,
-        val: ctx__$85.val
+        checked: mods__$87.checked,
+        disabled: mods__$87.disabled,
+        name: ctx__$86.name,
+        val: ctx__$86.val
     } ];
 }
 
 function __$b2(__$ctx, __$ref) {
-    var ctx__$89 = __$ctx.ctx;
+    var ctx__$90 = __$ctx.ctx;
     return [ {
         elem: "box",
         content: {
             elem: "control",
             checked: $$mods.checked,
             disabled: $$mods.disabled,
-            name: ctx__$89.name,
-            val: ctx__$89.val
+            name: ctx__$90.name,
+            val: ctx__$90.val
         }
-    }, ctx__$89.text ];
+    }, ctx__$90.text ];
 }
 
 function __$b7(__$ctx, __$ref) {
-    var ctx__$97 = __$ctx.ctx, content__$98 = [ ctx__$97.icon ];
-    "text" in ctx__$97 && content__$98.push({
+    var ctx__$98 = __$ctx.ctx, content__$99 = [ ctx__$98.icon ];
+    "text" in ctx__$98 && content__$99.push({
         elem: "text",
-        content: ctx__$97.text
+        content: ctx__$98.text
     });
-    return content__$98;
+    return content__$99;
 }
 
 function __$b11(__$ctx, __$ref) {
-    var mods__$90 = $$mods, ctx__$91 = __$ctx.ctx;
-    return (ctx__$91.options || []).map(function(option, i) {
-        return [ !!i && !mods__$90.type && {
+    var mods__$91 = $$mods, ctx__$92 = __$ctx.ctx;
+    return (ctx__$92.options || []).map(function(option, i) {
+        return [ !!i && !mods__$91.type && {
             tag: "br"
         }, {
             block: "radio",
             mods: {
-                type: mods__$90.type,
-                mode: mods__$90.mode,
-                theme: mods__$90.theme,
-                size: mods__$90.size,
+                type: mods__$91.type,
+                mode: mods__$91.mode,
+                theme: mods__$91.theme,
+                size: mods__$91.size,
                 checked: option.checked,
-                disabled: option.disabled || mods__$90.disabled
+                disabled: option.disabled || mods__$91.disabled
             },
-            name: ctx__$91.name,
+            name: ctx__$92.name,
             val: option.val,
             text: option.text,
             title: option.title,
@@ -802,60 +802,60 @@ function __$b11(__$ctx, __$ref) {
 }
 
 function __$b12(__$ctx, __$ref) {
-    var ctx__$92 = __$ctx.ctx, mods__$93 = $$mods;
+    var ctx__$93 = __$ctx.ctx, mods__$94 = $$mods;
     return [ {
         block: "button",
         mods: {
             togglable: "check",
-            checked: mods__$93.checked,
-            disabled: mods__$93.disabled,
-            theme: mods__$93.theme,
-            size: mods__$93.size
+            checked: mods__$94.checked,
+            disabled: mods__$94.disabled,
+            theme: mods__$94.theme,
+            size: mods__$94.size
         },
-        title: ctx__$92.title,
-        content: [ ctx__$92.icon, typeof ctx__$92.text !== "undefined" ? {
+        title: ctx__$93.title,
+        content: [ ctx__$93.icon, typeof ctx__$93.text !== "undefined" ? {
             elem: "text",
-            content: ctx__$92.text
+            content: ctx__$93.text
         } : "" ]
     }, {
         block: "checkbox",
         elem: "control",
-        checked: mods__$93.checked,
-        disabled: mods__$93.disabled,
-        name: ctx__$92.name,
-        val: ctx__$92.val
+        checked: mods__$94.checked,
+        disabled: mods__$94.disabled,
+        name: ctx__$93.name,
+        val: ctx__$93.val
     } ];
 }
 
 function __$b13(__$ctx, __$ref) {
-    var ctx__$113 = __$ctx.ctx, mods__$114 = $$mods;
+    var ctx__$114 = __$ctx.ctx, mods__$115 = $$mods;
     return [ {
         elem: "box",
         content: {
             elem: "control",
-            checked: mods__$114.checked,
-            disabled: mods__$114.disabled,
-            name: ctx__$113.name,
-            val: ctx__$113.val
+            checked: mods__$115.checked,
+            disabled: mods__$115.disabled,
+            name: ctx__$114.name,
+            val: ctx__$114.val
         }
-    }, ctx__$113.text ];
+    }, ctx__$114.text ];
 }
 
 function __$b14(__$ctx, __$ref) {
-    var mods__$115 = $$mods, ctx__$116 = __$ctx.ctx;
-    return (ctx__$116.options || []).map(function(option, i) {
-        return [ !!i && !mods__$115.type && {
+    var mods__$116 = $$mods, ctx__$117 = __$ctx.ctx;
+    return (ctx__$117.options || []).map(function(option, i) {
+        return [ !!i && !mods__$116.type && {
             tag: "br"
         }, {
             block: "checkbox",
             mods: {
-                type: mods__$115.type,
-                theme: mods__$115.theme,
-                size: mods__$115.size,
+                type: mods__$116.type,
+                theme: mods__$116.theme,
+                size: mods__$116.size,
                 checked: option.checked,
-                disabled: option.disabled || mods__$115.disabled
+                disabled: option.disabled || mods__$116.disabled
             },
-            name: ctx__$116.name,
+            name: ctx__$117.name,
             val: option.val,
             text: option.text,
             title: option.title,
@@ -884,11 +884,11 @@ function __$b20(__$ctx, __$ref) {
 }
 
 function __$b21(__$ctx, __$ref) {
-    var mods__$41 = $$mods;
-    var __$r__$43;
-    var __$l0__$44 = $$mode;
+    var mods__$42 = $$mods;
+    var __$r__$44;
+    var __$l0__$45 = $$mode;
     $$mode = "";
-    var __$l1__$45 = __$ctx.ctx;
+    var __$l1__$46 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "button",
         mix: {
@@ -896,21 +896,21 @@ function __$b21(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$41.size,
-            theme: mods__$41.theme,
-            focused: mods__$41.focused,
-            disabled: mods__$41.disabled,
-            checked: mods__$41.mode !== "radio" && !!__$ctx._checkedOptions.length
+            size: mods__$42.size,
+            theme: mods__$42.theme,
+            focused: mods__$42.focused,
+            disabled: mods__$42.disabled,
+            checked: mods__$42.mode !== "radio" && !!__$ctx._checkedOptions.length
         },
         id: __$ctx._select.id,
         textMaxWidth: __$ctx._select.textMaxWidth,
-        content: [ function __$lb__$46() {
-            var __$r__$47;
-            var __$l3__$48 = $$mode;
+        content: [ function __$lb__$47() {
+            var __$r__$48;
+            var __$l3__$49 = $$mode;
             $$mode = "content";
-            __$r__$47 = applyc(__$ctx, __$ref);
-            $$mode = __$l3__$48;
-            return __$r__$47;
+            __$r__$48 = applyc(__$ctx, __$ref);
+            $$mode = __$l3__$49;
+            return __$r__$48;
         }(), {
             block: "icon",
             mix: {
@@ -919,20 +919,20 @@ function __$b21(__$ctx, __$ref) {
             }
         } ]
     };
-    var __$r__$49;
-    var __$l2__$50 = __$ctx.__$a0;
+    var __$r__$50;
+    var __$l2__$51 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 256;
-    __$r__$49 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$50;
-    __$r__$43 = __$r__$49;
-    $$mode = __$l0__$44;
-    __$ctx.ctx = __$l1__$45;
+    __$r__$50 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$51;
+    __$r__$44 = __$r__$50;
+    $$mode = __$l0__$45;
+    __$ctx.ctx = __$l1__$46;
     return;
 }
 
 function __$b22(__$ctx, __$ref) {
-    var mods__$31 = $$mods, optionToMenuItem__$32 = function(option) {
-        var res__$33 = {
+    var mods__$32 = $$mods, optionToMenuItem__$33 = function(option) {
+        var res__$34 = {
             block: "menu-item",
             mods: {
                 checked: option.checked,
@@ -945,15 +945,15 @@ function __$b22(__$ctx, __$ref) {
             content: option.text
         };
         if (option.icon) {
-            res__$33.js.text = option.text;
-            res__$33.content = [ option.icon, res__$33.content ];
+            res__$34.js.text = option.text;
+            res__$34.content = [ option.icon, res__$34.content ];
         }
-        return res__$33;
+        return res__$34;
     };
-    var __$r__$35;
-    var __$l0__$36 = $$mode;
+    var __$r__$36;
+    var __$l0__$37 = $$mode;
     $$mode = "";
-    var __$l1__$37 = __$ctx.ctx;
+    var __$l1__$38 = __$ctx.ctx;
     __$ctx.ctx = {
         block: "menu",
         mix: {
@@ -961,10 +961,10 @@ function __$b22(__$ctx, __$ref) {
             elem: $$elem
         },
         mods: {
-            size: mods__$31.size,
-            theme: mods__$31.theme,
-            disabled: mods__$31.disabled,
-            mode: mods__$31.mode
+            size: mods__$32.size,
+            theme: mods__$32.theme,
+            disabled: mods__$32.disabled,
+            mode: mods__$32.mode
         },
         attrs: {
             tabindex: undefined
@@ -976,120 +976,121 @@ function __$b22(__$ctx, __$ref) {
                     "has-title": !!optionOrGroup.title
                 },
                 title: optionOrGroup.title,
-                content: optionOrGroup.group.map(optionToMenuItem__$32)
-            } : optionToMenuItem__$32(optionOrGroup);
+                content: optionOrGroup.group.map(optionToMenuItem__$33)
+            } : optionToMenuItem__$33(optionOrGroup);
         })
     };
-    var __$r__$39;
-    var __$l2__$40 = __$ctx.__$a0;
+    var __$r__$40;
+    var __$l2__$41 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 128;
-    __$r__$39 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$40;
-    __$r__$35 = __$r__$39;
-    $$mode = __$l0__$36;
-    __$ctx.ctx = __$l1__$37;
+    __$r__$40 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$41;
+    __$r__$36 = __$r__$40;
+    $$mode = __$l0__$37;
+    __$ctx.ctx = __$l1__$38;
     return;
 }
 
 function __$b23(__$ctx, __$ref) {
     if (!$$mods.mode) throw Error("Can't build select without mode modifier");
-    var options__$56 = __$ctx.ctx.options, i__$57 = 0, j__$58, optionOrGroup__$59, option__$60, firstOption__$61, checkedOptions__$62 = [];
-    while (optionOrGroup__$59 = options__$56[i__$57++]) {
-        if (optionOrGroup__$59.group) {
-            j__$58 = 0;
-            while (option__$60 = optionOrGroup__$59.group[j__$58++]) {
-                i__$57 === 1 && j__$58 === 1 && (firstOption__$61 = option__$60);
-                option__$60.checked && checkedOptions__$62.push(option__$60);
+    var options__$57 = __$ctx.ctx.options, i__$58 = 0, j__$59, optionOrGroup__$60, option__$61, firstOption__$62, checkedOptions__$63 = [];
+    while (optionOrGroup__$60 = options__$57[i__$58++]) {
+        if (optionOrGroup__$60.group) {
+            j__$59 = 0;
+            while (option__$61 = optionOrGroup__$60.group[j__$59++]) {
+                i__$58 === 1 && j__$59 === 1 && (firstOption__$62 = option__$61);
+                option__$61.checked && checkedOptions__$63.push(option__$61);
             }
         } else {
-            i__$57 === 1 && (firstOption__$61 = optionOrGroup__$59);
-            optionOrGroup__$59.checked && checkedOptions__$62.push(optionOrGroup__$59);
+            i__$58 === 1 && (firstOption__$62 = optionOrGroup__$60);
+            optionOrGroup__$60.checked && checkedOptions__$63.push(optionOrGroup__$60);
         }
     }
-    var __$r__$64;
-    var __$l0__$65 = __$ctx._select;
+    var __$r__$65;
+    var __$l0__$66 = __$ctx._select;
     __$ctx._select = __$ctx.ctx;
-    var __$l1__$66 = __$ctx._checkedOptions;
-    __$ctx._checkedOptions = checkedOptions__$62;
-    var __$l2__$67 = __$ctx._firstOption;
-    __$ctx._firstOption = firstOption__$61;
-    var __$r__$69;
-    var __$l3__$70 = __$ctx.__$a0;
+    var __$l1__$67 = __$ctx._checkedOptions;
+    __$ctx._checkedOptions = checkedOptions__$63;
+    var __$l2__$68 = __$ctx._firstOption;
+    __$ctx._firstOption = firstOption__$62;
+    var __$r__$70;
+    var __$l3__$71 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 1024;
-    __$r__$69 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l3__$70;
-    __$r__$64 = __$r__$69;
-    __$ctx._select = __$l0__$65;
-    __$ctx._checkedOptions = __$l1__$66;
-    __$ctx._firstOption = __$l2__$67;
+    __$r__$70 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l3__$71;
+    __$r__$65 = __$r__$70;
+    __$ctx._select = __$l0__$66;
+    __$ctx._checkedOptions = __$l1__$67;
+    __$ctx._firstOption = __$l2__$68;
     return;
 }
 
 function __$b24(__$ctx, __$ref) {
-    var __$r__$106;
-    var __$l0__$107 = __$ctx._button;
+    var __$r__$107;
+    var __$l0__$108 = __$ctx._button;
     __$ctx._button = __$ctx.ctx;
-    var __$r__$109;
-    var __$l1__$110 = __$ctx.__$a0;
+    var __$r__$110;
+    var __$l1__$111 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 65536;
-    __$r__$109 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$110;
-    __$r__$106 = __$r__$109;
-    __$ctx._button = __$l0__$107;
+    __$r__$110 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$111;
+    __$r__$107 = __$r__$110;
+    __$ctx._button = __$l0__$108;
     return;
 }
 
 function __$b25(__$ctx, __$ref) {
-    var __$r__$26;
-    var __$l0__$27 = __$ctx._menuMods;
+    var __$r__$27;
+    var __$l0__$28 = __$ctx._menuMods;
     __$ctx._menuMods = {
         theme: $$mods.theme,
         disabled: $$mods.disabled
     };
-    var __$r__$29;
-    var __$l1__$30 = __$ctx.__$a0;
+    var __$r__$30;
+    var __$l1__$31 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 64;
-    __$r__$29 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$30;
-    __$r__$26 = __$r__$29;
-    __$ctx._menuMods = __$l0__$27;
+    __$r__$30 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$31;
+    __$r__$27 = __$r__$30;
+    __$ctx._menuMods = __$l0__$28;
     delete __$ctx._menuTheme;
     return;
 }
 
 function __$b26(__$ctx, __$ref) {
-    $$mods.theme = __$ctx._menuMods.theme;
-    $$mods.disabled = $$mods.disabled || __$ctx._menuMods.disabled;
-    var __$r__$22;
-    var __$l0__$23 = __$ctx.__$a0;
+    var mods__$21 = $$mods;
+    mods__$21.theme = mods__$21.theme || __$ctx._menuMods.theme;
+    mods__$21.disabled = mods__$21.disabled || __$ctx._menuMods.disabled;
+    var __$r__$23;
+    var __$l0__$24 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 32;
-    __$r__$22 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l0__$23;
+    __$r__$23 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l0__$24;
     return;
 }
 
 function __$b27(__$ctx, __$ref) {
-    var __$r__$80;
-    var __$l0__$81 = __$ctx._input;
+    var __$r__$81;
+    var __$l0__$82 = __$ctx._input;
     __$ctx._input = __$ctx.ctx;
-    var __$r__$83;
-    var __$l1__$84 = __$ctx.__$a0;
+    var __$r__$84;
+    var __$l1__$85 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 8192;
-    __$r__$83 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l1__$84;
-    __$r__$80 = __$r__$83;
-    __$ctx._input = __$l0__$81;
+    __$r__$84 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l1__$85;
+    __$r__$81 = __$r__$84;
+    __$ctx._input = __$l0__$82;
     return;
 }
 
 function __$b28(__$ctx, __$ref) {
     __$ctx._defPageApplied = true;
-    var ctx__$131 = __$ctx.ctx;
-    var __$r__$133;
-    var __$l0__$134 = $$mode;
+    var ctx__$132 = __$ctx.ctx;
+    var __$r__$134;
+    var __$l0__$135 = $$mode;
     $$mode = "";
-    var __$l1__$135 = __$ctx.ctx;
-    __$ctx.ctx = [ ctx__$131.doctype || "<!DOCTYPE html>", {
+    var __$l1__$136 = __$ctx.ctx;
+    __$ctx.ctx = [ ctx__$132.doctype || "<!DOCTYPE html>", {
         tag: "html",
         cls: "ua_js_no",
         content: [ {
@@ -1101,115 +1102,115 @@ function __$b28(__$ctx, __$ref) {
                 }
             }, {
                 tag: "title",
-                content: ctx__$131.title
+                content: ctx__$132.title
             }, {
                 block: "ua"
-            }, ctx__$131.head, ctx__$131.styles, ctx__$131.favicon ? {
+            }, ctx__$132.head, ctx__$132.styles, ctx__$132.favicon ? {
                 elem: "favicon",
-                url: ctx__$131.favicon
+                url: ctx__$132.favicon
             } : "" ]
-        }, ctx__$131 ]
+        }, ctx__$132 ]
     } ];
-    var __$r__$137;
-    var __$l2__$138 = __$ctx.__$a0;
+    var __$r__$138;
+    var __$l2__$139 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 2097152;
-    __$r__$137 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$138;
-    __$r__$133 = __$r__$137;
-    $$mode = __$l0__$134;
-    __$ctx.ctx = __$l1__$135;
+    __$r__$138 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$139;
+    __$r__$134 = __$r__$138;
+    $$mode = __$l0__$135;
+    __$ctx.ctx = __$l1__$136;
     __$ctx._defPageApplied = false;
     return;
 }
 
 function __$b29(__$ctx, __$ref) {
-    var BEM_INTERNAL__$139 = __$ctx.BEM.INTERNAL, ctx__$140 = __$ctx.ctx, isBEM__$141, tag__$142, res__$143;
-    var __$r__$145;
-    var __$l0__$146 = __$ctx._str;
+    var BEM_INTERNAL__$140 = __$ctx.BEM.INTERNAL, ctx__$141 = __$ctx.ctx, isBEM__$142, tag__$143, res__$144;
+    var __$r__$146;
+    var __$l0__$147 = __$ctx._str;
     __$ctx._str = "";
-    var vBlock__$147 = $$block;
-    var __$r__$149;
-    var __$l1__$150 = $$mode;
+    var vBlock__$148 = $$block;
+    var __$r__$150;
+    var __$l1__$151 = $$mode;
     $$mode = "tag";
-    __$r__$149 = applyc(__$ctx, __$ref);
-    $$mode = __$l1__$150;
-    tag__$142 = __$r__$149;
-    typeof tag__$142 !== "undefined" || (tag__$142 = ctx__$140.tag);
-    typeof tag__$142 !== "undefined" || (tag__$142 = "div");
-    if (tag__$142) {
-        var jsParams__$151, js__$152;
-        if (vBlock__$147 && ctx__$140.js !== false) {
-            var __$r__$153;
-            var __$l2__$154 = $$mode;
+    __$r__$150 = applyc(__$ctx, __$ref);
+    $$mode = __$l1__$151;
+    tag__$143 = __$r__$150;
+    typeof tag__$143 !== "undefined" || (tag__$143 = ctx__$141.tag);
+    typeof tag__$143 !== "undefined" || (tag__$143 = "div");
+    if (tag__$143) {
+        var jsParams__$152, js__$153;
+        if (vBlock__$148 && ctx__$141.js !== false) {
+            var __$r__$154;
+            var __$l2__$155 = $$mode;
             $$mode = "js";
-            __$r__$153 = applyc(__$ctx, __$ref);
-            $$mode = __$l2__$154;
-            js__$152 = __$r__$153;
-            js__$152 = js__$152 ? __$ctx.extend(ctx__$140.js, js__$152 === true ? {} : js__$152) : ctx__$140.js === true ? {} : ctx__$140.js;
-            js__$152 && ((jsParams__$151 = {})[BEM_INTERNAL__$139.buildClass(vBlock__$147, ctx__$140.elem)] = js__$152);
+            __$r__$154 = applyc(__$ctx, __$ref);
+            $$mode = __$l2__$155;
+            js__$153 = __$r__$154;
+            js__$153 = js__$153 ? __$ctx.extend(ctx__$141.js, js__$153 === true ? {} : js__$153) : ctx__$141.js === true ? {} : ctx__$141.js;
+            js__$153 && ((jsParams__$152 = {})[BEM_INTERNAL__$140.buildClass(vBlock__$148, ctx__$141.elem)] = js__$153);
         }
-        __$ctx._str += "<" + tag__$142;
-        var __$r__$155;
-        var __$l3__$156 = $$mode;
+        __$ctx._str += "<" + tag__$143;
+        var __$r__$156;
+        var __$l3__$157 = $$mode;
         $$mode = "bem";
-        __$r__$155 = applyc(__$ctx, __$ref);
-        $$mode = __$l3__$156;
-        isBEM__$141 = __$r__$155;
-        typeof isBEM__$141 !== "undefined" || (isBEM__$141 = typeof ctx__$140.bem !== "undefined" ? ctx__$140.bem : ctx__$140.block || ctx__$140.elem);
-        var __$r__$158;
-        var __$l4__$159 = $$mode;
+        __$r__$156 = applyc(__$ctx, __$ref);
+        $$mode = __$l3__$157;
+        isBEM__$142 = __$r__$156;
+        typeof isBEM__$142 !== "undefined" || (isBEM__$142 = typeof ctx__$141.bem !== "undefined" ? ctx__$141.bem : ctx__$141.block || ctx__$141.elem);
+        var __$r__$159;
+        var __$l4__$160 = $$mode;
         $$mode = "cls";
-        __$r__$158 = applyc(__$ctx, __$ref);
-        $$mode = __$l4__$159;
-        var cls__$157 = __$r__$158;
-        cls__$157 || (cls__$157 = ctx__$140.cls);
-        var addJSInitClass__$160 = ctx__$140.block && jsParams__$151;
-        if (isBEM__$141 || cls__$157) {
+        __$r__$159 = applyc(__$ctx, __$ref);
+        $$mode = __$l4__$160;
+        var cls__$158 = __$r__$159;
+        cls__$158 || (cls__$158 = ctx__$141.cls);
+        var addJSInitClass__$161 = ctx__$141.block && jsParams__$152;
+        if (isBEM__$142 || cls__$158) {
             __$ctx._str += ' class="';
-            if (isBEM__$141) {
-                __$ctx._str += BEM_INTERNAL__$139.buildClasses(vBlock__$147, ctx__$140.elem, ctx__$140.elemMods || ctx__$140.mods);
-                var __$r__$162;
-                var __$l5__$163 = $$mode;
+            if (isBEM__$142) {
+                __$ctx._str += BEM_INTERNAL__$140.buildClasses(vBlock__$148, ctx__$141.elem, ctx__$141.elemMods || ctx__$141.mods);
+                var __$r__$163;
+                var __$l5__$164 = $$mode;
                 $$mode = "mix";
-                __$r__$162 = applyc(__$ctx, __$ref);
-                $$mode = __$l5__$163;
-                var mix__$161 = __$r__$162;
-                ctx__$140.mix && (mix__$161 = mix__$161 ? [].concat(mix__$161, ctx__$140.mix) : ctx__$140.mix);
-                if (mix__$161) {
-                    var visited__$164 = {}, visitedKey__$165 = function(block, elem) {
+                __$r__$163 = applyc(__$ctx, __$ref);
+                $$mode = __$l5__$164;
+                var mix__$162 = __$r__$163;
+                ctx__$141.mix && (mix__$162 = mix__$162 ? [].concat(mix__$162, ctx__$141.mix) : ctx__$141.mix);
+                if (mix__$162) {
+                    var visited__$165 = {}, visitedKey__$166 = function(block, elem) {
                         return (block || "") + "__" + (elem || "");
                     };
-                    visited__$164[visitedKey__$165(vBlock__$147, $$elem)] = true;
-                    __$ctx.isArray(mix__$161) || (mix__$161 = [ mix__$161 ]);
-                    for (var i__$166 = 0; i__$166 < mix__$161.length; i__$166++) {
-                        var mixItem__$167 = mix__$161[i__$166], hasItem__$168 = mixItem__$167.block || mixItem__$167.elem, mixBlock__$169 = mixItem__$167.block || mixItem__$167._block || $$block, mixElem__$170 = mixItem__$167.elem || mixItem__$167._elem || $$elem;
-                        hasItem__$168 && (__$ctx._str += " ");
-                        __$ctx._str += BEM_INTERNAL__$139[hasItem__$168 ? "buildClasses" : "buildModsClasses"](mixBlock__$169, mixItem__$167.elem || mixItem__$167._elem || (mixItem__$167.block ? undefined : $$elem), mixItem__$167.elemMods || mixItem__$167.mods);
-                        if (mixItem__$167.js) {
-                            (jsParams__$151 || (jsParams__$151 = {}))[BEM_INTERNAL__$139.buildClass(mixBlock__$169, mixItem__$167.elem)] = mixItem__$167.js === true ? {} : mixItem__$167.js;
-                            addJSInitClass__$160 || (addJSInitClass__$160 = mixBlock__$169 && !mixItem__$167.elem);
+                    visited__$165[visitedKey__$166(vBlock__$148, $$elem)] = true;
+                    __$ctx.isArray(mix__$162) || (mix__$162 = [ mix__$162 ]);
+                    for (var i__$167 = 0; i__$167 < mix__$162.length; i__$167++) {
+                        var mixItem__$168 = mix__$162[i__$167], hasItem__$169 = mixItem__$168.block || mixItem__$168.elem, mixBlock__$170 = mixItem__$168.block || mixItem__$168._block || $$block, mixElem__$171 = mixItem__$168.elem || mixItem__$168._elem || $$elem;
+                        hasItem__$169 && (__$ctx._str += " ");
+                        __$ctx._str += BEM_INTERNAL__$140[hasItem__$169 ? "buildClasses" : "buildModsClasses"](mixBlock__$170, mixItem__$168.elem || mixItem__$168._elem || (mixItem__$168.block ? undefined : $$elem), mixItem__$168.elemMods || mixItem__$168.mods);
+                        if (mixItem__$168.js) {
+                            (jsParams__$152 || (jsParams__$152 = {}))[BEM_INTERNAL__$140.buildClass(mixBlock__$170, mixItem__$168.elem)] = mixItem__$168.js === true ? {} : mixItem__$168.js;
+                            addJSInitClass__$161 || (addJSInitClass__$161 = mixBlock__$170 && !mixItem__$168.elem);
                         }
-                        if (hasItem__$168 && !visited__$164[visitedKey__$165(mixBlock__$169, mixElem__$170)]) {
-                            visited__$164[visitedKey__$165(mixBlock__$169, mixElem__$170)] = true;
-                            var __$r__$172;
-                            var __$l6__$173 = $$mode;
+                        if (hasItem__$169 && !visited__$165[visitedKey__$166(mixBlock__$170, mixElem__$171)]) {
+                            visited__$165[visitedKey__$166(mixBlock__$170, mixElem__$171)] = true;
+                            var __$r__$173;
+                            var __$l6__$174 = $$mode;
                             $$mode = "mix";
-                            var __$l7__$174 = $$block;
-                            $$block = mixBlock__$169;
-                            var __$l8__$175 = $$elem;
-                            $$elem = mixElem__$170;
-                            __$r__$172 = applyc(__$ctx, __$ref);
-                            $$mode = __$l6__$173;
-                            $$block = __$l7__$174;
-                            $$elem = __$l8__$175;
-                            var nestedMix__$171 = __$r__$172;
-                            if (nestedMix__$171) {
-                                for (var j__$176 = 0; j__$176 < nestedMix__$171.length; j__$176++) {
-                                    var nestedItem__$177 = nestedMix__$171[j__$176];
-                                    if (!nestedItem__$177.block && !nestedItem__$177.elem || !visited__$164[visitedKey__$165(nestedItem__$177.block, nestedItem__$177.elem)]) {
-                                        nestedItem__$177._block = mixBlock__$169;
-                                        nestedItem__$177._elem = mixElem__$170;
-                                        mix__$161.splice(i__$166 + 1, 0, nestedItem__$177);
+                            var __$l7__$175 = $$block;
+                            $$block = mixBlock__$170;
+                            var __$l8__$176 = $$elem;
+                            $$elem = mixElem__$171;
+                            __$r__$173 = applyc(__$ctx, __$ref);
+                            $$mode = __$l6__$174;
+                            $$block = __$l7__$175;
+                            $$elem = __$l8__$176;
+                            var nestedMix__$172 = __$r__$173;
+                            if (nestedMix__$172) {
+                                for (var j__$177 = 0; j__$177 < nestedMix__$172.length; j__$177++) {
+                                    var nestedItem__$178 = nestedMix__$172[j__$177];
+                                    if (!nestedItem__$178.block && !nestedItem__$178.elem || !visited__$165[visitedKey__$166(nestedItem__$178.block, nestedItem__$178.elem)]) {
+                                        nestedItem__$178._block = mixBlock__$170;
+                                        nestedItem__$178._elem = mixElem__$171;
+                                        mix__$162.splice(i__$167 + 1, 0, nestedItem__$178);
                                     }
                                 }
                             }
@@ -1217,72 +1218,72 @@ function __$b29(__$ctx, __$ref) {
                     }
                 }
             }
-            cls__$157 && (__$ctx._str += isBEM__$141 ? " " + cls__$157 : cls__$157);
-            __$ctx._str += addJSInitClass__$160 ? ' i-bem"' : '"';
+            cls__$158 && (__$ctx._str += isBEM__$142 ? " " + cls__$158 : cls__$158);
+            __$ctx._str += addJSInitClass__$161 ? ' i-bem"' : '"';
         }
-        if (isBEM__$141 && jsParams__$151) {
-            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$151)) + '"';
+        if (isBEM__$142 && jsParams__$152) {
+            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$152)) + '"';
         }
-        var __$r__$179;
-        var __$l9__$180 = $$mode;
+        var __$r__$180;
+        var __$l9__$181 = $$mode;
         $$mode = "attrs";
-        __$r__$179 = applyc(__$ctx, __$ref);
-        $$mode = __$l9__$180;
-        var attrs__$178 = __$r__$179;
-        attrs__$178 = __$ctx.extend(attrs__$178, ctx__$140.attrs);
-        if (attrs__$178) {
-            var name__$181, attr__$182;
-            for (name__$181 in attrs__$178) {
-                attr__$182 = attrs__$178[name__$181];
-                if (typeof attr__$182 === "undefined") continue;
-                __$ctx._str += " " + name__$181 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$182) ? attr__$182 : __$ctx.reapply(attr__$182)) + '"';
+        __$r__$180 = applyc(__$ctx, __$ref);
+        $$mode = __$l9__$181;
+        var attrs__$179 = __$r__$180;
+        attrs__$179 = __$ctx.extend(attrs__$179, ctx__$141.attrs);
+        if (attrs__$179) {
+            var name__$182, attr__$183;
+            for (name__$182 in attrs__$179) {
+                attr__$183 = attrs__$179[name__$182];
+                if (typeof attr__$183 === "undefined") continue;
+                __$ctx._str += " " + name__$182 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$183) ? attr__$183 : __$ctx.reapply(attr__$183)) + '"';
             }
         }
     }
-    if (__$ctx.isShortTag(tag__$142)) {
+    if (__$ctx.isShortTag(tag__$143)) {
         __$ctx._str += "/>";
     } else {
-        tag__$142 && (__$ctx._str += ">");
-        var __$r__$184;
-        var __$l10__$185 = $$mode;
+        tag__$143 && (__$ctx._str += ">");
+        var __$r__$185;
+        var __$l10__$186 = $$mode;
         $$mode = "content";
-        __$r__$184 = applyc(__$ctx, __$ref);
-        $$mode = __$l10__$185;
-        var content__$183 = __$r__$184;
-        if (content__$183 || content__$183 === 0) {
-            isBEM__$141 = vBlock__$147 || $$elem;
-            var __$r__$186;
-            var __$l11__$187 = $$mode;
+        __$r__$185 = applyc(__$ctx, __$ref);
+        $$mode = __$l10__$186;
+        var content__$184 = __$r__$185;
+        if (content__$184 || content__$184 === 0) {
+            isBEM__$142 = vBlock__$148 || $$elem;
+            var __$r__$187;
+            var __$l11__$188 = $$mode;
             $$mode = "";
-            var __$l12__$188 = __$ctx._notNewList;
+            var __$l12__$189 = __$ctx._notNewList;
             __$ctx._notNewList = false;
-            var __$l13__$189 = __$ctx.position;
-            __$ctx.position = isBEM__$141 ? 1 : __$ctx.position;
-            var __$l14__$190 = __$ctx._listLength;
-            __$ctx._listLength = isBEM__$141 ? 1 : __$ctx._listLength;
-            var __$l15__$191 = __$ctx.ctx;
-            __$ctx.ctx = content__$183;
-            __$r__$186 = applyc(__$ctx, __$ref);
-            $$mode = __$l11__$187;
-            __$ctx._notNewList = __$l12__$188;
-            __$ctx.position = __$l13__$189;
-            __$ctx._listLength = __$l14__$190;
-            __$ctx.ctx = __$l15__$191;
+            var __$l13__$190 = __$ctx.position;
+            __$ctx.position = isBEM__$142 ? 1 : __$ctx.position;
+            var __$l14__$191 = __$ctx._listLength;
+            __$ctx._listLength = isBEM__$142 ? 1 : __$ctx._listLength;
+            var __$l15__$192 = __$ctx.ctx;
+            __$ctx.ctx = content__$184;
+            __$r__$187 = applyc(__$ctx, __$ref);
+            $$mode = __$l11__$188;
+            __$ctx._notNewList = __$l12__$189;
+            __$ctx.position = __$l13__$190;
+            __$ctx._listLength = __$l14__$191;
+            __$ctx.ctx = __$l15__$192;
         }
-        tag__$142 && (__$ctx._str += "</" + tag__$142 + ">");
+        tag__$143 && (__$ctx._str += "</" + tag__$143 + ">");
     }
-    res__$143 = __$ctx._str;
-    __$r__$145 = undefined;
-    __$ctx._str = __$l0__$146;
-    __$ctx._buf.push(res__$143);
+    res__$144 = __$ctx._str;
+    __$r__$146 = undefined;
+    __$ctx._str = __$l0__$147;
+    __$ctx._buf.push(res__$144);
     return;
 }
 
 function __$b32(__$ctx, __$ref) {
-    var ctx__$55 = __$ctx.ctx;
+    var ctx__$56 = __$ctx.ctx;
     return {
-        name: ctx__$55.name,
-        optionsMaxHeight: ctx__$55.optionsMaxHeight
+        name: ctx__$56.name,
+        optionsMaxHeight: ctx__$56.optionsMaxHeight
     };
 }
 
@@ -1298,125 +1299,125 @@ function __$b35(__$ctx, __$ref) {
 }
 
 function __$b45(__$ctx, __$ref) {
-    var ctx__$87 = __$ctx.ctx, attrs__$88 = {
+    var ctx__$88 = __$ctx.ctx, attrs__$89 = {
         type: "radio",
         autocomplete: "off",
-        name: ctx__$87.name,
-        value: ctx__$87.val
+        name: ctx__$88.name,
+        value: ctx__$88.val
     };
-    ctx__$87.checked && (attrs__$88.checked = "checked");
-    ctx__$87.disabled && (attrs__$88.disabled = "disabled");
-    return attrs__$88;
+    ctx__$88.checked && (attrs__$89.checked = "checked");
+    ctx__$88.disabled && (attrs__$89.disabled = "disabled");
+    return attrs__$89;
 }
 
 function __$b46(__$ctx, __$ref) {
-    var val__$51 = __$ctx.ctx.val;
+    var val__$52 = __$ctx.ctx.val;
     return {
         type: "hidden",
         name: __$ctx._select.name,
-        value: __$ctx.isSimple(val__$51) ? val__$51 : JSON.stringify(val__$51),
+        value: __$ctx.isSimple(val__$52) ? val__$52 : JSON.stringify(val__$52),
         disabled: $$mods.disabled ? "disabled" : undefined
     };
 }
 
 function __$b48(__$ctx, __$ref) {
-    var ctx__$99 = __$ctx.ctx, attrs__$100 = {
+    var ctx__$100 = __$ctx.ctx, attrs__$101 = {
         type: $$mods.type || "button",
-        name: ctx__$99.name,
-        value: ctx__$99.val
+        name: ctx__$100.name,
+        value: ctx__$100.val
     };
-    $$mods.disabled && (attrs__$100.disabled = "disabled");
-    return __$ctx.extend(function __$lb__$101() {
-        var __$r__$102;
-        var __$l0__$103 = __$ctx.__$a0;
+    $$mods.disabled && (attrs__$101.disabled = "disabled");
+    return __$ctx.extend(function __$lb__$102() {
+        var __$r__$103;
+        var __$l0__$104 = __$ctx.__$a0;
         __$ctx.__$a0 = __$ctx.__$a0 | 32768;
-        __$r__$102 = applyc(__$ctx, __$ref);
-        __$ctx.__$a0 = __$l0__$103;
-        return __$r__$102;
-    }(), attrs__$100);
+        __$r__$103 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$104;
+        return __$r__$103;
+    }(), attrs__$101);
 }
 
 function __$b49(__$ctx, __$ref) {
-    var ctx__$104 = __$ctx.ctx;
+    var ctx__$105 = __$ctx.ctx;
     return {
         role: "button",
-        tabindex: ctx__$104.tabIndex,
-        id: ctx__$104.id,
-        title: ctx__$104.title
+        tabindex: ctx__$105.tabIndex,
+        id: ctx__$105.id,
+        title: ctx__$105.title
     };
 }
 
 function __$b53(__$ctx, __$ref) {
-    var attrs__$24 = {
+    var attrs__$25 = {
         role: "menu"
     };
-    $$mods.disabled || (attrs__$24.tabindex = 0);
-    return attrs__$24;
+    $$mods.disabled || (attrs__$25.tabindex = 0);
+    return attrs__$25;
 }
 
 function __$b57(__$ctx, __$ref) {
-    var input__$77 = __$ctx._input, attrs__$78 = {
-        id: input__$77.id,
-        name: input__$77.name,
-        value: input__$77.val,
-        maxlength: input__$77.maxLength,
-        tabindex: input__$77.tabIndex,
-        placeholder: input__$77.placeholder
+    var input__$78 = __$ctx._input, attrs__$79 = {
+        id: input__$78.id,
+        name: input__$78.name,
+        value: input__$78.val,
+        maxlength: input__$78.maxLength,
+        tabindex: input__$78.tabIndex,
+        placeholder: input__$78.placeholder
     };
-    input__$77.autocomplete === false && (attrs__$78.autocomplete = "off");
-    $$mods.disabled && (attrs__$78.disabled = "disabled");
-    return attrs__$78;
+    input__$78.autocomplete === false && (attrs__$79.autocomplete = "off");
+    $$mods.disabled && (attrs__$79.disabled = "disabled");
+    return attrs__$79;
 }
 
 function __$b59(__$ctx, __$ref) {
-    var attrs__$111 = {
+    var attrs__$112 = {
         type: "checkbox",
         autocomplete: "off"
-    }, ctx__$112 = __$ctx.ctx;
-    attrs__$111.name = ctx__$112.name;
-    attrs__$111.value = ctx__$112.val;
-    ctx__$112.checked && (attrs__$111.checked = "checked");
-    ctx__$112.disabled && (attrs__$111.disabled = "disabled");
-    return attrs__$111;
+    }, ctx__$113 = __$ctx.ctx;
+    attrs__$112.name = ctx__$113.name;
+    attrs__$112.value = ctx__$113.val;
+    ctx__$113.checked && (attrs__$112.checked = "checked");
+    ctx__$113.disabled && (attrs__$112.disabled = "disabled");
+    return attrs__$112;
 }
 
 function __$b68(__$ctx, __$ref) {
-    var mix__$120 = function __$lb__$121() {
-        var __$r__$122;
-        var __$l0__$123 = __$ctx.__$a0;
+    var mix__$121 = function __$lb__$122() {
+        var __$r__$123;
+        var __$l0__$124 = __$ctx.__$a0;
         __$ctx.__$a0 = __$ctx.__$a0 | 262144;
-        __$r__$122 = applyc(__$ctx, __$ref);
-        __$ctx.__$a0 = __$l0__$123;
-        return __$r__$122;
-    }(), uaMix__$124 = [ {
+        __$r__$123 = applyc(__$ctx, __$ref);
+        __$ctx.__$a0 = __$l0__$124;
+        return __$r__$123;
+    }(), uaMix__$125 = [ {
         block: "ua",
         js: true
     } ];
-    return mix__$120 ? uaMix__$124.concat(mix__$120) : uaMix__$124;
+    return mix__$121 ? uaMix__$125.concat(mix__$121) : uaMix__$125;
 }
 
 function __$b104(__$ctx, __$ref) {
-    var __$r__$193;
-    var __$l0__$194 = $$mode;
+    var __$r__$194;
+    var __$l0__$195 = $$mode;
     $$mode = "";
-    var __$l1__$195 = __$ctx.ctx;
+    var __$l1__$196 = __$ctx.ctx;
     __$ctx.ctx = __$ctx.ctx._value;
-    var __$r__$197;
-    var __$l2__$198 = __$ctx.__$a0;
+    var __$r__$198;
+    var __$l2__$199 = __$ctx.__$a0;
     __$ctx.__$a0 = __$ctx.__$a0 | 4194304;
-    __$r__$197 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$198;
-    __$r__$193 = __$r__$197;
-    $$mode = __$l0__$194;
-    __$ctx.ctx = __$l1__$195;
+    __$r__$198 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$199;
+    __$r__$194 = __$r__$198;
+    $$mode = __$l0__$195;
+    __$ctx.ctx = __$l1__$196;
     return;
 }
 
 function __$b105(__$ctx, __$ref) {
     __$ctx._listLength--;
-    var ctx__$199 = __$ctx.ctx;
-    if (ctx__$199 && ctx__$199 !== true || ctx__$199 === 0) {
-        __$ctx._str += ctx__$199 + "";
+    var ctx__$200 = __$ctx.ctx;
+    if (ctx__$200 && ctx__$200 !== true || ctx__$200 === 0) {
+        __$ctx._str += ctx__$200 + "";
     }
     return;
 }
@@ -1427,51 +1428,51 @@ function __$b106(__$ctx, __$ref) {
 }
 
 function __$b107(__$ctx, __$ref) {
-    var ctx__$200 = __$ctx.ctx, len__$201 = ctx__$200.length, i__$202 = 0, prevPos__$203 = __$ctx.position, prevNotNewList__$204 = __$ctx._notNewList;
-    if (prevNotNewList__$204) {
-        __$ctx._listLength += len__$201 - 1;
+    var ctx__$201 = __$ctx.ctx, len__$202 = ctx__$201.length, i__$203 = 0, prevPos__$204 = __$ctx.position, prevNotNewList__$205 = __$ctx._notNewList;
+    if (prevNotNewList__$205) {
+        __$ctx._listLength += len__$202 - 1;
     } else {
         __$ctx.position = 0;
-        __$ctx._listLength = len__$201;
+        __$ctx._listLength = len__$202;
     }
     __$ctx._notNewList = true;
-    while (i__$202 < len__$201) (function __$lb__$205() {
-        var __$r__$206;
-        var __$l0__$207 = __$ctx.ctx;
-        __$ctx.ctx = ctx__$200[i__$202++];
-        __$r__$206 = applyc(__$ctx, __$ref);
-        __$ctx.ctx = __$l0__$207;
-        return __$r__$206;
+    while (i__$203 < len__$202) (function __$lb__$206() {
+        var __$r__$207;
+        var __$l0__$208 = __$ctx.ctx;
+        __$ctx.ctx = ctx__$201[i__$203++];
+        __$r__$207 = applyc(__$ctx, __$ref);
+        __$ctx.ctx = __$l0__$208;
+        return __$r__$207;
     })();
-    prevNotNewList__$204 || (__$ctx.position = prevPos__$203);
+    prevNotNewList__$205 || (__$ctx.position = prevPos__$204);
     return;
 }
 
 function __$b108(__$ctx, __$ref) {
     __$ctx.ctx || (__$ctx.ctx = {});
-    var vBlock__$208 = __$ctx.ctx.block, vElem__$209 = __$ctx.ctx.elem, block__$210 = __$ctx._currBlock || $$block;
-    var __$r__$212;
-    var __$l0__$213 = $$mode;
+    var vBlock__$209 = __$ctx.ctx.block, vElem__$210 = __$ctx.ctx.elem, block__$211 = __$ctx._currBlock || $$block;
+    var __$r__$213;
+    var __$l0__$214 = $$mode;
     $$mode = "default";
-    var __$l1__$214 = $$block;
-    $$block = vBlock__$208 || (vElem__$209 ? block__$210 : undefined);
-    var __$l2__$215 = __$ctx._currBlock;
-    __$ctx._currBlock = vBlock__$208 || vElem__$209 ? undefined : block__$210;
-    var __$l3__$216 = $$elem;
-    $$elem = vElem__$209;
-    var __$l4__$217 = $$mods;
-    $$mods = vBlock__$208 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
-    var __$l5__$218 = $$elemMods;
+    var __$l1__$215 = $$block;
+    $$block = vBlock__$209 || (vElem__$210 ? block__$211 : undefined);
+    var __$l2__$216 = __$ctx._currBlock;
+    __$ctx._currBlock = vBlock__$209 || vElem__$210 ? undefined : block__$211;
+    var __$l3__$217 = $$elem;
+    $$elem = vElem__$210;
+    var __$l4__$218 = $$mods;
+    $$mods = vBlock__$209 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
+    var __$l5__$219 = $$elemMods;
     $$elemMods = __$ctx.ctx.elemMods || {};
     $$block || $$elem ? __$ctx.position = (__$ctx.position || 0) + 1 : __$ctx._listLength--;
     applyc(__$ctx, __$ref);
-    __$r__$212 = undefined;
-    $$mode = __$l0__$213;
-    $$block = __$l1__$214;
-    __$ctx._currBlock = __$l2__$215;
-    $$elem = __$l3__$216;
-    $$mods = __$l4__$217;
-    $$elemMods = __$l5__$218;
+    __$r__$213 = undefined;
+    $$mode = __$l0__$214;
+    $$block = __$l1__$215;
+    __$ctx._currBlock = __$l2__$216;
+    $$elem = __$l3__$217;
+    $$mods = __$l4__$218;
+    $$elemMods = __$l5__$219;
     return;
 }
 
@@ -1514,6 +1515,7 @@ function __$g0(__$ctx, __$ref) {
             }, {
                 block: "popup",
                 mods: {
+                    target: "anchor",
                     theme: $$mods.theme,
                     autoclosable: true
                 },
@@ -1585,26 +1587,26 @@ function __$g0(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ((__$ctx.__$a0 & 131072) === 0) {
-                return [ function __$lb__$117() {
-                    var __$r__$118;
-                    var __$l0__$119 = __$ctx.__$a0;
+                return [ function __$lb__$118() {
+                    var __$r__$119;
+                    var __$l0__$120 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 131072;
-                    __$r__$118 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$119;
-                    return __$r__$118;
+                    __$r__$119 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$120;
+                    return __$r__$119;
                 }(), "(function(d,n){", "d.documentElement.className+=", '" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");', '})(document,"createElementNS");' ];
             }
             return [ "(function(e,c){", 'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");', '})(document.documentElement,"className");' ];
         }
     } else if (__$t === "page") {
         if ($$elem === "head" && (__$ctx.__$a0 & 524288) === 0) {
-            return [ function __$lb__$125() {
-                var __$r__$126;
-                var __$l0__$127 = __$ctx.__$a0;
+            return [ function __$lb__$126() {
+                var __$r__$127;
+                var __$l0__$128 = __$ctx.__$a0;
                 __$ctx.__$a0 = __$ctx.__$a0 | 524288;
-                __$r__$126 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$127;
-                return __$r__$126;
+                __$r__$127 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$128;
+                return __$r__$127;
             }(), {
                 elem: "meta",
                 attrs: {
@@ -1626,13 +1628,13 @@ function __$g0(__$ctx, __$ref) {
             } ];
         }
         if (!$$elem && (__$ctx.__$a0 & 1048576) === 0) {
-            return [ function __$lb__$128() {
-                var __$r__$129;
-                var __$l0__$130 = __$ctx.__$a0;
+            return [ function __$lb__$129() {
+                var __$r__$130;
+                var __$l0__$131 = __$ctx.__$a0;
                 __$ctx.__$a0 = __$ctx.__$a0 | 1048576;
-                __$r__$129 = applyc(__$ctx, __$ref);
-                __$ctx.__$a0 = __$l0__$130;
-                return __$r__$129;
+                __$r__$130 = applyc(__$ctx, __$ref);
+                __$ctx.__$a0 = __$l0__$131;
+                return __$r__$130;
             }(), __$ctx.ctx.scripts ];
         }
     }
@@ -1704,13 +1706,13 @@ function __$g2(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ($$mods && $$mods["focused"] === true && (__$ctx.__$a0 & 512) === 0) {
-                var __$r = __$ctx.extend(function __$lb__$52() {
-                    var __$r__$53;
-                    var __$l0__$54 = __$ctx.__$a0;
+                var __$r = __$ctx.extend(function __$lb__$53() {
+                    var __$r__$54;
+                    var __$l0__$55 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 512;
-                    __$r__$53 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$54;
-                    return __$r__$53;
+                    __$r__$54 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$55;
+                    return __$r__$54;
                 }(), {
                     live: false
                 });
@@ -1723,13 +1725,13 @@ function __$g2(__$ctx, __$ref) {
         var __$t = !$$elem;
         if (__$t) {
             if ($$mods && $$mods["focused"] === true && (__$ctx.__$a0 & 16384) === 0) {
-                var __$r = __$ctx.extend(function __$lb__$94() {
-                    var __$r__$95;
-                    var __$l0__$96 = __$ctx.__$a0;
+                var __$r = __$ctx.extend(function __$lb__$95() {
+                    var __$r__$96;
+                    var __$l0__$97 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 16384;
-                    __$r__$95 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$96;
-                    return __$r__$95;
+                    __$r__$96 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$97;
+                    return __$r__$96;
                 }(), {
                     live: false
                 });
@@ -1856,13 +1858,13 @@ function __$g3(__$ctx, __$ref) {
         var __$t = $$elem;
         if (__$t === "control") {
             if ($$mods && $$mods["type"] === "search" && (__$ctx.__$a0 & 2048) === 0) {
-                var __$r = __$ctx.extend(function __$lb__$71() {
-                    var __$r__$72;
-                    var __$l0__$73 = __$ctx.__$a0;
+                var __$r = __$ctx.extend(function __$lb__$72() {
+                    var __$r__$73;
+                    var __$l0__$74 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 2048;
-                    __$r__$72 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$73;
-                    return __$r__$72;
+                    __$r__$73 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$74;
+                    return __$r__$73;
                 }(), {
                     type: "search"
                 });
@@ -1874,13 +1876,13 @@ function __$g3(__$ctx, __$ref) {
                     autocorrect: "off",
                     autocapitalize: "off",
                     spellcheck: "false"
-                }, function __$lb__$74() {
-                    var __$r__$75;
-                    var __$l0__$76 = __$ctx.__$a0;
+                }, function __$lb__$75() {
+                    var __$r__$76;
+                    var __$l0__$77 = __$ctx.__$a0;
                     __$ctx.__$a0 = __$ctx.__$a0 | 4096;
-                    __$r__$75 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$76;
-                    return __$r__$75;
+                    __$r__$76 = applyc(__$ctx, __$ref);
+                    __$ctx.__$a0 = __$l0__$77;
+                    return __$r__$76;
                 }());
                 if (__$r !== __$ref) return __$r;
             }
@@ -8359,7 +8361,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                     .on('click', this._onButtonClick, this);
 
                 this._popup = this.findBlockInside('popup')
-                    .setTarget(this._button)
+                    .setAnchor(this._button)
                     .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
 
                 this._menu = this._popup.findBlockInside('menu')
@@ -8803,20 +8805,11 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'jquery', 'dom', 'objects', 'functions__throttle'],
-    function(provide, BEMDOM, $, dom, objects, throttle) {
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
 
-var VIEWPORT_ACCURACY_FACTOR = 0.99,
-    DEFAULT_DIRECTIONS = [
-        'bottom-left', 'bottom-center', 'bottom-right',
-        'top-left', 'top-center', 'top-right',
-        'right-top', 'right-center', 'right-bottom',
-        'left-top', 'left-center', 'left-bottom'
-    ],
-    ZINDEX_FACTOR = 1000,
-    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
-
-    win = BEMDOM.win,
+var ZINDEX_FACTOR = 1000,
+    visiblePopupsZIndexes = {},
     undef;
 
 /**
@@ -8824,131 +8817,45 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @class popup
  * @bem
  *
- * @param {Number} [mainOffset=0] offset along the main direction
- * @param {Number} [secondaryOffset=0] offset along the secondary direction
- * @param {Number} [viewportOffset=0] offset from the viewport (window)
- * @param {Array[String]} [directions] allowed directions
+ * @param {Number} [zIndexGroupLevel=0] z-index group level
  *
  * @bemmod visible Represents visible state
  */
 provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
-    beforeSetMod : {
-        'visible' : {
-            'true' : function() {
-                if(!this._owner && !this._pos)
-                    throw Error('Can\'t show popup without target');
-            }
-        }
-    },
-
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._parentPopup = null;
-                this._owner = null;
-                this._ownerParents = null;
-                this._popupOwner = null;
-                this._pos = null;
+                this._parentPopup = undef;
                 this._zIndex = null;
-                this._zIndexGroupLevel = undef;
+                this._zIndexGroupLevel = null;
                 this._isAttachedToScope = false;
-                this._isTargetVisible = undef;
-                this._lastDrawingCss = {
-                        left : undef,
-                        top : undef,
-                        zIndex : undef,
-                        display : undef
-                    };
-                this._updateIsTargetVisible = throttle(
-                    this._updateIsTargetVisible,
-                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
-                    false,
-                    this);
             },
 
             '' : function() {
-                this
-                    ._unbindFromPopupOwner()
-                    .delMod('visible');
+                this.delMod('visible');
             }
         },
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex(
-                    typeof this._zIndexGroupLevel === 'undefined'?
-                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
-                        this._zIndexGroupLevel);
-                this._owner && (this._ownerParents = this._owner.parents());
+                if(!this._isAttachedToScope) {
+                    BEMDOM.scope.append(this.domElem);
+                    this._isAttachedToScope = true;
+                }
 
                 this
-                    .bindTo('pointerpress', this._onPointerPress)
+                    ._captureZIndex()
                     ._bindToParentPopup()
-                    ._bindToScrollAndResize()
-                    .redraw();
+                    .bindTo('pointerpress', this._onPointerPress);
             },
 
             '' : function() {
-                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
-
                 this
-                    .unbindFrom('pointerpress', this._onPointerPress)
+                    ._releaseZIndex()
                     ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize();
-
-                if(this._owner) {
-                    this._ownerParents = null;
-                    this._isTargetVisible = undef;
-                }
+                    .unbindFrom('pointerpress', this._onPointerPress);
             }
         }
-    },
-
-    /**
-     * Sets target
-     * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
-     * @param {Number} [top] y-coordinate
-     * @returns {popup} this
-     */
-    setTarget : function(left, top) {
-        this
-            ._unbindFromScrollAndResize()
-            ._unbindFromParentPopup()
-            ._unbindFromPopupOwner();
-
-        if(arguments.length === 1) {
-            this._owner = left instanceof BEMDOM?
-                    left.domElem :
-                    left instanceof $?
-                        left : null;
-            if(!this._owner) throw Error('Invalid arguments');
-
-            this._pos = null;
-            this._popupOwner = this._owner.bem('_' + this.__self.getName() + '-owner');
-            this._isTargetVisible = undef;
-
-            this._bindToPopupOwner();
-
-            if(this.hasMod('visible')){
-                this._ownerParents = this._owner.parents();
-                this
-                    ._bindToScrollAndResize()
-                    .redraw();
-            } else {
-                this._ownerParents = null;
-            }
-        } else {
-            this._pos = { left : left, top : top };
-            this._parentPopup = null;
-            this._owner = null;
-            this._ownerParents = null;
-            this._popupOwner = null;
-            this._isTargetVisible = true;
-        }
-
-        this._zIndexGroupLevel = undef;
-
-        return this;
     },
 
     /**
@@ -8958,356 +8865,35 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
      */
     setContent : function(content) {
         BEMDOM.update(this.domElem, content);
-        return this.redraw();
-    },
-
-    /**
-     * Redraws popup
-     * @returns {popup} this
-     */
-    redraw : function() {
-        if(!this.hasMod('visible')) return this;
-
-        if(!this._isAttachedToScope) {
-            BEMDOM.scope.append(this.domElem);
-            this._isAttachedToScope = true;
-        }
-
-        var bestDrawingParams = this._calcBestDrawingParams();
-
-        this.setMod('direction', bestDrawingParams.direction);
-
-        typeof this._isTargetVisible === 'undefined' &&
-            (this._isTargetVisible = this._calcIsTargetVisible());
-
-        var lastDrawingCss = this._lastDrawingCss,
-            needUpdateCss = false;
-
-        objects.each(
-            {
-                display : this._isTargetVisible? '' : 'none',
-                left : bestDrawingParams.left,
-                top : bestDrawingParams.top,
-                zIndex : this._zIndex
-            },
-            function(val, name) {
-                if(lastDrawingCss[name] !== val) {
-                    lastDrawingCss[name] = val;
-                    needUpdateCss = true;
-                }
-            });
-
-        needUpdateCss && this.domElem.css(lastDrawingCss);
-
         return this;
-    },
-
-    /**
-     * Returns possible directions to draw with max available width and height.
-     * @returns {Array}
-     */
-    calcPossibleDrawingParams : function() {
-        var owner = this._calcOwnerDimensions(),
-            viewport = this._calcViewportDimensions(),
-            params = this.params,
-            mainOffset = params.mainOffset,
-            secondaryOffset = params.secondaryOffset,
-            viewportOffset = params.viewportOffset;
-
-        return this.params.directions.map(function(direction) {
-            var subRes = {
-                    direction : direction,
-                    width : 0,
-                    height : 0,
-                    left : 0,
-                    top : 0
-                };
-
-            if(checkMainDirection(direction, 'bottom')) {
-                subRes.top = owner.top + owner.height + mainOffset;
-                subRes.height = viewport.bottom - subRes.top - viewportOffset;
-            } else if(checkMainDirection(direction, 'top')) {
-                subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
-                subRes.top = owner.top - subRes.height - mainOffset;
-            } else {
-                if(checkSecondaryDirection(direction, 'center')) {
-                    subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
-                    subRes.top = owner.top + owner.height / 2 - subRes.height / 2;
-                } else if(checkSecondaryDirection(direction, 'bottom')) {
-                    subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
-                    subRes.top = owner.top + owner.height - subRes.height - secondaryOffset;
-                } else if(checkSecondaryDirection(direction, 'top')) {
-                    subRes.top = owner.top + secondaryOffset;
-                    subRes.height = viewport.bottom - subRes.top - viewportOffset;
-                }
-
-                if(checkMainDirection(direction, 'left')) {
-                    subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
-                    subRes.left = owner.left - subRes.width - mainOffset;
-                } else {
-                    subRes.left = owner.left + owner.width + mainOffset;
-                    subRes.width = viewport.right - subRes.left - viewportOffset;
-                }
-            }
-
-            if(checkSecondaryDirection(direction, 'right')) {
-                subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
-                subRes.left = owner.left + owner.width - subRes.width - secondaryOffset;
-            } else if(checkSecondaryDirection(direction, 'left')) {
-                subRes.left = owner.left + secondaryOffset;
-                subRes.width = viewport.right - subRes.left - viewportOffset;
-            } else if(checkSecondaryDirection(direction, 'center')) {
-                if(checkMainDirection(direction, 'top', 'bottom')) {
-                    subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
-                    subRes.left = owner.left + owner.width / 2 - subRes.width / 2;
-                }
-            }
-
-            return subRes;
-        }, this);
-    },
-
-    _calcBestDrawingParams : function() {
-        var popup = this._calcPopupDimensions(),
-            owner = this._calcOwnerDimensions(),
-            viewport = this._calcViewportDimensions(),
-            directions = this.params.directions,
-            i = 0,
-            direction,
-            pos,
-            viewportFactor,
-            bestDirection,
-            bestPos,
-            bestViewportFactor;
-
-        while(direction = directions[i++]) {
-            pos = this._calcPos(direction, owner, popup);
-            viewportFactor = this._calcViewportFactor(pos, viewport, popup);
-            if(i === 1 ||
-                    viewportFactor > bestViewportFactor ||
-                    (!bestViewportFactor && this.hasMod('direction', direction))) {
-                bestDirection = direction;
-                bestViewportFactor = viewportFactor;
-                bestPos = pos;
-            }
-            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
-        }
-
-        return {
-            direction : bestDirection,
-            left : bestPos.left,
-            top : bestPos.top
-        };
-    },
-
-    _calcPopupDimensions : function() {
-        var popupWidth = this.domElem.outerWidth(),
-            popupHeight = this.domElem.outerHeight();
-
-        return {
-            width : popupWidth,
-            height : popupHeight,
-            area : popupWidth * popupHeight
-        };
-    },
-
-    _calcOwnerDimensions : function() {
-        var pos = this._pos,
-            owner = this._owner,
-            ownerPos = pos? pos : owner.offset();
-
-        return {
-            left : ownerPos.left,
-            top : ownerPos.top,
-            width : pos? 0 : owner.outerWidth(),
-            height : pos? 0 : owner.outerHeight()
-        };
-    },
-
-    _calcViewportDimensions : function() {
-        var winTop = win.scrollTop(),
-            winLeft = win.scrollLeft(),
-            winWidth = win.width(),
-            winHeight = win.height();
-
-        return {
-            top : winTop,
-            left : winLeft,
-            bottom : winTop + winHeight,
-            right : winLeft + winWidth
-        };
-    },
-
-    _calcPos : function(direction, owner, popup) {
-        var res = {},
-            mainOffset = this.params.mainOffset,
-            secondaryOffset = this.params.secondaryOffset;
-
-        if(checkMainDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height + mainOffset;
-        } else if(checkMainDirection(direction, 'top')) {
-            res.top = owner.top - popup.height - mainOffset;
-        } else if(checkMainDirection(direction, 'left')) {
-            res.left = owner.left - popup.width - mainOffset;
-        } else if(checkMainDirection(direction, 'right')) {
-            res.left = owner.left + owner.width + mainOffset;
-        }
-
-        if(checkSecondaryDirection(direction, 'right')) {
-            res.left = owner.left + owner.width - popup.width - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'left')) {
-            res.left = owner.left + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height - popup.height - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'top')) {
-            res.top = owner.top + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'center')) {
-            if(checkMainDirection(direction, 'top', 'bottom')) {
-                res.left = owner.left + owner.width / 2 - popup.width / 2;
-            } else if(checkMainDirection(direction, 'left', 'right')) {
-                res.top = owner.top + owner.height / 2 - popup.height / 2;
-            }
-        }
-
-        return res;
-    },
-
-    _calcViewportFactor : function(pos, viewport, popup) {
-        var viewportOffset = this.params.viewportOffset,
-            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
-            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
-            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
-            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
-
-        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
-            (intersectionRight - intersectionLeft) *
-                (intersectionBottom - intersectionTop) /
-                popup.area :
-            0;
-    },
-
-    /**
-     * Calculates target visibility state
-     * @private
-     * @returns {Boolean} Whether state is visible
-     */
-    _calcIsTargetVisible : function() {
-        var owner = this._owner;
-        if(!owner) return true;
-
-        var ownerOffset = owner.offset(),
-            ownerLeft = ownerOffset.left,
-            ownerTop = ownerOffset.top,
-            ownerRight = ownerLeft + owner.outerWidth(),
-            ownerBottom = ownerTop + owner.outerHeight(),
-            direction = this.getMod('direction'),
-            vertBorder = Math.floor(checkMainDirection(direction, 'top') ||
-                    checkSecondaryDirection(direction, 'top')?
-                ownerTop :
-                ownerBottom),
-            horizBorder = Math.floor(checkMainDirection(direction, 'left') ||
-                    checkSecondaryDirection(direction, 'left')?
-                ownerLeft :
-                ownerRight),
-            res = true;
-
-        this._ownerParents.each(function() {
-            if(this.tagName === 'BODY') return false;
-
-            var parent = $(this),
-                overflowY = parent.css('overflow-y'),
-                checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
-                overflowX = parent.css('overflow-x'),
-                checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
-
-            if(checkOverflowY || checkOverflowX) {
-                var parentOffset = parent.offset();
-
-                if(checkOverflowY) {
-                    var parentTopOffset = Math.floor(parentOffset.top);
-                    if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
-                        return res = false;
-                    }
-                }
-
-                if(checkOverflowX) {
-                    var parentLeftOffset = Math.floor(parentOffset.left);
-                    return res = !(
-                        horizBorder < parentLeftOffset ||
-                        parentLeftOffset + parent.outerWidth() < horizBorder);
-                }
-            }
-        });
-
-        return res;
     },
 
     _calcZIndexGroupLevel : function() {
-        var res = this.params.zIndexGroupLevel;
-        return this._popupOwner?
-            this._popupOwner.findBlocksOutside('z-index-group').reduce(
-                function(res, zIndexGroup) {
-                    return res + Number(zIndexGroup.getMod('level'));
-                },
-                res) :
-            res;
-    },
+        var res = this.params.zIndexGroupLevel,
+            parentPopup = this._getParentPopup();
 
-    _bindToScrollAndResize : function() {
-        this._ownerParents &&
-            this
-                .bindTo(this._ownerParents, 'scroll', this._onScrollOrResize)
-                .bindToWin('scroll resize', this._onScrollOrResize);
+        parentPopup && (res += parentPopup._zIndexGroupLevel);
 
-        return this;
-    },
-
-    _unbindFromScrollAndResize : function() {
-        this._ownerParents &&
-            this
-                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
-                .unbindFromWin('scroll resize', this._onScrollOrResize);
-
-        return this;
-    },
-
-    _onScrollOrResize : function() {
-        this
-            .redraw()
-            ._updateIsTargetVisible();
-    },
-
-    _updateIsTargetVisible : function() {
-        if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
-            return;
-
-        var isTargetVisible = this._calcIsTargetVisible();
-        if(isTargetVisible !== this._isTargetVisible) {
-            this._isTargetVisible = isTargetVisible;
-            this.redraw();
-        }
+        return res;
     },
 
     _onPointerPress : function() {
         var curPopup = this;
         do {
             curPopup._inPopupPointerPress = true;
-        } while(curPopup = curPopup._parentPopup);
+        } while(curPopup = curPopup._getParentPopup());
     },
 
     _bindToParentPopup : function() {
-        this._owner &&
-            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
-            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        var parentPopup = this._getParentPopup();
+        parentPopup && parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
         return this;
     },
 
     _unbindFromParentPopup : function() {
-        if(this._parentPopup) {
-            this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
-            this._parentPopup = null;
-        }
+        this._parentPopup && this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        this._parentPopup = undef;
 
         return this;
     },
@@ -9316,54 +8902,45 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         this.delMod('visible');
     },
 
-    _bindToPopupOwner : function() {
-        this._popupOwner &&
-            this._popupOwner.on({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
+    _getParentPopup : function() {
+        return this._parentPopup;
+    },
+
+    _captureZIndex : function() {
+        var level = this._zIndexGroupLevel === null?
+                this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                this._zIndexGroupLevel,
+            zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]),
+            prevZIndex = this._zIndex;
+
+        this._zIndex = zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
+        this._zIndex !== prevZIndex && this.domElem.css('z-index', this._zIndex);
+
         return this;
     },
 
-    _unbindFromPopupOwner : function() {
-        this._popupOwner &&
-            this._popupOwner.un({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
+    _releaseZIndex : function() {
+        var zIndexes = visiblePopupsZIndexes[this._zIndexGroupLevel];
+        zIndexes.splice(zIndexes.indexOf(this._zIndex), 1);
+
         return this;
     },
 
-    _onPopupOwnerDestruct : function() {
-        BEMDOM.destruct(this.domElem);
+    _recaptureZIndex : function() {
+        this._releaseZIndex();
+        this._zIndexGroupLevel = null;
+
+        return this._captureZIndex();
     },
 
     getDefaultParams : function() {
         return {
-            mainOffset : 0,
-            secondaryOffset : 0,
-            viewportOffset : 0,
-            directions : DEFAULT_DIRECTIONS,
             zIndexGroupLevel : 0
         };
     }
 }, /** @lends popup */{
     live : true
 }));
-
-var visiblePopupsZIndexes = {};
-
-function captureZIndex(level) {
-    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
-    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
-}
-
-function releaseZIndex(level, zIndex) {
-    var zIndexes = visiblePopupsZIndexes[level];
-    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
-}
-
-function checkMainDirection(direction, mainDirection1, mainDirection2) {
-    return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
-}
-
-function checkSecondaryDirection(direction, secondaryDirection) {
-    return ~direction.indexOf('-' + secondaryDirection);
-}
 
 });
 
@@ -9409,7 +8986,7 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
     },
 
     _onDocPointerClick : function(e) {
-        if(this._owner && dom.contains(this._owner, $(e.target)))
+        if(this.hasMod('target', 'anchor') && dom.contains(this._anchor, $(e.target)))
             return;
 
         this._inPopupPointerPress?
@@ -9433,6 +9010,572 @@ function onDocKeyPress(e) {
 });
 
 /* end: ../../../common.blocks/popup/_autoclosable/popup_autoclosable.js */
+/* begin: ../../../common.blocks/popup/_target/popup_target.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['i-bem__dom', 'objects'],
+    function(provide, BEMDOM, objects, Popup) {
+
+var VIEWPORT_ACCURACY_FACTOR = 0.99,
+    DEFAULT_DIRECTIONS = [
+        'bottom-left', 'bottom-center', 'bottom-right',
+        'top-left', 'top-center', 'top-right',
+        'right-top', 'right-center', 'right-bottom',
+        'left-top', 'left-center', 'left-bottom'
+    ],
+
+    win = BEMDOM.win,
+    undef;
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ *
+ * @param {Number} [mainOffset=0] offset along the main direction
+ * @param {Number} [secondaryOffset=0] offset along the secondary direction
+ * @param {Number} [viewportOffset=0] offset from the viewport (window)
+ * @param {Array[String]} [directions] allowed directions
+ */
+provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+
+                this._lastDrawingCss = {
+                    left : undef,
+                    top : undef,
+                    zIndex : undef,
+                    display : undef
+                };
+            }
+        },
+
+        'visible' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this
+                    .bindToWin('scroll resize', this._onWinScollAndResize)
+                    .redraw();
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.unbindFromWin('scroll resize', this._onWinScollAndResize);
+            }
+        }
+    },
+
+    /**
+     * @override
+     */
+    setContent : function() {
+        return this.__base.apply(this, arguments).redraw();
+    },
+
+    /**
+     * Redraws popup
+     * @returns {popup} this
+     */
+    redraw : function() {
+        if(!this.hasMod('visible')) return this;
+
+        var bestDrawingParams = this._calcBestDrawingParams();
+
+        this.setMod('direction', bestDrawingParams.direction);
+
+        var lastDrawingCss = this._lastDrawingCss,
+            needUpdateCss = false;
+
+        objects.each(
+            this._calcDrawingCss(bestDrawingParams),
+            function(val, name) {
+                if(lastDrawingCss[name] !== val) {
+                    lastDrawingCss[name] = val;
+                    needUpdateCss = true;
+                }
+            });
+
+        needUpdateCss && this.domElem.css(lastDrawingCss);
+
+        return this;
+    },
+
+    _calcDrawingCss : function(drawingParams) {
+        return {
+            left : drawingParams.left,
+            top : drawingParams.top
+        };
+    },
+
+    /**
+     * Returns possible directions to draw with max available width and height.
+     * @returns {Array}
+     */
+    calcPossibleDrawingParams : function() {
+        var target = this._calcTargetDimensions(),
+            viewport = this._calcViewportDimensions(),
+            params = this.params,
+            mainOffset = params.mainOffset,
+            secondaryOffset = params.secondaryOffset,
+            viewportOffset = params.viewportOffset;
+
+        return this.params.directions.map(function(direction) {
+            var subRes = {
+                    direction : direction,
+                    width : 0,
+                    height : 0,
+                    left : 0,
+                    top : 0
+                };
+
+            if(this._checkMainDirection(direction, 'bottom')) {
+                subRes.top = target.top + target.height + mainOffset;
+                subRes.height = viewport.bottom - subRes.top - viewportOffset;
+            } else if(this._checkMainDirection(direction, 'top')) {
+                subRes.height = target.top - viewport.top - mainOffset - viewportOffset;
+                subRes.top = target.top - subRes.height - mainOffset;
+            } else {
+                if(this._checkSecondaryDirection(direction, 'center')) {
+                    subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
+                    subRes.top = target.top + target.height / 2 - subRes.height / 2;
+                } else if(this._checkSecondaryDirection(direction, 'bottom')) {
+                    subRes.height = target.top + target.height - viewport.top - secondaryOffset - viewportOffset;
+                    subRes.top = target.top + target.height - subRes.height - secondaryOffset;
+                } else if(this._checkSecondaryDirection(direction, 'top')) {
+                    subRes.top = target.top + secondaryOffset;
+                    subRes.height = viewport.bottom - subRes.top - viewportOffset;
+                }
+
+                if(this._checkMainDirection(direction, 'left')) {
+                    subRes.width = target.left - viewport.left - mainOffset - viewportOffset;
+                    subRes.left = target.left - subRes.width - mainOffset;
+                } else {
+                    subRes.left = target.left + target.width + mainOffset;
+                    subRes.width = viewport.right - subRes.left - viewportOffset;
+                }
+            }
+
+            if(this._checkSecondaryDirection(direction, 'right')) {
+                subRes.width = target.left + target.width - viewport.left - secondaryOffset - viewportOffset;
+                subRes.left = target.left + target.width - subRes.width - secondaryOffset;
+            } else if(this._checkSecondaryDirection(direction, 'left')) {
+                subRes.left = target.left + secondaryOffset;
+                subRes.width = viewport.right - subRes.left - viewportOffset;
+            } else if(this._checkSecondaryDirection(direction, 'center')) {
+                if(this._checkMainDirection(direction, 'top', 'bottom')) {
+                    subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
+                    subRes.left = target.left + target.width / 2 - subRes.width / 2;
+                }
+            }
+
+            return subRes;
+        }, this);
+    },
+
+    _calcBestDrawingParams : function() {
+        var popup = this._calcPopupDimensions(),
+            target = this._calcTargetDimensions(),
+            viewport = this._calcViewportDimensions(),
+            directions = this.params.directions,
+            i = 0,
+            direction,
+            pos,
+            viewportFactor,
+            bestDirection,
+            bestPos,
+            bestViewportFactor;
+
+        while(direction = directions[i++]) {
+            pos = this._calcPos(direction, target, popup);
+            viewportFactor = this._calcViewportFactor(pos, viewport, popup);
+            if(i === 1 ||
+                    viewportFactor > bestViewportFactor ||
+                    (!bestViewportFactor && this.hasMod('direction', direction))) {
+                bestDirection = direction;
+                bestViewportFactor = viewportFactor;
+                bestPos = pos;
+            }
+            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
+        }
+
+        return {
+            direction : bestDirection,
+            left : bestPos.left,
+            top : bestPos.top
+        };
+    },
+
+    _calcPopupDimensions : function() {
+        var popupWidth = this.domElem.outerWidth(),
+            popupHeight = this.domElem.outerHeight();
+
+        return {
+            width : popupWidth,
+            height : popupHeight,
+            area : popupWidth * popupHeight
+        };
+    },
+
+    /**
+     * @abstract
+     * @protected
+     * @returns {Object}
+     */
+    _calcTargetDimensions : function() {},
+
+    _calcViewportDimensions : function() {
+        var winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            winWidth = win.width(),
+            winHeight = win.height();
+
+        return {
+            top : winTop,
+            left : winLeft,
+            bottom : winTop + winHeight,
+            right : winLeft + winWidth
+        };
+    },
+
+    _calcPos : function(direction, target, popup) {
+        var res = {},
+            mainOffset = this.params.mainOffset,
+            secondaryOffset = this.params.secondaryOffset;
+
+        if(this._checkMainDirection(direction, 'bottom')) {
+            res.top = target.top + target.height + mainOffset;
+        } else if(this._checkMainDirection(direction, 'top')) {
+            res.top = target.top - popup.height - mainOffset;
+        } else if(this._checkMainDirection(direction, 'left')) {
+            res.left = target.left - popup.width - mainOffset;
+        } else if(this._checkMainDirection(direction, 'right')) {
+            res.left = target.left + target.width + mainOffset;
+        }
+
+        if(this._checkSecondaryDirection(direction, 'right')) {
+            res.left = target.left + target.width - popup.width - secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'left')) {
+            res.left = target.left + secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'bottom')) {
+            res.top = target.top + target.height - popup.height - secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'top')) {
+            res.top = target.top + secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'center')) {
+            if(this._checkMainDirection(direction, 'top', 'bottom')) {
+                res.left = target.left + target.width / 2 - popup.width / 2;
+            } else if(this._checkMainDirection(direction, 'left', 'right')) {
+                res.top = target.top + target.height / 2 - popup.height / 2;
+            }
+        }
+
+        return res;
+    },
+
+    _calcViewportFactor : function(pos, viewport, popup) {
+        var viewportOffset = this.params.viewportOffset,
+            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
+            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
+            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
+            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
+
+        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
+            (intersectionRight - intersectionLeft) *
+                (intersectionBottom - intersectionTop) /
+                popup.area :
+            0;
+    },
+
+    _checkMainDirection : function(direction, mainDirection1, mainDirection2) {
+        return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
+    },
+
+    _checkSecondaryDirection : function(direction, secondaryDirection) {
+        return ~direction.indexOf('-' + secondaryDirection);
+    },
+
+    _onWinScollAndResize : function() {
+        this.redraw();
+    },
+
+    getDefaultParams : function() {
+        return objects.extend(
+            this.__base.apply(this, arguments),
+            {
+                mainOffset : 0,
+                secondaryOffset : 0,
+                viewportOffset : 0,
+                directions : DEFAULT_DIRECTIONS
+            });
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/popup/_target/popup_target.js */
+/* begin: ../../../common.blocks/popup/_target/popup_target_anchor.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['i-bem__dom', 'jquery', 'objects', 'functions__throttle'],
+    function(provide, BEMDOM, $, objects, throttle, Popup) {
+
+var UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
+    undef;
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ */
+provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
+    beforeSetMod : {
+        'visible' : {
+            'true' : function() {
+                if(!this._anchor)
+                    throw Error('Can\'t show popup without anchor');
+            }
+        }
+    },
+
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+
+                this._anchor = null;
+                this._anchorParents = null;
+                this._destructor = null;
+                this._isAnchorVisible = undef;
+                this._updateIsAnchorVisible = throttle(
+                    this._updateIsAnchorVisible,
+                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
+                    false,
+                    this);
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this._unbindFromDestructor(); // don't destruct anchor as it might be the same anchor for several popups
+            }
+        },
+
+        'visible' : {
+            'true' : function() {
+                this._anchorParents = this._anchor.parents();
+                this._bindToAnchorParents();
+
+                this.__base.apply(this, arguments);
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+
+                this._unbindFromAnchorParents();
+                this._anchorParents = null;
+                this._isAnchorVisible = undef;
+            }
+        }
+    },
+
+    /**
+     * Sets target
+     * @param {jQuery|BEMDOM} anchor DOM elem or anchor BEMDOM block
+     * @returns {popup} this
+     */
+    setAnchor : function(anchor) {
+        this
+            ._unbindFromAnchorParents()
+            ._unbindFromParentPopup()
+            ._unbindFromDestructor();
+
+        this._anchor = anchor instanceof BEMDOM?
+            anchor.domElem :
+            anchor;
+
+        this._destructor = this._anchor.bem('_' + this.__self.getName() + '-destructor');
+        this._isAnchorVisible = undef;
+
+        this._bindToDestructor();
+
+        if(this.hasMod('visible')) {
+            this._anchorParents = this._anchor.parents();
+            this
+                ._recaptureZIndex()
+                ._bindToAnchorParents()
+                ._bindToParentPopup()
+                .redraw();
+        } else {
+            this._anchorParents = null;
+        }
+
+        return this;
+    },
+
+    /**
+     * @override
+     */
+    _calcTargetDimensions : function() {
+        var anchor = this._anchor,
+            anchorPos = anchor.offset();
+
+        return {
+            left : anchorPos.left,
+            top : anchorPos.top,
+            width : anchor.outerWidth(),
+            height : anchor.outerHeight()
+        };
+    },
+
+    /**
+     * @override
+     */
+    _calcDrawingCss : function(drawingParams) {
+        typeof this._isAnchorVisible === 'undefined' &&
+            (this._isAnchorVisible = this._calcIsAnchorVisible());
+
+        return objects.extend(
+            this.__base(drawingParams),
+            { display : this._isAnchorVisible? '' : 'none' });
+    },
+
+    /**
+     * Calculates target visibility state
+     * @private
+     * @returns {Boolean} Whether state is visible
+     */
+    _calcIsAnchorVisible : function() {
+        var anchor = this._anchor,
+            anchorOffset = anchor.offset(),
+            anchorLeft = anchorOffset.left,
+            anchorTop = anchorOffset.top,
+            anchorRight = anchorLeft + anchor.outerWidth(),
+            anchorBottom = anchorTop + anchor.outerHeight(),
+            direction = this.getMod('direction'),
+            vertBorder = Math.floor(this._checkMainDirection(direction, 'top') ||
+                    this._checkSecondaryDirection(direction, 'top')?
+                anchorTop :
+                anchorBottom),
+            horizBorder = Math.floor(this._checkMainDirection(direction, 'left') ||
+                    this._checkSecondaryDirection(direction, 'left')?
+                anchorLeft :
+                anchorRight),
+            res = true;
+
+        this._anchorParents.each(function() {
+            if(this.tagName === 'BODY') return false;
+
+            var parent = $(this),
+                overflowY = parent.css('overflow-y'),
+                checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
+                overflowX = parent.css('overflow-x'),
+                checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
+
+            if(checkOverflowY || checkOverflowX) {
+                var parentOffset = parent.offset();
+
+                if(checkOverflowY) {
+                    var parentTopOffset = Math.floor(parentOffset.top);
+                    if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
+                        return res = false;
+                    }
+                }
+
+                if(checkOverflowX) {
+                    var parentLeftOffset = Math.floor(parentOffset.left);
+                    return res = !(
+                        horizBorder < parentLeftOffset ||
+                        parentLeftOffset + parent.outerWidth() < horizBorder);
+                }
+            }
+        });
+
+        return res;
+    },
+
+    _calcZIndexGroupLevel : function() {
+        var res = this.__base.apply(this, arguments);
+
+        return this._destructor.findBlocksOutside('z-index-group').reduce(
+            function(res, zIndexGroup) {
+                return res + Number(zIndexGroup.getMod('level'));
+            },
+            res);
+    },
+
+    _bindToAnchorParents : function() {
+        return this.bindTo(
+            this._anchorParents,
+            'scroll',
+            this._onAnchorParentsScroll);
+    },
+
+    _unbindFromAnchorParents : function() {
+        this._anchorParents && this.unbindFrom(
+            this._anchorParents,
+            'scroll',
+            this._onAnchorParentsScroll);
+        return this;
+    },
+
+    _onAnchorParentsScroll : function() {
+        this
+            .redraw()
+            ._updateIsAnchorVisible();
+    },
+
+    /**
+     * @override
+     */
+    _onWinScollAndResize : function() {
+        this.__base.apply(this, arguments);
+        this._updateIsAnchorVisible();
+    },
+
+    _updateIsAnchorVisible : function() {
+        if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
+            return;
+
+        var isAnchorVisible = this._calcIsAnchorVisible();
+        if(isAnchorVisible !== this._isAnchorVisible) {
+            this._isAnchorVisible = isAnchorVisible;
+            this.redraw();
+        }
+    },
+
+    _bindToDestructor : function() {
+        this._destructor.on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+        return this;
+    },
+
+    _unbindFromDestructor : function() {
+        this._destructor &&
+            this._destructor.un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+        return this;
+    },
+
+    _onPopupAnchorDestruct : function() {
+        BEMDOM.destruct(this.domElem);
+    },
+
+    _getParentPopup : function() {
+        return this._parentPopup === undef?
+            this._parentPopup = this.findBlockOutside(this._anchor, this.__self.getName()) :
+            this._parentPopup;
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/popup/_target/popup_target_anchor.js */
 /* begin: ../../../common.blocks/select/_mode/select_mode_radio.js */
 /**
  * @module select

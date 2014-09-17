@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_UkvwYMbpDOkZaq5dm0uIlVbQ9GA.css"}],"scripts":[{"elem":"js","url":"_UkvwYMbpDOkZaq5dm0uIlVbQ9GA.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Focused","mods":{"theme":"normal","size":"m","focused":true}}})

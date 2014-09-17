@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -62,29 +62,4 @@
 .button_theme_simple .icon:last-child {
   margin-right: -0.7em;
 }
-.button_theme_simple.button_togglable_radio:first-of-type,
-.button_theme_simple.button_togglable_radio ~ .button_togglable_radio {
-  border-right-width: 0;
-}
-.button_theme_simple.button_togglable_radio ~ .button_togglable_radio {
-  border-radius: 0;
-}
-.button_theme_simple.button_togglable_radio:first-of-type {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.button_theme_simple.button_togglable_radio:last-of-type {
-  border-right-width: 1px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.button_theme_simple.button_togglable_radio.button_hovered {
-  border-right-width: 1px;
-}
-.button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio {
-  border-left-width: 0;
-}
-.button_theme_simple.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio {
-  border-left-width: 1px;
-}
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */

@@ -2,6 +2,8 @@
 <p>Блок <code>checkbox</code> («чекбокс», «флажок», «переключатель») позволяет управлять параметром выбора с двумя состояниями – включено и выключено. Используется, когда необходимо выбрать от нуля и более вариантов из предложенных.</p>
 <p>Блок создает контейнер, содержащий нативный контрол чекбокс (элемент <code>control</code>) <code>&lt;input class=&quot;checkbox__control&quot; type=&quot;checkbox&quot;&gt;</code>, который скрывается при использовании модификатора <a href="#theme">theme</a>.</p>
 <p>Атрибут <code>autocomplete</code> принудительно переведен в состояние <code>off</code> для обеспечения корректной работы блока.</p>
+<!-- bem-example: touch-phone.examples/checkbox/XI4uPzI90-UiMiWRig9noeu3mrg -->
+
 <h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
 <p>Список зарезервированных полей входного BEMJSON:</p>
 <div class="table-container"><table>
@@ -53,13 +55,22 @@
 <p>Наглядно показано на примерах ниже:</p>
 <p><a name="native"></a>
 <strong>default</strong></p>
+<!-- bem-example: touch-phone.examples/checkbox/hfC4WkU9SSa-WV6DlkfA7eBYSl0 -->
+
 <p><strong>simple</strong></p>
+<!-- bem-example: touch-phone.examples/checkbox/gkccf7wPv6nQqsZpZBSUZ1TsB5U -->
+
 <p><strong>normal</strong></p>
-<p><a name="size"></a></p>
-<h3 id="Размеры-`_size`">Размеры <code>_size</code></h3>
-<p>Задает размер шрифта.</p>
-<p>Модификатор реализован только в теме <em>normal</em>.</p>
-<p>Доступно два размера реализации блока: <strong>m</strong>, <strong>l</strong>.</p>
+<!-- bem-example: touch-phone.examples/checkbox/fBEdxpG8IDf8PLVhT6fzwod_HLc -->
+<a name="size"></a>
+### Размеры <code>_size</code>
+
+Задает размер шрифта.
+
+Модификатор реализован только в теме <em>normal</em>.
+
+Доступно два размера реализации блока: <strong>m</strong>, <strong>l</strong>.
+
 <div class="table-container"><table>
     <tr>
         <th>Размер<br>блока</th>
@@ -78,19 +89,30 @@
     </tr>
 </table></div>
 
+<!-- bem-example: touch-phone.examples/checkbox/nVzqplxPhx6oAfRkPQFD_3IRM40 -->
 
-
-
+<!-- bem-example: touch-phone.examples/checkbox/Pp62u4u3BG0wLA70aPTXvox4SZI -->
 
 <h3 id="Типы-`_type`">Типы <code>_type</code></h3>
 <p>Блок может быть представлен в виде кнопки (модификатор <code>type</code> в значении <code>button</code>). В таком случае выбор элемента происходит нажатием на кнопку.</p>
 <p> Такой тип чекбокса приобретает все доступные модификаторы блока <a href="..button/button.ru.md">button</a>.</p>
+<!-- bem-example: touch-phone.examples/checkbox/0DD8VVrsI62eoAyRbnBLkp0KrBg -->
+
 <h3 id="Состояния">Состояния</h3>
 <h4 id="Выбран-`_checked`">Выбран <code>_checked</code></h4>
 <p>Модификатор <code>checked</code> в значении <code>true</code> определяет, что чекбокс отмечен (выбран).</p>
 <p>Модификатор <code>checked</code> может быть применен ко всем чекбоксам в группе.</p>
-<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
-<p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
+<!-- bem-example: touch-phone.examples/checkbox/dQAKHwJh_-G-kZ9WvG1AX9EKbHg -->
+
+<!-- bem-example: touch-phone.examples/checkbox/FAXacj1ZljlBz1UQj08wJ2HixWg -->
+#### Неактивен <code>_disabled</code>
+
+В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
+
+<!-- bem-example: touch-phone.examples/checkbox/xekPR0JOdqk2BpHBifWVDSz0dDE -->
+
+<!-- bem-example: touch-phone.examples/checkbox/PEluHj0R5QBmDlSFhtiihCkzKA8 -->
+
 <h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
 <p>Чекбокс, реализованный с помощью кнопки, при получении модификатора <code>focused</code>, приобретает желтую тень.</p>

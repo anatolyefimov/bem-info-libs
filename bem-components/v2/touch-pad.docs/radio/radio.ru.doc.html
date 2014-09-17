@@ -44,8 +44,14 @@
 <p>Наглядно показано на примерах ниже:</p>
 <p><a name="native"></a>
 <strong>default</strong></p>
+<!-- bem-example: touch-pad.examples/radio/2E9hbTT4mYXBDWBKx-dvt7QWadM -->
+
 <p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/radio/MHGCqsk4LkcGh1M2tccUxRIQmtU -->
+
 <p><strong>normal</strong></p>
+<!-- bem-example: touch-pad.examples/radio/kvZKpJAEc_iP6gXAMd1XKbq6T84 -->
+
 <p><a name="size"></a></p>
 <h3 id="Размеры-`_size`">Размеры <code>_size</code></h3>
 <p>Реализован только в теме <code>normal</code>.</p>
@@ -87,15 +93,21 @@
 <li><code>pressed</code> – кнопка нажата.</li>
 </ul>
 <p>При установленном модификаторе <code>radio_type_button</code> блоку задается HTML-атрибут <code>role=&quot;button&quot;</code>.</p>
-<h3 id="Состояния">Состояния</h3>
-<h4 id="Выбран-`_checked`">Выбран <code>_checked</code></h4>
-<p>Модификатор <code>checked</code> указывает на то, что радиопереключатель выбран.</p>
-<p>Модификатор устанавливается по:</p>
-<ul>
-<li>щелчку мыши (при повторных щелчках модификатор сохраняется);</li>
-<li>нажатию клавиш <code>Enter</code> или <code>Space</code>, если радиокнопка находится в фокусе (возможность использования клавиши <code>Enter</code> зависит от браузера);</li>
-<li>нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков <code>radio</code>.</li>
-</ul>
+<!-- bem-example: touch-pad.examples/radio/qd7kVWa5uuXrBEEX-u56oM9f9Ws -->
+### Состояния
+
+#### Выбран <code>_checked</code>
+
+Модификатор <code>checked</code> указывает на то, что радиопереключатель выбран.
+
+Модификатор устанавливается по:
+
+<em> щелчку мыши (при повторных щелчках модификатор сохраняется);
+</em> нажатию клавиш <code>Enter</code> или <code>Space</code>, если радиокнопка находится в фокусе (возможность использования клавиши <code>Enter</code> зависит от браузера);
+* нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков <code>radio</code>.
+
+<!-- bem-example: touch-pad.examples/radio/PgVa2KIpSdUI46duHFarkaKxkhQ -->
+
 <h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
 <p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
 <p>При установке модификатора <code>disabled</code> для радиопереключателя не будут:</p>
@@ -103,6 +115,8 @@
 <li>устанавливаться модификаторы состояния <code>hovered</code>, <code>pressed</code> и <code>focused</code>;</li>
 <li>изменяться значение модификатора <code>checked</code>.</li>
 </ul>
+<!-- bem-example: touch-pad.examples/radio/HSw5T0rPzbDFcBu9xXRp7mk9-H4 -->
+
 <h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
 <h2 id="Элементы">Элементы</h2>

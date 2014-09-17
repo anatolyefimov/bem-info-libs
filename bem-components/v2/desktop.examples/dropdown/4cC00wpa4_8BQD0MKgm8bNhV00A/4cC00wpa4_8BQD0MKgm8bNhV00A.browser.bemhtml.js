@@ -775,6 +775,7 @@ function __$b42(__$ctx, __$ref) {
     var popupMods__$37 = popup__$36.mods || (popup__$36.mods = {});
     popupMods__$37.theme || (popupMods__$37.theme = $$mods.theme);
     popupMods__$37.hasOwnProperty("autoclosable") || (popupMods__$37.autoclosable = true);
+    popupMods__$37.target = "anchor";
     return [ {
         elem: "switcher",
         content: __$ctx.ctx.switcher

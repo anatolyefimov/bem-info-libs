@@ -4526,6 +4526,27 @@ provide(BEMDOM.decl(this.name,
 });
 
 /* end: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
+/* begin: ./blocks/test-wrapper/test-wrapper.js */
+modules.define('test-wrapper', ['i-bem__dom'], function(provide, BEMDOM) {
+
+provide(BEMDOM.decl(this.name, {
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                var popup = this.findBlockInside('summon', 'popup');
+                this.findBlocksInside('summoner', 'link').forEach(function(link) {
+                    link.on('click', function(e) {
+                        popup.setAnchor(e.target).setMod('visible');
+                    });
+                });
+            }
+        }
+    }
+}));
+
+});
+
+/* end: ./blocks/test-wrapper/test-wrapper.js */
 /* begin: ./blocks/test/test.js */
 modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
 
@@ -4533,7 +4554,7 @@ provide(BEMDOM.decl(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('popup').setTarget(
+                var popup = this.findBlockInside('popup').setAnchor(
                     this.findBlockInside('link')
                         .on('click', function() { popup.toggleMod('visible'); })
                 );
@@ -6435,8 +6456,155 @@ provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototy
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'jquery', 'dom', 'objects', 'functions__throttle'],
-    function(provide, BEMDOM, $, dom, objects, throttle) {
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
+
+var ZINDEX_FACTOR = 1000,
+    visiblePopupsZIndexes = {},
+    undef;
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ *
+ * @param {Number} [zIndexGroupLevel=0] z-index group level
+ *
+ * @bemmod visible Represents visible state
+ */
+provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._parentPopup = undef;
+                this._zIndex = null;
+                this._zIndexGroupLevel = null;
+                this._isAttachedToScope = false;
+            },
+
+            '' : function() {
+                this.delMod('visible');
+            }
+        },
+
+        'visible' : {
+            'true' : function() {
+                if(!this._isAttachedToScope) {
+                    BEMDOM.scope.append(this.domElem);
+                    this._isAttachedToScope = true;
+                }
+
+                this
+                    ._captureZIndex()
+                    ._bindToParentPopup()
+                    .bindTo('pointerpress', this._onPointerPress);
+            },
+
+            '' : function() {
+                this
+                    ._releaseZIndex()
+                    ._unbindFromParentPopup()
+                    .unbindFrom('pointerpress', this._onPointerPress);
+            }
+        }
+    },
+
+    /**
+     * Sets content
+     * @param {String|jQuery} content
+     * @returns {popup} this
+     */
+    setContent : function(content) {
+        BEMDOM.update(this.domElem, content);
+        return this;
+    },
+
+    _calcZIndexGroupLevel : function() {
+        var res = this.params.zIndexGroupLevel,
+            parentPopup = this._getParentPopup();
+
+        parentPopup && (res += parentPopup._zIndexGroupLevel);
+
+        return res;
+    },
+
+    _onPointerPress : function() {
+        var curPopup = this;
+        do {
+            curPopup._inPopupPointerPress = true;
+        } while(curPopup = curPopup._getParentPopup());
+    },
+
+    _bindToParentPopup : function() {
+        var parentPopup = this._getParentPopup();
+        parentPopup && parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+
+        return this;
+    },
+
+    _unbindFromParentPopup : function() {
+        this._parentPopup && this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        this._parentPopup = undef;
+
+        return this;
+    },
+
+    _onParentPopupHide : function() {
+        this.delMod('visible');
+    },
+
+    _getParentPopup : function() {
+        return this._parentPopup;
+    },
+
+    _captureZIndex : function() {
+        var level = this._zIndexGroupLevel === null?
+                this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                this._zIndexGroupLevel,
+            zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]),
+            prevZIndex = this._zIndex;
+
+        this._zIndex = zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
+        this._zIndex !== prevZIndex && this.domElem.css('z-index', this._zIndex);
+
+        return this;
+    },
+
+    _releaseZIndex : function() {
+        var zIndexes = visiblePopupsZIndexes[this._zIndexGroupLevel];
+        zIndexes.splice(zIndexes.indexOf(this._zIndex), 1);
+
+        return this;
+    },
+
+    _recaptureZIndex : function() {
+        this._releaseZIndex();
+        this._zIndexGroupLevel = null;
+
+        return this._captureZIndex();
+    },
+
+    getDefaultParams : function() {
+        return {
+            zIndexGroupLevel : 0
+        };
+    }
+}, /** @lends popup */{
+    live : true
+}));
+
+});
+
+/* end: ../../../common.blocks/popup/popup.js */
+/* begin: ../../../common.blocks/popup/_target/popup_target.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['i-bem__dom', 'objects'],
+    function(provide, BEMDOM, objects, Popup) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_DIRECTIONS = [
@@ -6445,8 +6613,6 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    ZINDEX_FACTOR = 1000,
-    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
     undef;
@@ -6460,137 +6626,42 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [secondaryOffset=0] offset along the secondary direction
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
  * @param {Array[String]} [directions] allowed directions
- *
- * @bemmod visible Represents visible state
  */
-provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
-    beforeSetMod : {
-        'visible' : {
-            'true' : function() {
-                if(!this._owner && !this._pos)
-                    throw Error('Can\'t show popup without target');
-            }
-        }
-    },
-
+provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._parentPopup = null;
-                this._owner = null;
-                this._ownerParents = null;
-                this._popupOwner = null;
-                this._pos = null;
-                this._zIndex = null;
-                this._zIndexGroupLevel = undef;
-                this._isAttachedToScope = false;
-                this._isTargetVisible = undef;
-                this._lastDrawingCss = {
-                        left : undef,
-                        top : undef,
-                        zIndex : undef,
-                        display : undef
-                    };
-                this._updateIsTargetVisible = throttle(
-                    this._updateIsTargetVisible,
-                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
-                    false,
-                    this);
-            },
+                this.__base.apply(this, arguments);
 
-            '' : function() {
-                this
-                    ._unbindFromPopupOwner()
-                    .delMod('visible');
+                this._lastDrawingCss = {
+                    left : undef,
+                    top : undef,
+                    zIndex : undef,
+                    display : undef
+                };
             }
         },
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex(
-                    typeof this._zIndexGroupLevel === 'undefined'?
-                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
-                        this._zIndexGroupLevel);
-                this._owner && (this._ownerParents = this._owner.parents());
-
+                this.__base.apply(this, arguments);
                 this
-                    .bindTo('pointerpress', this._onPointerPress)
-                    ._bindToParentPopup()
-                    ._bindToScrollAndResize()
+                    .bindToWin('scroll resize', this._onWinScollAndResize)
                     .redraw();
             },
 
             '' : function() {
-                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
-
-                this
-                    .unbindFrom('pointerpress', this._onPointerPress)
-                    ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize();
-
-                if(this._owner) {
-                    this._ownerParents = null;
-                    this._isTargetVisible = undef;
-                }
+                this.__base.apply(this, arguments);
+                this.unbindFromWin('scroll resize', this._onWinScollAndResize);
             }
         }
     },
 
     /**
-     * Sets target
-     * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
-     * @param {Number} [top] y-coordinate
-     * @returns {popup} this
+     * @override
      */
-    setTarget : function(left, top) {
-        this
-            ._unbindFromScrollAndResize()
-            ._unbindFromParentPopup()
-            ._unbindFromPopupOwner();
-
-        if(arguments.length === 1) {
-            this._owner = left instanceof BEMDOM?
-                    left.domElem :
-                    left instanceof $?
-                        left : null;
-            if(!this._owner) throw Error('Invalid arguments');
-
-            this._pos = null;
-            this._popupOwner = this._owner.bem('_' + this.__self.getName() + '-owner');
-            this._isTargetVisible = undef;
-
-            this._bindToPopupOwner();
-
-            if(this.hasMod('visible')){
-                this._ownerParents = this._owner.parents();
-                this
-                    ._bindToScrollAndResize()
-                    .redraw();
-            } else {
-                this._ownerParents = null;
-            }
-        } else {
-            this._pos = { left : left, top : top };
-            this._parentPopup = null;
-            this._owner = null;
-            this._ownerParents = null;
-            this._popupOwner = null;
-            this._isTargetVisible = true;
-        }
-
-        this._zIndexGroupLevel = undef;
-
-        return this;
-    },
-
-    /**
-     * Sets content
-     * @param {String|jQuery} content
-     * @returns {popup} this
-     */
-    setContent : function(content) {
-        BEMDOM.update(this.domElem, content);
-        return this.redraw();
+    setContent : function() {
+        return this.__base.apply(this, arguments).redraw();
     },
 
     /**
@@ -6600,28 +6671,15 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     redraw : function() {
         if(!this.hasMod('visible')) return this;
 
-        if(!this._isAttachedToScope) {
-            BEMDOM.scope.append(this.domElem);
-            this._isAttachedToScope = true;
-        }
-
         var bestDrawingParams = this._calcBestDrawingParams();
 
         this.setMod('direction', bestDrawingParams.direction);
-
-        typeof this._isTargetVisible === 'undefined' &&
-            (this._isTargetVisible = this._calcIsTargetVisible());
 
         var lastDrawingCss = this._lastDrawingCss,
             needUpdateCss = false;
 
         objects.each(
-            {
-                display : this._isTargetVisible? '' : 'none',
-                left : bestDrawingParams.left,
-                top : bestDrawingParams.top,
-                zIndex : this._zIndex
-            },
+            this._calcDrawingCss(bestDrawingParams),
             function(val, name) {
                 if(lastDrawingCss[name] !== val) {
                     lastDrawingCss[name] = val;
@@ -6634,12 +6692,19 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return this;
     },
 
+    _calcDrawingCss : function(drawingParams) {
+        return {
+            left : drawingParams.left,
+            top : drawingParams.top
+        };
+    },
+
     /**
      * Returns possible directions to draw with max available width and height.
      * @returns {Array}
      */
     calcPossibleDrawingParams : function() {
-        var owner = this._calcOwnerDimensions(),
+        var target = this._calcTargetDimensions(),
             viewport = this._calcViewportDimensions(),
             params = this.params,
             mainOffset = params.mainOffset,
@@ -6655,43 +6720,43 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                     top : 0
                 };
 
-            if(checkMainDirection(direction, 'bottom')) {
-                subRes.top = owner.top + owner.height + mainOffset;
+            if(this._checkMainDirection(direction, 'bottom')) {
+                subRes.top = target.top + target.height + mainOffset;
                 subRes.height = viewport.bottom - subRes.top - viewportOffset;
-            } else if(checkMainDirection(direction, 'top')) {
-                subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
-                subRes.top = owner.top - subRes.height - mainOffset;
+            } else if(this._checkMainDirection(direction, 'top')) {
+                subRes.height = target.top - viewport.top - mainOffset - viewportOffset;
+                subRes.top = target.top - subRes.height - mainOffset;
             } else {
-                if(checkSecondaryDirection(direction, 'center')) {
+                if(this._checkSecondaryDirection(direction, 'center')) {
                     subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
-                    subRes.top = owner.top + owner.height / 2 - subRes.height / 2;
-                } else if(checkSecondaryDirection(direction, 'bottom')) {
-                    subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
-                    subRes.top = owner.top + owner.height - subRes.height - secondaryOffset;
-                } else if(checkSecondaryDirection(direction, 'top')) {
-                    subRes.top = owner.top + secondaryOffset;
+                    subRes.top = target.top + target.height / 2 - subRes.height / 2;
+                } else if(this._checkSecondaryDirection(direction, 'bottom')) {
+                    subRes.height = target.top + target.height - viewport.top - secondaryOffset - viewportOffset;
+                    subRes.top = target.top + target.height - subRes.height - secondaryOffset;
+                } else if(this._checkSecondaryDirection(direction, 'top')) {
+                    subRes.top = target.top + secondaryOffset;
                     subRes.height = viewport.bottom - subRes.top - viewportOffset;
                 }
 
-                if(checkMainDirection(direction, 'left')) {
-                    subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
-                    subRes.left = owner.left - subRes.width - mainOffset;
+                if(this._checkMainDirection(direction, 'left')) {
+                    subRes.width = target.left - viewport.left - mainOffset - viewportOffset;
+                    subRes.left = target.left - subRes.width - mainOffset;
                 } else {
-                    subRes.left = owner.left + owner.width + mainOffset;
+                    subRes.left = target.left + target.width + mainOffset;
                     subRes.width = viewport.right - subRes.left - viewportOffset;
                 }
             }
 
-            if(checkSecondaryDirection(direction, 'right')) {
-                subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
-                subRes.left = owner.left + owner.width - subRes.width - secondaryOffset;
-            } else if(checkSecondaryDirection(direction, 'left')) {
-                subRes.left = owner.left + secondaryOffset;
+            if(this._checkSecondaryDirection(direction, 'right')) {
+                subRes.width = target.left + target.width - viewport.left - secondaryOffset - viewportOffset;
+                subRes.left = target.left + target.width - subRes.width - secondaryOffset;
+            } else if(this._checkSecondaryDirection(direction, 'left')) {
+                subRes.left = target.left + secondaryOffset;
                 subRes.width = viewport.right - subRes.left - viewportOffset;
-            } else if(checkSecondaryDirection(direction, 'center')) {
-                if(checkMainDirection(direction, 'top', 'bottom')) {
+            } else if(this._checkSecondaryDirection(direction, 'center')) {
+                if(this._checkMainDirection(direction, 'top', 'bottom')) {
                     subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
-                    subRes.left = owner.left + owner.width / 2 - subRes.width / 2;
+                    subRes.left = target.left + target.width / 2 - subRes.width / 2;
                 }
             }
 
@@ -6701,7 +6766,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     _calcBestDrawingParams : function() {
         var popup = this._calcPopupDimensions(),
-            owner = this._calcOwnerDimensions(),
+            target = this._calcTargetDimensions(),
             viewport = this._calcViewportDimensions(),
             directions = this.params.directions,
             i = 0,
@@ -6713,7 +6778,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             bestViewportFactor;
 
         while(direction = directions[i++]) {
-            pos = this._calcPos(direction, owner, popup);
+            pos = this._calcPos(direction, target, popup);
             viewportFactor = this._calcViewportFactor(pos, viewport, popup);
             if(i === 1 ||
                     viewportFactor > bestViewportFactor ||
@@ -6743,18 +6808,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         };
     },
 
-    _calcOwnerDimensions : function() {
-        var pos = this._pos,
-            owner = this._owner,
-            ownerPos = pos? pos : owner.offset();
-
-        return {
-            left : ownerPos.left,
-            top : ownerPos.top,
-            width : pos? 0 : owner.outerWidth(),
-            height : pos? 0 : owner.outerHeight()
-        };
-    },
+    /**
+     * @abstract
+     * @protected
+     * @returns {Object}
+     */
+    _calcTargetDimensions : function() {},
 
     _calcViewportDimensions : function() {
         var winTop = win.scrollTop(),
@@ -6770,34 +6829,34 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         };
     },
 
-    _calcPos : function(direction, owner, popup) {
+    _calcPos : function(direction, target, popup) {
         var res = {},
             mainOffset = this.params.mainOffset,
             secondaryOffset = this.params.secondaryOffset;
 
-        if(checkMainDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height + mainOffset;
-        } else if(checkMainDirection(direction, 'top')) {
-            res.top = owner.top - popup.height - mainOffset;
-        } else if(checkMainDirection(direction, 'left')) {
-            res.left = owner.left - popup.width - mainOffset;
-        } else if(checkMainDirection(direction, 'right')) {
-            res.left = owner.left + owner.width + mainOffset;
+        if(this._checkMainDirection(direction, 'bottom')) {
+            res.top = target.top + target.height + mainOffset;
+        } else if(this._checkMainDirection(direction, 'top')) {
+            res.top = target.top - popup.height - mainOffset;
+        } else if(this._checkMainDirection(direction, 'left')) {
+            res.left = target.left - popup.width - mainOffset;
+        } else if(this._checkMainDirection(direction, 'right')) {
+            res.left = target.left + target.width + mainOffset;
         }
 
-        if(checkSecondaryDirection(direction, 'right')) {
-            res.left = owner.left + owner.width - popup.width - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'left')) {
-            res.left = owner.left + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height - popup.height - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'top')) {
-            res.top = owner.top + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'center')) {
-            if(checkMainDirection(direction, 'top', 'bottom')) {
-                res.left = owner.left + owner.width / 2 - popup.width / 2;
-            } else if(checkMainDirection(direction, 'left', 'right')) {
-                res.top = owner.top + owner.height / 2 - popup.height / 2;
+        if(this._checkSecondaryDirection(direction, 'right')) {
+            res.left = target.left + target.width - popup.width - secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'left')) {
+            res.left = target.left + secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'bottom')) {
+            res.top = target.top + target.height - popup.height - secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'top')) {
+            res.top = target.top + secondaryOffset;
+        } else if(this._checkSecondaryDirection(direction, 'center')) {
+            if(this._checkMainDirection(direction, 'top', 'bottom')) {
+                res.left = target.left + target.width / 2 - popup.width / 2;
+            } else if(this._checkMainDirection(direction, 'left', 'right')) {
+                res.top = target.top + target.height / 2 - popup.height / 2;
             }
         }
 
@@ -6818,32 +6877,186 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             0;
     },
 
+    _checkMainDirection : function(direction, mainDirection1, mainDirection2) {
+        return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
+    },
+
+    _checkSecondaryDirection : function(direction, secondaryDirection) {
+        return ~direction.indexOf('-' + secondaryDirection);
+    },
+
+    _onWinScollAndResize : function() {
+        this.redraw();
+    },
+
+    getDefaultParams : function() {
+        return objects.extend(
+            this.__base.apply(this, arguments),
+            {
+                mainOffset : 0,
+                secondaryOffset : 0,
+                viewportOffset : 0,
+                directions : DEFAULT_DIRECTIONS
+            });
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/popup/_target/popup_target.js */
+/* begin: ../../../common.blocks/popup/_target/popup_target_anchor.js */
+/**
+ * @module popup
+ */
+
+modules.define(
+    'popup',
+    ['i-bem__dom', 'jquery', 'objects', 'functions__throttle'],
+    function(provide, BEMDOM, $, objects, throttle, Popup) {
+
+var UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
+    undef;
+
+/**
+ * @exports
+ * @class popup
+ * @bem
+ */
+provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
+    beforeSetMod : {
+        'visible' : {
+            'true' : function() {
+                if(!this._anchor)
+                    throw Error('Can\'t show popup without anchor');
+            }
+        }
+    },
+
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+
+                this._anchor = null;
+                this._anchorParents = null;
+                this._destructor = null;
+                this._isAnchorVisible = undef;
+                this._updateIsAnchorVisible = throttle(
+                    this._updateIsAnchorVisible,
+                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
+                    false,
+                    this);
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this._unbindFromDestructor(); // don't destruct anchor as it might be the same anchor for several popups
+            }
+        },
+
+        'visible' : {
+            'true' : function() {
+                this._anchorParents = this._anchor.parents();
+                this._bindToAnchorParents();
+
+                this.__base.apply(this, arguments);
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+
+                this._unbindFromAnchorParents();
+                this._anchorParents = null;
+                this._isAnchorVisible = undef;
+            }
+        }
+    },
+
+    /**
+     * Sets target
+     * @param {jQuery|BEMDOM} anchor DOM elem or anchor BEMDOM block
+     * @returns {popup} this
+     */
+    setAnchor : function(anchor) {
+        this
+            ._unbindFromAnchorParents()
+            ._unbindFromParentPopup()
+            ._unbindFromDestructor();
+
+        this._anchor = anchor instanceof BEMDOM?
+            anchor.domElem :
+            anchor;
+
+        this._destructor = this._anchor.bem('_' + this.__self.getName() + '-destructor');
+        this._isAnchorVisible = undef;
+
+        this._bindToDestructor();
+
+        if(this.hasMod('visible')) {
+            this._anchorParents = this._anchor.parents();
+            this
+                ._recaptureZIndex()
+                ._bindToAnchorParents()
+                ._bindToParentPopup()
+                .redraw();
+        } else {
+            this._anchorParents = null;
+        }
+
+        return this;
+    },
+
+    /**
+     * @override
+     */
+    _calcTargetDimensions : function() {
+        var anchor = this._anchor,
+            anchorPos = anchor.offset();
+
+        return {
+            left : anchorPos.left,
+            top : anchorPos.top,
+            width : anchor.outerWidth(),
+            height : anchor.outerHeight()
+        };
+    },
+
+    /**
+     * @override
+     */
+    _calcDrawingCss : function(drawingParams) {
+        typeof this._isAnchorVisible === 'undefined' &&
+            (this._isAnchorVisible = this._calcIsAnchorVisible());
+
+        return objects.extend(
+            this.__base(drawingParams),
+            { display : this._isAnchorVisible? '' : 'none' });
+    },
+
     /**
      * Calculates target visibility state
      * @private
      * @returns {Boolean} Whether state is visible
      */
-    _calcIsTargetVisible : function() {
-        var owner = this._owner;
-        if(!owner) return true;
-
-        var ownerOffset = owner.offset(),
-            ownerLeft = ownerOffset.left,
-            ownerTop = ownerOffset.top,
-            ownerRight = ownerLeft + owner.outerWidth(),
-            ownerBottom = ownerTop + owner.outerHeight(),
+    _calcIsAnchorVisible : function() {
+        var anchor = this._anchor,
+            anchorOffset = anchor.offset(),
+            anchorLeft = anchorOffset.left,
+            anchorTop = anchorOffset.top,
+            anchorRight = anchorLeft + anchor.outerWidth(),
+            anchorBottom = anchorTop + anchor.outerHeight(),
             direction = this.getMod('direction'),
-            vertBorder = Math.floor(checkMainDirection(direction, 'top') ||
-                    checkSecondaryDirection(direction, 'top')?
-                ownerTop :
-                ownerBottom),
-            horizBorder = Math.floor(checkMainDirection(direction, 'left') ||
-                    checkSecondaryDirection(direction, 'left')?
-                ownerLeft :
-                ownerRight),
+            vertBorder = Math.floor(this._checkMainDirection(direction, 'top') ||
+                    this._checkSecondaryDirection(direction, 'top')?
+                anchorTop :
+                anchorBottom),
+            horizBorder = Math.floor(this._checkMainDirection(direction, 'left') ||
+                    this._checkSecondaryDirection(direction, 'left')?
+                anchorLeft :
+                anchorRight),
             res = true;
 
-        this._ownerParents.each(function() {
+        this._anchorParents.each(function() {
             if(this.tagName === 'BODY') return false;
 
             var parent = $(this),
@@ -6875,131 +7088,80 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _calcZIndexGroupLevel : function() {
-        var res = this.params.zIndexGroupLevel;
-        return this._popupOwner?
-            this._popupOwner.findBlocksOutside('z-index-group').reduce(
-                function(res, zIndexGroup) {
-                    return res + Number(zIndexGroup.getMod('level'));
-                },
-                res) :
-            res;
+        var res = this.__base.apply(this, arguments);
+
+        return this._destructor.findBlocksOutside('z-index-group').reduce(
+            function(res, zIndexGroup) {
+                return res + Number(zIndexGroup.getMod('level'));
+            },
+            res);
     },
 
-    _bindToScrollAndResize : function() {
-        this._ownerParents &&
-            this
-                .bindTo(this._ownerParents, 'scroll', this._onScrollOrResize)
-                .bindToWin('scroll resize', this._onScrollOrResize);
+    _bindToAnchorParents : function() {
+        return this.bindTo(
+            this._anchorParents,
+            'scroll',
+            this._onAnchorParentsScroll);
+    },
 
+    _unbindFromAnchorParents : function() {
+        this._anchorParents && this.unbindFrom(
+            this._anchorParents,
+            'scroll',
+            this._onAnchorParentsScroll);
         return this;
     },
 
-    _unbindFromScrollAndResize : function() {
-        this._ownerParents &&
-            this
-                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
-                .unbindFromWin('scroll resize', this._onScrollOrResize);
-
-        return this;
-    },
-
-    _onScrollOrResize : function() {
+    _onAnchorParentsScroll : function() {
         this
             .redraw()
-            ._updateIsTargetVisible();
+            ._updateIsAnchorVisible();
     },
 
-    _updateIsTargetVisible : function() {
+    /**
+     * @override
+     */
+    _onWinScollAndResize : function() {
+        this.__base.apply(this, arguments);
+        this._updateIsAnchorVisible();
+    },
+
+    _updateIsAnchorVisible : function() {
         if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
             return;
 
-        var isTargetVisible = this._calcIsTargetVisible();
-        if(isTargetVisible !== this._isTargetVisible) {
-            this._isTargetVisible = isTargetVisible;
+        var isAnchorVisible = this._calcIsAnchorVisible();
+        if(isAnchorVisible !== this._isAnchorVisible) {
+            this._isAnchorVisible = isAnchorVisible;
             this.redraw();
         }
     },
 
-    _onPointerPress : function() {
-        var curPopup = this;
-        do {
-            curPopup._inPopupPointerPress = true;
-        } while(curPopup = curPopup._parentPopup);
-    },
-
-    _bindToParentPopup : function() {
-        this._owner &&
-            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
-            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
-
+    _bindToDestructor : function() {
+        this._destructor.on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 
-    _unbindFromParentPopup : function() {
-        if(this._parentPopup) {
-            this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
-            this._parentPopup = null;
-        }
-
+    _unbindFromDestructor : function() {
+        this._destructor &&
+            this._destructor.un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 
-    _onParentPopupHide : function() {
-        this.delMod('visible');
-    },
-
-    _bindToPopupOwner : function() {
-        this._popupOwner &&
-            this._popupOwner.on({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
-        return this;
-    },
-
-    _unbindFromPopupOwner : function() {
-        this._popupOwner &&
-            this._popupOwner.un({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
-        return this;
-    },
-
-    _onPopupOwnerDestruct : function() {
+    _onPopupAnchorDestruct : function() {
         BEMDOM.destruct(this.domElem);
     },
 
-    getDefaultParams : function() {
-        return {
-            mainOffset : 0,
-            secondaryOffset : 0,
-            viewportOffset : 0,
-            directions : DEFAULT_DIRECTIONS,
-            zIndexGroupLevel : 0
-        };
+    _getParentPopup : function() {
+        return this._parentPopup === undef?
+            this._parentPopup = this.findBlockOutside(this._anchor, this.__self.getName()) :
+            this._parentPopup;
     }
-}, /** @lends popup */{
-    live : true
 }));
-
-var visiblePopupsZIndexes = {};
-
-function captureZIndex(level) {
-    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
-    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
-}
-
-function releaseZIndex(level, zIndex) {
-    var zIndexes = visiblePopupsZIndexes[level];
-    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
-}
-
-function checkMainDirection(direction, mainDirection1, mainDirection2) {
-    return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
-}
-
-function checkSecondaryDirection(direction, secondaryDirection) {
-    return ~direction.indexOf('-' + secondaryDirection);
-}
 
 });
 
-/* end: ../../../common.blocks/popup/popup.js */
+/* end: ../../../common.blocks/popup/_target/popup_target_anchor.js */
 /* begin: ../../../common.blocks/input/input.js */
 /**
  * @module input
