@@ -1,1 +1,0 @@
-exports.deps = [{"block":"b-menu-vert"}];
