@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_fuTNDyCFDND4oi6LFHUl6LAvq34.css"}],"scripts":[{"elem":"js","url":"_fuTNDyCFDND4oi6LFHUl6LAvq34.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Submit","mods":{"theme":"normal","size":"m","type":"submit"}}})

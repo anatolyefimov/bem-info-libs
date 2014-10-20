@@ -1,0 +1,1 @@
+({"block":"page","title":"dropdown","head":[{"elem":"css","url":"_TLiFLNvvTC4X4OsHsjxSen9guts.css"}],"scripts":[{"elem":"js","url":"_TLiFLNvvTC4X4OsHsjxSen9guts.js"}],"mods":{"theme":"islands"},"content":{"block":"dropdown","mods":{"switcher":"link","theme":"islands","size":"m"},"switcher":"Link","popup":"Hello, world!"}})

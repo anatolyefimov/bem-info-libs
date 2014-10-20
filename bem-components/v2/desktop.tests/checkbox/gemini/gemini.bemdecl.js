@@ -9,7 +9,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -70,7 +70,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -116,13 +116,13 @@ exports.blocks = [
         ]
     },
     {
-        "name": "normal-button-enabled"
+        "name": "islands-button-enabled"
     },
     {
-        "name": "normal-button-disabled"
+        "name": "islands-button-disabled"
     },
     {
-        "name": "normal-button-disabled-checked"
+        "name": "islands-button-disabled-checked"
     },
     {
         "name": "icon"
@@ -141,12 +141,12 @@ exports.blocks = [
         ]
     },
     {
-        "name": "normal-button-icon-enabled"
+        "name": "islands-button-icon-enabled"
     },
     {
-        "name": "normal-button-icon-disabled"
+        "name": "islands-button-icon-disabled"
     },
     {
-        "name": "normal-button-icon-disabled-checked"
+        "name": "islands-button-icon-disabled-checked"
     }
 ];

@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -303,12 +303,12 @@ exports.deps = [
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "select",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "popup",
@@ -317,7 +317,7 @@ exports.deps = [
     {
         "block": "popup",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "menu",
@@ -326,7 +326,7 @@ exports.deps = [
     {
         "block": "menu",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "menu-item",
@@ -335,7 +335,7 @@ exports.deps = [
     {
         "block": "menu-item",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "icon"
@@ -391,5 +391,15 @@ exports.deps = [
         "block": "select",
         "mod": "width",
         "val": "available"
+    },
+    {
+        "block": "select",
+        "mod": "size",
+        "val": "s"
+    },
+    {
+        "block": "select",
+        "mod": "size",
+        "val": "l"
     }
 ];

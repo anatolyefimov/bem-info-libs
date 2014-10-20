@@ -24,13 +24,48 @@ exports.apply = apply;
 function applyc(__$ctx, __$ref) {
     var __$t = $$mode;
     if (__$t === "tag") {
-        var __$r = __$g0(__$ctx, __$ref);
-        if (__$r !== __$ref) return __$r;
+        var __$t = $$block;
+        if (__$t === "attach") {
+            var __$t = $$elem;
+            if (__$t === "clear") {
+                return "i";
+            } else if (__$t === "text") {
+                return "span";
+            } else if (__$t === "file") {
+                return "span";
+            } else if (__$t === "no-file") {
+                return "span";
+            } else if (__$t === "control") {
+                return "input";
+            }
+            if (!$$elem) {
+                return "span";
+            }
+        } else if (__$t === "button") {
+            if (!$$elem && __$ctx._attach) {
+                return "span";
+            }
+            if ($$elem === "text") {
+                return "span";
+            }
+            if (!$$elem) {
+                return __$ctx.ctx.tag || "button";
+            }
+        } else if (__$t === "icon") {
+            if (!$$elem) {
+                return "i";
+            }
+        } else if (__$t === "ua") {
+            if (!$$elem) {
+                return "script";
+            }
+        }
+        return undefined;
     } else if (__$t === "attrs") {
         var __$t = $$block;
         if (__$t === "attach") {
             if ($$elem === "control") {
-                var __$r = __$b21(__$ctx, __$ref);
+                var __$r = __$b13(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         } else if (__$t === "button") {
@@ -42,37 +77,16 @@ function applyc(__$ctx, __$ref) {
             var __$t = !$$elem;
             if (__$t) {
                 if ((!$$mods.type || $$mods.type === "submit") && (__$ctx.__$a0 & 4) === 0) {
-                    var __$r = __$b23(__$ctx, __$ref);
+                    var __$r = __$b15(__$ctx, __$ref);
                     if (__$r !== __$ref) return __$r;
                 }
-                var __$r = __$b24(__$ctx, __$ref);
+                var __$r = __$b16(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         } else if (__$t === "icon") {
             if (!$$elem && __$ctx.ctx.url) {
                 return {
                     style: "background-image:url(" + __$ctx.ctx.url + ")"
-                };
-            }
-        } else if (__$t === "page") {
-            var __$t = $$elem;
-            if (__$t === "js") {
-                if (__$ctx.ctx.url) {
-                    return {
-                        src: __$ctx.ctx.url
-                    };
-                }
-            } else if (__$t === "css") {
-                if (__$ctx.ctx.url) {
-                    return {
-                        rel: "stylesheet",
-                        href: __$ctx.ctx.url
-                    };
-                }
-            } else if (__$t === "favicon") {
-                return {
-                    rel: "shortcut icon",
-                    href: __$ctx.ctx.url
                 };
             }
         }
@@ -85,7 +99,7 @@ function applyc(__$ctx, __$ref) {
                 if (typeof __$ctx.ctx.content !== "undefined") {
                     return __$ctx.ctx.content;
                 }
-                var __$r = __$b31(__$ctx, __$ref);
+                var __$r = __$b20(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         } else if (__$t === "button") {
@@ -107,50 +121,12 @@ function applyc(__$ctx, __$ref) {
                 if (typeof __$ctx.ctx.content !== "undefined") {
                     return __$ctx.ctx.content;
                 }
-                var __$r = __$b34(__$ctx, __$ref);
+                var __$r = __$b23(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
         } else if (__$t === "ua") {
-            var __$t = !$$elem;
-            if (__$t) {
-                if ((__$ctx.__$a0 & 32) === 0) {
-                    return [ function __$lb__$36() {
-                        var __$r__$37;
-                        var __$l0__$38 = __$ctx.__$a0;
-                        __$ctx.__$a0 = __$ctx.__$a0 | 32;
-                        __$r__$37 = applyc(__$ctx, __$ref);
-                        __$ctx.__$a0 = __$l0__$38;
-                        return __$r__$37;
-                    }(), "(function(d,n){", "d.documentElement.className+=", '" ua_svg_"+(d[n]&&d[n]("http://www.w3.org/2000/svg","svg").createSVGRect?"yes":"no");', '})(document,"createElementNS");' ];
-                }
+            if (!$$elem) {
                 return [ "(function(e,c){", 'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");', '})(document.documentElement,"className");' ];
-            }
-        } else if (__$t === "page") {
-            if ($$elem === "head" && (__$ctx.__$a0 & 128) === 0) {
-                return [ __$ctx.ctx["x-ua-compatible"] === false ? false : {
-                    tag: "meta",
-                    attrs: {
-                        "http-equiv": "X-UA-Compatible",
-                        content: __$ctx.ctx["x-ua-compatible"] || "IE=edge"
-                    }
-                }, function __$lb__$55() {
-                    var __$r__$56;
-                    var __$l0__$57 = __$ctx.__$a0;
-                    __$ctx.__$a0 = __$ctx.__$a0 | 128;
-                    __$r__$56 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$57;
-                    return __$r__$56;
-                }() ];
-            }
-            if (!$$elem && (__$ctx.__$a0 & 256) === 0) {
-                return [ function __$lb__$58() {
-                    var __$r__$59;
-                    var __$l0__$60 = __$ctx.__$a0;
-                    __$ctx.__$a0 = __$ctx.__$a0 | 256;
-                    __$r__$59 = applyc(__$ctx, __$ref);
-                    __$ctx.__$a0 = __$l0__$60;
-                    return __$r__$59;
-                }(), __$ctx.ctx.scripts ];
             }
         }
         return __$ctx.ctx.content;
@@ -188,51 +164,50 @@ function applyc(__$ctx, __$ref) {
         }
         return undefined;
     } else if (__$t === "default") {
-        var __$r = __$g1(__$ctx, __$ref);
+        var __$t = $$block;
+        if (__$t === "attach") {
+            if (!$$elem && (__$ctx.__$a0 & 16) === 0) {
+                var __$r = __$b32(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "button") {
+            if (!$$elem && (__$ctx.__$a0 & 8) === 0) {
+                var __$r = __$b33(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        } else if (__$t === "i-bem") {
+            if ($$elem === "i18n") {
+                var __$r = __$b34(__$ctx, __$ref);
+                if (__$r !== __$ref) return __$r;
+            }
+        }
+        var __$r = __$b35(__$ctx, __$ref);
         if (__$r !== __$ref) return __$r;
     } else if (__$t === "bem") {
-        var __$t = $$block;
-        if (__$t === "ua") {
-            if (!$$elem) {
-                return false;
-            }
-        } else if (__$t === "page") {
-            var __$t = $$elem;
-            if (__$t === "js") {
-                return false;
-            } else if (__$t === "css") {
-                return false;
-            } else if (__$t === "head") {
-                return false;
-            } else if (__$t === "favicon") {
-                return false;
-            } else if (__$t === "link") {
-                return false;
-            } else if (__$t === "meta") {
-                return false;
-            }
+        if ($$block === "ua" && !$$elem) {
+            return false;
         }
         return undefined;
     } else if (__$t === "cls") {
         return undefined;
     } else if (__$t === "") {
-        if (__$ctx.ctx && __$ctx.ctx._vow && (__$ctx.__$a0 & 1024) === 0) {
-            var __$r = __$b62(__$ctx, __$ref);
+        if (__$ctx.ctx && __$ctx.ctx._vow && (__$ctx.__$a0 & 32) === 0) {
+            var __$r = __$b39(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
         if (__$ctx.isSimple(__$ctx.ctx)) {
-            var __$r = __$b63(__$ctx, __$ref);
+            var __$r = __$b40(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
         if (!__$ctx.ctx) {
-            var __$r = __$b64(__$ctx, __$ref);
+            var __$r = __$b41(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
         if (__$ctx.isArray(__$ctx.ctx)) {
-            var __$r = __$b65(__$ctx, __$ref);
+            var __$r = __$b42(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
-        var __$r = __$b66(__$ctx, __$ref);
+        var __$r = __$b43(__$ctx, __$ref);
         if (__$r !== __$ref) return __$r;
     }
 }
@@ -432,15 +407,14 @@ function applyc(__$ctx, __$ref) {
         ctx["__$a0"] = 0;
         ctx["_button"] = undefined;
         ctx["_attach"] = undefined;
-        ctx["_mode"] = undefined;
-        ctx["ctx"] = undefined;
-        ctx["_ieCommented"] = undefined;
         ctx["_str"] = undefined;
+        ctx["_mode"] = undefined;
         ctx["block"] = undefined;
         ctx["elem"] = undefined;
         ctx["_notNewList"] = undefined;
         ctx["position"] = undefined;
         ctx["_listLength"] = undefined;
+        ctx["ctx"] = undefined;
         ctx["_currBlock"] = undefined;
         ctx["mods"] = undefined;
         ctx["elemMods"] = undefined;
@@ -450,7 +424,7 @@ function applyc(__$ctx, __$ref) {
     }
 });
 
-function __$b21(__$ctx, __$ref) {
+function __$b13(__$ctx, __$ref) {
     var attrs__$0 = {
         type: "file"
     }, attach__$1 = __$ctx._attach;
@@ -462,7 +436,7 @@ function __$b21(__$ctx, __$ref) {
     return attrs__$0;
 }
 
-function __$b23(__$ctx, __$ref) {
+function __$b15(__$ctx, __$ref) {
     var ctx__$10 = __$ctx.ctx, attrs__$11 = {
         type: $$mods.type || "button",
         name: ctx__$10.name,
@@ -479,7 +453,7 @@ function __$b23(__$ctx, __$ref) {
     }(), attrs__$11);
 }
 
-function __$b24(__$ctx, __$ref) {
+function __$b16(__$ctx, __$ref) {
     var ctx__$15 = __$ctx.ctx;
     return {
         role: "button",
@@ -489,7 +463,7 @@ function __$b24(__$ctx, __$ref) {
     };
 }
 
-function __$b31(__$ctx, __$ref) {
+function __$b20(__$ctx, __$ref) {
     var ctx__$22 = __$ctx.ctx, button__$23 = ctx__$22.button;
     __$ctx.isSimple(button__$23) && (button__$23 = {
         block: "button",
@@ -506,7 +480,7 @@ function __$b31(__$ctx, __$ref) {
     } ];
 }
 
-function __$b34(__$ctx, __$ref) {
+function __$b23(__$ctx, __$ref) {
     var ctx__$8 = __$ctx.ctx, content__$9 = [ ctx__$8.icon ];
     "text" in ctx__$8 && content__$9.push({
         elem: "text",
@@ -515,7 +489,7 @@ function __$b34(__$ctx, __$ref) {
     return content__$9;
 }
 
-function __$b46(__$ctx, __$ref) {
+function __$b32(__$ctx, __$ref) {
     var __$r__$27;
     var __$l0__$28 = __$ctx._attach;
     __$ctx._attach = __$ctx.ctx;
@@ -529,7 +503,7 @@ function __$b46(__$ctx, __$ref) {
     return;
 }
 
-function __$b47(__$ctx, __$ref) {
+function __$b33(__$ctx, __$ref) {
     var __$r__$17;
     var __$l0__$18 = __$ctx._button;
     __$ctx._button = __$ctx.ctx;
@@ -543,7 +517,7 @@ function __$b47(__$ctx, __$ref) {
     return;
 }
 
-function __$b48(__$ctx, __$ref) {
+function __$b34(__$ctx, __$ref) {
     if (!__$ctx.ctx) return "";
     var ctx__$32 = __$ctx.ctx, keyset__$33 = ctx__$32.keyset, key__$34 = ctx__$32.key, params__$35 = ctx__$32.params || {};
     if (!(keyset__$33 || key__$34)) return "";
@@ -554,175 +528,94 @@ function __$b48(__$ctx, __$ref) {
     return;
 }
 
-function __$b49(__$ctx, __$ref) {
-    var url__$39 = __$ctx.ctx.url;
-    var __$r__$41;
-    var __$l0__$42 = $$mode;
-    $$mode = "";
-    var __$l1__$43 = __$ctx.ctx;
-    __$ctx.ctx = [ 6, 7, 8, 9 ].map(function(v) {
-        return {
-            elem: "css",
-            url: url__$39 + ".ie" + v + ".css",
-            ie: "IE " + v
-        };
-    });
-    var __$r__$45;
-    var __$l2__$46 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 64;
-    __$r__$45 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$46;
-    __$r__$41 = __$r__$45;
-    $$mode = __$l0__$42;
-    __$ctx.ctx = __$l1__$43;
-    return;
-}
-
-function __$b50(__$ctx, __$ref) {
-    var ie__$47 = __$ctx.ctx.ie, hideRule__$48 = !ie__$47 ? [ "gt IE 9", "<!-->", "<!--" ] : ie__$47 === "!IE" ? [ ie__$47, "<!-->", "<!--" ] : [ ie__$47, "", "" ];
-    var __$r__$50;
-    var __$l0__$51 = $$mode;
-    $$mode = "";
-    var __$l3__$52 = __$ctx.ctx;
-    var __$l1__$53 = __$l3__$52._ieCommented;
-    __$l3__$52._ieCommented = true;
-    var __$l2__$54 = __$ctx.ctx;
-    __$ctx.ctx = [ "<!--[if " + hideRule__$48[0] + "]>" + hideRule__$48[1], __$ctx.ctx, hideRule__$48[2] + "<![endif]-->" ];
-    __$r__$50 = applyc(__$ctx, __$ref);
-    $$mode = __$l0__$51;
-    __$l3__$52._ieCommented = __$l1__$53;
-    __$ctx.ctx = __$l2__$54;
-    return;
-}
-
-function __$b51(__$ctx, __$ref) {
-    __$ctx._defPageApplied = true;
-    var ctx__$61 = __$ctx.ctx;
-    var __$r__$63;
-    var __$l0__$64 = $$mode;
-    $$mode = "";
-    var __$l1__$65 = __$ctx.ctx;
-    __$ctx.ctx = [ ctx__$61.doctype || "<!DOCTYPE html>", {
-        tag: "html",
-        cls: "ua_js_no",
-        content: [ {
-            elem: "head",
-            content: [ {
-                tag: "meta",
-                attrs: {
-                    charset: "utf-8"
-                }
-            }, {
-                tag: "title",
-                content: ctx__$61.title
-            }, {
-                block: "ua"
-            }, ctx__$61.head, ctx__$61.styles, ctx__$61.favicon ? {
-                elem: "favicon",
-                url: ctx__$61.favicon
-            } : "" ]
-        }, ctx__$61 ]
-    } ];
-    var __$r__$67;
-    var __$l2__$68 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 512;
-    __$r__$67 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$68;
-    __$r__$63 = __$r__$67;
-    $$mode = __$l0__$64;
-    __$ctx.ctx = __$l1__$65;
-    __$ctx._defPageApplied = false;
-    return;
-}
-
-function __$b52(__$ctx, __$ref) {
-    var BEM_INTERNAL__$69 = __$ctx.BEM.INTERNAL, ctx__$70 = __$ctx.ctx, isBEM__$71, tag__$72, res__$73;
-    var __$r__$75;
-    var __$l0__$76 = __$ctx._str;
+function __$b35(__$ctx, __$ref) {
+    var BEM_INTERNAL__$36 = __$ctx.BEM.INTERNAL, ctx__$37 = __$ctx.ctx, isBEM__$38, tag__$39, res__$40;
+    var __$r__$42;
+    var __$l0__$43 = __$ctx._str;
     __$ctx._str = "";
-    var vBlock__$77 = $$block;
-    var __$r__$79;
-    var __$l1__$80 = $$mode;
+    var vBlock__$44 = $$block;
+    var __$r__$46;
+    var __$l1__$47 = $$mode;
     $$mode = "tag";
-    __$r__$79 = applyc(__$ctx, __$ref);
-    $$mode = __$l1__$80;
-    tag__$72 = __$r__$79;
-    typeof tag__$72 !== "undefined" || (tag__$72 = ctx__$70.tag);
-    typeof tag__$72 !== "undefined" || (tag__$72 = "div");
-    if (tag__$72) {
-        var jsParams__$81, js__$82;
-        if (vBlock__$77 && ctx__$70.js !== false) {
-            var __$r__$83;
-            var __$l2__$84 = $$mode;
+    __$r__$46 = applyc(__$ctx, __$ref);
+    $$mode = __$l1__$47;
+    tag__$39 = __$r__$46;
+    typeof tag__$39 !== "undefined" || (tag__$39 = ctx__$37.tag);
+    typeof tag__$39 !== "undefined" || (tag__$39 = "div");
+    if (tag__$39) {
+        var jsParams__$48, js__$49;
+        if (vBlock__$44 && ctx__$37.js !== false) {
+            var __$r__$50;
+            var __$l2__$51 = $$mode;
             $$mode = "js";
-            __$r__$83 = applyc(__$ctx, __$ref);
-            $$mode = __$l2__$84;
-            js__$82 = __$r__$83;
-            js__$82 = js__$82 ? __$ctx.extend(ctx__$70.js, js__$82 === true ? {} : js__$82) : ctx__$70.js === true ? {} : ctx__$70.js;
-            js__$82 && ((jsParams__$81 = {})[BEM_INTERNAL__$69.buildClass(vBlock__$77, ctx__$70.elem)] = js__$82);
+            __$r__$50 = applyc(__$ctx, __$ref);
+            $$mode = __$l2__$51;
+            js__$49 = __$r__$50;
+            js__$49 = js__$49 ? __$ctx.extend(ctx__$37.js, js__$49 === true ? {} : js__$49) : ctx__$37.js === true ? {} : ctx__$37.js;
+            js__$49 && ((jsParams__$48 = {})[BEM_INTERNAL__$36.buildClass(vBlock__$44, ctx__$37.elem)] = js__$49);
         }
-        __$ctx._str += "<" + tag__$72;
-        var __$r__$85;
-        var __$l3__$86 = $$mode;
+        __$ctx._str += "<" + tag__$39;
+        var __$r__$52;
+        var __$l3__$53 = $$mode;
         $$mode = "bem";
-        __$r__$85 = applyc(__$ctx, __$ref);
-        $$mode = __$l3__$86;
-        isBEM__$71 = __$r__$85;
-        typeof isBEM__$71 !== "undefined" || (isBEM__$71 = typeof ctx__$70.bem !== "undefined" ? ctx__$70.bem : ctx__$70.block || ctx__$70.elem);
-        var __$r__$88;
-        var __$l4__$89 = $$mode;
+        __$r__$52 = applyc(__$ctx, __$ref);
+        $$mode = __$l3__$53;
+        isBEM__$38 = __$r__$52;
+        typeof isBEM__$38 !== "undefined" || (isBEM__$38 = typeof ctx__$37.bem !== "undefined" ? ctx__$37.bem : ctx__$37.block || ctx__$37.elem);
+        var __$r__$55;
+        var __$l4__$56 = $$mode;
         $$mode = "cls";
-        __$r__$88 = applyc(__$ctx, __$ref);
-        $$mode = __$l4__$89;
-        var cls__$87 = __$r__$88;
-        cls__$87 || (cls__$87 = ctx__$70.cls);
-        var addJSInitClass__$90 = ctx__$70.block && jsParams__$81;
-        if (isBEM__$71 || cls__$87) {
+        __$r__$55 = applyc(__$ctx, __$ref);
+        $$mode = __$l4__$56;
+        var cls__$54 = __$r__$55;
+        cls__$54 || (cls__$54 = ctx__$37.cls);
+        var addJSInitClass__$57 = ctx__$37.block && jsParams__$48;
+        if (isBEM__$38 || cls__$54) {
             __$ctx._str += ' class="';
-            if (isBEM__$71) {
-                __$ctx._str += BEM_INTERNAL__$69.buildClasses(vBlock__$77, ctx__$70.elem, ctx__$70.elemMods || ctx__$70.mods);
-                var __$r__$92;
-                var __$l5__$93 = $$mode;
+            if (isBEM__$38) {
+                __$ctx._str += BEM_INTERNAL__$36.buildClasses(vBlock__$44, ctx__$37.elem, ctx__$37.elemMods || ctx__$37.mods);
+                var __$r__$59;
+                var __$l5__$60 = $$mode;
                 $$mode = "mix";
-                __$r__$92 = applyc(__$ctx, __$ref);
-                $$mode = __$l5__$93;
-                var mix__$91 = __$r__$92;
-                ctx__$70.mix && (mix__$91 = mix__$91 ? [].concat(mix__$91, ctx__$70.mix) : ctx__$70.mix);
-                if (mix__$91) {
-                    var visited__$94 = {}, visitedKey__$95 = function(block, elem) {
+                __$r__$59 = applyc(__$ctx, __$ref);
+                $$mode = __$l5__$60;
+                var mix__$58 = __$r__$59;
+                ctx__$37.mix && (mix__$58 = mix__$58 ? [].concat(mix__$58, ctx__$37.mix) : ctx__$37.mix);
+                if (mix__$58) {
+                    var visited__$61 = {}, visitedKey__$62 = function(block, elem) {
                         return (block || "") + "__" + (elem || "");
                     };
-                    visited__$94[visitedKey__$95(vBlock__$77, $$elem)] = true;
-                    __$ctx.isArray(mix__$91) || (mix__$91 = [ mix__$91 ]);
-                    for (var i__$96 = 0; i__$96 < mix__$91.length; i__$96++) {
-                        var mixItem__$97 = mix__$91[i__$96], hasItem__$98 = mixItem__$97.block || mixItem__$97.elem, mixBlock__$99 = mixItem__$97.block || mixItem__$97._block || $$block, mixElem__$100 = mixItem__$97.elem || mixItem__$97._elem || $$elem;
-                        hasItem__$98 && (__$ctx._str += " ");
-                        __$ctx._str += BEM_INTERNAL__$69[hasItem__$98 ? "buildClasses" : "buildModsClasses"](mixBlock__$99, mixItem__$97.elem || mixItem__$97._elem || (mixItem__$97.block ? undefined : $$elem), mixItem__$97.elemMods || mixItem__$97.mods);
-                        if (mixItem__$97.js) {
-                            (jsParams__$81 || (jsParams__$81 = {}))[BEM_INTERNAL__$69.buildClass(mixBlock__$99, mixItem__$97.elem)] = mixItem__$97.js === true ? {} : mixItem__$97.js;
-                            addJSInitClass__$90 || (addJSInitClass__$90 = mixBlock__$99 && !mixItem__$97.elem);
+                    visited__$61[visitedKey__$62(vBlock__$44, $$elem)] = true;
+                    __$ctx.isArray(mix__$58) || (mix__$58 = [ mix__$58 ]);
+                    for (var i__$63 = 0; i__$63 < mix__$58.length; i__$63++) {
+                        var mixItem__$64 = mix__$58[i__$63], hasItem__$65 = mixItem__$64.block || mixItem__$64.elem, mixBlock__$66 = mixItem__$64.block || mixItem__$64._block || $$block, mixElem__$67 = mixItem__$64.elem || mixItem__$64._elem || $$elem;
+                        hasItem__$65 && (__$ctx._str += " ");
+                        __$ctx._str += BEM_INTERNAL__$36[hasItem__$65 ? "buildClasses" : "buildModsClasses"](mixBlock__$66, mixItem__$64.elem || mixItem__$64._elem || (mixItem__$64.block ? undefined : $$elem), mixItem__$64.elemMods || mixItem__$64.mods);
+                        if (mixItem__$64.js) {
+                            (jsParams__$48 || (jsParams__$48 = {}))[BEM_INTERNAL__$36.buildClass(mixBlock__$66, mixItem__$64.elem)] = mixItem__$64.js === true ? {} : mixItem__$64.js;
+                            addJSInitClass__$57 || (addJSInitClass__$57 = mixBlock__$66 && !mixItem__$64.elem);
                         }
-                        if (hasItem__$98 && !visited__$94[visitedKey__$95(mixBlock__$99, mixElem__$100)]) {
-                            visited__$94[visitedKey__$95(mixBlock__$99, mixElem__$100)] = true;
-                            var __$r__$102;
-                            var __$l6__$103 = $$mode;
+                        if (hasItem__$65 && !visited__$61[visitedKey__$62(mixBlock__$66, mixElem__$67)]) {
+                            visited__$61[visitedKey__$62(mixBlock__$66, mixElem__$67)] = true;
+                            var __$r__$69;
+                            var __$l6__$70 = $$mode;
                             $$mode = "mix";
-                            var __$l7__$104 = $$block;
-                            $$block = mixBlock__$99;
-                            var __$l8__$105 = $$elem;
-                            $$elem = mixElem__$100;
-                            __$r__$102 = applyc(__$ctx, __$ref);
-                            $$mode = __$l6__$103;
-                            $$block = __$l7__$104;
-                            $$elem = __$l8__$105;
-                            var nestedMix__$101 = __$r__$102;
-                            if (nestedMix__$101) {
-                                for (var j__$106 = 0; j__$106 < nestedMix__$101.length; j__$106++) {
-                                    var nestedItem__$107 = nestedMix__$101[j__$106];
-                                    if (!nestedItem__$107.block && !nestedItem__$107.elem || !visited__$94[visitedKey__$95(nestedItem__$107.block, nestedItem__$107.elem)]) {
-                                        nestedItem__$107._block = mixBlock__$99;
-                                        nestedItem__$107._elem = mixElem__$100;
-                                        mix__$91.splice(i__$96 + 1, 0, nestedItem__$107);
+                            var __$l7__$71 = $$block;
+                            $$block = mixBlock__$66;
+                            var __$l8__$72 = $$elem;
+                            $$elem = mixElem__$67;
+                            __$r__$69 = applyc(__$ctx, __$ref);
+                            $$mode = __$l6__$70;
+                            $$block = __$l7__$71;
+                            $$elem = __$l8__$72;
+                            var nestedMix__$68 = __$r__$69;
+                            if (nestedMix__$68) {
+                                for (var j__$73 = 0; j__$73 < nestedMix__$68.length; j__$73++) {
+                                    var nestedItem__$74 = nestedMix__$68[j__$73];
+                                    if (!nestedItem__$74.block && !nestedItem__$74.elem || !visited__$61[visitedKey__$62(nestedItem__$74.block, nestedItem__$74.elem)]) {
+                                        nestedItem__$74._block = mixBlock__$66;
+                                        nestedItem__$74._elem = mixElem__$67;
+                                        mix__$58.splice(i__$63 + 1, 0, nestedItem__$74);
                                     }
                                 }
                             }
@@ -730,250 +623,145 @@ function __$b52(__$ctx, __$ref) {
                     }
                 }
             }
-            cls__$87 && (__$ctx._str += isBEM__$71 ? " " + cls__$87 : cls__$87);
-            __$ctx._str += addJSInitClass__$90 ? ' i-bem"' : '"';
+            cls__$54 && (__$ctx._str += isBEM__$38 ? " " + cls__$54 : cls__$54);
+            __$ctx._str += addJSInitClass__$57 ? ' i-bem"' : '"';
         }
-        if (isBEM__$71 && jsParams__$81) {
-            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$81)) + '"';
+        if (isBEM__$38 && jsParams__$48) {
+            __$ctx._str += ' data-bem="' + __$ctx.attrEscape(JSON.stringify(jsParams__$48)) + '"';
         }
-        var __$r__$109;
-        var __$l9__$110 = $$mode;
+        var __$r__$76;
+        var __$l9__$77 = $$mode;
         $$mode = "attrs";
-        __$r__$109 = applyc(__$ctx, __$ref);
-        $$mode = __$l9__$110;
-        var attrs__$108 = __$r__$109;
-        attrs__$108 = __$ctx.extend(attrs__$108, ctx__$70.attrs);
-        if (attrs__$108) {
-            var name__$111, attr__$112;
-            for (name__$111 in attrs__$108) {
-                attr__$112 = attrs__$108[name__$111];
-                if (typeof attr__$112 === "undefined") continue;
-                __$ctx._str += " " + name__$111 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$112) ? attr__$112 : __$ctx.reapply(attr__$112)) + '"';
+        __$r__$76 = applyc(__$ctx, __$ref);
+        $$mode = __$l9__$77;
+        var attrs__$75 = __$r__$76;
+        attrs__$75 = __$ctx.extend(attrs__$75, ctx__$37.attrs);
+        if (attrs__$75) {
+            var name__$78, attr__$79;
+            for (name__$78 in attrs__$75) {
+                attr__$79 = attrs__$75[name__$78];
+                if (typeof attr__$79 === "undefined") continue;
+                __$ctx._str += " " + name__$78 + '="' + __$ctx.attrEscape(__$ctx.isSimple(attr__$79) ? attr__$79 : __$ctx.reapply(attr__$79)) + '"';
             }
         }
     }
-    if (__$ctx.isShortTag(tag__$72)) {
+    if (__$ctx.isShortTag(tag__$39)) {
         __$ctx._str += "/>";
     } else {
-        tag__$72 && (__$ctx._str += ">");
-        var __$r__$114;
-        var __$l10__$115 = $$mode;
+        tag__$39 && (__$ctx._str += ">");
+        var __$r__$81;
+        var __$l10__$82 = $$mode;
         $$mode = "content";
-        __$r__$114 = applyc(__$ctx, __$ref);
-        $$mode = __$l10__$115;
-        var content__$113 = __$r__$114;
-        if (content__$113 || content__$113 === 0) {
-            isBEM__$71 = vBlock__$77 || $$elem;
-            var __$r__$116;
-            var __$l11__$117 = $$mode;
+        __$r__$81 = applyc(__$ctx, __$ref);
+        $$mode = __$l10__$82;
+        var content__$80 = __$r__$81;
+        if (content__$80 || content__$80 === 0) {
+            isBEM__$38 = vBlock__$44 || $$elem;
+            var __$r__$83;
+            var __$l11__$84 = $$mode;
             $$mode = "";
-            var __$l12__$118 = __$ctx._notNewList;
+            var __$l12__$85 = __$ctx._notNewList;
             __$ctx._notNewList = false;
-            var __$l13__$119 = __$ctx.position;
-            __$ctx.position = isBEM__$71 ? 1 : __$ctx.position;
-            var __$l14__$120 = __$ctx._listLength;
-            __$ctx._listLength = isBEM__$71 ? 1 : __$ctx._listLength;
-            var __$l15__$121 = __$ctx.ctx;
-            __$ctx.ctx = content__$113;
-            __$r__$116 = applyc(__$ctx, __$ref);
-            $$mode = __$l11__$117;
-            __$ctx._notNewList = __$l12__$118;
-            __$ctx.position = __$l13__$119;
-            __$ctx._listLength = __$l14__$120;
-            __$ctx.ctx = __$l15__$121;
+            var __$l13__$86 = __$ctx.position;
+            __$ctx.position = isBEM__$38 ? 1 : __$ctx.position;
+            var __$l14__$87 = __$ctx._listLength;
+            __$ctx._listLength = isBEM__$38 ? 1 : __$ctx._listLength;
+            var __$l15__$88 = __$ctx.ctx;
+            __$ctx.ctx = content__$80;
+            __$r__$83 = applyc(__$ctx, __$ref);
+            $$mode = __$l11__$84;
+            __$ctx._notNewList = __$l12__$85;
+            __$ctx.position = __$l13__$86;
+            __$ctx._listLength = __$l14__$87;
+            __$ctx.ctx = __$l15__$88;
         }
-        tag__$72 && (__$ctx._str += "</" + tag__$72 + ">");
+        tag__$39 && (__$ctx._str += "</" + tag__$39 + ">");
     }
-    res__$73 = __$ctx._str;
-    __$r__$75 = undefined;
-    __$ctx._str = __$l0__$76;
-    __$ctx._buf.push(res__$73);
+    res__$40 = __$ctx._str;
+    __$r__$42 = undefined;
+    __$ctx._str = __$l0__$43;
+    __$ctx._buf.push(res__$40);
     return;
 }
 
-function __$b62(__$ctx, __$ref) {
-    var __$r__$123;
-    var __$l0__$124 = $$mode;
+function __$b39(__$ctx, __$ref) {
+    var __$r__$90;
+    var __$l0__$91 = $$mode;
     $$mode = "";
-    var __$l1__$125 = __$ctx.ctx;
+    var __$l1__$92 = __$ctx.ctx;
     __$ctx.ctx = __$ctx.ctx._value;
-    var __$r__$127;
-    var __$l2__$128 = __$ctx.__$a0;
-    __$ctx.__$a0 = __$ctx.__$a0 | 1024;
-    __$r__$127 = applyc(__$ctx, __$ref);
-    __$ctx.__$a0 = __$l2__$128;
-    __$r__$123 = __$r__$127;
-    $$mode = __$l0__$124;
-    __$ctx.ctx = __$l1__$125;
+    var __$r__$94;
+    var __$l2__$95 = __$ctx.__$a0;
+    __$ctx.__$a0 = __$ctx.__$a0 | 32;
+    __$r__$94 = applyc(__$ctx, __$ref);
+    __$ctx.__$a0 = __$l2__$95;
+    __$r__$90 = __$r__$94;
+    $$mode = __$l0__$91;
+    __$ctx.ctx = __$l1__$92;
     return;
 }
 
-function __$b63(__$ctx, __$ref) {
+function __$b40(__$ctx, __$ref) {
     __$ctx._listLength--;
-    var ctx__$129 = __$ctx.ctx;
-    if (ctx__$129 && ctx__$129 !== true || ctx__$129 === 0) {
-        __$ctx._str += ctx__$129 + "";
+    var ctx__$96 = __$ctx.ctx;
+    if (ctx__$96 && ctx__$96 !== true || ctx__$96 === 0) {
+        __$ctx._str += ctx__$96 + "";
     }
     return;
 }
 
-function __$b64(__$ctx, __$ref) {
+function __$b41(__$ctx, __$ref) {
     __$ctx._listLength--;
     return;
 }
 
-function __$b65(__$ctx, __$ref) {
-    var ctx__$130 = __$ctx.ctx, len__$131 = ctx__$130.length, i__$132 = 0, prevPos__$133 = __$ctx.position, prevNotNewList__$134 = __$ctx._notNewList;
-    if (prevNotNewList__$134) {
-        __$ctx._listLength += len__$131 - 1;
+function __$b42(__$ctx, __$ref) {
+    var ctx__$97 = __$ctx.ctx, len__$98 = ctx__$97.length, i__$99 = 0, prevPos__$100 = __$ctx.position, prevNotNewList__$101 = __$ctx._notNewList;
+    if (prevNotNewList__$101) {
+        __$ctx._listLength += len__$98 - 1;
     } else {
         __$ctx.position = 0;
-        __$ctx._listLength = len__$131;
+        __$ctx._listLength = len__$98;
     }
     __$ctx._notNewList = true;
-    while (i__$132 < len__$131) (function __$lb__$135() {
-        var __$r__$136;
-        var __$l0__$137 = __$ctx.ctx;
-        __$ctx.ctx = ctx__$130[i__$132++];
-        __$r__$136 = applyc(__$ctx, __$ref);
-        __$ctx.ctx = __$l0__$137;
-        return __$r__$136;
+    while (i__$99 < len__$98) (function __$lb__$102() {
+        var __$r__$103;
+        var __$l0__$104 = __$ctx.ctx;
+        __$ctx.ctx = ctx__$97[i__$99++];
+        __$r__$103 = applyc(__$ctx, __$ref);
+        __$ctx.ctx = __$l0__$104;
+        return __$r__$103;
     })();
-    prevNotNewList__$134 || (__$ctx.position = prevPos__$133);
+    prevNotNewList__$101 || (__$ctx.position = prevPos__$100);
     return;
 }
 
-function __$b66(__$ctx, __$ref) {
+function __$b43(__$ctx, __$ref) {
     __$ctx.ctx || (__$ctx.ctx = {});
-    var vBlock__$138 = __$ctx.ctx.block, vElem__$139 = __$ctx.ctx.elem, block__$140 = __$ctx._currBlock || $$block;
-    var __$r__$142;
-    var __$l0__$143 = $$mode;
+    var vBlock__$105 = __$ctx.ctx.block, vElem__$106 = __$ctx.ctx.elem, block__$107 = __$ctx._currBlock || $$block;
+    var __$r__$109;
+    var __$l0__$110 = $$mode;
     $$mode = "default";
-    var __$l1__$144 = $$block;
-    $$block = vBlock__$138 || (vElem__$139 ? block__$140 : undefined);
-    var __$l2__$145 = __$ctx._currBlock;
-    __$ctx._currBlock = vBlock__$138 || vElem__$139 ? undefined : block__$140;
-    var __$l3__$146 = $$elem;
-    $$elem = vElem__$139;
-    var __$l4__$147 = $$mods;
-    $$mods = vBlock__$138 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
-    var __$l5__$148 = $$elemMods;
+    var __$l1__$111 = $$block;
+    $$block = vBlock__$105 || (vElem__$106 ? block__$107 : undefined);
+    var __$l2__$112 = __$ctx._currBlock;
+    __$ctx._currBlock = vBlock__$105 || vElem__$106 ? undefined : block__$107;
+    var __$l3__$113 = $$elem;
+    $$elem = vElem__$106;
+    var __$l4__$114 = $$mods;
+    $$mods = vBlock__$105 ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
+    var __$l5__$115 = $$elemMods;
     $$elemMods = __$ctx.ctx.elemMods || {};
     $$block || $$elem ? __$ctx.position = (__$ctx.position || 0) + 1 : __$ctx._listLength--;
     applyc(__$ctx, __$ref);
-    __$r__$142 = undefined;
-    $$mode = __$l0__$143;
-    $$block = __$l1__$144;
-    __$ctx._currBlock = __$l2__$145;
-    $$elem = __$l3__$146;
-    $$mods = __$l4__$147;
-    $$elemMods = __$l5__$148;
+    __$r__$109 = undefined;
+    $$mode = __$l0__$110;
+    $$block = __$l1__$111;
+    __$ctx._currBlock = __$l2__$112;
+    $$elem = __$l3__$113;
+    $$mods = __$l4__$114;
+    $$elemMods = __$l5__$115;
     return;
-}
-
-function __$g0(__$ctx, __$ref) {
-    var __$t = $$block;
-    if (__$t === "attach") {
-        var __$t = $$elem;
-        if (__$t === "clear") {
-            return "i";
-        } else if (__$t === "text") {
-            return "span";
-        } else if (__$t === "file") {
-            return "span";
-        } else if (__$t === "no-file") {
-            return "span";
-        } else if (__$t === "control") {
-            return "input";
-        }
-        if (!$$elem) {
-            return "span";
-        }
-    } else if (__$t === "button") {
-        if (!$$elem && __$ctx._attach) {
-            return "span";
-        }
-        if ($$elem === "text") {
-            return "span";
-        }
-        if (!$$elem) {
-            return __$ctx.ctx.tag || "button";
-        }
-    } else if (__$t === "icon") {
-        if (!$$elem) {
-            return "i";
-        }
-    } else if (__$t === "ua") {
-        if (!$$elem) {
-            return "script";
-        }
-    } else if (__$t === "page") {
-        var __$t = $$elem;
-        if (__$t === "js") {
-            return "script";
-        } else if (__$t === "css") {
-            if (__$ctx.ctx.url) {
-                return "link";
-            }
-            return "style";
-        } else if (__$t === "head") {
-            return "head";
-        } else if (__$t === "favicon") {
-            return "link";
-        } else if (__$t === "link") {
-            return "link";
-        } else if (__$t === "meta") {
-            return "meta";
-        }
-        if (!$$elem) {
-            return "body";
-        }
-    }
-    return undefined;
-    return __$ref;
-}
-
-function __$g1(__$ctx, __$ref) {
-    var __$t = $$block;
-    if (__$t === "attach") {
-        if (!$$elem && (__$ctx.__$a0 & 16) === 0) {
-            var __$r = __$b46(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-    } else if (__$t === "button") {
-        if (!$$elem && (__$ctx.__$a0 & 8) === 0) {
-            var __$r = __$b47(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-    } else if (__$t === "i-bem") {
-        if ($$elem === "i18n") {
-            var __$r = __$b48(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-    } else if (__$t === "page") {
-        var __$t = $$elem;
-        if (__$t === "css") {
-            var __$t = !__$ctx.ctx._ieCommented;
-            if (__$t) {
-                var __$t = __$ctx.ctx.hasOwnProperty("ie");
-                if (__$t) {
-                    if (__$ctx.ctx.ie === true && (__$ctx.__$a0 & 64) === 0) {
-                        var __$r = __$b49(__$ctx, __$ref);
-                        if (__$r !== __$ref) return __$r;
-                    }
-                    var __$r = __$b50(__$ctx, __$ref);
-                    if (__$r !== __$ref) return __$r;
-                }
-            }
-        }
-        if (!$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 512) === 0) {
-            var __$r = __$b51(__$ctx, __$ref);
-            if (__$r !== __$ref) return __$r;
-        }
-    }
-    var __$r = __$b52(__$ctx, __$ref);
-    if (__$r !== __$ref) return __$r;
-    return __$ref;
 };
      return exports;
   }

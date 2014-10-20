@@ -1,1 +1,0 @@
-({"block":"page","title":"icon","head":[{"elem":"css","url":"_bqsLdaiup-wWnOz-fYrlos47T_c.css"}],"scripts":[{"elem":"js","url":"_bqsLdaiup-wWnOz-fYrlos47T_c.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Кнопка с иконкой","mods":{"theme":"normal","size":"m"},"icon":{"block":"icon","mods":{"social":"twitter"}}}})

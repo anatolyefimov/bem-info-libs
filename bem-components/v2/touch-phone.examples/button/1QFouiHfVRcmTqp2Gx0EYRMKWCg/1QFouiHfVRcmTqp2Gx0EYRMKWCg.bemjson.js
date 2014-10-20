@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_1QFouiHfVRcmTqp2Gx0EYRMKWCg.css"}],"scripts":[{"elem":"js","url":"_1QFouiHfVRcmTqp2Gx0EYRMKWCg.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Radio","mods":{"theme":"normal","size":"m","togglable":"radio"}}})

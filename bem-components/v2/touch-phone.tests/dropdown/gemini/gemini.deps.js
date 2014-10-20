@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -277,7 +277,7 @@ exports.deps = [
     {
         "block": "dropdown",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "popup",
@@ -286,25 +286,25 @@ exports.deps = [
     {
         "block": "popup",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "link",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "popup",
-        "mod": "normal-link"
+        "mod": "islands-link"
     },
     {
         "block": "popup",
-        "mod": "normal-link",
+        "mod": "islands-link",
         "val": true
     },
     {
@@ -318,11 +318,11 @@ exports.deps = [
     },
     {
         "block": "popup",
-        "mod": "normal-button"
+        "mod": "islands-button"
     },
     {
         "block": "popup",
-        "mod": "normal-button",
+        "mod": "islands-button",
         "val": true
     }
 ];

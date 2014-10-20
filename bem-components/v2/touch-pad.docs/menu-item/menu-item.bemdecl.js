@@ -1,1 +1,0 @@
-exports.blocks = [{"name":"menu-item"}];

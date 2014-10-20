@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_fKCW0PjGDRIw0k0km0-Plu-GkfM.css"}],"scripts":[{"elem":"js","url":"_fKCW0PjGDRIw0k0km0-Plu-GkfM.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Theme normal","mods":{"theme":"normal","size":"m"}}})

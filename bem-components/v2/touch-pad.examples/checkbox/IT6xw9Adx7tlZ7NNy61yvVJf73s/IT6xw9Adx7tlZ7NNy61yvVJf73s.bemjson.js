@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_IT6xw9Adx7tlZ7NNy61yvVJf73s.css"}],"scripts":[{"elem":"js","url":"_IT6xw9Adx7tlZ7NNy61yvVJf73s.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox","text":"Checked","name":"name1","val":1,"mods":{"theme":"normal","size":"m","checked":true}}})

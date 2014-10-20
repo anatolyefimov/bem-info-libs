@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_25ycBth89-EGAk-fHbZHNUtzyTE.css"}],"scripts":[{"elem":"js","url":"_25ycBth89-EGAk-fHbZHNUtzyTE.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Medium","mods":{"theme":"normal","size":"m"}}})

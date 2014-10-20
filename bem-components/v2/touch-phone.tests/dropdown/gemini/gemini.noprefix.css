@@ -3,18 +3,18 @@
   padding: 20px;
 }
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
-.page_theme_normal {
+.page_theme_islands {
   font: 13px/15px Arial, Helvetica, sans-serif;
   min-height: 100%;
   margin: 0;
   color: #000;
   background: #fff;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/touch-phone.tests/dropdown/gemini/blocks/test/test.styl:begin */
 .test {
   display: inline-block;
@@ -53,16 +53,16 @@ html {
   border-top: 1px solid #808080;
 }
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/touch-phone.tests/dropdown/gemini/blocks/separator/separator.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_normal.styl:begin */
-.dropdown_theme_normal {
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:begin */
+.dropdown_theme_islands {
   display: inline-block;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_normal.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_normal.styl:begin */
-.popup_theme_normal {
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_islands.styl:begin */
+.popup_theme_islands {
   display: none;
   visibility: hidden;
-  margin: -1000px 0 0 -1000px;
+  margin: -9999px 0 0 -9999px;
   animation-duration: 0.1s;
   animation-timing-function: ease-out;
   background: #fff;
@@ -70,86 +70,86 @@ html {
   animation-fill-mode: forwards;
 /* Divided into two parts for better optimization */
 }
-.popup_theme_normal.popup_js_inited {
+.popup_theme_islands.popup_js_inited {
   display: block;
 }
-.popup_theme_normal.popup_visible {
+.popup_theme_islands.popup_visible {
   visibility: visible;
   margin: 0;
 }
-.popup_theme_normal.popup_direction_bottom-left {
-  animation-name: popup_theme_normal_bottom;
+.popup_theme_islands.popup_direction_bottom-left {
+  animation-name: popup_theme_islands_bottom;
 }
-.popup_theme_normal.popup_direction_bottom-center {
-  animation-name: popup_theme_normal_bottom;
+.popup_theme_islands.popup_direction_bottom-center {
+  animation-name: popup_theme_islands_bottom;
 }
-.popup_theme_normal.popup_direction_bottom-right {
-  animation-name: popup_theme_normal_bottom;
+.popup_theme_islands.popup_direction_bottom-right {
+  animation-name: popup_theme_islands_bottom;
 }
-.popup_theme_normal.popup_direction_bottom-left.popup_visible {
-  animation-name: popup_theme_normal_bottom_visible;
+.popup_theme_islands.popup_direction_bottom-left.popup_visible {
+  animation-name: popup_theme_islands_bottom_visible;
 }
-.popup_theme_normal.popup_direction_bottom-center.popup_visible {
-  animation-name: popup_theme_normal_bottom_visible;
+.popup_theme_islands.popup_direction_bottom-center.popup_visible {
+  animation-name: popup_theme_islands_bottom_visible;
 }
-.popup_theme_normal.popup_direction_bottom-right.popup_visible {
-  animation-name: popup_theme_normal_bottom_visible;
+.popup_theme_islands.popup_direction_bottom-right.popup_visible {
+  animation-name: popup_theme_islands_bottom_visible;
 }
-.popup_theme_normal.popup_direction_top-left {
-  animation-name: popup_theme_normal_top;
+.popup_theme_islands.popup_direction_top-left {
+  animation-name: popup_theme_islands_top;
 }
-.popup_theme_normal.popup_direction_top-center {
-  animation-name: popup_theme_normal_top;
+.popup_theme_islands.popup_direction_top-center {
+  animation-name: popup_theme_islands_top;
 }
-.popup_theme_normal.popup_direction_top-right {
-  animation-name: popup_theme_normal_top;
+.popup_theme_islands.popup_direction_top-right {
+  animation-name: popup_theme_islands_top;
 }
-.popup_theme_normal.popup_direction_top-left.popup_visible {
-  animation-name: popup_theme_normal_top_visible;
+.popup_theme_islands.popup_direction_top-left.popup_visible {
+  animation-name: popup_theme_islands_top_visible;
 }
-.popup_theme_normal.popup_direction_top-center.popup_visible {
-  animation-name: popup_theme_normal_top_visible;
+.popup_theme_islands.popup_direction_top-center.popup_visible {
+  animation-name: popup_theme_islands_top_visible;
 }
-.popup_theme_normal.popup_direction_top-right.popup_visible {
-  animation-name: popup_theme_normal_top_visible;
+.popup_theme_islands.popup_direction_top-right.popup_visible {
+  animation-name: popup_theme_islands_top_visible;
 }
-.popup_theme_normal.popup_direction_right-top {
-  animation-name: popup_theme_normal_right;
+.popup_theme_islands.popup_direction_right-top {
+  animation-name: popup_theme_islands_right;
 }
-.popup_theme_normal.popup_direction_right-center {
-  animation-name: popup_theme_normal_right;
+.popup_theme_islands.popup_direction_right-center {
+  animation-name: popup_theme_islands_right;
 }
-.popup_theme_normal.popup_direction_right-bottom {
-  animation-name: popup_theme_normal_right;
+.popup_theme_islands.popup_direction_right-bottom {
+  animation-name: popup_theme_islands_right;
 }
-.popup_theme_normal.popup_direction_right-top.popup_visible {
-  animation-name: popup_theme_normal_right_visible;
+.popup_theme_islands.popup_direction_right-top.popup_visible {
+  animation-name: popup_theme_islands_right_visible;
 }
-.popup_theme_normal.popup_direction_right-center.popup_visible {
-  animation-name: popup_theme_normal_right_visible;
+.popup_theme_islands.popup_direction_right-center.popup_visible {
+  animation-name: popup_theme_islands_right_visible;
 }
-.popup_theme_normal.popup_direction_right-bottom.popup_visible {
-  animation-name: popup_theme_normal_right_visible;
+.popup_theme_islands.popup_direction_right-bottom.popup_visible {
+  animation-name: popup_theme_islands_right_visible;
 }
-.popup_theme_normal.popup_direction_left-top {
-  animation-name: popup_theme_normal_left;
+.popup_theme_islands.popup_direction_left-top {
+  animation-name: popup_theme_islands_left;
 }
-.popup_theme_normal.popup_direction_left-center {
-  animation-name: popup_theme_normal_left;
+.popup_theme_islands.popup_direction_left-center {
+  animation-name: popup_theme_islands_left;
 }
-.popup_theme_normal.popup_direction_left-bottom {
-  animation-name: popup_theme_normal_left;
+.popup_theme_islands.popup_direction_left-bottom {
+  animation-name: popup_theme_islands_left;
 }
-.popup_theme_normal.popup_direction_left-top.popup_visible {
-  animation-name: popup_theme_normal_left_visible;
+.popup_theme_islands.popup_direction_left-top.popup_visible {
+  animation-name: popup_theme_islands_left_visible;
 }
-.popup_theme_normal.popup_direction_left-center.popup_visible {
-  animation-name: popup_theme_normal_left_visible;
+.popup_theme_islands.popup_direction_left-center.popup_visible {
+  animation-name: popup_theme_islands_left_visible;
 }
-.popup_theme_normal.popup_direction_left-bottom.popup_visible {
-  animation-name: popup_theme_normal_left_visible;
+.popup_theme_islands.popup_direction_left-bottom.popup_visible {
+  animation-name: popup_theme_islands_left_visible;
 }
-@-moz-keyframes popup_theme_normal_bottom {
+@-moz-keyframes popup_theme_islands_bottom {
   0% {
     visibility: visible;
     margin: 0;
@@ -162,11 +162,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-webkit-keyframes popup_theme_normal_bottom {
+@-webkit-keyframes popup_theme_islands_bottom {
   0% {
     visibility: visible;
     margin: 0;
@@ -179,11 +179,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-o-keyframes popup_theme_normal_bottom {
+@-o-keyframes popup_theme_islands_bottom {
   0% {
     visibility: visible;
     margin: 0;
@@ -196,11 +196,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@keyframes popup_theme_normal_bottom {
+@keyframes popup_theme_islands_bottom {
   0% {
     visibility: visible;
     margin: 0;
@@ -213,11 +213,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-moz-keyframes popup_theme_normal_bottom_visible {
+@-moz-keyframes popup_theme_islands_bottom_visible {
   0% {
     opacity: 0;
     transform: translateY(10px);
@@ -227,7 +227,7 @@ html {
     transform: translateY(0);
   }
 }
-@-webkit-keyframes popup_theme_normal_bottom_visible {
+@-webkit-keyframes popup_theme_islands_bottom_visible {
   0% {
     opacity: 0;
     transform: translateY(10px);
@@ -237,7 +237,7 @@ html {
     transform: translateY(0);
   }
 }
-@-o-keyframes popup_theme_normal_bottom_visible {
+@-o-keyframes popup_theme_islands_bottom_visible {
   0% {
     opacity: 0;
     transform: translateY(10px);
@@ -247,7 +247,7 @@ html {
     transform: translateY(0);
   }
 }
-@keyframes popup_theme_normal_bottom_visible {
+@keyframes popup_theme_islands_bottom_visible {
   0% {
     opacity: 0;
     transform: translateY(10px);
@@ -257,7 +257,7 @@ html {
     transform: translateY(0);
   }
 }
-@-moz-keyframes popup_theme_normal_top {
+@-moz-keyframes popup_theme_islands_top {
   0% {
     visibility: visible;
     margin: 0;
@@ -270,11 +270,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-webkit-keyframes popup_theme_normal_top {
+@-webkit-keyframes popup_theme_islands_top {
   0% {
     visibility: visible;
     margin: 0;
@@ -287,11 +287,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-o-keyframes popup_theme_normal_top {
+@-o-keyframes popup_theme_islands_top {
   0% {
     visibility: visible;
     margin: 0;
@@ -304,11 +304,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@keyframes popup_theme_normal_top {
+@keyframes popup_theme_islands_top {
   0% {
     visibility: visible;
     margin: 0;
@@ -321,11 +321,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-moz-keyframes popup_theme_normal_top_visible {
+@-moz-keyframes popup_theme_islands_top_visible {
   0% {
     opacity: 0;
     transform: translateY(-10px);
@@ -335,7 +335,7 @@ html {
     transform: translateY(0);
   }
 }
-@-webkit-keyframes popup_theme_normal_top_visible {
+@-webkit-keyframes popup_theme_islands_top_visible {
   0% {
     opacity: 0;
     transform: translateY(-10px);
@@ -345,7 +345,7 @@ html {
     transform: translateY(0);
   }
 }
-@-o-keyframes popup_theme_normal_top_visible {
+@-o-keyframes popup_theme_islands_top_visible {
   0% {
     opacity: 0;
     transform: translateY(-10px);
@@ -355,7 +355,7 @@ html {
     transform: translateY(0);
   }
 }
-@keyframes popup_theme_normal_top_visible {
+@keyframes popup_theme_islands_top_visible {
   0% {
     opacity: 0;
     transform: translateY(-10px);
@@ -365,7 +365,7 @@ html {
     transform: translateY(0);
   }
 }
-@-moz-keyframes popup_theme_normal_right {
+@-moz-keyframes popup_theme_islands_right {
   0% {
     visibility: visible;
     margin: 0;
@@ -378,11 +378,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-webkit-keyframes popup_theme_normal_right {
+@-webkit-keyframes popup_theme_islands_right {
   0% {
     visibility: visible;
     margin: 0;
@@ -395,11 +395,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-o-keyframes popup_theme_normal_right {
+@-o-keyframes popup_theme_islands_right {
   0% {
     visibility: visible;
     margin: 0;
@@ -412,11 +412,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@keyframes popup_theme_normal_right {
+@keyframes popup_theme_islands_right {
   0% {
     visibility: visible;
     margin: 0;
@@ -429,11 +429,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-moz-keyframes popup_theme_normal_right_visible {
+@-moz-keyframes popup_theme_islands_right_visible {
   0% {
     opacity: 0;
     transform: translateX(10px);
@@ -443,7 +443,7 @@ html {
     transform: translateX(0);
   }
 }
-@-webkit-keyframes popup_theme_normal_right_visible {
+@-webkit-keyframes popup_theme_islands_right_visible {
   0% {
     opacity: 0;
     transform: translateX(10px);
@@ -453,7 +453,7 @@ html {
     transform: translateX(0);
   }
 }
-@-o-keyframes popup_theme_normal_right_visible {
+@-o-keyframes popup_theme_islands_right_visible {
   0% {
     opacity: 0;
     transform: translateX(10px);
@@ -463,7 +463,7 @@ html {
     transform: translateX(0);
   }
 }
-@keyframes popup_theme_normal_right_visible {
+@keyframes popup_theme_islands_right_visible {
   0% {
     opacity: 0;
     transform: translateX(10px);
@@ -473,7 +473,7 @@ html {
     transform: translateX(0);
   }
 }
-@-moz-keyframes popup_theme_normal_left {
+@-moz-keyframes popup_theme_islands_left {
   0% {
     visibility: visible;
     margin: 0;
@@ -486,11 +486,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-webkit-keyframes popup_theme_normal_left {
+@-webkit-keyframes popup_theme_islands_left {
   0% {
     visibility: visible;
     margin: 0;
@@ -503,11 +503,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-o-keyframes popup_theme_normal_left {
+@-o-keyframes popup_theme_islands_left {
   0% {
     visibility: visible;
     margin: 0;
@@ -520,11 +520,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@keyframes popup_theme_normal_left {
+@keyframes popup_theme_islands_left {
   0% {
     visibility: visible;
     margin: 0;
@@ -537,11 +537,11 @@ html {
   }
   100% {
     visibility: hidden;
-    margin: -1000px 0 0 -1000px;
+    margin: -9999px 0 0 -9999px;
     opacity: 0;
   }
 }
-@-moz-keyframes popup_theme_normal_left_visible {
+@-moz-keyframes popup_theme_islands_left_visible {
   0% {
     opacity: 0;
     transform: translateX(-10px);
@@ -551,7 +551,7 @@ html {
     transform: translateX(0);
   }
 }
-@-webkit-keyframes popup_theme_normal_left_visible {
+@-webkit-keyframes popup_theme_islands_left_visible {
   0% {
     opacity: 0;
     transform: translateX(-10px);
@@ -561,7 +561,7 @@ html {
     transform: translateX(0);
   }
 }
-@-o-keyframes popup_theme_normal_left_visible {
+@-o-keyframes popup_theme_islands_left_visible {
   0% {
     opacity: 0;
     transform: translateX(-10px);
@@ -571,7 +571,7 @@ html {
     transform: translateX(0);
   }
 }
-@keyframes popup_theme_normal_left_visible {
+@keyframes popup_theme_islands_left_visible {
   0% {
     opacity: 0;
     transform: translateX(-10px);
@@ -581,27 +581,27 @@ html {
     transform: translateX(0);
   }
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_normal.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_normal.styl:begin */
-.link_theme_normal {
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_islands.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:begin */
+.link_theme_islands {
   color: #44b;
   cursor: pointer;
   transition: color 0.15s ease-out;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
 }
-.link_theme_normal.link_view_minor {
+.link_theme_islands.link_view_minor {
   color: #669;
 }
-.link_theme_normal.link_view_external {
+.link_theme_islands.link_view_external {
   color: #070;
 }
-.link_theme_normal:hover {
+.link_theme_islands:hover {
   color: #e00;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_normal.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:begin */
-.button_theme_normal {
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
+.button_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   display: inline-block;
@@ -617,16 +617,16 @@ html {
   white-space: nowrap;
 /* Decorative element (inner background) */
 }
-.button_theme_normal::-moz-focus-inner {
+.button_theme_islands::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-.button_theme_normal .button__text {
+.button_theme_islands .button__text {
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: top;
 }
-.button_theme_normal .button__text {
+.button_theme_islands .button__text {
 /*
          * These rules fixes Opera 12+ && IE 9 bug with extra top margin when pressed
          * Warning: bug still can be reproduced by clicking on button's border
@@ -635,13 +635,13 @@ html {
   position: relative;
   display: inline-block;
 }
-.button_theme_normal .icon {
+.button_theme_islands .icon {
   position: relative;
 }
-.button_theme_normal.button_type_link {
+.button_theme_islands.button_type_link {
   text-decoration: none;
 }
-.button_theme_normal:before {
+.button_theme_islands:before {
   position: absolute;
   top: 1px;
   right: 1px;
@@ -651,167 +651,167 @@ html {
   border-radius: 2px;
   background: #fff;
 }
-.button_theme_normal.button_hovered {
+.button_theme_islands.button_hovered {
   cursor: pointer;
   background: rgba(0,0,0,0.3);
 }
-.button_theme_normal.button_focused-hard {
+.button_theme_islands.button_focused-hard {
   z-index: 1;
   background: rgba(178,142,0,0.6);
   box-shadow: 0 0 10px #fc0;
 }
-.button_theme_normal.button_pressed:before {
+.button_theme_islands.button_pressed:before {
   background: #f6f5f3;
 }
-.button_theme_normal.button_checked {
+.button_theme_islands.button_checked {
   background: rgba(153,122,0,0.5);
 }
-.button_theme_normal.button_checked:before {
+.button_theme_islands.button_checked:before {
   background: #ffeba0;
 }
-.button_theme_normal.button_checked.button_pressed {
+.button_theme_islands.button_checked.button_pressed {
   background: rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_checked.button_pressed:before {
+.button_theme_islands.button_checked.button_pressed:before {
   background: #fee481;
 }
-.button_theme_normal.button_checked.button_hovered {
+.button_theme_islands.button_checked.button_hovered {
   background: rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_view_action {
+.button_theme_islands.button_view_action {
   background: rgba(191,153,0,0.8);
 }
-.button_theme_normal.button_view_action:before {
+.button_theme_islands.button_view_action:before {
   background: #ffdb4d;
 }
-.button_theme_normal.button_view_action.button_pressed:before {
+.button_theme_islands.button_view_action.button_pressed:before {
   background: #fc0;
 }
-.button_theme_normal.button_view_action.button_hovered {
+.button_theme_islands.button_view_action.button_hovered {
   background: rgba(159,127,0,0.8);
 }
-.button_theme_normal.button_view_pseudo {
+.button_theme_islands.button_view_pseudo {
   overflow: hidden;
   background: 0;
 }
-.button_theme_normal.button_view_pseudo:before {
+.button_theme_islands.button_view_pseudo:before {
   background: 0;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
 }
-.button_theme_normal.button_view_pseudo.button_hovered:before {
+.button_theme_islands.button_view_pseudo.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
 }
-.button_theme_normal.button_view_pseudo.button_focused-hard:before {
+.button_theme_islands.button_view_pseudo.button_focused-hard:before {
   box-shadow: 0 0 0 1px rgba(178,142,0,0.6);
 }
-.button_theme_normal.button_view_pseudo.button_pressed:before {
+.button_theme_islands.button_view_pseudo.button_pressed:before {
   background: rgba(0,0,0,0.05);
 }
-.button_theme_normal.button_view_pseudo.button_checked:before {
+.button_theme_islands.button_view_pseudo.button_checked:before {
   background: #ffeba0;
   box-shadow: 0 0 0 1px rgba(153,122,0,0.5);
 }
-.button_theme_normal.button_view_pseudo.button_checked.button_hovered:before {
+.button_theme_islands.button_view_pseudo.button_checked.button_hovered:before {
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_view_pseudo.button_checked.button_pressed:before {
+.button_theme_islands.button_view_pseudo.button_checked.button_pressed:before {
   background: #fee481;
   box-shadow: 0 0 0 1px rgba(129,103,0,0.6);
 }
-.button_theme_normal.button_disabled {
+.button_theme_islands.button_disabled {
   background: rgba(0,0,0,0.08);
 }
-.button_theme_normal.button_disabled:before {
+.button_theme_islands.button_disabled:before {
   display: none;
 }
-.button_theme_normal.button_disabled.button_checked:before {
+.button_theme_islands.button_disabled.button_checked:before {
   display: block;
   background: #ffeba0;
 }
-.button_theme_normal.button_disabled .button__text {
+.button_theme_islands.button_disabled .button__text {
   color: #aaa;
 }
-.button_theme_normal.button_disabled .icon {
+.button_theme_islands.button_disabled .icon {
   opacity: 0.3;
 }
-.button_theme_normal.button_size_s {
+.button_theme_islands.button_size_s {
   font-size: 13px;
   line-height: 24px;
 }
-.button_theme_normal.button_size_s .icon {
+.button_theme_islands.button_size_s .icon {
   width: 24px;
 }
-.button_theme_normal.button_size_s .button__text {
+.button_theme_islands.button_size_s .button__text {
   margin: 0 10px;
 }
-.button_theme_normal.button_size_m {
+.button_theme_islands.button_size_m {
   font-size: 13px;
   line-height: 28px;
 }
-.button_theme_normal.button_size_m .icon {
+.button_theme_islands.button_size_m .icon {
   width: 28px;
 }
-.button_theme_normal.button_size_m .button__text {
+.button_theme_islands.button_size_m .button__text {
   margin: 0 13px;
 }
-.button_theme_normal.button_size_l {
+.button_theme_islands.button_size_l {
   font-size: 15px;
   line-height: 32px;
 }
-.button_theme_normal.button_size_l .icon {
+.button_theme_islands.button_size_l .icon {
   width: 32px;
 }
-.button_theme_normal.button_size_l .button__text {
+.button_theme_islands.button_size_l .button__text {
   margin: 0 15px;
 }
-.button_theme_normal.button_size_xl {
+.button_theme_islands.button_size_xl {
   font-size: 18px;
   line-height: 38px;
 }
-.button_theme_normal.button_size_xl .icon {
+.button_theme_islands.button_size_xl .icon {
   width: 38px;
 }
-.button_theme_normal.button_size_xl .button__text {
+.button_theme_islands.button_size_xl .button__text {
   margin: 0 18px;
 }
-.button_theme_normal .icon + .button__text {
+.button_theme_islands .icon + .button__text {
   margin-left: 0;
 }
-.button_theme_normal .button__text:not(:last-child) {
+.button_theme_islands .button__text:not(:last-child) {
   margin-right: 0;
 }
-.control-group .button_theme_normal {
+.control-group .button_theme_islands {
   border-radius: 0;
 }
-.control-group .button_theme_normal:before {
+.control-group .button_theme_islands:before {
   right: 0;
   border-radius: 0;
 }
-.control-group .button_theme_normal.button_checked:before {
+.control-group .button_theme_islands.button_checked:before {
   left: 1px;
   right: 1px;
 }
-.control-group > .button_theme_normal:first-child,
-.control-group > :first-child .button_theme_normal {
+.control-group > .button_theme_islands:first-child,
+.control-group > :first-child .button_theme_islands {
   border-radius: 3px 0 0 3px;
 }
-.control-group > .button_theme_normal:first-child:before,
-.control-group > :first-child .button_theme_normal:before {
+.control-group > .button_theme_islands:first-child:before,
+.control-group > :first-child .button_theme_islands:before {
   border-radius: 2px 0 0 2px;
 }
-.control-group > .button_theme_normal:last-child,
-.control-group > :last-child .button_theme_normal {
+.control-group > .button_theme_islands:last-child,
+.control-group > :last-child .button_theme_islands {
   border-radius: 0 3px 3px 0;
 }
-.control-group > .button_theme_normal:last-child:before,
-.control-group > :last-child .button_theme_normal:before {
+.control-group > .button_theme_islands:last-child:before,
+.control-group > :last-child .button_theme_islands:before {
   border-radius: 0 2px 2px 0;
   right: 1px;
 }
-.control-group > :only-child .button_theme_normal {
+.control-group > :only-child .button_theme_islands {
   border-radius: 3px;
 }
-.control-group > :only-child .button_theme_normal:before {
+.control-group > :only-child .button_theme_islands:before {
   border-radius: 2px;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_normal.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */

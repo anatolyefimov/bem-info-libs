@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_n-c2__hb97wT1Naywhf0KudD82o.css"}],"scripts":[{"elem":"js","url":"_n-c2__hb97wT1Naywhf0KudD82o.js"}],"mods":{"theme":"normal"},"content":{"block":"button","url":"#","text":"Link behavior","mods":{"theme":"normal","size":"m","type":"link"}}})

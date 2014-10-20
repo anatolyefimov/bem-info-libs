@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_Q4UiFhOwTvI6zp3wOwhmvhr3M70.css"}],"scripts":[{"elem":"js","url":"_Q4UiFhOwTvI6zp3wOwhmvhr3M70.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","text":"размер M","name":"name2","val":"2","mods":{"theme":"islands","size":"m"}}})

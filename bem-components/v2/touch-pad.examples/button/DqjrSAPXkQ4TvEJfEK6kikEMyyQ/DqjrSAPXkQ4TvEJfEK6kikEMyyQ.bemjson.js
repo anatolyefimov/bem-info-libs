@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_DqjrSAPXkQ4TvEJfEK6kikEMyyQ.css"}],"scripts":[{"elem":"js","url":"_DqjrSAPXkQ4TvEJfEK6kikEMyyQ.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Check","mods":{"theme":"normal","size":"m","togglable":"check"}}})

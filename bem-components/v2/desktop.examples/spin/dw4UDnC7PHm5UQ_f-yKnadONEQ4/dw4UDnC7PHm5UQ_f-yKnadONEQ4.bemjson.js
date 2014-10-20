@@ -1,1 +1,0 @@
-({"block":"page","title":"spin","head":[{"elem":"css","url":"_dw4UDnC7PHm5UQ_f-yKnadONEQ4.css"}],"scripts":[{"elem":"js","url":"_dw4UDnC7PHm5UQ_f-yKnadONEQ4.js"}],"mods":{"theme":"normal"},"content":{"block":"spin","mods":{"theme":"normal","size":"s","progress":true}}})

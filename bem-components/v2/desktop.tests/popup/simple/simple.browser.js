@@ -6589,10 +6589,10 @@ provide(
 });
 
 /* end: ../../../libs/bem-core/common.blocks/idle/idle.js */
-/* begin: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
+/* begin: ../../../design/common.blocks/popup/_theme/popup_theme_islands.js */
 modules.define('popup', ['objects'], function(provide, objects, Popup) {
 
-provide(Popup.decl({ modName : 'theme', modVal : 'normal' }, {
+provide(Popup.decl({ modName : 'theme', modVal : 'islands' }, {
     getDefaultParams : function() {
         return objects.extend(
             this.__base(),
@@ -6605,4 +6605,4 @@ provide(Popup.decl({ modName : 'theme', modVal : 'normal' }, {
 
 });
 
-/* end: ../../../design/common.blocks/popup/_theme/popup_theme_normal.js */
+/* end: ../../../design/common.blocks/popup/_theme/popup_theme_islands.js */

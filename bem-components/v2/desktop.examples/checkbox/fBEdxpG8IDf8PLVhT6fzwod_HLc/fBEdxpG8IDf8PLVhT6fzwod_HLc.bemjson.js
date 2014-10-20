@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_fBEdxpG8IDf8PLVhT6fzwod_HLc.css"}],"scripts":[{"elem":"js","url":"_fBEdxpG8IDf8PLVhT6fzwod_HLc.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox","text":"Тема normal","name":"normal","val":"3","mods":{"theme":"normal","size":"m"}}})

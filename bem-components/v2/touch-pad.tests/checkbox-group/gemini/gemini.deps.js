@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -188,7 +188,7 @@ exports.deps = [
     {
         "block": "checkbox-group",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "checkbox",
@@ -248,7 +248,7 @@ exports.deps = [
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
@@ -262,7 +262,7 @@ exports.deps = [
     {
         "block": "checkbox",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "checkbox-group",

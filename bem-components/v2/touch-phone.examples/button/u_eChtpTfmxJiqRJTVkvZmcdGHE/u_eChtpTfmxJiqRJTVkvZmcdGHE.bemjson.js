@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_u_eChtpTfmxJiqRJTVkvZmcdGHE.css"}],"scripts":[{"elem":"js","url":"_u_eChtpTfmxJiqRJTVkvZmcdGHE.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Тема normal","mods":{"theme":"normal","size":"m"}}})

@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_CNIQcBuD59ioiQHzQJDwOXxdfF0.css"}],"scripts":[{"elem":"js","url":"_CNIQcBuD59ioiQHzQJDwOXxdfF0.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","text":"Тема islands","name":"islands","val":"3","mods":{"theme":"islands","size":"m"}}})

@@ -1,0 +1,1 @@
+({"block":"page","title":"icon","head":[{"elem":"css","url":"_5ejAIrpIH5zQ1iBjgsH_HB_AwQQ.css"}],"scripts":[{"elem":"js","url":"_5ejAIrpIH5zQ1iBjgsH_HB_AwQQ.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"Кнопка с иконкой","mods":{"theme":"islands","size":"m"},"icon":{"block":"icon","mods":{"social":"twitter"}}}})

@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_Dbc3hk0BkeLThF_YXQ8Jwell1r8.css"}],"scripts":[{"elem":"js","url":"_Dbc3hk0BkeLThF_YXQ8Jwell1r8.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Псевдокнопка","mods":{"theme":"normal","size":"m","view":"pseudo"}}})

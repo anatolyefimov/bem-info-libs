@@ -9,7 +9,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -115,7 +115,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -125,7 +125,7 @@ exports.blocks = [
         "name": "popup",
         "mods": [
             {
-                "name": "normal-link",
+                "name": "islands-link",
                 "vals": [
                     {
                         "name": true
@@ -151,7 +151,7 @@ exports.blocks = [
         "name": "popup",
         "mods": [
             {
-                "name": "normal-button",
+                "name": "islands-button",
                 "vals": [
                     {
                         "name": true

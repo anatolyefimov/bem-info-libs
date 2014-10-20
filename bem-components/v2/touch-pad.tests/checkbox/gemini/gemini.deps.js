@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -227,7 +227,7 @@ exports.deps = [
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
@@ -241,7 +241,7 @@ exports.deps = [
     {
         "block": "checkbox",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "checkbox",
@@ -272,13 +272,13 @@ exports.deps = [
         "mod": "vk"
     },
     {
-        "block": "normal-button-enabled"
+        "block": "islands-button-enabled"
     },
     {
-        "block": "normal-button-disabled"
+        "block": "islands-button-disabled"
     },
     {
-        "block": "normal-button-disabled-checked"
+        "block": "islands-button-disabled-checked"
     },
     {
         "block": "icon"
@@ -293,12 +293,12 @@ exports.deps = [
         "val": "twitter"
     },
     {
-        "block": "normal-button-icon-enabled"
+        "block": "islands-button-icon-enabled"
     },
     {
-        "block": "normal-button-icon-disabled"
+        "block": "islands-button-icon-disabled"
     },
     {
-        "block": "normal-button-icon-disabled-checked"
+        "block": "islands-button-icon-disabled-checked"
     }
 ];

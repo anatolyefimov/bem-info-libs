@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -176,7 +176,7 @@ exports.deps = [
     {
         "block": "checkbox-group",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "checkbox",
@@ -236,7 +236,7 @@ exports.deps = [
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
@@ -250,7 +250,7 @@ exports.deps = [
     {
         "block": "checkbox",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "checkbox-group",
@@ -327,7 +327,7 @@ exports.deps = [
     {
         "block": "radio-group",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "radio",
@@ -341,7 +341,7 @@ exports.deps = [
     {
         "block": "radio",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "radio-group",
@@ -420,7 +420,7 @@ exports.deps = [
     {
         "block": "input",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "input",
@@ -561,7 +561,7 @@ exports.deps = [
     {
         "block": "select",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "popup",
@@ -570,7 +570,7 @@ exports.deps = [
     {
         "block": "popup",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "menu",
@@ -579,7 +579,7 @@ exports.deps = [
     {
         "block": "menu",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "menu-item",
@@ -588,7 +588,7 @@ exports.deps = [
     {
         "block": "menu-item",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "select",

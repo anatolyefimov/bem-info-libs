@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -299,17 +299,17 @@ exports.deps = [
     {
         "block": "radio-group",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "radio",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "radio-group",

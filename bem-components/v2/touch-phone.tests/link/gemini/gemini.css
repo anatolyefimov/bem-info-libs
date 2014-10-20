@@ -3,18 +3,18 @@
   padding: 20px;
 }
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:begin */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
-.page_theme_normal {
+.page_theme_islands {
   font: 13px/15px Arial, Helvetica, sans-serif;
   min-height: 100%;
   margin: 0;
   color: #000;
   background: #fff;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_normal.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/link/link.styl:begin */
 .link_pseudo:not([class*="link_theme"]) {
   cursor: pointer;
@@ -29,8 +29,8 @@ html {
   padding-bottom: 15px;
 }
 /* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/touch-phone.tests/link/gemini/blocks/separator/separator.styl:end */
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_normal.styl:begin */
-.link_theme_normal {
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:begin */
+.link_theme_islands {
   color: #44b;
   cursor: pointer;
   -webkit-transition: color 0.15s ease-out;
@@ -38,13 +38,13 @@ html {
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
 }
-.link_theme_normal.link_view_minor {
+.link_theme_islands.link_view_minor {
   color: #669;
 }
-.link_theme_normal.link_view_external {
+.link_theme_islands.link_view_external {
   color: #070;
 }
-.link_theme_normal:hover {
+.link_theme_islands:hover {
   color: #e00;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_normal.styl:end */
+/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:end */

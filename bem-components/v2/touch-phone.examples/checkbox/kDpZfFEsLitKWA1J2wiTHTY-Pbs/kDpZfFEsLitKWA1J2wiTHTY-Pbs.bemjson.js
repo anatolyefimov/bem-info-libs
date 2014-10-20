@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_kDpZfFEsLitKWA1J2wiTHTY-Pbs.css"}],"scripts":[{"elem":"js","url":"_kDpZfFEsLitKWA1J2wiTHTY-Pbs.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","text":"Кнопка-чекбокс","name":"button","val":"1","mods":{"theme":"islands","size":"s","type":"button"}}})

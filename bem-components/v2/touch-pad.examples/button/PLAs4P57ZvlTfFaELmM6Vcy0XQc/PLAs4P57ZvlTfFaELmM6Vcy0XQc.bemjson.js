@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_PLAs4P57ZvlTfFaELmM6Vcy0XQc.css"}],"scripts":[{"elem":"js","url":"_PLAs4P57ZvlTfFaELmM6Vcy0XQc.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"Theme islands","mods":{"theme":"islands","size":"m"}}})

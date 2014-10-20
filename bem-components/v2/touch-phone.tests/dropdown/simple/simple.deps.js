@@ -86,7 +86,7 @@ exports.deps = [
     {
         "block": "page",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "ua",
@@ -302,22 +302,22 @@ exports.deps = [
     {
         "block": "dropdown",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "popup",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "link",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",
         "mod": "theme",
-        "val": "normal"
+        "val": "islands"
     },
     {
         "block": "button",

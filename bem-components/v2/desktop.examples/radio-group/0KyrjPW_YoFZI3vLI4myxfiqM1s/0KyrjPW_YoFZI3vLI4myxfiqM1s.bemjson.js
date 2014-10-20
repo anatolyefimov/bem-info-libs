@@ -1,1 +1,0 @@
-({"block":"page","title":"radio-group","head":[{"elem":"css","url":"_0KyrjPW_YoFZI3vLI4myxfiqM1s.css"}],"scripts":[{"elem":"js","url":"_0KyrjPW_YoFZI3vLI4myxfiqM1s.js"}],"mods":{"theme":"normal"},"content":{"block":"radio-group","mods":{"theme":"normal","size":"xl","type":"button"},"name":"X-Large","options":[{"val":1,"text":"first"},{"val":2,"text":"second"}]}})

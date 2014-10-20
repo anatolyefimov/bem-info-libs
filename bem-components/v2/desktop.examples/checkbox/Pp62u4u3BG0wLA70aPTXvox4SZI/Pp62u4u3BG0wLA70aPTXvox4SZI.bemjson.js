@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_Pp62u4u3BG0wLA70aPTXvox4SZI.css"}],"scripts":[{"elem":"js","url":"_Pp62u4u3BG0wLA70aPTXvox4SZI.js"}],"mods":{"theme":"normal"},"content":{"block":"checkbox","text":"размер L","name":"name3","val":"3","mods":{"theme":"normal","size":"l"}}})

@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_g62fH5Lw5wX9NWyEgrqQEM9Q3xI.css"}],"scripts":[{"elem":"js","url":"_g62fH5Lw5wX9NWyEgrqQEM9Q3xI.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","view":"pseudo"},"text":"Псевдокнопка"}})

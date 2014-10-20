@@ -9,7 +9,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -196,7 +196,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }
@@ -209,7 +209,7 @@ exports.blocks = [
                 "name": "theme",
                 "vals": [
                     {
-                        "name": "normal"
+                        "name": "islands"
                     }
                 ]
             }

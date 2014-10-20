@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_BroGcSZQCho9tK-ZnUaRT-D3itk.css"}],"scripts":[{"elem":"js","url":"_BroGcSZQCho9tK-ZnUaRT-D3itk.js"}],"mods":{"theme":"normal"},"content":{"block":"button","mods":{"theme":"normal","size":"m","view":"pseudo"},"text":"Псевдокнопка"}})

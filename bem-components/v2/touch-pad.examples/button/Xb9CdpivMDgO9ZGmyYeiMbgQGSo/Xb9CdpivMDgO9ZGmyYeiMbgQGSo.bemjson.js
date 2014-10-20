@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_Xb9CdpivMDgO9ZGmyYeiMbgQGSo.css"}],"scripts":[{"elem":"js","url":"_Xb9CdpivMDgO9ZGmyYeiMbgQGSo.js"}],"mods":{"theme":"islands"},"content":{"block":"button","url":"#","text":"Кнопка отправки формы","mods":{"theme":"islands","size":"m","type":"submit"}}})

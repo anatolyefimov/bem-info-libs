@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_lDu4gRDEP3NsX57-IXAwPEwWibk.css"}],"scripts":[{"elem":"js","url":"_lDu4gRDEP3NsX57-IXAwPEwWibk.js"}],"mods":{"theme":"normal"},"content":{"block":"button","url":"#","text":"Кнопка отправки формы","mods":{"theme":"normal","size":"m","type":"submit"}}})

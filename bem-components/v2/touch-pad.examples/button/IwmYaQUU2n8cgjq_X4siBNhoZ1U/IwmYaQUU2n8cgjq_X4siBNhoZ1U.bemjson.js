@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_IwmYaQUU2n8cgjq_X4siBNhoZ1U.css"}],"scripts":[{"elem":"js","url":"_IwmYaQUU2n8cgjq_X4siBNhoZ1U.js"}],"mods":{"theme":"normal"},"content":{"block":"button","text":"Pseudo","mods":{"theme":"normal","size":"m","view":"pseudo"}}})
