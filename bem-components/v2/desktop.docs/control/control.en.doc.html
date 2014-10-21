@@ -1,0 +1,32 @@
+<h1 id="control">control</h1>
+<p><code>control</code> block is used to implement common functionality of the following blocks:</p>
+<ul>
+<li><a href="../attach/attach.en.md">attach</a></li>
+<li><a href="../button/button.en.md">button</a></li>
+<li><a href="../checkbox/checkbox.en.md">checkbox</a></li>
+<li><a href="../input/input.en.md">input</a></li>
+<li><a href="../link/link.en.md">link</a></li>
+<li><a href="../menu/menu.en.md">menu</a></li>
+<li><a href="../radio/radio.en.md">radio</a></li>
+</ul>
+<p><code>control</code> block provides:</p>
+<ul>
+<li>with <code>focused</code> and<code>disabled</code> states implementation at <code>common.blocks</code> level;</li>
+<li>with <code>hovered</code> state implementation at <code>desktop.blocks</code> level;</li>
+<li>with valid <code>tabIndex</code> attribute value depending on current state of the block.</li>
+</ul>
+<p>Methods of a block:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Method</td>
+        <th>Description</td>
+    </tr>
+    <tr>
+        <td><code>getVal</code></td>
+        <td>Returns a control value.</td>
+    </tr>
+    <tr>
+        <td><code>getName</code></td>
+        <td>Returns a name of a control (if available). If control name is not available, returns an empty string.</td>
+    </tr>
+</table></div>

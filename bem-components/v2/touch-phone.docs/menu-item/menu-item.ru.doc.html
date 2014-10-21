@@ -1,0 +1,56 @@
+<h1 id="menu-item">menu-item</h1>
+<p>Используется как элемент блока <a href="../menu/menu.ru.md"><code>menu</code></a>. Блок <code>menu-item</code> предоставляет возможность изменять состояние, содержимое и тип пунктов меню.</p>
+<p><code>menu-item</code> отображается на странице как HTML-элемент с тегом <code>&lt;div&gt;</code> и свойством <code>role=&quot;menuitem&quot;</code>.</p>
+<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<p>Список зарезервированных полей входного BEMJSON:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Поле</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>val</td>
+        <td><code>String</code></td>
+        <td>Значение, возвращаемое пунктом меню, если он выбран.</td>
+    </tr>
+</table></div>
+
+<p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
+<h2 id="Модификаторы-блока">Модификаторы блока</h2>
+<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
+<p>Блок представлен в следующих темах:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>Важно:</strong> При выборе темы <code>islands</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
+</ul>
+<p>Без указания модификатора <code>theme</code> отображается <a href="#native">нативный</a> вид контрола.
+Наглядно видно на примерах ниже:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: touch-phone.examples/menu-item/eV0q9qK02nCPsMxztjMtbDnRz7U -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: touch-phone.examples/menu-item/BxhdTuPatcCVRdT_1B8cW6OHGQ0 -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: touch-phone.examples/menu-item/SIoD5Dtr_-faVDT7JyyJNbmmN_0 -->
+
+<h3 id="Типы-`_type`">Типы <code>_type</code></h3>
+<p>Модификатор <code>type</code> в значении <code>link</code> позволяет создавать пункт меню, реализованный блоком <a href="../link/link.ru.md"><code>link</code></a>. Блок <code>link</code> при этом помещается в поле <code>content</code> BEMJSON-декларации блока. Все модификаторы блока <code>link</code> могут быть переданы пункту меню <code>menu-item</code>.</p>
+<!-- bem-example: touch-phone.examples/menu-item/zYJbTg4QuyHc3TS8-6Md_gChtSc -->
+
+<h3 id="Состояния-блока">Состояния блока</h3>
+<h4 id="Выбранный-пункт-меню-`_checked`">Выбранный пункт меню <code>_checked</code></h4>
+<p>Модификатор указывает, что пункт меню выбран.</p>
+<!-- bem-example: touch-phone.examples/menu-item/uUA9LXS8voUmp8vAJmb-Nwf_jG0 -->
+
+<p>В блоке <code>menu</code> модификатор <code>checked</code> для каждого пункта устанавливается автоматически по щелчку мыши.</p>
+<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
+<p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
+<p>Если модификатор <code>disabled</code> установлен и пункт меню реализован блоком <code>link</code>, переход по ссылке не осуществляется.</p>
+<!-- bem-example: touch-phone.examples/menu-item/dvzYND6mx8wICk9n3hh0NyaBWVU -->
+
+<h4 id="Наведение-курсором-`_hovered`">Наведение курсором <code>_hovered</code></h4>
+<p>Определяет действие «наведение курсором» на пункт меню.</p>
+<p>Автоматически выставляется при наведении указателем мыши на пункт меню.</p>

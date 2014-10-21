@@ -1,0 +1,59 @@
+<h1 id="attach">attach</h1>
+<p><code>attach</code> block is used to upload file to be sent to a server.</p>
+<p>By default this block is visually represented by:</p>
+<ul>
+<li>button (element <code>button</code> is based on a block <a href="../button/button.en.md">button</a>) that opens a system window for file upload;</li>
+<li>text message (for example, “No file selected”).</li>
+</ul>
+<p>When file upload is complete, the following elements become available:</p>
+<ul>
+<li>file icon (<code>icon</code> block);</li>
+<li>file name (<code>text</code> element);</li>
+<li>element for file deletion (<code>clear</code> element).</li>
+</ul>
+<p>Block functionality does not support:</p>
+<ul>
+<li>more than one file attaching;</li>
+<li>drag-and-drop.</li>
+</ul>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports only a theme called <code>simple</code>.</p>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: desktop.examples/attach/ZFs05u8kewAq9F9n8d6YPWyDNgk -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: desktop.examples/attach/8pRQhEhxOlmCQHlJitiM8RB4UoE -->
+
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<!-- bem-example: desktop.examples/attach/AkDH5qgUPbMKtFX988WrjrO4Yog -->
+
+<h2 id="Elements-of-a-block">Elements of a block</h2>
+<p>Block is visually represented by the following elements:</p>
+<h3 id="__button">__button</h3>
+<p>File selection button for opening a system window for file upload. It is based on <a href="../button/button.en.md">button</a> block and inherits its behavior (JS) and styling (CSS). Content of a button should be specified in BEMJSON data.</p>
+<!-- bem-example: desktop.examples/attach/0e8PrnldKFxjKeNoH1_3eiHXjqM -->
+
+<h3 id="__control">__control</h3>
+<p>Native control for file attaching that is added to the block on template engine level.</p>
+<h3 id="__no-file">__no-file</h3>
+<p>An auxiliary element is added to the block on template engine level. Sets text when file is not selected.</p>
+<p>If theme <em>simple</em> is not declared, text message “no file selected” is used by default.</p>
+<h3 id="__file">__file</h3>
+<p>Container with attached file information. An auxiliary element is added to the block on template engine level.</p>
+<p>It consists of the following elements of the block:</p>
+<ul>
+<li><code>text</code></li>
+<li><code>clear</code></li>
+</ul>
+<p>This element could contain <code>icon</code> block. Depending on a file type <code>icon</code> block could obtain corresponding modifier.</p>
+<h3 id="__text">__text</h3>
+<p>File name. It becomes available when you have attached some file.</p>
+<h3 id="__clear">__clear</h3>
+<p>Clear attachment element. It becomes available when you have attached some file.</p>
+<p>The element is used for <code>simple</code> theme of <code>attach</code> block.</p>

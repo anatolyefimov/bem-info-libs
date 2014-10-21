@@ -1,0 +1,111 @@
+<h1 id="menu">menu</h1>
+<p><code>menu</code> block is used to create various types of selects and menu lists. It allows a user to manage state, behavior and appearance of <code>menu</code> block and its nested components – <a href="../menu-item/menu-item.md">menu-item</a> blocks.</p>
+<p>Block is represented as <code>&lt;div&gt;</code> HTML element with <code>role=&quot;menu&quot;</code> attribute value.</p>
+<p>The following types of <code>menu</code> are available:</p>
+<ul>
+<li>basic list (<code>mode</code> modifier is not specified);</li>
+<li>radio-select list (<code>menu_mode_radio</code>);</li>
+<li>single-choice list (<code>menu_mode_radio-check</code>);</li>
+<li>multiple-choice list (<code>menu_mode_check</code>).</li>
+</ul>
+<p>For details see <a href="#types"><code>mode</code></a> section.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>NB!</strong> Choosing a theme <code>islands</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
+</ul>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: touch-pad.examples/menu/vAAUvyJpkNyuM0yEru7LP3dZ7xE -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/menu/JgK_lg3CEjumbM6ThTKEOcNpfH0 -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: touch-pad.examples/menu/RM6Pe4Q1B5gRn0a6kr9lC2OE0Ek -->
+
+<p><a name="size"></a></p>
+<h3 id="_size">_size</h3>
+<p>Implemented only for theme <code>islands</code>.</p>
+<p>Provides to all types of menus with the <code>size</code> value.</p>
+<p>There are four sizes available: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Block size</th>
+        <th>Font size</th>
+        <th>Line height <code>line-heigh</code></th>
+    </tr>
+    <tr>
+        <td>s</td>
+        <td>13px</td>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>13px</td>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <td>l</td>
+        <td>15px</td>
+        <td>28px</td>
+    </tr>
+    <tr>
+        <td>xl</td>
+        <td>15px</td>
+        <td>32px</td>
+    </tr>
+</table></div>
+
+<p>See following examples:</p>
+<!-- bem-example: touch-pad.examples/menu/MfOjvCJTEr6MCcgzfp_aDh8vJqg -->
+
+<!-- bem-example: touch-pad.examples/menu/4EDvryv5dkJ45rCl-miKNXky7zk -->
+
+<!-- bem-example: touch-pad.examples/menu/xjoCvJwjyhjtWOxXZCr_4AzrpW4 -->
+
+<!-- bem-example: touch-pad.examples/menu/ikT-UhmMeuUzUWjzwGh5Rv6oS90 -->
+
+<p><a name="types"></a></p>
+<h3 id="_mode">_mode</h3>
+<p>Use <code>mode</code> modifier to define a type of menu list:</p>
+<ul>
+<li>Basic list (<code>mode</code> modifier is not specified). Mouse click on menu item does not change its state to checked or unchecked.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/menu/O1dQZUW3fCSqKu2E5Ye6i5Gncd0 -->
+
+<ul>
+<li>Radio-select list (<code>menu_mode_radio</code>). This modifier is used to allow user a single choice.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/menu/C5NDP_JtH88atpq5r8xUGlpbRJs -->
+
+<ul>
+<li>Single-choice list (<code>menu_mode_radio-check</code>). This modifier allows a user to check only one menu item from the list or leave all items unchecked. Mouse click on menu item changes its value to the opposite.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/menu/qFuDDMEnqg0HOxS00nZFGjbJl_Q -->
+
+<ul>
+<li>Multiple-choice list (<code>menu_mode_check</code>). This modifier allows user to check more than one menu item from the list or leave all items unchecked. Mouse click on menu item changes its value to the opposite.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/menu/KyBZstqDL9bMbNtETiUdqjy4Z60 -->
+
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<p>If <code>menu</code> block is disabled, all nested <code>menu-item</code> blocks are also disabled.</p>
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
+<h2 id="Elements-of-a-block">Elements of a block</h2>
+<p><code>menu</code> block is visually represented by the following elements:</p>
+<h3 id="__group">__group</h3>
+<p><code>__group</code> element is used to combine several <code>menu-items</code> blocks into the group. All <code>menu-items</code> from one group must be declared in BEMJSON in <code>content</code> field of <code>group</code> element.</p>
+<p>For a theme <code>islands</code> a gray line separates groups from each other.</p>
+<!-- bem-example: touch-pad.examples/menu/Rl8QSHm4K4Se6myr93gXMZ8MHmU -->
+
+<h3 id="__group-title">__group-title</h3>
+<p>This element is used to set titles for menu items group.</p>
+<!-- bem-example: touch-pad.examples/menu/VNC3iqT7veN0uk4K5f16khQLsNw -->

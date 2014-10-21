@@ -1,0 +1,149 @@
+<h1 id="select">select</h1>
+<p><code>select</code> block is used to create a drop-down list. It allows a user to set up different types of popups with menu-items list for selection. <code>select</code> is based on the following blocks:</p>
+<ul>
+<li><a href="../button/button.en.md">button</a></li>
+<li><a href="../popup/popup.en.md">popup</a></li>
+<li><a href="../menu/menu.en/md">menu</a></li>
+<li><a href="../menu-item/menu-item.en.md">menu-item</a></li>
+</ul>
+<p><code>select</code> is visually represented by a button and popup list of menu items. Mouse click opens popup above or below a button depending on its position on a page (<code>{ directions : [&#39;bottom-left&#39;, &#39;bottom-right&#39;, &#39;top-left&#39;, &#39;top-right&#39;] }</code>). Clicking outside the popup area hides it automatically (<code>{ autoclosable : true }</code>).</p>
+<p>Dropdown list allows user to choose:</p>
+<ul>
+<li>a single value from the list (<a href="#radio-select"><code>select_mode_radio</code></a>);</li>
+<li>a single, multiple or none values from the list (<a href="#multiple-choice"><code>select_mode_check</code></a>);</li>
+<li>a single or none values from the list (<a href="#single-choice"><code>select_mode_radio-check</code></a>).</li>
+</ul>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Name of <code>select</code>.</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Unique identifier of <code>select</code> block.</td>
+    </tr>
+    <tr>
+        <td>options</td>
+        <td>
+            <code>BEMJSON</code>
+        </td>
+        <td>Defines a list of <code>menu-items</code>. Each item has mandatory attribute <code>val</code> implemented by a hidden element <code>control</code>.</td>
+    </tr>
+    <tr>
+        <td>textMaxWidth</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Defines maximum width of <code>button</code> from <code>select</code> block. <code>popup</code> width depends on width of <code>menu-item</code> text. It could be defined also using CSS styles.</td>
+    </tr>
+    <tr>
+        <td>optionsMaxHeight</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Defines maximum height of <code>popup</code>.
+            <br> If all <code>menu-items</code> cannot be fit within <code>popup</code>, scroll element appears.
+            <br> If value of <code>optionsMaxHeight</code> attribute is not specified, height of <code>popup</code> depends on total height of all <code>menu-items</code>&#39;.</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Default text for a button when any <code>menu-item</code> is not specified.
+            <br> This attribute is used for <code>select</code> with the following specified modifiers: <code>select_mode_check</code> and <code>select_mode_radio-check</code>.</td>
+    </tr>
+</table></div>
+
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>NB!</strong> Choosing a theme <code>islands</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
+</ul>
+<p>If <code>theme</code> modifier is not specified, <a href="#custom">custom</a> representation of a control is applied (without CSS styles).</p>
+<p>See following examples:</p>
+<p><a name="custom"></a>
+<strong>custom</strong></p>
+<!-- bem-example: touch-pad.examples/select/o8vqoJD1pJAQbGfuytlJWTdR4uA -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/select/c95aYUap9WktRmnDR-fEHY1mJ_c -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: touch-pad.examples/select/HiIJ9O2X33tKeDCSbYxGODVJf5k -->
+
+<h3 id="_mode">_mode</h3>
+<p>Use <code>mode</code> modifier to define a type of <code>select</code>:</p>
+<p><a name="multiple-choice"></a></p>
+<ul>
+<li>Multiple-choice select (<code>select_mode_check</code>) allows a user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/select/bhgxCuM12J9GZz1elHOw181hu-4 -->
+
+<p><a name="radio-select"></a></p>
+<ul>
+<li>Radio-select (<code>select_mode_radio</code>) is used to allow user a single choice.
+Text in the button of <code>select</code> block depends on a chosen menu item. The first item is represented by a button text by default.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/select/TSGSz4JZv_WMYL5sdtGHOp6OYM8 -->
+
+<p><a name="single-choice"></a></p>
+<ul>
+<li>Single-choice select (<code>select_mode_radio-check</code>) allows a user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.</li>
+</ul>
+<!-- bem-example: touch-pad.examples/select/m6XPfIukwAZzUU819k08rzsG7bo -->
+
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_width">_width</h4>
+<p>To set the ability of select button&#39;s width to fit the width of the chosen item, use <code>width</code> modifier with <code>available</code> value.</p>
+<!-- bem-example: touch-pad.examples/select/4NQvG3vCKqOqPS2ccmg9lZnmEZY -->
+
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<h2 id="Elements-of-a-block">Elements of a block</h2>
+<h3 id="__button">__button</h3>
+<p><code>select</code> block is visually represented by a button (block <a href="../button/button.en.md">button</a>) that contains an icon <code>&lt;i&gt;</code> (block <a href="../icon/icon.en.md">icon</a>) with mixed element <code>tick</code>. Size of the icon is specified by <code>button</code> block size. Clicking the button opens popup with options.</p>
+<p>The following modifiers of a button could be propagated to <code>select</code> block:</p>
+<ul>
+<li><code>theme</code></li>
+<li><code>size</code></li>
+<li><code>focused</code></li>
+<li><code>checked</code></li>
+<li><code>disabled</code></li>
+</ul>
+<!-- bem-example: touch-pad.examples/select/wbw7bolNYobrFhdUa8XYRpAiFKk -->
+
+<h2 id="__menu">__menu</h2>
+<p><code>menu</code> element allows user to manage <code>menu-items</code> within selection list:</p>
+<ul>
+<li><code>val</code> – value to be sent to a server when menu item is chosen. This attribute could contain unique identifier <code>{ val : { id : 1 } }</code>.</li>
+<li><code>text</code> – name of menu item.</li>
+<li><code>checked</code> – state that is set to <code>menu-item</code>, e.g. on mouse click.</li>
+<li><code>checkedText</code> – text represented within select&#39;s button instead of chosen menu item name. This attribute is used for <a href="#multiple-choice">multiple-choice</a> select.</li>
+<li><code>icon</code> – graphical element (icon).</li>
+</ul>
+<!-- bem-example: touch-pad.examples/select/3RxW0Q1kRninM5DU9NwtFH_Qyls -->
+
+<p><code>menu-items</code> could be grouped by <code>group</code> element. Group name is specified by <code>title</code> attribute.</p>
+<!-- bem-example: touch-pad.examples/select/RPr1uCTr2ICUWc_RXXLJBpTTTmI -->
+
+<h2 id="__control">__control</h2>
+<p><code>control</code> element is added to the block on template engine level and used to draw <code>menu-item</code>s in <code>popup</code>.</p>

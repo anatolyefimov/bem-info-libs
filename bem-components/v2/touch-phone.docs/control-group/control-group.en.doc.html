@@ -1,0 +1,54 @@
+<h1 id="control-group">control-group</h1>
+<p><code>control-group</code> block is a wrapper for blocks&#39; visual grouping. Blocks that need grouping should be placed in block&#39;s BEMJSON declaration <code>content</code> field.</p>
+<p>Block&#39;s representation exists only for CSS with no additional functionality. Theme <code>islands</code> is required for nested blocks.</p>
+<p>On a page <code>control-group</code> block is represented by <code>&lt;div&gt;</code> HTML element.</p>
+<h2 id="Use-cases">Use cases</h2>
+<p><code>control-group</code> allows a user to group the following blocks:</p>
+<ul>
+<li><a href="../input/input.en.md">input</a></li>
+<li><a href="../button/button.en.md">button</a></li>
+</ul>
+<!-- bem-example: touch-phone.examples/control-group/OqkmsZ4IH2oyfnu-1MJ9GOFuqvQ -->
+
+<p>Besides, blocks that use <code>input</code> or <code>button</code> as one of their components could be grouped. For instance, <code>select</code> block could be included in to the group because it has <code>button</code> block as a controlling component:</p>
+<!-- bem-example: touch-phone.examples/control-group/ECNldZ63B51vg9vDw4yQgMoiirU -->
+
+<p>The following <code>button</code>-based blocks could be grouped:</p>
+<ul>
+<li><a href="../select/select.en.md">select</a>;</li>
+<li><a href="../dropdown/dropdown.en.md">dropdown</a> (with <code>dropdown_switcher_button</code> modifier set);</li>
+<li><a href="../checkbox/checkbox.en.md">checkbox</a> (with <code>checkbox_type_button</code> modifier set);</li>
+<li><a href="../radio/radio.en.md">radio</a> (with <code>radio_type_button</code> modifier set).</li>
+</ul>
+<h2 id="Impact-on-other-blocks">Impact on other blocks</h2>
+<h3 id="Block-`input`">Block <code>input</code></h3>
+<p>The right border will not be displayed for all grouped <code>input</code> blocks, except for the last one (<code>right</code> CSS property will be set to zero for pseudo element <code>:before</code>). The last block will have 1px right border.</p>
+<!-- bem-example: touch-phone.examples/control-group/L9My3C-xVgf8amSPE7AFMH_U17Y -->
+
+<h3 id="Block-`button`">Block <code>button</code></h3>
+<p>The grouping affects button corners rounding and the right gap for button blocks. Button appearance depends on block&#39;s position inside the group. The first and the last elements of the group visually differ from the rest:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Position inside the group</th>
+        <th>Corners rounding</th>
+        <th>Right gap</th>
+    </tr>
+    <tr>
+        <td>The first element</td>
+        <td>Left corners are rounded.</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>The last element</td>
+        <td>Right corners are rounded.</td>
+        <td>+</td>
+    </tr>
+    <tr>
+        <td>Inside the group</td>
+        <td>Without corners rounding.</td>
+        <td>-</td>
+    </tr>
+</table></div>
+
+<p>For example:</p>
+<!-- bem-example: touch-phone.examples/control-group/l9KnPoFwdcKnfPik5PU7_j5aGbg -->

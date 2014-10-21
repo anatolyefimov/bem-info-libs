@@ -1,0 +1,137 @@
+<h1 id="select">select</h1>
+<p>Блок <code>select</code> («селект») позволяет создать элемент интерфейса в виде раскрывающегося списка, а также список с одним или множественным выбором. Реализация блока основана на блоках <a href="../button/button.ru.md">button</a>, <a href="../popup/popup.ru.md">popup</a>, <a href="../menu/menu.ru.md">menu</a> и <a href="../menu-item/menu-itemru.md">menu-item</a>. Визуально представлен кнопкой и выпадающим списком с элементами меню. Щелчок по кнопке раскрывает выпадающий список под или над кнопкой в зависимости от ее положения на странице (<code>{ directions : [&#39;bottom-left&#39;, &#39;bottom-right&#39;, &#39;top-left&#39;, &#39;top-right&#39;] }</code>). Щелчок вне зоны попапа автоматически скрывает его (<code>{ autoclosable : true }</code>).</p>
+<p>Раскрывающийся список имеет всего один уровень вложенности и позволяет выбрать:</p>
+<ul>
+<li>только один элемент из списка (<a href="#radio-select"><code>select_mode_radio</code></a>);</li>
+<li>один, несколько или ни одного элемента из списка (<a href="#multiple-choice"><code>select_mode_check</code></a>);</li>
+<li>один или ни одного элемента из списка (<a href="#single-choice"><code>select_mode_radio-check</code></a>).</li>
+</ul>
+<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<p>Список зарезервированных полей входного BEMJSON:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Поле</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Задает имя выпадающего списка.</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Задает уникальный идентификатор селекта.</td>
+    </tr>
+    <tr>
+        <td>options</td>
+        <td>
+            <code>BEMJSON</code>
+        </td>
+        <td>Задает массив пунктов списка. Каждый пункт имеет обязательный атрибут <code>val</code>, реализованный скрытым элементом <code>control</code>.</td>
+    </tr>
+    <tr>
+        <td>textMaxWidth</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Устанавливает максимальную ширину кнопки селекта. Ширина раскрывающегося списка при этом определяется самым широким текстом пункта или корректируется с помощью стилей.</td>
+    </tr>
+    <tr>
+        <td>optionsMaxHeight</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Устанавливает максимальную высоту выпадающего списка.<br>Если все пункты списка не вмещаются, появляется скролл.<br> Если значение не указано, высота выпадающего списка по умолчанию будет вычисляться в зависимости от количества пунктов.</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен.
+            <br> Применяется только для селектов с установленным модификатором <code>mode</code> в значении <code>check</code> или <code>radio-check</code>.</td>
+    </tr>
+</table></div>
+
+<p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
+<h2 id="Модификаторы-блока">Модификаторы блока</h2>
+<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
+<p>Блок представлен в следующих темах:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>Важно:</strong> При выборе темы <code>islands</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
+</ul>
+<p>Если модификатор <code>theme</code> не указан, отображается <a href="#custom">кастомная</a> реализация контрола без применения стилей.</p>
+<p>Наглядно показано на примерах ниже:</p>
+<p><a name="custom"></a>
+<strong>custom</strong></p>
+<!-- bem-example: desktop.examples/select/o8vqoJD1pJAQbGfuytlJWTdR4uA -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: desktop.examples/select/c95aYUap9WktRmnDR-fEHY1mJ_c -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: desktop.examples/select/HiIJ9O2X33tKeDCSbYxGODVJf5k -->
+
+<h3 id="Типы-`_mode`">Типы <code>_mode</code></h3>
+<p>Обязательный модификатор.</p>
+<p>Блок представлен следующими типами:</p>
+<p><a name="multiple-choice"></a></p>
+<ul>
+<li>селект с множественным выбором, который позволяет оставить список без выбранных элементов (<code>select_mode_check</code>). При щелчке мышью по пункту списка его состояние меняется на противоположное.</li>
+</ul>
+<!-- bem-example: desktop.examples/select/bhgxCuM12J9GZz1elHOw181hu-4 -->
+
+<p><a name="radio-select"></a></p>
+<ul>
+<li>меню-переключатель (<code>select_mode_radio</code>). Применяется для создания селектов, которые позволяют выбрать только один пункт из списка.
+Для этого типа селекта текст в кнопке устанавливается в зависимости от выбранного элемента. Если элемент не выбран, то по умолчанию выбирается первый пункт из списка.</li>
+</ul>
+<!-- bem-example: desktop.examples/select/TSGSz4JZv_WMYL5sdtGHOp6OYM8 -->
+
+<p><a name="single-choice"></a></p>
+<ul>
+<li>селект с одиночным выбором, который позволяет оставить список без выбранных элементов (<code>select_mode_radio-check</code>). При щелчке мышью по пункту списка, его состояние меняется на противоположное.</li>
+</ul>
+<!-- bem-example: desktop.examples/select/eiVLRODgXLUaVaKqH6CbJfVd1bw -->
+
+<h3 id="Состояния-блока">Состояния блока</h3>
+<h4 id="Ширина-кнопки-селекта-`_width`">Ширина кнопки селекта <code>_width</code></h4>
+<p>Модификатор <code>width</code> в значении <code>available</code> растягивает кнопку селекта по ширине в зависимости от длины выбранного пункта.</p>
+<!-- bem-example: desktop.examples/select/4NQvG3vCKqOqPS2ccmg9lZnmEZY -->
+
+<h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
+<p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
+<h2 id="Элементы-блока">Элементы блока</h2>
+<h3 id="Кнопка-`__button`">Кнопка <code>__button</code></h3>
+<p>Селект визуально представлен кнопкой (блок <a href="../button/button.ru.md">button</a>), которая содержит иконку <code>&lt;i&gt;</code>, реализованную блоком <a href="../icon/icon.ru.md">icon</a> с примиксованным элементом <code>tick</code>. Так как иконка является частью кнопки селекта, ее размер устанавливается размером кнопки. Щелчок по кнопке раскрывает список выбора.</p>
+<p>Селект реализован с помощью блока <a href="../button/button.ru.md">button</a>, поэтому ему можно задавать следующие модификаторы:</p>
+<ul>
+<li><code>theme</code></li>
+<li><code>size</code></li>
+<li><code>focused</code></li>
+<li><code>checked</code></li>
+<li><code>disabled</code></li>
+</ul>
+<h2 id="Меню-`__menu`">Меню <code>__menu</code></h2>
+<p>Элемент <code>menu</code> позволяет управлять пунктами списка выбора:</p>
+<ul>
+<li><code>val</code> – значение, возвращаемое пунктом из списка, если он выбран. Обязательный атрибут. Может содержать уникальный идентификатор <code>{ val : { id : 1 } }</code>.</li>
+<li><code>text</code> – название пункта в списке.</li>
+<li><code>checked</code> – присваивается пункту из списка, если он выбран. <code>{ checked : true }</code> – пункт выбран.</li>
+<li><code>checkedText</code> – текст, отображаемый вместо названия пункта в кнопке селекта. Задается только для блока <code>select</code> с возможностью <a href="#multiple-choice">множественного выбора</a>.</li>
+<li><code>icon</code> – графический элемент (иконка).</li>
+</ul>
+<!-- bem-example: desktop.examples/select/3RxW0Q1kRninM5DU9NwtFH_Qyls -->
+
+<p>Элементы списка могут быть объединены в группы. Для группировки пунктов выбора служит элемент <code>group</code>, в который вкладываются необходимые элементы списка. Название группы задается через атрибут <code>title</code>.</p>
+<!-- bem-example: desktop.examples/select/RPr1uCTr2ICUWc_RXXLJBpTTTmI -->
+
+<h2 id="Контрол-`__control`">Контрол <code>__control</code></h2>
+<p>Вспомогательный скрытый элемент, который отвечает за формирование элементов списка выбора. Добавляется блоку на уровне шаблонизатора.</p>

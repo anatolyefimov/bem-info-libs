@@ -1,0 +1,64 @@
+<h1 id="link">link</h1>
+<p><code>link</code> block is used to create various types of links, manage their states, behaviour and appearance on a page.</p>
+<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>url</td>
+        <td><code>String</code></td>
+        <td>Specifies <code>href</code> HTML attribute to a link.</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td><code>String</code></td>
+        <td>Specifies <code>title</code> HTML attribute to a link.</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td><code>String</code></td>
+        <td>Target window. Used <code>blank</code> value to open link in a new window.
+            <br>Specifies <code>target</code> HTML attribute to a link.</td>
+    </tr>
+    <tr>
+        <td>tabIndex</td>
+        <td><code>Number</code></td>
+        <td>Defines tab order. Specifies <code>tabindex</code> HTML attribute to a link.</td>
+    </tr>
+</table></div>
+
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
+<h3 id="_theme">_theme</h3>
+<p>Block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>islands</li>
+</ul>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: touch-pad.examples/link/Y3yr9bNzwYkA9sSkV8EkqO30JYI -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: touch-pad.examples/link/rVrcuNJ0PMv5S2Q4KNH4HsM6Zds -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: touch-pad.examples/link/GnWE72VRVC5mqGq6h9fRWqMi-EE -->
+
+<h3 id="_pseudo">_pseudo</h3>
+<p>A link type that does not lead to a new webpage.</p>
+<!-- bem-example: touch-pad.examples/link/JqI2sHR5-n-aZYBIsVXDT7KiKck -->
+
+<h3 id="States-of-a-block">States of a block</h3>
+<h4 id="_disabled">_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<!-- bem-example: touch-pad.examples/link/w-wprD5e0G9_9Mybm5CKuV299Qc -->
+
+<h4 id="_focused">_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
