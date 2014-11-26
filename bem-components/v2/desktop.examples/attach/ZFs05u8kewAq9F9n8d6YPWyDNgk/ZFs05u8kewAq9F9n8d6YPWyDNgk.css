@@ -1,0 +1,38 @@
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+.page {
+  padding: 20px;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/attach/attach.styl:begin */
+.attach__file,
+.attach__no-file,
+.attach .button__text {
+  display: none;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/attach/attach.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
+.icon {
+  display: inline-block;
+  text-align: center;
+  background: 50% no-repeat;
+/* Hack for correct baseline positioning */
+/*
+     * Чтобы иконка правильно позиционировалась внутри блочного контекста,
+     * нужно прописать родителю свойство line-height со значением, равным высоте иконки
+     */
+}
+.icon:empty:after {
+  visibility: hidden;
+  content: '\00A0';
+}
+.icon .image {
+  margin: -5.18em 0 -5em;
+/* 0.18 — magic number, empirically found */
+  vertical-align: middle;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
+.icon {
+  min-width: 1em;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:end */
