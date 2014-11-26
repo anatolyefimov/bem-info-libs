@@ -1,0 +1,1 @@
+({"block":"page","title":"page","head":[{"elem":"css","url":"__Mn7VSGTqwauM4Q8Z0zWH7MDEM.css"}],"scripts":[{"elem":"js","url":"__Mn7VSGTqwauM4Q8Z0zWH7MDEM.js"}],"content":{"block":"page","title":"Page title","content":"Блок page"}})

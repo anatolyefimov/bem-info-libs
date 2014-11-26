@@ -1,0 +1,1 @@
+({"block":"page","title":"page","head":[{"elem":"css","url":"_O1uRk0IltGW1f9EZoVpUSSYqFz0.css"}],"scripts":[{"elem":"js","url":"_O1uRk0IltGW1f9EZoVpUSSYqFz0.js"}],"content":{"block":"page","title":"Page title","head":[{"elem":"css","content":".b-blah { color: #f00 }"}],"content":"Страница с тэгом <style>"}})

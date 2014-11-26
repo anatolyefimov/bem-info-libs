@@ -1,0 +1,91 @@
+<p>﻿Блок <code>page</code> создаёт теги верхнего уровня страницы:</p>
+<ul>
+<li><code>&lt;html&gt;</code></li>
+<li><code>&lt;head&gt;</code></li>
+<li><code>&lt;body&gt;</code></li>
+</ul>
+<p>Именно он отвечает за то, какие подключить <code>CSS</code> и <code>JS</code> файлы к странице,
+выставление <code>meta</code> тегов, заголовка и так далее.</p>
+<p>Декларация блока в <code>BEMJSON</code> начинается объявлением блока и
+указанием свойства <code>title</code>, которое превращается в тег <code>&lt;title&gt;</code> в <code>HTML</code>.</p>
+<!-- bem-example: desktop.examples/page/_Mn7VSGTqwauM4Q8Z0zWH7MDEM -->
+
+<p>Указание свойства <code>head</code> дополняет элемент <code>head</code>, соответствующий <code>HTML</code> тегу <code>&lt;head&gt;</code>,
+элементами для подключения <code>CSS</code> и <code>JS</code> файлов, а также указания <code>meta</code>:</p>
+<!-- bem-example: desktop.examples/page/Axsy3FgkLLIrJPNKH8uhpkEtGGU -->
+
+<p>Элемент <code>css</code> превращается в <code>HTML</code> в тег <code>&lt;link&gt;</code>, подключающий как <code>CSS</code> стиль тот файл,
+что указан в свойстве <code>url</code> этого элемента. Также у такого элемента может быть свойство <code>ie</code>.
+Если это свойство <code>false</code>, то будут использоваться такие <code>conditional comments</code>, которые предотвратят использование этих стилей в <code>IE</code>. При строчном значении этого свойства тег <code>&lt;link&gt;</code> , будет обёрнут в соответствующий <code>conditional comment</code>, и этот стиль будет грузиться и использоваться указанных браузерах.</p>
+<p>Также есть возможность указывать свойство <code>content</code> для содержания тега <code>&lt;style&gt;</code>:</p>
+<!-- bem-example: desktop.examples/page/O1uRk0IltGW1f9EZoVpUSSYqFz0 -->
+
+<p>Элемент <code>js</code> действует аналогично, подключая к странице <code>JS</code> файлы при помощи тега <code>&lt;script&gt;</code>.</p>
+<p>Свойство <code>head</code> не описывает содержание <code>HTML</code>-тега <code>&lt;head&gt;</code> полностью, а лишь
+дополняет дефолтное, которое блок сам создаёт в своём <code>BEMHTML</code> шаблоне.</p>
+<h3 id="Тег-<meta>-с-указанием-кодировки"><a href="#Тег-<meta>-с-указанием-кодировки" class="anchor"></a>Тег <meta> с указанием кодировки</h3>
+<p><code>BEMHTML</code>:</p>
+<pre><code class="lang-js">content: [
+{
+    tag: &#39;meta&#39;,
+    attrs: { &#39;http-equiv&#39;: &#39;content-type&#39;, content: &#39;text/html; charset=utf-8&#39; }
+},
+...
+</code></pre>
+<h3 id="Тег-<meta>-для-использования-`IE9`--и-выше--в-максимальном-`compatibility`-режиме"><a href="#Тег-<meta>-для-использования-`IE9`--и-выше--в-максимальном-`compatibility`-режиме" class="anchor"></a>Тег <meta> для использования <code>IE9</code> (и выше) в максимальном <code>compatibility</code> режиме</h3>
+<p><code>BEMHTML</code>:</p>
+<pre><code class="lang-js">content: [
+...
+{
+    tag: &#39;meta&#39;,
+    attrs: { &#39;http-equiv&#39;: &#39;X-UA-Compatible&#39;, content: &#39;IE=EmulateIE7, IE=edge&#39; }
+},
+...
+</code></pre>
+<h3 id="Выставление-значения-тега-<title>-страницы-из-свойства"><a href="#Выставление-значения-тега-<title>-страницы-из-свойства" class="anchor"></a>Выставление значения тега <title> страницы из свойства</h3>
+<pre><code class="lang-js">content: [
+...
+{
+    tag: &#39;title&#39;,
+    content: this.ctx.title
+},
+...
+</code></pre>
+<h3 id="Выставление-фавиконки"><a href="#Выставление-фавиконки" class="anchor"></a>Выставление фавиконки</h3>
+<pre><code class="lang-js">content: [
+...
+this.ctx.favicon ? {
+    elem: &#39;favicon&#39;,
+    url: this.ctx.favicon
+} : &#39;&#39;,
+...
+</code></pre>
+<h3 id="Декларация-блока-ua"><a href="#Декларация-блока-ua" class="anchor"></a>Декларация блока ua</h3>
+<pre><code class="lang-js">content: [
+...
+{
+    block: &#39;ua&#39;
+},
+...
+</code></pre>
+<p>Значением свойства <code>content</code> блока <code>page</code> может быть хеш-описание содержимого
+(если речь идёт лишь об одном блоке) или массив блоков, описанных хешами:</p>
+<pre><code class="lang-js">({
+    block: &#39;page&#39;,
+    title: &#39;Page title&#39;,
+    content: {
+        block: &#39;b-link&#39;,
+        mods: { pseudo: &#39;yes&#39;, togcolor: &#39;yes&#39;, color: &#39;green&#39; },
+        url: &#39;#&#39;,
+        target: &#39;_blank&#39;,
+        title: &#39;Кликни меня&#39;,
+        content: &#39;Псевдоссылка, меняющая цвет по клику&#39;
+    }
+})
+</code></pre>
+<p>На блоки, содержащиеся в <code>content</code>, действуют их <code>BEMHTML</code> шаблоны.</p>
+<h3 id="Отмена-автоматической-инициализации-блоков"><a href="#Отмена-автоматической-инициализации-блоков" class="anchor"></a>Отмена автоматической инициализации блоков</h3>
+<pre><code class="lang-js">noDeps: [
+    { block: &#39;i-bem&#39;, elem: &#39;dom&#39;, mods: { init: &#39;auto&#39; } }
+]
+</code></pre>
