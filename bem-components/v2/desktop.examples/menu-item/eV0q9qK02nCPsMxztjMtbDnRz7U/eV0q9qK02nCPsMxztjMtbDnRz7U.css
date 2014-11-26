@@ -1,5 +1,11 @@
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/sites/bem-data-source-new/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:begin */
+.menu-item .icon {
+  width: 16px;
+  margin-right: 5px;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:end */

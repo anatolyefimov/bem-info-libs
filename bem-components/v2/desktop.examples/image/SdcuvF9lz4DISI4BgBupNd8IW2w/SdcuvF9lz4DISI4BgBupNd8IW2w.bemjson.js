@@ -1,0 +1,1 @@
+({"block":"page","title":"image","head":[{"elem":"css","url":"_SdcuvF9lz4DISI4BgBupNd8IW2w.css"}],"scripts":[{"elem":"js","url":"_SdcuvF9lz4DISI4BgBupNd8IW2w.js"}],"mods":{},"content":{"block":"image","url":"http://bem.info/m/_/IvuRSFeBStMXdBhBrBvKagSd5sE.svg","width":100,"height":100,"alt":"BEM","title":"Find us on bem.info"}})

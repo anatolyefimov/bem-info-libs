@@ -1,4 +1,4 @@
-<h1 id="radio">radio</h1>
+<h1 id="radio"><a href="#radio" class="anchor"></a>radio</h1>
 <p>Блок <code>radio</code> – «радиопереключатель», «радиокнопка». Используется для создания одиночных радиопереключателей.</p>
 <p>В реализации блока используется функциональность нативного контрола <code>input</code> с атрибутом <code>type=&quot;radio&quot;</code> – <code>&lt;input name=&quot;name&quot; type=&quot;radio&quot;&gt;</code>, который скрывается при использовании модификатора <code>theme</code>.</p>
 <p>В результате применения шаблонов, блок <code>radio</code> отображается на странице как HTML-тег <code>&lt;label&gt;</code>, содержащий:</p>
@@ -6,7 +6,7 @@
 <li>элемент <code>box</code> со скрытым контролом <code>input</code> (элемент <code>control</code>);</li>
 <li>подпись к радиопереключателю, если задан BEMJSON-параметр <code>text</code>.</li>
 </ul>
-<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<h2 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h2>
 <p>Список зарезервированных полей входного BEMJSON:</p>
 <div class="table-container"><table>
     <tr>
@@ -22,7 +22,7 @@
     <tr>
         <td><code>val</code></td>
         <td><code>String</code></td>
-        <td>Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом <code>name</code> тега <code><input></code>, а значение — ключом <code>val</code>.
+        <td>Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом <code>name</code> тега <code>&lt;input&gt;</code>, а значение — ключом <code>val</code>.
             <br>Преобразуется в HTML-атрибут <code>value</code> вложенного блока <code>input</code>.</td>
     </tr>
     <tr>
@@ -33,8 +33,8 @@
 </table></div>
 
 <p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
-<h2 id="Модификаторы-блока">Модификаторы блока</h2>
-<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
+<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
+<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
 <li>simple</li>
@@ -53,7 +53,7 @@
 <!-- bem-example: desktop.examples/radio/5PtpSNiZtVPagsRUyCIkDREXfTI -->
 
 <p><a name="size"></a></p>
-<h3 id="Размеры-`_size`">Размеры <code>_size</code></h3>
+<h3 id="Размеры-`_size`"><a href="#Размеры-`_size`" class="anchor"></a>Размеры <code>_size</code></h3>
 <p>Реализован только в теме <code>islands</code>.</p>
 <p>В зависимости от значения модификатора <code>type</code> доступны следующие размеры реализации блока:</p>
 <div class="table-container"><table>
@@ -85,9 +85,9 @@
 </table></div>
 
 
-<h3 id="Тип-`_type`">Тип <code>_type</code></h3>
+<h3 id="Тип-`_type`"><a href="#Тип-`_type`" class="anchor"></a>Тип <code>_type</code></h3>
 <p>Модификатор <code>type</code> со значением <code>button</code> используется для создания кнопочного радиопереключателя, реализованного на основе блока <a href="../button/button.ru.md">button</a> с модификатором <code>button_togglable_radio</code>.</p>
-<p>При этом к блоку <code>button</code> примешивается блок <code>radio</code>, а контентом кнопки становится эелемент <code>control</code>. Как следствие, для блока с модификатором <code>radio_type_button</code> доступны состояния блока <code>button</code>:</p>
+<p>При этом к блоку <code>button</code> примешивается блок <code>radio</code>, а контентом кнопки становится элемент <code>control</code>. Как следствие, для блока с модификатором <code>radio_type_button</code> доступны состояния блока <code>button</code>:</p>
 <ul>
 <li><code>hovered</code> – под курсором;</li>
 <li><code>pressed</code> – кнопка нажата.</li>
@@ -108,7 +108,7 @@
 
 <!-- bem-example: desktop.examples/radio/1uUswbh0FFPQSOaGdYvx5RBxF4M -->
 
-<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
+<h4 id="Неактивен-`_disabled`"><a href="#Неактивен-`_disabled`" class="anchor"></a>Неактивен <code>_disabled</code></h4>
 <p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
 <p>При установке модификатора <code>disabled</code> для радиопереключателя не будут:</p>
 <ul>
@@ -117,10 +117,10 @@
 </ul>
 <!-- bem-example: desktop.examples/radio/_LBXkUj42ecKkGxblZA0NaT-dVY -->
 
-<h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
+<h4 id="В-фокусе-`_focused`"><a href="#В-фокусе-`_focused`" class="anchor"></a>В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
-<h2 id="Элементы">Элементы</h2>
-<h3 id="`__box`"><code>__box</code></h3>
+<h2 id="Элементы"><a href="#Элементы" class="anchor"></a>Элементы</h2>
+<h3 id="`__box`"><a href="#`__box`" class="anchor"></a><code>__box</code></h3>
 <p>Элемент <code>box</code> используется в стандартной реализации блока как контейнер, содержащий контрол радиокнопки (элемент <code>control</code>). Вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом <code>&lt;span&gt;</code>.</p>
-<h3 id="`__control`"><code>__control</code></h3>
+<h3 id="`__control`"><a href="#`__control`" class="anchor"></a><code>__control</code></h3>
 <p>Элемент <code>control</code> – вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом <code>&lt;input&gt;</code> с атрибутом <code>type=&quot;radio&quot;</code>.</p>

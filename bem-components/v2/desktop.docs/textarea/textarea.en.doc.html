@@ -1,0 +1,127 @@
+<h1 id="textarea"><a href="#textarea" class="anchor"></a>textarea</h1>
+<p><code>textarea</code> block is designed to create different types of text fields:</p>
+<h2 id="Custom-fields-of-a-block"><a href="#Custom-fields-of-a-block" class="anchor"></a>Custom fields of a block</h2>
+<p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>val</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Defines name of an text area that is used for its identification.</td>
+    </tr>
+    <tr>
+        <td>placeholder</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>A hint that describes expected value of an text area.</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Unique block identifier. Should be specified manually in BEMJSON file.</td>
+    </tr>
+    <tr>
+        <td>maxLength</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies maximum number of characters allowed in text area.</td>
+    </tr>
+    <tr>
+        <td>tabIndex</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies the position of current <code>textarea</code> block in the tabbing order for current page.</td>
+    </tr>
+</table></div>
+
+<p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
+<h2 id="Modifiers-of-a-block"><a href="#Modifiers-of-a-block" class="anchor"></a>Modifiers of a block</h2>
+<h3 id="_theme"><a href="#_theme" class="anchor"></a>_theme</h3>
+<p>Block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>NB!</strong> Choosing a theme <code>islands</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
+</ul>
+<p>If <code>theme</code> modifier is not specified, <a href="#native">native</a> representation of a control is applied.</p>
+<p>See following examples:</p>
+<p><a name="native"></a>
+<strong>default</strong></p>
+<!-- bem-example: desktop.examples/textarea/YPkfTEsP5-kuPzsGHCqNUeaStNY -->
+
+<p><strong>simple</strong></p>
+<!-- bem-example: desktop.examples/textarea/Cffr3AcvMCWI7NrnaH_znxMfOu0 -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: desktop.examples/textarea/P5c6gO6r1pp5k9FolS9lLKFJYiw -->
+
+<p><a name="size"></a></p>
+<h3 id="_size"><a href="#_size" class="anchor"></a>_size</h3>
+<p>Implemented only for theme <code>islands</code>.</p>
+<p>Provides with size values to all types of text fields.</p>
+<p>There are four sizes available: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Size</th>
+        <th>Font size</th>
+        <th>String height</th>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>13px</td>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>13px</td>
+        <td>28px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>15px</td>
+        <td>32px</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>18px</td>
+        <td>38px</td>
+    </tr>
+</table></div>
+
+<p>See following examples:</p>
+<!-- bem-example: desktop.examples/textarea/jbwmvDpPz_wGICn-Tg1kOZd9qJA -->
+
+<!-- bem-example: desktop.examples/textarea/yv-h8LjM1mJnMxKTvZCeXS3WMqU -->
+
+<!-- bem-example: desktop.examples/textarea/EOzEIXOtDw_izVbq7mb6hHCO5A8 -->
+
+<!-- bem-example: desktop.examples/textarea/r0YFqxnixIB7bVz2VX-G9mAz3Mw -->
+
+<h3 id="States-of-a-block"><a href="#States-of-a-block" class="anchor"></a>States of a block</h3>
+<h4 id="_disabled"><a href="#_disabled" class="anchor"></a>_disabled</h4>
+<p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
+<!-- bem-example: desktop.examples/textarea/LN9aPp_G2KHjtIYISGwQT4W0HbQ -->
+
+<h4 id="_focused"><a href="#_focused" class="anchor"></a>_focused</h4>
+<p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
+<h2 id="Block-elements"><a href="#Block-elements" class="anchor"></a>Block elements</h2>
+<p>The following elements provide visual representation of <code>textarea</code> block:</p>
+<h3 id="__control"><a href="#__control" class="anchor"></a>__control</h3>
+<p>An auxiliary element is added to the block on template engine level.</p>

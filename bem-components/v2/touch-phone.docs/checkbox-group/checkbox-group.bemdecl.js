@@ -1,1 +1,0 @@
-exports.blocks = [{"name":"checkbox-group"},{"name":"checkbox-group"},{"name":"checkbox-group"},{"name":"checkbox-group"},{"name":"checkbox-group"},{"name":"checkbox-group"},{"name":"checkbox-group","mods":[{"name":"type","vals":[{"name":"button"}]}]}];

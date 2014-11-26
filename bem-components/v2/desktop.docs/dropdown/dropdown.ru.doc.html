@@ -1,11 +1,11 @@
-<h1 id="dropdown">dropdown</h1>
+<h1 id="dropdown"><a href="#dropdown" class="anchor"></a>dropdown</h1>
 <p>Блок <code>dropdown</code> используется для создания выпадающих элементов и позволяет изменять их состояние, поведение и внешний вид.</p>
 <p>Блок состоит из двух компонентов:</p>
 <ul>
 <li>управляющий компонент. В зависимости от значения модификатора <code>switcher</code> управляющим компонентом может служить ссылка, псевдоссылка или кнопка.</li>
 <li>попап (блок <a href="../popup/popup.ru.md">popup</a>). Управляющий компонент при щелчке мышью вызывает попап (устанавливает для блока <code>popup</code> модификатор <code>visible</code>). Попап всегда отображается поверх остальных элементов страницы. Щелчок вне зоны попапа автоматически скрывает его (<code>{ autoclosable : true }</code>).</li>
 </ul>
-<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<h2 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h2>
 <p>Список зарезервированных полей входного BEMJSON:</p>
 <div class="table-container"><table>
     <tr>
@@ -26,8 +26,8 @@
 </table></div>
 
 <p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
-<h2 id="Модификаторы-блока">Модификаторы блока</h2>
-<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
+<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
+<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
 <li>simple</li>
@@ -45,31 +45,31 @@
 <p><strong>islands</strong></p>
 <!-- bem-example: desktop.examples/dropdown/LuPEKYlQf0bv9LfUdPno47ydPhQ -->
 
-<h3 id="Управляющий-компонент-`_switcher`">Управляющий компонент <code>_switcher</code></h3>
+<h3 id="Управляющий-компонент-`_switcher`"><a href="#Управляющий-компонент-`_switcher`" class="anchor"></a>Управляющий компонент <code>_switcher</code></h3>
 <p>Модификатор отвечает за то, какой блок будет использоваться в качестве управляющего компонента:</p>
 <ul>
-<li><code>link</code> - ссылка. В качестве управляющего компонента используется блок <code>link</code>.</li>
-<li><code>button</code> - кнопка. В качестве управляющего компонента используется блок <code>button</code>.</li>
+<li><code>link</code> — ссылка. В качестве управляющего компонента используется блок <code>link</code>.</li>
+<li><code>button</code> — кнопка. В качестве управляющего компонента используется блок <code>button</code>.</li>
 </ul>
 <!-- bem-example: desktop.examples/dropdown/6DEI3xoI7Hpzd-GfitPQbHENqfc -->
 
-<h3 id="Состояния-блока">Состояния блока</h3>
-<h4 id="Неактивен-`_disabled`">Неактивен <code>_disabled</code></h4>
+<h3 id="Состояния-блока"><a href="#Состояния-блока" class="anchor"></a>Состояния блока</h3>
+<h4 id="Неактивен-`_disabled`"><a href="#Неактивен-`_disabled`" class="anchor"></a>Неактивен <code>_disabled</code></h4>
 <p>В состоянии «неактивен» управляющий компонент блока виден, но недоступен для действий пользователя. К неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
 <p>Неактивному блоку не могут быть назначены следующие модификаторы:</p>
 <ul>
-<li><code>opened</code> – <code>popup</code> блок не может быть открыт нажатием на управляющий компонент;</li>
-<li><code>visible</code> - <code>popup</code> блок не может быть показан;</li>
+<li><code>opened</code> — <code>popup</code> блок не может быть открыт нажатием на управляющий компонент;</li>
+<li><code>visible</code> — <code>popup</code> блок не может быть показан;</li>
 <li>управляющий компонент не может получить модификатор <code>focused</code>;</li>
 <li>Управляющий компонент <code>button</code> не может получить модификатор <code>hovered</code> при наведении указателем мыши.</li>
 </ul>
 <!-- bem-example: desktop.examples/dropdown/UjWKyhYee09jwF1b_cx4EVOR700 -->
 
-<h4 id="Открыт-`_opened`">Открыт <code>_opened</code></h4>
+<h4 id="Открыт-`_opened`"><a href="#Открыт-`_opened`" class="anchor"></a>Открыт <code>_opened</code></h4>
 <p>Модификатор <code>opened</code> в значении <code>true</code> автоматически выставляется блоку при щелчке мышью по управляющему компоненту блока.</p>
 <!-- bem-example: desktop.examples/dropdown/KnOIYiZTLG0RQbQ9DmaLeSO_UJ4 -->
 
-<h2 id="BEMJSON-в-атрибутах-`switcher`-и-`popup`">BEMJSON в атрибутах <code>switcher</code> и <code>popup</code></h2>
+<h2 id="BEMJSON-в-атрибутах-`switcher`-и-`popup`"><a href="#BEMJSON-в-атрибутах-`switcher`-и-`popup`" class="anchor"></a>BEMJSON в атрибутах <code>switcher</code> и <code>popup</code></h2>
 <p>Атрибуты управляющего компонента и попапа могут содержать фрагмент БЭМ-дерева. Например, если нужно обернуть управляющий компонент в другой блок или передать ему дополнительные параметры.</p>
 <p>Например, можно сделать кнопку управляющего компонента &quot;залипающей&quot;:</p>
 <!-- bem-example: desktop.examples/dropdown/qMvvL1pKZ5Yu8zg5t3om2UW_y-g -->

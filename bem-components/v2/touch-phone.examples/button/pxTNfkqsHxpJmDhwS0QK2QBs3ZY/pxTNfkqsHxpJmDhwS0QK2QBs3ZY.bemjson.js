@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_pxTNfkqsHxpJmDhwS0QK2QBs3ZY.css"}],"scripts":[{"elem":"js","url":"_pxTNfkqsHxpJmDhwS0QK2QBs3ZY.js"}],"mods":{},"content":{"block":"button","text":"Тема не указана"}})

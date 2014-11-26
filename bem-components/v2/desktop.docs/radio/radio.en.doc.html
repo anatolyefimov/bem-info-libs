@@ -1,4 +1,4 @@
-<h1 id="radio">radio</h1>
+<h1 id="radio"><a href="#radio" class="anchor"></a>radio</h1>
 <p><code>radio</code> block is used to create a single radio switch. It can be implemented by a radio switch or by a button (block <a href="../button/button.en.md">button</a>). <code>radio</code> block allows a user to manage state, content and type of radio switches.</p>
 <p><a href="../radio-group/radio-group.en.md">radio-group</a> could be  composed by <code>radio</code> blocks.</p>
 <p>As a result of template appliance, it will be rendered to <code>&lt;label&gt;</code> HTML element, with following set of nested items:</p>
@@ -7,7 +7,7 @@
 <li>a radio switch label, if the <code>text</code> BEMJSON attribute is specified.</li>
 </ul>
 <p>Block is implemented with native <code>input</code> HTML element with <code>type</code> attribute set to <code>radio</code>: <code>&lt;input name=&quot;name&quot; type=&quot;radio&quot;&gt;</code>. If <code>theme</code> modifier is set, the <code>input</code> element is hidden by default.</p>
-<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<h2 id="Custom-fields-of-a-block"><a href="#Custom-fields-of-a-block" class="anchor"></a>Custom fields of a block</h2>
 <p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
 <div class="table-container"><table>
     <tr>
@@ -35,8 +35,8 @@
 </table></div>
 
 <p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
-<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
-<h3 id="_theme">_theme</h3>
+<h2 id="Modifiers-of-a-block"><a href="#Modifiers-of-a-block" class="anchor"></a>Modifiers of a block</h2>
+<h3 id="_theme"><a href="#_theme" class="anchor"></a>_theme</h3>
 <p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
@@ -55,7 +55,7 @@
 <!-- bem-example: desktop.examples/radio/qj3UqVc3Gi3h62BOkcA3SMSp3oM -->
 
 <p><a name="size"></a></p>
-<h3 id="_size">_size</h3>
+<h3 id="_size"><a href="#_size" class="anchor"></a>_size</h3>
 <p>Implemented only for theme <code>islands</code>.
 Provides to all types of radio switches with the size value.</p>
 <p>Depending on <code>type</code> modifier the following sizes are available:</p>
@@ -87,7 +87,7 @@ Provides to all types of radio switches with the size value.</p>
         <td>+</td>
 </table></div>
 
-<h3 id="_type">_type</h3>
+<h3 id="_type"><a href="#_type" class="anchor"></a>_type</h3>
 <p>Use <code>type</code> modifier with <code>button</code> value to create a radio switch based on <a href="../button/button.en.md">button</a> block – <code>button_togglable_radio</code>.</p>
 <p><code>radio</code> block is mixed with <code>button</code> block with nested <code>control</code> element. As a result, the following <code>button</code> block states could be propagated to this type os radio switch:</p>
 <ul>
@@ -97,8 +97,8 @@ Provides to all types of radio switches with the size value.</p>
 <p>In addition <code>role=&quot;button&quot;</code> HTML attribute is set to the block.</p>
 <!-- bem-example: desktop.examples/radio/_0EnA0_A4y8T_8tjXJilkFG6OOI -->
 
-<h3 id="States-of-a-block">States of a block</h3>
-<h4 id="_checked">_checked</h4>
+<h3 id="States-of-a-block"><a href="#States-of-a-block" class="anchor"></a>States of a block</h3>
+<h4 id="_checked"><a href="#_checked" class="anchor"></a>_checked</h4>
 <p>Modifier defines that radio switch is selected.</p>
 <p>The modifier is set automatically:</p>
 <ul>
@@ -108,16 +108,16 @@ Provides to all types of radio switches with the size value.</p>
 </ul>
 <!-- bem-example: desktop.examples/radio/U5YV2FCPGGqFFhTGPtFdmVo5NLo -->
 
-<h4 id="_disabled">_disabled</h4>
+<h4 id="_disabled"><a href="#_disabled" class="anchor"></a>_disabled</h4>
 <p><code>disabled</code> modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
 <!-- bem-example: desktop.examples/radio/7PqlkAPRKNeyXuBG43zGK5xa4Ms -->
 
 <!-- bem-example: desktop.examples/radio/6DQtRLJkj9ITBa8NXyvaTKDpje0 -->
 
-<h4 id="_focused">_focused</h4>
+<h4 id="_focused"><a href="#_focused" class="anchor"></a>_focused</h4>
 <p>When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.</p>
-<h2 id="Elements-of-a-block">Elements of a block</h2>
-<h3 id="__box">__box</h3>
+<h2 id="Elements-of-a-block"><a href="#Elements-of-a-block" class="anchor"></a>Elements of a block</h2>
+<h3 id="__box"><a href="#__box" class="anchor"></a>__box</h3>
 <p><code>box</code> element is used in basic block implementation as a container with nested control element (<code>control</code> element). It is represented as <code>&lt;span&gt;</code> HTML element. An auxiliary element is added to the block on template engine level.</p>
-<h3 id="__control">__control</h3>
+<h3 id="__control"><a href="#__control" class="anchor"></a>__control</h3>
 <p><code>control</code> element is represented as <code>&lt;input&gt;</code> HTML element with specified <code>type=&quot;radio&quot;</code> attribute. An auxiliary element is added to the block on template engine level.</p>

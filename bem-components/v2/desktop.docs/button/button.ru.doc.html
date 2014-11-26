@@ -1,6 +1,6 @@
-<h1 id="button">button</h1>
+<h1 id="button"><a href="#button" class="anchor"></a>button</h1>
 <p>Блок <code>button</code> используется для создания различных типов кнопок и предоставляет возможность изменять их размер, состояние, содержимое и внешний вид.</p>
-<h2 id="Специализированные-поля-блока">Специализированные поля блока</h2>
+<h2 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h2>
 <p>Список зарезервированных полей входного BEMJSON:</p>
 <div class="table-container"><table>
     <tr>
@@ -52,8 +52,8 @@
 </table></div>
 
 <p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
-<h2 id="Модификаторы-блока">Модификаторы блока</h2>
-<h3 id="Темы-`_theme`">Темы <code>_theme</code></h3>
+<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
+<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
 <p>Блок представлен в следующих темах:</p>
 <ul>
 <li>simple</li>
@@ -72,7 +72,7 @@
 <!-- bem-example: desktop.examples/button/m6Z7ZAzFdqEyLqYBso8tyOyWlvs -->
 
 <p><a name="size"></a></p>
-<h3 id="Размеры-кнопок-`_size`">Размеры кнопок <code>_size</code></h3>
+<h3 id="Размеры-кнопок-`_size`"><a href="#Размеры-кнопок-`_size`" class="anchor"></a>Размеры кнопок <code>_size</code></h3>
 <p>Реализован только в теме <code>islands</code>. Задает размер всем типам кнопок.</p>
 <p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
 <div class="table-container"><table>
@@ -111,39 +111,39 @@
 
 <!-- bem-example: desktop.examples/button/Ioe9bA8lCHIzRPabCngI4SOwkx4 -->
 
-<h3 id="Типы-кнопок-`_type`">Типы кнопок <code>_type</code></h3>
+<h3 id="Типы-кнопок-`_type`"><a href="#Типы-кнопок-`_type`" class="anchor"></a>Типы кнопок <code>_type</code></h3>
 <p>Если модификатор <code>type</code> не указан, по умолчанию отображается простая кнопка.</p>
 <p><a name="link-button"></a></p>
-<h4 id="Кнопка-ссылка">Кнопка-ссылка</h4>
+<h4 id="Кнопка-ссылка"><a href="#Кнопка-ссылка" class="anchor"></a>Кнопка-ссылка</h4>
 <p>Блок может быть представлен как кнопка, которая при нажатии ведет себя как ссылка. Для этого необходимо установить модификатор <code>type</code> в значение <code>link</code>.</p>
 <p>В случае использования кнопки-ссылки, необходимо дополнительно указать обязательный атрибут <code>url</code> во входных данных.</p>
 <!-- bem-example: desktop.examples/button/BwHVPuH8PZLVTVtxykFgQby8Yg8 -->
 
-<h4 id="Кнопка-отправки-формы">Кнопка отправки формы</h4>
+<h4 id="Кнопка-отправки-формы"><a href="#Кнопка-отправки-формы" class="anchor"></a>Кнопка отправки формы</h4>
 <p>Модификатор <code>type</code> в значении <code>submit</code> превращает обычную кнопку в кнопку отправки данных на сервер. Такой тип кнопки всегда должен располагаться в форме.</p>
 <!-- bem-example: desktop.examples/button/Xb9CdpivMDgO9ZGmyYeiMbgQGSo -->
 
-<h3 id="Внешний-вид-`_view`">Внешний вид <code>_view</code></h3>
-<h4 id="Визуальное-выделение-`_action`">Визуальное выделение <code>_action</code></h4>
+<h3 id="Внешний-вид-`_view`"><a href="#Внешний-вид-`_view`" class="anchor"></a>Внешний вид <code>_view</code></h3>
+<h4 id="Визуальное-выделение-`_action`"><a href="#Визуальное-выделение-`_action`" class="anchor"></a>Визуальное выделение <code>_action</code></h4>
 <p>Визуально выделяет кнопку на странице.</p>
 <!-- bem-example: desktop.examples/button/jFUWRzgn4-XsUE5OQfUch33jtYU -->
 
-<h4 id="Псевдокнопка-`_pseudo`">Псевдокнопка <code>_pseudo</code></h4>
+<h4 id="Псевдокнопка-`_pseudo`"><a href="#Псевдокнопка-`_pseudo`" class="anchor"></a>Псевдокнопка <code>_pseudo</code></h4>
 <p>При выставлении модификатора <code>view</code> в значение <code>pseudo</code>, кнопка получает прозрачный фон.</p>
 <!-- bem-example: desktop.examples/button/g62fH5Lw5wX9NWyEgrqQEM9Q3xI -->
 
 <p>В неактивном состоянии границы псевдокнопки исчезают, и она сливается со страницей.</p>
 <!-- bem-example: desktop.examples/button/LBFxdlEUTJMhbeloTxKxutu9lK8 -->
 
-<h3 id="Состояния">Состояния</h3>
-<h4 id="Неактивна-`_disabled`">Неактивна <code>_disabled</code></h4>
+<h3 id="Состояния"><a href="#Состояния" class="anchor"></a>Состояния</h3>
+<h4 id="Неактивна-`_disabled`"><a href="#Неактивна-`_disabled`" class="anchor"></a>Неактивна <code>_disabled</code></h4>
 <p>Если указан модификатор <code>disabled</code>, кнопка видна, но недоступна для действий пользователя.</p>
 <p>Такая кнопка не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами.</p>
 <!-- bem-example: desktop.examples/button/FcUjBWNmDk82k-q3CJNLN0DwQkw -->
 
-<h4 id="В-фокусе-`_focused`">В фокусе <code>_focused</code></h4>
+<h4 id="В-фокусе-`_focused`"><a href="#В-фокусе-`_focused`" class="anchor"></a>В фокусе <code>_focused</code></h4>
 <p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
-<h4 id="Залипание-`_togglable`">Залипание <code>_togglable</code></h4>
+<h4 id="Залипание-`_togglable`"><a href="#Залипание-`_togglable`" class="anchor"></a>Залипание <code>_togglable</code></h4>
 <p>Позволяет реализовать залипание кнопки. Допустимые значения:</p>
 <ul>
 <li><code>check</code> (первое нажатие на кнопку вдавливает ее, второе – приводит в первоначальное состояние)</li>
@@ -155,22 +155,22 @@
 </ul>
 <!-- bem-example: desktop.examples/button/UEPuEOcvvaEGYtuCjmlAdV4-Eu8 -->
 
-<h4 id="Наведение-курсором-`_hovered`">Наведение курсором <code>_hovered</code></h4>
+<h4 id="Наведение-курсором-`_hovered`"><a href="#Наведение-курсором-`_hovered`" class="anchor"></a>Наведение курсором <code>_hovered</code></h4>
 <p>Определяет действие «наведение курсором» на кнопку.</p>
-<h4 id="Нажатие-`_pressed`">Нажатие <code>_pressed</code></h4>
+<h4 id="Нажатие-`_pressed`"><a href="#Нажатие-`_pressed`" class="anchor"></a>Нажатие <code>_pressed</code></h4>
 <p>Определяет действие «нажатие» на кнопку.</p>
-<h3 id="Внешний-вид-`_view`">Внешний вид <code>_view</code></h3>
-<h4 id="Визуальное-выделение-`_action`">Визуальное выделение <code>_action</code></h4>
+<h3 id="Внешний-вид-`_view`"><a href="#Внешний-вид-`_view`" class="anchor"></a>Внешний вид <code>_view</code></h3>
+<h4 id="Визуальное-выделение-`_action`"><a href="#Визуальное-выделение-`_action`" class="anchor"></a>Визуальное выделение <code>_action</code></h4>
 <p>Визуально выделяет кнопку на странице, добавляя ей желтую подсветку.</p>
 <!-- bem-example: desktop.examples/button/KzWLcwKhaz7nzSU4O8XsmHcF_aM -->
 
-<h4 id="Псевдокнопка-`_pseudo`">Псевдокнопка <code>_pseudo</code></h4>
+<h4 id="Псевдокнопка-`_pseudo`"><a href="#Псевдокнопка-`_pseudo`" class="anchor"></a>Псевдокнопка <code>_pseudo</code></h4>
 <p>Реализован только в теме <code>islands</code> для визуального изменения кнопки. При выставлении модификатора <code>view</code> в значение <code>pseudo</code>, кнопка получает прозрачный фон.</p>
 <!-- bem-example: desktop.examples/button/Y3M8ZwcVY-qyqTnSE8ShqiMszdg -->
 
 <p>В неактивном состоянии границы псевдокнопки исчезают и она сливается со страницей.</p>
 <!-- bem-example: desktop.examples/button/F0dYUfClneXFN1azyGzLdc7xvio -->
 
-<h2 id="Элементы-блока">Элементы блока</h2>
-<h3 id="__text">__text</h3>
+<h2 id="Элементы-блока"><a href="#Элементы-блока" class="anchor"></a>Элементы блока</h2>
+<h3 id="__text"><a href="#__text" class="anchor"></a>__text</h3>
 <p>Вспомогательный элемент. Добавляется блоку на уровне шаблонизатора.</p>

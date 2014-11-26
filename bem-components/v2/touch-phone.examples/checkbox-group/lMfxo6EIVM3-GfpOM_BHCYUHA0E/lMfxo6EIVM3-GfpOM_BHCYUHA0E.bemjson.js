@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox-group","head":[{"elem":"css","url":"_lMfxo6EIVM3-GfpOM_BHCYUHA0E.css"}],"scripts":[{"elem":"js","url":"_lMfxo6EIVM3-GfpOM_BHCYUHA0E.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox-group","mods":{"theme":"islands","size":"s","type":"button"},"name":"checkbox-button","options":[{"val":1,"text":"first"},{"val":2,"text":"second"}]}})

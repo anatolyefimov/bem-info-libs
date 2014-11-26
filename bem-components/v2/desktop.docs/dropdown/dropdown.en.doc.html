@@ -1,4 +1,4 @@
-<h1 id="dropdown">dropdown</h1>
+<h1 id="dropdown"><a href="#dropdown" class="anchor"></a>dropdown</h1>
 <p><code>dropdown</code> block is used to create different dropdown types, manage their state, behavior and appearance on a page.</p>
 <p>Block consist of two components:</p>
 <ul>
@@ -7,7 +7,7 @@
 <li><p>popup (<a href="../popup/popup.md">popup</a> block). Mouse click on the control component opens <code>popup</code> that is always displayed above all other elements on a page. In this case <code>popup</code> automatically obtains <code>visible</code> and <code>opened</code> modifiers. Clicking outside the popup area hides it automatically (<code>{ autoclosable : true }</code>).</p>
 </li>
 </ul>
-<h2 id="Custom-fields-of-a-block">Custom fields of a block</h2>
+<h2 id="Custom-fields-of-a-block"><a href="#Custom-fields-of-a-block" class="anchor"></a>Custom fields of a block</h2>
 <p>The following custom fields could be specified in BEMJSON declaration of the block:</p>
 <div class="table-container"><table>
     <tr>
@@ -28,8 +28,8 @@
 </table></div>
 
 <p>Additional required HTML attributes could be specified in <code>attrs</code> field of BEMJSON.</p>
-<h2 id="Modifiers-of-a-block">Modifiers of a block</h2>
-<h3 id="_theme">_theme</h3>
+<h2 id="Modifiers-of-a-block"><a href="#Modifiers-of-a-block" class="anchor"></a>Modifiers of a block</h2>
+<h3 id="_theme"><a href="#_theme" class="anchor"></a>_theme</h3>
 <p>Block supports the following themes:</p>
 <ul>
 <li>simple</li>
@@ -48,7 +48,7 @@
 <!-- bem-example: desktop.examples/dropdown/TLiFLNvvTC4X4OsHsjxSen9guts -->
 
 <p><a name="switcher"></a></p>
-<h3 id="_switcher">_switcher</h3>
+<h3 id="_switcher"><a href="#_switcher" class="anchor"></a>_switcher</h3>
 <p><code>switcher</code> modifier is used to specify a control component. The following values are available:</p>
 <ul>
 <li><code>link</code> - creates a pseudo link that opens popup. Block <code>link</code> is used as a control component.</li>
@@ -56,8 +56,8 @@
 </ul>
 <!-- bem-example: desktop.examples/dropdown/vSteT3Y-4P0Lt1Vtu5XxYwRck1w -->
 
-<h3 id="States-of-a-block">States of a block</h3>
-<h4 id="_disabled">_disabled</h4>
+<h3 id="States-of-a-block"><a href="#States-of-a-block" class="anchor"></a>States of a block</h3>
+<h4 id="_disabled"><a href="#_disabled" class="anchor"></a>_disabled</h4>
 <p><code>disabled</code> modifier is used to make block visible but not available for user action. In most cases to mark out the disabled block on a page, additional styles are applied.</p>
 <p><code>disabled</code> modifier prevents the following modifiers to be applied:</p>
 <ul>
@@ -68,7 +68,7 @@
 </ul>
 <!-- bem-example: desktop.examples/dropdown/L_UU6v4WUPnAP5NMwnPIDhZdThk -->
 
-<h4 id="_opened">_opened</h4>
+<h4 id="_opened"><a href="#_opened" class="anchor"></a>_opened</h4>
 <p><code>opened</code> modifier is set automatically on mouse click on a control component when <code>popup</code> is opened. The second click closes <code>popup</code> – <code>opened</code> modifier is removed.</p>
 <pre><code class="lang-bemjson">{
     block : &#39;dropdown&#39;,
@@ -77,7 +77,7 @@
     popup : &#39;Hello, world!&#39;
 }
 </code></pre>
-<h2 id="BEMJSON-value-of-`switcher`-and-`popup`-attributes">BEMJSON value of <code>switcher</code> and <code>popup</code> attributes</h2>
+<h2 id="BEMJSON-value-of-`switcher`-and-`popup`-attributes"><a href="#BEMJSON-value-of-`switcher`-and-`popup`-attributes" class="anchor"></a>BEMJSON value of <code>switcher</code> and <code>popup</code> attributes</h2>
 <p>Control component and popup attributes can contain BEM entities that can be used for different purposes:</p>
 <ul>
 <li>to wrap or modify a control component;</li>

@@ -1,1 +1,0 @@
-.page{padding:20px}.popup{position:absolute}.popup:not([class*=popup_theme]){display:none;background:#fff7db;box-shadow:inset 0 0 1px red}.popup_visible:not([class*=popup_theme]){display:block}.link_pseudo:not([class*=link_theme]){cursor:pointer;color:#00f}.link_pseudo:not([class*=link_theme]):hover{color:red}
