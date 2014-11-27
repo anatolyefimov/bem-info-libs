@@ -1,0 +1,16 @@
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+.page {
+  padding: 20px;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:begin */
+.menu {
+  overflow-y: auto;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:end */
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:begin */
+.menu-item .icon {
+  width: 16px;
+  margin-right: 5px;
+}
+/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:end */
