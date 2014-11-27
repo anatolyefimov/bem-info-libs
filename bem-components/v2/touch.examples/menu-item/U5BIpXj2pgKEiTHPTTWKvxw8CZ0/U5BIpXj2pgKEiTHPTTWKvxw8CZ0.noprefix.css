@@ -1,9 +1,9 @@
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,14 +14,14 @@ html {
   color: #000;
   background: #fff;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:begin */
 .menu-item .icon {
   width: 16px;
   margin-right: 5px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:begin */
 .menu-item_theme_islands {
   position: relative;
   white-space: nowrap;
@@ -92,4 +92,4 @@ html {
 .menu_size_xl .menu__group-title ~ .menu-item_theme_islands {
   padding: 0 40px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:end */

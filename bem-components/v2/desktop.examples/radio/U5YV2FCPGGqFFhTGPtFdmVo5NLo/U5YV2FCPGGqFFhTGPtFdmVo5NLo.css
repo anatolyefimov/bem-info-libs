@@ -1,9 +1,9 @@
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
 .button_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -232,8 +232,8 @@ html {
 .control-group > :only-child .button_theme_islands:before {
   border-radius: 2px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:begin */
 .radio_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -340,10 +340,10 @@ html {
 .radio_theme_islands.radio_type_line:last-child {
   margin-right: 0;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
 .radio.radio_type_button .radio__control {
   position: absolute;
   visibility: hidden;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */

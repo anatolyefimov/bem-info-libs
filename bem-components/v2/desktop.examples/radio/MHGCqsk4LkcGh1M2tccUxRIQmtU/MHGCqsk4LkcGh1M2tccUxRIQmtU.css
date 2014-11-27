@@ -1,9 +1,9 @@
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -62,8 +62,8 @@
 .button_theme_simple .icon:last-child {
   margin-right: -0.7em;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:begin */
 .radio_theme_simple .radio__control {
   position: absolute;
   z-index: -1;
@@ -92,10 +92,10 @@
   content: '\2022';
   background: #fff7db;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
 .radio.radio_type_button .radio__control {
   position: absolute;
   visibility: hidden;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */

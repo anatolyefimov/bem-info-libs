@@ -388,7 +388,7 @@ function templates(template, local, apply, applyNext, oninit, __$$fetch, __$$set
 /// -------------------------------------
 /// ------ BEM-XJST User-code Start -----
 /// -------------------------------------
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
 /* global oninit */
 
 oninit(function(exports, context) {
@@ -871,8 +871,8 @@ bem()(undefined);
 mix()(undefined);
 content()(function() { return this.ctx.content; });
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
 block('page')(
 
     def().match(function() { return !this._defPageApplied; })(function() {
@@ -936,8 +936,8 @@ block('page')(
 
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/page.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/page.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/page.bemhtml */
 block('page')(
     elem('head')(
         content()(function() {
@@ -957,8 +957,8 @@ block('page')(
     )
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/page.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/ua.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/page.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/ua.bemhtml */
 block('ua')(
     tag()('script'),
     bem()(false),
@@ -969,8 +969,8 @@ block('ua')(
     ])
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/ua.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/ua.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
 block('page').elem('css')(
     bem()(false),
     tag()('style'),
@@ -980,8 +980,8 @@ block('page').elem('css')(
     )
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/__css/page__css.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/__css/page__css.bemhtml */
 block('page').elem('css')(
     def()
         .match(function() { return this.ctx.hasOwnProperty('ie'); })
@@ -1013,8 +1013,8 @@ block('page').elem('css')(
             }))
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/__css/page__css.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/desktop.blocks/page/__css/page__css.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
 block('page').elem('js')(
     bem()(false),
     tag()('script'),
@@ -1023,8 +1023,8 @@ block('page').elem('js')(
     })
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/__svg/ua__svg.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/__svg/ua__svg.bemhtml */
 block('ua').content()(function() {
     return [
         applyNext(),
@@ -1035,8 +1035,8 @@ block('ua').content()(function() {
     ];
 });
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/__svg/ua__svg.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/libs/bem-core/common.blocks/ua/__svg/ua__svg.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.bemhtml */
 block('menu')(
     def()(function() {
         applyNext({
@@ -1056,8 +1056,8 @@ block('menu')(
     mix()([{ elem : 'control' }])
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
 block('menu-item')(
     js()(function() {
         return { val : this.ctx.val };
@@ -1071,14 +1071,14 @@ block('menu-item')(
     })
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu-item/menu-item.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
 block('menu').mod('focused', true).js()(function() {
     return this.extend(applyNext(), { live : false });
 });
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/_focused/menu_focused.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
 block('menu').elem('group')(
     attrs()({ role : 'group' }),
     match(function() { return typeof this.ctx.title !== 'undefined'; })(
@@ -1094,11 +1094,11 @@ block('menu').elem('group')(
     )
 );
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
-/* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/__group/menu__group.bemhtml */
+/* begin: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */
 block('menu').elem('group-title').attrs()({ role : 'presentation' });
 
-/* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */;
+/* end: /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/__group-title/menu__group-title.bemhtml */;
 /// -------------------------------------
 /// ------ BEM-XJST User-code End -------
 /// -------------------------------------

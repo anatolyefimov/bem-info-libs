@@ -1,9 +1,9 @@
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:begin */
 .spin_theme_simple {
   display: none;
   width: 20px;
@@ -36,4 +36,4 @@
     transform: rotate(360deg);
   }
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:end */

@@ -1,9 +1,9 @@
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_islands.styl:begin */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_islands.styl:begin */
 .textarea_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -102,4 +102,4 @@ html {
 .textarea_theme_islands.textarea_size_xl .textarea__control {
   padding-left: 12px;
 }
-/* /home/tavria/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_islands.styl:end */
+/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_islands.styl:end */
