@@ -1042,10 +1042,7 @@ block('textarea')(
     def()(function() {
         applyNext({ _textarea : this.ctx });
     }),
-
-    content().match(function() {
-        return typeof this.ctx.content === 'undefined';
-    })({ elem : 'control' })
+    content()({ elem : 'control' })
 );
 
 /* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/textarea/textarea.bemhtml */

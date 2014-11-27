@@ -1,3 +1,461 @@
+/**
+ * Modules
+ *
+ * Copyright (c) 2013 Filatov Dmitry (dfilatov@yandex-team.ru)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * @version 0.1.0
+ */
+
+(function(global) {
+
+var undef,
+
+    DECL_STATES = {
+        NOT_RESOLVED : 'NOT_RESOLVED',
+        IN_RESOLVING : 'IN_RESOLVING',
+        RESOLVED     : 'RESOLVED'
+    },
+
+    /**
+     * Creates a new instance of modular system
+     * @returns {Object}
+     */
+    create = function() {
+        var curOptions = {
+                trackCircularDependencies : true,
+                allowMultipleDeclarations : true
+            },
+
+            modulesStorage = {},
+            waitForNextTick = false,
+            pendingRequires = [],
+
+            /**
+             * Defines module
+             * @param {String} name
+             * @param {String[]} [deps]
+             * @param {Function} declFn
+             */
+            define = function(name, deps, declFn) {
+                if(!declFn) {
+                    declFn = deps;
+                    deps = [];
+                }
+
+                var module = modulesStorage[name];
+                if(!module) {
+                    module = modulesStorage[name] = {
+                        name : name,
+                        decl : undef
+                    };
+                }
+
+                module.decl = {
+                    name       : name,
+                    prev       : module.decl,
+                    fn         : declFn,
+                    state      : DECL_STATES.NOT_RESOLVED,
+                    deps       : deps,
+                    dependents : [],
+                    exports    : undef
+                };
+            },
+
+            /**
+             * Requires modules
+             * @param {String|String[]} modules
+             * @param {Function} cb
+             * @param {Function} [errorCb]
+             */
+            require = function(modules, cb, errorCb) {
+                if(typeof modules === 'string') {
+                    modules = [modules];
+                }
+
+                if(!waitForNextTick) {
+                    waitForNextTick = true;
+                    nextTick(onNextTick);
+                }
+
+                pendingRequires.push({
+                    deps : modules,
+                    cb   : function(exports, error) {
+                        error?
+                            (errorCb || onError)(error) :
+                            cb.apply(global, exports);
+                    }
+                });
+            },
+
+            /**
+             * Returns state of module
+             * @param {String} name
+             * @returns {String} state, possible values are NOT_DEFINED, NOT_RESOLVED, IN_RESOLVING, RESOLVED
+             */
+            getState = function(name) {
+                var module = modulesStorage[name];
+                return module?
+                    DECL_STATES[module.decl.state] :
+                    'NOT_DEFINED';
+            },
+
+            /**
+             * Returns whether the module is defined
+             * @param {String} name
+             * @returns {Boolean}
+             */
+            isDefined = function(name) {
+                return !!modulesStorage[name];
+            },
+
+            /**
+             * Sets options
+             * @param {Object} options
+             */
+            setOptions = function(options) {
+                for(var name in options) {
+                    if(options.hasOwnProperty(name)) {
+                        curOptions[name] = options[name];
+                    }
+                }
+            },
+
+            onNextTick = function() {
+                waitForNextTick = false;
+                applyRequires();
+            },
+
+            applyRequires = function() {
+                var requiresToProcess = pendingRequires,
+                    i = 0, require;
+
+                pendingRequires = [];
+
+                while(require = requiresToProcess[i++]) {
+                    requireDeps(null, require.deps, [], require.cb);
+                }
+            },
+
+            requireDeps = function(fromDecl, deps, path, cb) {
+                var unresolvedDepsCnt = deps.length;
+                if(!unresolvedDepsCnt) {
+                    cb([]);
+                }
+
+                var decls = [],
+                    i = 0, len = unresolvedDepsCnt,
+                    dep, decl;
+
+                while(i < len) {
+                    dep = deps[i++];
+                    if(typeof dep === 'string') {
+                        if(!modulesStorage[dep]) {
+                            cb(null, buildModuleNotFoundError(dep, fromDecl));
+                            return;
+                        }
+
+                        decl = modulesStorage[dep].decl;
+                    }
+                    else {
+                        decl = dep;
+                    }
+
+                    if(decl.state === DECL_STATES.IN_RESOLVING &&
+                            curOptions.trackCircularDependencies &&
+                            isDependenceCircular(decl, path)) {
+                        cb(null, buildCircularDependenceError(decl, path));
+                        return;
+                    }
+
+                    decls.push(decl);
+
+                    startDeclResolving(
+                        decl,
+                        path,
+                        function(_, error) {
+                            if(error) {
+                                cb(null, error);
+                                return;
+                            }
+
+                            if(!--unresolvedDepsCnt) {
+                                var exports = [],
+                                    i = 0, decl;
+                                while(decl = decls[i++]) {
+                                    exports.push(decl.exports);
+                                }
+                                cb(exports);
+                            }
+                        });
+                }
+            },
+
+            startDeclResolving = function(decl, path, cb) {
+                if(decl.state === DECL_STATES.RESOLVED) {
+                    cb(decl.exports);
+                    return;
+                }
+                else {
+                    decl.dependents.push(cb);
+                }
+
+                if(decl.state === DECL_STATES.IN_RESOLVING) {
+                    return;
+                }
+
+                if(decl.prev && !curOptions.allowMultipleDeclarations) {
+                    provideError(decl, buildMultipleDeclarationError(decl));
+                    return;
+                }
+
+                curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
+
+                var isProvided = false,
+                    deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
+
+                decl.state = DECL_STATES.IN_RESOLVING;
+                requireDeps(
+                    decl,
+                    deps,
+                    path,
+                    function(depDeclsExports, error) {
+                        if(error) {
+                            provideError(decl, error);
+                            return;
+                        }
+
+                        depDeclsExports.unshift(function(exports, error) {
+                            if(isProvided) {
+                                cb(null, buildDeclAreadyProvidedError(decl));
+                                return;
+                            }
+
+                            isProvided = true;
+                            error?
+                                provideError(decl, error) :
+                                provideDecl(decl, exports);
+                        });
+
+                        decl.fn.apply(
+                            {
+                                name   : decl.name,
+                                deps   : decl.deps,
+                                global : global
+                            },
+                            depDeclsExports);
+                    });
+            },
+
+            provideDecl = function(decl, exports) {
+                decl.exports = exports;
+                decl.state = DECL_STATES.RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(exports);
+                }
+
+                decl.dependents = undef;
+            },
+
+            provideError = function(decl, error) {
+                decl.state = DECL_STATES.NOT_RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(null, error);
+                }
+
+                decl.dependents = [];
+            };
+
+        return {
+            create     : create,
+            define     : define,
+            require    : require,
+            getState   : getState,
+            isDefined  : isDefined,
+            setOptions : setOptions
+        };
+    },
+
+    onError = function(e) {
+        nextTick(function() {
+            throw e;
+        });
+    },
+
+    buildModuleNotFoundError = function(name, decl) {
+        return Error(decl?
+            'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
+            'Required module "' + name + '" can\'t be resolved');
+    },
+
+    buildCircularDependenceError = function(decl, path) {
+        var strPath = [],
+            i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            strPath.push(pathDecl.name);
+        }
+        strPath.push(decl.name);
+
+        return Error('Circular dependence has been detected: "' + strPath.join(' -> ') + '"');
+    },
+
+    buildDeclAreadyProvidedError = function(decl) {
+        return Error('Declaration of module "' + decl.name + '" has already been provided');
+    },
+
+    buildMultipleDeclarationError = function(decl) {
+        return Error('Multiple declarations of module "' + decl.name + '" have been detected');
+    },
+
+    isDependenceCircular = function(decl, path) {
+        var i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            if(decl === pathDecl) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    nextTick = (function() {
+        var fns = [],
+            enqueueFn = function(fn) {
+                return fns.push(fn) === 1;
+            },
+            callFns = function() {
+                var fnsToCall = fns, i = 0, len = fns.length;
+                fns = [];
+                while(i < len) {
+                    fnsToCall[i++]();
+                }
+            };
+
+        if(typeof process === 'object' && process.nextTick) { // nodejs
+            return function(fn) {
+                enqueueFn(fn) && process.nextTick(callFns);
+            };
+        }
+
+        if(global.setImmediate) { // ie10
+            return function(fn) {
+                enqueueFn(fn) && global.setImmediate(callFns);
+            };
+        }
+
+        if(global.postMessage && !global.opera) { // modern browsers
+            var isPostMessageAsync = true;
+            if(global.attachEvent) {
+                var checkAsync = function() {
+                        isPostMessageAsync = false;
+                    };
+                global.attachEvent('onmessage', checkAsync);
+                global.postMessage('__checkAsync', '*');
+                global.detachEvent('onmessage', checkAsync);
+            }
+
+            if(isPostMessageAsync) {
+                var msg = '__modules' + (+new Date()),
+                    onMessage = function(e) {
+                        if(e.data === msg) {
+                            e.stopPropagation && e.stopPropagation();
+                            callFns();
+                        }
+                    };
+
+                global.addEventListener?
+                    global.addEventListener('message', onMessage, true) :
+                    global.attachEvent('onmessage', onMessage);
+
+                return function(fn) {
+                    enqueueFn(fn) && global.postMessage(msg, '*');
+                };
+            }
+        }
+
+        var doc = global.document;
+        if('onreadystatechange' in doc.createElement('script')) { // ie6-ie8
+            var head = doc.getElementsByTagName('head')[0],
+                createScript = function() {
+                    var script = doc.createElement('script');
+                    script.onreadystatechange = function() {
+                        script.parentNode.removeChild(script);
+                        script = script.onreadystatechange = null;
+                        callFns();
+                    };
+                    head.appendChild(script);
+                };
+
+            return function(fn) {
+                enqueueFn(fn) && createScript();
+            };
+        }
+
+        return function(fn) { // old browsers
+            enqueueFn(fn) && setTimeout(callFns, 0);
+        };
+    })();
+
+if(typeof exports === 'object') {
+    module.exports = create();
+}
+else {
+    global.modules = create();
+}
+
+})(this);
+if(typeof module !== 'undefined') {modules = module.exports;}
+(function(g) {
+  var __bem_xjst = function(exports) {
+     var $$mode = "", $$block = "", $$elem = "", $$elemMods = null, $$mods = null;
+
+var __$ref = {};
+
+function apply(ctx) {
+    ctx = ctx || this;
+    $$mods = ctx["mods"];
+    $$elemMods = ctx["elemMods"];
+    $$elem = ctx["elem"];
+    $$block = ctx["block"];
+    $$mode = ctx["_mode"];
+    try {
+        return applyc(ctx, __$ref);
+    } catch (e) {
+        e.xjstContext = ctx;
+        throw e;
+    }
+}
+
+exports.apply = apply;
+
+function applyc(__$ctx, __$ref) {}
+
+[].forEach(function(fn) {
+    fn(exports, this);
+}, {
+    recordExtensions: function(ctx) {},
+    resetApplyNext: function(ctx) {}
+});;
+     return exports;
+  }
+  var defineAsGlobal = true;
+  if(typeof exports === "object") {
+    exports["BEMHTML"] = __bem_xjst({});
+    defineAsGlobal = false;
+  }
+  if(typeof modules === "object") {
+    modules.define("BEMHTML",
+      function(provide) {
+        provide(__bem_xjst({})) });
+    defineAsGlobal = false;
+  }
+  defineAsGlobal && (g["BEMHTML"] = __bem_xjst({}));
+})(this);
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/i-bem.vanilla.js */
 /**
  * @module i-bem
@@ -3409,186 +3867,23 @@ $(function() {
 });
 
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
-/* begin: ../../../common.blocks/checkbox-group/checkbox-group.js */
+/* begin: ../../../common.blocks/radio/radio.js */
 /**
- * @module checkbox-group
+ * @module radio
  */
 
 modules.define(
-    'checkbox-group',
-    ['i-bem__dom', 'jquery', 'dom', 'checkbox'],
-    function(provide, BEMDOM, $, dom) {
-
-var undef;
-/**
- * @exports
- * @class checkbox-group
- * @bem
- */
-provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
-    beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this._inSetVal = false;
-                this._val = this._extractVal();
-                this._checkboxes = undef;
-            }
-        },
-
-        'disabled' : function(modName, modVal) {
-            this.getCheckboxes().forEach(function(option) {
-                option.setMod(modName, modVal);
-            });
-        },
-
-        'focused' : {
-            'true' : function() {
-                if(dom.containsFocus(this.domElem)) return;
-
-                var checkboxes = this.getCheckboxes(),
-                    i = 0, checkbox;
-
-                while(checkbox = checkboxes[i++]) {
-                    if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
-                        return;
-                }
-            },
-
-            '' : function() {
-                var focusedCheckbox = this.findBlockInside({
-                        block : 'checkbox',
-                        modName : 'focused',
-                        modVal : true
-                    });
-
-                focusedCheckbox && focusedCheckbox.delMod('focused');
-            }
-        }
-    },
-
-    /**
-     * Returns control value
-     * @returns {String}
-     */
-    getVal : function() {
-        return this._val;
-    },
-
-    /**
-     * Sets control value
-     * @param {Array[String]} val value
-     * @param {Object} [data] additional data
-     * @returns {checkbox-group} this
-     */
-    setVal : function(val, data) {
-        val = val.map(String);
-
-        var checkboxes = this.getCheckboxes(),
-            wasChanged = false,
-            notFoundValsCnt = val.length,
-            checkboxesCheckedModVals = checkboxes.map(function(checkbox) {
-                var isChecked = checkbox.hasMod('checked'),
-                    hasEqVal = !!~val.indexOf(checkbox.getVal());
-
-                if(hasEqVal) {
-                    --notFoundValsCnt;
-                    isChecked || (wasChanged = true);
-                } else {
-                    isChecked && (wasChanged = true);
-                }
-
-                return hasEqVal;
-            });
-
-        if(wasChanged && !notFoundValsCnt) {
-            this._inSetVal = true;
-            checkboxes.forEach(function(checkbox, i) {
-                checkbox.setMod('checked', checkboxesCheckedModVals[i]);
-            });
-            this._inSetVal = false;
-            this._val = val;
-            this.emit('change', data);
-        }
-
-        return this;
-    },
-
-    /**
-     * Returns name of control
-     * @returns {String}
-     */
-    getName : function() {
-        return this.getCheckboxes()[0].getName();
-    },
-
-    /**
-     * Returns checkboxes
-     * @returns {Array[checkbox]}
-     */
-    getCheckboxes : function() {
-        return this._checkboxes || (this._checkboxes = this.findBlocksInside('checkbox'));
-    },
-
-    _extractVal : function() {
-        return this.getCheckboxes()
-            .filter(function(checkbox) {
-                return checkbox.hasMod('checked');
-            })
-            .map(function(checkbox) {
-                return checkbox.getVal();
-            });
-    },
-
-    _onCheckboxCheck : function() {
-        if(!this._inSetVal) {
-            this._val = this._extractVal();
-            this.emit('change');
-        }
-    },
-
-    _onCheckboxFocus : function(e) {
-        this.setMod('focused', e.target.getMod('focused'));
-    }
-}, /** @lends checkbox-group */{
-    live : function() {
-        var ptp = this.prototype;
-        this
-            .liveInitOnBlockInsideEvent(
-                { modName : 'checked', modVal : '*' },
-                'checkbox',
-                ptp._onCheckboxCheck)
-            .liveInitOnBlockInsideEvent(
-                { modName : 'focused', modVal : '*' },
-                'checkbox',
-                ptp._onCheckboxFocus);
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/checkbox-group/checkbox-group.js */
-/* begin: ../../../common.blocks/checkbox/checkbox.js */
-/**
- * @module checkbox
- */
-
-modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+    'radio',
+    ['i-bem__dom', 'control'],
+    function(provide, BEMDOM, Control) {
 
 /**
  * @exports
- * @class checkbox
+ * @class radio
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends radio.prototype */{
     onSetMod : {
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);
@@ -3596,18 +3891,18 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends check
     },
 
     _onChange : function() {
-        this.setMod('checked', this.elem('control').prop('checked'));
+        this.hasMod('disabled') || this.setMod('checked');
     }
-}, /** @lends checkbox */{
+}, /** @lends radio */{
     live : function() {
-        this.liveBindTo('control', 'change', this.prototype._onChange);
+        this.liveBindTo('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/checkbox/checkbox.js */
+/* end: ../../../common.blocks/radio/radio.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.

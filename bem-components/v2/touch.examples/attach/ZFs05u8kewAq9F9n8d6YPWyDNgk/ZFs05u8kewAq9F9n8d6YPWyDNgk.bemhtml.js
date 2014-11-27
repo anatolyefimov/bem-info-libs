@@ -1089,10 +1089,7 @@ block('attach')(
                     content : this.ctx.noFileText
                 }
             ];
-        },
-        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
-            return this.ctx.content;
-        })
+        }
     )
 );
 

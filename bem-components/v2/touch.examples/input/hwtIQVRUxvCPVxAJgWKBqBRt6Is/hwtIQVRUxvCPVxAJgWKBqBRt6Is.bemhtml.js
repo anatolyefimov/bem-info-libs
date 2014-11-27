@@ -1010,14 +1010,7 @@ block('input')(
     def()(function() {
         applyNext({ _input : this.ctx });
     }),
-    content()(
-        function() {
-            return { elem : 'box', content : { elem : 'control' } };
-        },
-        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
-            return this.ctx.content;
-        })
-    )
+    content()({ elem : 'box', content : { elem : 'control' } })
 );
 
 /* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/input/input.bemhtml */
@@ -1027,7 +1020,6 @@ block('input').elem('box').tag()('span');
 /* end: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/input/__box/input__box.bemhtml */
 /* begin: /home/tavria/bem-data-source/content/bem-components/v2/common.blocks/input/__control/input__control.bemhtml */
 block('input').elem('control')(
-
     tag()('input'),
 
     attrs()(function() {

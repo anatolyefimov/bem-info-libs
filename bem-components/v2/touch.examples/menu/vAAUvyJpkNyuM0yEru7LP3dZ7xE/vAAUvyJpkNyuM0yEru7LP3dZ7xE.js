@@ -1,3 +1,461 @@
+/**
+ * Modules
+ *
+ * Copyright (c) 2013 Filatov Dmitry (dfilatov@yandex-team.ru)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * @version 0.1.0
+ */
+
+(function(global) {
+
+var undef,
+
+    DECL_STATES = {
+        NOT_RESOLVED : 'NOT_RESOLVED',
+        IN_RESOLVING : 'IN_RESOLVING',
+        RESOLVED     : 'RESOLVED'
+    },
+
+    /**
+     * Creates a new instance of modular system
+     * @returns {Object}
+     */
+    create = function() {
+        var curOptions = {
+                trackCircularDependencies : true,
+                allowMultipleDeclarations : true
+            },
+
+            modulesStorage = {},
+            waitForNextTick = false,
+            pendingRequires = [],
+
+            /**
+             * Defines module
+             * @param {String} name
+             * @param {String[]} [deps]
+             * @param {Function} declFn
+             */
+            define = function(name, deps, declFn) {
+                if(!declFn) {
+                    declFn = deps;
+                    deps = [];
+                }
+
+                var module = modulesStorage[name];
+                if(!module) {
+                    module = modulesStorage[name] = {
+                        name : name,
+                        decl : undef
+                    };
+                }
+
+                module.decl = {
+                    name       : name,
+                    prev       : module.decl,
+                    fn         : declFn,
+                    state      : DECL_STATES.NOT_RESOLVED,
+                    deps       : deps,
+                    dependents : [],
+                    exports    : undef
+                };
+            },
+
+            /**
+             * Requires modules
+             * @param {String|String[]} modules
+             * @param {Function} cb
+             * @param {Function} [errorCb]
+             */
+            require = function(modules, cb, errorCb) {
+                if(typeof modules === 'string') {
+                    modules = [modules];
+                }
+
+                if(!waitForNextTick) {
+                    waitForNextTick = true;
+                    nextTick(onNextTick);
+                }
+
+                pendingRequires.push({
+                    deps : modules,
+                    cb   : function(exports, error) {
+                        error?
+                            (errorCb || onError)(error) :
+                            cb.apply(global, exports);
+                    }
+                });
+            },
+
+            /**
+             * Returns state of module
+             * @param {String} name
+             * @returns {String} state, possible values are NOT_DEFINED, NOT_RESOLVED, IN_RESOLVING, RESOLVED
+             */
+            getState = function(name) {
+                var module = modulesStorage[name];
+                return module?
+                    DECL_STATES[module.decl.state] :
+                    'NOT_DEFINED';
+            },
+
+            /**
+             * Returns whether the module is defined
+             * @param {String} name
+             * @returns {Boolean}
+             */
+            isDefined = function(name) {
+                return !!modulesStorage[name];
+            },
+
+            /**
+             * Sets options
+             * @param {Object} options
+             */
+            setOptions = function(options) {
+                for(var name in options) {
+                    if(options.hasOwnProperty(name)) {
+                        curOptions[name] = options[name];
+                    }
+                }
+            },
+
+            onNextTick = function() {
+                waitForNextTick = false;
+                applyRequires();
+            },
+
+            applyRequires = function() {
+                var requiresToProcess = pendingRequires,
+                    i = 0, require;
+
+                pendingRequires = [];
+
+                while(require = requiresToProcess[i++]) {
+                    requireDeps(null, require.deps, [], require.cb);
+                }
+            },
+
+            requireDeps = function(fromDecl, deps, path, cb) {
+                var unresolvedDepsCnt = deps.length;
+                if(!unresolvedDepsCnt) {
+                    cb([]);
+                }
+
+                var decls = [],
+                    i = 0, len = unresolvedDepsCnt,
+                    dep, decl;
+
+                while(i < len) {
+                    dep = deps[i++];
+                    if(typeof dep === 'string') {
+                        if(!modulesStorage[dep]) {
+                            cb(null, buildModuleNotFoundError(dep, fromDecl));
+                            return;
+                        }
+
+                        decl = modulesStorage[dep].decl;
+                    }
+                    else {
+                        decl = dep;
+                    }
+
+                    if(decl.state === DECL_STATES.IN_RESOLVING &&
+                            curOptions.trackCircularDependencies &&
+                            isDependenceCircular(decl, path)) {
+                        cb(null, buildCircularDependenceError(decl, path));
+                        return;
+                    }
+
+                    decls.push(decl);
+
+                    startDeclResolving(
+                        decl,
+                        path,
+                        function(_, error) {
+                            if(error) {
+                                cb(null, error);
+                                return;
+                            }
+
+                            if(!--unresolvedDepsCnt) {
+                                var exports = [],
+                                    i = 0, decl;
+                                while(decl = decls[i++]) {
+                                    exports.push(decl.exports);
+                                }
+                                cb(exports);
+                            }
+                        });
+                }
+            },
+
+            startDeclResolving = function(decl, path, cb) {
+                if(decl.state === DECL_STATES.RESOLVED) {
+                    cb(decl.exports);
+                    return;
+                }
+                else {
+                    decl.dependents.push(cb);
+                }
+
+                if(decl.state === DECL_STATES.IN_RESOLVING) {
+                    return;
+                }
+
+                if(decl.prev && !curOptions.allowMultipleDeclarations) {
+                    provideError(decl, buildMultipleDeclarationError(decl));
+                    return;
+                }
+
+                curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
+
+                var isProvided = false,
+                    deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
+
+                decl.state = DECL_STATES.IN_RESOLVING;
+                requireDeps(
+                    decl,
+                    deps,
+                    path,
+                    function(depDeclsExports, error) {
+                        if(error) {
+                            provideError(decl, error);
+                            return;
+                        }
+
+                        depDeclsExports.unshift(function(exports, error) {
+                            if(isProvided) {
+                                cb(null, buildDeclAreadyProvidedError(decl));
+                                return;
+                            }
+
+                            isProvided = true;
+                            error?
+                                provideError(decl, error) :
+                                provideDecl(decl, exports);
+                        });
+
+                        decl.fn.apply(
+                            {
+                                name   : decl.name,
+                                deps   : decl.deps,
+                                global : global
+                            },
+                            depDeclsExports);
+                    });
+            },
+
+            provideDecl = function(decl, exports) {
+                decl.exports = exports;
+                decl.state = DECL_STATES.RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(exports);
+                }
+
+                decl.dependents = undef;
+            },
+
+            provideError = function(decl, error) {
+                decl.state = DECL_STATES.NOT_RESOLVED;
+
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(null, error);
+                }
+
+                decl.dependents = [];
+            };
+
+        return {
+            create     : create,
+            define     : define,
+            require    : require,
+            getState   : getState,
+            isDefined  : isDefined,
+            setOptions : setOptions
+        };
+    },
+
+    onError = function(e) {
+        nextTick(function() {
+            throw e;
+        });
+    },
+
+    buildModuleNotFoundError = function(name, decl) {
+        return Error(decl?
+            'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
+            'Required module "' + name + '" can\'t be resolved');
+    },
+
+    buildCircularDependenceError = function(decl, path) {
+        var strPath = [],
+            i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            strPath.push(pathDecl.name);
+        }
+        strPath.push(decl.name);
+
+        return Error('Circular dependence has been detected: "' + strPath.join(' -> ') + '"');
+    },
+
+    buildDeclAreadyProvidedError = function(decl) {
+        return Error('Declaration of module "' + decl.name + '" has already been provided');
+    },
+
+    buildMultipleDeclarationError = function(decl) {
+        return Error('Multiple declarations of module "' + decl.name + '" have been detected');
+    },
+
+    isDependenceCircular = function(decl, path) {
+        var i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            if(decl === pathDecl) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    nextTick = (function() {
+        var fns = [],
+            enqueueFn = function(fn) {
+                return fns.push(fn) === 1;
+            },
+            callFns = function() {
+                var fnsToCall = fns, i = 0, len = fns.length;
+                fns = [];
+                while(i < len) {
+                    fnsToCall[i++]();
+                }
+            };
+
+        if(typeof process === 'object' && process.nextTick) { // nodejs
+            return function(fn) {
+                enqueueFn(fn) && process.nextTick(callFns);
+            };
+        }
+
+        if(global.setImmediate) { // ie10
+            return function(fn) {
+                enqueueFn(fn) && global.setImmediate(callFns);
+            };
+        }
+
+        if(global.postMessage && !global.opera) { // modern browsers
+            var isPostMessageAsync = true;
+            if(global.attachEvent) {
+                var checkAsync = function() {
+                        isPostMessageAsync = false;
+                    };
+                global.attachEvent('onmessage', checkAsync);
+                global.postMessage('__checkAsync', '*');
+                global.detachEvent('onmessage', checkAsync);
+            }
+
+            if(isPostMessageAsync) {
+                var msg = '__modules' + (+new Date()),
+                    onMessage = function(e) {
+                        if(e.data === msg) {
+                            e.stopPropagation && e.stopPropagation();
+                            callFns();
+                        }
+                    };
+
+                global.addEventListener?
+                    global.addEventListener('message', onMessage, true) :
+                    global.attachEvent('onmessage', onMessage);
+
+                return function(fn) {
+                    enqueueFn(fn) && global.postMessage(msg, '*');
+                };
+            }
+        }
+
+        var doc = global.document;
+        if('onreadystatechange' in doc.createElement('script')) { // ie6-ie8
+            var head = doc.getElementsByTagName('head')[0],
+                createScript = function() {
+                    var script = doc.createElement('script');
+                    script.onreadystatechange = function() {
+                        script.parentNode.removeChild(script);
+                        script = script.onreadystatechange = null;
+                        callFns();
+                    };
+                    head.appendChild(script);
+                };
+
+            return function(fn) {
+                enqueueFn(fn) && createScript();
+            };
+        }
+
+        return function(fn) { // old browsers
+            enqueueFn(fn) && setTimeout(callFns, 0);
+        };
+    })();
+
+if(typeof exports === 'object') {
+    module.exports = create();
+}
+else {
+    global.modules = create();
+}
+
+})(this);
+if(typeof module !== 'undefined') {modules = module.exports;}
+(function(g) {
+  var __bem_xjst = function(exports) {
+     var $$mode = "", $$block = "", $$elem = "", $$elemMods = null, $$mods = null;
+
+var __$ref = {};
+
+function apply(ctx) {
+    ctx = ctx || this;
+    $$mods = ctx["mods"];
+    $$elemMods = ctx["elemMods"];
+    $$elem = ctx["elem"];
+    $$block = ctx["block"];
+    $$mode = ctx["_mode"];
+    try {
+        return applyc(ctx, __$ref);
+    } catch (e) {
+        e.xjstContext = ctx;
+        throw e;
+    }
+}
+
+exports.apply = apply;
+
+function applyc(__$ctx, __$ref) {}
+
+[].forEach(function(fn) {
+    fn(exports, this);
+}, {
+    recordExtensions: function(ctx) {},
+    resetApplyNext: function(ctx) {}
+});;
+     return exports;
+  }
+  var defineAsGlobal = true;
+  if(typeof exports === "object") {
+    exports["BEMHTML"] = __bem_xjst({});
+    defineAsGlobal = false;
+  }
+  if(typeof modules === "object") {
+    modules.define("BEMHTML",
+      function(provide) {
+        provide(__bem_xjst({})) });
+    defineAsGlobal = false;
+  }
+  defineAsGlobal && (g["BEMHTML"] = __bem_xjst({}));
+})(this);
 /* begin: ../../../libs/bem-core/common.blocks/i-bem/i-bem.vanilla.js */
 /**
  * @module i-bem
@@ -3600,39 +4058,344 @@ provide(/** @exports */BEMDOM.decl(this.name,
 });
 
 /* end: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
-/* begin: ../../../common.blocks/checkbox/checkbox.js */
+/* begin: ../../../common.blocks/menu/menu.js */
 /**
- * @module checkbox
+ * @module menu
  */
 
-modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+modules.define(
+    'menu',
+    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
+    function(provide, BEMDOM, Control, keyCodes) {
+
+/** @const Number */
+var TIMEOUT_KEYBOARD_SEARCH = 1500;
 
 /**
  * @exports
- * @class checkbox
+ * @class menu
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.prototype */{
     onSetMod : {
-        'checked' : function(modName, modVal) {
-            this.elem('control').prop(modName, modVal);
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+                this._hoveredItem = null;
+                this._items = null;
+
+                this._lastTyping = {
+                    char : '',
+                    text : '',
+                    index : 0,
+                    time : 0
+                };
+
+                this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
+            }
+        },
+
+        'focused' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this
+                    .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
+                    .bindToDoc('keypress', this._onKeyPress);
+            },
+
+            '' : function() {
+                this
+                    .unbindFromDoc('keydown', this._onKeyDown)
+                    .unbindFromDoc('keypress', this._onKeyPress)
+                    .__base.apply(this, arguments);
+                this._hoveredItem && this._hoveredItem.delMod('hovered');
+            }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.getItems().forEach(function(menuItem){
+                menuItem.setMod(modName, modVal);
+            });
         }
     },
 
-    _onChange : function() {
-        this.setMod('checked', this.elem('control').prop('checked'));
+    /**
+     * Returns items
+     * @returns {menu-item[]}
+     */
+    getItems : function() {
+        return this._items || (this._items = this.findBlocksInside('menu-item'));
+    },
+
+    /**
+     * Sets content
+     * @param {String|jQuery} content
+     * @returns {menu} this
+     */
+    setContent : function(content) {
+        BEMDOM.update(this.domElem, content);
+        this._hoveredItem = null;
+        this._items = null;
+        return this;
+    },
+
+    /**
+     * Search menu item by keyboard event
+     * @param {jQuery.Event} e
+     * @returns {menu-item}
+     */
+    searchItemByKeyboardEvent : function(e) {
+        var currentTime = +new Date(),
+            charCode = e.charCode,
+            char = String.fromCharCode(charCode).toLowerCase(),
+            lastTyping = this._lastTyping,
+            index = lastTyping.index,
+            isSameChar = char === lastTyping.char && lastTyping.text.length === 1,
+            items = this.getItems();
+
+        if(charCode <= keyCodes.SPACE || e.ctrlKey || e.altKey || e.metaKey) {
+            lastTyping.time = currentTime;
+            return null;
+        }
+
+        if(currentTime - lastTyping.time > TIMEOUT_KEYBOARD_SEARCH || isSameChar) {
+            lastTyping.text = char;
+        } else {
+            lastTyping.text += char;
+        }
+
+        lastTyping.char = char;
+        lastTyping.time = currentTime;
+
+        // If key is pressed again, then continue to search to next menu item
+        if(isSameChar && items[index].getText().search(lastTyping.char) === 0) {
+            index = index >= items.length - 1? 0 : index + 1;
+        }
+
+        // 2 passes: from index to items.length and from 0 to index.
+        var i = index, len = items.length;
+        while(i < len) {
+            if(this._doesItemMatchText(items[i], lastTyping.text)) {
+                lastTyping.index = i;
+                return items[i];
+            }
+
+            i++;
+
+            if(i === items.length) {
+                i = 0;
+                len = index;
+            }
+        }
+
+        return null;
+    },
+
+    _onItemHover : function(item) {
+        if(item.hasMod('hovered')) {
+            this._hoveredItem && this._hoveredItem.delMod('hovered');
+            this._scrollToItem(this._hoveredItem = item);
+        } else if(this._hoveredItem === item) {
+            this._hoveredItem = null;
+        }
+    },
+
+    _scrollToItem : function(item) {
+        var domElemOffsetTop = this.domElem.offset().top,
+            itemDomElemOffsetTop = item.domElem.offset().top,
+            relativeScroll;
+
+        if((relativeScroll = itemDomElemOffsetTop - domElemOffsetTop) < 0 ||
+            (relativeScroll =
+                itemDomElemOffsetTop +
+                item.domElem.outerHeight() -
+                domElemOffsetTop -
+                this.domElem.outerHeight()) > 0) {
+            this.domElem.scrollTop(this.domElem.scrollTop() + relativeScroll);
+        }
+    },
+
+    _onItemClick : function(item, data) {
+        this.emit('item-click', { item : item, source : data.source });
+    },
+
+    _onKeyDown : function(e) {
+        var keyCode = e.keyCode,
+            isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
+
+        if(isArrow && !e.shiftKey) {
+            e.preventDefault();
+
+            var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
+                items = this.getItems(),
+                len = items.length,
+                hoveredIdx = items.indexOf(this._hoveredItem),
+                nextIdx = hoveredIdx,
+                i = 0;
+
+            do {
+                nextIdx += dir;
+                nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
+                if(++i === len) return; // if we have no next item to hover
+            } while(items[nextIdx].hasMod('disabled'));
+
+            this._lastTyping.index = nextIdx;
+
+            items[nextIdx].setMod('hovered');
+        }
+    },
+
+    _onKeyPress : function(e) {
+        var item = this.searchItemByKeyboardEvent(e);
+        item && item.setMod('hovered');
+    },
+
+    _doesItemMatchText : function(item, text) {
+        return !item.hasMod('disabled') &&
+            item.getText().toLowerCase().search(text) === 0;
     }
-}, /** @lends checkbox */{
+}, /** @lends menu */{
     live : function() {
-        this.liveBindTo('control', 'change', this.prototype._onChange);
+        this
+            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
+                this._onItemHover(e.target);
+            })
+            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {
+                this._onItemClick(e.target, data);
+            });
+
         return this.__base.apply(this, arguments);
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/checkbox/checkbox.js */
+/* end: ../../../common.blocks/menu/menu.js */
+/* begin: ../../../common.blocks/control/control.js */
+/**
+ * @module control
+ */
+
+modules.define(
+    'control',
+    ['i-bem__dom', 'dom', 'next-tick'],
+    function(provide, BEMDOM, dom, nextTick) {
+
+/**
+ * @exports
+ * @class control
+ * @abstract
+ * @bem
+ */
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+    beforeSetMod : {
+        'focused' : {
+            'true' : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._focused = dom.containsFocus(this.elem('control'));
+                this._focused?
+                    // if control is already in focus, we need to set focused mod
+                    this.setMod('focused') :
+                    // if block already has focused mod, we need to focus control
+                    this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
+            }
+        },
+
+        'focused' : {
+            'true' : function() {
+                this._focused || this._focus();
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+            }
+        },
+
+        'disabled' : {
+            '*' : function(modName, modVal) {
+                this.elem('control').prop(modName, !!modVal);
+            },
+
+            'true' : function() {
+                this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
+            }
+        }
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name') || '';
+    },
+
+    /**
+     * Returns control value
+     * @returns {String}
+     */
+    getVal : function() {
+        return this.elem('control').val();
+    },
+
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
+    },
+
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
+    },
+
+    _focus : function() {
+        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
+    },
+
+    _blur : function() {
+        this.elem('control').blur();
+    }
+}, /** @lends control */{
+    live : function() {
+        this
+            .liveBindTo('control', 'focusin', this.prototype._onFocus)
+            .liveBindTo('control', 'focusout', this.prototype._onBlur);
+
+        var focused = dom.getFocused();
+        if(focused.hasClass(this.buildClass('control'))) {
+            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
+            nextTick(function() {
+                if(focused[0] === dom.getFocused()[0]) {
+                    var block = focused.closest(_this.buildSelector());
+                    block && block.bem(_this.getName());
+                }
+            });
+        }
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/control/control.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.
@@ -5300,25 +6063,23 @@ provide($);
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
-/* begin: ../../../common.blocks/control/control.js */
+/* begin: ../../../common.blocks/menu-item/menu-item.js */
 /**
- * @module control
+ * @module menu-item
  */
 
-modules.define(
-    'control',
-    ['i-bem__dom', 'dom', 'next-tick'],
-    function(provide, BEMDOM, dom, nextTick) {
+modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
 
 /**
  * @exports
- * @class control
- * @abstract
+ * @class menu-item
  * @bem
+ *
+ * @param val Value of item
  */
-provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     beforeSetMod : {
-        'focused' : {
+        'hovered' : {
             'true' : function() {
                 return !this.hasMod('disabled');
             }
@@ -5328,271 +6089,67 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.containsFocus(this.elem('control'));
-                this._focused?
-                    // if control is already in focus, we need to set focused mod
-                    this.setMod('focused') :
-                    // if block already has focused mod, we need to focus control
-                    this.hasMod('focused') && this._focus();
-
-                this._tabIndex = this.elem('control').attr('tabindex');
-                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
-                    this.elem('control').removeAttr('tabindex');
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this._focused || this._focus();
-            },
-
-            '' : function() {
-                this._focused && this._blur();
+                this.bindTo('pointerleave', this._onPointerLeave);
             }
         },
 
         'disabled' : {
-            '*' : function(modName, modVal) {
-                this.elem('control').prop(modName, !!modVal);
-            },
-
             'true' : function() {
-                this.delMod('focused');
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').removeAttr('tabindex');
-            },
-
-            '' : function() {
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').attr('tabindex', this._tabIndex);
+                this.__base.apply(this, arguments);
+                this.delMod('hovered');
             }
         }
     },
 
     /**
-     * Returns name of control
-     * @returns {String}
+     * Checks whether given value is equal to current value
+     * @param {String|Number} val
+     * @returns {Boolean}
      */
-    getName : function() {
-        return this.elem('control').attr('name') || '';
+    isValEq : function(val) {
+        // NOTE: String(true) == String(1) -> false
+        return String(this.params.val) === String(val);
     },
 
     /**
-     * Returns control value
-     * @returns {String}
+     * Returns item value
+     * @returns {*}
      */
     getVal : function() {
-        return this.elem('control').val();
-    },
-
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
-    },
-
-    _focus : function() {
-        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
-    }
-}, /** @lends control */{
-    live : function() {
-        this
-            .liveBindTo('control', 'focusin', this.prototype._onFocus)
-            .liveBindTo('control', 'focusout', this.prototype._onBlur);
-
-        var focused = dom.getFocused();
-        if(focused.hasClass(this.buildClass('control'))) {
-            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
-            nextTick(function() {
-                if(focused[0] === dom.getFocused()[0]) {
-                    var block = focused.closest(_this.buildSelector());
-                    block && block.bem(_this.getName());
-                }
-            });
-        }
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/control/control.js */
-/* begin: ../../../common.blocks/button/button.js */
-/**
- * @module button
- */
-
-modules.define(
-    'button',
-    ['i-bem__dom', 'control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
-    function(provide, BEMDOM, Control, $, dom, functions, keyCodes) {
-
-/**
- * @exports
- * @class button
- * @augments control
- * @bem
- */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends button.prototype */{
-    beforeSetMod : {
-        'pressed' : {
-            'true' : function() {
-                return !this.hasMod('disabled') || this.hasMod('togglable');
-            }
-        },
-
-        'focused' : {
-            '' : function() {
-                return !this._isPointerPressInProgress;
-            }
-        }
-    },
-
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._isPointerPressInProgress = false;
-                this._focusedByPointer = false;
-            }
-        },
-
-        'disabled' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.hasMod('togglable') || this.delMod('pressed');
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this._focusedByPointer || this.setMod('focused-hard');
-            },
-
-            '' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('focused-hard');
-            }
-        }
+        return this.params.val;
     },
 
     /**
-     * Returns text of the button
+     * Returns item text
      * @returns {String}
      */
     getText : function() {
-        return this.elem('text').text();
+        return this.params.text || this.domElem.text();
     },
 
-    /**
-     * Sets text to the button
-     * @param {String} text
-     * @returns {button} this
-     */
-    setText : function(text) {
-        this.elem('text').text(text || '');
-        return this;
+    _onPointerOver : function() {
+        this.setMod('hovered');
     },
 
-    _onFocus : function() {
-        if(this._isPointerPressInProgress) return;
-
-        this.__base.apply(this, arguments);
-        this
-            .bindToWin('unload', this._onUnload) // TODO: WTF???
-            .bindTo('control', 'keydown', this._onKeyDown);
+    _onPointerLeave : function() {
+        this.delMod('hovered');
     },
 
-    _onBlur : function() {
-        this
-            .unbindFromWin('unload', this._onUnload)
-            .unbindFrom('control', 'keydown', this._onKeyDown)
-            .__base.apply(this, arguments);
-    },
-
-    _onUnload : function() {
-        this.delMod('focused');
-    },
-
-    _onPointerPress : function() {
-        if(!this.hasMod('disabled')) {
-            this._isPointerPressInProgress = true;
-            this
-                .bindToDoc('pointerrelease', this._onPointerRelease)
-                .setMod('pressed');
-        }
-    },
-
-    _onPointerRelease : function(e) {
-        this._isPointerPressInProgress = false;
-        this.unbindFromDoc('pointerrelease', this._onPointerRelease);
-
-        if(dom.contains(this.elem('control'), $(e.target))) {
-            this._focusedByPointer = true;
-            this._focus();
-            this._focusedByPointer = false;
-            this
-                ._updateChecked()
-                .emit('click');
-        } else {
-            this._blur();
-        }
-
-        this.delMod('pressed');
-    },
-
-    _onKeyDown : function(e) {
-        if(this.hasMod('disabled')) return;
-
-        var keyCode = e.keyCode;
-        if(keyCode === keyCodes.SPACE || keyCode === keyCodes.ENTER) {
-            this
-                .unbindFrom('control', 'keydown', this._onKeyDown)
-                .bindTo('control', 'keyup', this._onKeyUp)
-                ._updateChecked()
-                .setMod('pressed');
-        }
-    },
-
-    _onKeyUp : function(e) {
-        this
-            .unbindFrom('control', 'keyup', this._onKeyUp)
-            .bindTo('control', 'keydown', this._onKeyDown)
-            .delMod('pressed');
-
-        e.keyCode === keyCodes.SPACE && this._doAction();
-
-        this.emit('click');
-    },
-
-    _updateChecked : function() {
-        this.hasMod('togglable') &&
-            (this.hasMod('togglable', 'check')?
-                this.toggleMod('checked') :
-                this.setMod('checked'));
-
-        return this;
-    },
-
-    _doAction : functions.noop
-}, /** @lends button */{
+    _onPointerClick : function() {
+        this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
+    }
+}, /** @lends menu-item */{
     live : function() {
-        this.liveBindTo('control', 'pointerpress', this.prototype._onPointerPress);
-        return this.__base.apply(this, arguments);
+        var ptp = this.prototype;
+        this
+            .liveBindTo('pointerover', ptp._onPointerOver)
+            .liveBindTo('pointerclick', ptp._onPointerClick);
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/button/button.js */
+/* end: ../../../common.blocks/menu-item/menu-item.js */
 /* begin: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
 /**
  * @module keyboard__codes
@@ -5621,57 +6178,179 @@ provide(/** @exports */{
 });
 
 /* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/* begin: ../../../common.blocks/checkbox/_type/checkbox_type_button.js */
+/* begin: ../../../common.blocks/menu/_mode/menu_mode.js */
 /**
- * @module checkbox
+ * @module menu
  */
 
-modules.define('checkbox', ['button'], function(provide, _, Checkbox) {
+modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
 
 /**
  * @exports
- * @class checkbox
+ * @class menu
  * @bem
  */
-provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
+provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockInside('button')
-                    .on(
-                        { modName : 'checked', modVal : '*' },
-                        proxyModFromButton,
-                        this)
-                    .on(
-                        { modName : 'focused', modVal : '*' },
-                        proxyModFromButton,
-                        this);
+                this._val = null;
+                this._isValValid = false;
             }
-        },
-
-        'checked' : proxyModToButton,
-        'disabled' : proxyModToButton,
-        'focused' : function(modName, modVal) {
-            proxyModToButton.call(this, modName, modVal, false);
         }
-    }
-}, /** @lends checkbox */{
-    live : function() {
-        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
-        return this.__base.apply(this, arguments);
+    },
+
+    _onKeyDown : function(e) {
+        if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
+            this
+                .unbindFromDoc('keydown', this._onKeyDown)
+                .bindToDoc('keyup', this._onKeyUp);
+
+            e.keyCode === keyCodes.SPACE && e.preventDefault();
+            this._onItemClick(this._hoveredItem, { source : 'keyboard' });
+        }
+        this.__base.apply(this, arguments);
+    },
+
+    _onKeyUp : function() {
+        this.unbindFromDoc('keyup', this._onKeyUp);
+        // it could be unfocused while is key being pressed
+        this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
+    },
+
+    /**
+     * Returns menu value
+     * @returns {*}
+     */
+    getVal : function() {
+        if(!this._isValValid) {
+            this._val = this._getVal();
+            this._isValValid = true;
+        }
+        return this._val;
+    },
+
+    /**
+     * @abstract
+     * @protected
+     * @returns {*}
+     */
+    _getVal : function() {
+        throw Error('_getVal is not implemented');
+    },
+
+    /**
+     * Sets menu value
+     * @param {*} val
+     * @returns {menu} this
+     */
+    setVal : function(val) {
+        if(this._setVal(val)) {
+            this._val = val;
+            this._isValValid = true;
+            this.emit('change');
+        }
+        return this;
+    },
+
+    /**
+     * @abstract
+     * @protected
+     * @param {*} val
+     * @returns {Boolean} returns true if value was changed
+     */
+    _setVal : function() {
+        throw Error('_setVal is not implemented');
+    },
+
+    _updateItemsCheckedMod : function(modVals) {
+        var items = this.getItems();
+        modVals.forEach(function(modVal, i) {
+            items[i].setMod('checked', modVal);
+        });
+    },
+
+    /**
+     * Sets content
+     * @override
+     */
+    setContent : function() {
+        var res = this.__base.apply(this, arguments);
+        this._isValValid = false;
+        this.emit('change'); // NOTE: potentially unwanted event could be emitted
+        return res;
     }
 }));
 
-function proxyModToButton(modName, modVal, callBase) {
-    callBase !== false && this.__base.apply(this, arguments);
-    this._button.setMod(modName, modVal);
-}
+});
 
-function proxyModFromButton(_, data) {
-    this.setMod(data.modName, data.modVal);
-}
+/* end: ../../../common.blocks/menu/_mode/menu_mode.js */
+/* begin: ../../../common.blocks/menu/_mode/menu_mode_check.js */
+/**
+ * @module menu
+ */
+
+modules.define('menu', function(provide, Menu) {
+
+/**
+ * @exports
+ * @class menu
+ * @bem
+ */
+provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
+    /**
+     * @override
+     */
+    _getVal : function() {
+        return this.getItems()
+            .filter(function(item) { return item.hasMod('checked'); })
+            .map(function(item) { return item.getVal(); });
+    },
+
+    /**
+     * @override
+     * @param {Array} vals
+     */
+    _setVal : function(vals) {
+        var wasChanged = false,
+            notFoundValsCnt = vals.length,
+            itemsCheckedVals = this.getItems().map(function(item) {
+                var isChecked = item.hasMod('checked'),
+                    hasEqVal = vals.some(function(val) {
+                        return item.isValEq(val);
+                    });
+                if(hasEqVal) {
+                    --notFoundValsCnt;
+                    isChecked || (wasChanged = true);
+                } else {
+                    isChecked && (wasChanged = true);
+                }
+                return hasEqVal;
+            });
+
+        if(!wasChanged || notFoundValsCnt)
+            return false;
+
+        this._updateItemsCheckedMod(itemsCheckedVals);
+
+        return wasChanged;
+    },
+
+    /**
+     * @override
+     */
+    _onItemClick : function(clickedItem) {
+        this.__base.apply(this, arguments);
+
+        this.getItems().forEach(function(item) {
+            item === clickedItem && item.toggleMod('checked');
+        });
+        this._isValValid = false;
+        this.emit('change');
+    }
+}));
 
 });
 
-/* end: ../../../common.blocks/checkbox/_type/checkbox_type_button.js */
+/* end: ../../../common.blocks/menu/_mode/menu_mode_check.js */
