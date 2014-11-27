@@ -3409,237 +3409,23 @@ $(function() {
 });
 
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
-/* begin: ../../../common.blocks/menu/menu.js */
+/* begin: ../../../common.blocks/checkbox-group/checkbox-group.js */
 /**
- * @module menu
+ * @module checkbox-group
  */
 
 modules.define(
-    'menu',
-    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
-    function(provide, BEMDOM, Control, keyCodes) {
+    'checkbox-group',
+    ['i-bem__dom', 'jquery', 'dom', 'checkbox'],
+    function(provide, BEMDOM, $, dom) {
 
-/** @const Number */
-var TIMEOUT_KEYBOARD_SEARCH = 1500;
-
+var undef;
 /**
  * @exports
- * @class menu
- * @augments control
+ * @class checkbox-group
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.prototype */{
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._hoveredItem = null;
-                this._items = null;
-
-                this._lastTyping = {
-                    char : '',
-                    text : '',
-                    index : 0,
-                    time : 0
-                };
-
-                this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this
-                    .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
-                    .bindToDoc('keypress', this._onKeyPress);
-            },
-
-            '' : function() {
-                this
-                    .unbindFromDoc('keydown', this._onKeyDown)
-                    .unbindFromDoc('keypress', this._onKeyPress)
-                    .__base.apply(this, arguments);
-                this._hoveredItem && this._hoveredItem.delMod('hovered');
-            }
-        },
-
-        'disabled' : function(modName, modVal) {
-            this.getItems().forEach(function(menuItem){
-                menuItem.setMod(modName, modVal);
-            });
-        }
-    },
-
-    /**
-     * Returns items
-     * @returns {menu-item[]}
-     */
-    getItems : function() {
-        return this._items || (this._items = this.findBlocksInside('menu-item'));
-    },
-
-    /**
-     * Sets content
-     * @param {String|jQuery} content
-     * @returns {menu} this
-     */
-    setContent : function(content) {
-        BEMDOM.update(this.domElem, content);
-        this._hoveredItem = null;
-        this._items = null;
-        return this;
-    },
-
-    /**
-     * Search menu item by keyboard event
-     * @param {jQuery.Event} e
-     * @returns {menu-item}
-     */
-    searchItemByKeyboardEvent : function(e) {
-        var currentTime = +new Date(),
-            charCode = e.charCode,
-            char = String.fromCharCode(charCode).toLowerCase(),
-            lastTyping = this._lastTyping,
-            index = lastTyping.index,
-            isSameChar = char === lastTyping.char && lastTyping.text.length === 1,
-            items = this.getItems();
-
-        if(charCode <= keyCodes.SPACE || e.ctrlKey || e.altKey || e.metaKey) {
-            lastTyping.time = currentTime;
-            return null;
-        }
-
-        if(currentTime - lastTyping.time > TIMEOUT_KEYBOARD_SEARCH || isSameChar) {
-            lastTyping.text = char;
-        } else {
-            lastTyping.text += char;
-        }
-
-        lastTyping.char = char;
-        lastTyping.time = currentTime;
-
-        // If key is pressed again, then continue to search to next menu item
-        if(isSameChar && items[index].getText().search(lastTyping.char) === 0) {
-            index = index >= items.length - 1? 0 : index + 1;
-        }
-
-        // 2 passes: from index to items.length and from 0 to index.
-        var i = index, len = items.length;
-        while(i < len) {
-            if(this._doesItemMatchText(items[i], lastTyping.text)) {
-                lastTyping.index = i;
-                return items[i];
-            }
-
-            i++;
-
-            if(i === items.length) {
-                i = 0;
-                len = index;
-            }
-        }
-
-        return null;
-    },
-
-    _onItemHover : function(item) {
-        if(item.hasMod('hovered')) {
-            this._hoveredItem && this._hoveredItem.delMod('hovered');
-            this._scrollToItem(this._hoveredItem = item);
-        } else if(this._hoveredItem === item) {
-            this._hoveredItem = null;
-        }
-    },
-
-    _scrollToItem : function(item) {
-        var domElemOffsetTop = this.domElem.offset().top,
-            itemDomElemOffsetTop = item.domElem.offset().top,
-            relativeScroll;
-
-        if((relativeScroll = itemDomElemOffsetTop - domElemOffsetTop) < 0 ||
-            (relativeScroll =
-                itemDomElemOffsetTop +
-                item.domElem.outerHeight() -
-                domElemOffsetTop -
-                this.domElem.outerHeight()) > 0) {
-            this.domElem.scrollTop(this.domElem.scrollTop() + relativeScroll);
-        }
-    },
-
-    _onItemClick : function(item, data) {
-        this.emit('item-click', { item : item, source : data.source });
-    },
-
-    _onKeyDown : function(e) {
-        var keyCode = e.keyCode,
-            isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
-
-        if(isArrow && !e.shiftKey) {
-            e.preventDefault();
-
-            var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
-                items = this.getItems(),
-                len = items.length,
-                hoveredIdx = items.indexOf(this._hoveredItem),
-                nextIdx = hoveredIdx,
-                i = 0;
-
-            do {
-                nextIdx += dir;
-                nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
-                if(++i === len) return; // if we have no next item to hover
-            } while(items[nextIdx].hasMod('disabled'));
-
-            this._lastTyping.index = nextIdx;
-
-            items[nextIdx].setMod('hovered');
-        }
-    },
-
-    _onKeyPress : function(e) {
-        var item = this.searchItemByKeyboardEvent(e);
-        item && item.setMod('hovered');
-    },
-
-    _doesItemMatchText : function(item, text) {
-        return !item.hasMod('disabled') &&
-            item.getText().toLowerCase().search(text) === 0;
-    }
-}, /** @lends menu */{
-    live : function() {
-        this
-            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
-                this._onItemHover(e.target);
-            })
-            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {
-                this._onItemClick(e.target, data);
-            });
-
-        return this.__base.apply(this, arguments);
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/menu/menu.js */
-/* begin: ../../../common.blocks/control/control.js */
-/**
- * @module control
- */
-
-modules.define(
-    'control',
-    ['i-bem__dom', 'dom', 'next-tick'],
-    function(provide, BEMDOM, dom, nextTick) {
-
-/**
- * @exports
- * @class control
- * @abstract
- * @bem
- */
-provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -3651,53 +3437,41 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.containsFocus(this.elem('control'));
-                this._focused?
-                    // if control is already in focus, we need to set focused mod
-                    this.setMod('focused') :
-                    // if block already has focused mod, we need to focus control
-                    this.hasMod('focused') && this._focus();
-
-                this._tabIndex = this.elem('control').attr('tabindex');
-                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
-                    this.elem('control').removeAttr('tabindex');
+                this._inSetVal = false;
+                this._val = this._extractVal();
+                this._checkboxes = undef;
             }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.getCheckboxes().forEach(function(option) {
+                option.setMod(modName, modVal);
+            });
         },
 
         'focused' : {
             'true' : function() {
-                this._focused || this._focus();
+                if(dom.containsFocus(this.domElem)) return;
+
+                var checkboxes = this.getCheckboxes(),
+                    i = 0, checkbox;
+
+                while(checkbox = checkboxes[i++]) {
+                    if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
+                        return;
+                }
             },
 
             '' : function() {
-                this._focused && this._blur();
-            }
-        },
+                var focusedCheckbox = this.findBlockInside({
+                        block : 'checkbox',
+                        modName : 'focused',
+                        modVal : true
+                    });
 
-        'disabled' : {
-            '*' : function(modName, modVal) {
-                this.elem('control').prop(modName, !!modVal);
-            },
-
-            'true' : function() {
-                this.delMod('focused');
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').removeAttr('tabindex');
-            },
-
-            '' : function() {
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').attr('tabindex', this._tabIndex);
+                focusedCheckbox && focusedCheckbox.delMod('focused');
             }
         }
-    },
-
-    /**
-     * Returns name of control
-     * @returns {String}
-     */
-    getName : function() {
-        return this.elem('control').attr('name') || '';
     },
 
     /**
@@ -3705,101 +3479,135 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
      * @returns {String}
      */
     getVal : function() {
-        return this.elem('control').val();
+        return this._val;
     },
 
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
+    /**
+     * Sets control value
+     * @param {Array[String]} val value
+     * @param {Object} [data] additional data
+     * @returns {checkbox-group} this
+     */
+    setVal : function(val, data) {
+        val = val.map(String);
 
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
-    },
+        var checkboxes = this.getCheckboxes(),
+            wasChanged = false,
+            notFoundValsCnt = val.length,
+            checkboxesCheckedModVals = checkboxes.map(function(checkbox) {
+                var isChecked = checkbox.hasMod('checked'),
+                    hasEqVal = !!~val.indexOf(checkbox.getVal());
 
-    _focus : function() {
-        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
-    }
-}, /** @lends control */{
-    live : function() {
-        this
-            .liveBindTo('control', 'focusin', this.prototype._onFocus)
-            .liveBindTo('control', 'focusout', this.prototype._onBlur);
-
-        var focused = dom.getFocused();
-        if(focused.hasClass(this.buildClass('control'))) {
-            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
-            nextTick(function() {
-                if(focused[0] === dom.getFocused()[0]) {
-                    var block = focused.closest(_this.buildSelector());
-                    block && block.bem(_this.getName());
+                if(hasEqVal) {
+                    --notFoundValsCnt;
+                    isChecked || (wasChanged = true);
+                } else {
+                    isChecked && (wasChanged = true);
                 }
+
+                return hasEqVal;
             });
+
+        if(wasChanged && !notFoundValsCnt) {
+            this._inSetVal = true;
+            checkboxes.forEach(function(checkbox, i) {
+                checkbox.setMod('checked', checkboxesCheckedModVals[i]);
+            });
+            this._inSetVal = false;
+            this._val = val;
+            this.emit('change', data);
         }
+
+        return this;
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.getCheckboxes()[0].getName();
+    },
+
+    /**
+     * Returns checkboxes
+     * @returns {Array[checkbox]}
+     */
+    getCheckboxes : function() {
+        return this._checkboxes || (this._checkboxes = this.findBlocksInside('checkbox'));
+    },
+
+    _extractVal : function() {
+        return this.getCheckboxes()
+            .filter(function(checkbox) {
+                return checkbox.hasMod('checked');
+            })
+            .map(function(checkbox) {
+                return checkbox.getVal();
+            });
+    },
+
+    _onCheckboxCheck : function() {
+        if(!this._inSetVal) {
+            this._val = this._extractVal();
+            this.emit('change');
+        }
+    },
+
+    _onCheckboxFocus : function(e) {
+        this.setMod('focused', e.target.getMod('focused'));
     }
-}));
-
-});
-
-/* end: ../../../common.blocks/control/control.js */
-/* begin: ../../../desktop.blocks/control/control.js */
-/** @module control */
-
-modules.define(
-    'control',
-    function(provide, Control) {
-
-provide(Control.decl({
-    beforeSetMod : {
-        'hovered' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
-    onSetMod : {
-        'disabled' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('hovered');
-            }
-        },
-
-        'hovered' : {
-            'true' : function() {
-                this.bindTo('mouseleave', this._onMouseLeave);
-            },
-
-            '' : function() {
-                this.unbindFrom('mouseleave', this._onMouseLeave);
-            }
-        }
-    },
-
-    _onMouseOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onMouseLeave : function() {
-        this.delMod('hovered');
-    }
-}, {
+}, /** @lends checkbox-group */{
     live : function() {
-        return this
-            .liveBindTo('mouseover', this.prototype._onMouseOver)
-            .__base.apply(this, arguments);
+        var ptp = this.prototype;
+        this
+            .liveInitOnBlockInsideEvent(
+                { modName : 'checked', modVal : '*' },
+                'checkbox',
+                ptp._onCheckboxCheck)
+            .liveInitOnBlockInsideEvent(
+                { modName : 'focused', modVal : '*' },
+                'checkbox',
+                ptp._onCheckboxFocus);
     }
 }));
 
 });
 
-/* end: ../../../desktop.blocks/control/control.js */
+/* end: ../../../common.blocks/checkbox-group/checkbox-group.js */
+/* begin: ../../../common.blocks/checkbox/checkbox.js */
+/**
+ * @module checkbox
+ */
+
+modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+
+/**
+ * @exports
+ * @class checkbox
+ * @augments control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
+    onSetMod : {
+        'checked' : function(modName, modVal) {
+            this.elem('control').prop(modName, modVal);
+        }
+    },
+
+    _onChange : function() {
+        this.setMod('checked', this.elem('control').prop('checked'));
+    }
+}, /** @lends checkbox */{
+    live : function() {
+        this.liveBindTo('control', 'change', this.prototype._onChange);
+        return this.__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/checkbox/checkbox.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.
@@ -5467,23 +5275,25 @@ provide($);
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
-/* begin: ../../../common.blocks/menu-item/menu-item.js */
+/* begin: ../../../common.blocks/control/control.js */
 /**
- * @module menu-item
+ * @module control
  */
 
-modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define(
+    'control',
+    ['i-bem__dom', 'dom', 'next-tick'],
+    function(provide, BEMDOM, dom, nextTick) {
 
 /**
  * @exports
- * @class menu-item
+ * @class control
+ * @abstract
  * @bem
- *
- * @param val Value of item
  */
-provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     beforeSetMod : {
-        'hovered' : {
+        'focused' : {
             'true' : function() {
                 return !this.hasMod('disabled');
             }
@@ -5493,268 +5303,152 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.bindTo('pointerleave', this._onPointerLeave);
+                this._focused = dom.containsFocus(this.elem('control'));
+                this._focused?
+                    // if control is already in focus, we need to set focused mod
+                    this.setMod('focused') :
+                    // if block already has focused mod, we need to focus control
+                    this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
             }
         },
 
+        'focused' : {
+            'true' : function() {
+                this._focused || this._focus();
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+            }
+        },
+
+        'disabled' : {
+            '*' : function(modName, modVal) {
+                this.elem('control').prop(modName, !!modVal);
+            },
+
+            'true' : function() {
+                this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
+            }
+        }
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name') || '';
+    },
+
+    /**
+     * Returns control value
+     * @returns {String}
+     */
+    getVal : function() {
+        return this.elem('control').val();
+    },
+
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
+    },
+
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
+    },
+
+    _focus : function() {
+        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
+    },
+
+    _blur : function() {
+        this.elem('control').blur();
+    }
+}, /** @lends control */{
+    live : function() {
+        this
+            .liveBindTo('control', 'focusin', this.prototype._onFocus)
+            .liveBindTo('control', 'focusout', this.prototype._onBlur);
+
+        var focused = dom.getFocused();
+        if(focused.hasClass(this.buildClass('control'))) {
+            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
+            nextTick(function() {
+                if(focused[0] === dom.getFocused()[0]) {
+                    var block = focused.closest(_this.buildSelector());
+                    block && block.bem(_this.getName());
+                }
+            });
+        }
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/control/control.js */
+/* begin: ../../../desktop.blocks/control/control.js */
+/** @module control */
+
+modules.define(
+    'control',
+    function(provide, Control) {
+
+provide(Control.decl({
+    beforeSetMod : {
+        'hovered' : {
+            'true' : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
+    onSetMod : {
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this.delMod('hovered');
             }
-        }
-    },
+        },
 
-    /**
-     * Checks whether given value is equal to current value
-     * @param {String|Number} val
-     * @returns {Boolean}
-     */
-    isValEq : function(val) {
-        // NOTE: String(true) == String(1) -> false
-        return String(this.params.val) === String(val);
-    },
+        'hovered' : {
+            'true' : function() {
+                this.bindTo('mouseleave', this._onMouseLeave);
+            },
 
-    /**
-     * Returns item value
-     * @returns {*}
-     */
-    getVal : function() {
-        return this.params.val;
-    },
-
-    /**
-     * Returns item text
-     * @returns {String}
-     */
-    getText : function() {
-        return this.params.text || this.domElem.text();
-    },
-
-    _onPointerOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onPointerLeave : function() {
-        this.delMod('hovered');
-    },
-
-    _onPointerClick : function() {
-        this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
-    }
-}, /** @lends menu-item */{
-    live : function() {
-        var ptp = this.prototype;
-        this
-            .liveBindTo('pointerover', ptp._onPointerOver)
-            .liveBindTo('pointerclick', ptp._onPointerClick);
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/menu-item/menu-item.js */
-/* begin: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/**
- * @module keyboard__codes
- */
-modules.define('keyboard__codes', function(provide) {
-
-provide(/** @exports */{
-    BACKSPACE : 8,
-    TAB : 9,
-    ENTER : 13,
-    CAPS_LOCK : 20,
-    ESC : 27,
-    SPACE : 32,
-    PAGE_UP : 33,
-    PAGE_DOWN : 34,
-    END : 35,
-    HOME : 36,
-    LEFT : 37,
-    UP : 38,
-    RIGHT : 39,
-    DOWN : 40,
-    INSERT : 41,
-    DELETE : 42
-});
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/* begin: ../../../common.blocks/menu/_mode/menu_mode.js */
-/**
- * @module menu
- */
-
-modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
-
-/**
- * @exports
- * @class menu
- * @bem
- */
-provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._val = null;
-                this._isValValid = false;
+            '' : function() {
+                this.unbindFrom('mouseleave', this._onMouseLeave);
             }
         }
     },
 
-    _onKeyDown : function(e) {
-        if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
-            this
-                .unbindFromDoc('keydown', this._onKeyDown)
-                .bindToDoc('keyup', this._onKeyUp);
-
-            e.keyCode === keyCodes.SPACE && e.preventDefault();
-            this._onItemClick(this._hoveredItem, { source : 'keyboard' });
-        }
-        this.__base.apply(this, arguments);
+    _onMouseOver : function() {
+        this.setMod('hovered');
     },
 
-    _onKeyUp : function() {
-        this.unbindFromDoc('keyup', this._onKeyUp);
-        // it could be unfocused while is key being pressed
-        this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
-    },
-
-    /**
-     * Returns menu value
-     * @returns {*}
-     */
-    getVal : function() {
-        if(!this._isValValid) {
-            this._val = this._getVal();
-            this._isValValid = true;
-        }
-        return this._val;
-    },
-
-    /**
-     * @abstract
-     * @protected
-     * @returns {*}
-     */
-    _getVal : function() {
-        throw Error('_getVal is not implemented');
-    },
-
-    /**
-     * Sets menu value
-     * @param {*} val
-     * @returns {menu} this
-     */
-    setVal : function(val) {
-        if(this._setVal(val)) {
-            this._val = val;
-            this._isValValid = true;
-            this.emit('change');
-        }
-        return this;
-    },
-
-    /**
-     * @abstract
-     * @protected
-     * @param {*} val
-     * @returns {Boolean} returns true if value was changed
-     */
-    _setVal : function() {
-        throw Error('_setVal is not implemented');
-    },
-
-    _updateItemsCheckedMod : function(modVals) {
-        var items = this.getItems();
-        modVals.forEach(function(modVal, i) {
-            items[i].setMod('checked', modVal);
-        });
-    },
-
-    /**
-     * Sets content
-     * @override
-     */
-    setContent : function() {
-        var res = this.__base.apply(this, arguments);
-        this._isValValid = false;
-        this.emit('change'); // NOTE: potentially unwanted event could be emitted
-        return res;
+    _onMouseLeave : function() {
+        this.delMod('hovered');
+    }
+}, {
+    live : function() {
+        return this
+            .liveBindTo('mouseover', this.prototype._onMouseOver)
+            .__base.apply(this, arguments);
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/menu/_mode/menu_mode.js */
-/* begin: ../../../common.blocks/menu/_mode/menu_mode_check.js */
-/**
- * @module menu
- */
-
-modules.define('menu', function(provide, Menu) {
-
-/**
- * @exports
- * @class menu
- * @bem
- */
-provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
-    /**
-     * @override
-     */
-    _getVal : function() {
-        return this.getItems()
-            .filter(function(item) { return item.hasMod('checked'); })
-            .map(function(item) { return item.getVal(); });
-    },
-
-    /**
-     * @override
-     * @param {Array} vals
-     */
-    _setVal : function(vals) {
-        var wasChanged = false,
-            notFoundValsCnt = vals.length,
-            itemsCheckedVals = this.getItems().map(function(item) {
-                var isChecked = item.hasMod('checked'),
-                    hasEqVal = vals.some(function(val) {
-                        return item.isValEq(val);
-                    });
-                if(hasEqVal) {
-                    --notFoundValsCnt;
-                    isChecked || (wasChanged = true);
-                } else {
-                    isChecked && (wasChanged = true);
-                }
-                return hasEqVal;
-            });
-
-        if(!wasChanged || notFoundValsCnt)
-            return false;
-
-        this._updateItemsCheckedMod(itemsCheckedVals);
-
-        return wasChanged;
-    },
-
-    /**
-     * @override
-     */
-    _onItemClick : function(clickedItem) {
-        this.__base.apply(this, arguments);
-
-        this.getItems().forEach(function(item) {
-            item === clickedItem && item.toggleMod('checked');
-        });
-        this._isValValid = false;
-        this.emit('change');
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/menu/_mode/menu_mode_check.js */
+/* end: ../../../desktop.blocks/control/control.js */

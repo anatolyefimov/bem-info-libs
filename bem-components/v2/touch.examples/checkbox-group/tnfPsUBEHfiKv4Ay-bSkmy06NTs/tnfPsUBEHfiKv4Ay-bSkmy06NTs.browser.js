@@ -3205,71 +3205,6 @@ provide(/** @exports */{
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__config/jquery__config.js */
-/* begin: ../../../libs/bem-core/desktop.blocks/jquery/__config/jquery__config.js */
-/**
- * @module jquery__config
- * @description Configuration for jQuery
- */
-
-modules.define(
-    'jquery__config',
-    ['ua', 'objects'],
-    function(provide, ua, objects, base) {
-
-provide(
-    ua.msie && parseInt(ua.version, 10) < 9?
-        objects.extend(
-            base,
-            {
-                url : '//yastatic.net/jquery/1.11.1/jquery.min.js'
-            }) :
-        base);
-
-});
-
-/* end: ../../../libs/bem-core/desktop.blocks/jquery/__config/jquery__config.js */
-/* begin: ../../../libs/bem-core/desktop.blocks/ua/ua.js */
-/** 
- * @module ua
- * @description Detect some user agent features (works like jQuery.browser in jQuery 1.8)
- * @see http://code.jquery.com/jquery-migrate-1.1.1.js
- */
-
-modules.define('ua', function(provide) {
-
-var ua = navigator.userAgent.toLowerCase(),
-    match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
-        /(webkit)[ \/]([\w.]+)/.exec(ua) ||
-        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
-        /(msie) ([\w.]+)/.exec(ua) ||
-        ua.indexOf('compatible') < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) ||
-        [],
-    matched = {
-        browser : match[1] || '',
-        version : match[2] || '0'
-    },
-    browser = {};
-
-if(matched.browser) {
-    browser[matched.browser] = true;
-    browser.version = matched.version;
-}
-
-if(browser.chrome) {
-    browser.webkit = true;
-} else if(browser.webkit) {
-    browser.safari = true;
-}
-
-/**
- * @exports
- * @type Object
- */
-provide(browser);
-
-});
-
-/* end: ../../../libs/bem-core/desktop.blocks/ua/ua.js */
 /* begin: ../../../libs/bem-core/common.blocks/dom/dom.js */
 /**
  * @module dom
@@ -3409,237 +3344,279 @@ $(function() {
 });
 
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
-/* begin: ../../../common.blocks/menu/menu.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/ua.js */
 /**
- * @module menu
+ * @module ua
+ * @description Detect some user agent features
  */
 
-modules.define(
-    'menu',
-    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
-    function(provide, BEMDOM, Control, keyCodes) {
+modules.define('ua', ['jquery'], function(provide, $) {
 
-/** @const Number */
-var TIMEOUT_KEYBOARD_SEARCH = 1500;
+var win = window,
+    doc = document,
+    ua = navigator.userAgent,
+    platform = {},
+    device = {},
+    match;
 
-/**
- * @exports
- * @class menu
- * @augments control
- * @bem
- */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.prototype */{
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._hoveredItem = null;
-                this._items = null;
+if(match = ua.match(/Android\s+([\d.]+)/)) {
+    platform.android = match[1];
+} else if(ua.match(/\sHTC[\s_].*AppleWebKit/)) {
+    // фэйковый десктопный UA по умолчанию у некоторых HTC (например, HTC Sensation)
+    platform.android = '2.3';
+} else if(match = ua.match(/iPhone\sOS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.iphone = true;
+} else if(match = ua.match(/iPad.*OS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.ipad = true;
+} else if(match = ua.match(/Bada\/([\d.]+)/)) {
+    platform.bada = match[1];
+} else if(match = ua.match(/Windows\sPhone.*\s([\d.]+)/)) {
+    platform.wp = match[1];
+} else {
+    platform.other = true;
+}
 
-                this._lastTyping = {
-                    char : '',
-                    text : '',
-                    index : 0,
-                    time : 0
-                };
+var browser = {};
+if(win.opera) {
+    browser.opera = win.opera.version();
+} else if(match = ua.match(/\sCrMo\/([\d.]+)/)) {
+    browser.chrome = match[1];
+}
 
-                this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
-            }
-        },
+var support = {},
+    connection = navigator.connection;
 
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this
-                    .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
-                    .bindToDoc('keypress', this._onKeyPress);
-            },
+if(connection) {
+    var connections = {};
+    connections[connection.ETHERNET] = connections[connection.WIFI] = 'wifi';
+    connections[connection.CELL_3G] = '3g';
+    connections[connection.CELL_2G] = '2g';
+    support.connection = connections[connection.type];
+}
 
-            '' : function() {
-                this
-                    .unbindFromDoc('keydown', this._onKeyDown)
-                    .unbindFromDoc('keypress', this._onKeyPress)
-                    .__base.apply(this, arguments);
-                this._hoveredItem && this._hoveredItem.delMod('hovered');
-            }
-        },
+var videoElem = doc.createElement('video');
+support.video = !!(videoElem.canPlayType && videoElem.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
 
-        'disabled' : function(modName, modVal) {
-            this.getItems().forEach(function(menuItem){
-                menuItem.setMod(modName, modVal);
-            });
+support.svg = !!(doc.createElementNS && doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+
+var plugins = navigator.plugins,
+    i = plugins.length;
+if(plugins && i) {
+    var plugin;
+    while(plugin = plugins[--i])
+        if(plugin.name === 'Shockwave Flash' && (match = plugin.description.match(/Flash ([\d.]+)/))) {
+            support.flash = match[1];
+            break;
         }
-    },
+}
 
-    /**
-     * Returns items
-     * @returns {menu-item[]}
-     */
-    getItems : function() {
-        return this._items || (this._items = this.findBlocksInside('menu-item'));
-    },
+// http://stackoverflow.com/a/6603537
+var lastOrient = win.innerWidth > win.innerHeight,
+    lastWidth = win.innerWidth,
+    $win = $(win).bind('resize', function() {
+        var width = win.innerWidth,
+            height = win.innerHeight,
+            landscape = width > height;
 
-    /**
-     * Sets content
-     * @param {String|jQuery} content
-     * @returns {menu} this
-     */
-    setContent : function(content) {
-        BEMDOM.update(this.domElem, content);
-        this._hoveredItem = null;
-        this._items = null;
-        return this;
-    },
-
-    /**
-     * Search menu item by keyboard event
-     * @param {jQuery.Event} e
-     * @returns {menu-item}
-     */
-    searchItemByKeyboardEvent : function(e) {
-        var currentTime = +new Date(),
-            charCode = e.charCode,
-            char = String.fromCharCode(charCode).toLowerCase(),
-            lastTyping = this._lastTyping,
-            index = lastTyping.index,
-            isSameChar = char === lastTyping.char && lastTyping.text.length === 1,
-            items = this.getItems();
-
-        if(charCode <= keyCodes.SPACE || e.ctrlKey || e.altKey || e.metaKey) {
-            lastTyping.time = currentTime;
-            return null;
-        }
-
-        if(currentTime - lastTyping.time > TIMEOUT_KEYBOARD_SEARCH || isSameChar) {
-            lastTyping.text = char;
-        } else {
-            lastTyping.text += char;
-        }
-
-        lastTyping.char = char;
-        lastTyping.time = currentTime;
-
-        // If key is pressed again, then continue to search to next menu item
-        if(isSameChar && items[index].getText().search(lastTyping.char) === 0) {
-            index = index >= items.length - 1? 0 : index + 1;
-        }
-
-        // 2 passes: from index to items.length and from 0 to index.
-        var i = index, len = items.length;
-        while(i < len) {
-            if(this._doesItemMatchText(items[i], lastTyping.text)) {
-                lastTyping.index = i;
-                return items[i];
-            }
-
-            i++;
-
-            if(i === items.length) {
-                i = 0;
-                len = index;
-            }
-        }
-
-        return null;
-    },
-
-    _onItemHover : function(item) {
-        if(item.hasMod('hovered')) {
-            this._hoveredItem && this._hoveredItem.delMod('hovered');
-            this._scrollToItem(this._hoveredItem = item);
-        } else if(this._hoveredItem === item) {
-            this._hoveredItem = null;
-        }
-    },
-
-    _scrollToItem : function(item) {
-        var domElemOffsetTop = this.domElem.offset().top,
-            itemDomElemOffsetTop = item.domElem.offset().top,
-            relativeScroll;
-
-        if((relativeScroll = itemDomElemOffsetTop - domElemOffsetTop) < 0 ||
-            (relativeScroll =
-                itemDomElemOffsetTop +
-                item.domElem.outerHeight() -
-                domElemOffsetTop -
-                this.domElem.outerHeight()) > 0) {
-            this.domElem.scrollTop(this.domElem.scrollTop() + relativeScroll);
-        }
-    },
-
-    _onItemClick : function(item, data) {
-        this.emit('item-click', { item : item, source : data.source });
-    },
-
-    _onKeyDown : function(e) {
-        var keyCode = e.keyCode,
-            isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
-
-        if(isArrow && !e.shiftKey) {
-            e.preventDefault();
-
-            var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
-                items = this.getItems(),
-                len = items.length,
-                hoveredIdx = items.indexOf(this._hoveredItem),
-                nextIdx = hoveredIdx,
-                i = 0;
-
-            do {
-                nextIdx += dir;
-                nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
-                if(++i === len) return; // if we have no next item to hover
-            } while(items[nextIdx].hasMod('disabled'));
-
-            this._lastTyping.index = nextIdx;
-
-            items[nextIdx].setMod('hovered');
-        }
-    },
-
-    _onKeyPress : function(e) {
-        var item = this.searchItemByKeyboardEvent(e);
-        item && item.setMod('hovered');
-    },
-
-    _doesItemMatchText : function(item, text) {
-        return !item.hasMod('disabled') &&
-            item.getText().toLowerCase().search(text) === 0;
-    }
-}, /** @lends menu */{
-    live : function() {
-        this
-            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
-                this._onItemHover(e.target);
-            })
-            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {
-                this._onItemClick(e.target, data);
+        // http://alxgbsn.co.uk/2012/08/27/trouble-with-web-browser-orientation/
+        // check previous device width to disallow Android shrink page and change orientation on opening software keyboard
+        if(landscape !== lastOrient && width !== lastWidth) {
+            $win.trigger('orientchange', {
+                landscape : landscape,
+                width : width,
+                height : height
             });
 
-        return this.__base.apply(this, arguments);
-    }
-}));
+            lastOrient = landscape;
+            lastWidth = width;
+        }
+    });
+
+provide(/** @exports */{
+    /**
+     * User agent
+     * @type String
+     */
+    ua : ua,
+
+    /**
+     * iOS version
+     * @type String|undefined
+     */
+    ios : platform.ios,
+
+    /**
+     * Is iPhone
+     * @type Boolean|undefined
+     */
+    iphone : device.iphone,
+
+    /**
+     * Is iPad
+     * @type Boolean|undefined
+     */
+    ipad : device.ipad,
+
+    /**
+     * Android version
+     * @type String|undefined
+     */
+    android : platform.android,
+
+    /**
+     * Bada version
+     * @type String|undefined
+     */
+    bada : platform.bada,
+
+    /**
+     * Windows Phone version
+     * @type String|undefined
+     */
+    wp : platform.wp,
+
+    /**
+     * Undetected platform
+     * @type Boolean|undefined
+     */
+    other : platform.other,
+
+    /**
+     * Opera version
+     * @type String|undefined
+     */
+    opera : browser.opera,
+
+    /**
+     * Chrome version
+     * @type String|undefined
+     */
+    chrome : browser.chrome,
+
+    /**
+     * Screen size, one of: large, normal, small
+     * @type String
+     */
+    screenSize : screen.width > 320? 'large' : screen.width < 320? 'small' : 'normal',
+
+    /**
+     * Device pixel ratio
+     * @type Number
+     */
+    dpr : win.devicePixelRatio || 1,
+
+    /**
+     * Connection type, one of: wifi, 3g, 2g
+     * @type String
+     */
+    connection : support.connection,
+
+    /**
+     * Flash version
+     * @type String|undefined
+     */
+    flash : support.flash,
+
+    /**
+     * Is video supported?
+     * @type Boolean
+     */
+    video : support.video,
+
+    /**
+     * Is SVG supported?
+     * @type Boolean
+     */
+    svg : support.svg,
+
+    /**
+     * Viewport width
+     * @type Number
+     */
+    width : win.innerWidth,
+
+    /**
+     * Viewport height
+     * @type Number
+     */
+    height : win.innerHeight,
+
+    /**
+     * Is landscape oriented?
+     * @type Boolean
+     */
+    landscape : lastOrient
+});
 
 });
 
-/* end: ../../../common.blocks/menu/menu.js */
-/* begin: ../../../common.blocks/control/control.js */
+/* end: ../../../libs/bem-core/touch.blocks/ua/ua.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
 /**
- * @module control
+ * @module ua
+ * @description Use ua module to provide user agent features by modifiers and update some on orient change
+ */
+modules.define('ua', ['i-bem__dom'], function(provide, BEMDOM, ua) {
+
+provide(/** @exports */BEMDOM.decl(this.name,
+    {
+        onSetMod : {
+            'js' : {
+                'inited' : function() {
+                    this
+                        .setMod('platform',
+                            ua.ios? 'ios' :
+                                ua.android? 'android' :
+                                    ua.bada? 'bada' :
+                                        ua.wp? 'wp' :
+                                            ua.opera? 'opera' :
+                                                'other')
+                        .setMod('browser',
+                            ua.opera? 'opera' :
+                                ua.chrome? 'chrome' :
+                                    '')
+                        .setMod('ios', ua.ios? ua.ios.charAt(0) : '')
+                        .setMod('android', ua.android? ua.android.charAt(0) : '')
+                        .setMod('ios-subversion', ua.ios? ua.ios.match(/(\d\.\d)/)[1].replace('.', '') : '')
+                        .setMod('screen-size', ua.screenSize)
+                        .setMod('svg', ua.svg? 'yes' : 'no')
+                        .setMod('orient', ua.landscape? 'landscape' : 'portrait')
+                        .bindToWin(
+                            'orientchange',
+                            function(e, data) {
+                                ua.width = data.width;
+                                ua.height = data.height;
+                                ua.landscape = data.landscape;
+                                this.setMod('orient', data.landscape? 'landscape' : 'portrait');
+                            });
+                }
+            }
+        }
+    },
+    ua));
+
+});
+
+/* end: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
+/* begin: ../../../common.blocks/checkbox-group/checkbox-group.js */
+/**
+ * @module checkbox-group
  */
 
 modules.define(
-    'control',
-    ['i-bem__dom', 'dom', 'next-tick'],
-    function(provide, BEMDOM, dom, nextTick) {
+    'checkbox-group',
+    ['i-bem__dom', 'jquery', 'dom', 'checkbox'],
+    function(provide, BEMDOM, $, dom) {
 
+var undef;
 /**
  * @exports
- * @class control
- * @abstract
+ * @class checkbox-group
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -3651,53 +3628,41 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.containsFocus(this.elem('control'));
-                this._focused?
-                    // if control is already in focus, we need to set focused mod
-                    this.setMod('focused') :
-                    // if block already has focused mod, we need to focus control
-                    this.hasMod('focused') && this._focus();
-
-                this._tabIndex = this.elem('control').attr('tabindex');
-                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
-                    this.elem('control').removeAttr('tabindex');
+                this._inSetVal = false;
+                this._val = this._extractVal();
+                this._checkboxes = undef;
             }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.getCheckboxes().forEach(function(option) {
+                option.setMod(modName, modVal);
+            });
         },
 
         'focused' : {
             'true' : function() {
-                this._focused || this._focus();
+                if(dom.containsFocus(this.domElem)) return;
+
+                var checkboxes = this.getCheckboxes(),
+                    i = 0, checkbox;
+
+                while(checkbox = checkboxes[i++]) {
+                    if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
+                        return;
+                }
             },
 
             '' : function() {
-                this._focused && this._blur();
-            }
-        },
+                var focusedCheckbox = this.findBlockInside({
+                        block : 'checkbox',
+                        modName : 'focused',
+                        modVal : true
+                    });
 
-        'disabled' : {
-            '*' : function(modName, modVal) {
-                this.elem('control').prop(modName, !!modVal);
-            },
-
-            'true' : function() {
-                this.delMod('focused');
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').removeAttr('tabindex');
-            },
-
-            '' : function() {
-                typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').attr('tabindex', this._tabIndex);
+                focusedCheckbox && focusedCheckbox.delMod('focused');
             }
         }
-    },
-
-    /**
-     * Returns name of control
-     * @returns {String}
-     */
-    getName : function() {
-        return this.elem('control').attr('name') || '';
     },
 
     /**
@@ -3705,101 +3670,135 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
      * @returns {String}
      */
     getVal : function() {
-        return this.elem('control').val();
+        return this._val;
     },
 
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
+    /**
+     * Sets control value
+     * @param {Array[String]} val value
+     * @param {Object} [data] additional data
+     * @returns {checkbox-group} this
+     */
+    setVal : function(val, data) {
+        val = val.map(String);
 
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
-    },
+        var checkboxes = this.getCheckboxes(),
+            wasChanged = false,
+            notFoundValsCnt = val.length,
+            checkboxesCheckedModVals = checkboxes.map(function(checkbox) {
+                var isChecked = checkbox.hasMod('checked'),
+                    hasEqVal = !!~val.indexOf(checkbox.getVal());
 
-    _focus : function() {
-        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
-    }
-}, /** @lends control */{
-    live : function() {
-        this
-            .liveBindTo('control', 'focusin', this.prototype._onFocus)
-            .liveBindTo('control', 'focusout', this.prototype._onBlur);
-
-        var focused = dom.getFocused();
-        if(focused.hasClass(this.buildClass('control'))) {
-            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
-            nextTick(function() {
-                if(focused[0] === dom.getFocused()[0]) {
-                    var block = focused.closest(_this.buildSelector());
-                    block && block.bem(_this.getName());
+                if(hasEqVal) {
+                    --notFoundValsCnt;
+                    isChecked || (wasChanged = true);
+                } else {
+                    isChecked && (wasChanged = true);
                 }
+
+                return hasEqVal;
             });
+
+        if(wasChanged && !notFoundValsCnt) {
+            this._inSetVal = true;
+            checkboxes.forEach(function(checkbox, i) {
+                checkbox.setMod('checked', checkboxesCheckedModVals[i]);
+            });
+            this._inSetVal = false;
+            this._val = val;
+            this.emit('change', data);
         }
+
+        return this;
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.getCheckboxes()[0].getName();
+    },
+
+    /**
+     * Returns checkboxes
+     * @returns {Array[checkbox]}
+     */
+    getCheckboxes : function() {
+        return this._checkboxes || (this._checkboxes = this.findBlocksInside('checkbox'));
+    },
+
+    _extractVal : function() {
+        return this.getCheckboxes()
+            .filter(function(checkbox) {
+                return checkbox.hasMod('checked');
+            })
+            .map(function(checkbox) {
+                return checkbox.getVal();
+            });
+    },
+
+    _onCheckboxCheck : function() {
+        if(!this._inSetVal) {
+            this._val = this._extractVal();
+            this.emit('change');
+        }
+    },
+
+    _onCheckboxFocus : function(e) {
+        this.setMod('focused', e.target.getMod('focused'));
     }
-}));
-
-});
-
-/* end: ../../../common.blocks/control/control.js */
-/* begin: ../../../desktop.blocks/control/control.js */
-/** @module control */
-
-modules.define(
-    'control',
-    function(provide, Control) {
-
-provide(Control.decl({
-    beforeSetMod : {
-        'hovered' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
-    onSetMod : {
-        'disabled' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('hovered');
-            }
-        },
-
-        'hovered' : {
-            'true' : function() {
-                this.bindTo('mouseleave', this._onMouseLeave);
-            },
-
-            '' : function() {
-                this.unbindFrom('mouseleave', this._onMouseLeave);
-            }
-        }
-    },
-
-    _onMouseOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onMouseLeave : function() {
-        this.delMod('hovered');
-    }
-}, {
+}, /** @lends checkbox-group */{
     live : function() {
-        return this
-            .liveBindTo('mouseover', this.prototype._onMouseOver)
-            .__base.apply(this, arguments);
+        var ptp = this.prototype;
+        this
+            .liveInitOnBlockInsideEvent(
+                { modName : 'checked', modVal : '*' },
+                'checkbox',
+                ptp._onCheckboxCheck)
+            .liveInitOnBlockInsideEvent(
+                { modName : 'focused', modVal : '*' },
+                'checkbox',
+                ptp._onCheckboxFocus);
     }
 }));
 
 });
 
-/* end: ../../../desktop.blocks/control/control.js */
+/* end: ../../../common.blocks/checkbox-group/checkbox-group.js */
+/* begin: ../../../common.blocks/checkbox/checkbox.js */
+/**
+ * @module checkbox
+ */
+
+modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+
+/**
+ * @exports
+ * @class checkbox
+ * @augments control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
+    onSetMod : {
+        'checked' : function(modName, modVal) {
+            this.elem('control').prop(modName, modVal);
+        }
+    },
+
+    _onChange : function() {
+        this.setMod('checked', this.elem('control').prop('checked'));
+    }
+}, /** @lends checkbox */{
+    live : function() {
+        this.liveBindTo('control', 'change', this.prototype._onChange);
+        return this.__base.apply(this, arguments);
+    }
+}));
+
+});
+
+/* end: ../../../common.blocks/checkbox/checkbox.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.
@@ -5467,23 +5466,25 @@ provide($);
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerpressrelease.js */
-/* begin: ../../../common.blocks/menu-item/menu-item.js */
+/* begin: ../../../common.blocks/control/control.js */
 /**
- * @module menu-item
+ * @module control
  */
 
-modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define(
+    'control',
+    ['i-bem__dom', 'dom', 'next-tick'],
+    function(provide, BEMDOM, dom, nextTick) {
 
 /**
  * @exports
- * @class menu-item
+ * @class control
+ * @abstract
  * @bem
- *
- * @param val Value of item
  */
-provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     beforeSetMod : {
-        'hovered' : {
+        'focused' : {
             'true' : function() {
                 return !this.hasMod('disabled');
             }
@@ -5493,268 +5494,99 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.bindTo('pointerleave', this._onPointerLeave);
+                this._focused = dom.containsFocus(this.elem('control'));
+                this._focused?
+                    // if control is already in focus, we need to set focused mod
+                    this.setMod('focused') :
+                    // if block already has focused mod, we need to focus control
+                    this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
+            }
+        },
+
+        'focused' : {
+            'true' : function() {
+                this._focused || this._focus();
+            },
+
+            '' : function() {
+                this._focused && this._blur();
             }
         },
 
         'disabled' : {
+            '*' : function(modName, modVal) {
+                this.elem('control').prop(modName, !!modVal);
+            },
+
             'true' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('hovered');
+                this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
             }
         }
     },
 
     /**
-     * Checks whether given value is equal to current value
-     * @param {String|Number} val
-     * @returns {Boolean}
-     */
-    isValEq : function(val) {
-        // NOTE: String(true) == String(1) -> false
-        return String(this.params.val) === String(val);
-    },
-
-    /**
-     * Returns item value
-     * @returns {*}
-     */
-    getVal : function() {
-        return this.params.val;
-    },
-
-    /**
-     * Returns item text
+     * Returns name of control
      * @returns {String}
      */
-    getText : function() {
-        return this.params.text || this.domElem.text();
-    },
-
-    _onPointerOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onPointerLeave : function() {
-        this.delMod('hovered');
-    },
-
-    _onPointerClick : function() {
-        this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
-    }
-}, /** @lends menu-item */{
-    live : function() {
-        var ptp = this.prototype;
-        this
-            .liveBindTo('pointerover', ptp._onPointerOver)
-            .liveBindTo('pointerclick', ptp._onPointerClick);
-    }
-}));
-
-});
-
-/* end: ../../../common.blocks/menu-item/menu-item.js */
-/* begin: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/**
- * @module keyboard__codes
- */
-modules.define('keyboard__codes', function(provide) {
-
-provide(/** @exports */{
-    BACKSPACE : 8,
-    TAB : 9,
-    ENTER : 13,
-    CAPS_LOCK : 20,
-    ESC : 27,
-    SPACE : 32,
-    PAGE_UP : 33,
-    PAGE_DOWN : 34,
-    END : 35,
-    HOME : 36,
-    LEFT : 37,
-    UP : 38,
-    RIGHT : 39,
-    DOWN : 40,
-    INSERT : 41,
-    DELETE : 42
-});
-
-});
-
-/* end: ../../../libs/bem-core/common.blocks/keyboard/__codes/keyboard__codes.js */
-/* begin: ../../../common.blocks/menu/_mode/menu_mode.js */
-/**
- * @module menu
- */
-
-modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
-
-/**
- * @exports
- * @class menu
- * @bem
- */
-provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._val = null;
-                this._isValValid = false;
-            }
-        }
-    },
-
-    _onKeyDown : function(e) {
-        if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
-            this
-                .unbindFromDoc('keydown', this._onKeyDown)
-                .bindToDoc('keyup', this._onKeyUp);
-
-            e.keyCode === keyCodes.SPACE && e.preventDefault();
-            this._onItemClick(this._hoveredItem, { source : 'keyboard' });
-        }
-        this.__base.apply(this, arguments);
-    },
-
-    _onKeyUp : function() {
-        this.unbindFromDoc('keyup', this._onKeyUp);
-        // it could be unfocused while is key being pressed
-        this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
+    getName : function() {
+        return this.elem('control').attr('name') || '';
     },
 
     /**
-     * Returns menu value
-     * @returns {*}
+     * Returns control value
+     * @returns {String}
      */
     getVal : function() {
-        if(!this._isValValid) {
-            this._val = this._getVal();
-            this._isValValid = true;
-        }
-        return this._val;
+        return this.elem('control').val();
     },
 
-    /**
-     * @abstract
-     * @protected
-     * @returns {*}
-     */
-    _getVal : function() {
-        throw Error('_getVal is not implemented');
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
     },
 
-    /**
-     * Sets menu value
-     * @param {*} val
-     * @returns {menu} this
-     */
-    setVal : function(val) {
-        if(this._setVal(val)) {
-            this._val = val;
-            this._isValValid = true;
-            this.emit('change');
-        }
-        return this;
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
     },
 
-    /**
-     * @abstract
-     * @protected
-     * @param {*} val
-     * @returns {Boolean} returns true if value was changed
-     */
-    _setVal : function() {
-        throw Error('_setVal is not implemented');
+    _focus : function() {
+        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
     },
 
-    _updateItemsCheckedMod : function(modVals) {
-        var items = this.getItems();
-        modVals.forEach(function(modVal, i) {
-            items[i].setMod('checked', modVal);
-        });
-    },
-
-    /**
-     * Sets content
-     * @override
-     */
-    setContent : function() {
-        var res = this.__base.apply(this, arguments);
-        this._isValValid = false;
-        this.emit('change'); // NOTE: potentially unwanted event could be emitted
-        return res;
+    _blur : function() {
+        this.elem('control').blur();
     }
-}));
+}, /** @lends control */{
+    live : function() {
+        this
+            .liveBindTo('control', 'focusin', this.prototype._onFocus)
+            .liveBindTo('control', 'focusout', this.prototype._onBlur);
 
-});
-
-/* end: ../../../common.blocks/menu/_mode/menu_mode.js */
-/* begin: ../../../common.blocks/menu/_mode/menu_mode_check.js */
-/**
- * @module menu
- */
-
-modules.define('menu', function(provide, Menu) {
-
-/**
- * @exports
- * @class menu
- * @bem
- */
-provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
-    /**
-     * @override
-     */
-    _getVal : function() {
-        return this.getItems()
-            .filter(function(item) { return item.hasMod('checked'); })
-            .map(function(item) { return item.getVal(); });
-    },
-
-    /**
-     * @override
-     * @param {Array} vals
-     */
-    _setVal : function(vals) {
-        var wasChanged = false,
-            notFoundValsCnt = vals.length,
-            itemsCheckedVals = this.getItems().map(function(item) {
-                var isChecked = item.hasMod('checked'),
-                    hasEqVal = vals.some(function(val) {
-                        return item.isValEq(val);
-                    });
-                if(hasEqVal) {
-                    --notFoundValsCnt;
-                    isChecked || (wasChanged = true);
-                } else {
-                    isChecked && (wasChanged = true);
+        var focused = dom.getFocused();
+        if(focused.hasClass(this.buildClass('control'))) {
+            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
+            nextTick(function() {
+                if(focused[0] === dom.getFocused()[0]) {
+                    var block = focused.closest(_this.buildSelector());
+                    block && block.bem(_this.getName());
                 }
-                return hasEqVal;
             });
-
-        if(!wasChanged || notFoundValsCnt)
-            return false;
-
-        this._updateItemsCheckedMod(itemsCheckedVals);
-
-        return wasChanged;
-    },
-
-    /**
-     * @override
-     */
-    _onItemClick : function(clickedItem) {
-        this.__base.apply(this, arguments);
-
-        this.getItems().forEach(function(item) {
-            item === clickedItem && item.toggleMod('checked');
-        });
-        this._isValValid = false;
-        this.emit('change');
+        }
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/menu/_mode/menu_mode_check.js */
+/* end: ../../../common.blocks/control/control.js */

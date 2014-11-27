@@ -3205,71 +3205,6 @@ provide(/** @exports */{
 });
 
 /* end: ../../../libs/bem-core/common.blocks/jquery/__config/jquery__config.js */
-/* begin: ../../../libs/bem-core/desktop.blocks/jquery/__config/jquery__config.js */
-/**
- * @module jquery__config
- * @description Configuration for jQuery
- */
-
-modules.define(
-    'jquery__config',
-    ['ua', 'objects'],
-    function(provide, ua, objects, base) {
-
-provide(
-    ua.msie && parseInt(ua.version, 10) < 9?
-        objects.extend(
-            base,
-            {
-                url : '//yastatic.net/jquery/1.11.1/jquery.min.js'
-            }) :
-        base);
-
-});
-
-/* end: ../../../libs/bem-core/desktop.blocks/jquery/__config/jquery__config.js */
-/* begin: ../../../libs/bem-core/desktop.blocks/ua/ua.js */
-/** 
- * @module ua
- * @description Detect some user agent features (works like jQuery.browser in jQuery 1.8)
- * @see http://code.jquery.com/jquery-migrate-1.1.1.js
- */
-
-modules.define('ua', function(provide) {
-
-var ua = navigator.userAgent.toLowerCase(),
-    match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
-        /(webkit)[ \/]([\w.]+)/.exec(ua) ||
-        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
-        /(msie) ([\w.]+)/.exec(ua) ||
-        ua.indexOf('compatible') < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) ||
-        [],
-    matched = {
-        browser : match[1] || '',
-        version : match[2] || '0'
-    },
-    browser = {};
-
-if(matched.browser) {
-    browser[matched.browser] = true;
-    browser.version = matched.version;
-}
-
-if(browser.chrome) {
-    browser.webkit = true;
-} else if(browser.webkit) {
-    browser.safari = true;
-}
-
-/**
- * @exports
- * @type Object
- */
-provide(browser);
-
-});
-
-/* end: ../../../libs/bem-core/desktop.blocks/ua/ua.js */
 /* begin: ../../../libs/bem-core/common.blocks/dom/dom.js */
 /**
  * @module dom
@@ -3409,6 +3344,262 @@ $(function() {
 });
 
 /* end: ../../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/ua.js */
+/**
+ * @module ua
+ * @description Detect some user agent features
+ */
+
+modules.define('ua', ['jquery'], function(provide, $) {
+
+var win = window,
+    doc = document,
+    ua = navigator.userAgent,
+    platform = {},
+    device = {},
+    match;
+
+if(match = ua.match(/Android\s+([\d.]+)/)) {
+    platform.android = match[1];
+} else if(ua.match(/\sHTC[\s_].*AppleWebKit/)) {
+    // фэйковый десктопный UA по умолчанию у некоторых HTC (например, HTC Sensation)
+    platform.android = '2.3';
+} else if(match = ua.match(/iPhone\sOS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.iphone = true;
+} else if(match = ua.match(/iPad.*OS\s([\d_]+)/)) {
+    platform.ios = match[1].replace(/_/g, '.');
+    device.ipad = true;
+} else if(match = ua.match(/Bada\/([\d.]+)/)) {
+    platform.bada = match[1];
+} else if(match = ua.match(/Windows\sPhone.*\s([\d.]+)/)) {
+    platform.wp = match[1];
+} else {
+    platform.other = true;
+}
+
+var browser = {};
+if(win.opera) {
+    browser.opera = win.opera.version();
+} else if(match = ua.match(/\sCrMo\/([\d.]+)/)) {
+    browser.chrome = match[1];
+}
+
+var support = {},
+    connection = navigator.connection;
+
+if(connection) {
+    var connections = {};
+    connections[connection.ETHERNET] = connections[connection.WIFI] = 'wifi';
+    connections[connection.CELL_3G] = '3g';
+    connections[connection.CELL_2G] = '2g';
+    support.connection = connections[connection.type];
+}
+
+var videoElem = doc.createElement('video');
+support.video = !!(videoElem.canPlayType && videoElem.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+
+support.svg = !!(doc.createElementNS && doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+
+var plugins = navigator.plugins,
+    i = plugins.length;
+if(plugins && i) {
+    var plugin;
+    while(plugin = plugins[--i])
+        if(plugin.name === 'Shockwave Flash' && (match = plugin.description.match(/Flash ([\d.]+)/))) {
+            support.flash = match[1];
+            break;
+        }
+}
+
+// http://stackoverflow.com/a/6603537
+var lastOrient = win.innerWidth > win.innerHeight,
+    lastWidth = win.innerWidth,
+    $win = $(win).bind('resize', function() {
+        var width = win.innerWidth,
+            height = win.innerHeight,
+            landscape = width > height;
+
+        // http://alxgbsn.co.uk/2012/08/27/trouble-with-web-browser-orientation/
+        // check previous device width to disallow Android shrink page and change orientation on opening software keyboard
+        if(landscape !== lastOrient && width !== lastWidth) {
+            $win.trigger('orientchange', {
+                landscape : landscape,
+                width : width,
+                height : height
+            });
+
+            lastOrient = landscape;
+            lastWidth = width;
+        }
+    });
+
+provide(/** @exports */{
+    /**
+     * User agent
+     * @type String
+     */
+    ua : ua,
+
+    /**
+     * iOS version
+     * @type String|undefined
+     */
+    ios : platform.ios,
+
+    /**
+     * Is iPhone
+     * @type Boolean|undefined
+     */
+    iphone : device.iphone,
+
+    /**
+     * Is iPad
+     * @type Boolean|undefined
+     */
+    ipad : device.ipad,
+
+    /**
+     * Android version
+     * @type String|undefined
+     */
+    android : platform.android,
+
+    /**
+     * Bada version
+     * @type String|undefined
+     */
+    bada : platform.bada,
+
+    /**
+     * Windows Phone version
+     * @type String|undefined
+     */
+    wp : platform.wp,
+
+    /**
+     * Undetected platform
+     * @type Boolean|undefined
+     */
+    other : platform.other,
+
+    /**
+     * Opera version
+     * @type String|undefined
+     */
+    opera : browser.opera,
+
+    /**
+     * Chrome version
+     * @type String|undefined
+     */
+    chrome : browser.chrome,
+
+    /**
+     * Screen size, one of: large, normal, small
+     * @type String
+     */
+    screenSize : screen.width > 320? 'large' : screen.width < 320? 'small' : 'normal',
+
+    /**
+     * Device pixel ratio
+     * @type Number
+     */
+    dpr : win.devicePixelRatio || 1,
+
+    /**
+     * Connection type, one of: wifi, 3g, 2g
+     * @type String
+     */
+    connection : support.connection,
+
+    /**
+     * Flash version
+     * @type String|undefined
+     */
+    flash : support.flash,
+
+    /**
+     * Is video supported?
+     * @type Boolean
+     */
+    video : support.video,
+
+    /**
+     * Is SVG supported?
+     * @type Boolean
+     */
+    svg : support.svg,
+
+    /**
+     * Viewport width
+     * @type Number
+     */
+    width : win.innerWidth,
+
+    /**
+     * Viewport height
+     * @type Number
+     */
+    height : win.innerHeight,
+
+    /**
+     * Is landscape oriented?
+     * @type Boolean
+     */
+    landscape : lastOrient
+});
+
+});
+
+/* end: ../../../libs/bem-core/touch.blocks/ua/ua.js */
+/* begin: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
+/**
+ * @module ua
+ * @description Use ua module to provide user agent features by modifiers and update some on orient change
+ */
+modules.define('ua', ['i-bem__dom'], function(provide, BEMDOM, ua) {
+
+provide(/** @exports */BEMDOM.decl(this.name,
+    {
+        onSetMod : {
+            'js' : {
+                'inited' : function() {
+                    this
+                        .setMod('platform',
+                            ua.ios? 'ios' :
+                                ua.android? 'android' :
+                                    ua.bada? 'bada' :
+                                        ua.wp? 'wp' :
+                                            ua.opera? 'opera' :
+                                                'other')
+                        .setMod('browser',
+                            ua.opera? 'opera' :
+                                ua.chrome? 'chrome' :
+                                    '')
+                        .setMod('ios', ua.ios? ua.ios.charAt(0) : '')
+                        .setMod('android', ua.android? ua.android.charAt(0) : '')
+                        .setMod('ios-subversion', ua.ios? ua.ios.match(/(\d\.\d)/)[1].replace('.', '') : '')
+                        .setMod('screen-size', ua.screenSize)
+                        .setMod('svg', ua.svg? 'yes' : 'no')
+                        .setMod('orient', ua.landscape? 'landscape' : 'portrait')
+                        .bindToWin(
+                            'orientchange',
+                            function(e, data) {
+                                ua.width = data.width;
+                                ua.height = data.height;
+                                ua.landscape = data.landscape;
+                                this.setMod('orient', data.landscape? 'landscape' : 'portrait');
+                            });
+                }
+            }
+        }
+    },
+    ua));
+
+});
+
+/* end: ../../../libs/bem-core/touch.blocks/ua/__dom/ua__dom.js */
 /* begin: ../../../common.blocks/menu/menu.js */
 /**
  * @module menu
@@ -3747,59 +3938,6 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 });
 
 /* end: ../../../common.blocks/control/control.js */
-/* begin: ../../../desktop.blocks/control/control.js */
-/** @module control */
-
-modules.define(
-    'control',
-    function(provide, Control) {
-
-provide(Control.decl({
-    beforeSetMod : {
-        'hovered' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
-    onSetMod : {
-        'disabled' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.delMod('hovered');
-            }
-        },
-
-        'hovered' : {
-            'true' : function() {
-                this.bindTo('mouseleave', this._onMouseLeave);
-            },
-
-            '' : function() {
-                this.unbindFrom('mouseleave', this._onMouseLeave);
-            }
-        }
-    },
-
-    _onMouseOver : function() {
-        this.setMod('hovered');
-    },
-
-    _onMouseLeave : function() {
-        this.delMod('hovered');
-    }
-}, {
-    live : function() {
-        return this
-            .liveBindTo('mouseover', this.prototype._onMouseOver)
-            .__base.apply(this, arguments);
-    }
-}));
-
-});
-
-/* end: ../../../desktop.blocks/control/control.js */
 /* begin: ../../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js */
 /**
  * FastClick to jQuery module wrapper.
@@ -5690,7 +5828,7 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
 });
 
 /* end: ../../../common.blocks/menu/_mode/menu_mode.js */
-/* begin: ../../../common.blocks/menu/_mode/menu_mode_check.js */
+/* begin: ../../../common.blocks/menu/_mode/menu_mode_radio.js */
 /**
  * @module menu
  */
@@ -5702,39 +5840,34 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
+provide(Menu.decl({ modName : 'mode', modVal : 'radio' }, /** @lends menu.prototype */{
     /**
      * @override
      */
     _getVal : function() {
-        return this.getItems()
-            .filter(function(item) { return item.hasMod('checked'); })
-            .map(function(item) { return item.getVal(); });
+        var items = this.getItems(),
+            i = 0,
+            item;
+
+        while(item = items[i++])
+            if(item.hasMod('checked'))
+                return item.getVal();
     },
 
     /**
      * @override
-     * @param {Array} vals
      */
-    _setVal : function(vals) {
+    _setVal : function(val) {
         var wasChanged = false,
-            notFoundValsCnt = vals.length,
+            hasVal = false,
             itemsCheckedVals = this.getItems().map(function(item) {
-                var isChecked = item.hasMod('checked'),
-                    hasEqVal = vals.some(function(val) {
-                        return item.isValEq(val);
-                    });
-                if(hasEqVal) {
-                    --notFoundValsCnt;
-                    isChecked || (wasChanged = true);
-                } else {
-                    isChecked && (wasChanged = true);
-                }
-                return hasEqVal;
+                if(!item.isValEq(val)) return false;
+
+                item.hasMod('checked') || (wasChanged = true);
+                return hasVal = true;
             });
 
-        if(!wasChanged || notFoundValsCnt)
-            return false;
+        if(!hasVal) return false;
 
         this._updateItemsCheckedMod(itemsCheckedVals);
 
@@ -5747,14 +5880,22 @@ provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.protot
     _onItemClick : function(clickedItem) {
         this.__base.apply(this, arguments);
 
+        var isChanged = false;
         this.getItems().forEach(function(item) {
-            item === clickedItem && item.toggleMod('checked');
-        });
-        this._isValValid = false;
-        this.emit('change');
+            if(item === clickedItem) {
+                if(!item.hasMod('checked')) {
+                    item.setMod('checked', true);
+                    this._isValValid = false;
+                    isChanged = true;
+                }
+            } else {
+                item.delMod('checked');
+            }
+        }, this);
+        isChanged && this.emit('change');
     }
 }));
 
 });
 
-/* end: ../../../common.blocks/menu/_mode/menu_mode_check.js */
+/* end: ../../../common.blocks/menu/_mode/menu_mode_radio.js */
