@@ -1,8 +1,5 @@
 exports.deps = [
     {
-        "block": "i-jquery"
-    },
-    {
         "block": "i-jquery",
         "elem": "inherit"
     },
@@ -83,6 +80,9 @@ exports.deps = [
     },
     {
         "block": "i-ua"
+    },
+    {
+        "block": "i-jquery"
     },
     {
         "block": "i-jquery",

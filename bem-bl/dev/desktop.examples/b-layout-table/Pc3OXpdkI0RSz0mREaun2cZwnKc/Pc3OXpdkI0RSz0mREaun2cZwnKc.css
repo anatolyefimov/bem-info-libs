@@ -1,0 +1,27 @@
+/* ../../../blocks-desktop/b-layout-table/b-layout-table.css: begin */ /**/
+    .b-layout-table
+    {
+        font-size: 100%;
+    
+        width: 100%;
+    
+        border-collapse: collapse;
+    }
+    
+    .b-layout-table__gap,
+    .b-layout-table__cell
+    {
+        padding: 0;
+    
+        vertical-align: top;
+    }
+    
+/* ../../../blocks-desktop/b-layout-table/b-layout-table.css: end */ /**/
+
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: begin */ /**/
+    .b-layout-table
+    {
+        border: 1px solid;
+    }
+    
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: end */ /**/

@@ -1,18 +1,3 @@
-/* ../../../blocks-desktop/b-menu-vert/__item-content/b-menu-vert__item-content.css: begin */ /**/
-    .b-menu-vert__item-content
-    {
-        display: none;
-    }
-/* ../../../blocks-desktop/b-menu-vert/__item-content/b-menu-vert__item-content.css: end */ /**/
-
-/* ../../../blocks-desktop/b-menu-vert/__item-content/_visibility/b-menu-vert__item-content_visibility_visible.css: begin */ /**/
-    .b-menu-vert__item-content_visibility_visible
-    {
-        display: block;
-    }
-    
-/* ../../../blocks-desktop/b-menu-vert/__item-content/_visibility/b-menu-vert__item-content_visibility_visible.css: end */ /**/
-
 /* ../../../blocks-desktop/b-menu-vert/b-menu-vert.css: begin */ /**/
     .b-menu-vert__layout,
     .b-menu-vert__separator,
@@ -49,6 +34,21 @@
     }
     
 /* ./blocks/b-menu-vert/b-menu-vert.css: end */ /**/
+
+/* ../../../blocks-desktop/b-menu-vert/__item-content/b-menu-vert__item-content.css: begin */ /**/
+    .b-menu-vert__item-content
+    {
+        display: none;
+    }
+/* ../../../blocks-desktop/b-menu-vert/__item-content/b-menu-vert__item-content.css: end */ /**/
+
+/* ../../../blocks-desktop/b-menu-vert/__item-content/_visibility/b-menu-vert__item-content_visibility_visible.css: begin */ /**/
+    .b-menu-vert__item-content_visibility_visible
+    {
+        display: block;
+    }
+    
+/* ../../../blocks-desktop/b-menu-vert/__item-content/_visibility/b-menu-vert__item-content_visibility_visible.css: end */ /**/
 
 /* ../../../blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.css: begin */ /**/
     .b-link_pseudo_yes

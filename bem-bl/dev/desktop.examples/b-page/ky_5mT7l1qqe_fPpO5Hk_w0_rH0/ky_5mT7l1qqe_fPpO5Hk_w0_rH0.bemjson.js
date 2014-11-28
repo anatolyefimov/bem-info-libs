@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-page","head":[{"elem":"css","url":"_ky_5mT7l1qqe_fPpO5Hk_w0_rH0.css"},{"elem":"js","url":"_ky_5mT7l1qqe_fPpO5Hk_w0_rH0.js"}],"content":{"block":"b-page","title":"Page with link","content":"Page"}})

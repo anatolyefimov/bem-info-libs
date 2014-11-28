@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-icon","head":[{"elem":"css","url":"_6j59AYp6qnGpxpbT6og2698f11A.css"},{"elem":"js","url":"_6j59AYp6qnGpxpbT6og2698f11A.js"}],"content":{"block":"b-icon","mods":{"type":"simple"},"alt":"My icon"}})

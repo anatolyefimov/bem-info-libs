@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-page","head":[{"elem":"css","url":"_lbWXMZ9pQdmhbVLtXUI4D_pmCnY.css"},{"elem":"js","url":"_lbWXMZ9pQdmhbVLtXUI4D_pmCnY.js"}],"content":{"block":"b-page","title":"Page with link","head":[{"elem":"css","url":"example.css","ie":false},{"elem":"css","url":"example.ie.css","ie":"lt IE 8"},{"elem":"js","url":"example.js"}],"content":"Page"}})

@@ -1,0 +1,1 @@
+{"jsdocType":"root","modules":[{"jsdocType":"module","name":"i-system","exports":{"jsdocType":"class","name":"i-system","static":{"jsdocType":"type","jsType":"Object","props":[{"key":"start","val":{"jsdocType":"type","jsType":"Function","description":"System channel for tick, idle, wakeup messages"}}]},"bem":{"jsdocType":"bem","block":"i-system"}}}]}

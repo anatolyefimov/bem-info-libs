@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"i-menu"}];
+exports.blocks = [{"name":"i-menu"},{"name":"i-menu"},{"name":"i-menu"}];

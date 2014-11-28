@@ -1,17 +1,1 @@
-/* ../../../blocks-desktop/b-icon/b-icon.css: begin */ /**/
-    .b-icon
-    {
-        font: 0/0 a;
-    
-        border: 0;
-    
-    }
-    
-/* ../../../blocks-desktop/b-icon/b-icon.css: end */ /**/
-
-/* ./blocks/b-logo/b-logo.css: begin */ /**/
-    .b-logo
-    {
-        margin: 20px;
-    }
-/* ./blocks/b-logo/b-logo.css: end */ /**/
+.b-icon{font:0/0 a;border:0}.b-icon_type_simple{width:16px;height:16px;background:no-repeat url(http://yastatic.net/lego/_/ExOJSanIrX2IAis4l5gO2uX6M1E.png)}.b-logo{margin:20px}

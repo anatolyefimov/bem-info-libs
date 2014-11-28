@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-menu-horiz","head":[{"elem":"css","url":"_Gi3tRIHUL7A9_XRynR7NYRs1xEM.css"},{"elem":"js","url":"_Gi3tRIHUL7A9_XRynR7NYRs1xEM.js"}],"content":{"block":"b-menu-horiz","js":false,"mods":{"layout":"normal"},"content":[{"elem":"item","elemMods":{"state":"current"},"content":"Home"},{"elem":"item","content":"Office"}]}})

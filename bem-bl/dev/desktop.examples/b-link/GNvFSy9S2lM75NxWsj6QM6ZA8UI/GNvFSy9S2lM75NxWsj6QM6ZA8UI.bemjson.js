@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-link","head":[{"elem":"css","url":"_GNvFSy9S2lM75NxWsj6QM6ZA8UI.css"},{"elem":"js","url":"_GNvFSy9S2lM75NxWsj6QM6ZA8UI.js"}],"content":{"block":"b-link","url":"http://company.yandex.ru","title":"Click here to learn more","target":"_blank","content":"The best company all over the world"}})

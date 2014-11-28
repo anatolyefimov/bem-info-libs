@@ -1,5 +1,32 @@
 var BEMHTML = function() {
   var $$mode, $$block, $$elem, $$elemMods, $$mods;
+function __$wrapThis(ctx) {
+ctx._mode = $$mode;
+ctx.block = $$block;
+ctx.elem = $$elem;
+ctx.elemMods = $$elemMods;
+ctx.mods = $$mods;
+return ctx;
+};
+function __$wrapApply(applyc, ctx) {
+var __t$_mode = $$mode;
+$$mode = ctx._mode;
+var __t$block = $$block;
+$$block = ctx.block;
+var __t$elem = $$elem;
+$$elem = ctx.elem;
+var __t$elemMods = $$elemMods;
+$$elemMods = ctx.elemMods;
+var __t$mods = $$mods;
+$$mods = ctx.mods;
+var r = applyc(ctx);
+$$mode = __t$_mode;
+$$block = __t$block;
+$$elem = __t$elem;
+$$elemMods = __t$elemMods;
+$$mods = __t$mods;
+return r;
+};
   var cache,
       exports = {},
       xjst = (function (exports) {
@@ -486,10 +513,7 @@ var BEMHTML = function() {
                                             content: 'yes'
                                         }
                                     },
-                                    {
-                                        block: 'i-ua',
-                                        js: true
-                                    },
+                                    { block: 'i-ua' },
                                     __$ctx.ctx.head
                                 ]
                             },
@@ -607,10 +631,10 @@ var BEMHTML = function() {
                         undefined;
                     }
                     var data = this._links[this.ctx.link];
-                    return '', __r0 = this.ctx, this.ctx = data, __r1 = applyc(__$ctx), this.ctx = __r0, '', __r1;
+                    return '', __r0 = this.ctx, this.ctx = data, __r1 = __$wrapApply(applyc, this), this.ctx = __r0, '', __r1;
                 }
                 if (!cache || !__$ctx._cacheLog) {
-                    return _$6follow.call(__$ctx);
+                    return _$6follow.call(__$wrapThis(__$ctx));
                 } else {
                     undefined;
                 }
@@ -620,7 +644,7 @@ var BEMHTML = function() {
                     log: __$ctx._localLog.slice(),
                     link: __$ctx.ctx.link
                 });
-                var _$6res = _$6follow.call(__$ctx);
+                var _$6res = _$6follow.call(__$wrapThis(__$ctx));
                 __$ctx._cachePos = __$ctx._buf.length;
                 return _$6res;
             }
@@ -672,7 +696,7 @@ var BEMHTML = function() {
                                 key: entry[0],
                                 value: _$5setProperty(this, entry[0], entry[1])
                             };
-                        }, __$ctx).reverse();
+                        }, __$wrapThis(__$ctx)).reverse();
                         {
                             '';
                             var __r0 = __$ctx.ctx, __r1 = __r0.cache;
@@ -690,7 +714,7 @@ var BEMHTML = function() {
                         undefined;
                         _$5reverseLog.forEach(function (entry) {
                             _$5setProperty(this, entry.key, entry.value);
-                        }, __$ctx);
+                        }, __$wrapThis(__$ctx));
                     }
                     __$ctx._links = _$5oldLinks;
                     return _$5cached.res;
@@ -757,7 +781,7 @@ var BEMHTML = function() {
                         if (_$4isBEM) {
                             _$4BEM_.INTERNAL.buildClasses($$block, _$4v.elem, _$4v.elemMods || _$4v.mods, _$4buf);
                             var _$4mix = ('', __r10 = $$mode, $$mode = 'mix', __r11 = applyc(__$ctx), $$mode = __r10, '', __r11);
-                            _$4v.mix && (_$4mix = _$4mix ? _$4mix.concat(_$4v.mix) : _$4v.mix);
+                            _$4v.mix && (_$4mix = _$4mix ? [].concat(_$4mix, _$4v.mix) : _$4v.mix);
                             if (_$4mix) {
                                 var _$4visited = {};
                                 function _$4visitedKey(block, elem) {
@@ -933,7 +957,7 @@ var BEMHTML = function() {
                     var __r4 = $$elem;
                     $$elem = __$ctx.ctx.elem;
                     var __r5 = $$mods;
-                    $$mods = (_$0vBlock ? __$ctx.ctx.mods : $$mods) || {};
+                    $$mods = _$0vBlock ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
                     var __r6 = $$elemMods;
                     $$elemMods = __$ctx.ctx.elemMods || {};
                     {

@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"i-geolocation"}];
+exports.blocks = [{"name":"i-geolocation"},{"name":"i-geolocation"}];

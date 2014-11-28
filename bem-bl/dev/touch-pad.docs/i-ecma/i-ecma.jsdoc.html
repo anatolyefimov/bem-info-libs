@@ -1,0 +1,100 @@
+<h1 id="i-ecma__array-Module"><a href="#i-ecma__array-Module" class="anchor"></a>i-ecma__array Module</h1>
+<h2 id="i-ecma__array"><a href="#i-ecma__array" class="anchor"></a>i-ecma__array</h2>
+<h3 id="Instance-methods"><a href="#Instance-methods" class="anchor"></a>Instance methods</h3>
+<h4 id="indexOf---item,--fromIdx----→--Number-"><a href="#indexOf---item,--fromIdx----→--Number-" class="anchor"></a>indexOf ( item, [fromIdx] ) → {Number}</h4>
+<p>Finds the index of an element in an array</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>item {Object}</li>
+<li>[fromIdx] {Number}<br/>
+Starting from index (length - 1 - fromIdx, if fromIdx &lt; 0)</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Number}</p>
+<p>Element index or -1, if not found</p>
+<h4 id="forEach---callback,--ctx=null---"><a href="#forEach---callback,--ctx=null---" class="anchor"></a>forEach ( callback, [ctx=null] )</h4>
+<p>Calls the callback for each element</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}<br/>
+Called for each element</li>
+<li>[ctx=null] {Object}<br/>
+Callback context</li>
+</ul>
+<h4 id="map---callback,--ctx=null----→--Array-"><a href="#map---callback,--ctx=null----→--Array-" class="anchor"></a>map ( callback, [ctx=null] ) → {Array}</h4>
+<p>Creates array B from array A so that B[i] = callback(A[i])</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}<br/>
+Called for each element</li>
+<li>[ctx=null] {Object}<br/>
+Callback context</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Array}</p>
+<h4 id="filter---callback,--ctx----→--Array-"><a href="#filter---callback,--ctx----→--Array-" class="anchor"></a>filter ( callback, [ctx] ) → {Array}</h4>
+<p>Creates an array containing only the elements from the source array that the callback returns true for.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}<br/>
+Called for each element</li>
+<li>[ctx] {Object}<br/>
+Callback context</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Array}</p>
+<h4 id="reduce---callback,--initialVal----→--Object-"><a href="#reduce---callback,--initialVal----→--Object-" class="anchor"></a>reduce ( callback, [initialVal] ) → {Object}</h4>
+<p>Wraps the array using an accumulator</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}<br/>
+Called for each element</li>
+<li>[initialVal] {Object}<br/>
+Initial value of the accumulator</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Object}</p>
+<p>Accumulator</p>
+<h4 id="some---callback,--ctx=this----→--Boolean-"><a href="#some---callback,--ctx=this----→--Boolean-" class="anchor"></a>some ( callback, [ctx=this] ) → {Boolean}</h4>
+<p>Checks whether at least one element in the array meets the condition in the callback</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}</li>
+<li>[ctx=this] {Object}<br/>
+Callback context</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="every---callback,--ctx=this----→--Boolean-"><a href="#every---callback,--ctx=this----→--Boolean-" class="anchor"></a>every ( callback, [ctx=this] ) → {Boolean}</h4>
+<p>Checks whether every element in the array meets the condition in the callback</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>callback {Function}</li>
+<li>[ctx=this] {Object}<br/>
+Context of the callback call</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h1 id="i-ecma__function-Module"><a href="#i-ecma__function-Module" class="anchor"></a>i-ecma__function Module</h1>
+<h2 id="-type-----"><a href="#-type-----" class="anchor"></a><em>type</em> {*}</h2>
+<p>Привязывает контекст к функции</p>
+<h1 id="i-ecma__json-Module"><a href="#i-ecma__json-Module" class="anchor"></a>i-ecma__json Module</h1>
+<h2 id="i-ecma__json"><a href="#i-ecma__json" class="anchor"></a>i-ecma__json</h2>
+<h3 id="Instance-methods"><a href="#Instance-methods" class="anchor"></a>Instance methods</h3>
+<h4 id="stringify----"><a href="#stringify----" class="anchor"></a>stringify {*}</h4>
+<p>Преобразует значение в JSON-строку</p>
+<h4 id="parse---str---→--Object-"><a href="#parse---str---→--Object-" class="anchor"></a>parse ( str ) → {Object}</h4>
+<p>Считывает js-значение из строки</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>str {String}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Object}</p>
+<h1 id="i-ecma__object-Module"><a href="#i-ecma__object-Module" class="anchor"></a>i-ecma__object Module</h1>
+<p>Block i-ecma. Shim for some ES5 methods</p>
+<h2 id="-type-----"><a href="#-type-----" class="anchor"></a><em>type</em> {*}</h2>
+<p>Возвращает массив свойств объекта</p>
+<h1 id="i-ecma__trim-Module"><a href="#i-ecma__trim-Module" class="anchor"></a>i-ecma__trim Module</h1>
+<h2 id="-type-----"><a href="#-type-----" class="anchor"></a><em>type</em> {*}</h2>
+<p>Удаляет лишние пробелы из строки</p>

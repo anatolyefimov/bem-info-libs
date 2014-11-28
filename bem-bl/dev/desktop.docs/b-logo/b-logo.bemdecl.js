@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"b-logo"}];
+exports.blocks = [{"name":"b-logo"},{"name":"b-logo"}];

@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"b-menu-horiz"}];
+exports.blocks = [{"name":"b-menu-horiz"},{"name":"b-menu-horiz"},{"name":"b-menu-horiz"},{"name":"b-menu-horiz"},{"name":"b-menu-horiz","mods":[{"name":"layout","vals":[{"name":"complex"}]}]},{"name":"b-menu-horiz","mods":[{"name":"layout","vals":[{"name":"normal"}]}]},{"name":"b-menu-horiz","mods":[{"name":"layout","vals":[{"name":"normal"}]}]},{"name":"b-menu-horiz","mods":[{"name":"layout","vals":[{"name":"simple"}]}]},{"name":"b-menu-horiz","mods":[{"name":"layout","vals":[{"name":"simple"}]}]}];

@@ -1,4 +1,4 @@
-<h2 id="Описание">Описание</h2>
+<h2 id="Описание"><a href="#Описание" class="anchor"></a>Описание</h2>
 <p>Блок <strong>b-page</strong> создаёт теги верхнего уровня страницы:</p>
 <ul>
 <li><code>&lt;html&gt;</code></li>
@@ -6,43 +6,22 @@
 <li><code>&lt;body&gt;</code></li>
 </ul>
 <p>Именно он отвечает за то, какие подключить <strong>CSS</strong>- и <strong>JS</strong>-файлы к странице, выставление <code>meta</code> тегов, заголовка и так далее.</p>
-<h3 id="Объявление-блока-на-странице">Объявление блока на странице</h3>
+<h3 id="Объявление-блока-на-странице"><a href="#Объявление-блока-на-странице" class="anchor"></a>Объявление блока на странице</h3>
 <p>Декларация блока в <strong>BEMJSON</strong> начинается объявлением блока и указанием свойства <code>title</code>, которое превращается в тег <code>&lt;title&gt;</code> в <strong>HTML</strong>.</p>
-<pre><code class="lang-js">({
-block: &#39;b-page&#39;,
-title: &#39;Page with link&#39;,
-...
-})
-</code></pre>
+<!-- bem-example: desktop.examples/b-page/ky_5mT7l1qqe_fPpO5Hk_w0_rH0 -->
+
 <p>Указание свойства <code>head</code> дополняет элемент <code>head</code>, соответствующий <strong>HTML</strong> тегу <code>&lt;head&gt;</code>, элементами для подключения <strong>CSS</strong>- и <strong>JS</strong>-файлов:</p>
-<pre><code class="lang-js">({
-...
-head: [
-    { elem: &#39;css&#39;, url: &#39;example.css&#39;, ie: false },
-    { elem: &#39;css&#39;, url: &#39;example.ie.css&#39;, ie: &#39;lt IE 8&#39; },
-    { elem: &#39;js&#39;, url: &#39;example.js&#39; }
-],
-...
-})
-</code></pre>
+<!-- bem-example: desktop.examples/b-page/lbWXMZ9pQdmhbVLtXUI4D_pmCnY -->
+
 <p>Элемент <code>css</code> превращается в <strong>HTML</strong> в тег <code>&lt;link&gt;</code>, подключающий как <strong>CSS</strong>-стиль тот файл, что указан в свойстве <code>url</code> этого элемента. Также у такого элемента может быть свойство <code>ie</code>.
 Если это свойство <code>false</code>, то будут использоваться такие <code>condittional comments</code>, которые предотвратят использование этих стилей в <strong>IE</strong>. При строчном значении этого свойства тег <code>&lt;link&gt;</code>, будет обёрнут в соответствующий <code>conditional comment</code>, и этот стиль будет грузиться и использоваться указанных браузерах.</p>
 <p>Также есть возможность указывать свойство <code>content</code> для содержания тега <code>&lt;style&gt;</code>:</p>
-<pre><code class="lang-js">({
-...
-head: [
-    {
-        elem: &#39;css&#39;,
-        content: &#39;.b-blah { color: #f00&#39; }
-    },
-    ...
-],
-...
-})
-</code></pre>
+<!-- bem-example: desktop.examples/b-page/x9YjsQKPtqr3P-V-sO4SMsWrVc0 -->
+
+
 <p>Элемент <code>js</code> действует аналогично, подключая к странице <strong>JS</strong>-файлы при помощи тега <code>&lt;script&gt;</code>.</p>
 <p>Свойство <code>head</code> не описывает содержание <strong>HTML</strong>-тега <code>&lt;head&gt;</code> полностью, а лишь дополняет дефолтное, которое блок сам создаёт в своём <strong>BEMHTML</strong>-шаблоне.</p>
-<h4 id="Тег-`<meta>`-с-указанием-кодировки">Тег <code>&lt;meta&gt;</code> с указанием кодировки</h4>
+<h4 id="Тег-`<meta>`-с-указанием-кодировки"><a href="#Тег-`<meta>`-с-указанием-кодировки" class="anchor"></a>Тег <code>&lt;meta&gt;</code> с указанием кодировки</h4>
 <p><strong>BEMHTML</strong>:</p>
 <pre><code class="lang-js">content: [
 {
@@ -51,7 +30,7 @@ head: [
 },
 ...
 </code></pre>
-<h4 id="Тег-`<meta>`-для-использования---IE9----и-выше--в-максимальном---compatibility---режиме">Тег <code>&lt;meta&gt;</code> для использования <strong>IE9</strong> (и выше) в максимальном <strong>compatibility</strong> режиме</h4>
+<h4 id="Тег-`<meta>`-для-использования---IE9----и-выше--в-максимальном---compatibility---режиме"><a href="#Тег-`<meta>`-для-использования---IE9----и-выше--в-максимальном---compatibility---режиме" class="anchor"></a>Тег <code>&lt;meta&gt;</code> для использования <strong>IE9</strong> (и выше) в максимальном <strong>compatibility</strong> режиме</h4>
 <p><strong>BEMHTML</strong>:</p>
 <pre><code class="lang-js">content: [
 ...
@@ -61,7 +40,7 @@ head: [
 },
 ...
 </code></pre>
-<h4 id="Выставление-значения-тега-`<title>`-страницы-из-свойства">Выставление значения тега <code>&lt;title&gt;</code> страницы из свойства</h4>
+<h4 id="Выставление-значения-тега-`<title>`-страницы-из-свойства"><a href="#Выставление-значения-тега-`<title>`-страницы-из-свойства" class="anchor"></a>Выставление значения тега <code>&lt;title&gt;</code> страницы из свойства</h4>
 <pre><code class="lang-js">content: [
 ...
 {
@@ -70,7 +49,7 @@ head: [
 },
 ...
 </code></pre>
-<h4 id="Выставление-фавиконки">Выставление фавиконки</h4>
+<h4 id="Выставление-фавиконки"><a href="#Выставление-фавиконки" class="anchor"></a>Выставление фавиконки</h4>
 <pre><code class="lang-js">content: [
 ...
 this.ctx.favicon ? {
@@ -79,7 +58,7 @@ this.ctx.favicon ? {
 } : &#39;&#39;,
 ...
 </code></pre>
-<h4 id="Декларация-блока-`i-ua`">Декларация блока <code>i-ua</code></h4>
+<h4 id="Декларация-блока-`i-ua`"><a href="#Декларация-блока-`i-ua`" class="anchor"></a>Декларация блока <code>i-ua</code></h4>
 <pre><code class="lang-js">content: [
 ...
 {
@@ -88,54 +67,15 @@ this.ctx.favicon ? {
 ...
 </code></pre>
 <p>Аналогично указанию свойства <code>head</code>, может быть задано свойство <code>meta</code>, содержащее один или несколько элементов <code>meta</code>:</p>
-<pre><code class="lang-js">({
-...
-meta: {
-    elem: &#39;meta&#39;,
-    attrs: {
-        name: &#39;keywords&#39;,
-        content: &#39;js, css, html&#39;
-    }
-},
-...
-})
-</code></pre>
-<pre><code class="lang-js">({
-...
-meta: [
-    {
-        elem: &#39;meta&#39;,
-        attrs: {
-            name: &#39;keywords&#39;,
-            content: &#39;js, css, html&#39;
-        }
-    },
-    {
-        elem: &#39;meta&#39;,
-        attrs: {
-            name : &#39;description&#39;,
-            content : &#39;Yet another webdev blog&#39;
-        }
-    }
-]
-...
-})
-</code></pre>
+<!-- bem-example: desktop.examples/b-page/sw93cbccdEa4z1tdrT7CZWSpTTQ -->
+
+<!-- bem-example: desktop.examples/b-page/VM9U6OH_ODuZ9p-yTcccmm_l0Qw -->
+
 <p>Значением свойства <code>content</code> блока <code>b-page</code> может быть хеш-описание содержимого (если речь идёт лишь об одном блоке) или массив блоков, описанных хешами:</p>
-<pre><code class="lang-js">({
-...
-content: {
-    block: &#39;b-link&#39;,
-    mods: { pseudo: &#39;yes&#39;, togcolor: &#39;yes&#39;, color: &#39;green&#39; },
-    url: &#39;#&#39;,
-    target: &#39;_blank&#39;,
-    title: &#39;Кликни меня&#39;,
-    content: &#39;Псевдоссылка, меняющая цвет по клику&#39;
-}
-})
-</code></pre>
+<!-- bem-example: desktop.examples/b-page/Cgm7WMMXSOm-7DbAErLHX74ak88 -->
+
 <p>На блоки, содержащиеся в <code>content</code>, действуют их <strong>BEMHTML</strong>-шаблоны.</p>
-<h4 id="Отмена-автоматической-инициализации-блоков">Отмена автоматической инициализации блоков</h4>
+<h4 id="Отмена-автоматической-инициализации-блоков"><a href="#Отмена-автоматической-инициализации-блоков" class="anchor"></a>Отмена автоматической инициализации блоков</h4>
 <pre><code class="lang-js">noDeps: [
     { block: &#39;i-bem&#39;, elem: &#39;dom&#39;, mods: { init: &#39;auto&#39; } }
 ]

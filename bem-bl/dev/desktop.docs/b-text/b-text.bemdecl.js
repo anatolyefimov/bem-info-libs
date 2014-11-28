@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"b-text"}];
+exports.blocks = [{"name":"b-text"},{"name":"b-text","mods":[{"name":"type","vals":[{"name":"global"}]}]}];
