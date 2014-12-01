@@ -31,8 +31,8 @@
 <h5 id="Блоки-с-DOM-представлением"><a href="#Блоки-с-DOM-представлением" class="anchor"></a>Блоки с DOM-представлением</h5>
 <p>Блокам, реализованным на <code>bem-js</code>, могут соответствовать ноды в <code>HTML</code>. В этом случае говорится о том, что блоки имеют <code>DOM</code>-представление.</p>
 <p>В <code>HTML</code>-блоки на <code>bem-js</code> отличаются дополнительным <code>CSS</code>-классом <code>i-bem</code> и специальным форматом записи параметров блока в <code>data-bem</code>:</p>
-<pre><code class="lang-html">    &lt;div class=&quot;b-my-block i-bem&quot; data-bem=&quot;{ &#39;b-my-block&#39; : { name : &#39;b-my-block&#39;}}&quot;&gt;
-...
+<pre><code class="lang-html">&lt;div class=&quot;b-my-block i-bem&quot; data-bem=&quot;{ &#39;b-my-block&#39; : { name : &#39;b-my-block&#39;}}&quot;&gt;
+&lt;!--...--&gt;
 &lt;/div&gt;
 </code></pre>
 <p>Ниже подробно рассказано о <a href="#data.params">формате параметров в data-bem</a>.</p>
@@ -62,12 +62,9 @@
 <p>Согласно концепции, состояния блока или его элементов определяются модификаторами. Поэтому, чтобы динамически изменять состояния блоков и элементов, в <code>bem-js</code> есть специальные методы для установки и снятия модификаторов.</p>
 <p>В коде компонента можно записать, как блок или элемент должен отреагировать на изменение модификатора. Эта запись тоже декларативна.</p>
 <p>Например, блок <code>b-dropdowna</code> при установке модификатора <code>disabled</code> прячет показанный попап:</p>
-<pre><code class="lang-js">    BEM.DOM.decl(&#39;b-dropdowna&#39;, {
-
+<pre><code class="lang-js">BEM.DOM.decl(&#39;b-dropdowna&#39;, {
     onSetMod : {
-
         &#39;disabled&#39; : function(modName, modVal) {
-
             this._getSwitcher().setMod(modName, modVal);
             modVal == &#39;yes&#39; &amp;&amp; this.getPopup().hide();
         }
@@ -92,8 +89,7 @@
             this.domElem.append(&#39;Значение checkbox: &#39; + checkbox.val());
         }
     }
-}
-);
+});
 </code></pre>
 <h4 id="Доступ-к-bem-js-блоку-не-из-bem-js-блока"><a href="#Доступ-к-bem-js-блоку-не-из-bem-js-блока" class="anchor"></a>Доступ к bem-js-блоку не из bem-js-блока</h4>
 <p>В случае работы не из <code>bem-js-блока</code>, методы <code>findBlock</code>* недоступны. <code>js</code>-объект блока можно получить, используя метод <code>.bem()</code> <code>jQuery</code>-коллекции:</p>
@@ -112,13 +108,9 @@
 <h4 id="Переопределение-поведения"><a href="#Переопределение-поведения" class="anchor"></a>Переопределение поведения</h4>
 <p>Например, на сервисе существует необходимость модифицировать все блоки <code>b-dropdowna</code> так, чтобы они не закрывались по второму клику на псевдо-ссылку. В этом случае на уровне переопределения сервиса нужно сделать файл <code>blocks/b-dropdowna/b-dropdowna.js</code>, кастомизирующий поведение блока из библиотеки:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-dropdowna&#39;, {
-
     onSetMod : {
-
         &#39;js&#39; : function() {
-
             this._getSwitcher().on(&#39;click&#39;, this._on, this);
-
         }
     },
     _on : function() {
@@ -178,7 +170,8 @@
     },
     {
         // статические методы и свойства блока
-    });
+    }
+);
 </code></pre>
 <p>и</p>
 <pre><code class="lang-js">BEM.decl(&#39;i-request&#39;, {
@@ -187,26 +180,23 @@
     },
     {
         // статические методы и свойства блока
-});
+    }
+);
 </code></pre>
 <p>Вместо имени блока может быть указано более сложное описание, например, информация о предке:</p>
 <pre><code class="lang-js">BEM.decl({ name : &#39;b-dataprovider&#39;, baseBlock : &#39;i-request&#39; }, {
-
     get : function() {
         this.__base(); // вызов одноименного метода из i-request
         doSomething();
     }
-
 });
 </code></pre>
 <p>Тут указано, что блок <code>b-dataprovider</code> наследуется от блока <code>i-request</code> и переопределяет его метод <code>get</code>.</p>
 <p>В первом параметре (хеше) декларации может быть указано не только то, к какому блоку применить компонент, но и уточнён модификатор и/или его значение:</p>
 <pre><code class="lang-js">BEM.decl({ name : &#39;b-popup&#39;, modName : &#39;type&#39;, modVal : &#39;inplace&#39; }, {
-
     show : function() {
         doSomething();
     }
-
 });
 </code></pre>
 <p>Все методы, описанные в такой декларации, будут вызываться для таких блоков <code>b-popup</code>, которые в данный момент имеют модификатор <code>type</code>, установленный в <code>inplace</code>.</p>
@@ -218,56 +208,32 @@
 <p>Описание <code>callback</code>-функций для <code>onSetMod</code> представляет собой хеш вида:</p>
 <pre><code class="lang-js">{
     &#39;модификатор1&#39; : {
-
         &#39;значение1-модификатора1&#39; : function() { ... }, // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в значение &#39;значение1&#39;
-
         ...
-
         &#39;значениеN-модификатора1&#39; : function() { ... }, // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в значение &#39;значениеN&#39;
-
         &#39;*&#39; : function() { ... } // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в любое из значений
-
     },
-
     &#39;модификатор2&#39; : function() {}, // функция, которая будет вызвана при установке модификатора &#39;модификатор2&#39; в любое из значений
-
     ...
-
     &#39;модификаторN&#39; : {
-
         &#39;значение1-модификатораN&#39; : function() { ... },
-
         ...
-
         &#39;значениеN-модификатораN&#39; : function() { ... }
-
     }
-
 }
 </code></pre>
 <p>Описание <code>callback</code>-функций для <code>onElemSetMod</code> аналогично, за исключением того, что на верхнем уровне указывается имя элемента:</p>
 <pre><code class="lang-js">{
-
     &#39;элемент1&#39; : {
-
         &#39;модификатор1&#39; : {
-
             &#39;значение1-модификатора1&#39; : function() { ... }, // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в значение &#39;значение1&#39; для элемента &#39;элемент1&#39;
-
             ...
-
             &#39;значениеN-модификатора1&#39; : function() { ... }, // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в значение &#39;значениеN&#39; для элемента &#39;элемент1&#39;
-
             &#39;*&#39; : function() { ... } // функция, которая будет вызвана при установке модификатора &#39;модификатор1&#39; в любое из значений  для элемента &#39;элемент1&#39;
-
         }
-
     },
-
-    ...
-
+    //...
     &#39;элементN&#39; : function() { }, // функция, которая будет вызвана при установке любого модификатора в любое из значений для элемента &#39;элементN&#39;
-
 }
 </code></pre>
 <p>Параметры <code>callback</code>-функций:</p>
@@ -286,13 +252,9 @@
 <p>Если хоть один из вызовов этих функций вернет <code>false</code>, то установки модификатора не произойдет.</p>
 <p>Например:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-menu&#39;, {
-
     onElemSetMod : {
-
         &#39;trigger&#39; : {
-
             &#39;state&#39; : function(elem, modName, modVal) {
-
                 // тут описаны действия, которые нужно совершить при установке элементу &#39;trigger&#39; модификатора с именем &#39;state&#39; в любое значение
                 this
                     .toggleMod(
@@ -304,31 +266,21 @@
                         domElem : elem,
                         state : modVal
                     });
-
             }
-
         }
-
     },
 
     onTriggerClick : function(e) { // при клике на триггер
-
         e.preventDefault();
         this.toggleMod(e.data.domElem, &#39;state&#39;, &#39;opened&#39;); // устанавливаем или снимаем значение &#39;opened&#39; у модификатор &#39;state&#39; для элемента &#39;trigger&#39;
-
     }
-
 }, {
-
     live : function() {
-
         this
             .liveBindTo(&#39;trigger&#39;, &#39;click&#39;, function(e) { // слушаем live-клик на элементах &#39;trigger&#39;
                 this.onTriggerClick(e);
             });
-
     }
-
 });
 </code></pre>
 <p>В данном примере при вызове <code>toggleMod</code> внутри <code>onTriggerClick</code> будет вызвана соответствующая ей <code>callback</code>-функция из <code>onElemSetMod</code>.</p>
@@ -336,17 +288,13 @@
 Если существует необходимость выполнить часть кода после установки модификатора, нужно воспользоваться методом <code>.afterCurrentEvent()</code>.</p>
 <p>Пример ниже демонстрирует, что квадратик становится больше только после установки модификатора:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-square2&#39;, {
-
     onSetMod : {
-
         &#39;js&#39; : function() {
-
             var square = this;
 
             this.bindTo(&#39;click&#39;, function(){
                 square.setMod(&#39;size&#39;, &#39;big&#39;);
             });
-
         },
         &#39;size&#39; : function() {
             this.domElem.append(&#39;размер1: &#39;, this.domElem.width() + &#39;&lt;br/&gt;&#39;); // напишет 200
@@ -356,44 +304,32 @@
             });
         }
     }
-
 });
 </code></pre>
 <h5 id="Начало-работы-с-блоком--модификатор-`js`-"><a href="#Начало-работы-с-блоком--модификатор-`js`-" class="anchor"></a>Начало работы с блоком (модификатор <code>js</code>)</h5>
 <p>Блок начинает свою работу с действий, описанных в <code>callback</code>-функции на установку его модификатора <code>js</code> в значение <code>inited</code>:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-form-input&#39;, {
-
     onSetMod : {
-
         &#39;js&#39; : {
-
             &#39;inited&#39; : function() {
-
                 this
                     .bindTo(this.elem(&#39;input&#39;), {
                         &#39;focus&#39; : this.onFocus,
                         &#39;blur&#39;  : this.onBlur
                     })
-
             }
-
         }
-
     }
-
 });
 </code></pre>
 <p>Этот модификатор присваивается блоку в момент инициализации. Поскольку код обработчика модификатора выполняется до установки модификатора, эта функция-обработчик и является первой выполняющейся функцией блока.</p>
 <p>Модификаторы могут без ограничения присваиваться как блокам, имеющим <code>DOM</code>-представление, так и блокам без него. Так что, у блоков без <code>DOM</code>-представления первый исполняемый метод также задаётся как <code>callback</code> модификатора <code>js_inited</code>.</p>
 <p>В коде блоков можно встретить <code>callback</code>-функцию не на значение <code>inited</code> модификатора <code>js</code>, а на установку модификатора <code>js</code> в любое значение:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-form-input&#39;, {
-
     onSetMod : {
-
-    &#39;js&#39; : function() { // конструктор b-form-input
-        ...
+        &#39;js&#39; : function() { // конструктор b-form-input
+            ...
         }
-
     }
 });
 </code></pre>
@@ -403,11 +339,11 @@
 <p>Кроме реакции на модификаторы, в блоке могут быть определены его собственные методы. Определённые в блоке методы могут быть вызваны им самим или другими блоками.</p>
 <p>Например, так выглядит метод <code>.toggle()</code> блока <code>b-form-checkbox</code>:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-form-checkbox&#39;, {
-    ...
+    //...
     toggle : function() {
         this.toggleMod(&#39;checked&#39;, &#39;yes&#39;, &#39;&#39;);
     }
-    ...
+    //...
 });
 </code></pre>
 <h5 id="Переопределение-и-доопределение-методов-блока"><a href="#Переопределение-и-доопределение-методов-блока" class="anchor"></a>Переопределение и доопределение методов блока</h5>
@@ -441,22 +377,22 @@
             [-30, 2.07],
             [290, -0.39]
         ],
-        &#39;title&#39; : &#39;Какое-то название&#39;,
+        &#39;title&#39; : &#39;Какое-то название&#39;
     }
 }&quot;&gt;
-..
+&lt;!--...--&gt;
 &lt;/div&gt;
 </code></pre>
 <p>Для нескольких блоков на одной <code>DOM-ноде</code> <code>HTML</code> представление будет аналогично следующему:</p>
 <pre><code class="lang-html">&lt;div class=&quot;b-my-block b-my-second-block i-bem&quot; data-bem=&quot;{
     &#39;b-my-block&#39; : {
-        &#39;title&#39; : &#39;Какое-то название&#39;, // Этот блок имеет опциональный параметр title
+        &#39;title&#39; : &#39;Какое-то название&#39; // Этот блок имеет опциональный параметр title
     },
     &#39;b-my-second-block&#39; : {
         // У этого блока нет никаких опциональных параметров
     }
 }&quot;&gt;
-..
+&lt;!--...--&gt;
 &lt;/div&gt;
 </code></pre>
 <h5 id="DOM-представление-инициализированного-блока"><a href="#DOM-представление-инициализированного-блока" class="anchor"></a>DOM-представление инициализированного блока</h5>
@@ -468,13 +404,13 @@
         &#39;name&#39; : &#39;b-my-block&#39;
     }
 }&quot;&gt;
-..
+&lt;!--...--&gt;
 &lt;/div&gt;
 </code></pre>
 <p><code>DOM</code>-представление двух блоков после инициализации:</p>
 <pre><code class="lang-html">&lt;div class=&quot;b-my-block b-my-second-block b-my-block_js_inited b-my-second-block_js_inited i-bem&quot; data-bem=&quot;{
     &#39;b-my-block&#39; : {
-        &#39;name&#39; : &#39;b-my-block&#39;,
+        &#39;name&#39; : &#39;b-my-block&#39;
     },
     &#39;b-my-second-block&#39; : {
         &#39;name&#39; : &#39;b-my-second-block&#39;
@@ -484,7 +420,7 @@
 <p><code>DOM</code>-представление двух блоков, но инициализован только один из них:</p>
 <pre><code class="lang-html">&lt;div class=&quot;b-my-block b-my-second-block b-my-second-block_js_inited i-bem&quot; data-bem=&quot;{
     &#39;b-my-block&#39; : {
-        &#39;name&#39; : &#39;b-my-block&#39;,
+        &#39;name&#39; : &#39;b-my-block&#39;
     },
     &#39;b-my-second-block&#39; : {
         &#39;name&#39; : &#39;b-my-second-block&#39;
@@ -499,24 +435,16 @@
 Инициализация может происходить только на ключевые события для этого блока, например, клик по элементу этого блока.
 Рассмотрим на примере блока <code>b-link</code>:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-link&#39;, {
-
     _onClick : function(e) {
-
         e.preventDefault();
         this.trigger(&#39;click&#39;);
-
     }
-
 }, {
-
     live : function() {
-
         this.liveBindTo(&#39;click&#39;, function(e) {
             this._onClick(e);
         });
-
     }
-
 });
 </code></pre>
 <p>В статических свойствах блока предусмотрено специальное свойство <code>live</code> (<code>Function</code>|<code>Boolean</code>), отвечающее за инициализацию по требованию и за подписку на <code>live</code> события на <code>DOM</code>-элементах внутри такого блока.</p>
@@ -555,24 +483,16 @@
 <p>Для поиска элементов внутри блока используется метод <code>elem</code>. Результат этого метода кэшируется.</p>
 <p>Например:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-form-input&#39;, {
-
     doSomething : function() {
-
         this.elem(&#39;hint&#39;); // тут будут найдены элементы b-form-input__hint
-
     }
-
 });
 </code></pre>
 <p>Можно искать элементы внутри блока с учетом модификатора:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-menu&#39;, {
-
     doSomething : function() {
-
         this.elem(&#39;item&#39;, &#39;state&#39;, &#39;current&#39;); // тут будут найдены элементы b-menu__item_state_current
-
     }
-
 });
 </code></pre>
 <p>Некэширующий метод поиска элементов называется <code>findElem()</code>.</p>
@@ -590,7 +510,6 @@
 <p>В <code>bem-js</code> есть события, реализованные по паттерну делегированных событий, они называются <code>live</code>-события.</p>
 <p>Следующий пример демонстрирует работу с <code>live</code>-событием <code>click</code> для блоков <code>b-link</code>, содержащихся в определённой <code>DOM-ноде</code>. В данном случае контейнер и блок совпадают:</p>
 <pre><code class="lang-js">BEM.DOM.decl(&#39;b-link-example&#39;, {
-
     onSetMod: {
         &#39;js&#39;: function() {
             var link = this.findBlockInside(&#39;b-link&#39;);
