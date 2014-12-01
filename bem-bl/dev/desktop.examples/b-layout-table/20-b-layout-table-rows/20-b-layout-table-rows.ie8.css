@@ -18,6 +18,14 @@
     
 /* ../../../blocks-desktop/b-layout-table/b-layout-table.css: end */ /**/
 
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: begin */ /**/
+    .b-layout-table
+    {
+        border: 1px solid;
+    }
+    
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: end */ /**/
+
 /* ./blocks/b-layout-table/_layout/b-layout-table_layout_18-20-60.css: begin */ /**/
     .b-layout-table_layout_18-20-60 .b-layout-table__cell
     {

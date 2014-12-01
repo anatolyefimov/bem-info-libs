@@ -1,0 +1,90 @@
+<h1 id="i-jquery__debounce-Module"><a href="#i-jquery__debounce-Module" class="anchor"></a>i-jquery__debounce Module</h1>
+<h2 id="debounce---fn,-timeout,-invokeAsap,-ctx---→--Function-"><a href="#debounce---fn,-timeout,-invokeAsap,-ctx---→--Function-" class="anchor"></a>debounce ( fn, timeout, invokeAsap, ctx ) → {Function}</h2>
+<p>Организует задержку вызова функции</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>fn {Function}</li>
+<li>timeout {Number}</li>
+<li>invokeAsap {Boolean}</li>
+<li>ctx {Object}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Function}</p>
+<h2 id="throttle---fn,-timeout,-ctx---→--Function-"><a href="#throttle---fn,-timeout,-ctx---→--Function-" class="anchor"></a>throttle ( fn, timeout, ctx ) → {Function}</h2>
+<p>Ограничивает частоту вызова функции</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>fn {Function}</li>
+<li>timeout {Number}</li>
+<li>ctx {Object}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Function}</p>
+<h1 id="i-jquery__decodeuri-Module"><a href="#i-jquery__decodeuri-Module" class="anchor"></a>i-jquery__decodeuri Module</h1>
+<h2 id="decodeURI---str---→--String-"><a href="#decodeURI---str---→--String-" class="anchor"></a>decodeURI ( str ) → {String}</h2>
+<p>Decode URI</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>str {String}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{String}</p>
+<h2 id="decodeURIComponent---str---→--String-"><a href="#decodeURIComponent---str---→--String-" class="anchor"></a>decodeURIComponent ( str ) → {String}</h2>
+<p>Decode URI component</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>str {String}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{String}</p>
+<h1 id="i-jquery__observable-Module"><a href="#i-jquery__observable-Module" class="anchor"></a>i-jquery__observable Module</h1>
+<h2 id="i-jquery__observable-Class"><a href="#i-jquery__observable-Class" class="anchor"></a>i-jquery__observable Class</h2>
+<h3 id="Instance-methods"><a href="#Instance-methods" class="anchor"></a>Instance methods</h3>
+<h4 id="buildEventName---e---→--String---protected"><a href="#buildEventName---e---→--String---protected" class="anchor"></a>buildEventName ( e ) → {String}  protected</h4>
+<p>Builds full event name</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{String}</p>
+<h4 id="on---e,--data-,-fn,--ctx----→----observable-"><a href="#on---e,--data-,-fn,--ctx----→----observable-" class="anchor"></a>on ( e, [data], fn, [ctx] ) → {$.observable}</h4>
+<p>Adding event handler</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{$.observable}</p>
+<h4 id="un----e-,--fn-,--ctx----→----observable-"><a href="#un----e-,--fn-,--ctx----→----observable-" class="anchor"></a>un ( [e], [fn], [ctx] ) → {$.observable}</h4>
+<p>Removing event handler(s)</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[e] {String}<br/>
+Event type</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{$.observable}</p>
+<h4 id="trigger---e,--data----→----observable-"><a href="#trigger---e,--data----→----observable-" class="anchor"></a>trigger ( e, [data] ) → {$.observable}</h4>
+<p>Fires event handlers</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String | $.Event}<br/>
+Event</li>
+<li>[data] {Object}<br/>
+Additional data</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{$.observable}</p>

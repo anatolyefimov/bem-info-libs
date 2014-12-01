@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-menu-vert","head":[{"elem":"css","url":"_LT3q9DmOJ9hvpoQn__pOqTUXUHI.css"},{"elem":"js","url":"_LT3q9DmOJ9hvpoQn__pOqTUXUHI.js"}],"content":{"block":"b-menu-vert","content":[{"elem":"item","content":"Index"},{"elem":"item","content":"Contacts"}]}})

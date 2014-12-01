@@ -1,0 +1,1 @@
+({"block":"b-page","title":"b-logo","head":[{"elem":"css","url":"_xX8aZVND3pHUl_iUB3mJoaB-AxA.css"},{"elem":"js","url":"_xX8aZVND3pHUl_iUB3mJoaB-AxA.js"}],"content":{"block":"b-logo","content":{"elem":"link","url":"/","title":"logo","icon":{"elem":"icon","url":"http://yastatic.net/lego/_/ExOJSanIrX2IAis4l5gO2uX6M1E.png","alt":"logo"}}}})

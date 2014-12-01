@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"b-layout-table"}];
+exports.blocks = [{"name":"b-layout-table"},{"name":"b-layout-table"}];

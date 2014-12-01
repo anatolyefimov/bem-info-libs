@@ -35,6 +35,14 @@
     
 /* ../../../blocks-desktop/b-layout-table/b-layout-table.css: end */ /**/
 
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: begin */ /**/
+    .b-layout-table
+    {
+        border: 1px solid;
+    }
+    
+/* ../../../test.blocks/b-layout-table/b-layout-table.css: end */ /**/
+
 /* ../../../blocks-desktop/b-search/__layout/b-search__layout.css: begin */ /**/
     .b-search__layout-input
     {

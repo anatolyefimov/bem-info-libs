@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"b-search"}];
+exports.blocks = [{"name":"b-search"},{"name":"b-search"},{"name":"b-search","elems":[{"name":"layout"}]}];

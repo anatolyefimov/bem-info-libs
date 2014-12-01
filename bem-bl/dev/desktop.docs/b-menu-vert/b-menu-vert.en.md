@@ -11,3 +11,5 @@ There are two types of elements in this block:
 
  * `title`
  * `item`
+
+You can make **item-content** element visible using this modificator.

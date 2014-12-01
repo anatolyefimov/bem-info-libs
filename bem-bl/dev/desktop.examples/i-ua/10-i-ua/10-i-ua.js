@@ -1,5 +1,32 @@
 var BEMHTML = function() {
   var $$mode, $$block, $$elem, $$elemMods, $$mods;
+function __$wrapThis(ctx) {
+ctx._mode = $$mode;
+ctx.block = $$block;
+ctx.elem = $$elem;
+ctx.elemMods = $$elemMods;
+ctx.mods = $$mods;
+return ctx;
+};
+function __$wrapApply(applyc, ctx) {
+var __t$_mode = $$mode;
+$$mode = ctx._mode;
+var __t$block = $$block;
+$$block = ctx.block;
+var __t$elem = $$elem;
+$$elem = ctx.elem;
+var __t$elemMods = $$elemMods;
+$$elemMods = ctx.elemMods;
+var __t$mods = $$mods;
+$$mods = ctx.mods;
+var r = applyc(ctx);
+$$mode = __t$_mode;
+$$block = __t$block;
+$$elem = __t$elem;
+$$elemMods = __t$elemMods;
+$$mods = __t$mods;
+return r;
+};
   var cache,
       exports = {},
       xjst = (function (exports) {
@@ -377,7 +404,7 @@ var BEMHTML = function() {
                         url: this.ctx.url + '.ie' + v + '.css',
                         ie: 'IE ' + v
                     };
-                }, __$ctx);
+                }, __$wrapThis(__$ctx));
                 $228(__$ctx);
                 $$mode = __r2;
                 __$ctx.ctx = __r3;
@@ -646,7 +673,6 @@ var BEMHTML = function() {
         }
     }
     function $232(__$ctx) {
-        var __r0, __r1;
         function _$6follow() {
             if (this.ctx.link === 'no-follow') {
                 return undefined;
@@ -654,10 +680,10 @@ var BEMHTML = function() {
                 undefined;
             }
             var data = this._links[this.ctx.link];
-            return '', __r0 = this.ctx, this.ctx = data, __r1 = $1(__$ctx), this.ctx = __r0, '', __r1;
+            return '', __r0 = this.ctx, this.ctx = data, __r1 = __$wrapApply(applyc, this), this.ctx = __r0, '', __r1;
         }
         if (!cache || !__$ctx._cacheLog) {
-            return _$6follow.call(__$ctx);
+            return _$6follow.call(__$wrapThis(__$ctx));
         } else {
             undefined;
         }
@@ -667,7 +693,7 @@ var BEMHTML = function() {
             log: __$ctx._localLog.slice(),
             link: __$ctx.ctx.link
         });
-        var _$6res = _$6follow.call(__$ctx);
+        var _$6res = _$6follow.call(__$wrapThis(__$ctx));
         __$ctx._cachePos = __$ctx._buf.length;
         return _$6res;
         return;
@@ -732,7 +758,7 @@ var BEMHTML = function() {
                         key: entry[0],
                         value: _$5setProperty(this, entry[0], entry[1])
                     };
-                }, __$ctx).reverse();
+                }, __$wrapThis(__$ctx)).reverse();
                 {
                     '';
                     var __r0 = __$ctx.ctx, __r1 = __r0.cache;
@@ -750,7 +776,7 @@ var BEMHTML = function() {
                 undefined;
                 _$5reverseLog.forEach(function (entry) {
                     _$5setProperty(this, entry.key, entry.value);
-                }, __$ctx);
+                }, __$wrapThis(__$ctx));
             }
             __$ctx._links = _$5oldLinks;
             return _$5cached.res;
@@ -846,7 +872,7 @@ var BEMHTML = function() {
                 if (_$4isBEM) {
                     _$4BEM_.INTERNAL.buildClasses($$block, _$4v.elem, _$4v.elemMods || _$4v.mods, _$4buf);
                     var _$4mix = ('', __r10 = $$mode, $$mode = 'mix', __r11 = $188(__$ctx), $$mode = __r10, '', __r11);
-                    _$4v.mix && (_$4mix = _$4mix ? _$4mix.concat(_$4v.mix) : _$4v.mix);
+                    _$4v.mix && (_$4mix = _$4mix ? [].concat(_$4mix, _$4v.mix) : _$4v.mix);
                     if (_$4mix) {
                         var _$4visited = {};
                         function _$4visitedKey(block, elem) {
@@ -1006,7 +1032,7 @@ var BEMHTML = function() {
             var __r4 = $$elem;
             $$elem = __$ctx.ctx.elem;
             var __r5 = $$mods;
-            $$mods = (_$0vBlock ? __$ctx.ctx.mods : $$mods) || {};
+            $$mods = _$0vBlock ? __$ctx.ctx.mods || (__$ctx.ctx.mods = {}) : $$mods;
             var __r6 = $$elemMods;
             $$elemMods = __$ctx.ctx.elemMods || {};
             {
@@ -1313,7 +1339,7 @@ var hasIntrospection = (function(){'_';}).toString().indexOf('_') > -1,
     needCheckProps = true,
     testPropObj = { toString : '' };
 
-for(var i in testPropObj) { // fucking ie hasn't toString, valueOf in for
+for(var i in testPropObj) { // IE skips "toString" and "valueOf" in a for-in loop
     testPropObj.hasOwnProperty(i) && (needCheckProps = false);
 }
 
@@ -1447,6 +1473,7 @@ $.identify = function(obj, onlyGet) {
 };
 
 })(jQuery);
+
 /* end: ../../../blocks-common/i-jquery/__identify/i-jquery__identify.js */
 /* begin: ../../../blocks-common/i-jquery/__is-empty-object/i-jquery__is-empty-object.js */
 (function($) {
@@ -1461,6 +1488,10 @@ $.isEmptyObject || ($.isEmptyObject = function(obj) {
 /* end: ../../../blocks-common/i-jquery/__is-empty-object/i-jquery__is-empty-object.js */
 /* begin: ../../../blocks-common/i-jquery/__debounce/i-jquery__debounce.js */
 /**
+ * @module i-jquery__debounce
+ */
+
+/*
  * Debounce and throttle function's decorator plugin 1.0.6
  *
  * Copyright (c) 2009 Filatov Dmitry (alpha@zforms.ru)
@@ -1472,8 +1503,17 @@ $.isEmptyObject || ($.isEmptyObject = function(obj) {
 
 (function($) {
 
-$.extend({
+$.extend( /** @exports i-jquery__debounce */{
 
+    /**
+     * Организует задержку вызова функции
+     *
+     * @param {Function} fn
+     * @param {Number} timeout
+     * @param {Boolean} invokeAsap
+     * @param {Object} ctx
+     * @returns {Function}
+     */
     debounce : function(fn, timeout, invokeAsap, ctx) {
 
         if(arguments.length == 3 && typeof invokeAsap != 'boolean') {
@@ -1501,6 +1541,14 @@ $.extend({
 
     },
 
+    /**
+     * Ограничивает частоту вызова функции
+     *
+     * @param {Function} fn
+     * @param {Number} timeout
+     * @param {Object} ctx
+     * @returns {Function}
+     */
     throttle : function(fn, timeout, ctx) {
 
         var timer, args, needInvoke;
@@ -1529,8 +1577,13 @@ $.extend({
 });
 
 })(jQuery);
+
 /* end: ../../../blocks-common/i-jquery/__debounce/i-jquery__debounce.js */
 /* begin: ../../../blocks-common/i-jquery/__observable/i-jquery__observable.js */
+/**
+ * @module i-jquery__observable
+ */
+
 /**
  * Observable plugin
  *
@@ -1540,8 +1593,6 @@ $.extend({
  * http://www.gnu.org/licenses/gpl.html
  *
  * @version 1.0.0
- * @requires $.identify
- * @requires $.inherit
  */
 
 (function($) {
@@ -1550,7 +1601,11 @@ var storageExpando = '__' + (+new Date) + 'storage',
     getFnId = function(fn, ctx) {
         return $.identify(fn) + (ctx? $.identify(ctx) : '');
     },
-    Observable = /** @lends $.observable.prototype */{
+    /**
+     * @exports
+     * @class i-jquery__observable
+     */
+    Observable = /** @lends i-jquery__observable.prototype */{
 
         /**
          * Builds full event name
@@ -1732,12 +1787,12 @@ var storageExpando = '__' + (+new Date) + 'storage',
 $.observable = $.inherit(Observable, Observable);
 
 })(jQuery);
+
 /* end: ../../../blocks-common/i-jquery/__observable/i-jquery__observable.js */
 /* begin: ../../../blocks-common/i-bem/i-bem.js */
-/** @requires jquery.inherit */
-/** @requires jquery.isEmptyObject */
-/** @requires jquery.identify */
-/** @requires jquery.observable */
+/**
+ * @module i-bem
+ */
 
 (function($, undefined) {
 
@@ -1757,7 +1812,6 @@ var afterCurrentEventFns = [],
 
 /**
  * Communication channels
- * @static
  * @private
  * @type Object
  */
@@ -1765,7 +1819,6 @@ var afterCurrentEventFns = [],
 
 /**
  * Builds the name of the handler method for setting a modifier
- * @static
  * @private
  * @param {String} elemName Element name
  * @param {String} modName Modifier name
@@ -1783,7 +1836,6 @@ function buildModFnName(elemName, modName, modVal) {
 
 /**
  * Transforms a hash of modifier handlers to methods
- * @static
  * @private
  * @param {Object} modFns
  * @param {Object} props
@@ -1823,12 +1875,15 @@ function buildCheckMod(modName, modVal) {
 
 }
 
-/** @namespace */
-this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
+/**
+ * @exports
+ * @class i-bem
+ * @bem
+ */
+this.BEM = $.inherit($.observable, /** @lends i-bem.prototype */ {
 
     /**
      * @class Base block for creating BEM blocks
-     * @constructs
      * @private
      * @param {Object} mods Block modifiers
      * @param {Object} params Block parameters
@@ -2095,7 +2150,7 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Function after successfully changing the modifier of the block/nested element
-     * @protected
+     * @private
      * @param {String} modName Modifier name
      * @param {String} modVal Modifier value
      * @param {String} oldModVal Old modifier value
@@ -2246,13 +2301,12 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
      */
     destruct : function() {}
 
-}, {
+}, /** @lends i-bem */{
 
     _name : 'i-bem',
 
     /**
      * Storage for block declarations (hash by block name)
-     * @static
      * @protected
      * @type Object
      */
@@ -2260,7 +2314,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Declares blocks and creates a block class
-     * @static
      * @protected
      * @param {String|Object} decl Block name (simple syntax) or description
      * @param {String} decl.block|decl.name Block name
@@ -2351,7 +2404,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Factory method for creating an instance of the block named
-     * @static
      * @param {String|Object} block Block name or description
      * @param {Object} [params] Block parameters
      * @returns {BEM}
@@ -2366,7 +2418,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Returns the name of the current block
-     * @static
      * @protected
      * @returns {String}
      */
@@ -2378,7 +2429,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Retrieves the name of an element nested in a block
-     * @static
      * @private
      * @param {Object} elem Nested element
      * @returns {String|undefined}
@@ -2387,7 +2437,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
     /**
      * Adds a function to the queue for executing after the "current event"
-     * @static
      * @protected
      * @param {Function} fn
      * @param {Object} ctx
@@ -2481,13 +2530,14 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 /**
  * Block i-ecma. Shim for some ES5 methods
  *
- * @block i-ecma
+ * @module i-ecma__object
  */
 (function() {
 
 /**
  * Возвращает массив свойств объекта
  *
+ * @exports
  * @param {Object} obj объект
  * @returns {Array}
  */
@@ -2504,11 +2554,20 @@ Object.keys || (Object.keys = function(obj) {
 
 /* end: ../../../blocks-common/i-ecma/__object/i-ecma__object.js */
 /* begin: ../../../blocks-common/i-ecma/__array/i-ecma__array.js */
+/**
+ * @module i-ecma__array
+ */
+
 (function() {
 
 var ptp = Array.prototype,
     toStr = Object.prototype.toString,
-    methods = {
+    /**
+     * @exports
+     * @class i-ecma__array
+     * @bem
+     */
+    methods = /** @lends i-ecma__array.prototype */ {
 
         /**
          * Finds the index of an element in an array
@@ -2572,7 +2631,7 @@ var ptp = Array.prototype,
         },
 
         /**
-         * Creates an array containing only the elements from the source array that the callback returns true for. 
+         * Creates an array containing only the elements from the source array that the callback returns true for.
          * @param {Function} callback Called for each element
          * @param {Object} [ctx] Callback context
          * @returns {Array}
@@ -2668,10 +2727,17 @@ Array.isArray || (Array.isArray = function(obj) {
 
 /* end: ../../../blocks-common/i-ecma/__array/i-ecma__array.js */
 /* begin: ../../../blocks-common/i-ecma/__function/i-ecma__function.js */
+/**
+ * @module i-ecma__function
+ */
 (function() {
 
 var slice = Array.prototype.slice;
 
+/**
+ * Привязывает контекст к функции
+ * @exports
+ */
 Function.prototype.bind || (Function.prototype.bind = function(ctx) {
 
     var fn = this,
@@ -2684,10 +2750,13 @@ Function.prototype.bind || (Function.prototype.bind = function(ctx) {
 });
 
 })();
+
 /* end: ../../../blocks-common/i-ecma/__function/i-ecma__function.js */
 /* begin: ../../../blocks-common/i-bem/__internal/i-bem__internal.js */
-/** @fileOverview Module for internal BEM helpers */
-/** @requires BEM */
+/**
+ * Module for internal BEM helpers
+ * @module  i-bem__internal
+ */
 
 (function(BEM, $, undefined) {
 
@@ -2733,7 +2802,12 @@ function buildElemClass(block, name, modName, modVal, buffer) {
 
 }
 
-BEM.INTERNAL = {
+/**
+ * @exports
+ * @class i-bem__internal
+ * @bem
+ */
+BEM.INTERNAL = /** @lends i-bem__internal.prototype */{
 
     NAME_PATTERN : NAME_PATTERN,
 
@@ -2844,10 +2918,12 @@ BEM.INTERNAL = {
 }
 
 })(BEM, jQuery);
+
 /* end: ../../../blocks-common/i-bem/__internal/i-bem__internal.js */
 /* begin: ../../../blocks-common/i-bem/__dom/i-bem__dom.js */
-/** @requires BEM */
-/** @requires BEM.INTERNAL */
+/**
+ * @module i-bem__dom
+ */
 
 (function(BEM, $, undefined) {
 
@@ -2863,7 +2939,6 @@ var win = $(window),
 
 /**
  * Storage for blocks by unique key
- * @static
  * @private
  * @type Object
  */
@@ -3100,13 +3175,13 @@ $.fn.bem = function(blockName, params) {
 /**
  * Provides methods for work with DOM tree
  *
- * @block i-bem
- * @mod default
+ * @exports
+ * @class BEMDOM
+ * @bem
  */
-var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
+var DOM = BEM.DOM = BEM.decl('i-bem__dom',  /** @lends BEMDOM.prototype */ {
     /**
      * @class Base block for creating BEM blocks that have DOM representation
-     * @constructs
      * @private
      * @param {jQuery} domElem DOM element that the block is created on
      * @param {Object} params Block parameters
@@ -3835,7 +3910,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     }
 
-}, {
+}, /** @lends BEMDOM */{
 
     /**
      * Scope
@@ -3893,7 +3968,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Initializes blocks on a fragment of the DOM tree
-     * @static
      * @protected
      * @param {jQuery} [ctx=document] Root DOM node
      * @returns {jQuery} ctx Initialization context
@@ -3925,7 +3999,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Destroys blocks on a fragment of the DOM tree
-     * @static
      * @protected
      * @param {Boolean} [keepDOM=false] Whether to keep DOM nodes in the document
      * @param {jQuery} ctx Root DOM node
@@ -3957,17 +4030,17 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Replaces a fragment of the DOM tree inside the context, destroying old blocks and intializing new ones
-     * @static
      * @protected
      * @param {jQuery} ctx Root DOM node
      * @param {jQuery|String} content New content
      * @param {Function} [callback] Handler to be called after initialization
      * @param {Object} [callbackCtx] Handler's context
+     * @returns {jQuery} ctx Initialization context
      */
     update : function(ctx, content, callback, callbackCtx) {
 
         this.destruct(ctx, true);
-        this.init(ctx.html(content), callback, callbackCtx);
+        return this.init(ctx.html(content), callback, callbackCtx);
 
     },
 
@@ -3975,11 +4048,12 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
      * Changes a fragment of the DOM tree including the context and initializes blocks.
      * @param {jQuery} ctx Root DOM node
      * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} ctx Initialization context
      */
     replace : function(ctx, content) {
 
         this.destruct(true, ctx);
-        this.init($(content).replaceAll(ctx));
+        return this.init($(content).replaceAll(ctx));
 
     },
 
@@ -3987,10 +4061,11 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
      * Adds a fragment of the DOM tree at the end of the context and initializes blocks
      * @param {jQuery} ctx Root DOM node
      * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} ctx Initialization context
      */
     append : function(ctx, content) {
 
-        this.init($(content).appendTo(ctx));
+        return this.init($(content).appendTo(ctx));
 
     },
 
@@ -3998,10 +4073,11 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
      * Adds a fragment of the DOM tree at the beginning of the context and initializes blocks
      * @param {jQuery} ctx Root DOM node
      * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} ctx Initialization context
      */
     prepend : function(ctx, content) {
 
-        this.init($(content).prependTo(ctx));
+        return this.init($(content).prependTo(ctx));
 
     },
 
@@ -4009,10 +4085,11 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
      * Adds a fragment of the DOM tree before the context and initializes blocks
      * @param {jQuery} ctx Contextual DOM node
      * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} ctx Initialization context
      */
     before : function(ctx, content) {
 
-        this.init($(content).insertBefore(ctx));
+        return this.init($(content).insertBefore(ctx));
 
     },
 
@@ -4020,16 +4097,16 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
      * Adds a fragment of the DOM tree after the context and initializes blocks
      * @param {jQuery} ctx Contextual DOM node
      * @param {jQuery|String} content Content to be added
+     * @returns {jQuery} ctx Initialization context
      */
     after : function(ctx, content) {
 
-        this.init($(content).insertAfter(ctx));
+        return this.init($(content).insertAfter(ctx));
 
     },
 
     /**
      * Builds a full name for a live event
-     * @static
      * @private
      * @param {String} e Event name
      * @returns {String}
@@ -4136,7 +4213,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for live initialization for an event on DOM elements of a block or its elements
-     * @static
      * @protected
      * @param {String} [elemName] Element name or names (separated by spaces)
      * @param {String} event Event name
@@ -4150,7 +4226,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for subscribing to live events on DOM elements of a block or its elements
-     * @static
      * @protected
      * @param {String|Object} [to] Description (object with modName, modVal, elem) or name of the element or elements (space-separated)
      * @param {String} event Event name
@@ -4193,7 +4268,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for unsubscribing from live events on DOM elements of a block or its elements
-     * @static
      * @protected
      * @param {String} [elem] Name of the element or elements (space-separated)
      * @param {String} event Event name
@@ -4228,7 +4302,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for live initialization when a different block is initialized
-     * @static
      * @private
      * @param {String} event Event name
      * @param {String} blockName Name of the block that should trigger a reaction when initialized
@@ -4254,7 +4327,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for live initialization for a different block's event on the current block's DOM element
-     * @static
      * @protected
      * @param {String} event Event name
      * @param {String} blockName Name of the block that should trigger a reaction when initialized
@@ -4268,7 +4340,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Helper for live initialization for a different block's event inside the current block
-     * @static
      * @protected
      * @param {String} event Event name
      * @param {String} blockName Name of the block that should trigger a reaction when initialized
@@ -4283,7 +4354,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
     /**
      * Helper for live initialization when a different block is initialized on a DOM element of the current block
      * @deprecated - use liveInitOnBlockEvent
-     * @static
      * @protected
      * @param {String} blockName Name of the block that should trigger a reaction when initialized
      * @param {Function} callback Handler to be called after successful initialization in the new block's context
@@ -4297,7 +4367,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
     /**
      * Helper for live initialization when a different block is initialized inside the current block
      * @deprecated - use liveInitOnBlockInsideEvent
-     * @static
      * @protected
      * @param {String} blockName Name of the block that should trigger a reaction when initialized
      * @param {Function} [callback] Handler to be called after successful initialization in the new block's context
@@ -4310,7 +4379,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Adds a live event handler to a block, based on a specified element where the event will be listened for
-     * @static
      * @protected
      * @param {jQuery} [ctx] The element in which the event will be listened for
      * @param {String} e Event name
@@ -4328,7 +4396,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Removes the live event handler from a block, based on a specified element where the event was being listened for
-     * @static
      * @protected
      * @param {jQuery} [ctx] The element in which the event was being listened for
      * @param {String} e Event name
@@ -4346,7 +4413,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
     /**
      * Adds a live event handler to a block, based on a specified element where the event will be listened for
      * @deprecated Use on
-     * @static
      * @protected
      * @param {jQuery} ctx The element in which the event will be listened for
      * @param {String} e Event name
@@ -4362,7 +4428,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Adds a live event handler to a block, based on a specified element where the event will be listened for
-     * @static
      * @private
      * @param {jQuery} ctx The element in which the event will be listened for
      * @param {String} e  Event name
@@ -4417,7 +4482,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
     /**
      * Removes a live event handler from a block, based on a specified element where the event was being listened for
      * @deprecated Use on
-     * @static
      * @protected
      * @param {jQuery} ctx The element in which the event was being listened for
      * @param {String} e Event name
@@ -4432,7 +4496,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Removes a live event handler from a block, based on a specified element where the event was being listened for
-     * @static
      * @private
      * @param {jQuery} ctx The element in which the event was being listened for
      * @param {String} e Event name
@@ -4465,7 +4528,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Retrieves the name of an element nested in a block
-     * @static
      * @private
      * @param {jQuery} elem Nested element
      * @returns {String|undefined}
@@ -4481,7 +4543,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Retrieves block parameters from a DOM element
-     * @static
      * @param {HTMLElement} domNode DOM node
      * @returns {Object}
      */
@@ -4489,7 +4550,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Builds a prefix for the CSS class of a DOM element or nested element of the block, based on modifier name
-     * @static
      * @private
      * @param {String} modName Modifier name
      * @param {jQuery|String} [elem] Element
@@ -4507,7 +4567,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Builds a regular expression for extracting modifier values from a DOM element or nested element of a block
-     * @static
      * @private
      * @param {String} modName Modifier name
      * @param {jQuery|String} [elem] Element
@@ -4522,7 +4581,6 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom', {
 
     /**
      * Builds a regular expression for extracting names of elements nested in a block
-     * @static
      * @private
      * @returns {RegExp}
      */
@@ -4583,8 +4641,16 @@ $(function() {
 
 /* end: ../../../blocks-common/i-bem/__dom/i-bem__dom.js */
 /* begin: ../../../blocks-common/i-ecma/__string/i-ecma__string.js */
+/**
+ * @module i-ecma__trim
+ */
 (function() {
 
+/**
+ * Удаляет лишние пробелы из строки
+ * @exports
+ * @returns {String}
+ */
 String.prototype.trim || (String.prototype.trim = function () {
 
     var str = this.replace(/^\s\s*/, ''),
@@ -4598,8 +4664,12 @@ String.prototype.trim || (String.prototype.trim = function () {
 });
 
 })();
+
 /* end: ../../../blocks-common/i-ecma/__string/i-ecma__string.js */
 /* begin: ../../../blocks-common/i-ecma/__json/i-ecma__json.js */
+/**
+ * @module i-ecma__json
+ */
 (function(undefined) {
 
 if(window.JSON) return;
@@ -4617,7 +4687,18 @@ var _toString = Object.prototype.toString,
     },
     stringify;
 
-window.JSON = {
+/**
+ * @exports
+ * @class i-ecma__json
+ * @bem
+ */
+window.JSON = /** @lends i-ecma__json.prototype */{
+    /**
+     * Преобразует значение в JSON-строку
+     *
+     * @param {Object} val
+     * @returns {String}
+     */
     stringify : stringify = function(val) {
         if(val === null) {
             return 'null';
@@ -4662,6 +4743,13 @@ window.JSON = {
                 return undefined;
         }
     },
+
+    /**
+     * Считывает js-значение из строки
+     *
+     * @param  {String} str
+     * @returns {Object}
+     */
     parse : function(str) {
         /*jshint -W061 */
         return Function('return ' + str)();
@@ -4679,6 +4767,56 @@ $(function() {
 });
 
 /* end: ../../../blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js */
+/* begin: ../../../blocks-common/i-ua/i-ua.js */
+(function(win) {
+    var devicePixelRatio = 1,
+        isHiDpi = false;
+
+    // http://stackoverflow.com/questions/16383503/window-devicepixelratio-does-not-work-in-ie-10-mobile
+    if ('deviceXDPI' in screen && 'logicalXDPI' in screen) {
+        // Internet Explorer
+        devicePixelRatio = screen.deviceXDPI / screen.logicalXDPI;
+    } else if ('devicePixelRatio' in win) {
+        // Standard way
+        devicePixelRatio = win.devicePixelRatio;
+    }
+
+    if (typeof win.matchMedia === 'function') {
+        // In fact, HiDPI begins from 1.3dppx.
+        // There is a devices list for example: http://bjango.com/articles/min-device-pixel-ratio/
+        // 124dpi (used for IE) ~ 1.3dppx for now,
+        // but by standard 'dpi' means dots-per-CSS-inch, not dots-per-physical-inch
+        var hiDpiQuery =
+            'only screen and (-webkit-min-device-pixel-ratio: 1.3), ' +
+            'only screen and (min-resolution: 1.3dppx), ' +
+            'only screen and (min-resolution: 124dpi)';
+        isHiDpi = win.matchMedia(hiDpiQuery).matches;
+    } else {
+        isHiDpi = (devicePixelRatio >= 1.3);
+    }
+
+    /**
+     * Block for gathering and providing UserAgent information
+     */
+    BEM.DOM.decl('i-ua', {
+
+        onSetMod: {
+            js: function() {
+                var _this = this,
+                    self = _this.__self;
+
+                self.hiDpi && _this.setMod('hi-dpi', 'yes');
+            }
+        }
+
+    }, {
+        dpr: devicePixelRatio,
+        hiDpi: isHiDpi
+    });
+
+})(window);
+
+/* end: ../../../blocks-common/i-ua/i-ua.js */
 /* begin: ../../../blocks-desktop/i-jquery/__leftclick/i-jquery__leftclick.js */
 /**
  * leftClick event plugin
@@ -4711,7 +4849,7 @@ var leftClick = $.event.special.leftclick = {
 
         if(!e.button) {
             e.type = 'leftclick';
-            $.event.handle.apply(this, arguments);
+            $.event.dispatch.apply(this, arguments);
             e.type = 'click';
         }
 
@@ -4754,7 +4892,7 @@ var leftClick = $.event.special.leftclick = {
         modName: 'interaction',
         modVal: 'yes' }, {
 
-        /**
+        /*
          * @private
          */
         _onPointer: function() {
@@ -4764,7 +4902,7 @@ var leftClick = $.event.special.leftclick = {
             this.__self.liveUnbindFrom('mousedown', this._onPointer);
         },
 
-        /**
+        /*
          * @private
          */
         _onKeyboard: function(e) {

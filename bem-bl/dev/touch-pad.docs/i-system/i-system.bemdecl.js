@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"i-system"}];
+exports.blocks = [{"name":"i-system"},{"name":"i-system"}];

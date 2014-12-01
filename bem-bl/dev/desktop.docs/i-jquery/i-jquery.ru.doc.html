@@ -1,34 +1,19 @@
-<h2 id="Описание">Описание</h2>
+<h2 id="Описание"><a href="#Описание" class="anchor"></a>Описание</h2>
 <p>Используется для поставки на страницу нужных плагинов через зависимости блоков от элементов блока <strong>i-jquery</strong>.</p>
 
-<h2 id="Описание">Описание</h2>
+<h2 id="Описание"><a href="#Описание" class="anchor"></a>Описание</h2>
 <p>Блок <code>i-jquery</code> помогает подключить <strong>jQuery</strong> на страницу и упорядочивает хранение js-кода плагинов.</p>
 <p>На уровне <code>blocks-common</code> блок <code>i-jquery</code> состоит из нескольких элементов, которые содержат плагины к <strong>jQuery</strong>.
 Декларация этих элементов обеспечивает подключение этих плагинов в страничный <strong>JS</strong>.</p>
-<h2 id="Модификаторы">Модификаторы</h2>
-<h3 id="_version">_version</h3>
-<p><code>_version</code> 
-Подключение библиотеки <strong>jQuery</strong> к странице 
-<code>{ mods: { &#39;version&#39;: &#39;&lt;/url&gt;&#39; } }</code><br><code>{ mods: { &#39;version&#39;: &#39;&lt;jquery_version_number&gt;&#39; } }</code> 
+<h2 id="Модификаторы"><a href="#Модификаторы" class="anchor"></a>Модификаторы</h2>
+<h3 id="_version"><a href="#_version" class="anchor"></a>_version</h3>
+<p><code>_version</code>
+Подключение библиотеки <strong>jQuery</strong> к странице
+<code>{ mods: { &#39;version&#39;: &#39;&lt;/url&gt;&#39; } }</code>
+<code>{ mods: { &#39;version&#39;: &#39;&lt;jquery_version_number&gt;&#39; } }</code>
 На уровне <code>blocks-common</code> модификатор <code>_version</code> дает возможность подключать необходимую версию библиотеки, указывая либо ее адрес, либо номер версии.</p>
-<h2 id="Объявление-блока-на-странице">Объявление блока на странице</h2>
+<h2 id="Объявление-блока-на-странице"><a href="#Объявление-блока-на-странице" class="anchor"></a>Объявление блока на странице</h2>
 <p>Чтобы поддерживаемая версия <strong>jQuery</strong> оказалась на страницах, нужно использовать такой <strong>BEMJSON</strong>:</p>
-<pre><code class="lang-js">({
-    block: &#39;b-page&#39;,
-    title: &#39;Title of the page&#39;,
-    head: [
-        { elem: &#39;css&#39;, url: &#39;_index.css&#39; },
-        { elem: &#39;meta&#39;, attrs: { name: &#39;description&#39;, content: &#39;&#39; }}
-    ],
-    content:[
-        {
-            block: &#39;some-block&#39;,
-            content: { 
-                ... 
-            }
-        },
-        { block: &#39;i-jquery&#39;, mods: &#39;version&#39; }
-    ]
-})
-</code></pre>
+<!-- bem-example: desktop.examples/i-jquery/NXOm3hsF1eXkJvvWS4zHV8-tA74 -->
+
 <p>Этот шаблон не продуцирует <strong>DOM</strong>-представление элемента. Он декларирует использование на странице элемента <code>js</code> блока <code>b-page</code>, подключающего <strong>js</strong> с <strong>jQuery</strong>.</p>

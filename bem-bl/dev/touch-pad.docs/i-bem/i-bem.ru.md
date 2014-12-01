@@ -34,8 +34,8 @@
 В `HTML`-блоки на `bem-js` отличаются дополнительным `CSS`-классом `i-bem` и специальным форматом записи параметров блока в `data-bem`:
 
 ```html
-	<div class="b-my-block i-bem" data-bem="{ 'b-my-block' : { name : 'b-my-block'}}">
-...
+<div class="b-my-block i-bem" data-bem="{ 'b-my-block' : { name : 'b-my-block'}}">
+<!--...-->
 </div>
 ```
 
@@ -91,16 +91,14 @@ BEM.DOM.decl({ name : 'b-domik', modName : 'type', modVal : 'popup' }, {
 Например, блок `b-dropdowna` при установке модификатора `disabled` прячет показанный попап:
 
 ```js
-	BEM.DOM.decl('b-dropdowna', {
-
+BEM.DOM.decl('b-dropdowna', {
     onSetMod : {
-
         'disabled' : function(modName, modVal) {
-
             this._getSwitcher().setMod(modName, modVal);
             modVal == 'yes' && this.getPopup().hide();
         }
-    },...
+    }
+    //...
 ```
 
 Подробно [о декларации обработки модификаторов](#mods.callbacks) рассказано в пункте про создание собственного блока.
@@ -129,8 +127,7 @@ BEM.DOM.decl('b-checkbox-example', {
             this.domElem.append('Значение checkbox: ' + checkbox.val());
         }
     }
-}
-);
+});
 ```
 
 #### Доступ к bem-js-блоку не из bem-js-блока
@@ -164,13 +161,9 @@ $('уникальный селектор').bem('b-link');
 
 ```js
 BEM.DOM.decl('b-dropdowna', {
-
     onSetMod : {
-
         'js' : function() {
-
             this._getSwitcher().on('click', this._on, this);
-
         }
     },
     _on : function() {
@@ -254,7 +247,8 @@ BEM.DOM.decl(
     },
     {
         // статические методы и свойства блока
-    });
+    }
+);
 ```
 и
 
@@ -265,19 +259,18 @@ BEM.decl('i-request', {
     },
     {
         // статические методы и свойства блока
-});
+    }
+);
 ```
 
 Вместо имени блока может быть указано более сложное описание, например, информация о предке:
 
 ```js
 BEM.decl({ name : 'b-dataprovider', baseBlock : 'i-request' }, {
-
     get : function() {
         this.__base(); // вызов одноименного метода из i-request
         doSomething();
     }
-
 });
 ```
 
@@ -287,11 +280,9 @@ BEM.decl({ name : 'b-dataprovider', baseBlock : 'i-request' }, {
 
 ```js
 BEM.decl({ name : 'b-popup', modName : 'type', modVal : 'inplace' }, {
-
     show : function() {
         doSomething();
     }
-
 });
 ```
 
@@ -312,31 +303,18 @@ BEM.decl({ name : 'b-popup', modName : 'type', modVal : 'inplace' }, {
 ```js
 {
     'модификатор1' : {
-
         'значение1-модификатора1' : function() { ... }, // функция, которая будет вызвана при установке модификатора 'модификатор1' в значение 'значение1'
-
         ...
-
         'значениеN-модификатора1' : function() { ... }, // функция, которая будет вызвана при установке модификатора 'модификатор1' в значение 'значениеN'
-
         '*' : function() { ... } // функция, которая будет вызвана при установке модификатора 'модификатор1' в любое из значений
-
     },
-
     'модификатор2' : function() {}, // функция, которая будет вызвана при установке модификатора 'модификатор2' в любое из значений
-
     ...
-
     'модификаторN' : {
-
         'значение1-модификатораN' : function() { ... },
-
         ...
-
         'значениеN-модификатораN' : function() { ... }
-
     }
-
 }
 ```
 
@@ -345,27 +323,16 @@ BEM.decl({ name : 'b-popup', modName : 'type', modVal : 'inplace' }, {
 
 ```js
 {
-
     'элемент1' : {
-
         'модификатор1' : {
-
             'значение1-модификатора1' : function() { ... }, // функция, которая будет вызвана при установке модификатора 'модификатор1' в значение 'значение1' для элемента 'элемент1'
-
             ...
-
             'значениеN-модификатора1' : function() { ... }, // функция, которая будет вызвана при установке модификатора 'модификатор1' в значение 'значениеN' для элемента 'элемент1'
-
             '*' : function() { ... } // функция, которая будет вызвана при установке модификатора 'модификатор1' в любое из значений  для элемента 'элемент1'
-
         }
-
     },
-
-    ...
-
+    //...
     'элементN' : function() { }, // функция, которая будет вызвана при установке любого модификатора в любое из значений для элемента 'элементN'
-
 }
 ```
 
@@ -389,13 +356,9 @@ BEM.decl({ name : 'b-popup', modName : 'type', modVal : 'inplace' }, {
 
 ```js
 BEM.DOM.decl('b-menu', {
-
     onElemSetMod : {
-
         'trigger' : {
-
             'state' : function(elem, modName, modVal) {
-
                 // тут описаны действия, которые нужно совершить при установке элементу 'trigger' модификатора с именем 'state' в любое значение
                 this
                     .toggleMod(
@@ -407,31 +370,21 @@ BEM.DOM.decl('b-menu', {
                         domElem : elem,
                         state : modVal
                     });
-
             }
-
         }
-
     },
 
     onTriggerClick : function(e) { // при клике на триггер
-
         e.preventDefault();
         this.toggleMod(e.data.domElem, 'state', 'opened'); // устанавливаем или снимаем значение 'opened' у модификатор 'state' для элемента 'trigger'
-
     }
-
 }, {
-
     live : function() {
-
         this
             .liveBindTo('trigger', 'click', function(e) { // слушаем live-клик на элементах 'trigger'
                 this.onTriggerClick(e);
             });
-
     }
-
 });
 ```
 
@@ -444,17 +397,13 @@ BEM.DOM.decl('b-menu', {
 
 ```js
 BEM.DOM.decl('b-square2', {
-
     onSetMod : {
-
         'js' : function() {
-
             var square = this;
 
             this.bindTo('click', function(){
                 square.setMod('size', 'big');
             });
-
         },
         'size' : function() {
             this.domElem.append('размер1: ', this.domElem.width() + '<br/>'); // напишет 200
@@ -464,7 +413,6 @@ BEM.DOM.decl('b-square2', {
             });
         }
     }
-
 });
 ```
 
@@ -474,25 +422,17 @@ BEM.DOM.decl('b-square2', {
 
 ```js
 BEM.DOM.decl('b-form-input', {
-
     onSetMod : {
-
         'js' : {
-
             'inited' : function() {
-
                 this
                     .bindTo(this.elem('input'), {
                         'focus' : this.onFocus,
                         'blur'  : this.onBlur
                     })
-
             }
-
         }
-
     }
-
 });
 ```
 
@@ -504,13 +444,10 @@ BEM.DOM.decl('b-form-input', {
 
 ```js
 BEM.DOM.decl('b-form-input', {
-
     onSetMod : {
-
-    'js' : function() { // конструктор b-form-input
-        ...
+        'js' : function() { // конструктор b-form-input
+            ...
         }
-
     }
 });
 ```
@@ -526,11 +463,11 @@ BEM.DOM.decl('b-form-input', {
 
 ```js
 BEM.DOM.decl('b-form-checkbox', {
-    ...
+    //...
     toggle : function() {
         this.toggleMod('checked', 'yes', '');
     }
-    ...
+    //...
 });
 ```
 
@@ -582,10 +519,10 @@ BEM.DOM.decl('b-form-checkbox', {
             [-30, 2.07],
             [290, -0.39]
         ],
-        'title' : 'Какое-то название',
+        'title' : 'Какое-то название'
     }
 }">
-..
+<!--...-->
 </div>
 ```
 
@@ -594,13 +531,13 @@ BEM.DOM.decl('b-form-checkbox', {
 ```html
 <div class="b-my-block b-my-second-block i-bem" data-bem="{
     'b-my-block' : {
-        'title' : 'Какое-то название', // Этот блок имеет опциональный параметр title
+        'title' : 'Какое-то название' // Этот блок имеет опциональный параметр title
     },
     'b-my-second-block' : {
         // У этого блока нет никаких опциональных параметров
     }
 }">
-..
+<!--...-->
 </div>
 ```
 
@@ -619,7 +556,7 @@ BEM.DOM.decl('b-form-checkbox', {
         'name' : 'b-my-block'
     }
 }">
-..
+<!--...-->
 </div>
 ```
 
@@ -628,7 +565,7 @@ BEM.DOM.decl('b-form-checkbox', {
 ```html
 <div class="b-my-block b-my-second-block b-my-block_js_inited b-my-second-block_js_inited i-bem" data-bem="{
     'b-my-block' : {
-        'name' : 'b-my-block',
+        'name' : 'b-my-block'
     },
     'b-my-second-block' : {
         'name' : 'b-my-second-block'
@@ -641,7 +578,7 @@ BEM.DOM.decl('b-form-checkbox', {
 ```html
 <div class="b-my-block b-my-second-block b-my-second-block_js_inited i-bem" data-bem="{
     'b-my-block' : {
-        'name' : 'b-my-block',
+        'name' : 'b-my-block'
     },
     'b-my-second-block' : {
         'name' : 'b-my-second-block'
@@ -663,24 +600,16 @@ BEM.DOM.decl('b-form-checkbox', {
 
 ```js
 BEM.DOM.decl('b-link', {
-
     _onClick : function(e) {
-
         e.preventDefault();
         this.trigger('click');
-
     }
-
 }, {
-
     live : function() {
-
         this.liveBindTo('click', function(e) {
             this._onClick(e);
         });
-
     }
-
 });
 ```
 
@@ -728,8 +657,6 @@ BEM.DOM.decl('b-my-block', {
 * `findBlockOn/findBlocksOn` — поиск блока/блоков на `DOM`-элементах текущего блока или его элементов;
 * `findBlockOutside/findBlocksOutside` — поиск блока/блоков снаружи `DOM`-элементов текущего блока или его элементов.
 
-Примерами блоков, использующих методы поиска других блоков, могут быть: [b-smart-help](/blocks/b-smart-help/b-smart-help.md), [b-screenshot](blocks/b-screenshot/b-screenshot.md) и [b-dropdowna](blocks/b-dropdowna/b-dropdowna.md).
-
 #### Методы доступа к элементам
 Для поиска элементов внутри блока используется метод `elem`. Результат этого метода кэшируется.
 
@@ -737,13 +664,9 @@ BEM.DOM.decl('b-my-block', {
 
 ```js
 BEM.DOM.decl('b-form-input', {
-
     doSomething : function() {
-
         this.elem('hint'); // тут будут найдены элементы b-form-input__hint
-
     }
-
 });
 ```
 
@@ -752,13 +675,9 @@ BEM.DOM.decl('b-form-input', {
 
 ```js
 BEM.DOM.decl('b-menu', {
-
     doSomething : function() {
-
         this.elem('item', 'state', 'current'); // тут будут найдены элементы b-menu__item_state_current
-
     }
-
 });
 ```
 
@@ -784,7 +703,6 @@ BEM.DOM.decl('b-menu', {
 
 ```js
 BEM.DOM.decl('b-link-example', {
-
     onSetMod: {
         'js': function() {
             var link = this.findBlockInside('b-link');

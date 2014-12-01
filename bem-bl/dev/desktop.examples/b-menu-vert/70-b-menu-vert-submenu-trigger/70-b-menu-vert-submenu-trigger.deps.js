@@ -1,8 +1,5 @@
 exports.deps = [
     {
-        "block": "i-jquery"
-    },
-    {
         "block": "i-jquery",
         "elem": "inherit"
     },
@@ -85,6 +82,9 @@ exports.deps = [
         "block": "i-ua"
     },
     {
+        "block": "i-jquery"
+    },
+    {
         "block": "i-jquery",
         "elem": "core"
     },
@@ -98,6 +98,16 @@ exports.deps = [
     {
         "block": "b-page",
         "elem": "js"
+    },
+    {
+        "block": "i-menu"
+    },
+    {
+        "block": "i-jquery",
+        "elem": "leftclick"
+    },
+    {
+        "block": "b-menu-vert"
     },
     {
         "block": "b-menu-vert",
@@ -117,16 +127,6 @@ exports.deps = [
         "elem": "item-content",
         "mod": "visibility",
         "val": "visible"
-    },
-    {
-        "block": "i-menu"
-    },
-    {
-        "block": "i-jquery",
-        "elem": "leftclick"
-    },
-    {
-        "block": "b-menu-vert"
     },
     {
         "block": "b-menu-vert",
