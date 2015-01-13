@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../common.blocks/icon/icon.styl:begin */
 .icon {
   display: inline-block;
   text-align: center;
@@ -18,14 +18,15 @@
   visibility: hidden;
   content: '\00A0';
 }
-.icon .image {
-  margin: -5.18em 0 -5em;
-/* 0.18 — magic number, empirically found */
+.icon > img,
+.icon > svg {
+  margin: -5.15em 0 -5em;
+/* 0.15 — magic number, empirically found */
   vertical-align: middle;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/icon/icon.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:begin */
+/* ../../../common.blocks/icon/icon.styl:end */
+/* ../../../test.blocks/icon/icon.styl:begin */
 .icon {
   min-width: 1em;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/icon/icon.styl:end */
+/* ../../../test.blocks/icon/icon.styl:end */

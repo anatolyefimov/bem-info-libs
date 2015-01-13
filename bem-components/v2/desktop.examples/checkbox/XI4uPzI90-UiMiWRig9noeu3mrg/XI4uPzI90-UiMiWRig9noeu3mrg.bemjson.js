@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_XI4uPzI90-UiMiWRig9noeu3mrg.css"}],"scripts":[{"elem":"js","url":"_XI4uPzI90-UiMiWRig9noeu3mrg.js"}],"mods":{},"content":{"block":"checkbox","text":"Вариант 1","name":"name1","val":"1"}})

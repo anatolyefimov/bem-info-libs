@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_islands.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../design/common.blocks/spin/_theme/spin_theme_islands.styl:begin */
 .spin_theme_islands {
   position: absolute;
   display: inline-block;
@@ -25,7 +25,8 @@ html {
 .spin_theme_islands:before {
   position: absolute;
   left: 0;
-  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   width: 100%;
   content: '';
   border: 2px solid;
@@ -40,12 +41,11 @@ html {
   position: relative;
   visibility: visible;
   -webkit-animation: spin_theme_islands 1s infinite linear;
-  animation: spin_theme_islands 1s infinite linear;
+          animation: spin_theme_islands 1s infinite linear;
   background: 0 0 no-repeat url("../../../design/common.blocks/spin/_theme/spin_theme_islands.gif");
-  background: -webkit-linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0)) !important;
   background: linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0)) !important;
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+          backface-visibility: hidden;
 /* Accelerate animation */
 }
 .spin_theme_islands.spin_size_xs {
@@ -97,31 +97,31 @@ html {
   from {
     color: #fc0;
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+            transform: rotate(0);
   }
   to {
     color: #fc0;
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 @keyframes spin_theme_islands {
   from {
     color: #fc0;
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+            transform: rotate(0);
   }
   to {
     color: #fc0;
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/spin/_theme/spin_theme_islands.styl:begin */
+/* ../../../design/common.blocks/spin/_theme/spin_theme_islands.styl:end */
+/* ../../../test.blocks/spin/_theme/spin_theme_islands.styl:begin */
 .spin_theme_islands.spin_paused {
   -webkit-animation: none;
-  animation: none;
+          animation: none;
   color: #fc0;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/spin/_theme/spin_theme_islands.styl:end */
+/* ../../../test.blocks/spin/_theme/spin_theme_islands.styl:end */

@@ -1,1 +1,0 @@
-({"block":"page","title":"radio","head":[{"elem":"css","url":"_1uUswbh0FFPQSOaGdYvx5RBxF4M.css"}],"scripts":[{"elem":"js","url":"_1uUswbh0FFPQSOaGdYvx5RBxF4M.js"}],"mods":{"theme":"islands"},"content":{"block":"radio","mods":{"theme":"islands","size":"m","checked":true},"name":"radio-norma","text":"Radio switch"}})

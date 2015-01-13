@@ -1,0 +1,1 @@
+({"block":"page","title":"textarea","head":[{"elem":"css","url":"_kPC23SoWIGFis6Go0lHENIa1Xkg.css"}],"scripts":[{"elem":"js","url":"_kPC23SoWIGFis6Go0lHENIa1Xkg.js"}],"mods":{"theme":"islands"},"content":{"block":"textarea","mods":{"theme":"islands","size":"m","width":"available"},"placeholder":"Ваш текст должен быть здесь"}})

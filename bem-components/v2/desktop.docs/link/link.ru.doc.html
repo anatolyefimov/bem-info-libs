@@ -1,63 +1,159 @@
 <h1 id="link"><a href="#link" class="anchor"></a>link</h1>
-<p>Блок <code>link</code> используется для создания различных типов ссылок и предоставляет возможность изменять их состояние, внешний вид и поведение.</p>
-<h2 id="Атрибуты-блока"><a href="#Атрибуты-блока" class="anchor"></a>Атрибуты блока</h2>
-<p>Список атрибутов блока, которые могут быть заданы в одноименных полях входного BEMJSON:</p>
+<p>Используется для создания различных типов ссылок.</p>
+<h2 id="Обзор-блока"><a href="#Обзор-блока" class="anchor"></a>Обзор блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
 <div class="table-container"><table>
-    <tr>
-        <th>Атрибут</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Адрес ссылки. Если указан, значение <code>url</code> становится HTML-атрибут <code>href</code>.</td>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td><code>String</code></td>
-        <td>Текст всплывающей подсказки. Устанавливает ссылке HTML-атрибут <code>title</code>.</td>
-    </tr>
-    <tr>
-        <td>target</td>
-        <td><code>String</code></td>
-        <td>Целевое окно. В значении <code>blank</code> открывает адрес ссылки в новом окне.
-            <br>Устанавливает ссылке HTML-атрибут <code>target</code>.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td><code>Number</code></td>
-        <td> Индекс, задающий последовательность перехода между элементами страницы при нажатии на <code>Tab</code>. Преобразуется в на HTML-атрибут <code>tabindex</code>.</td>
-    </tr>
-</table></div>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Допустимые значения</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#pseudo">pseudo</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code></td>
+<td>Псевдоссылка.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Фокус на блоке.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>islands</code></td>
+<td><code>BEMJSON</code></td>
+<td>Стилевое оформление.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Размер блока. Используется только с модификатором <a href="#theme">theme в значении islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#url">url</a></td>
+<td><code>String</code></td>
+<td>Адрес ссылки.</td>
+</tr>
+<tr>
+<td><a href="#title">title</a></td>
+<td><code>String</code></td>
+<td>Текст всплывающей подсказки.</td>
+</tr>
+<tr>
+<td><a href="#target">target</a></td>
+<td><code>String</code></td>
+<td>Поведение ссылки.</td>
+</tr>
+<tr>
+<td><a href="#tabIndex">tabIndex</a></td>
+<td><code>Number</code></td>
+<td>Последовательность перехода между контролами при нажатии на <code>Tab</code>.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="Описание-блока"><a href="#Описание-блока" class="anchor"></a>Описание блока</h2>
+<p>Блок <code>link</code> предоставляет возможность изменять состояние ссылок, их поведение и внешний вид.</p>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<p><a name="pseudo"></a></p>
+<h4 id="Модификатор-`pseudo`"><a href="#Модификатор-`pseudo`" class="anchor"></a>Модификатор <code>pseudo</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Отличается от обычной ссылки тем, что при клике по ссылке переход на новую страницу не осуществляется.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;link&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, pseudo : true },
+    content : &#39;Показать ответ&#39;
+}
+</code></pre>
+<p><a name="disabled"></a></p>
+<h4 id="Модификатор-`disabled`"><a href="#Модификатор-`disabled`" class="anchor"></a>Модификатор <code>disabled</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.</p>
+<!-- bem-example: desktop.examples/link/oLIDtS_dhHZYFcptXqdzTzD0v0E -->
+
+<p><a name="focused"></a></p>
+<h4 id="Модификатор-`focused`"><a href="#Модификатор-`focused`" class="anchor"></a>Модификатор <code>focused</code></h4>
+<p>Допустимое значение: <code>true</code></p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Выставляется автоматически при получении блока фокуса.</p>
+<p>Отвечает за наличие фокуса на блоке.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;link&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39; , focused : true },
+    url : &#39;https://bem.info/&#39;,
+    content : &#39;bem.info&#39;
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="Модификатор-`theme`"><a href="#Модификатор-`theme`" class="anchor"></a>Модификатор <code>theme</code></h4>
+<p>Допустимое значение: <code>islands</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Отвечает за стилевое оформление блока.</p>
+<!-- bem-example: desktop.examples/link/La0iB39G9WbEoHPZTqgEA0dOpsA -->
+
+<p><a name="size"></a></p>
+<h4 id="Модификатор-`size`"><a href="#Модификатор-`size`" class="anchor"></a>Модификатор <code>size</code></h4>
+<p>Допустимые значения для темы <code>islands</code>: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Необходимо использовать с модификатором <a href="#theme">theme</a> в значении <code>islands</code>.</p>
+<p><strong>s</strong></p>
+<!-- bem-example: desktop.examples/link/DRMJ4Zapue6EfQrMSu2EARlK4OM -->
+
+<p><strong>m</strong></p>
+<!-- bem-example: desktop.examples/link/ssyG1VgjGvqizj1w2Iykv6RG_3I -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: desktop.examples/link/KbMi2IIR1QBzMZnQdcCA2bVs2TM -->
+
+<p><strong>xl</strong></p>
+<!-- bem-example: desktop.examples/link/XkGnJUiWnqdXu6oIm4MU6JSHVXw -->
 
 
-<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
-<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
-<ul>
-<li>simple</li>
-<li>islands</li>
-</ul>
-<p>Без указания модификатора <code>theme</code> отображается <a href="#native">нативный</a> вид контрола.</p>
-<p>Наглядно показано на примерах ниже:</p>
-<p><a namme="native"></a>
-<strong>default</strong>
-<!-- bem-example: desktop.examples/link/Y3yr9bNzwYkA9sSkV8EkqO30JYI --></p>
-<p><strong>simple</strong></p>
-<!-- bem-example: desktop.examples/link/rVrcuNJ0PMv5S2Q4KNH4HsM6Zds -->
+<h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<p><a name="url"></a></p>
+<h4 id="Поле-`url`"><a href="#Поле-`url`" class="anchor"></a>Поле <code>url</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет адрес, по которому осуществляется переход при нажатии на ссылку.</p>
+<p><a name="title"></a></p>
+<h4 id="Поле-`title`"><a href="#Поле-`title`" class="anchor"></a>Поле <code>title</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.</p>
+<!-- bem-example: desktop.examples/link/3XDci9Dy1ZMOMObQJjjWu3W-JTs -->
 
-<p><strong>islands</strong></p>
-<!-- bem-example: desktop.examples/link/GnWE72VRVC5mqGq6h9fRWqMi-EE -->
+<p><a name="target"></a></p>
+<h4 id="Поле-`target`"><a href="#Поле-`target`" class="anchor"></a>Поле <code>target</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет поведение ссылки. Принимает все допустимые значения HTML-атрибута <code>target</code>: <code>_blank</code>, <code>_self</code> (используется по умолчанию), <code>_parent</code>, <code>_top</code>.</p>
+<!-- bem-example: desktop.examples/link/ZoYtlMvnwHQ-caKdGVJRQIJqzSs -->
 
-<h3 id="Псевдоссылка-`_pseudo`"><a href="#Псевдоссылка-`_pseudo`" class="anchor"></a>Псевдоссылка <code>_pseudo</code></h3>
-<p>Тип ссылки, по которой не производится переход на новую страницу. Применяется для вызова сценариев.</p>
-<!-- bem-example: desktop.examples/link/JqI2sHR5-n-aZYBIsVXDT7KiKck -->
-
-<h3 id="Состояния-блока"><a href="#Состояния-блока" class="anchor"></a>Состояния блока</h3>
-<h4 id="Неактивен-`_disabled`"><a href="#Неактивен-`_disabled`" class="anchor"></a>Неактивен <code>_disabled</code></h4>
-<p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. Переход по неактивной ссылке невозможен.</p>
-<p>В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
-<!-- bem-example: desktop.examples/link/w-wprD5e0G9_9Mybm5CKuV299Qc -->
-
-<h4 id="В-фокусе-`_focused`"><a href="#В-фокусе-`_focused`" class="anchor"></a>В фокусе <code>_focused</code></h4>
-<p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
+<p><a name="tabIndex"></a></p>
+<h4 id="Поле-`tabIndex`"><a href="#Поле-`tabIndex`" class="anchor"></a>Поле <code>tabIndex</code></h4>
+<p>Тип: <code>Number</code>.</p>
+<p>Определяет последовательность перехода между контролами при нажатии на <code>Tab</code>.</p>
+<!-- bem-example: desktop.examples/link/uzI2s-E0ZmT7x3hkVhFnd9kprJY -->

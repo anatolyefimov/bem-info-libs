@@ -1,0 +1,1 @@
+({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_BlrADGL1xSBAyZpYjdm89JCEW20.css"}],"scripts":[{"elem":"js","url":"_BlrADGL1xSBAyZpYjdm89JCEW20.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","mods":{"theme":"islands","size":"m","type":"button"},"name":"name1","val":"1","text":"Конфеты","id":"checkbox-id"}})

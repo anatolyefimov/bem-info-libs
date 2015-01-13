@@ -1,1 +1,0 @@
-({"block":"page","title":"radio","head":[{"elem":"css","url":"_5PtpSNiZtVPagsRUyCIkDREXfTI.css"}],"scripts":[{"elem":"js","url":"_5PtpSNiZtVPagsRUyCIkDREXfTI.js"}],"mods":{"theme":"islands"},"content":{"block":"radio","mods":{"theme":"islands","size":"m"},"name":"radio-islands","text":"Radio switch"}})

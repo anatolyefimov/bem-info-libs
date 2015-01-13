@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/spin/_theme/spin_theme_simple.styl:begin */
 .spin_theme_simple {
   display: none;
   width: 20px;
@@ -14,26 +14,26 @@
 .spin_theme_simple.spin_visible {
   display: inline-block;
   -webkit-animation: spin_theme_simple 2s infinite linear;
-  animation: spin_theme_simple 2s infinite linear;
+          animation: spin_theme_simple 2s infinite linear;
 }
 @-webkit-keyframes spin_theme_simple {
   from {
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+            transform: rotate(0);
   }
   to {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 @keyframes spin_theme_simple {
   from {
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+            transform: rotate(0);
   }
   to {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/spin/_theme/spin_theme_simple.styl:end */
+/* ../../../design/common.blocks/spin/_theme/spin_theme_simple.styl:end */

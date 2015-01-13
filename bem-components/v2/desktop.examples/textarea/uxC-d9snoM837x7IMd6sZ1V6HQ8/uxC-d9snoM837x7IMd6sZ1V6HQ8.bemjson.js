@@ -1,1 +1,0 @@
-({"block":"page","title":"textarea","head":[{"elem":"css","url":"_uxC-d9snoM837x7IMd6sZ1V6HQ8.css"}],"scripts":[{"elem":"js","url":"_uxC-d9snoM837x7IMd6sZ1V6HQ8.js"}],"mods":{"theme":"islands"},"content":{"block":"textarea","mods":{"theme":"islands","disabled":true},"val":"Неактивно"}})
