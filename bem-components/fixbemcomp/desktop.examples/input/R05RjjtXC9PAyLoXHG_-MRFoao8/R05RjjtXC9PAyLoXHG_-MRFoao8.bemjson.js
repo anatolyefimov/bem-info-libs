@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"_R05RjjtXC9PAyLoXHG_-MRFoao8.css"}],"scripts":[{"elem":"js","url":"_R05RjjtXC9PAyLoXHG_-MRFoao8.js"}],"mods":{"theme":"islands"},"content":{"block":"input","mods":{"theme":"islands","size":"m","type":"password"},"placeholder":"Password field"}})

@@ -1,0 +1,63 @@
+<h1 id="spin"><a href="#spin" class="anchor"></a>spin</h1>
+<p><code>spin</code> block indicates the progress of some process (e.g. site page or some media file loading).</p>
+<p>Rotation of the <code>spin</code> block is implemented by CSS3 animation.</p>
+<h2 id="Modifiers-of-a-block"><a href="#Modifiers-of-a-block" class="anchor"></a>Modifiers of a block</h2>
+<h3 id="_theme"><a href="#_theme" class="anchor"></a>_theme</h3>
+<p>The <code>spin</code> block does not have native control representation.</p>
+<p>Block supports the following themes:</p>
+<ul>
+<li>simple</li>
+<li>islands (<strong>NB!</strong> Choosing a theme <code>islands</code> requires additional modifier <a href="#size"><code>size</code></a>.)</li>
+</ul>
+<p><strong>simple</strong></p>
+<!-- bem-example: desktop.examples/spin/wrOkk3gCfBRIuN8tmgjhIdflk9Q -->
+
+<p><strong>islands</strong></p>
+<!-- bem-example: desktop.examples/spin/NadQI6Wwr2e2t73Ypu5Vp3Jg6JI -->
+
+<p><a name="size"></a></p>
+<h3 id="_size"><a href="#_size" class="anchor"></a>_size</h3>
+<p>Implemented only for theme <code>islands</code>.</p>
+<p>There are five sizes available: <strong>xs</strong>, <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<div class="table-container"><table>
+    <tr>
+        <th>Block size</th>
+        <th>Size, px</th>
+    </tr>
+    <tr>
+        <th>xs</th>
+        <td>16px</td>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>28px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>32px</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>38px</td>
+    </tr>
+</table></div>
+
+<p>See following examples:</p>
+<p><strong>XS</strong></p>
+<!-- bem-example: desktop.examples/spin/5TwMD-KFJZRfAX3xF8m1lu-5SPc -->
+
+<!-- bem-example: desktop.examples/spin/pbZWuzu4D23HRNf6JEgRUuJQ0ko -->
+
+<!-- bem-example: desktop.examples/spin/NadQI6Wwr2e2t73Ypu5Vp3Jg6JI -->
+
+<!-- bem-example: desktop.examples/spin/jzE86Fa_qb6r7qoxP_X-Okcd8mE -->
+
+<!-- bem-example: desktop.examples/spin/v-F18-7leVBDgd5OhoiI-5bpUNM -->
+
+<h3 id="States-of-a-block"><a href="#States-of-a-block" class="anchor"></a>States of a block</h3>
+<h4 id="_visible"><a href="#_visible" class="anchor"></a>_visible</h4>
+<p><code>visible</code> modifier with <code>true</code> value activates the spin. If <code>visible</code> modifier is not specified, rotation is paused and <code>spin</code> block is hidden from the page.</p>

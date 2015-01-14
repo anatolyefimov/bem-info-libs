@@ -1,0 +1,1 @@
+({"block":"page","title":"image","head":[{"elem":"css","url":"_UMboDPCMfzI3E9NZ_bVVg-IzvIo.css"}],"scripts":[{"elem":"js","url":"_UMboDPCMfzI3E9NZ_bVVg-IzvIo.js"}],"mods":{},"content":{"block":"image","url":"https://bem.info/m/_/wuyLRHj8p7lF3eT96kTKumCdXzM.svg","width":100,"height":100,"alt":"BEM"}})

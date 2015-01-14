@@ -1,0 +1,219 @@
+<h1 id="checkbox"><a href="#checkbox" class="anchor"></a>checkbox</h1>
+<p>Используется для управления параметром выбора с двумя состояниями – «включено» и «выключено».</p>
+<h2 id="Обзор-блока"><a href="#Обзор-блока" class="anchor"></a>Обзор блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Допустимые значения</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#checkboxtype>type</a></td>
+<td><code>&#39;button&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Тип чекбокса.</td>
+</tr>
+<tr>
+<td><a href=#checkboxchecked>checked</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Выбор чекбокса.</td>
+</tr>
+<tr>
+<td><a href=#checkboxdisabled>disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><a href=#checkboxfocused>focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Фокус на блоке.</td>
+</tr>
+<tr>
+<td><a href=#hovered>hovered</a></td>
+<td><code>true</code></td>
+<td>–</td>
+<td>Наведение курсором.</td>
+</tr>
+<tr>
+<td><a href=#checkboxtheme>theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Стилевое оформление.</td>
+</tr>
+<tr>
+<td><a href=#checkboxsize>size</a></td>
+<td><code>&#39;m&#39;</code>, <code>&#39;l&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Размер чекбокса. Используется для чекбоксов с <a href=#checkboxtheme>модификатором theme в значении islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#checkboxname>name</a></td>
+<td><code>String</code></td>
+<td>Уникальное имя чекбокса.</td>
+</tr>
+<tr>
+<td><a href=#checkboxval>val</a></td>
+<td><code>String</code>, <code>Number</code></td>
+<td>Значение чекбокса, которое будет отправлено на сервер, если он выбран.</td>
+</tr>
+<tr>
+<td><a href=#checkboxtext>text</a></td>
+<td><code>String</code></td>
+<td>Текст подписи к чекбоксу.</td>
+</tr>
+<tr>
+<td><a href=#checkboxicon>icon</a></td>
+<td><code>BEMJSON</code></td>
+<td>Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.</td>
+</tr>
+<tr>
+<td><a href=#checkboxtitle>title</a></td>
+<td><code>String</code></td>
+<td>Текст всплывающей подсказки. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.</td>
+</tr>
+<tr>
+<td><a href=#id>id</a></td>
+<td><code>String</code></td>
+<td>Уникальный идентификатор чекбокса.</td>
+</tr>
+<tr>
+<td><a href=#tab>tabIndex</a></td>
+<td><code>Number</code></td>
+<td>Последовательность перехода между контролами при нажатии на <code>Tab</code>.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="Описание-блока"><a href="#Описание-блока" class="anchor"></a>Описание блока</h2>
+<p><strong>Примечание</strong> HTML-атрибут <code>autocomplete</code> принудительно переведен в состояние <code>off</code> для обеспечения корректной работы блока.</p>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<p><a name="checkboxtype"></a></p>
+<h4 id="Модификатор-`type`"><a href="#Модификатор-`type`" class="anchor"></a>Модификатор <code>type</code></h4>
+<p>Допустимое значение: <code>&#39;button&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Используется для изменения внешнего вида блока на кнопочный. В таком случае выбор чекбокса происходит нажатием на <a href="../button/button.ru.md">кнопку</a>.</p>
+<!-- bem-example: touch.examples/checkbox/CNaMcxrxPwpfONjFFEjvUkoM9bw -->
+
+<p><a name="checkboxchecked"></a></p>
+<h4 id="Модификатор-`checked`"><a href="#Модификатор-`checked`" class="anchor"></a>Модификатор <code>checked</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Используется для выбора чекбокса.</p>
+<!-- bem-example: touch.examples/checkbox/3zHBrS8NXFX5d_Wu-J6BBfyZAGQ -->
+
+<!-- bem-example: touch.examples/checkbox/HJ_-JURzQrz1owrglQhzB6eThq0 -->
+
+<p><a name="checkboxdisabled"></a></p>
+<h4 id="Модификатор-`disabled`"><a href="#Модификатор-`disabled`" class="anchor"></a>Модификатор <code>disabled</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.</p>
+<!-- bem-example: touch.examples/checkbox/F6PRewUajDjvMeBJ0HjzjygNBZQ -->
+
+<!-- bem-example: touch.examples/checkbox/GaTw-AuxFvI_aFn-DI1SCtafHLk -->
+
+<p><a name="checkboxfocused"></a></p>
+<h4 id="Модификатор-`focused`"><a href="#Модификатор-`focused`" class="anchor"></a>Модификатор <code>focused</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за наличие фокуса на блоке.</p>
+<p>Выставляется автоматически при получении блока фокуса.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;button&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, focused : true },
+    text : &#39;В фокусе&#39;
+}
+</code></pre>
+<p><a name="hovered"></a></p>
+<h4 id="Модификатор-`hovered`"><a href="#Модификатор-`hovered`" class="anchor"></a>Модификатор <code>hovered</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: – .</p>
+<p>Выставляется блоку автоматически, когда курсор мыши находится в пределах контрола.</p>
+<p><a name="checkboxtheme"></a></p>
+<h4 id="Модификатор-`theme`"><a href="#Модификатор-`theme`" class="anchor"></a>Модификатор <code>theme</code></h4>
+<p>Допустимое значение: <code>&#39;islands&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Отвечает за стилевое оформление блока.</p>
+<p>Необходимо использовать с модификатором <a href="#checkboxsize">size</a>.</p>
+<!-- bem-example: touch.examples/checkbox/gQ7-xsl2K01vSAz1PBWVFg3uHYA -->
+
+<p><a name="checkboxsize"></a></p>
+<h4 id="Модификатор-`size`"><a href="#Модификатор-`size`" class="anchor"></a>Модификатор <code>size</code></h4>
+<p>Допустимые значения для темы <code>islands</code>: <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Задает размер блока.</p>
+<p>Необходимо использовать с модификатором <a href="#checkboxtheme">theme</a> в значении <code>islands</code>.</p>
+<p><strong>m</strong></p>
+<!-- bem-example: touch.examples/checkbox/ygeCTK-1zvOqjlec_3iVBE4CSck -->
+
+<!-- bem-example: touch.examples/checkbox/YeLIjAfkyz-TsIJwJV7yQi6Znio -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: touch.examples/checkbox/biF5xNCSOG0Rft9eb_G2wdVvcJc -->
+
+<!-- bem-example: touch.examples/checkbox/Yw1g-FrfQDXvFfeQgwVHY9aIIwQ -->
+
+<h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<p><a name="checkboxname"></a></p>
+<h4 id="Поле-`name`"><a href="#Поле-`name`" class="anchor"></a>Поле <code>name</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет уникальное имя чекбокса.</p>
+<!-- bem-example: touch.examples/checkbox/3J1XsNNf9_huiNjklyHEHIHnmjw -->
+
+<p><a name="checkboxval"></a></p>
+<h4 id="Поле-`val`"><a href="#Поле-`val`" class="anchor"></a>Поле <code>val</code></h4>
+<p>Тип: <code>String</code>, <code>Number</code>.</p>
+<p>Значение чекбокса, которое будет отправлено на сервер.</p>
+<!-- bem-example: touch.examples/checkbox/Onz0uFKYRuvIBess3bsFspVjtz8 -->
+
+<p><a name="checkboxtext"></a></p>
+<h4 id="Поле-`text`"><a href="#Поле-`text`" class="anchor"></a>Поле <code>text</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет текст подписи к чекбоксу или текст кнопки, если указан <a href="checkboxtype">модификатор type в значении button</a>.</p>
+<!-- bem-example: touch.examples/checkbox/Yw-WYNlfuFBqn0wrgRAxtKXl4pg -->
+
+<p><a name="checkboxicon"></a></p>
+<h4 id="Поле-`icon`"><a href="#Поле-`icon`" class="anchor"></a>Поле <code>icon</code></h4>
+<p>Тип: <code>BEMJSON</code>.</p>
+<p>Определяет иконку, которая отображается с помощью блока <a href="../icon/icon.ru.md">icon</a>.</p>
+<p>Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.</p>
+<!-- bem-example: touch.examples/checkbox/8YRw7my4HAxWzNxyjSghXG20eww -->
+
+<p><a name="checkboxtitle"></a></p>
+<h4 id="Поле-`title`"><a href="#Поле-`title`" class="anchor"></a>Поле <code>title</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.</p>
+<p>Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.</p>
+<!-- bem-example: touch.examples/checkbox/K0RJFY0mljTHOyESgFS1dOY9izw -->
+
+
+<p><a name="id"></a></p>
+<h4 id="Поле-`id`"><a href="#Поле-`id`" class="anchor"></a>Поле <code>id</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет уникальный идентификатор чекбокса.</p>
+<!-- bem-example: touch.examples/checkbox/BlrADGL1xSBAyZpYjdm89JCEW20 -->
+
+<p><a name="tab"></a></p>
+<h4 id="Поле-`tabIndex`"><a href="#Поле-`tabIndex`" class="anchor"></a>Поле <code>tabIndex</code></h4>
+<p>Тип: <code>Number</code>.</p>
+<p>Определяет порядок получения фокуса при переходе между контролами с помощью клавиши <code>Tab</code>.</p>
+<!-- bem-example: touch.examples/checkbox/NFd66yhh7FVYvdAS39emGczC8H8 -->

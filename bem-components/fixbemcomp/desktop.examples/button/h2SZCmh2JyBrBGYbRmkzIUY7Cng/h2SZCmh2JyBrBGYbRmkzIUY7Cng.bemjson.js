@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_h2SZCmh2JyBrBGYbRmkzIUY7Cng.css"}],"scripts":[{"elem":"js","url":"_h2SZCmh2JyBrBGYbRmkzIUY7Cng.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m"},"text":"Размер m"}})

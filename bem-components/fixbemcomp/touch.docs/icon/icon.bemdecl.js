@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"icon"},{"name":"icon"},{"name":"icon"},{"name":"icon"}];

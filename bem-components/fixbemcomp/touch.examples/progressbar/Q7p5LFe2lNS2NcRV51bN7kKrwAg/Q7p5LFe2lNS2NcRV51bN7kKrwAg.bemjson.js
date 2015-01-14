@@ -1,0 +1,1 @@
+({"block":"page","title":"progressbar","head":[{"elem":"css","url":"_Q7p5LFe2lNS2NcRV51bN7kKrwAg.css"}],"scripts":[{"elem":"js","url":"_Q7p5LFe2lNS2NcRV51bN7kKrwAg.js"}],"mods":{"theme":"islands"},"content":{"block":"progressbar","mods":{"theme":"islands"},"val":25}})

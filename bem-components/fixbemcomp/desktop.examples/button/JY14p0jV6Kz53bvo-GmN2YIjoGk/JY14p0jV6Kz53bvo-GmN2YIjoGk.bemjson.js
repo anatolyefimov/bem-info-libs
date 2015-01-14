@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_JY14p0jV6Kz53bvo-GmN2YIjoGk.css"}],"scripts":[{"elem":"js","url":"_JY14p0jV6Kz53bvo-GmN2YIjoGk.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"Check","mods":{"theme":"islands","size":"m","togglable":"check"}}})

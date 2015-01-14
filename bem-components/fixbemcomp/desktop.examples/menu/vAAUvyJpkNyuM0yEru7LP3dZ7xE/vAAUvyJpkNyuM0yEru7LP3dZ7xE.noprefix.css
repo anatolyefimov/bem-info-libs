@@ -1,0 +1,16 @@
+/* ../../../test.blocks/page/page.styl:begin */
+.page {
+  padding: 20px;
+}
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../common.blocks/menu/menu.styl:begin */
+.menu {
+  overflow-y: auto;
+}
+/* ../../../common.blocks/menu/menu.styl:end */
+/* ../../../test.blocks/menu-item/menu-item.styl:begin */
+.menu-item .icon {
+  width: 16px;
+  margin-right: 5px;
+}
+/* ../../../test.blocks/menu-item/menu-item.styl:end */

@@ -1,0 +1,207 @@
+<h1 id="checkbox-group"><a href="#checkbox-group" class="anchor"></a>checkbox-group</h1>
+<p>Используется для отображения и управления группой однотипных переключателей – <a href="../checkbox/checkbox.ru.md">чекбоксов</a>.</p>
+<h2 id="Обзор-блока"><a href="#Обзор-блока" class="anchor"></a>Обзор блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Допустимые значения</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#checkboxtype>type</a></td>
+<td><code>&#39;button&#39;</code>, <code>&#39;line&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Тип группы чекбоксов.</td>
+</tr>
+<tr>
+<td><a href=#checkboxdisabled>disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><a href=#checkboxfocused>focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Фокус на блоке.</td>
+</tr>
+<tr>
+<td><a href=#checkboxtheme>theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Стилевое оформление.</td>
+</tr>
+<tr>
+<td><a href=#checkboxsize>size</a></td>
+<td><code>&#39;m&#39;</code>, <code>&#39;l&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Размер группы чекбоксов. Используется только для чекбоксов с <a href=#checkboxtheme>модификатором theme в значении islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#checkboxname>name</a></td>
+<td><code>String</code></td>
+<td>Уникальное имя блока.</td>
+</tr>
+<tr>
+<td><a href=#val>val</a></td>
+<td><code>Array</code></td>
+<td>Набор значений выбранных чекбоксов.</td>
+</tr>
+<tr>
+<td><a href=#checkboxopt>options</a></td>
+<td><code>Array</code></td>
+<td>Набор значений для каждого чекбокса группы. Каждому типу чекбоксов соответствует разный <a href=#checkboxoptset>набор значений</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="Описание-блока"><a href="#Описание-блока" class="anchor"></a>Описание блока</h2>
+<p>Блок <code>checkbox-group</code> позволяет управлять внешним видом и состоянием вложенных чекбоксов.</p>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<p><a name="checkboxtype"></a></p>
+<h4 id="Модификатор-`type`"><a href="#Модификатор-`type`" class="anchor"></a>Модификатор <code>type</code></h4>
+<p>Допустимые значения: <code>&#39;button&#39;</code>, <code>&#39;line&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p><a name="checkboxtype-button"></a></p>
+<h5 id="Кнопочный-чекбокс--модификатор-`type`-в-значении-`button`-"><a href="#Кнопочный-чекбокс--модификатор-`type`-в-значении-`button`-" class="anchor"></a>Кнопочный чекбокс (модификатор <code>type</code> в значении <code>button</code>)</h5>
+<p>Позволяет реализовать блок <code>checkbox-group</code> с помощью чекбоксов с типом <a href="../checkbox/checkbox.ru.md/#checkboxtype">button</a>. Все чекбоксы группы в данном случае всегда располагаются в линию.</p>
+<!-- bem-example: desktop.examples/checkbox-group/NJkmzPWdrbcXgk3h8lP20yaJD_Q -->
+
+<p><a name="checkboxtype-line"></a></p>
+<h5 id="Выравнивание--модификатор-`type`-в-значении-`line`-"><a href="#Выравнивание--модификатор-`type`-в-значении-`line`-" class="anchor"></a>Выравнивание (модификатор <code>type</code> в значении <code>line</code>)</h5>
+<p>Применяется к группе чекбоксов для выравнивания их в линию.</p>
+<!-- bem-example: desktop.examples/checkbox-group/zfjUf0MNpyXDSR19sqfZ3FCfWaU -->
+
+<p><a name="checkboxdisabled"></a></p>
+<h4 id="Модификатор-`disabled`"><a href="#Модификатор-`disabled`" class="anchor"></a>Модификатор <code>disabled</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.</p>
+<p>Модификатор может быть установлен:</p>
+<ul>
+<li>всей группе чекбоксов</li>
+</ul>
+<!-- bem-example: desktop.examples/checkbox-group/KQ_NxwU0waSuw9HaWetSqQ1OE6g -->
+
+<!-- bem-example: desktop.examples/checkbox-group/1Ci4JEiEhjhogrMd5ASK2sFpmvM -->
+
+<ul>
+<li>отдельному чекбоксу в группе</li>
+</ul>
+<!-- bem-example: desktop.examples/checkbox-group/ktR4wP1X3oQEA7wMj5SiO-qGTOM -->
+
+<!-- bem-example: desktop.examples/checkbox-group/cx-r_3idqvodvNSjpqc9IumQq68 -->
+
+<p><a name="checkboxfocused"></a></p>
+<h4 id="Модификатор-`focused`"><a href="#Модификатор-`focused`" class="anchor"></a>Модификатор <code>focused</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за наличие фокуса на блоке.</p>
+<p>Выставляется автоматически при получении блока фокуса.</p>
+<!-- bem-example: desktop.examples/checkbox-group/iKqT9Am9X12YJHDaXaEbVbU4NQw -->
+
+<!-- bem-example: desktop.examples/checkbox-group/kjlpc0Q9VirpbfsuggvlhYyPRK0 -->
+
+<p><a name="checkboxtheme"></a></p>
+<h4 id="Модификатор-`theme`"><a href="#Модификатор-`theme`" class="anchor"></a>Модификатор <code>theme</code></h4>
+<p>Допустимое значение: <code>&#39;islands&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Отвечает за стилевое оформление блока.</p>
+<p>Необходимо использовать с модификатором <a href="#checkboxsize">size</a>.</p>
+<!-- bem-example: desktop.examples/checkbox-group/5byh7yUbXCflDp_b0Nc5140HNew -->
+
+<!-- bem-example: desktop.examples/checkbox-group/CdL-IJY0VIj-KgP3vWaTD8ZC1uY -->
+
+<p><a name="checkboxsize"></a></p>
+<h4 id="Модификатор-`size`"><a href="#Модификатор-`size`" class="anchor"></a>Модификатор <code>size</code></h4>
+<p>Допустимые значения для темы <code>islands</code>: <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Задает размер всем чекбоксам в группе.</p>
+<p>Необходимо использовать с модификатором <a href="#checkboxtheme">theme</a> в значении <code>islands</code>.</p>
+<p><strong>m</strong></p>
+<!-- bem-example: desktop.examples/checkbox-group/0l1W7rZ8B8H7KyXKiNWff4LJKcQ -->
+
+<!-- bem-example: desktop.examples/checkbox-group/d_-sx6Y3wvWPAJE4hH5ZfUVneTs -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: desktop.examples/checkbox-group/V-oOSSnTHUzKVM1hEvXrvMlzajE -->
+
+<!-- bem-example: desktop.examples/checkbox-group/6esGPV-N-CeeEYmRTyrQGzy2Twk -->
+
+<h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<p><a name="checkboxname"></a></p>
+<h4 id="Поле-`name`"><a href="#Поле-`name`" class="anchor"></a>Поле <code>name</code></h4>
+<p>Тип: <code>String</code></p>
+<p>Определяет уникальное имя группы чекбоксов.</p>
+<!-- bem-example: desktop.examples/checkbox-group/HyTVjY6xyXbCQIqPd_3wp6KngDY -->
+
+<p><a name="val"></a></p>
+<h4 id="Поле-`val`"><a href="#Поле-`val`" class="anchor"></a>Поле <code>val</code></h4>
+<p>Тип: <code>Array</code>.</p>
+<p>Опеределяет набор значений выбранных радиопереключателей.</p>
+<p><a name="checkboxopt"></a></p>
+<h4 id="Поле-`options`"><a href="#Поле-`options`" class="anchor"></a>Поле <code>options</code></h4>
+<p>Тип: <code>Array</code></p>
+<p>Определяет набор значений для каждого чекбокса группы.</p>
+<p><a name="checkboxoptset"></a></p>
+<p>Каждому типу чекбоксов соответствует разный набор значений.</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>val</code></td>
+<td><code>String</code>, <code>Number</code></td>
+<td>Значение, возвращаемое чекбоксом, если он выбран.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>String</code></td>
+<td>Текст подписи к чекбоксу или текст кнопки чекбокса, если выбран модификатор <code>type</code> в значении <code>button</code>.</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td><code>Boolean</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>BEMJSON</code></td>
+<td>Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для группы чекбоксов с <a href=#checkboxtype-button>модификатором type в значении button</a>.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>String</code></td>
+<td>Текст сплывающей подсказки. Используется только для группы чекбоксов с <a href=#checkboxtype-button>модификатором type в значении button</a>.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>String</code></td>
+<td>Уникальный идентификатор чекбокса.</td>
+</tr>
+</tbody>
+</table>
+</div><!-- bem-example: desktop.examples/checkbox-group/pzp4h51yZvEKt3ct_xYaieV1XJM -->
+
+<!-- bem-example: desktop.examples/checkbox-group/hFPY35o6vHWq66pP59_gyjSiCag -->
