@@ -1,1 +1,0 @@
-exports.blocks = [{"name":"control-group"},{"name":"control-group"}];

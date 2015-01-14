@@ -1,1 +1,0 @@
-({"block":"page","title":"attach","head":[{"elem":"css","url":"_tKm9ckGAc6HHs4Rrd-HPQB9MPpg.css"}],"scripts":[{"elem":"js","url":"_tKm9ckGAc6HHs4Rrd-HPQB9MPpg.js"}],"mods":{"theme":"islands"},"content":{"block":"attach","mods":{"theme":"islands","size":"xl"},"button":"Выберите файл","noFileText":"Файл не выбран"}})

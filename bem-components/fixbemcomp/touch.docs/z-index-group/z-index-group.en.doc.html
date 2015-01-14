@@ -1,7 +1,0 @@
-<h1 id="z-index-group"><a href="#z-index-group" class="anchor"></a>z-index-group</h1>
-<p><code>z-index-group</code> block is used to create several layers on a page for blocks representation.
-This block can be mixed only with blocks that have a modifier <code>position</code>.</p>
-<p><code>level</code> modifier controls the layer position on the <code>z</code>-axis. Integer number from 0 to 9 can be used as a value for &#39;level&#39; mode. When blocks overlap, z-order determines which one covers the other. A block with a larger <code>level</code> value covers a block with a lower one. If two blocks have the same <code>level</code> value, a block that is declared in BEMJSON declaration lower will cover the other one.</p>
-<p><code>z-index-group</code> block allows a user to open new elements on a layer that is specified in <code>level</code> modifier value. For example, if parent block that initiates <a href="../popup/popup.ru.md">popup</a> is mixed with <code>{ block : &#39;z-index-group&#39;, mods : { level : 2 } }</code>, <code>popup</code> block will be shown at the second level (<code>2 * 1000</code>).</p>
-<p>The example below shows popup block that does not cover another block (e.g., block <code>header</code>):</p>
-<!-- bem-example: touch.examples/z-index-group/irTAGVuXkSwVLz0ER0PumgLwPlI -->

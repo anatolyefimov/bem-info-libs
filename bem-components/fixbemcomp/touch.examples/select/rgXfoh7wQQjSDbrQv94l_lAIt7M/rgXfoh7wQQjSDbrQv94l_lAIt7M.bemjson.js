@@ -1,1 +1,0 @@
-({"block":"page","title":"select","head":[{"elem":"css","url":"_rgXfoh7wQQjSDbrQv94l_lAIt7M.css"}],"scripts":[{"elem":"js","url":"_rgXfoh7wQQjSDbrQv94l_lAIt7M.js"}],"mods":{"theme":"simple"},"content":{"block":"select","mods":{"mode":"radio","theme":"simple"},"name":"select1","val":2,"options":[{"val":1,"text":"first"},{"val":2,"text":"second"},{"val":3,"text":"third"}]}})

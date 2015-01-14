@@ -1,1 +1,0 @@
-({"block":"page","title":"menu-item","head":[{"elem":"css","url":"_eV0q9qK02nCPsMxztjMtbDnRz7U.css"}],"scripts":[{"elem":"js","url":"_eV0q9qK02nCPsMxztjMtbDnRz7U.js"}],"mods":{},"content":{"block":"menu-item","content":"default","val":"my value"}})

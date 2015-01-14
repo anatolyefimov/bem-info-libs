@@ -1,1 +1,0 @@
-({"block":"page","title":"attach","head":[{"elem":"css","url":"_AkDH5qgUPbMKtFX988WrjrO4Yog.css"}],"scripts":[{"elem":"js","url":"_AkDH5qgUPbMKtFX988WrjrO4Yog.js"}],"mods":{"theme":"simple"},"content":{"block":"attach","mods":{"theme":"simple","disabled":true},"button":"Select file","noFileText":"No file selected"}})

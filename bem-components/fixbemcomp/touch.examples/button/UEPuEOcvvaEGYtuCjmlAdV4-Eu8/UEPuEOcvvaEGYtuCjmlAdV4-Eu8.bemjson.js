@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_UEPuEOcvvaEGYtuCjmlAdV4-Eu8.css"}],"scripts":[{"elem":"js","url":"_UEPuEOcvvaEGYtuCjmlAdV4-Eu8.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"Radio","mods":{"theme":"islands","size":"m","togglable":"radio"}}})

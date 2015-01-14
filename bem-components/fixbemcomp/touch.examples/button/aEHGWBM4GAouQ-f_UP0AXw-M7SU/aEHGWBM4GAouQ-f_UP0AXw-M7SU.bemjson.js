@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_aEHGWBM4GAouQ-f_UP0AXw-M7SU.css"}],"scripts":[{"elem":"js","url":"_aEHGWBM4GAouQ-f_UP0AXw-M7SU.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"link"},"url":"https://bem.info/","text":"Попробуй БЭМ"}})

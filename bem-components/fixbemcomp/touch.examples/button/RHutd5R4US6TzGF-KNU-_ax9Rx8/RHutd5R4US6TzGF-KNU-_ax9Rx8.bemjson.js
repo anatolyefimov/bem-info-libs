@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_RHutd5R4US6TzGF-KNU-_ax9Rx8.css"}],"scripts":[{"elem":"js","url":"_RHutd5R4US6TzGF-KNU-_ax9Rx8.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","togglable":"check"},"text":"Я нажата"}})

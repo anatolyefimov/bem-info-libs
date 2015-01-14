@@ -1,1 +1,0 @@
-({"block":"page","title":"link","head":[{"elem":"css","url":"_MB9QVQ82Qlxr0kl0SAN6KauK3V4.css"}],"scripts":[{"elem":"js","url":"_MB9QVQ82Qlxr0kl0SAN6KauK3V4.js"}],"mods":{"theme":"islands"},"content":{"block":"link","content":"X-large","mods":{"theme":"islands","size":"xl"}}})

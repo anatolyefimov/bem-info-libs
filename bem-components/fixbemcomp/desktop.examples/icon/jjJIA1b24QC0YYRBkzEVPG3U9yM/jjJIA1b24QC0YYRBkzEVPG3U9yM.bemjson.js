@@ -1,1 +1,0 @@
-({"block":"page","title":"icon","head":[{"elem":"css","url":"_jjJIA1b24QC0YYRBkzEVPG3U9yM.css"}],"scripts":[{"elem":"js","url":"_jjJIA1b24QC0YYRBkzEVPG3U9yM.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"with icon","mods":{"theme":"islands","size":"m"},"icon":{"block":"icon","mods":{"social":"twitter"}}}})

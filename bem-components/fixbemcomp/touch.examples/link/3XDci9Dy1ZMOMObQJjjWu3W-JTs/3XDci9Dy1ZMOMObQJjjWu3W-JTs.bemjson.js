@@ -1,1 +1,0 @@
-({"block":"page","title":"link","head":[{"elem":"css","url":"_3XDci9Dy1ZMOMObQJjjWu3W-JTs.css"}],"scripts":[{"elem":"js","url":"_3XDci9Dy1ZMOMObQJjjWu3W-JTs.js"}],"mods":{"theme":"islands"},"content":{"block":"link","mods":{"theme":"islands","size":"m","pseudo":true},"content":"Показать ответ","title":"Нажмите на ссылку для получения ответа."}})

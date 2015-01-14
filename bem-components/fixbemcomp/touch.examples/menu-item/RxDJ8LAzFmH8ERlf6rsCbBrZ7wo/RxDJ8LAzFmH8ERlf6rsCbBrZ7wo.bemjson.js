@@ -1,1 +1,0 @@
-({"block":"page","title":"menu-item","head":[{"elem":"css","url":"_RxDJ8LAzFmH8ERlf6rsCbBrZ7wo.css"}],"scripts":[{"elem":"js","url":"_RxDJ8LAzFmH8ERlf6rsCbBrZ7wo.js"}],"mods":{"theme":"islands"},"content":{"block":"menu-item","mods":{"theme":"islands","size":"m","disabled":true},"content":"Понять БЭМ"}})

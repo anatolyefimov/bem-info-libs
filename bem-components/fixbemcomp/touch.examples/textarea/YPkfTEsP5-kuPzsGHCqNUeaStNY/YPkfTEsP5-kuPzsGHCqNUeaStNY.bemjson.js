@@ -1,1 +1,0 @@
-({"block":"page","title":"textarea","head":[{"elem":"css","url":"_YPkfTEsP5-kuPzsGHCqNUeaStNY.css"}],"scripts":[{"elem":"js","url":"_YPkfTEsP5-kuPzsGHCqNUeaStNY.js"}],"mods":{},"content":{"block":"textarea","placeholder":"default"}})

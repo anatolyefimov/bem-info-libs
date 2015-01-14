@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_GaTw-AuxFvI_aFn-DI1SCtafHLk.css"}],"scripts":[{"elem":"js","url":"_GaTw-AuxFvI_aFn-DI1SCtafHLk.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","mods":{"theme":"islands","size":"m","type":"button","disabled":true},"name":"name2","val":"val_1","text":"Конфеты закончились"}})

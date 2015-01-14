@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_hfC4WkU9SSa-WV6DlkfA7eBYSl0.css"}],"scripts":[{"elem":"js","url":"_hfC4WkU9SSa-WV6DlkfA7eBYSl0.js"}],"mods":{},"content":{"block":"checkbox","text":"Default","name":"default","val":"1"}})

@@ -1,1 +1,0 @@
-({"block":"page","title":"radio-group","head":[{"elem":"css","url":"_uxI6RkZZOA6RGDnM16scwRFJQHs.css"}],"scripts":[{"elem":"js","url":"_uxI6RkZZOA6RGDnM16scwRFJQHs.js"}],"mods":{"theme":"islands"},"content":{"block":"radio-group","mods":{"theme":"islands","size":"xl","type":"button"},"name":"X-Large","options":[{"val":1,"text":"first"},{"val":2,"text":"second"}]}})

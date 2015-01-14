@@ -1,1 +1,0 @@
-({"block":"page","title":"textarea","head":[{"elem":"css","url":"_DX7C_6dvTzn-kr5-glP60cZ-jT8.css"}],"scripts":[{"elem":"js","url":"_DX7C_6dvTzn-kr5-glP60cZ-jT8.js"}],"mods":{"theme":"islands"},"content":{"block":"textarea","mods":{"theme":"islands","size":"m"},"name":"Обратная связь"}})

@@ -1,1 +1,0 @@
-exports.blocks = [{"name":"spin"},{"name":"spin"},{"name":"spin"},{"name":"spin"}];

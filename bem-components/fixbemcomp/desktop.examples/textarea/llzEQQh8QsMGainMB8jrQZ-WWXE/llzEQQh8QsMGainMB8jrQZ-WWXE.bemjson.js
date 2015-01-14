@@ -1,1 +1,0 @@
-({"block":"page","title":"textarea","head":[{"elem":"css","url":"_llzEQQh8QsMGainMB8jrQZ-WWXE.css"}],"scripts":[{"elem":"js","url":"_llzEQQh8QsMGainMB8jrQZ-WWXE.js"}],"mods":{"theme":"islands"},"content":{"block":"textarea","mods":{"theme":"islands","size":"m"},"name":"Обратная связь","val":"Этот текст можно и нужно заменить"}})
