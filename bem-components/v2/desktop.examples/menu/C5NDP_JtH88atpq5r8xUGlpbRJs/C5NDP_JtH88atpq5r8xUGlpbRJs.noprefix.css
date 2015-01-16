@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,29 +14,39 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../common.blocks/menu/menu.styl:begin */
 .menu {
   overflow-y: auto;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/menu/menu.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:begin */
+/* ../../../common.blocks/menu/menu.styl:end */
+/* ../../../test.blocks/menu-item/menu-item.styl:begin */
 .menu-item .icon {
   width: 16px;
   margin-right: 5px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/menu-item/menu-item.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_islands.styl:begin */
+/* ../../../test.blocks/menu-item/menu-item.styl:end */
+/* ../../../design/common.blocks/menu/_theme/menu_theme_islands.styl:begin */
 .menu_theme_islands {
   box-sizing: border-box;
   user-select: none;
   outline: 0;
   background: #fff;
+/* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
+     * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
+}
+.menu_theme_islands:before,
+.menu_theme_islands:after {
+  display: block;
+  content: '';
 }
 .menu_theme_islands.menu_size_s {
   font-size: 13px;
   line-height: 24px;
-  padding: 3px 0;
+}
+.menu_theme_islands.menu_size_s:before,
+.menu_theme_islands.menu_size_s:after {
+  height: 3px;
 }
 .menu_theme_islands.menu_size_s .menu-item + .menu__group {
   margin-top: 3px;
@@ -50,7 +60,10 @@ html {
 .menu_theme_islands.menu_size_m {
   font-size: 13px;
   line-height: 24px;
-  padding: 4px 0;
+}
+.menu_theme_islands.menu_size_m:before,
+.menu_theme_islands.menu_size_m:after {
+  height: 4px;
 }
 .menu_theme_islands.menu_size_m .menu-item + .menu__group {
   margin-top: 4px;
@@ -64,7 +77,10 @@ html {
 .menu_theme_islands.menu_size_l {
   font-size: 15px;
   line-height: 28px;
-  padding: 5px 0;
+}
+.menu_theme_islands.menu_size_l:before,
+.menu_theme_islands.menu_size_l:after {
+  height: 5px;
 }
 .menu_theme_islands.menu_size_l .menu-item + .menu__group {
   margin-top: 5px;
@@ -78,7 +94,10 @@ html {
 .menu_theme_islands.menu_size_xl {
   font-size: 15px;
   line-height: 32px;
-  padding: 6px 0;
+}
+.menu_theme_islands.menu_size_xl:before,
+.menu_theme_islands.menu_size_xl:after {
+  height: 6px;
 }
 .menu_theme_islands.menu_size_xl .menu-item + .menu__group {
   margin-top: 6px;
@@ -107,8 +126,8 @@ html {
   padding-top: 0;
   border-top: 0;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu/_theme/menu_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:begin */
+/* ../../../design/common.blocks/menu/_theme/menu_theme_islands.styl:end */
+/* ../../../design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:begin */
 .menu-item_theme_islands {
   position: relative;
   white-space: nowrap;
@@ -179,4 +198,4 @@ html {
 .menu_size_xl .menu__group-title ~ .menu-item_theme_islands {
   padding: 0 40px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:end */
+/* ../../../design/common.blocks/menu-item/_theme/menu-item_theme_islands.styl:end */

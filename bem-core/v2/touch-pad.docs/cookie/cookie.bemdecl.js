@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"cookie"}];
+exports.blocks = [{"name":"cookie"},{"name":"cookie"}];

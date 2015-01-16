@@ -4059,14 +4059,14 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this
                     ._captureZIndex()
                     ._bindToParentPopup()
-                    .bindTo('pointerpress', this._onPointerPress);
+                    .bindTo('pointerpress pointerclick', this._setPreventHideByClick);
             },
 
             '' : function() {
                 this
                     ._releaseZIndex()
                     ._unbindFromParentPopup()
-                    .unbindFrom('pointerpress', this._onPointerPress);
+                    .unbindFrom('pointerpress pointerclick', this._setPreventHideByClick);
             }
         }
     },
@@ -4090,10 +4090,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return res;
     },
 
-    _onPointerPress : function() {
+    _setPreventHideByClick : function() {
         var curPopup = this;
         do {
-            curPopup._inPopupPointerPress = true;
+            curPopup._preventHideByClick = true;
         } while(curPopup = curPopup._getParentPopup());
     },
 
@@ -4202,8 +4202,8 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
         if(this.hasMod('target', 'anchor') && dom.contains(this._anchor, $(e.target)))
             return;
 
-        this._inPopupPointerPress?
-           this._inPopupPointerPress = null :
+        this._preventHideByClick?
+           this._preventHideByClick = null :
            this.delMod('visible');
     }
 }, /** @lends popup */{
@@ -4629,6 +4629,7 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
                 .redraw();
         } else {
             this._anchorParents = null;
+            this._zIndexGroupLevel = null;
         }
 
         return this;
@@ -6926,20 +6927,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         if(this._isPointerPressInProgress) return;
 
         this.__base.apply(this, arguments);
-        this
-            .bindToWin('unload', this._onUnload) // TODO: WTF???
-            .bindTo('control', 'keydown', this._onKeyDown);
+        this.bindTo('control', 'keydown', this._onKeyDown);
     },
 
     _onBlur : function() {
         this
-            .unbindFromWin('unload', this._onUnload)
             .unbindFrom('control', 'keydown', this._onKeyDown)
             .__base.apply(this, arguments);
-    },
-
-    _onUnload : function() {
-        this.delMod('focused');
     },
 
     _onPointerPress : function() {

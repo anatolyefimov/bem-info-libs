@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_simple.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/textarea/_theme/textarea_theme_simple.styl:begin */
 .textarea_theme_simple {
   position: relative;
   display: inline-block;
@@ -35,4 +35,7 @@
 .textarea_theme_simple.textarea_focused .textarea__control:focus {
   outline: none;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/textarea/_theme/textarea_theme_simple.styl:end */
+.textarea_theme_simple.textarea_width_available {
+  width: 100%;
+}
+/* ../../../design/common.blocks/textarea/_theme/textarea_theme_simple.styl:end */

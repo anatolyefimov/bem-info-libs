@@ -120,7 +120,7 @@ function applyc(__$ctx, __$ref) {
                     }
                 }
             }
-            if (!$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 8) === 0) {
+            if (!$$elem && (__$ctx.__$a0 & 8) === 0) {
                 var __$r = __$b26(__$ctx, __$ref);
                 if (__$r !== __$ref) return __$r;
             }
@@ -422,7 +422,6 @@ function __$b25(__$ctx, __$ref) {
 }
 
 function __$b26(__$ctx, __$ref) {
-    __$ctx._defPageApplied = true;
     var ctx__$22 = __$ctx.ctx;
     var __$r__$24;
     var __$l0__$25 = $$mode;
@@ -457,7 +456,6 @@ function __$b26(__$ctx, __$ref) {
     __$r__$24 = __$r__$28;
     $$mode = __$l0__$25;
     __$ctx.ctx = __$l1__$26;
-    __$ctx._defPageApplied = false;
     return;
 }
 
@@ -1931,7 +1929,7 @@ provide(/** @exports */{
     /**
      * Extends a given target by
      * @param {Object} target object to extend
-     * @param {...Object} source
+     * @param {Object} source
      * @returns {Object}
      */
     extend : function(target, source) {
@@ -2634,14 +2632,14 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         select && (domElems = domElems.add(ctxElem[select](selector)));
 
         if(onlyFirst) {
-            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true) : null;
+            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true)._init() : null;
         }
 
         var res = [],
             uniqIds = {};
 
         domElems.each(function(i, domElem) {
-            var block = initBlock(blockName, $(domElem), undef, true);
+            var block = initBlock(blockName, $(domElem), undef, true)._init();
             if(!uniqIds[block._uniqId]) {
                 uniqIds[block._uniqId] = true;
                 res.push(block);
@@ -3767,7 +3765,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
  * @returns {BEMDOM}
  */
 $.fn.bem = function(blockName, params) {
-    return initBlock(blockName, this, params, true);
+    return initBlock(blockName, this, params, true)._init();
 };
 
 // Set default scope after DOM ready
@@ -3833,50 +3831,65 @@ modules.define('loader_type_js', function(provide) {
 var loading = {},
     loaded = {},
     head = document.getElementsByTagName('head')[0],
-    onLoad = function(path) {
-        loaded[path] = true;
+    runCallbacks = function(path, type) {
         var cbs = loading[path], cb, i = 0;
         delete loading[path];
         while(cb = cbs[i++]) {
-            cb();
+            cb[type] && cb[type]();
         }
+    },
+    onSuccess = function(path) {
+        loaded[path] = true;
+        runCallbacks(path, 'success');
+    },
+    onError = function(path) {
+        runCallbacks(path, 'error');
     };
 
 provide(
     /**
      * @exports
      * @param {String} path resource link
-     * @param {Function} cb executes when resource is loaded
+     * @param {Function} success to be called if the script succeeds
+     * @param {Function} error to be called if the script fails
      */
-    function(path, cb) {
+    function(path, success, error) {
         if(loaded[path]) {
-            cb();
+            success();
             return;
         }
 
         if(loading[path]) {
-            loading[path].push(cb);
+            loading[path].push({ success : success, error : error });
             return;
         }
 
-        loading[path] = [cb];
+        loading[path] = [{ success : success, error : error }];
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.charset = 'utf-8';
         script.src = (location.protocol === 'file:' && !path.indexOf('//')? 'http:' : '') + path;
-        script.onreadystatechange === null?
+
+        if('onload' in script) {
+            script.onload = function() {
+                script.onload = script.onerror = null;
+                onSuccess(path);
+            };
+
+            script.onerror = function() {
+                script.onload = script.onerror = null;
+                onError(path);
+            };
+        } else {
             script.onreadystatechange = function() {
                 var readyState = this.readyState;
                 if(readyState === 'loaded' || readyState === 'complete') {
                     script.onreadystatechange = null;
-                    onLoad(path);
+                    onSuccess(path);
                 }
-            } :
-            script.onload = script.onerror = function() {
-                script.onload = script.onerror = null;
-                onLoad(path);
             };
+        }
 
         head.insertBefore(script, head.lastChild);
     }

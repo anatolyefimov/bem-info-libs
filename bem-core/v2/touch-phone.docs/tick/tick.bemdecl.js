@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"tick"}];
+exports.blocks = [{"name":"tick"},{"name":"tick"},{"name":"tick"},{"name":"tick"},{"name":"tick","mods":[{"name":"start","vals":[{"name":"auto"}]}]}];

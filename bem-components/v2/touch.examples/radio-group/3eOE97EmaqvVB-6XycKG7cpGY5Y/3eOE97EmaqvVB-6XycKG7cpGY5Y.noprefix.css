@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_simple.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/radio-group/_theme/radio-group_theme_simple.styl:begin */
 .radio-group_theme_simple .radio_type_button:first-of-type .button_togglable_radio,
 .radio-group_theme_simple .radio_type_button~ .radio_type_button .button_togglable_radio {
   border-right-width: 0;
@@ -20,8 +20,8 @@
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:begin */
+/* ../../../design/common.blocks/radio-group/_theme/radio-group_theme_simple.styl:end */
+/* ../../../design/common.blocks/button/_theme/button_theme_simple.styl:begin */
 .button_theme_simple {
   font-family: inherit;
   font-size: 100%;
@@ -80,8 +80,8 @@
 .button_theme_simple .icon:last-child {
   margin-right: -0.7em;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:begin */
+/* ../../../design/common.blocks/button/_theme/button_theme_simple.styl:end */
+/* ../../../design/common.blocks/radio/_theme/radio_theme_simple.styl:begin */
 .radio_theme_simple .radio__control {
   position: absolute;
   z-index: -1;
@@ -110,10 +110,10 @@
   content: '\2022';
   background: #fff7db;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_simple.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
+/* ../../../design/common.blocks/radio/_theme/radio_theme_simple.styl:end */
+/* ../../../common.blocks/radio/_type/radio_type_button.styl:begin */
 .radio.radio_type_button .radio__control {
   position: absolute;
   visibility: hidden;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
+/* ../../../common.blocks/radio/_type/radio_type_button.styl:end */

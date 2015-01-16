@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox-group/_theme/checkbox-group_theme_islands.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../design/common.blocks/checkbox-group/_theme/checkbox-group_theme_islands.styl:begin */
 .checkbox-group_theme_islands {
   display: inline-block;
 }
@@ -29,11 +29,8 @@ html {
   display: inline-block;
   white-space: nowrap;
 }
-.checkbox-group_theme_islands .checkbox_checked + .checkbox .button:before {
-  left: 0;
-}
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox-group/_theme/checkbox-group_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
+/* ../../../design/common.blocks/checkbox-group/_theme/checkbox-group_theme_islands.styl:end */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:begin */
 .button_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -41,9 +38,9 @@ html {
   margin: 0;
   padding: 0;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: #000;
   border: 0;
   border-radius: 3px;
@@ -94,7 +91,7 @@ html {
 .button_theme_islands.button_focused-hard {
   z-index: 1;
   background: rgba(178,142,0,0.6);
-  box-shadow: 0 0 10px #fc0;
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
 }
 .button_theme_islands.button_pressed:before {
   background: #f6f5f3;
@@ -216,6 +213,10 @@ html {
 .button_theme_islands .button__text:not(:last-child) {
   margin-right: 0;
 }
+.control-group .radio_checked + .radio .button_theme_islands:before,
+.control-group .checkbox_checked + .checkbox .button_theme_islands:before {
+  left: 0;
+}
 .control-group .button_theme_islands {
   border-radius: 0;
 }
@@ -223,7 +224,8 @@ html {
   right: 0;
   border-radius: 0;
 }
-.control-group .button_theme_islands.button_checked:before {
+.control-group .button_theme_islands.button_checked:before,
+.control-group .button_theme_islands.button_focused-hard.button:before {
   left: 1px;
   right: 1px;
 }
@@ -250,8 +252,8 @@ html {
 .control-group > :only-child .button_theme_islands:before {
   border-radius: 2px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_islands.styl:begin */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:end */
+/* ../../../design/common.blocks/checkbox/_theme/checkbox_theme_islands.styl:begin */
 .checkbox_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -287,9 +289,10 @@ html {
   content: '';
   background-image: url("../../../design/common.blocks/theme/_islands/tip.svg");
   background-size: 100%;
+  visibility: hidden;
   opacity: 0;
-  -webkit-transition: -webkit-transform 0.05s ease-out, opacity 0.05s ease-out;
-  transition: transform 0.05s ease-out, opacity 0.05s ease-out;
+  transition: -webkit-transform 0.05s ease-out, opacity 0.05s ease-out, visibility 0s linear 0.05s;
+  transition: transform 0.05s ease-out, opacity 0.05s ease-out, visibility 0s linear 0.05s;
 }
 .checkbox_theme_islands.checkbox_size_m {
   font-size: 13px;
@@ -305,7 +308,8 @@ html {
   width: 15px;
   height: 15px;
   -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+          transform: translateY(-5px);
 }
 .checkbox_theme_islands.checkbox_size_l {
   font-size: 15px;
@@ -321,7 +325,8 @@ html {
   width: 18px;
   height: 18px;
   -webkit-transform: translateY(-7px);
-  transform: translateY(-7px);
+      -ms-transform: translateY(-7px);
+          transform: translateY(-7px);
 }
 .checkbox_theme_islands.checkbox_checked .checkbox__box {
   background: rgba(153,122,0,0.5);
@@ -330,12 +335,15 @@ html {
   background: #ffeba0;
 }
 .checkbox_theme_islands.checkbox_checked .checkbox__box:after {
+  visibility: visible;
   opacity: 1;
   -webkit-transform: translateY(0px);
-  transform: translateY(0px);
+      -ms-transform: translateY(0px);
+          transform: translateY(0px);
+  transition-delay: 0s;
 }
 .checkbox_theme_islands.checkbox_focused .checkbox__box {
-  box-shadow: 0 0 10px #fc0;
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
 }
 .checkbox_theme_islands.checkbox_hovered .checkbox__box {
   background: rgba(0,0,0,0.3);
@@ -368,10 +376,10 @@ html {
 .checkbox_theme_islands.checkbox_type_line:last-child {
   margin-right: 0;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/checkbox/_theme/checkbox_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:begin */
+/* ../../../design/common.blocks/checkbox/_theme/checkbox_theme_islands.styl:end */
+/* ../../../common.blocks/checkbox/_type/checkbox_type_button.styl:begin */
 .checkbox.checkbox_type_button .checkbox__control {
   position: absolute;
   visibility: hidden;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/checkbox/_type/checkbox_type_button.styl:end */
+/* ../../../common.blocks/checkbox/_type/checkbox_type_button.styl:end */

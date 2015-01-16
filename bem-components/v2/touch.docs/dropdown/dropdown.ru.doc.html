@@ -1,78 +1,157 @@
 <h1 id="dropdown"><a href="#dropdown" class="anchor"></a>dropdown</h1>
-<p>Блок <code>dropdown</code> используется для создания выпадающих элементов и позволяет изменять их состояние, поведение и внешний вид.</p>
-<p>Блок состоит из двух компонентов:</p>
-<ul>
-<li>управляющий компонент. В зависимости от значения модификатора <code>switcher</code> управляющим компонентом может служить ссылка, псевдоссылка или кнопка.</li>
-<li>попап (блок <a href="../popup/popup.ru.md">popup</a>). Управляющий компонент при щелчке мышью вызывает попап (устанавливает для блока <code>popup</code> модификатор <code>visible</code>). Попап всегда отображается поверх остальных элементов страницы. Щелчок вне зоны попапа автоматически скрывает его (<code>{ autoclosable : true }</code>).</li>
-</ul>
-<h2 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h2>
-<p>Список зарезервированных полей входного BEMJSON:</p>
+<p>Используется для реализации составного блока, который объединяет всплывающий блок (<a href="../popup/popup.ru.md">popup</a>) и вызывающий его <a href="#modswitcher">управляющий компонент</a> (например, кнопку или ссылку).</p>
+<h2 id="Обзор-блока"><a href="#Обзор-блока" class="anchor"></a>Обзор блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
 <div class="table-container"><table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>switcher</td>
-        <td><code>String</code></td>
-        <td>Текст управляющего компонента. Может содержать фрагмент BEMJSON, например, если нужно обернуть управляющий компонент в другой блок или передать ему дополнительные параметры. </td>
-    </tr>
-    <tr>
-        <td>popup</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Текст или фрагмент BEMJSON, отображаемый во всплывающем окне <code>popup</code>. BEMJSON при этом будет преобразован в HTML.</td>
-    </tr>
-</table></div>
-
-<p>При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле <code>attrs</code> в BEMJSON.</p>
-<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
-<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
-<p>Блок представлен в следующих темах:</p>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Допустимые значения</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#modswitcher>switcher</a></td>
+<td><code>&#39;link&#39;</code>, <code>&#39;button&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Тип управляющего компонента.</td>
+</tr>
+<tr>
+<td><a href=#disabled>disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><a href=#opened>opened</a></td>
+<td><code>true</code></td>
+<td><code>JS</code></td>
+<td>Отображение всплывающего блока на странице.</td>
+</tr>
+<tr>
+<td><a href=#theme>theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Стилевое оформление.</td>
+</tr>
+<tr>
+<td><a href=#size>size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Размер управляющего компонента.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#fieldswitcher>switcher</a></td>
+<td><code>String</code>, <code>BEMJSON</code></td>
+<td>Содержимое <a href="#modswitcher">управляющего компонента</a>.</td>
+</tr>
+<tr>
+<td><a href=#popup>popup</a></td>
+<td><code>String</code>, <code>BEMJSON</code></td>
+<td>Содержимое всплывающего окна.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="Описание-блока"><a href="#Описание-блока" class="anchor"></a>Описание блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<p><a name="modswitcher"></a></p>
+<h4 id="Модификатор-`switcher`"><a href="#Модификатор-`switcher`" class="anchor"></a>Модификатор <code>switcher</code></h4>
+<p>Допустимые значения: <code>link</code>, <code>button</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Модификатор <code>switcher</code> отвечает за то, какой блок будет использоваться в качестве управляющего компонента:</p>
 <ul>
-<li>simple</li>
-<li>islands (<strong>Важно:</strong> При выборе темы <code>islands</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
+<li><a href="#modswitcherlink">ссылка</a></li>
+<li><a href="#modswitcherbutton">кнопка</a></li>
 </ul>
-<p>Без указания модификатора <code>theme</code> отображается <a href="#default">нативный</a> вид контрола.</p>
-<p>Наглядно показано на примерах ниже:</p>
-<p><a name="default"></a>
-<strong>default</strong></p>
-<!-- bem-example: touch.examples/dropdown/i-tvZUPI9xquD6XjK_-giWNa9FU -->
+<p><a name="modswitcherlink"></a></p>
+<h5 id="Ссылка-как-управляющий-компонент--модификатор-`switcher`-в-значении-`link`-"><a href="#Ссылка-как-управляющий-компонент--модификатор-`switcher`-в-значении-`link`-" class="anchor"></a>Ссылка как управляющий компонент (модификатор <code>switcher</code> в значении <code>link</code>)</h5>
+<p>Используется для представления управляющего компонента блоком <a href="../link/link.ru.md">link</a>.</p>
+<p>Нажатие на ссылку вызывает всплывающий блок. Переход по ссылке не осуществляется.</p>
+<!-- bem-example: touch.examples/dropdown/PJ_MMdSlQL0OCpU8Ub13cDXFl5E -->
 
-<p><strong>simple</strong></p>
-<!-- bem-example: touch.examples/dropdown/Yetiei8IuYYPEFiBTBCLzSHOO00 -->
+<p><a name="modswitcherbutton"></a></p>
+<h5 id="Кнопка-как-управляющий-компонент--модификатор-`switcher`-в-значении-`button`-"><a href="#Кнопка-как-управляющий-компонент--модификатор-`switcher`-в-значении-`button`-" class="anchor"></a>Кнопка как управляющий компонент (модификатор <code>switcher</code> в значении <code>button</code>)</h5>
+<p>Используется для представления управляющего компонента блоком <a href="../button/button.ru.md">button</a>.</p>
+<!-- bem-example: touch.examples/dropdown/o-aiLTJi8hJ7Agz9ZK1jvYySmo8 -->
 
-<p><strong>islands</strong></p>
-<!-- bem-example: touch.examples/dropdown/LuPEKYlQf0bv9LfUdPno47ydPhQ -->
+<p><a name="disabled"></a></p>
+<h4 id="Модификатор-`disabled`"><a href="#Модификатор-`disabled`" class="anchor"></a>Модификатор <code>disabled</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.</p>
+<!-- bem-example: touch.examples/dropdown/r5rjHdHPLB2c6CG9v0IMco1IkUc -->
 
-<h3 id="Управляющий-компонент-`_switcher`"><a href="#Управляющий-компонент-`_switcher`" class="anchor"></a>Управляющий компонент <code>_switcher</code></h3>
-<p>Модификатор отвечает за то, какой блок будет использоваться в качестве управляющего компонента:</p>
+<!-- bem-example: touch.examples/dropdown/BIJfbbpeXZVVz8JdMM-WwyOFN3E -->
+
+<p><a name="opened"></a></p>
+<h4 id="Модификатор-`opened`"><a href="#Модификатор-`opened`" class="anchor"></a>Модификатор <code>opened</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способ использования: <code>JS</code>.</p>
+<p>Выставляется блоку автоматически при открытии всплывающего окна.</p>
+<p><a name="theme"></a></p>
+<h4 id="Модификатор-`theme`"><a href="#Модификатор-`theme`" class="anchor"></a>Модификатор <code>theme</code></h4>
+<p>Допустимое значение: <code>islands</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>.</p>
+<p>Необходимо использовать с модификатором <a href="#size">size</a>.</p>
+<p>Отвечает за стилевое оформление блока и может быть задан:</p>
 <ul>
-<li><code>link</code> — ссылка. В качестве управляющего компонента используется блок <code>link</code>.</li>
-<li><code>button</code> — кнопка. В качестве управляющего компонента используется блок <code>button</code>.</li>
+<li>блоку <code>dropdown</code> в целом</li>
 </ul>
-<!-- bem-example: touch.examples/dropdown/6DEI3xoI7Hpzd-GfitPQbHENqfc -->
+<!-- bem-example: touch.examples/dropdown/PJ_MMdSlQL0OCpU8Ub13cDXFl5E -->
 
-<h3 id="Состояния-блока"><a href="#Состояния-блока" class="anchor"></a>Состояния блока</h3>
-<h4 id="Неактивен-`_disabled`"><a href="#Неактивен-`_disabled`" class="anchor"></a>Неактивен <code>_disabled</code></h4>
-<p>В состоянии «неактивен» управляющий компонент блока виден, но недоступен для действий пользователя. К неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
-<p>Неактивному блоку не могут быть назначены следующие модификаторы:</p>
+<!-- bem-example: touch.examples/dropdown/o-aiLTJi8hJ7Agz9ZK1jvYySmo8 -->
+
 <ul>
-<li><code>opened</code> — <code>popup</code> блок не может быть открыт нажатием на управляющий компонент;</li>
-<li><code>visible</code> — <code>popup</code> блок не может быть показан;</li>
-<li>управляющий компонент не может получить модификатор <code>focused</code>;</li>
-<li>Управляющий компонент <code>button</code> не может получить модификатор <code>hovered</code> при наведении указателем мыши.</li>
+<li>управляющему элементу, если в <a href="#fieldswitcher">поле switcher</a> пробрасывается BEMJSON блока <a href="../link/link.ru.md">link</a> или <a href="../button/button.ru.md">button</a>.</li>
 </ul>
-<!-- bem-example: touch.examples/dropdown/UjWKyhYee09jwF1b_cx4EVOR700 -->
+<!-- bem-example: touch.examples/dropdown/v3PwsavwH3FkVqnwnAgn4IVDe1k -->
 
-<h4 id="Открыт-`_opened`"><a href="#Открыт-`_opened`" class="anchor"></a>Открыт <code>_opened</code></h4>
-<p>Модификатор <code>opened</code> в значении <code>true</code> автоматически выставляется блоку при щелчке мышью по управляющему компоненту блока.</p>
-<!-- bem-example: touch.examples/dropdown/KnOIYiZTLG0RQbQ9DmaLeSO_UJ4 -->
+<!-- bem-example: touch.examples/dropdown/2hMZl3uYq0cm8UyZUnz39v88nmk -->
 
-<h2 id="BEMJSON-в-атрибутах-`switcher`-и-`popup`"><a href="#BEMJSON-в-атрибутах-`switcher`-и-`popup`" class="anchor"></a>BEMJSON в атрибутах <code>switcher</code> и <code>popup</code></h2>
-<p>Атрибуты управляющего компонента и попапа могут содержать фрагмент БЭМ-дерева. Например, если нужно обернуть управляющий компонент в другой блок или передать ему дополнительные параметры.</p>
-<p>Например, можно сделать кнопку управляющего компонента &quot;залипающей&quot;:</p>
-<!-- bem-example: touch.examples/dropdown/qMvvL1pKZ5Yu8zg5t3om2UW_y-g -->
+<p><a name="size"></a></p>
+<h4 id="Модификатор-`size`"><a href="#Модификатор-`size`" class="anchor"></a>Модификатор <code>size</code></h4>
+<p>Допустимые значения для темы <code>islands</code>: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Задает размер управляющему элементу.</p>
+<p>Необходимо использовать с модификатором <a href="#theme">theme</a> в значении <code>islands</code>.</p>
+<p>Модификатор <code>size</code> может быть задан:</p>
+<ul>
+<li>блоку <code>dropdown</code> в целом</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/o-aiLTJi8hJ7Agz9ZK1jvYySmo8 -->
 
-<p>Или создать на основе блока выпадающий селект:</p>
-<!-- bem-example: touch.examples/dropdown/Uhf4cuZYpb0ebSJlOxTr5elr2qg -->
+<ul>
+<li>управляющему элементу, если в <a href="#fieldswitcher">поле switcher</a> пробрасывается BEMJSON блока <a href="../button/button.ru.md">button</a>.</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/cVTplPIYa6esEOkLGN1IdgJY1rc -->
+
+<h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<p><a name="fieldswitcher"></a></p>
+<h4 id="Поле-`switcher`"><a href="#Поле-`switcher`" class="anchor"></a>Поле <code>switcher</code></h4>
+<p>Тип: <code>String</code>, <code>BEMJSON</code>.</p>
+<p>Определяет содержимое <a href="#modswitcher">управляющего компонента</a>.</p>
+<!-- bem-example: touch.examples/dropdown/fJ7qXy9djvNYGtU3ExyXoc3xnKg -->
+
+<!-- bem-example: touch.examples/dropdown/nC6uR2p5EreNPjr2EYPEum1GHQ0 -->
+
+<p><a name="popup"></a></p>
+<h4 id="Поле-`popup`"><a href="#Поле-`popup`" class="anchor"></a>Поле <code>popup</code></h4>
+<p>Тип: <code>String</code>, <code>BEMJSON</code>.</p>
+<p>Определяет содержимое всплывающего окна.</p>
+<!-- bem-example: touch.examples/dropdown/k9JApVTC5ozAXoykTRodSR99ppw -->
+
+<!-- bem-example: touch.examples/dropdown/7f8uoPIRApfEWj_32F4bIMBX7Xc -->

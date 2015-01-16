@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"next-tick"}];
+exports.blocks = [{"name":"next-tick"},{"name":"next-tick"},{"name":"next-tick"}];

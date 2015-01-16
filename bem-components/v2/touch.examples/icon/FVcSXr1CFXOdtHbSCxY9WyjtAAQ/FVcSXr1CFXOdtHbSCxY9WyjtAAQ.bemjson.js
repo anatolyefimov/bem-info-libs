@@ -1,0 +1,1 @@
+({"block":"page","title":"icon","head":[{"elem":"css","url":"_FVcSXr1CFXOdtHbSCxY9WyjtAAQ.css"}],"scripts":[{"elem":"js","url":"_FVcSXr1CFXOdtHbSCxY9WyjtAAQ.js"}],"mods":{"theme":"islands"},"content":{"block":"button","text":"Download","mods":{"theme":"islands","size":"m"},"icon":{"block":"icon","mods":{"action":"download"}}}})

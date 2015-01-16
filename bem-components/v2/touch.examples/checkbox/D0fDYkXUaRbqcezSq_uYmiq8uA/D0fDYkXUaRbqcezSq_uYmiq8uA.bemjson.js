@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_D0fDYkXUaRbqcezSq_uYmiq8uA.css"}],"scripts":[{"elem":"js","url":"_D0fDYkXUaRbqcezSq_uYmiq8uA.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","text":"Отмечен","name":"name2","val":2,"mods":{"theme":"islands","size":"m","type":"button","checked":true}}})

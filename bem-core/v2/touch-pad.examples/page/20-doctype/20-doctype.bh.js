@@ -23,6 +23,8 @@ jsAttrScheme: 'json'
 })
 dropRequireCache(require, require.resolve("../../../common.blocks/page/page.bh.js"));
 require("../../../common.blocks/page/page.bh.js")(bh);
+dropRequireCache(require, require.resolve("../../../touch.blocks/page/page.bh.js"));
+require("../../../touch.blocks/page/page.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../common.blocks/ua/ua.bh.js"));
 require("../../../common.blocks/ua/ua.bh.js")(bh);
 dropRequireCache(require, require.resolve("../../../touch.blocks/ua/ua.bh.js"));

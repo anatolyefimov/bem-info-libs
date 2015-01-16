@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,13 +14,13 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../common.blocks/popup/popup.styl:begin */
 .popup {
   position: absolute;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/popup/popup.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:begin */
+/* ../../../common.blocks/popup/popup.styl:end */
+/* ../../../test.blocks/popup/popup.styl:begin */
 .popup:not(.modal):not([class*="popup_theme"]) {
   display: none;
   background: #fff7db;
@@ -29,25 +29,25 @@ html {
 .popup_visible:not(.modal):not([class*="popup_theme"]) {
   display: block;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/popup/popup.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:begin */
+/* ../../../test.blocks/popup/popup.styl:end */
+/* ../../../design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:begin */
 .dropdown_theme_islands {
   display: inline-block;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_islands.styl:begin */
+/* ../../../design/common.blocks/dropdown/_theme/dropdown_theme_islands.styl:end */
+/* ../../../design/common.blocks/popup/_theme/popup_theme_islands.styl:begin */
 .popup_theme_islands {
   display: none;
   visibility: hidden;
   margin: -9999px 0 0 -9999px;
   -webkit-animation-duration: 0.1s;
-  animation-duration: 0.1s;
+          animation-duration: 0.1s;
   -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
   background: #fff;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 10px 20px -5px rgba(0,0,0,0.4);
   -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 /* Divided into two parts for better optimization */
 }
 .popup_theme_islands.popup_js_inited {
@@ -59,112 +59,112 @@ html {
 }
 .popup_theme_islands.popup_direction_bottom-left {
   -webkit-animation-name: popup_theme_islands_bottom;
-  animation-name: popup_theme_islands_bottom;
+          animation-name: popup_theme_islands_bottom;
 }
 .popup_theme_islands.popup_direction_bottom-center {
   -webkit-animation-name: popup_theme_islands_bottom;
-  animation-name: popup_theme_islands_bottom;
+          animation-name: popup_theme_islands_bottom;
 }
 .popup_theme_islands.popup_direction_bottom-right {
   -webkit-animation-name: popup_theme_islands_bottom;
-  animation-name: popup_theme_islands_bottom;
+          animation-name: popup_theme_islands_bottom;
 }
 .popup_theme_islands.popup_direction_bottom-left.popup_visible {
   -webkit-animation-name: popup_theme_islands_bottom_visible;
-  animation-name: popup_theme_islands_bottom_visible;
+          animation-name: popup_theme_islands_bottom_visible;
 }
 .popup_theme_islands.popup_direction_bottom-center.popup_visible {
   -webkit-animation-name: popup_theme_islands_bottom_visible;
-  animation-name: popup_theme_islands_bottom_visible;
+          animation-name: popup_theme_islands_bottom_visible;
 }
 .popup_theme_islands.popup_direction_bottom-right.popup_visible {
   -webkit-animation-name: popup_theme_islands_bottom_visible;
-  animation-name: popup_theme_islands_bottom_visible;
+          animation-name: popup_theme_islands_bottom_visible;
 }
 .popup_theme_islands.popup_direction_top-left {
   -webkit-animation-name: popup_theme_islands_top;
-  animation-name: popup_theme_islands_top;
+          animation-name: popup_theme_islands_top;
 }
 .popup_theme_islands.popup_direction_top-center {
   -webkit-animation-name: popup_theme_islands_top;
-  animation-name: popup_theme_islands_top;
+          animation-name: popup_theme_islands_top;
 }
 .popup_theme_islands.popup_direction_top-right {
   -webkit-animation-name: popup_theme_islands_top;
-  animation-name: popup_theme_islands_top;
+          animation-name: popup_theme_islands_top;
 }
 .popup_theme_islands.popup_direction_top-left.popup_visible {
   -webkit-animation-name: popup_theme_islands_top_visible;
-  animation-name: popup_theme_islands_top_visible;
+          animation-name: popup_theme_islands_top_visible;
 }
 .popup_theme_islands.popup_direction_top-center.popup_visible {
   -webkit-animation-name: popup_theme_islands_top_visible;
-  animation-name: popup_theme_islands_top_visible;
+          animation-name: popup_theme_islands_top_visible;
 }
 .popup_theme_islands.popup_direction_top-right.popup_visible {
   -webkit-animation-name: popup_theme_islands_top_visible;
-  animation-name: popup_theme_islands_top_visible;
+          animation-name: popup_theme_islands_top_visible;
 }
 .popup_theme_islands.popup_direction_right-top {
   -webkit-animation-name: popup_theme_islands_right;
-  animation-name: popup_theme_islands_right;
+          animation-name: popup_theme_islands_right;
 }
 .popup_theme_islands.popup_direction_right-center {
   -webkit-animation-name: popup_theme_islands_right;
-  animation-name: popup_theme_islands_right;
+          animation-name: popup_theme_islands_right;
 }
 .popup_theme_islands.popup_direction_right-bottom {
   -webkit-animation-name: popup_theme_islands_right;
-  animation-name: popup_theme_islands_right;
+          animation-name: popup_theme_islands_right;
 }
 .popup_theme_islands.popup_direction_right-top.popup_visible {
   -webkit-animation-name: popup_theme_islands_right_visible;
-  animation-name: popup_theme_islands_right_visible;
+          animation-name: popup_theme_islands_right_visible;
 }
 .popup_theme_islands.popup_direction_right-center.popup_visible {
   -webkit-animation-name: popup_theme_islands_right_visible;
-  animation-name: popup_theme_islands_right_visible;
+          animation-name: popup_theme_islands_right_visible;
 }
 .popup_theme_islands.popup_direction_right-bottom.popup_visible {
   -webkit-animation-name: popup_theme_islands_right_visible;
-  animation-name: popup_theme_islands_right_visible;
+          animation-name: popup_theme_islands_right_visible;
 }
 .popup_theme_islands.popup_direction_left-top {
   -webkit-animation-name: popup_theme_islands_left;
-  animation-name: popup_theme_islands_left;
+          animation-name: popup_theme_islands_left;
 }
 .popup_theme_islands.popup_direction_left-center {
   -webkit-animation-name: popup_theme_islands_left;
-  animation-name: popup_theme_islands_left;
+          animation-name: popup_theme_islands_left;
 }
 .popup_theme_islands.popup_direction_left-bottom {
   -webkit-animation-name: popup_theme_islands_left;
-  animation-name: popup_theme_islands_left;
+          animation-name: popup_theme_islands_left;
 }
 .popup_theme_islands.popup_direction_left-top.popup_visible {
   -webkit-animation-name: popup_theme_islands_left_visible;
-  animation-name: popup_theme_islands_left_visible;
+          animation-name: popup_theme_islands_left_visible;
 }
 .popup_theme_islands.popup_direction_left-center.popup_visible {
   -webkit-animation-name: popup_theme_islands_left_visible;
-  animation-name: popup_theme_islands_left_visible;
+          animation-name: popup_theme_islands_left_visible;
 }
 .popup_theme_islands.popup_direction_left-bottom.popup_visible {
   -webkit-animation-name: popup_theme_islands_left_visible;
-  animation-name: popup_theme_islands_left_visible;
+          animation-name: popup_theme_islands_left_visible;
 }
 @-webkit-keyframes popup_theme_islands_bottom {
   0% {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateY(10px);
-    transform: translateY(10px);
+            transform: translateY(10px);
   }
   100% {
     visibility: hidden;
@@ -177,13 +177,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateY(10px);
-    transform: translateY(10px);
+            transform: translateY(10px);
   }
   100% {
     visibility: hidden;
@@ -195,24 +195,24 @@ html {
   0% {
     opacity: 0;
     -webkit-transform: translateY(10px);
-    transform: translateY(10px);
+            transform: translateY(10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @keyframes popup_theme_islands_bottom_visible {
   0% {
     opacity: 0;
     -webkit-transform: translateY(10px);
-    transform: translateY(10px);
+            transform: translateY(10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @-webkit-keyframes popup_theme_islands_top {
@@ -220,13 +220,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   100% {
     visibility: hidden;
@@ -239,13 +239,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   100% {
     visibility: hidden;
@@ -257,24 +257,24 @@ html {
   0% {
     opacity: 0;
     -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @keyframes popup_theme_islands_top_visible {
   0% {
     opacity: 0;
     -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @-webkit-keyframes popup_theme_islands_right {
@@ -282,13 +282,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
     visibility: hidden;
@@ -301,13 +301,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
     visibility: hidden;
@@ -319,24 +319,24 @@ html {
   0% {
     opacity: 0;
     -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
   }
 }
 @keyframes popup_theme_islands_right_visible {
   0% {
     opacity: 0;
     -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
   }
 }
 @-webkit-keyframes popup_theme_islands_left {
@@ -344,13 +344,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateX(-10px);
-    transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     visibility: hidden;
@@ -363,13 +363,13 @@ html {
     visibility: visible;
     margin: 0;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
   99% {
     margin: 0;
     -webkit-transform: translateX(-10px);
-    transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     visibility: hidden;
@@ -381,32 +381,31 @@ html {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-10px);
-    transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
   }
 }
 @keyframes popup_theme_islands_left_visible {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-10px);
-    transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     opacity: 1;
     -webkit-transform: translateX(0);
-    transform: translateX(0);
+            transform: translateX(0);
   }
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/popup/_theme/popup_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:begin */
+/* ../../../design/common.blocks/popup/_theme/popup_theme_islands.styl:end */
+/* ../../../design/common.blocks/link/_theme/link_theme_islands.styl:begin */
 .link_theme_islands {
   color: #44b;
   cursor: pointer;
-  -webkit-transition: color 0.15s ease-out;
   transition: color 0.15s ease-out;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
@@ -420,8 +419,20 @@ html {
 .link_theme_islands:hover {
   color: #e00;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:begin */
+.link_theme_islands.link_size_s {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_m {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_l {
+  font-size: 15px;
+}
+.link_theme_islands.link_size_xl {
+  font-size: 18px;
+}
+/* ../../../design/common.blocks/link/_theme/link_theme_islands.styl:end */
+/* ../../../test.blocks/link/link.styl:begin */
 .link_pseudo:not([class*="link_theme"]) {
   cursor: pointer;
   color: #00f;
@@ -429,8 +440,8 @@ html {
 .link_pseudo:not([class*="link_theme"]):hover {
   color: #f00;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
+/* ../../../test.blocks/link/link.styl:end */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:begin */
 .button_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -438,9 +449,9 @@ html {
   margin: 0;
   padding: 0;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: #000;
   border: 0;
   border-radius: 3px;
@@ -491,7 +502,7 @@ html {
 .button_theme_islands.button_focused-hard {
   z-index: 1;
   background: rgba(178,142,0,0.6);
-  box-shadow: 0 0 10px #fc0;
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
 }
 .button_theme_islands.button_pressed:before {
   background: #f6f5f3;
@@ -613,6 +624,10 @@ html {
 .button_theme_islands .button__text:not(:last-child) {
   margin-right: 0;
 }
+.control-group .radio_checked + .radio .button_theme_islands:before,
+.control-group .checkbox_checked + .checkbox .button_theme_islands:before {
+  left: 0;
+}
 .control-group .button_theme_islands {
   border-radius: 0;
 }
@@ -620,7 +635,8 @@ html {
   right: 0;
   border-radius: 0;
 }
-.control-group .button_theme_islands.button_checked:before {
+.control-group .button_theme_islands.button_checked:before,
+.control-group .button_theme_islands.button_focused-hard.button:before {
   left: 1px;
   right: 1px;
 }
@@ -647,4 +663,4 @@ html {
 .control-group > :only-child .button_theme_islands:before {
   border-radius: 2px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:end */

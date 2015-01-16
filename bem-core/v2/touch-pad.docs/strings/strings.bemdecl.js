@@ -1,1 +1,1 @@
-exports.blocks = [{"name":"strings"}];
+exports.blocks = [{"name":"strings"},{"name":"strings","elems":[{"name":"escape"}]},{"name":"strings","elems":[{"name":"escape"}]}];

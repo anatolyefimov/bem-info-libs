@@ -1,0 +1,443 @@
+<h1 id="vow-Module"><a href="#vow-Module" class="anchor"></a>vow Module</h1>
+<h2 id="Deferred-Class"><a href="#Deferred-Class" class="anchor"></a>Deferred Class</h2>
+<p>The <code>Deferred</code> class is used to encapsulate newly-created promise object along with functions that resolve, reject or notify it.</p>
+<h3 id="Constructor"><a href="#Constructor" class="anchor"></a>Constructor</h3>
+<h4 id="Deferred---"><a href="#Deferred---" class="anchor"></a>Deferred ()</h4>
+<p>You can use <code>vow.defer()</code> instead of using this constructor.</p>
+<p><code>new vow.Deferred()</code> gives the same result as <code>vow.defer()</code>.</p>
+<h3 id="Instance-methods"><a href="#Instance-methods" class="anchor"></a>Instance methods</h3>
+<h4 id="promise----→--vow:Promise-"><a href="#promise----→--vow:Promise-" class="anchor"></a>promise () → {vow:Promise}</h4>
+<p>Returns corresponding promise.</p>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="resolve---value--"><a href="#resolve---value--" class="anchor"></a>resolve ( value )</h4>
+<p>Resolves corresponding promise with given <code>value</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>value {*}</li>
+</ul>
+<h4 id="reject---reason--"><a href="#reject---reason--" class="anchor"></a>reject ( reason )</h4>
+<p>Rejects corresponding promise with given <code>reason</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>reason {*}</li>
+</ul>
+<h4 id="notify---value--"><a href="#notify---value--" class="anchor"></a>notify ( value )</h4>
+<p>Notifies corresponding promise with given <code>value</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>value {*}</li>
+</ul>
+<h2 id="Promise-Class"><a href="#Promise-Class" class="anchor"></a>Promise Class</h2>
+<p>The <code>Promise</code> class is used when you want to give to the caller something to subscribe to,
+but not the ability to resolve or reject the deferred.</p>
+<h3 id="Constructor"><a href="#Constructor" class="anchor"></a>Constructor</h3>
+<h4 id="Promise---resolver--"><a href="#Promise---resolver--" class="anchor"></a>Promise ( resolver )</h4>
+<p>You should use this constructor directly only if you are going to use <code>vow</code> as DOM Promises implementation.
+In other case you should use <code>vow.defer()</code> and <code>defer.promise()</code> methods.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>resolver {Function}<br/>
+See <a href="https://github.com/domenic/promises-unwrapping/blob/master/README.md#the-promise-constructor">https://github.com/domenic/promises-unwrapping/blob/master/README.md#the-promise-constructor</a> for details.</li>
+</ul>
+<h3 id="Instance-methods"><a href="#Instance-methods" class="anchor"></a>Instance methods</h3>
+<h4 id="valueOf----→----"><a href="#valueOf----→----" class="anchor"></a>valueOf () → {*}</h4>
+<p>Returns value of fulfilled promise or reason in case of rejection.</p>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{*}</p>
+<h4 id="isResolved----→--Boolean-"><a href="#isResolved----→--Boolean-" class="anchor"></a>isResolved () → {Boolean}</h4>
+<p>Returns <code>true</code> if promise is resolved.</p>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="isFulfilled----→--Boolean-"><a href="#isFulfilled----→--Boolean-" class="anchor"></a>isFulfilled () → {Boolean}</h4>
+<p>Returns <code>true</code> if promise is fulfilled.</p>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="isRejected----→--Boolean-"><a href="#isRejected----→--Boolean-" class="anchor"></a>isRejected () → {Boolean}</h4>
+<p>Returns <code>true</code> if promise is rejected.</p>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="then----onFulfilled-,--onRejected-,--onProgress-,--ctx----→--vow:Promise-"><a href="#then----onFulfilled-,--onRejected-,--onProgress-,--ctx----→--vow:Promise-" class="anchor"></a>then ( [onFulfilled], [onRejected], [onProgress], [ctx] ) → {vow:Promise}</h4>
+<p>Adds reactions to promise.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[onProgress] {Function}<br/>
+Callback that will to be invoked with the value after promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<p>A new promise, see <a href="https://github.com/promises-aplus/promises-spec">https://github.com/promises-aplus/promises-spec</a> for details</p>
+<h4 id="catch---onRejected,--ctx----→--vow:Promise-"><a href="#catch---onRejected,--ctx----→--vow:Promise-" class="anchor"></a>catch ( onRejected, [ctx] ) → {vow:Promise}</h4>
+<p>Adds rejection reaction only. It is shortcut for <code>promise.then(undefined, onRejected)</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>onRejected {Function}<br/>
+Callback to be called with the value after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="fail---onRejected,--ctx----→--vow:Promise-"><a href="#fail---onRejected,--ctx----→--vow:Promise-" class="anchor"></a>fail ( onRejected, [ctx] ) → {vow:Promise}</h4>
+<p>Adds rejection reaction only. It is shortcut for <code>promise.then(null, onRejected)</code>. It&#39;s alias for <code>catch</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>onRejected {Function}<br/>
+Callback to be called with the value after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="always---onResolved,--ctx----→--vow:Promise-"><a href="#always---onResolved,--ctx----→--vow:Promise-" class="anchor"></a>always ( onResolved, [ctx] ) → {vow:Promise}</h4>
+<p>Adds resolving reaction (to fulfillment and rejection both).</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>onResolved {Function}<br/>
+Callback that to be called with the value after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="progress---onProgress,--ctx----→--vow:Promise-"><a href="#progress---onProgress,--ctx----→--vow:Promise-" class="anchor"></a>progress ( onProgress, [ctx] ) → {vow:Promise}</h4>
+<p>Adds progress reaction.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>onProgress {Function}<br/>
+Callback to be called with the value when promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="spread----onFulfilled-,--onRejected-,--ctx----→--vow:Promise-"><a href="#spread----onFulfilled-,--onRejected-,--ctx----→--vow:Promise-" class="anchor"></a>spread ( [onFulfilled], [onRejected], [ctx] ) → {vow:Promise}</h4>
+<p>Like <code>promise.then</code>, but &quot;spreads&quot; the array into a variadic value handler.
+It is useful with <code>vow.all</code> and <code>vow.allResolved</code> methods.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="done----onFulfilled-,--onRejected-,--onProgress-,--ctx---"><a href="#done----onFulfilled-,--onRejected-,--onProgress-,--ctx---" class="anchor"></a>done ( [onFulfilled], [onRejected], [onProgress], [ctx] )</h4>
+<p>Like <code>then</code>, but terminates a chain of promises.
+If the promise has been rejected, throws it as an exception in a future turn of the event loop.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[onProgress] {Function}<br/>
+Callback that will to be invoked with the value after promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h4 id="delay---delay---→--vow:Promise-"><a href="#delay---delay---→--vow:Promise-" class="anchor"></a>delay ( delay ) → {vow:Promise}</h4>
+<p>Returns a new promise that will be fulfilled in <code>delay</code> milliseconds if the promise is fulfilled,
+or immediately rejected if promise is rejected.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>delay {Number}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="timeout---timeout---→--vow:Promise-"><a href="#timeout---timeout---→--vow:Promise-" class="anchor"></a>timeout ( timeout ) → {vow:Promise}</h4>
+<p>Returns a new promise that will be rejected in <code>timeout</code> milliseconds
+if the promise is not resolved beforehand.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>timeout {Number}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h3 id="Static-methods"><a href="#Static-methods" class="anchor"></a>Static methods</h3>
+<h4 id="cast---value---→--vow:Promise-"><a href="#cast---value---→--vow:Promise-" class="anchor"></a>cast ( value ) → {vow:Promise}</h4>
+<p>Coerces given <code>value</code> to a promise, or returns the <code>value</code> if it&#39;s already a promise.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>value {*}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="all---iterable---→--vow:Promise-"><a href="#all---iterable---→--vow:Promise-" class="anchor"></a>all ( iterable ) → {vow:Promise}</h4>
+<p>Returns a promise to be fulfilled only after all the items in <code>iterable</code> are fulfilled,
+or to be rejected when any of the <code>iterable</code> is rejected.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>iterable {Array | Object}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="race---iterable---→--vow:Promise-"><a href="#race---iterable---→--vow:Promise-" class="anchor"></a>race ( iterable ) → {vow:Promise}</h4>
+<p>Returns a promise to be fulfilled only when any of the items in <code>iterable</code> are fulfilled,
+or to be rejected when the first item is rejected.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>iterable {Array}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="resolve---value---→--vow:Promise-"><a href="#resolve---value---→--vow:Promise-" class="anchor"></a>resolve ( value ) → {vow:Promise}</h4>
+<p>Returns a promise that has already been resolved with the given <code>value</code>.
+If <code>value</code> is a promise, returned promise will be adopted with the state of given promise.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>value {*}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h4 id="reject---reason---→--vow:Promise-"><a href="#reject---reason---→--vow:Promise-" class="anchor"></a>reject ( reason ) → {vow:Promise}</h4>
+<p>Returns a promise that has already been rejected with the given <code>reason</code>.</p>
+<h5 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>reason {*}</li>
+</ul>
+<h5 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h5>
+<p>{vow:Promise}</p>
+<h2 id="defer----→--vow:Deferred-"><a href="#defer----→--vow:Deferred-" class="anchor"></a>defer () → {vow:Deferred}</h2>
+<p>Creates a new deferred. This method is a factory method for <code>vow:Deferred</code> class.
+It&#39;s equivalent to <code>new vow.Deferred()</code>.</p>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Deferred}</p>
+<h2 id="when---value,--onFulfilled-,--onRejected-,--onProgress-,--ctx----→--vow:Promise-"><a href="#when---value,--onFulfilled-,--onRejected-,--onProgress-,--ctx----→--vow:Promise-" class="anchor"></a>when ( value, [onFulfilled], [onRejected], [onProgress], [ctx] ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.then</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[onProgress] {Function}<br/>
+Callback that will to be invoked with the value after promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="fail---value,-onRejected,--ctx----→--vow:Promise-"><a href="#fail---value,-onRejected,--ctx----→--vow:Promise-" class="anchor"></a>fail ( value, onRejected, [ctx] ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.fail</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>onRejected {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="always---value,-onResolved,--ctx----→--vow:Promise-"><a href="#always---value,-onResolved,--ctx----→--vow:Promise-" class="anchor"></a>always ( value, onResolved, [ctx] ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.always</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>onResolved {Function}<br/>
+Callback that will to be invoked with the reason after promise has been resolved</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="progress---value,-onProgress,--ctx----→--vow:Promise-"><a href="#progress---value,-onProgress,--ctx----→--vow:Promise-" class="anchor"></a>progress ( value, onProgress, [ctx] ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.progress</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>onProgress {Function}<br/>
+Callback that will to be invoked with the reason after promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callback execution</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="spread---value,--onFulfilled-,--onRejected-,--ctx----→--vow:Promise-"><a href="#spread---value,--onFulfilled-,--onRejected-,--ctx----→--vow:Promise-" class="anchor"></a>spread ( value, [onFulfilled], [onRejected], [ctx] ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.spread</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="done---value,--onFulfilled-,--onRejected-,--onProgress-,--ctx---"><a href="#done---value,--onFulfilled-,--onRejected-,--onProgress-,--ctx---" class="anchor"></a>done ( value, [onFulfilled], [onRejected], [onProgress], [ctx] )</h2>
+<p>Static equivalent to <code>promise.done</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>[onFulfilled] {Function}<br/>
+Callback that will to be invoked with the value after promise has been fulfilled</li>
+<li>[onRejected] {Function}<br/>
+Callback that will to be invoked with the reason after promise has been rejected</li>
+<li>[onProgress] {Function}<br/>
+Callback that will to be invoked with the value after promise has been notified</li>
+<li>[ctx] {Object}<br/>
+Context of callbacks execution</li>
+</ul>
+<h2 id="isPromise---value---→--Boolean-"><a href="#isPromise---value---→--Boolean-" class="anchor"></a>isPromise ( value ) → {Boolean}</h2>
+<p>Checks whether the given <code>value</code> is a promise-like object</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="cast---value---→--vow:Promise-"><a href="#cast---value---→--vow:Promise-" class="anchor"></a>cast ( value ) → {vow:Promise}</h2>
+<p>Coerces given <code>value</code> to a promise, or returns the <code>value</code> if it&#39;s already a promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="valueOf---value---→----"><a href="#valueOf---value---→----" class="anchor"></a>valueOf ( value ) → {*}</h2>
+<p>Static equivalent to <code>promise.valueOf</code>.
+If given <code>value</code> is not an instance of <code>vow.Promise</code>, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{*}</p>
+<h2 id="isFulfilled---value---→--Boolean-"><a href="#isFulfilled---value---→--Boolean-" class="anchor"></a>isFulfilled ( value ) → {Boolean}</h2>
+<p>Static equivalent to <code>promise.isFulfilled</code>.
+If given <code>value</code> is not an instance of <code>vow.Promise</code>, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="isRejected---value---→--Boolean-"><a href="#isRejected---value---→--Boolean-" class="anchor"></a>isRejected ( value ) → {Boolean}</h2>
+<p>Static equivalent to <code>promise.isRejected</code>.
+If given <code>value</code> is not an instance of <code>vow.Promise</code>, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="isResolved---value---→--Boolean-"><a href="#isResolved---value---→--Boolean-" class="anchor"></a>isResolved ( value ) → {Boolean}</h2>
+<p>Static equivalent to <code>promise.isResolved</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="resolve---value---→--vow:Promise-"><a href="#resolve---value---→--vow:Promise-" class="anchor"></a>resolve ( value ) → {vow:Promise}</h2>
+<p>Returns a promise that has already been resolved with the given <code>value</code>.
+If <code>value</code> is a promise, returned promise will be adopted with the state of given promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="fulfill---value---→--vow:Promise-"><a href="#fulfill---value---→--vow:Promise-" class="anchor"></a>fulfill ( value ) → {vow:Promise}</h2>
+<p>Returns a promise that has already been fulfilled with the given <code>value</code>.
+If <code>value</code> is a promise, returned promise will be fulfilled with fulfill/rejection value of given promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="reject---reason---→--vow:Promise-"><a href="#reject---reason---→--vow:Promise-" class="anchor"></a>reject ( reason ) → {vow:Promise}</h2>
+<p>Returns a promise that has already been rejected with the given <code>reason</code>.
+If <code>reason</code> is a promise, returned promise will be rejected with fulfill/rejection value of given promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>reason {*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="invoke---fn,--args----→--vow:Promise-"><a href="#invoke---fn,--args----→--vow:Promise-" class="anchor"></a>invoke ( fn, [args] ) → {vow:Promise}</h2>
+<p>Invokes a given function <code>fn</code> with arguments <code>args</code></p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>fn {Function}</li>
+<li>[args] {...*}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="all---iterable---→--vow:Promise-"><a href="#all---iterable---→--vow:Promise-" class="anchor"></a>all ( iterable ) → {vow:Promise}</h2>
+<p>Returns a promise to be fulfilled only after all the items in <code>iterable</code> are fulfilled,
+or to be rejected when any of the <code>iterable</code> is rejected.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>iterable {Array | Object}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="allResolved---iterable---→--vow:Promise-"><a href="#allResolved---iterable---→--vow:Promise-" class="anchor"></a>allResolved ( iterable ) → {vow:Promise}</h2>
+<p>Returns a promise to be fulfilled only after all the items in <code>iterable</code> are resolved.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>iterable {Array | Object}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="any---iterable---→--vow:Promise-"><a href="#any---iterable---→--vow:Promise-" class="anchor"></a>any ( iterable ) → {vow:Promise}</h2>
+<p>Returns a promise to be fulfilled only when any of the items in <code>iterable</code> are fulfilled,
+or to be rejected when all the items are rejected (with the reason of the first rejected item).</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>iterable {Array}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="anyResolved---iterable---→--vow:Promise-"><a href="#anyResolved---iterable---→--vow:Promise-" class="anchor"></a>anyResolved ( iterable ) → {vow:Promise}</h2>
+<p>Returns a promise to be fulfilled only when any of the items in <code>iterable</code> are fulfilled,
+or to be rejected when the first item is rejected.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>iterable {Array}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="delay---value,-delay---→--vow:Promise-"><a href="#delay---value,-delay---→--vow:Promise-" class="anchor"></a>delay ( value, delay ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.delay</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>delay {Number}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>
+<h2 id="timeout---value,-timeout---→--vow:Promise-"><a href="#timeout---value,-timeout---→--vow:Promise-" class="anchor"></a>timeout ( value, timeout ) → {vow:Promise}</h2>
+<p>Static equivalent to <code>promise.timeout</code>.
+If given <code>value</code> is not a promise, then <code>value</code> is equivalent to fulfilled promise.</p>
+<h3 id="Parameters:"><a href="#Parameters:" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>value {*}</li>
+<li>timeout {Number}</li>
+</ul>
+<h3 id="Returns:"><a href="#Returns:" class="anchor"></a>Returns:</h3>
+<p>{vow:Promise}</p>

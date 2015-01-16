@@ -3737,11 +3737,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
             this.domElem,
             '<span class="' +
                 this.__self.buildClass('file') + '">' +
-                '<i class="' +
-                    INTERNAL.buildClasses(
-                        'icon',
-                        { file : extractExtensionFromFileName(fileName) }) +
-                '"/>' +
                 '<span class="' +
                     this.__self.buildClass('text') + '">' +
                     escape.html(fileName) +
@@ -3765,44 +3760,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     }
 }));
 
-var EXTENSIONS_TO_MODS = {
-    'zip'  : 'archive',
-    'rar'  : 'archive',
-    'tar'  : 'archive',
-    'gz'   : 'archive',
-    '7z'   : 'archive',
-    'gif'  : '',
-    'jpg'  : '',
-    'jpeg' : 'jpg',
-    'png'  : '',
-    'svg'  : '',
-    'eml'  : '',
-    'exe'  : '',
-    'm4a'  : 'audio',
-    'ogg'  : 'audio',
-    'mp3'  : '',
-    'wav'  : '',
-    'wma'  : '',
-    'flv'  : 'video',
-    'mov'  : '',
-    'wmv'  : '',
-    'mp4'  : '',
-    'avi'  : '',
-    'xls'  : '',
-    'doc'  : '',
-    'docx' : 'doc',
-    'txt'  : '',
-    'pdf'  : '',
-    'ppt'  : ''
-};
-
 function extractFileNameFromPath(path) {
     return path.split('\\').pop(); // we need this only in windows
-}
-
-function extractExtensionFromFileName(fileName) {
-    var ext = fileName.split('.').pop().toLowerCase();
-    return EXTENSIONS_TO_MODS.hasOwnProperty(ext)? EXTENSIONS_TO_MODS[ext] || ext : '';
 }
 
 });
@@ -5681,20 +5640,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         if(this._isPointerPressInProgress) return;
 
         this.__base.apply(this, arguments);
-        this
-            .bindToWin('unload', this._onUnload) // TODO: WTF???
-            .bindTo('control', 'keydown', this._onKeyDown);
+        this.bindTo('control', 'keydown', this._onKeyDown);
     },
 
     _onBlur : function() {
         this
-            .unbindFromWin('unload', this._onUnload)
             .unbindFrom('control', 'keydown', this._onKeyDown)
             .__base.apply(this, arguments);
-    },
-
-    _onUnload : function() {
-        this.delMod('focused');
     },
 
     _onPointerPress : function() {

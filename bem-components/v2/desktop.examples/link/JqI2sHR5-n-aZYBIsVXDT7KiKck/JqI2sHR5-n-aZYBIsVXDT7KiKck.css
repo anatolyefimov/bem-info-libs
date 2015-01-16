@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../test.blocks/link/link.styl:begin */
 .link_pseudo:not([class*="link_theme"]) {
   cursor: pointer;
   color: #00f;
@@ -23,12 +23,11 @@ html {
 .link_pseudo:not([class*="link_theme"]):hover {
   color: #f00;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/link/link.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:begin */
+/* ../../../test.blocks/link/link.styl:end */
+/* ../../../design/common.blocks/link/_theme/link_theme_islands.styl:begin */
 .link_theme_islands {
   color: #44b;
   cursor: pointer;
-  -webkit-transition: color 0.15s ease-out;
   transition: color 0.15s ease-out;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0.1);
@@ -42,4 +41,16 @@ html {
 .link_theme_islands:hover {
   color: #e00;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/link/_theme/link_theme_islands.styl:end */
+.link_theme_islands.link_size_s {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_m {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_l {
+  font-size: 15px;
+}
+.link_theme_islands.link_size_xl {
+  font-size: 18px;
+}
+/* ../../../design/common.blocks/link/_theme/link_theme_islands.styl:end */

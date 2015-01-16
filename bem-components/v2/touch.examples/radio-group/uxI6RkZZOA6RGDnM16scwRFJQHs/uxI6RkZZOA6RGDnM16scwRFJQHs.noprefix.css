@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:begin */
 html {
   min-height: 100%;
 }
@@ -14,8 +14,8 @@ html {
   color: #000;
   background: #fff;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/page/_theme/page_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_islands.styl:begin */
+/* ../../../design/common.blocks/page/_theme/page_theme_islands.styl:end */
+/* ../../../design/common.blocks/radio-group/_theme/radio-group_theme_islands.styl:begin */
 .radio-group_theme_islands {
   display: inline-block;
 }
@@ -29,11 +29,8 @@ html {
   display: inline-block;
   white-space: nowrap;
 }
-.radio-group_theme_islands .radio_checked + .radio .button:before {
-  left: 0;
-}
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio-group/_theme/radio-group_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:begin */
+/* ../../../design/common.blocks/radio-group/_theme/radio-group_theme_islands.styl:end */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:begin */
 .button_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -91,7 +88,7 @@ html {
 .button_theme_islands.button_focused-hard {
   z-index: 1;
   background: rgba(178,142,0,0.6);
-  box-shadow: 0 0 10px #fc0;
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
 }
 .button_theme_islands.button_pressed:before {
   background: #f6f5f3;
@@ -213,6 +210,10 @@ html {
 .button_theme_islands .button__text:not(:last-child) {
   margin-right: 0;
 }
+.control-group .radio_checked + .radio .button_theme_islands:before,
+.control-group .checkbox_checked + .checkbox .button_theme_islands:before {
+  left: 0;
+}
 .control-group .button_theme_islands {
   border-radius: 0;
 }
@@ -220,7 +221,8 @@ html {
   right: 0;
   border-radius: 0;
 }
-.control-group .button_theme_islands.button_checked:before {
+.control-group .button_theme_islands.button_checked:before,
+.control-group .button_theme_islands.button_focused-hard.button:before {
   left: 1px;
   right: 1px;
 }
@@ -247,8 +249,8 @@ html {
 .control-group > :only-child .button_theme_islands:before {
   border-radius: 2px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/button/_theme/button_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:begin */
+/* ../../../design/common.blocks/button/_theme/button_theme_islands.styl:end */
+/* ../../../design/common.blocks/radio/_theme/radio_theme_islands.styl:begin */
 .radio_theme_islands {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -322,7 +324,7 @@ html {
   content: '';
 }
 .radio_theme_islands.radio_focused .radio__box {
-  box-shadow: 0 0 10px #fc0;
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
 }
 .radio_theme_islands.radio_hovered .radio__box {
   background: rgba(0,0,0,0.3);
@@ -355,10 +357,10 @@ html {
 .radio_theme_islands.radio_type_line:last-child {
   margin-right: 0;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/radio/_theme/radio_theme_islands.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:begin */
+/* ../../../design/common.blocks/radio/_theme/radio_theme_islands.styl:end */
+/* ../../../common.blocks/radio/_type/radio_type_button.styl:begin */
 .radio.radio_type_button .radio__control {
   position: absolute;
   visibility: hidden;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/common.blocks/radio/_type/radio_type_button.styl:end */
+/* ../../../common.blocks/radio/_type/radio_type_button.styl:end */

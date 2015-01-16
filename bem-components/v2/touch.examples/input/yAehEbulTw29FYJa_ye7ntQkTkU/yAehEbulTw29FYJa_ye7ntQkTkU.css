@@ -1,9 +1,9 @@
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:begin */
+/* ../../../test.blocks/page/page.styl:begin */
 .page {
   padding: 20px;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/test.blocks/page/page.styl:end */
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:begin */
+/* ../../../test.blocks/page/page.styl:end */
+/* ../../../design/common.blocks/input/_theme/input_theme_simple.styl:begin */
 .input_theme_simple {
   display: inline-block;
 }
@@ -11,15 +11,17 @@
   position: relative;
   display: block;
   -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   border: 1px solid rgba(0,0,0,0.3);
   background: #fff;
 }
 .input_theme_simple .input__control {
   font-family: inherit;
   font-size: 100%;
-  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   width: 100%;
   margin: 0;
   border: 0;
@@ -44,8 +46,9 @@
   margin: 0;
   padding: 0;
   -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .input_theme_simple .input__clear:after {
   font-size: 140%;
@@ -86,4 +89,4 @@
 .input_theme_simple.input_focused .input__control:focus {
   outline: none;
 }
-/* /Users/tavria/sites/bem-data-source/content/bem-components/v2/design/common.blocks/input/_theme/input_theme_simple.styl:end */
+/* ../../../design/common.blocks/input/_theme/input_theme_simple.styl:end */

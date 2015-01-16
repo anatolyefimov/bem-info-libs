@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_KzWLcwKhaz7nzSU4O8XsmHcF_aM.css"}],"scripts":[{"elem":"js","url":"_KzWLcwKhaz7nzSU4O8XsmHcF_aM.js"}],"mods":{"theme":"islands"},"content":{"block":"button","type":"submit","text":"Промокнопка","mods":{"theme":"islands","size":"m","view":"action"}}})

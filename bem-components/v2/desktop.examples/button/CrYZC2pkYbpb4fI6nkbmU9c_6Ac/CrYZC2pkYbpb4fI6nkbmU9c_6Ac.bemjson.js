@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_CrYZC2pkYbpb4fI6nkbmU9c_6Ac.css"}],"scripts":[{"elem":"js","url":"_CrYZC2pkYbpb4fI6nkbmU9c_6Ac.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","disabled":true},"text":"Неактивна"}})

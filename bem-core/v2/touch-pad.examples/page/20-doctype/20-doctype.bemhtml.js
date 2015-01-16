@@ -388,7 +388,7 @@ function templates(template, local, apply, applyNext, oninit, __$$fetch, __$$set
 /// -------------------------------------
 /// ------ BEM-XJST User-code Start -----
 /// -------------------------------------
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/i-bem/i-bem.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/i-bem/i-bem.bemhtml */
 /* global oninit */
 
 oninit(function(exports, context) {
@@ -871,13 +871,11 @@ bem()(undefined);
 mix()(undefined);
 content()(function() { return this.ctx.content; });
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/i-bem/i-bem.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/page.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/i-bem/i-bem.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/page.bemhtml */
 block('page')(
 
-    def().match(function() { return !this._defPageApplied; })(function() {
-        this._defPageApplied = true;
-
+    def()(function() {
         var ctx = this.ctx;
         applyCtx([
             ctx.doctype || '<!DOCTYPE html>',
@@ -900,8 +898,6 @@ block('page')(
                 ]
             }
         ]);
-
-        this._defPageApplied = false;
     }),
 
     tag()('body'),
@@ -936,8 +932,8 @@ block('page')(
 
 );
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/page.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/touch.blocks/page/page.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/page.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/touch.blocks/page/page.bemhtml */
 block('page')(
     elem('head').content()(function() {
         return [
@@ -965,8 +961,8 @@ block('page')(
     })
 );
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/touch.blocks/page/page.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/ua/ua.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/touch.blocks/page/page.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/ua/ua.bemhtml */
 block('ua')(
     tag()('script'),
     bem()(false),
@@ -977,12 +973,12 @@ block('ua')(
     ])
 );
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/ua/ua.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/touch.blocks/ua/ua.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/ua/ua.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/touch.blocks/ua/ua.bemhtml */
 block('ua').js()(true);
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/touch.blocks/ua/ua.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/__css/page__css.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/touch.blocks/ua/ua.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/__css/page__css.bemhtml */
 block('page').elem('css')(
     bem()(false),
     tag()('style'),
@@ -992,8 +988,8 @@ block('page').elem('css')(
     )
 );
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/__css/page__css.bemhtml */
-/* begin: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/__js/page__js.bemhtml */
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/__css/page__css.bemhtml */
+/* begin: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/__js/page__js.bemhtml */
 block('page').elem('js')(
     bem()(false),
     tag()('script'),
@@ -1002,7 +998,7 @@ block('page').elem('js')(
     })
 );
 
-/* end: /Users/dmtry/Documents/bem-data-source/content/bem-core/v2/common.blocks/page/__js/page__js.bemhtml */;
+/* end: /home/tavria/bem-data-source/content/bem-core/v2/common.blocks/page/__js/page__js.bemhtml */;
 /// -------------------------------------
 /// ------ BEM-XJST User-code End -------
 /// -------------------------------------

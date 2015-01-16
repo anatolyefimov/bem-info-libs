@@ -1,107 +1,222 @@
 <h1 id="menu"><a href="#menu" class="anchor"></a>menu</h1>
-<p>Блок <code>menu</code> используется для создания различных типов меню и селектов.</p>
-<p>Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных независимых блоков – пунктов меню (блок <a href="../menu-item/menu-item.ru.md">menu-item</a>).</p>
-<p>В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом <code>&lt;div&gt;</code> и свойством <code>role=&quot;menu&quot;</code>.</p>
-<p>Доступны следующие типы <code>menu</code> (тип блока <code>menu</code> зависит от значения модификатора <a href="#types"><code>_mode</code></a>):</p>
-<ul>
-<li>простой список (модификатор <code>mode</code> не установлен);</li>
-<li>меню-переключатель (<code>menu_mode_radio</code>);</li>
-<li>меню с одиночным выбором (<code>menu_mode_radio-check</code>);</li>
-<li>меню с множественным выбором (<code>menu_mode_check</code>).</li>
-</ul>
-<h2 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h2>
-<h3 id="Темы-`_theme`"><a href="#Темы-`_theme`" class="anchor"></a>Темы <code>_theme</code></h3>
-<p>Блок представлен в следующих темах:</p>
-<ul>
-<li>simple</li>
-<li>islands (<strong>Важно:</strong> При выборе темы <code>islands</code> необходимо указывать обязательный модификатор <a href="#size">size</a>.)</li>
-</ul>
-<p>Без указания модификатора <code>theme</code> отображается <a href="#native">нативный</a> вид контрола.</p>
-<p>Наглядно показано на примерах ниже:</p>
-<p><a name="native"></a>
-<strong>default</strong></p>
-<!-- bem-example: touch.examples/menu/vAAUvyJpkNyuM0yEru7LP3dZ7xE -->
-
-<p><strong>simple</strong></p>
-<!-- bem-example: touch.examples/menu/JgK_lg3CEjumbM6ThTKEOcNpfH0 -->
-
-<p><strong>islands</strong></p>
-<!-- bem-example: touch.examples/menu/4EDvryv5dkJ45rCl-miKNXky7zk -->
-
-<h3 id="Размеры-`_size`"><a href="#Размеры-`_size`" class="anchor"></a>Размеры <code>_size</code></h3>
-<p>Реализован только в теме <code>islands</code>.</p>
-<p>Доступно четыре размера реализации блока: <strong>s</strong>, <strong>m</strong>, <strong>l</strong>, <strong>xl</strong>.</p>
+<p>Используется для создания различных типов меню.</p>
+<h2 id="Обзор-блока"><a href="#Обзор-блока" class="anchor"></a>Обзор блока</h2>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
 <div class="table-container"><table>
-    <tr>
-        <th>Размер блока</th>
-        <th>Размер шрифта</th>
-        <th>Высота строки <code>line-heigh</code></th>
-    </tr>
-    <tr>
-        <td>s</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>m</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>l</td>
-        <td>15px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <td>xl</td>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-</table></div>
-
-<p>Наглядно показано на примерах ниже:</p>
-<!-- bem-example: touch.examples/menu/MfOjvCJTEr6MCcgzfp_aDh8vJqg -->
-
-<!-- bem-example: touch.examples/menu/4EDvryv5dkJ45rCl-miKNXky7zk -->
-
-<!-- bem-example: touch.examples/menu/xjoCvJwjyhjtWOxXZCr_4AzrpW4 -->
-
-<!-- bem-example: touch.examples/menu/ikT-UhmMeuUzUWjzwGh5Rv6oS90 -->
-
-<h3 id="Типы-`_mode`"><a href="#Типы-`_mode`" class="anchor"></a>Типы <code>_mode</code></h3>
-<p>Блок представлен следующими типами:</p>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Допустимые значения</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#mode">mode</a></td>
+<td><code>&#39;radio&#39;</code>, <code>&#39;radio-check&#39;</code>, <code>&#39;check&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Тип меню.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Неактивное состояние.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Фокус на блоке.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Стилевое оформление.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>Размер блока.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#val">val</a></td>
+<td><code>String</code>, <code>Number</code>, <code>Array</code></td>
+<td>Выбранное значение из списка. Если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>, выбранные значения всегда оформляются в виде массива.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Элементы-блока"><a href="#Элементы-блока" class="anchor"></a>Элементы блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Способы использования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#group>group</a></td>
+<td><code>BEMJSON</code></td>
+<td>Визуальная группировка пунктов меню.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="Специализированные-поля-элементов-блока"><a href="#Специализированные-поля-элементов-блока" class="anchor"></a>Специализированные поля элементов блока</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group</td>
+<td><a href="#group-title">title</a></td>
+<td><code>String</code></td>
+<td>Заголовок группы пунктов.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="Описание-блока"><a href="#Описание-блока" class="anchor"></a>Описание блока</h2>
+<p>Блок предоставляет возможность изменять внешний вид меню и управлять поведением вложенных независимых блоков – <a href="../menu-item/menu-item.ru.md">пунктов меню</a>.</p>
+<h3 id="Модификаторы-блока"><a href="#Модификаторы-блока" class="anchor"></a>Модификаторы блока</h3>
+<p><a name="mode"></a></p>
+<h4 id="Модификатор-`mode`"><a href="#Модификатор-`mode`" class="anchor"></a>Модификатор <code>mode</code></h4>
+<p>Допустимые значения: <code>&#39;check</code>, <code>&#39;radio&#39;</code>, <code>&#39;radio-check&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>В зависимости от выбранного значения модификатора <code>mode</code> доступны следующие типы блока:</p>
 <ul>
-<li>простой список (модификатор <code>mode</code> не установлен). Пункт меню не может быть выбран щелчком мышью или любым другим способом.</li>
+<li>простой список (<a href="#mode-none">модификатор mode не установлен</a>);</li>
+<li>меню с множественным выбором (<a href="#mode-check">модификатор mode в значении check</a>);</li>
+<li>меню с одиночным обязательным выбором (<a href="#mode-radio">модификатор mode в значении radio</a>);</li>
+<li>меню с одиночным необязательным выбором (<a href="#mode-radiocheck">модификатор mode в значении radio-check</a>).</li>
 </ul>
-<!-- bem-example: touch.examples/menu/O1dQZUW3fCSqKu2E5Ye6i5Gncd0 -->
+<p><a name="mode-none"></a></p>
+<h5 id="Простой-список--модификатор-`mode`-не-установлен-"><a href="#Простой-список--модификатор-`mode`-не-установлен-" class="anchor"></a>Простой список (модификатор <code>mode</code> не установлен)</h5>
+<p>Без указания модификатора <code>mode</code> создается простой список без возможности выбрать пункт.</p>
+<!-- bem-example: touch.examples/menu/oYm4inpY5EuZQGikHLxILnNqJ90 -->
+
+<p><a name="mode-check"></a></p>
+<h5 id="Меню-с-множественным-выбором--модификатор-`mode`-в-значении-`check`-"><a href="#Меню-с-множественным-выбором--модификатор-`mode`-в-значении-`check`-" class="anchor"></a>Меню с множественным выбором (модификатор <code>mode</code> в значении <code>check</code>)</h5>
+<p>Позволяет выбрать произвольное количество пунктов меню.</p>
+<!-- bem-example: touch.examples/menu/GjwKcvTGWYZQbXBy7Oyy1ZR9aBE -->
+
+<p><a name="mode-radio"></a></p>
+<h5 id="Меню-с-одиночным-обязательным-выбором--модификатор-`mode`-в-значении-`radio`-"><a href="#Меню-с-одиночным-обязательным-выбором--модификатор-`mode`-в-значении-`radio`-" class="anchor"></a>Меню с одиночным обязательным выбором (модификатор <code>mode</code> в значении <code>radio</code>)</h5>
+<p>Позволяет создать меню, в котором обязательно выбран ровно один пункт.</p>
+<p>Если пункт не выбран, то по умолчанию выбирается первое значение из списка.</p>
+<!-- bem-example: touch.examples/menu/Zi5LRKrBme1Xc8wUPQ8ycpOrIJ0 -->
+
+<p><a name="mode-radiocheck"></a></p>
+<h5 id="Меню-с-одиночным-необязательным-выбором--модификатор-`mode`-в-значении-`radio-check`-"><a href="#Меню-с-одиночным-необязательным-выбором--модификатор-`mode`-в-значении-`radio-check`-" class="anchor"></a>Меню с одиночным необязательным выбором (модификатор <code>mode</code> в значении <code>radio-check</code>)</h5>
+<p>Модификатор <code>mode</code> в значении <code>radio-check</code>, так же как и <a href="#mode-radio">модификатор mode в значении radio</a>, позволяет выбрать ровно один пункт меню. Принципиальное отличие в том, что в значении <code>radio-check</code> есть возможность оставить меню без выбранных пунктов.</p>
+<!-- bem-example: touch.examples/menu/wDBin6OULmTJS5dhe-RIwmlpbeI -->
+
+<p><a name="disabled"></a></p>
+<h4 id="Модификатор-`disabled`"><a href="#Модификатор-`disabled`" class="anchor"></a>Модификатор <code>disabled</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.</p>
+<p>Если блоку <code>menu</code> устанавливается модификатор <code>disabled</code>, то все вложенные в него блоки <code>menu-item</code> также становятся неактивными.</p>
+<!-- bem-example: touch.examples/menu/0lXNoNjzfDPBNahIBCDM-wiSKdQ -->
+
+<p>Модификатор <code>disabled</code> в значении <code>true</code> может быть выставлен отдельным пунктам меню:</p>
+<!-- bem-example: touch.examples/menu/JPMgci1y_6CDeIe2xmAQw9ubSCw -->
+
+<p><a name="focused"></a></p>
+<h4 id="Модификатор-`focused`"><a href="#Модификатор-`focused`" class="anchor"></a>Модификатор <code>focused</code></h4>
+<p>Допустимое значение: <code>true</code>.</p>
+<p>Способы использования: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Выставляется автоматически при получении блоком фокуса.</p>
+<p>Отвечает за наличие фокуса на блоке.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;menu&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, mode : &#39;radio-check&#39;, focused : true },
+    val : 2,
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;Отдых в горах&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Отдых на море&#39;
+        }
+    ]
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="Модификатор-`theme`"><a href="#Модификатор-`theme`" class="anchor"></a>Модификатор <code>theme</code></h4>
+<p>Допустимое значение: <code>&#39;islands&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Отвечает за стилевое оформление блока.</p>
+<p>Необходимо использовать с модификатором <a href="#size">size</a>.</p>
+<!-- bem-example: touch.examples/menu/XKf5W921PCya2S7y6W0sjAq9ScI -->
+
+<p><a name="size"></a></p>
+<h4 id="Модификатор-`size`"><a href="#Модификатор-`size`" class="anchor"></a>Модификатор <code>size</code></h4>
+<p>Допустимые значения: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Способ использования: <code>BEMJSON</code>.</p>
+<p>Задает размер блоку.</p>
+<p>Необходимо использовать с модификатором <a href="#theme">theme</a> в значении <code>islands</code>.</p>
+<p><strong>s</strong></p>
+<!-- bem-example: touch.examples/menu/eE-oiNIg3to-iDmPCxxr_9EOdLI -->
+
+<p><strong>m</strong></p>
+<!-- bem-example: touch.examples/menu/tv_FwfhJBeOkmitMfOzP1b2eCck -->
+<strong>l</strong>
+
+<!-- bem-example: touch.examples/menu/0ADMjW2OmUjjNhOcKblcXjN3A_c -->
+
+<p><strong>xl</strong></p>
+<!-- bem-example: touch.examples/menu/w4o2I4dQkd4UFCeEM85j0MUMBxc -->
+
+<h3 id="Специализированные-поля-блока"><a href="#Специализированные-поля-блока" class="anchor"></a>Специализированные поля блока</h3>
+<p><a name="val"></a></p>
+<h4 id="Поля-`val`"><a href="#Поля-`val`" class="anchor"></a>Поля <code>val</code></h4>
+<p>Тип: <code>String</code>, <code>Number</code>, <code>Array</code>.</p>
+<p>Определяет:</p>
+<ul>
+<li>Выбранный пункт меню. В таком случае используется тип поля <code>String</code> или <code>Number</code>.</li>
+</ul>
+<!-- bem-example: touch.examples/menu/IXsLIdWYvqqXxz7H4-S1Mil0fbY -->
 
 <ul>
-<li>меню-переключатель (<code>menu_mode_radio</code>).  Применяется для создания меню, позволяющего только одиночный выбор.</li>
+<li>Список выбранных пунктов меню, если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>. В таком случае используется тип поля <code>Array</code>.</li>
 </ul>
-<!-- bem-example: touch.examples/menu/C5NDP_JtH88atpq5r8xUGlpbRJs -->
+<!-- bem-example: touch.examples/menu/q2kJ1CUz0Cc7EGyO-W6gHwvVzr4 -->
 
-<ul>
-<li>меню с одиночным выбором (<code>menu_mode_radio-check</code>). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.</li>
-</ul>
-<!-- bem-example: touch.examples/menu/qFuDDMEnqg0HOxS00nZFGjbJl_Q -->
+<h3 id="Элементы-блока"><a href="#Элементы-блока" class="anchor"></a>Элементы блока</h3>
+<p><a name="group"></a></p>
+<h4 id="Элемент-`group`"><a href="#Элемент-`group`" class="anchor"></a>Элемент <code>group</code></h4>
+<p>Служит для визуальной группировки пунктов меню. Не влияет на общую логику выбора пунктов.</p>
+<!-- bem-example: touch.examples/menu/jq2gJxp3DnmwA1XYKktue2Z0j-M -->
 
-<ul>
-<li>меню с множественным выбором (<code>menu_mode_check</code>). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.</li>
-</ul>
-<!-- bem-example: touch.examples/menu/KyBZstqDL9bMbNtETiUdqjy4Z60 -->
-
-<h3 id="Состояния-блока"><a href="#Состояния-блока" class="anchor"></a>Состояния блока</h3>
-<h4 id="Неактивен-`_disabled`"><a href="#Неактивен-`_disabled`" class="anchor"></a>Неактивен <code>_disabled</code></h4>
-<p>В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу <code>Tab</code>, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.</p>
-<p>Если блок <code>menu</code> получает модификатор <code>disabled</code>, то все вложенные в него блоки <code>menu-item</code> также становятся неактивными.</p>
-<h4 id="В-фокусе-`_focused`"><a href="#В-фокусе-`_focused`" class="anchor"></a>В фокусе <code>_focused</code></h4>
-<p>Модификатор <code>focused</code> в значении <code>true</code> автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши <code>Tab</code> или при щелчке мышью.</p>
-<h2 id="Элементы-блока"><a href="#Элементы-блока" class="anchor"></a>Элементы блока</h2>
-<p>Визуально представлен следующими элементами:</p>
-<h3 id="__group"><a href="#__group" class="anchor"></a>__group</h3>
-<p>Элемент <code>__group</code> служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле <code>content</code> элемента <code>group</code>. В теме <code>islands</code> группы визуально разделяются серой чертой.</p>
-<!-- bem-example: touch.examples/menu/Rl8QSHm4K4Se6myr93gXMZ8MHmU -->
-
-<h3 id="__group-title"><a href="#__group-title" class="anchor"></a>__group-title</h3>
-<p>Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента <code>group</code>.</p>
-<!-- bem-example: touch.examples/menu/VNC3iqT7veN0uk4K5f16khQLsNw -->
+<h3 id="Специализированные-поля-элементов-блока"><a href="#Специализированные-поля-элементов-блока" class="anchor"></a>Специализированные поля элементов блока</h3>
+<p><a name="group-title"></a></p>
+<h4 id="Специализированное-поле-`title`-элемента-`group`"><a href="#Специализированное-поле-`title`-элемента-`group`" class="anchor"></a>Специализированное поле <code>title</code> элемента <code>group</code></h4>
+<p>Тип: <code>String</code>.</p>
+<p>Определяет заголовок группы пунктов.</p>
+<!-- bem-example: touch.examples/menu/DJPqtgClt9graryXw8Bll--iEK4 -->

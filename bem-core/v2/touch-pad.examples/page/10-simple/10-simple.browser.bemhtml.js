@@ -159,7 +159,7 @@ function applyc(__$ctx, __$ref) {
         }
         return undefined;
     } else if (__$t === "default") {
-        if ($$block === "page" && !$$elem && !__$ctx._defPageApplied && (__$ctx.__$a0 & 8) === 0) {
+        if ($$block === "page" && !$$elem && (__$ctx.__$a0 & 8) === 0) {
             var __$r = __$b31(__$ctx, __$ref);
             if (__$r !== __$ref) return __$r;
         }
@@ -396,7 +396,6 @@ function __$b29(__$ctx, __$ref) {
 }
 
 function __$b31(__$ctx, __$ref) {
-    __$ctx._defPageApplied = true;
     var ctx__$11 = __$ctx.ctx;
     var __$r__$13;
     var __$l0__$14 = $$mode;
@@ -431,7 +430,6 @@ function __$b31(__$ctx, __$ref) {
     __$r__$13 = __$r__$17;
     $$mode = __$l0__$14;
     __$ctx.ctx = __$l1__$15;
-    __$ctx._defPageApplied = false;
     return;
 }
 

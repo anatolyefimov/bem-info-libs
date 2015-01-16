@@ -1,0 +1,1 @@
+({"block":"page","title":"image","head":[{"elem":"css","url":"_6n9fy6J49nzWpFtDfO0vwrkdBRs.css"}],"scripts":[{"elem":"js","url":"_6n9fy6J49nzWpFtDfO0vwrkdBRs.js"}],"mods":{},"content":{"block":"image","url":"https://img-fotki.yandex.ru/get/17848/259818507.0/0_12ab32_a798a820_X5L","width":200,"height":100}})
