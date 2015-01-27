@@ -1,0 +1,55 @@
+<h1 id="keyboard-1"><a href="#keyboard-1" class="anchor"></a>keyboard</h1>
+<p>Блок предназначен для работы с клавиатурным вводом. </p>
+<h2 id="Элементы-блока-3"><a href="#Элементы-блока-3" class="anchor"></a>Элементы блока</h2>
+<h3 id="__codes-1"><a href="#__codes-1" class="anchor"></a>__codes</h3>
+<p>Элемент предоставляет набор имен для часто используемых клавиатурных кодов. Имена заменяют коды клавиш. Использование осмысленных имен вместо кодов клавиш делает создаваемый код понятнее.</p>
+<p>Например, метод <code>_onKeyDown</code> использует имена клавиш <code>UP</code> и <code>DOWN</code> при проверке поля <code>keyCode</code> объекта события:</p>
+<pre><code class="lang-js">modules.define(
+    &#39;test1&#39;,
+    [&#39;i-bem__dom&#39;, &#39;keyboard__codes&#39;],
+    function(provide, BEMDOM, keyCodes) {
+
+provide(BEMDOM.decl(this.name, /** @lends test1.prototype */{
+    onSetMod : {
+        &#39;js&#39;: {
+            inited: function() {
+                this.bindTo(&#39;click&#39;, _onKeyDown(e));
+            }
+        }
+
+    },
+    _onKeyDown : function(e) {
+        if((e.keyCode === keyCodes.UP || e.keyCode === keyCodes.DOWN) &amp;&amp; !e.shiftKey) {
+            e.preventDefault();
+            this.setMod(&#39;opened&#39;);
+        }
+    }
+
+}));
+});
+</code></pre>
+<p>Доступен следующий набор имен:</p>
+<ul>
+<li><code>BACKSPACE</code></li>
+<li><code>TAB</code></li>
+<li><code>ENTER</code></li>
+<li><code>CAPS_LOCK</code></li>
+<li><code>ESC</code></li>
+<li><code>SPACE</code></li>
+<li><code>PAGE_UP</code></li>
+<li><code>PAGE_DOWN</code></li>
+<li><code>END</code></li>
+<li><code>HOME</code></li>
+<li><code>LEFT</code></li>
+<li><code>UP</code></li>
+<li><code>RIGHT</code></li>
+<li><code>DOWN</code></li>
+<li><code>INSERT</code></li>
+<li><code>DELETE</code></li>
+</ul>
+<p>Дополнительные примеры использования блока:</p>
+<ul>
+<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.js#L125">bem-components/common.blocks/button/button.js</a></li>
+<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/menu/menu.js#L97">bem-components/common.blocks/menu/menu.js</a></li>
+<li><a href="https://github.com/bem/bem-components/blob/v2/common.blocks/select/select.js#L172">bem-components/common.blocks/select/select.js</a></li>
+</ul>

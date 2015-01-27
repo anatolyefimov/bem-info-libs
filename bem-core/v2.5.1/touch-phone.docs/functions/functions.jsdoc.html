@@ -1,0 +1,46 @@
+<h1 id="functions-module-2"><a href="#functions-module-2" class="anchor"></a>functions Module</h1>
+<p>A set of helpers to work with JavaScript functions</p>
+<h2 id="isfunction--obj---boolean-2"><a href="#isfunction--obj---boolean-2" class="anchor"></a>isFunction ( obj ) → {Boolean}</h2>
+<p>Checks whether a given object is function</p>
+<h3 id="parameters-559"><a href="#parameters-559" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>obj {*}</li>
+</ul>
+<h3 id="returns-525"><a href="#returns-525" class="anchor"></a>Returns:</h3>
+<p>{Boolean}</p>
+<h2 id="noop--2"><a href="#noop--2" class="anchor"></a>noop ()</h2>
+<p>Empty function</p>
+<h1 id="functions__debounce-module-2"><a href="#functions__debounce-module-2" class="anchor"></a>functions__debounce Module</h1>
+<h2 id="function--fn-timeout-invokeasapfalse-ctx---function-2"><a href="#function--fn-timeout-invokeasapfalse-ctx---function-2" class="anchor"></a><em>function</em> ( fn, timeout, [invokeAsap=false], [ctx] ) → {Function}</h2>
+<p>Debounces given function</p>
+<h3 id="parameters-560"><a href="#parameters-560" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>fn {Function}<br/>
+function to debounce</li>
+<li>timeout {Number}<br/>
+debounce interval</li>
+<li>[invokeAsap=false] {Boolean}<br/>
+invoke before first interval</li>
+<li>[ctx] {Object}<br/>
+context of function invocation</li>
+</ul>
+<h3 id="returns-526"><a href="#returns-526" class="anchor"></a>Returns:</h3>
+<p>{Function}</p>
+<p>debounced function</p>
+<h1 id="functions__throttle-module-2"><a href="#functions__throttle-module-2" class="anchor"></a>functions__throttle Module</h1>
+<h2 id="function--fn-timeout-invokeasaptrue-ctx---function-2"><a href="#function--fn-timeout-invokeasaptrue-ctx---function-2" class="anchor"></a><em>function</em> ( fn, timeout, [invokeAsap=true], [ctx] ) → {Function}</h2>
+<p>Throttle given function</p>
+<h3 id="parameters-561"><a href="#parameters-561" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>fn {Function}<br/>
+function to throttle</li>
+<li>timeout {Number}<br/>
+throttle interval</li>
+<li>[invokeAsap=true] {Boolean}<br/>
+invoke before first interval</li>
+<li>[ctx] {Object}<br/>
+context of function invocation</li>
+</ul>
+<h3 id="returns-527"><a href="#returns-527" class="anchor"></a>Returns:</h3>
+<p>{Function}</p>
+<p>throttled function</p>

@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"cookie"},{"name":"cookie"},{"name":"cookie"}];

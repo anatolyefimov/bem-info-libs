@@ -1,0 +1,25 @@
+<h1 id="strings-2"><a href="#strings-2" class="anchor"></a>strings</h1>
+<p>Блок <code>strings</code> предоставляет хелперы для манипуляций с данными строчного типа. </p>
+<h2 id="Элементы-блока-8"><a href="#Элементы-блока-8" class="anchor"></a>Элементы блока</h2>
+<h3 id="__escape-2"><a href="#__escape-2" class="anchor"></a>__escape</h3>
+<p>Элемент предоставляет набор методов-хелперов для экранирования (эскейпинга) управляющих символов <code>XML</code>, <code>HTML</code>, а также для подготовки строк к использованию в качестве атрибутов <code>attrs</code>:</p>
+<ul>
+<li><code>xml</code> – экранируются <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>;</li>
+<li><code>html</code> – экранируются <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>;</li>
+<li><code>attr</code> – экранируются <code>&quot;</code>, <code>\</code>, <code>&#39;</code>, <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>;.</li>
+</ul>
+<p>Элемент <code>strings__escape</code> реализован в технологии <code>vanilla.js</code> и подходит для использования как на сервере, так и на клиенте.</p>
+<p>Например, в блоке <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/select/select.js#L237"><code>common.blocks/select</code></a> библиотеки <code>bem-components</code>, <code>strings__escape</code> используется для экранирования управляющих символов в свойстве <code>value</code> HTML-элемента:</p>
+<pre><code class="lang-js">_createControlHTML : function(name, val) {
+        // Using string concatenation to not depend on template engines
+        return &#39;&lt;input &#39; +
+            &#39;type=&quot;hidden&quot; &#39; +
+            &#39;name=&quot;&#39; + name + &#39;&quot; &#39; +
+            &#39;class=&quot;&#39; + this.buildClass(&#39;control&#39;) + &#39;&quot; &#39; +
+            &#39;value=&quot;&#39; + escape.attr(typeof val === &#39;object&#39;? JSON.stringify(val) : val) + &#39;&quot;/&gt;&#39;;
+    }
+</code></pre>
+<p>Смотрите также:</p>
+<ul>
+<li>пример использования <code>__escape</code> в блоке <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.js#L83">attach.js</a> библиотеки <code>bem-components</code>.</li>
+</ul>

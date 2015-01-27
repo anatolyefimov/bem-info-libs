@@ -1,0 +1,201 @@
+<h1 id="inherit"><a href="#inherit" class="anchor"></a>inherit</h1>
+<p>Блок предоставляет функцию, реализующую механизмы псевдоклассового наследования, и позволяет:</p>
+<ul>
+<li>создавать псевдокласс по декларации;</li>
+<li>задавать метод-конструктор;</li>
+<li>использовать миксины;</li>
+<li>вызывать методы базового блока (super call);</li>
+<li>использовать статические члены функции;</li>
+<li>получать доступ к статическим методам «класса» из его прототипа.</li>
+</ul>
+<p>Функция позволяет определить базовый «класс». А затем наследовать его логику, доопределяя ее новыми методами. </p>
+<p>Блок <code>inherit</code> реализован в технологии <code>vanila.js</code> и подходит для использования как на клиенте, так и на сервере.</p>
+<p>Блок является основой механизма наследования блоков в <code>bem-core</code>. Базовый блок <code>BEM</code> наследуется с помощью <code>inherit</code> от «класса» <code>Emitter</code> блока <code>events</code>:</p>
+<pre><code class="lang-js">var BEM = inherit(events.Emitter, /** @lends BEM.prototype */ { ... }, { ... });
+</code></pre>
+<p>Все остальные блоки наследуются от блока <code>BEM</code> (или <code>BEMDOM</code> для блоков с DOM-представлением). Иначе говоря, доопределяют декларацию блока <code>BEM</code>.</p>
+<h2 id="Объявление-базового-класса"><a href="#Объявление-базового-класса" class="anchor"></a>Объявление базового «класса»</h2>
+<p>Чтобы объявить базовый «класс» нужно воспользоваться функцией, реализованной блоком. Например, в декларации блока с автоинициализацией: </p>
+<pre><code class="lang-js">modules.define(&#39;test1&#39;, [&#39;inherit&#39;], function(provide, inherit) {
+
+provide(this.name, /** @lends test1.prototype */{
+            &#39;myInherit&#39; : function(props) {
+                // base &#39;class&#39;
+                return inherit(props);
+            }
+});
+});
+</code></pre>
+<p>Функция принимает на вход объект и возвращает полностью сформированную функцию-конструктор:</p>
+<pre><code class="lang-js">Function inherit(Object props);
+</code></pre>
+<h3 id="Базовый-класс-со-статическими-свойствами"><a href="#Базовый-класс-со-статическими-свойствами" class="anchor"></a>Базовый «класс» со статическими свойствами</h3>
+<p>При объявлении базового «класса» методу <code>inherit</code> можно передать вторым аргументом объект статических свойств:</p>
+<pre><code class="lang-js">Function inherit(
+    Object props,
+    Object staticProps
+);
+</code></pre>
+<p>Свойства из объекта <code>staticProps</code> будут добавлены как статические к создаваемой функции-конструктору:</p>
+<pre><code class="lang-js">var A = inherit(props, {
+    callMe : function() {
+        console.log(&#39;mr.Static&#39;);
+    }
+});
+
+A.callMe(); // mr.Static
+</code></pre>
+<p><strong>NB</strong> Статические методы функции-конструктора выполняются в контексте самой функции. Например, ссылка <code>this</code> внутри метода <code>callMe</code> будет указывать на функцию <code>A</code>.</p>
+<h3 id="Метод-__constructor"><a href="#Метод-__constructor" class="anchor"></a>Метод <code>__constructor</code></h3>
+<p>Объект, на основе которого конструируется базовый «класс», может иметь зарезервированное свойство <code>__constructor</code>. Значением этого свойства должна быть функция, которая будет автоматически вызвана при создании экземпляра «класса».</p>
+<p>Использование <code>__constructor</code> позволяет задавать динамические свойства экземпляра «класса»:</p>
+<pre><code class="lang-js">var A = inherit(/** @lends A.prototype */{
+    __constructor : function(property) { // constructor
+        this.property = property;
+    },
+
+    getProperty : function() {
+        return this.property + &#39; of instanceA&#39;;
+    }
+}),
+    aInst = new A(&#39;Property&#39;);
+
+aInst.getProperty(); // Property of instanceA
+</code></pre>
+<h2 id="Создание-производного-класса"><a href="#Создание-производного-класса" class="anchor"></a>Создание производного «класса»</h2>
+<p>Для создания производного «класса» методу <code>inherit</code> первым аргументом передается функция – базовый «класс»:</p>
+<pre><code class="lang-js">Function inherit(
+    Function BaseClass,
+    Object props,
+    Object staticProps);
+</code></pre>
+<p>Второй и третий аргументы – объекты со свойствами производного «класса»:</p>
+<ul>
+<li><code>props</code> – собственные свойства (добавляются к прототипу).</li>
+<li><code>staticProps</code> – статические свойства.</li>
+</ul>
+<p>Если один из объектов содержит свойства, которые уже есть в базовом «классе» – свойства базового «класса» переопределятся. Иначе говоря, производный «класс» будет содержать значения из объекта.</p>
+<h3 id="Создание-производного-класса-с-миксинами"><a href="#Создание-производного-класса-с-миксинами" class="anchor"></a>Создание производного «класса» с миксинами</h3>
+<p>При объявлении производного «класса» можно указать дополнительный набор функций. Их свойства будут примешаны к создаваемому «классу». Для этого первым аргументом (базовый «класс») нужно указать массив. Его первым элементом должен быть базовый «класс», последующими – примешиваемые функции:</p>
+<pre><code class="lang-js">Function inherit(
+    [
+        Function BaseClass,
+        Function Mixin,
+        Function AnotherMixin,
+        ...
+    ],
+    Object props,
+    Object staticProps);
+</code></pre>
+<h2 id="Специальные-поля"><a href="#Специальные-поля" class="anchor"></a>Специальные поля</h2>
+<h3 id="__self"><a href="#__self" class="anchor"></a><code>__self</code></h3>
+<p>Поле позволяет получить доступ к статическим свойствам функции-конструктора непосредственно из ее прототипа:</p>
+<pre><code class="lang-js">var A = inherit(/** @lends A.prototype */{
+    getStaticProperty : function() {
+        return this.__self.staticMethod; // access to static
+    }
+}, /** @lends A */ {    
+    staticProperty : &#39;staticA&#39;,
+
+    staticMethod : function() {
+        return this.staticProperty;
+    }
+}),
+    aInst = new A();
+aInst.getStaticProperty(); //staticA
+</code></pre>
+<h3 id="__base"><a href="#__base" class="anchor"></a><code>__base</code></h3>
+<p>Поле позволяет внутри производного «класса» использовать методы базового (supercall). Поле <code>__base</code> позволяет вызвать так же статические методы базового «класса»:</p>
+<pre><code class="lang-js">var A = inherit(/** @lends A.prototype */{
+    getType : function() {
+        return &#39;A&#39;;
+    }
+}, /** @lends A */ {    
+    staticProperty : &#39;staticA&#39;,
+
+    staticMethod : function() {
+        return this.staticProperty;
+    }
+});
+
+// inherited &#39;class&#39; from A
+var B = inherit(A, /** @lends B.prototype */{
+    getType : function() { // overriding + &#39;super&#39; call
+        return this.__base() + &#39;B&#39;;
+    }
+}, /** @lends B */ {
+    staticMethod : function() { // static overriding + &#39;super&#39; call
+        return this.__base() + &#39; of staticB&#39;;
+    }
+});
+
+var instanceOfB = new B();
+
+instanceOfB.getType(); // returns &#39;AB&#39;
+B.staticMethod(); // returns &#39;staticA of staticB&#39;
+</code></pre>
+<h2 id="Расширенный-пример"><a href="#Расширенный-пример" class="anchor"></a>Расширенный пример</h2>
+<p>Ниже приведен пример модуля, использующего все основные способы наследования блока <code>inherit</code>:</p>
+<pre><code class="lang-js">// base &#39;class&#39;
+var A = inherit(/** @lends A.prototype */{
+    __constructor : function(property) { // constructor
+        this.property = property;
+    },
+
+    getProperty : function() {
+        return this.property + &#39; of instanceA&#39;;
+    },
+
+    getType : function() {
+        return &#39;A&#39;;
+    },
+
+    getStaticProperty : function() {
+        return this.__self.staticMethod; // access to static
+    }
+}, /** @lends A */ {    
+    staticProperty : &#39;staticA&#39;,
+
+    staticMethod : function() {
+        return this.staticProperty;
+    }
+});
+
+// inherited &#39;class&#39; from A
+var B = inherit(A, /** @lends B.prototype */{
+    getProperty : function() { // overriding
+        return this.property + &#39; of instanceB&#39;;
+    },
+
+    getType : function() { // overriding + &#39;super&#39; call
+        return this.__base() + &#39;B&#39;;
+    }
+}, /** @lends B */ {
+    staticMethod : function() { // static overriding + &#39;super&#39; call
+        return this.__base() + &#39; of staticB&#39;;
+    }
+});
+
+// mixin M
+var M = inherit({
+    getMixedProperty : function() {
+        return &#39;mixed property&#39;;
+    }
+});
+
+// inherited &#39;class&#39; from A with mixin M
+var C = inherit([A, M], {
+    getMixedProperty : function() {
+        return this.__base() + &#39; from C&#39;;
+    }
+});
+
+var instanceOfB = new B(&#39;property&#39;);
+
+instanceOfB.getProperty(); // returns &#39;property of instanceB&#39;
+instanceOfB.getType(); // returns &#39;AB&#39;
+B.staticMethod(); // returns &#39;staticA of staticB&#39;
+
+var instanceOfC = new C();
+instanceOfC.getMixedProperty(); // returns &#39;mixed property from C&#39;
+</code></pre>

@@ -1,0 +1,99 @@
+<h1 id="loader-1"><a href="#loader-1" class="anchor"></a>loader</h1>
+<p>Блок <code>loader</code> служит для загрузки и подключения скриптов по URL.</p>
+<p>Блок реализован в технологии <code>js</code> и подходит для использования в клиентских приложениях.</p>
+<h2 id="Модификаторы-блока-2"><a href="#Модификаторы-блока-2" class="anchor"></a>Модификаторы блока</h2>
+<h3 id="type-1"><a href="#type-1" class="anchor"></a><code>type</code></h3>
+<p>В зависимости от значения модификатора <code>type</code> блок <code>loader</code> позволяет получить по URL и подключить:</p>
+<ul>
+<li><code>js</code> - фрагмент JavaScript-кода;</li>
+<li><code>bundle</code> – пакет, собранный из CSS и JS-файлов – «бандл».  </li>
+</ul>
+<h4 id="type_js-1"><a href="#type_js-1" class="anchor"></a><code>type_js</code></h4>
+<p>Блок с модификатором <code>type_js</code> реализует функцию, принимающую два аргумента:</p>
+<ul>
+<li><code>{String}</code> <code>url</code> – URL загружаемого фрагмента JS-кода;</li>
+<li><code>{Function}</code> <code>cb</code> – callback-функция, которая будет выполнена по завершению загрузки фрагмента кода.</li>
+</ul>
+<p>Например, <code>loader_type_js</code> используется в блоке <code>common.blocks/jquery</code> библиотеки <code>bem-core</code> для загрузки и подключения jQuery:</p>
+<pre><code class="lang-js">modules.define(
+    &#39;jquery&#39;,
+    [&#39;loader_type_js&#39;, &#39;jquery__config&#39;],
+    function(provide, loader, cfg) {
+
+/* global jQuery */
+
+function doProvide(preserveGlobal) {
+    /**
+     * @exports
+     * @type Function
+     */
+    provide(preserveGlobal? jQuery : jQuery.noConflict(true));
+}
+
+typeof jQuery !== &#39;undefined&#39;?
+    doProvide(true) :
+    loader(cfg.url, doProvide);
+});
+</code></pre>
+<p>При вызове функция производит поиск строки, переданной первым аргументом:</p>
+<ul>
+<li>среди подключенных <code>url</code>. В случае успеха, callback (аргумент <code>cb</code>) немедленно выполняется, а управление возвращается вызывавшей функции;</li>
+<li>среди имен <code>url</code>, ожидающих подключения. В случае успеха callback помещается в очередь и управление возвращается вызывавшей функции.</li>
+</ul>
+<p>Если текущее значение <code>url</code> не найдено, создается запись в очереди на подключение. Callback (аргумент <code>cb</code>) помещается в очередь. </p>
+<p>Затем создается DOM-элемент <code>script</code> со всеми нужными свойствами, который добавляется к элементу <code>head</code> документа.</p>
+<p>По завершению загрузки:</p>
+<ul>
+<li>выполняются все callback из очереди на подключение;</li>
+<li><code>url</code> удаляется из очереди и добавляется к списку подключенных. </li>
+</ul>
+<h4 id="type_bundle-1"><a href="#type_bundle-1" class="anchor"></a><code>type_bundle</code></h4>
+<p>Блок с модификатором <code>type_bundle</code> реализует функцию от четырех аргументов:</p>
+<ul>
+<li><code>{String}</code> <code>id</code> – идентификатор бандла;</li>
+<li><code>{String}</code> <code>url</code> – путь до файла бандла в формате URL;</li>
+<li><code>{Function}</code> <code>onSuccess</code> – callback, вызываемая по завершению загрузки бандла;</li>
+<li><code>{Function}</code> <code>onError</code> – callback, вызываемая при неудачной загрузке бандла.</li>
+</ul>
+<p>Например:</p>
+<pre><code class="lang-js">modules.define(&#39;test-bundle-load&#39;, [&#39;loader_type_bundle&#39;], function(provide, bundleLoader) {
+
+    provide(function() {
+        var onSuccess = function() { console.log(&#39;Loaded!&#39;); },
+            onError = function() { throw new Error(&#39;ups&#39;); };
+        bundleLoader(
+            &#39;test1&#39;,
+            &#39;http://mysite.org/test.bundle.js&#39;, 
+            onSuccess,
+            onError
+        );
+    });
+});
+</code></pre>
+<p>При инициализации блока с модификатором <code>type_js</code> создается объект бандлов. Ключами объекта служат <code>id</code>, а в значениях содержатся массивы callback-функций, которые нужно выполнить:</p>
+<ul>
+<li>после успешной загрузки бандла;</li>
+<li>в случае ошибки загрузки.</li>
+</ul>
+<p>В случае успешного выполнения, функция, реализованная блоком, создает DOM-элемент <code>script</code> со всеми нужными свойствами, который добавляется перед первым дочерним элементом элемента <code>head</code>.</p>
+<p>В ходе выполнения, функция устанавливает таймер загрузки на интервал (по умолчанию 8000 миллисекунд) с помощью <code>setTimeout</code>.</p>
+<p>По истечению указанного интервала вызывается функция – обработчик ошибок. Обработчик:</p>
+<ul>
+<li>очищает таймер загрузки;</li>
+<li>вызывает все callback-функции <code>onError</code>;</li>
+<li>удаляет свойство, соответствующее <code>id</code>, из объекта бандлов.</li>
+</ul>
+<h5 id="Статические-методы-доступные-с-модификатором-type_bundle-1"><a href="#Статические-методы-доступные-с-модификатором-type_bundle-1" class="anchor"></a>Статические методы, доступные с модификатором <code>type_bundle</code></h5>
+<p>Функция, реализованная блоком с модификатором <code>type_bundle</code>, обладает статическим методом – <code>_loaded</code>. Он используется как вспомогательный после успешной загрузки бандла.</p>
+<p>На вход <code>_loaded</code> принимает объект со свойством <code>id</code>, содержащим строку с идентификатором загруженного бандла (URL). </p>
+<p>В ходе выполнения метод:</p>
+<ul>
+<li>очищает таймер загрузки;</li>
+<li>вызывает загруженный <code>bundle.js</code> в глобальном пространстве имен;</li>
+<li>подключает CSS:<ul>
+<li>создается DOM-элемент <code>style</code> с нужными свойствами;</li>
+<li>DOM-элемент помещается перед первым вложенным элементом в <code>head</code>;</li>
+</ul>
+</li>
+<li>выполняет все callback-функции <code>onSuccess</code>.</li>
+</ul>

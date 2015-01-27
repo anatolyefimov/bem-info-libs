@@ -1,0 +1,1 @@
+{"jsdocType":"root","modules":[{"jsdocType":"module","name":"next-tick","exports":{"jsdocType":"type","jsType":"Function","params":[{"jsdocType":"param","name":"fn","description":"","jsType":"Function"}],"description":"Executes given function on next tick."}}]}

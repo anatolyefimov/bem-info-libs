@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"idle"},{"name":"idle"},{"name":"idle"},{"name":"idle","mods":[{"name":"start","vals":[{"name":"auto"}]}]}];
