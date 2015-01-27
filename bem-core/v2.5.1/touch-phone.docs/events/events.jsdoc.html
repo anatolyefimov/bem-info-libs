@@ -1,8 +1,8 @@
 <h1 id="events-module-2"><a href="#events-module-2" class="anchor"></a>events Module</h1>
 <h2 id="event-class-2"><a href="#event-class-2" class="anchor"></a>Event Class</h2>
-<h3 id="constructor-10"><a href="#constructor-10" class="anchor"></a>Constructor</h3>
+<h3 id="constructor-8"><a href="#constructor-8" class="anchor"></a>Constructor</h3>
 <h4 id="event--type-target--2"><a href="#event--type-target--2" class="anchor"></a>Event ( type, target )</h4>
-<h5 id="parameters-562"><a href="#parameters-562" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-518"><a href="#parameters-518" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>type {String}</li>
 <li>target {Object}</li>
@@ -16,24 +16,24 @@
 <p>Result</p>
 <h4 id="data--2"><a href="#data--2" class="anchor"></a>data {*}</h4>
 <p>Data</p>
-<h3 id="instance-methods-22"><a href="#instance-methods-22" class="anchor"></a>Instance methods</h3>
+<h3 id="instance-methods-20"><a href="#instance-methods-20" class="anchor"></a>Instance methods</h3>
 <h4 id="preventdefault--2"><a href="#preventdefault--2" class="anchor"></a>preventDefault ()</h4>
 <p>Prevents default action</p>
 <h4 id="isdefaultprevented---boolean-2"><a href="#isdefaultprevented---boolean-2" class="anchor"></a>isDefaultPrevented () → {Boolean}</h4>
 <p>Returns whether is default action prevented</p>
-<h5 id="returns-528"><a href="#returns-528" class="anchor"></a>Returns:</h5>
+<h5 id="returns-484"><a href="#returns-484" class="anchor"></a>Returns:</h5>
 <p>{Boolean}</p>
 <h4 id="stoppropagation--2"><a href="#stoppropagation--2" class="anchor"></a>stopPropagation ()</h4>
 <p>Stops propagation</p>
 <h4 id="ispropagationstopped---boolean-2"><a href="#ispropagationstopped---boolean-2" class="anchor"></a>isPropagationStopped () → {Boolean}</h4>
 <p>Returns whether is propagation stopped</p>
-<h5 id="returns-529"><a href="#returns-529" class="anchor"></a>Returns:</h5>
+<h5 id="returns-485"><a href="#returns-485" class="anchor"></a>Returns:</h5>
 <p>{Boolean}</p>
 <h2 id="emitter-class-2"><a href="#emitter-class-2" class="anchor"></a>Emitter Class</h2>
-<h3 id="instance-methods-23"><a href="#instance-methods-23" class="anchor"></a>Instance methods</h3>
+<h3 id="instance-methods-21"><a href="#instance-methods-21" class="anchor"></a>Instance methods</h3>
 <h4 id="on--e-data-fn-ctx---emitter-4"><a href="#on--e-data-fn-ctx---emitter-4" class="anchor"></a>on ( e, [data], fn, [ctx] ) → {Emitter}</h4>
 <p>Adds an event handler</p>
-<h5 id="parameters-563"><a href="#parameters-563" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-519"><a href="#parameters-519" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String}<br/>
 Event type</li>
@@ -44,13 +44,13 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-530"><a href="#returns-530" class="anchor"></a>Returns:</h5>
+<h5 id="returns-486"><a href="#returns-486" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="once--e-data-fn-ctx---emitter-4"><a href="#once--e-data-fn-ctx---emitter-4" class="anchor"></a>once ( e, [data], fn, [ctx] ) → {Emitter}</h4>
 <p>Adds a one time handler for the event.
 Handler is executed only the next time the event is fired, after which it is removed.</p>
-<h5 id="parameters-564"><a href="#parameters-564" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-520"><a href="#parameters-520" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String}<br/>
 Event type</li>
@@ -61,12 +61,12 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-531"><a href="#returns-531" class="anchor"></a>Returns:</h5>
+<h5 id="returns-487"><a href="#returns-487" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="un--e-fn-ctx---emitter-4"><a href="#un--e-fn-ctx---emitter-4" class="anchor"></a>un ( [e], [fn], [ctx] ) → {Emitter}</h4>
 <p>Removes event handler or handlers</p>
-<h5 id="parameters-565"><a href="#parameters-565" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-521"><a href="#parameters-521" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>[e] {String}<br/>
 Event type</li>
@@ -75,25 +75,25 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-532"><a href="#returns-532" class="anchor"></a>Returns:</h5>
+<h5 id="returns-488"><a href="#returns-488" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="emit--e-data---emitter-4"><a href="#emit--e-data---emitter-4" class="anchor"></a>emit ( e, [data] ) → {Emitter}</h4>
 <p>Fires event handlers</p>
-<h5 id="parameters-566"><a href="#parameters-566" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-522"><a href="#parameters-522" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String | events:Event}<br/>
 Event</li>
 <li>[data] {Object}<br/>
 Additional data</li>
 </ul>
-<h5 id="returns-533"><a href="#returns-533" class="anchor"></a>Returns:</h5>
+<h5 id="returns-489"><a href="#returns-489" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
-<h3 id="static-methods-18"><a href="#static-methods-18" class="anchor"></a>Static methods</h3>
+<h3 id="static-methods-17"><a href="#static-methods-17" class="anchor"></a>Static methods</h3>
 <h4 id="on--e-data-fn-ctx---emitter-5"><a href="#on--e-data-fn-ctx---emitter-5" class="anchor"></a>on ( e, [data], fn, [ctx] ) → {Emitter}</h4>
 <p>Adds an event handler</p>
-<h5 id="parameters-567"><a href="#parameters-567" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-523"><a href="#parameters-523" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String}<br/>
 Event type</li>
@@ -104,13 +104,13 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-534"><a href="#returns-534" class="anchor"></a>Returns:</h5>
+<h5 id="returns-490"><a href="#returns-490" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="once--e-data-fn-ctx---emitter-5"><a href="#once--e-data-fn-ctx---emitter-5" class="anchor"></a>once ( e, [data], fn, [ctx] ) → {Emitter}</h4>
 <p>Adds a one time handler for the event.
 Handler is executed only the next time the event is fired, after which it is removed.</p>
-<h5 id="parameters-568"><a href="#parameters-568" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-524"><a href="#parameters-524" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String}<br/>
 Event type</li>
@@ -121,12 +121,12 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-535"><a href="#returns-535" class="anchor"></a>Returns:</h5>
+<h5 id="returns-491"><a href="#returns-491" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="un--e-fn-ctx---emitter-5"><a href="#un--e-fn-ctx---emitter-5" class="anchor"></a>un ( [e], [fn], [ctx] ) → {Emitter}</h4>
 <p>Removes event handler or handlers</p>
-<h5 id="parameters-569"><a href="#parameters-569" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-525"><a href="#parameters-525" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>[e] {String}<br/>
 Event type</li>
@@ -135,31 +135,31 @@ Handler</li>
 <li>[ctx] {Object}<br/>
 Handler context</li>
 </ul>
-<h5 id="returns-536"><a href="#returns-536" class="anchor"></a>Returns:</h5>
+<h5 id="returns-492"><a href="#returns-492" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h4 id="emit--e-data---emitter-5"><a href="#emit--e-data---emitter-5" class="anchor"></a>emit ( e, [data] ) → {Emitter}</h4>
 <p>Fires event handlers</p>
-<h5 id="parameters-570"><a href="#parameters-570" class="anchor"></a>Parameters:</h5>
+<h5 id="parameters-526"><a href="#parameters-526" class="anchor"></a>Parameters:</h5>
 <ul>
 <li>e {String | events:Event}<br/>
 Event</li>
 <li>[data] {Object}<br/>
 Additional data</li>
 </ul>
-<h5 id="returns-537"><a href="#returns-537" class="anchor"></a>Returns:</h5>
+<h5 id="returns-493"><a href="#returns-493" class="anchor"></a>Returns:</h5>
 <p>{Emitter}</p>
 <p>this</p>
 <h1 id="events__channels-module-2"><a href="#events__channels-module-2" class="anchor"></a>events__channels Module</h1>
 <h2 id="function--iddefault-dropfalse---eventsemitter--undefined-2"><a href="#function--iddefault-dropfalse---eventsemitter--undefined-2" class="anchor"></a><em>function</em> ( [id=&#39;default&#39;], [drop=false] ) → {events:Emitter | undefined}</h2>
 <p>Returns/destroys a named communication channel</p>
-<h3 id="parameters-571"><a href="#parameters-571" class="anchor"></a>Parameters:</h3>
+<h3 id="parameters-527"><a href="#parameters-527" class="anchor"></a>Parameters:</h3>
 <ul>
 <li>[id=&#39;default&#39;] {String}<br/>
 Channel ID</li>
 <li>[drop=false] {Boolean}<br/>
 Destroy the channel</li>
 </ul>
-<h3 id="returns-538"><a href="#returns-538" class="anchor"></a>Returns:</h3>
+<h3 id="returns-494"><a href="#returns-494" class="anchor"></a>Returns:</h3>
 <p>{events:Emitter | undefined}</p>
 <p>Communication channel</p>
