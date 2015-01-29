@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"textarea"},{"name":"textarea"},{"name":"textarea"},{"name":"textarea"},{"name":"textarea"},{"name":"textarea","elems":[{"name":"control"}]}];

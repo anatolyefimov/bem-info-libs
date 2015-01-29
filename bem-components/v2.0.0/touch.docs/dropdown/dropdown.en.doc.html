@@ -1,0 +1,158 @@
+<h1 id="dropdown-3"><a href="#dropdown-3" class="anchor"></a>dropdown</h1>
+<p>A composite block that consists of a <a href="#modswitcher">control component</a> (for example, a button or a link) that triggers a <a href="../popup/popup.en.md">popup</a>.</p>
+<h2 id="overview-24"><a href="#overview-24" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-46"><a href="#modifiers-of-the-block-46" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#modswitcher>switcher</a></td>
+<td><code>&#39;link&#39;</code>, <code>&#39;button&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The type of the control component.</td>
+</tr>
+<tr>
+<td><a href=#disabled>disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The disabled state.</td>
+</tr>
+<tr>
+<td><a href=#opened>opened</a></td>
+<td><code>true</code></td>
+<td><code>JS</code></td>
+<td>Displaying the popup on a page.</td>
+</tr>
+<tr>
+<td><a href=#theme>theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+<tr>
+<td><a href=#size>size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The size of the control component. Use sizes only when the <a href="#themes">theme modifier is set to islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-46"><a href="#custom-fields-of-the-block-46" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#fieldswitcher>switcher</a></td>
+<td><code>String</code>, <code>BEMJSON</code></td>
+<td>Content of the <a href="#modswitcher">control component</a>.</td>
+</tr>
+<tr>
+<td><a href=#popup>popup</a></td>
+<td><code>String</code>, <code>BEMJSON</code></td>
+<td>Content of the popup.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-23"><a href="#block-description-23" class="anchor"></a>Block description</h2>
+<p>Use the <code>dropdown</code> block to create different dropdown types, control their state, behavior and appearance on a page.</p>
+<h3 id="modifiers-of-the-block-47"><a href="#modifiers-of-the-block-47" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="modswitcher"></a></p>
+<h4 id="switcher-modifier-1"><a href="#switcher-modifier-1" class="anchor"></a><code>switcher</code> modifier</h4>
+<p>Acceptable values: <code>link</code>, <code>button</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The <code>switcher</code> modifier specifies the type of the control component:</p>
+<ul>
+<li><a href="#modswitcherlink">link</a></li>
+<li><a href="#modswitcherbutton">button</a></li>
+</ul>
+<p><a name="modswitcherlink"></a></p>
+<h5 id="link-as-control-component-switcher-modifier-with-link-value-1"><a href="#link-as-control-component-switcher-modifier-with-link-value-1" class="anchor"></a>Link as control component (<code>switcher</code> modifier with <code>link</code> value)</h5>
+<p>Use to set the <a href="../link/link.en.md">link</a> block as the control component.</p>
+<p>Clicking on the link triggers the <code>popup</code> block.</p>
+<!-- bem-example: touch.examples/dropdown/ZASTRhX8BRBO0kj7bRS5aMWQUk4 -->
+
+<p><a name="modswitcherbutton"></a></p>
+<h5 id="button-as-control-component-switcher-modifier-with-button-value-1"><a href="#button-as-control-component-switcher-modifier-with-button-value-1" class="anchor"></a>Button as control component (<code>switcher</code> modifier with <code>button</code> value)</h5>
+<p>Use to set the <a href="../button/button.en.md">button</a> block as the control component.</p>
+<!-- bem-example: touch.examples/dropdown/Ekls20CTZPcDUz8df7LtREtB_rk -->
+
+<p><a name="disabled"></a></p>
+<h4 id="disabled-modifier-18"><a href="#disabled-modifier-18" class="anchor"></a><code>disabled</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier makes the block inactive. The disabled block is visible but not available for user actions.</p>
+<!-- bem-example: touch.examples/dropdown/k8BXLOnkot3oOcW33zbP3FO12jU -->
+
+<!-- bem-example: touch.examples/dropdown/LKCfL05zvDKM6S3EUJfvgo7tg_U -->
+
+<p><a name="opened"></a></p>
+<h4 id="opened-modifier-1"><a href="#opened-modifier-1" class="anchor"></a><code>opened</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: <code>JS</code>.</p>
+<p>The modifier is applied to the block automatically when the popup opens.</p>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-22"><a href="#theme-modifier-22" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value: <code>islands</code>.</p>
+<p>Use cases: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<p>The <code>islands</code> theme requires the <a href="#size">size</a> modifier.</p>
+<p>The modifier can be applied to:</p>
+<ul>
+<li>The whole <code>dropdown</code> block</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/ZASTRhX8BRBO0kj7bRS5aMWQUk4 -->
+
+<!-- bem-example: touch.examples/dropdown/Ekls20CTZPcDUz8df7LtREtB_rk -->
+
+<ul>
+<li>The control component (if the <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of the <a href="../link/link.en.md">link</a> or <a href="../button/button.en.md">button</a> blocks).</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/EoIHO8eJaLJhz_yczxo0mhhpGRw -->
+
+<!-- bem-example: touch.examples/dropdown/fewkaGqc8pqDC-r30eMwDeqCHv4 -->
+
+<p><a name="size"></a></p>
+<h4 id="size-modifier-19"><a href="#size-modifier-19" class="anchor"></a><code>size</code> modifier</h4>
+<p>Acceptable values for the <code>islands</code> theme: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>size</code> modifier only for blocks with the <code>islands</code> <a href="#themes">theme</a>.</p>
+<p>The modifier can be applied to:</p>
+<ul>
+<li>The whole <code>dropdown</code> block</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/Ekls20CTZPcDUz8df7LtREtB_rk -->
+
+<ul>
+<li>The control component (if the <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of the <a href="../link/link.en.md">link</a> or <a href="../button/button.en.md">button</a> blocks).</li>
+</ul>
+<!-- bem-example: touch.examples/dropdown/Hr_76h2MtaaQklqsfwbg2ovK2F4 -->
+
+<h3 id="custom-fields-of-the-block-47"><a href="#custom-fields-of-the-block-47" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="fieldswitcher"></a></p>
+<h4 id="switcher-field-1"><a href="#switcher-field-1" class="anchor"></a><code>switcher</code> field</h4>
+<p>Type: <code>String</code>, <code>BEMJSON</code>.</p>
+<p>Specifies the content of the <a href="#modswitcher">control component</a>.</p>
+<!-- bem-example: touch.examples/dropdown/KeMSqlQW3hMxHSoS63rg-Kl8sRU -->
+
+<!-- bem-example: touch.examples/dropdown/P2ej6kWAiTFYC4YByarQw3Iicig -->
+
+<p><a name="popup"></a></p>
+<h4 id="popup-field-1"><a href="#popup-field-1" class="anchor"></a><code>popup</code> field</h4>
+<p>Type: <code>String</code>, <code>BEMJSON</code>.</p>
+<p>Specifies the content of the popup.</p>
+<!-- bem-example: touch.examples/dropdown/wxT4NE0Lncb9wujOgKAYTN2_WAU -->
+
+<!-- bem-example: touch.examples/dropdown/hdd4lH4xVFc9WSVPUBBdQfmxWjw -->

@@ -1,0 +1,227 @@
+<h1 id="input-1"><a href="#input-1" class="anchor"></a>input</h1>
+<p>Use this block for creating different types of text fields.</p>
+<h2 id="overview-7"><a href="#overview-7" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-10"><a href="#modifiers-of-the-block-10" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#type">type</a></td>
+<td><code>&#39;password&#39;</code>, <code>&#39;search&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The type of the text field.</td>
+</tr>
+<tr>
+<td><a href="#width">width</a></td>
+<td><code>&#39;available&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The maximum allowed width of the text field.</td>
+</tr>
+<tr>
+<td><a href="#has-clear">has-clear</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code></td>
+<td>The element that clears the <code>input</code> field content.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The disabled state.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The block is in focus.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The size of the text field. Use sizes only for text fields when the <a href="#themes">theme modifier is set to islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-14"><a href="#custom-fields-of-the-block-14" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#name">name</a></td>
+<td><code>String</code></td>
+<td>The unique block name.</td>
+</tr>
+<tr>
+<td><a href="#val">val</a></td>
+<td><code>String</code>, <code>Number</code></td>
+<td>Default content of the text field.</td>
+</tr>
+<tr>
+<td><a href="#placeholder">placeholder</a></td>
+<td><code>String</code></td>
+<td>The hint in the text field.</td>
+</tr>
+<tr>
+<td><a href="#maxLength">maxLength</a></td>
+<td><code>String</code></td>
+<td>The maximum number of characters allowed in the text field.</td>
+</tr>
+<tr>
+<td><a href="#autocomplete">autocomplete</a></td>
+<td><code>Boolean</code></td>
+<td>Browser predictions of the rest of a word while a user is typing.</td>
+</tr>
+<tr>
+<td><a href="#id">id</a></td>
+<td><code>String</code></td>
+<td>The unique identifier of the text field.</td>
+</tr>
+<tr>
+<td><a href="#tab">tabIndex</a></td>
+<td><code>Number</code></td>
+<td>The order when navigating through controls on a page by pressing the <code>Tab</code> key.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-7"><a href="#block-description-7" class="anchor"></a>Block description</h2>
+<p>Use the <code>input</code> block to control the size, state and appearance of the text fields.</p>
+<h3 id="modifiers-of-the-block-11"><a href="#modifiers-of-the-block-11" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="type"></a></p>
+<h4 id="type-modifier-3"><a href="#type-modifier-3" class="anchor"></a><code>type</code> modifier</h4>
+<p>Acceptable values:<code>&#39;password&#39;</code>, <code>&#39;search&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>This modifier changes types of the text fields.</p>
+<p><a name="input"></a>
+If the <code>type</code> modifier is not set, the <code>input</code> block is a common text field by default.</p>
+<!-- bem-example: desktop.examples/input/rkZNGM8jufBFQs0kE0eUpCgxlgY -->
+
+<h5 id="password-field-type-modifier-with-password-value"><a href="#password-field-type-modifier-with-password-value" class="anchor"></a>Password field (<code>type</code> modifier with <code>password</code> value)</h5>
+<p>Use to create the specialized text fields for a password entry. For security reasons, the password field does not show the characters that the user types. Instead, the field displays the character different from the one typed such as an asterisk &#39;*&#39; (depends on a browser).</p>
+<!-- bem-example: desktop.examples/input/ZQXBhNri43kAw5xzCdVOPGNUIIU -->
+
+<h5 id="search-field-type-modifier-wirh-search-value"><a href="#search-field-type-modifier-wirh-search-value" class="anchor"></a>Search field (<code>type</code> modifier wirh <code>search</code> value)</h5>
+<p>Use to create the search field.</p>
+<!-- bem-example: desktop.examples/input/YzquHSLf4qEPsrkeXRr9Xc56qE -->
+
+<p><a name="width"></a></p>
+<h4 id="width-modifier"><a href="#width-modifier" class="anchor"></a><code>width</code> modifier</h4>
+<p>Acceptable value:<code>&#39;available&#39;</code>.</p>
+<p>Use cases: <code>BEMJSON</code>.</p>
+<p>Use to set the maximum available width to the text field.</p>
+<!-- bem-example: desktop.examples/input/9s5FPpY03_VLX_w9SRhk74XY32M -->
+
+<p><a name="has-clear"></a></p>
+<h4 id="has-clear-modifier"><a href="#has-clear-modifier" class="anchor"></a><code>has-clear</code> modifier</h4>
+<p>Acceptable value:<code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>.</p>
+<p>Use this modifier to add the <code>clear</code> element into the text field to remove entered content.</p>
+<!-- bem-example: desktop.examples/input/IdHW-qnowaGg1flru_ZR-nqp_R0 -->
+
+<p><a name="disabled"></a></p>
+<h4 id="disabled-modifier-5"><a href="#disabled-modifier-5" class="anchor"></a><code>disabled</code> modifier</h4>
+<p>Acceptable value:<code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier makes the block inactive. The disabled block is visible but not available for user actions.</p>
+<!-- bem-example: desktop.examples/input/8BEVDKrbPRZcPwblod1qNgJfE7Y -->
+
+<p><a name="focused"></a></p>
+<h4 id="focused-modifier-4"><a href="#focused-modifier-4" class="anchor"></a><code>focused</code> modifier</h4>
+<p>Acceptable value:<code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier puts the focus on the block.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;input&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, focused : true },
+    placeholder : &#39;Enter your name&#39;
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-5"><a href="#theme-modifier-5" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value:<code>&#39;islands&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<p>The <code>islands</code> theme requires the <a href="#size">size</a> modifier.</p>
+<!-- bem-example: desktop.examples/input/ikKrNA8x_Ovmrms2j4TZ_Ezggaw -->
+
+<p><a name="size"></a></p>
+<h4 id="size-modifier-5"><a href="#size-modifier-5" class="anchor"></a><code>size</code> modifier</h4>
+<p>Acceptable values for the <code>islands</code> theme: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>size</code> modifier only for blocks with the <code>islands</code> <a href="#themes">theme</a>.</p>
+<p>Sets the size value for all types of text fields.</p>
+<p><strong>s</strong></p>
+<!-- bem-example: desktop.examples/input/T4MBqsRiibs3c_ehldY4g59NDS4 -->
+
+<p><strong>m</strong></p>
+<!-- bem-example: desktop.examples/input/r6FmwoVsWxl58Yw1_47H--iqCV4 -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: desktop.examples/input/M1WsMUGwq1gRqd24PIa8zZc1VS4 -->
+
+<p><strong>xl</strong></p>
+<!-- bem-example: desktop.examples/input/lP7Z7fVvAzsPYWOMR0L0qOJdgHA -->
+
+<h3 id="custom-fields-of-the-block-15"><a href="#custom-fields-of-the-block-15" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="name"></a></p>
+<h4 id="name-field-3"><a href="#name-field-3" class="anchor"></a><code>name</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the block unique name.</p>
+<!-- bem-example: desktop.examples/input/2_2H_pgnYBxV_IcPqb-6F-4Z3AU -->
+
+<p><a name="val"></a></p>
+<h4 id="val-field-3"><a href="#val-field-3" class="anchor"></a><code>val</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the content of the text field.</p>
+<!-- bem-example: desktop.examples/input/aaSNff36BHQsVQ9y2Ykoko6n7DQ -->
+
+<p><a name="placeholder"></a></p>
+<h4 id="placeholder-field"><a href="#placeholder-field" class="anchor"></a><code>placeholder</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the hint in the text field.</p>
+<!-- bem-example: desktop.examples/input/rkZNGM8jufBFQs0kE0eUpCgxlgY -->
+
+<p><a name="maxLength"></a></p>
+<h4 id="maxlength-field"><a href="#maxlength-field" class="anchor"></a><code>maxLength</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the maximum number of characters allowed in the text field.</p>
+<!-- bem-example: desktop.examples/input/HeTLonAB8BbmJZTNDPd6Nixryv4 -->
+
+<p><a name="autocomplete"></a></p>
+<h4 id="autocomplete-field"><a href="#autocomplete-field" class="anchor"></a><code>autocomplete</code> field</h4>
+<p>Type: <code>Boolean</code>.</p>
+<p>Specifies the browser predictions of the rest of the word while a user is typing.</p>
+<p>If the <code>autocomplete</code> field is not specified, the autocomplete function is turned on by default.</p>
+<p>To turn off the autocomplete function, use the <code>false</code> value:</p>
+<!-- bem-example: desktop.examples/input/qMzJO_lkTt7c5kIjCHTNn_VdcEM -->
+
+<p><a name="id"></a></p>
+<h4 id="id-field-2"><a href="#id-field-2" class="anchor"></a><code>id</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the text field unique ID.</p>
+<!-- bem-example: desktop.examples/input/2K8C2F2ee76Dl_Xx66_kLITZMl8 -->
+
+<p><a name="tab"></a></p>
+<h4 id="tabindex-field-2"><a href="#tabindex-field-2" class="anchor"></a><code>tabIndex</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the tab order when pressing <code>Tab</code> to navigate between controls on a page.</p>
+<!-- bem-example: desktop.examples/input/DYp9eZ6MiJEZQ8avsLdLVQ_JMbo -->

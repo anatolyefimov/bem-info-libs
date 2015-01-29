@@ -1,0 +1,1 @@
+({"block":"page","title":"dropdown","head":[{"elem":"css","url":"_wxT4NE0Lncb9wujOgKAYTN2_WAU.css"}],"scripts":[{"elem":"js","url":"_wxT4NE0Lncb9wujOgKAYTN2_WAU.js"}],"mods":{"theme":"islands"},"content":{"block":"dropdown","mods":{"switcher":"link","theme":"islands","size":"m"},"switcher":"New sales","popup":"Скидка 30%"}})

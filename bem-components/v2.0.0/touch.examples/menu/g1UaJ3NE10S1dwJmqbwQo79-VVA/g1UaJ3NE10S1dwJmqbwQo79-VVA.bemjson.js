@@ -1,0 +1,1 @@
+({"block":"page","title":"menu","head":[{"elem":"css","url":"_g1UaJ3NE10S1dwJmqbwQo79-VVA.css"}],"scripts":[{"elem":"js","url":"_g1UaJ3NE10S1dwJmqbwQo79-VVA.js"}],"mods":{"theme":"islands"},"content":{"block":"menu","mods":{"theme":"islands","size":"m"},"content":[{"block":"menu-item","val":1,"content":"Swimming"},{"block":"menu-item","val":2,"content":"Skiing"}]}})

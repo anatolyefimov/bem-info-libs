@@ -1,0 +1,1 @@
+({"block":"page","title":"image","head":[{"elem":"css","url":"_6kdhy55EfMpA5sdZoYmF8uxosto.css"}],"scripts":[{"elem":"js","url":"_6kdhy55EfMpA5sdZoYmF8uxosto.js"}],"mods":{},"content":{"block":"image","url":"https://bem.info/m/_/lHGkpIFauDlxw9MGg869APxKdkc.svg","width":100,"height":100}})

@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_Rmje-d9UZ3-Fz7c0XZkxO4xHzVM.css"}],"scripts":[{"elem":"js","url":"_Rmje-d9UZ3-Fz7c0XZkxO4xHzVM.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","view":"pseudo","disabled":true},"text":"Without borders"}})

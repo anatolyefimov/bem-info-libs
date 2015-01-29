@@ -1,0 +1,1 @@
+({"block":"page","title":"spin","head":[{"elem":"css","url":"_v-F18-7leVBDgd5OhoiI-5bpUNM.css"}],"scripts":[{"elem":"js","url":"_v-F18-7leVBDgd5OhoiI-5bpUNM.js"}],"mods":{"theme":"islands"},"content":{"block":"spin","mods":{"theme":"islands","size":"xl","visible":true}}})

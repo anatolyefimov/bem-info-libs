@@ -1,0 +1,219 @@
+<h1 id="radio-1"><a href="#radio-1" class="anchor"></a>radio</h1>
+<p>Use this block as a part of the <a href="../radio-group/radio-group.en.md">radio-group</a> block for creating a single radio switch.</p>
+<h2 id="overview-14"><a href="#overview-14" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-24"><a href="#modifiers-of-the-block-24" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#type">type</a></td>
+<td><code>&#39;button&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The type of the radio switch.</td>
+</tr>
+<tr>
+<td><a href="#checked">checked</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>Selection of the radio switch.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The disabled state.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The block is in focus.</td>
+</tr>
+<tr>
+<td><a href="#hovered">hovered</a></td>
+<td><code>true</code></td>
+<td>–</td>
+<td>The hovered state.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;m&#39;</code>, <code>&#39;l&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The size of the radio switch. Use sizes only for radio switches when the <a href="#theme">theme modifier is set to islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-28"><a href="#custom-fields-of-the-block-28" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#name">name</a></td>
+<td><code>String</code></td>
+<td>The unique block name.</td>
+</tr>
+<tr>
+<td><a href="#val">val</a></td>
+<td><code>String</code>, <code>Number</code></td>
+<td>The value to send to the server if the radio switch is selected.</td>
+</tr>
+<tr>
+<td><a href="#text">text</a></td>
+<td><code>String</code></td>
+<td>Radio switch lable.</td>
+</tr>
+<tr>
+<td><a href="#icon">icon</a></td>
+<td><code>BEMJSON</code></td>
+<td>Radio switch icon. It is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches when the <a href="#type">type modifier is set to button</a>.</td>
+</tr>
+<tr>
+<td><a href="#title">title</a></td>
+<td><code>String</code></td>
+<td>Tooltip content. Use tooltips only for radio switches when the <a href="#type">type modifier is set to button</a>.</td>
+</tr>
+<tr>
+<td><a href="#tab">tabIndex</a></td>
+<td><code>Number</code></td>
+<td>The order when navigating through controls on a page by pressing the Tab key.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-descriptopn"><a href="#block-descriptopn" class="anchor"></a>Block descriptopn</h2>
+<p>Use the <code>radio</code> block to control the size, state and appearance of the single radio switch.</p>
+<h3 id="modifiers-of-the-block-25"><a href="#modifiers-of-the-block-25" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="type"></a></p>
+<h4 id="type-modifier-5"><a href="#type-modifier-5" class="anchor"></a><code>type</code> modifier</h4>
+<p>Acceptable value: <code>&#39;button&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>type</code> modifier with the  <code>button</code> value to change the appearance of the block: the radio switch is implemented by the <a href="../button/button.en.md">button</a> block. Press the button to select the radio switch.</p>
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><a name="checked"></a></p>
+<h4 id="checked-modifier-2"><a href="#checked-modifier-2" class="anchor"></a><code>checked</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>Use the <code>checked</code> modifier with the <code>true</code> value to select the radio switch.</p>
+<!-- bem-example: desktop.examples/radio/qEJd7mdUK7jql4r_41hJQM7e4iw -->
+
+<!-- bem-example: desktop.examples/radio/U1sPnpYZwntXsqBy8KNZR1OAyq8 -->
+
+<p><a name="disabled"></a></p>
+<h4 id="disabled-modifier-9"><a href="#disabled-modifier-9" class="anchor"></a><code>disabled</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier makes the block inactive. The disabled block is visible but not available for user actions.</p>
+<!-- bem-example: desktop.examples/radio/QgoafUescVVJ9Oq52sX-s89fkzI -->
+
+<!-- bem-example: desktop.examples/radio/aqvlEMF0KphMATEhp049mt2qlII -->
+
+<p><a name="focused"></a></p>
+<h4 id="focused-modifier-7"><a href="#focused-modifier-7" class="anchor"></a><code>focused</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier puts the focus on the block.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;radio&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, focused : true },
+    name : &#39;radio-islands&#39;,
+    val : &#39;BEMHTML&#39;,
+    text : &#39;Use BEMHTML&#39;
+}
+</code></pre>
+<pre><code class="lang-javascript">{
+    block : &#39;radio&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, type : &#39;button&#39;, focused : true },
+    name : &#39;radio-islands&#39;,
+    val : &#39;BEMHTML&#39;,
+    text : &#39;Use BEMHTML&#39;
+}
+</code></pre>
+<p><a name="hovered"></a></p>
+<h4 id="hovered-modifier-3"><a href="#hovered-modifier-3" class="anchor"></a><code>hovered</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: – .</p>
+<p>The modifier is added to the block automatically at the moment when you mouse it over.</p>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-12"><a href="#theme-modifier-12" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value: <code>&#39;islands&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<p>The <code>islands</code> theme requires the <a href="#size">size</a> modifier.</p>
+<!-- bem-example: desktop.examples/radio/UeUTtHucBHyVO5LC2ptN9_cIjB0 -->
+
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><a name="size"></a></p>
+<h4 id="size-modifier-9"><a href="#size-modifier-9" class="anchor"></a><code>size</code> modifier</h4>
+<p>Acceptable values for the <code>islands</code> theme: <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>size</code> modifier only for blocks with the <code>islands</code> <a href="#themes">theme</a>.</p>
+<p>Sets the size value for all types of radio switches.</p>
+<p><strong>m</strong></p>
+<!-- bem-example: desktop.examples/radio/UeUTtHucBHyVO5LC2ptN9_cIjB0 -->
+
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: desktop.examples/radio/3lCeHnZI1DwIKAA3a1NOs8VOF3M -->
+
+<!-- bem-example: desktop.examples/radio/8eFAdV4b9R9W2mo5LPwaeADG5wg -->
+
+<h3 id="custom-fields-of-the-block-29"><a href="#custom-fields-of-the-block-29" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="name"></a></p>
+<h4 id="name-field-4"><a href="#name-field-4" class="anchor"></a><code>name</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the block unique name.</p>
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><a name="val"></a></p>
+<h4 id="val-field-7"><a href="#val-field-7" class="anchor"></a><code>val</code> field</h4>
+<p>Type: <code>String</code>, <code>Number</code>.</p>
+<p>Specifies the radio switch value to send to the server.</p>
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><a name="text"></a></p>
+<h4 id="text-field-2"><a href="#text-field-2" class="anchor"></a><code>text</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the radio switch lable or the text on the button if the <a href="#type">type modifier with the button value</a> is set to the block.</p>
+<!-- bem-example: desktop.examples/radio/UeUTtHucBHyVO5LC2ptN9_cIjB0 -->
+
+<!-- bem-example: desktop.examples/radio/67nP4EkhQN-oHcy5YSRPiw841Jw -->
+
+<p><a name="icon"></a></p>
+<h4 id="icon-field-2"><a href="#icon-field-2" class="anchor"></a><code>icon</code> field</h4>
+<p>Type: <code>BEMJSON</code>.</p>
+<p>Specifies the <a href="../icon/icon.ru.md">icon</a> on the radio switch implemented by the button (the <a href="#type">type modifier is set to button</a>).</p>
+<!-- bem-example: desktop.examples/radio/vCDodWBYq46KZXJRaWtGIH3hP80 -->
+
+<p><a name="title"></a></p>
+<h4 id="title-field-2"><a href="#title-field-2" class="anchor"></a><code>title</code> field</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the tooltip content. The tooltip appearance depends on the browser and your operating system settings. You cannot change it applying HTML or different styles.</p>
+<p>Use the <code>title</code> field for radio switches only with the <a href="#type">type modifier set to button</a>.</p>
+<!-- bem-example: desktop.examples/radio/EbqS4N9yIh3vdNSCoRK3gCoaiuo -->
+
+<p><a name="tab"></a></p>
+<h4 id="tabindex-field-4"><a href="#tabindex-field-4" class="anchor"></a><code>tabIndex</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the tab order when pressing Tab to navigate between controls on a page.</p>
+<!-- bem-example: desktop.examples/radio/qyW8VAIl1_bQD7dT82PnlZwElpk -->

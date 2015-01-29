@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"_IdHW-qnowaGg1flru_ZR-nqp_R0.css"}],"scripts":[{"elem":"js","url":"_IdHW-qnowaGg1flru_ZR-nqp_R0.js"}],"mods":{"theme":"islands"},"content":{"block":"input","mods":{"theme":"islands","size":"m","has-clear":true},"val":"Hello!"}})

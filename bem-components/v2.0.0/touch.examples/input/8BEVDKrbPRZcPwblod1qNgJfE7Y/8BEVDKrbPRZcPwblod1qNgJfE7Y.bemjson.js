@@ -1,0 +1,1 @@
+({"block":"page","title":"input","head":[{"elem":"css","url":"_8BEVDKrbPRZcPwblod1qNgJfE7Y.css"}],"scripts":[{"elem":"js","url":"_8BEVDKrbPRZcPwblod1qNgJfE7Y.js"}],"mods":{"theme":"islands"},"content":{"block":"input","mods":{"theme":"islands","size":"m","disabled":true},"placeholder":"Enter your name"}})

@@ -1,0 +1,203 @@
+<h1 id="popup-1"><a href="#popup-1" class="anchor"></a>popup</h1>
+<p>Use this block for creating some blocks that are displayed above all other elements on a page.</p>
+<h2 id="overview-12"><a href="#overview-12" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-20"><a href="#modifiers-of-the-block-20" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#target">target</a></td>
+<td><code>&#39;anchor&#39;</code>, <code>&#39;position&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The target point of the popup.</td>
+</tr>
+<tr>
+<td><a href="#visible">visible</a></td>
+<td><code>true</code></td>
+<td><code>JS</code></td>
+<td>Displaying of the popup.</td>
+</tr>
+<tr>
+<td><a href="#autoclosable">autoclosable</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code></td>
+<td>Autoclosing of the popup.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-24"><a href="#custom-fields-of-the-block-24" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#directions">directions</a></td>
+<td><code>Array</code></td>
+<td>Popup position (in priority order) depending on the target point. Use only for popups with the <a href="#popuptarget">target</a> modifier.</td>
+</tr>
+<tr>
+<td><a href="#mainOffset">mainOffset</a></td>
+<td><code>Number</code></td>
+<td>Popup offset (in pixels) along the main direction. Use only for popups with the <a href="#popuptarget">target</a> modifier.</td>
+</tr>
+<tr>
+<td><a href="#secondaryOffset">secondaryOffset</a></td>
+<td><code>Number</code></td>
+<td>Popup offset (in pixels) along the secondary direction. Use only for popups with the <a href="#popuptarget">target</a> modifier.</td>
+</tr>
+<tr>
+<td><a href="#viewportOffset">viewportOffset</a></td>
+<td><code>Number</code></td>
+<td>The minimum popup offset (in pixels) from a viewport border. Use only for popups with the <a href="#popuptarget">target</a> modifier.</td>
+</tr>
+<tr>
+<td><a href="#zIndexGroupLevel">zIndexGroupLevel</a></td>
+<td><code>Number</code></td>
+<td>The level of the popup layer based on the <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-12"><a href="#block-description-12" class="anchor"></a>Block description</h2>
+<p>Use the <code>popup</code> block to control the state, behavior and appearance of the popups that are always displayed above all other elements on a page.</p>
+<h3 id="modifiers-of-the-block-21"><a href="#modifiers-of-the-block-21" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="target"></a></p>
+<h4 id="target-modifier"><a href="#target-modifier" class="anchor"></a><code>target</code> modifier</h4>
+<p>Acceptable values: <code>&#39;anchor&#39;</code>, <code>&#39;position&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use to set the target point of the popup.</p>
+<p><a name="target-anchor"></a></p>
+<h5 id="anchor-target-modifier-with-anchor-value"><a href="#anchor-target-modifier-with-anchor-value" class="anchor"></a>Anchor (<code>target</code> modifier with <code>anchor</code> value)</h5>
+<p>Use to set a block or an elements as the target point of the popup.</p>
+<p>The <code>popup</code> block supports a nested structure of multiple simultaneous popups. It means that it is possible to open a child popup within a parent one. When the parent popup closes, it hides all its childs popups.</p>
+<p>Use the <a href="https://bem.info/libs/bem-components/v2/desktop/popup/jsdoc/">setAnchor</a> method for correct work of the block.</p>
+<h5 id="position-coordinates-target-modifier-with-position-value"><a href="#position-coordinates-target-modifier-with-position-value" class="anchor"></a>Position coordinates (<code>target</code> modifier with <code>position</code> value)</h5>
+<p>The modifier allows to set the position coordinates as the target point of the popup.</p>
+<p>Use the <a href="https://bem.info/libs/bem-components/v2/desktop/popup/jsdoc/">setPosition</a> method for correct work of the block.</p>
+<p><a name="visible"></a></p>
+<h4 id="visible-modifier-1"><a href="#visible-modifier-1" class="anchor"></a><code>visible</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>JS</code>.</p>
+<p>The modifier is set automatically when the popup is displayed.</p>
+<p><a name="autoclosable"></a></p>
+<h4 id="autoclosable-modifier-1"><a href="#autoclosable-modifier-1" class="anchor"></a><code>autoclosable</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier with the <code>true</code> value allows to hide the popup automatically by clicking outside the popup area or pressing <code>Escape</code> button.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;islands&#39;, autoclosable : true },
+    content : &#39;Click outside the popup area to close it&#39;
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-10"><a href="#theme-modifier-10" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value: <code>&#39;islands&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { theme : &#39;islands&#39; },
+    content : &#39;Content of the popup&#39;
+}
+</code></pre>
+<h3 id="custom-fields-of-the-block-25"><a href="#custom-fields-of-the-block-25" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="directions"></a></p>
+<h4 id="directions-field"><a href="#directions-field" class="anchor"></a><code>directions</code> field</h4>
+<p>Type: <code>Array</code>.</p>
+<p>Specifies the popup position (in the priority order) depending on the target point.
+Use only for popups with the <a href="#popuptarget">target</a> modifier.</p>
+<p><a name="directions-type"></a>
+The popup position is set automatically based on the acceptable directions list and the target point position. The acceptable positions have main and secondary parameters: for example, for the <code>bottom-left</code> direction the main parameter is <code>bottom</code>, and the secondary one is <code>left</code>.</p>
+<p>By default the following admissible directions are available:</p>
+<ul>
+<li>bottom-left</li>
+<li>bottom-center</li>
+<li>bottom-right</li>
+<li>top-left</li>
+<li>top-center</li>
+<li>top-right</li>
+<li>right-top</li>
+<li>right-center</li>
+<li>right-bottom</li>
+<li>left-top</li>
+<li>left-center</li>
+<li>left-bottom</li>
+</ul>
+<p>To set the popup position, an array of possible directions must be declared in BEMJSON. The most suitable direction will be selected automatically depending on the target point position on a page.</p>
+<p>For example, to open the <code>popup</code> at the top of the parent block use the <code>top-left</code>, <code>top-center</code> and <code>top-right</code> values:</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;islands&#39;, target : &#39;anchor&#39; },
+    directions : [&#39;top-left&#39;, &#39;top-center&#39;, &#39;top-right&#39;],
+    content : &#39;Content of the popup&#39;
+}
+</code></pre>
+<p>An example of the <code>right-center</code> position:</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { autoclosable : true, theme: &#39;islands&#39;, target : &#39;anchor&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Content of the popup&#39;
+}
+</code></pre>
+<p><a name="mainOffset"></a></p>
+<h4 id="mainoffset-field"><a href="#mainoffset-field" class="anchor"></a><code>mainOffset</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the popup offset (in pixels) along the main direction.</p>
+<p>Use only for popups with the <a href="#popuptarget">target</a> modifier.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { theme: &#39;islands&#39;, target : &#39;anchor&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Content of the popup&#39;,
+    mainOffset : 100
+}
+</code></pre>
+<p><a name="secondaryOffset"></a></p>
+<h4 id="secondaryoffset-field"><a href="#secondaryoffset-field" class="anchor"></a><code>secondaryOffset</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the popup offset (in pixels) along the secondary direction.</p>
+<p>Use only for popups with the <a href="#popuptarget">target</a> modifier.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { theme: &#39;islands&#39;, target : &#39;anchor&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Content of the popup&#39;,
+    secondaryOffset : 100
+}
+</code></pre>
+<p><a name="viewportOffset"></a></p>
+<h4 id="viewportoffset-field"><a href="#viewportoffset-field" class="anchor"></a><code>viewportOffset</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the minimum popup offset (in pixels) from a viewport border.</p>
+<p>Use only for popups with the <a href="#popuptarget">target</a> modifier.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mods : { theme: &#39;islands&#39;, target : &#39;anchor&#39; },
+    directions : [&#39;right-center&#39;],
+    content : &#39;Content of the popup&#39;,
+    viewportOffset : 100
+}
+</code></pre>
+<p><a name="zIndexGroupLevel"></a></p>
+<h4 id="zindexgrouplevel-field-1"><a href="#zindexgrouplevel-field-1" class="anchor"></a><code>zIndexGroupLevel</code> field</h4>
+<p>Type: <code>Number</code>.</p>
+<p>Specifies the level of the popup layer based on the <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.</p>

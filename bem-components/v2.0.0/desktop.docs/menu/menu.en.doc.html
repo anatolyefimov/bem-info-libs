@@ -1,0 +1,222 @@
+<h1 id="menu-1"><a href="#menu-1" class="anchor"></a>menu</h1>
+<p>Use this block for creating different types of menu.</p>
+<h2 id="overview-9"><a href="#overview-9" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-14"><a href="#modifiers-of-the-block-14" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#mode">mode</a></td>
+<td><code>&#39;radio&#39;</code>, <code>&#39;radio-check&#39;</code>, <code>&#39;check&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The type of the menu.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The disabled state.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The block is in focus.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The size of the menu. Use sizes only for menus when the <a href="#themes">theme modifier is set to islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-18"><a href="#custom-fields-of-the-block-18" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#val">val</a></td>
+<td><code>String</code>, <code>Number</code>, <code>Array</code></td>
+<td>The selected value from the menu. If the <a href="#mode-check">mode modifier with check value</a> is applied to the block, the selected values must be declared as an <code>array</code>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="elements-of-the-block"><a href="#elements-of-the-block" class="anchor"></a>Elements of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=#group>group</a></td>
+<td><code>BEMJSON</code></td>
+<td>The menu items visual grouping.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-elements"><a href="#custom-fields-of-the-block-elements" class="anchor"></a>Custom fields of the block elements</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group</td>
+<td><a href="#group-title">title</a></td>
+<td><code>String</code></td>
+<td>The name of the menu items group.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-9"><a href="#block-description-9" class="anchor"></a>Block description</h2>
+<p>Use the <code>menu</code> block to control the state, behavior and appearance of the menu and its nested components – the <a href="../menu-item/menu-item.en.md">menu-item</a> blocks.</p>
+<p>The block supports key-pad control. If <code>menu</code> block is in <a href="#focused">focus</a> (<code>focused</code> modifier with <code>true</code> value), type a menu item name on your keyboard to switch to the menu item. Use <code>Space bar</code> or <code>Enter</code> buttons to select the menu item.</p>
+<h3 id="modifiers-of-the-block-15"><a href="#modifiers-of-the-block-15" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="mode"></a></p>
+<h4 id="mode-modifier"><a href="#mode-modifier" class="anchor"></a><code>mode</code> modifier</h4>
+<p>Acceptable values: <code>&#39;check</code>, <code>&#39;radio&#39;</code>, <code>&#39;radio-check&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The <code>mode</code> modifier changes the type of the <code>menu</code> block depending on the selected value:</p>
+<ul>
+<li>basic list (<a href="#mode-none">mode modifier is not specified</a>)</li>
+<li>multiple-choice list (<a href="#mode-check">mode modifier with check value</a>)</li>
+<li>mandatory single-choice list (<a href="#mode-radio">mode modifier with radio value</a>)</li>
+<li>optional single-choice list (<a href="#mode-radiocheck">mode modifier with radio-check value</a>).</li>
+</ul>
+<p><a name="mode-none"></a></p>
+<h5 id="basic-list-mode-modifier-is-not-specified"><a href="#basic-list-mode-modifier-is-not-specified" class="anchor"></a>Basic list (<code>mode</code> modifier is not specified)</h5>
+<p>If the <code>mode</code> modifier is not set to the block, the basic list without the possibility to select the menu item is created.</p>
+<!-- bem-example: desktop.examples/menu/g1UaJ3NE10S1dwJmqbwQo79-VVA -->
+
+<p><a name="mode-check"></a></p>
+<h5 id="multiple-choice-list-mode-modifier-with-check-value"><a href="#multiple-choice-list-mode-modifier-with-check-value" class="anchor"></a>Multiple-choice list (<code>mode</code> modifier with <code>check</code> value)</h5>
+<p>Use this modifier to create the menu with the possibility to select any number of menu items.</p>
+<!-- bem-example: desktop.examples/menu/BTM4xUjnc915qyYMeIYJX_XdD58 -->
+
+<p><a name="mode-radio"></a></p>
+<h5 id="mandatory-single-choice-list-mode-modifier-with-radio-value"><a href="#mandatory-single-choice-list-mode-modifier-with-radio-value" class="anchor"></a>Mandatory single-choice list (<code>mode</code> modifier with <code>radio</code> value)</h5>
+<p>Use this modifier to create the menu that has one mandatory selected item.</p>
+<p>If any item is not selected in BEMJSON declaration, the first menu item is selected by default.</p>
+<!-- bem-example: desktop.examples/menu/3INUNWWF4NFMg_eELiB4-DGVU5Q -->
+
+<p><a name="mode-radiocheck"></a></p>
+<h5 id="optional-single-choice-list-mode-modifier-with-radio-check-value"><a href="#optional-single-choice-list-mode-modifier-with-radio-check-value" class="anchor"></a>Optional single-choice list (<code>mode</code> modifier with <code>radio-check</code> value)</h5>
+<p>Use this modifier to create the menu that has one mandatory selected item like in the <code>mandatory single-choice list</code>. The fundamental difference between these two menu types is that the <code>menu</code> block with the <code>mode</code> modifier with the <code>radio-check</code> value has the opportunity to leave the menu without the selected items.</p>
+<!-- bem-example: desktop.examples/menu/R0UIhrIVUWYONYHAGiFyBtlrtm8 -->
+
+<p><a name="disabled"></a></p>
+<h4 id="disabled-modifier-7"><a href="#disabled-modifier-7" class="anchor"></a><code>disabled</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier makes the block inactive. The disabled block is visible but not available for user actions.</p>
+<p>If <code>menu</code> block is disabled, all nested <code>menu-item</code> blocks are also disabled:</p>
+<!-- bem-example: desktop.examples/menu/dSm2ifToCfnJxy5sZuOOdK1ZzkI -->
+
+<p>The <code>disabled</code> modifier with the <code>true</code> value could be set to a separate menu items:</p>
+<!-- bem-example: desktop.examples/menu/Jq5XMd3tzVtMZ1-zcfaHYPgFiZE -->
+
+<p><a name="focused"></a></p>
+<h4 id="focused-modifier-6"><a href="#focused-modifier-6" class="anchor"></a><code>focused</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier puts the focus on the block.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;menu&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, mode : &#39;radio-check&#39;, focused : true },
+    val : 2,
+    content : [
+        {
+            block : &#39;menu-item&#39;,
+            val : 1,
+            content : &#39;Skiing&#39;
+        },
+        {
+            block : &#39;menu-item&#39;,
+            val : 2,
+            content : &#39;Swimming&#39;
+        }
+    ]
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-7"><a href="#theme-modifier-7" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value: <code>&#39;islands&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<p>The <code>islands</code> theme requires the <a href="#size">size</a> modifier.</p>
+<!-- bem-example: desktop.examples/menu/Vpjhp3qDpVU_aO63FP0_AWDpZjY -->
+
+<p><a name="size"></a></p>
+<h4 id="size-modifier-7"><a href="#size-modifier-7" class="anchor"></a><code>size</code> modifier</h4>
+<p>Acceptable values for the <code>islands</code> theme: <code>&#39;s&#39;</code>, <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>, <code>&#39;xl&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>size</code> modifier only for blocks with the <code>islands</code> <a href="#themes">theme</a>.</p>
+<p>Sets the size value for all types of menus.</p>
+<p><strong>s</strong></p>
+<!-- bem-example: desktop.examples/menu/EpYKWLbTyTnL32-f48fIcW11MZU -->
+
+<p><strong>m</strong></p>
+<!-- bem-example: desktop.examples/menu/G1OpojLbq2nGV-95nt0F0Mn8UPU -->
+<strong>l</strong>
+
+<!-- bem-example: desktop.examples/menu/4rAcBP9dQ5QVDWZ4BoCvYVOuL6E -->
+
+<p><strong>xl</strong></p>
+<!-- bem-example: desktop.examples/menu/ETI_Lv6zDDJZvkFPQd4eUNbbjzI -->
+
+<h3 id="custom-fields-of-the-block-19"><a href="#custom-fields-of-the-block-19" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="val"></a></p>
+<h4 id="val-field-4"><a href="#val-field-4" class="anchor"></a><code>val</code> field</h4>
+<p>Type: <code>String</code>, <code>Number</code>, <code>Array</code>.</p>
+<p>Specifies:</p>
+<ul>
+<li>The selected value from the menu. In this case the field type is <code>String</code> or <code>Number</code>.</li>
+</ul>
+<!-- bem-example: desktop.examples/menu/QtvWGIiq8rVIlbeSgq-R_LJQKL4 -->
+
+<ul>
+<li>The set of selected values from the menu. This case is possible if the block has the <a href="#mode-check">mode modifier set to check</a>. The field type is an <code>Array</code>.</li>
+</ul>
+<!-- bem-example: desktop.examples/menu/QCo9_NjEm7ROg5vXA1yE4NAZqzU -->
+
+<h3 id="elements-of-the-block-1"><a href="#elements-of-the-block-1" class="anchor"></a>Elements of the block</h3>
+<p><a name="group"></a></p>
+<h4 id="group-element"><a href="#group-element" class="anchor"></a><code>group</code> element</h4>
+<p>A visual grouping of the menu items that does not affect the general logic of items selection.</p>
+<!-- bem-example: desktop.examples/menu/sB6zwhxsAEZPNJuPxnHjV8CnPlU -->
+
+<h3 id="custom-fields-of-the-block-elements-1"><a href="#custom-fields-of-the-block-elements-1" class="anchor"></a>Custom fields of the block elements</h3>
+<p><a name="group-title"></a></p>
+<h4 id="title-field-of-group-element"><a href="#title-field-of-group-element" class="anchor"></a><code>title</code> field of <code>group</code> element</h4>
+<p>Type: <code>String</code>.</p>
+<p>Specifies the title for a group of menu items.</p>
+<!-- bem-example: desktop.examples/menu/v_1U9PexU2dG2OymyiiY_VetPU4 -->
