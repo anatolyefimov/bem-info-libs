@@ -1,0 +1,20 @@
+<h1 id="clearfix-2"><a href="#clearfix-2" class="anchor"></a>clearfix</h1>
+<p>Блок реализует популярный CSS-прием <strong>clearfix</strong>, также известный как <a href="http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/">Easy Clearing Hack</a>. Прием позволяет отменить обтекание для элементов с CSS-свойством <code>float</code>, без внесения изменений в исходную HTML-структуру документа.</p>
+<p>Блок реализован в технологии CSS и подходит для использования в клиентских приложениях.</p>
+<p>Блок можно использовать в качестве контейнера для элементов со свойством <code>float</code>, или примешивая его к такому контейнеру.</p>
+<p>Пример использования в качестве контейнера:</p>
+<p>Примешивание к блоку-контейнеру:</p>
+
+<div class="shmakowiki"><p>Для использования блока необходимо подмешать его к нужному html-элементу, например:</p><pre><code class="xml">    &lt;div style=&quot;background: #ada;&quot;&gt;
+        top
+    &lt;/div&gt;
+
+    &lt;div class=&quot;clearfix&quot; style=&quot;background: #eda;&quot;&gt;
+        &lt;div style=&quot;float: left; height: 100px;&quot;&gt;item1&lt;/div&gt;
+        &lt;div style=&quot;float: left; height: 100px;&quot;&gt;item2&lt;/div&gt;
+        &lt;div style=&quot;float: left; height: 100px;&quot;&gt;item3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&quot;background: #ada;&quot;&gt;
+        bottom
+    &lt;/div&gt;</code></pre></div>

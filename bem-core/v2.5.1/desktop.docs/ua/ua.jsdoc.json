@@ -1,0 +1,1 @@
+{"jsdocType":"root","modules":[{"jsdocType":"module","name":"ua","see":["http://code.jquery.com/jquery-migrate-1.1.1.js"],"description":"Detect some user agent features (works like jQuery.browser in jQuery 1.8)","exports":{"jsdocType":"type","jsType":"Object"}}]}

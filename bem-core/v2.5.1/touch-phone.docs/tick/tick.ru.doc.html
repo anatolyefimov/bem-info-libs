@@ -1,0 +1,71 @@
+<h1 id="tick-2"><a href="#tick-2" class="anchor"></a>tick</h1>
+<p>Блок <code>tick</code> служит для генерации регулярного события <code>tick</code>. Подписавшись на событие блока, можно использовать его для поллинга и синхронизации выполняемых операций.</p>
+<p>Блок реализован в технологии <code>vanilla.js</code> и подходит для использования как на клиенте, так и на сервере.</p>
+<h2 id="Интервал-между-событиями-2"><a href="#Интервал-между-событиями-2" class="anchor"></a>Интервал между событиями</h2>
+<p>Частота, с которой блок генерирует событие <code>tick</code>, определяется значением приватной переменной <code>TICK_INTERVAL</code>. Значение переменной – целое число – интервал между событиями в миллисекундах. </p>
+<p>По умолчанию <code>TICK_INTERVAL = 50</code>. Не рекомендуется изменять значение переменной.</p>
+<h2 id="Публичные-методы-блока-14"><a href="#Публичные-методы-блока-14" class="anchor"></a>Публичные методы блока</h2>
+<p>Блок предоставляет следующие публичные методы:</p>
+<ul>
+<li><code>start</code> – запускает генерацию события <code>tick</code> и счетчик, если они еще не запущены. Событие <code>tick</code> генерируется через интервал, равный значению <code>TICK_INTERVAL</code> после вызова метода;</li>
+<li><code>stop</code> – останавливает генерацию события.</li>
+</ul>
+<p>Методы не принимают никаких аргументов.</p>
+<pre><code class="lang-js">modules.define(&#39;tick-emmiter&#39;,
+    [&#39;i-bem__dom&#39;, &#39;tick&#39;],
+    function(provide, BEMDOM, tick) {
+
+provide(BEMDOM.decl(this.name, {
+    onSetMod : {
+        &#39;js&#39; : {
+            &#39;inited&#39; : function() { 
+                this.setMod(&#39;ticking&#39;);
+            },
+
+            &#39;&#39; : function() {
+                this.delMod(&#39;ticking&#39;);
+            }
+        },
+
+        &#39;ticking&#39; : {
+            &#39;true&#39; : function() {
+                tick.start();
+            },
+
+            &#39;&#39; : function() {
+                tick.stop();
+            }
+        }
+    }
+}));
+});
+</code></pre>
+<p>Блок наследуется от «клсаса» <code>Emitter</code> блока <code>events</code>, что позволяет вызывать методы класса.
+Например, в блоке <code>input</code> для поллинга производится подписка на событие <code>tick</code> помощью унаследованного <code>tick.on</code>:</p>
+<pre><code class="lang-js">modules.define(&#39;input&#39;, [&#39;tick&#39;, &#39;idle&#39;], function(provide, tick, idle, Input) {
+
+var instances = [],
+    boundToTick,
+    bindToTick = function() {
+        boundToTick = true;
+        tick
+            .on(&#39;tick&#39;, update) // подписываемся на событие tick 
+            .start(); // запускаем генерацию события tick
+        idle
+            .on({
+                idle : function() {
+                    tick.un(&#39;tick&#39;, update); // по событию idle отписываемся от tick
+                },
+                wakeup : function() {
+                    tick.on(&#39;tick&#39;, update); // по событию wakeup подписываемся обратно
+                }
+            })
+            .start();
+    },
+    update = function() { /* ... */ };
+
+});
+</code></pre>
+<h2 id="Модификаторы-блока-5"><a href="#Модификаторы-блока-5" class="anchor"></a>Модификаторы блока</h2>
+<h3 id="start_auto-2"><a href="#start_auto-2" class="anchor"></a>start_auto</h3>
+<p>Блок с модификатором <code>start</code> в значении <code>auto</code> используется для автоматического запуска генерации события <code>tick</code>. Событие начинает генерироваться в момент инициализации блока.</p>

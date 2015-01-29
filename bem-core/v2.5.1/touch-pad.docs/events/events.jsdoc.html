@@ -1,0 +1,165 @@
+<h1 id="events-module-1"><a href="#events-module-1" class="anchor"></a>events Module</h1>
+<h2 id="event-class-1"><a href="#event-class-1" class="anchor"></a>Event Class</h2>
+<h3 id="constructor-5"><a href="#constructor-5" class="anchor"></a>Constructor</h3>
+<h4 id="event--type-target--1"><a href="#event--type-target--1" class="anchor"></a>Event ( type, target )</h4>
+<h5 id="parameters-279"><a href="#parameters-279" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>type {String}</li>
+<li>target {Object}</li>
+</ul>
+<h3 id="instance-properties-6"><a href="#instance-properties-6" class="anchor"></a>Instance properties</h3>
+<h4 id="type-string-1"><a href="#type-string-1" class="anchor"></a>type {String}</h4>
+<p>Type</p>
+<h4 id="target-string-1"><a href="#target-string-1" class="anchor"></a>target {String}</h4>
+<p>Target</p>
+<h4 id="result--1"><a href="#result--1" class="anchor"></a>result {*}</h4>
+<p>Result</p>
+<h4 id="data--1"><a href="#data--1" class="anchor"></a>data {*}</h4>
+<p>Data</p>
+<h3 id="instance-methods-11"><a href="#instance-methods-11" class="anchor"></a>Instance methods</h3>
+<h4 id="preventdefault--1"><a href="#preventdefault--1" class="anchor"></a>preventDefault ()</h4>
+<p>Prevents default action</p>
+<h4 id="isdefaultprevented---boolean-1"><a href="#isdefaultprevented---boolean-1" class="anchor"></a>isDefaultPrevented () → {Boolean}</h4>
+<p>Returns whether is default action prevented</p>
+<h5 id="returns-262"><a href="#returns-262" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h4 id="stoppropagation--1"><a href="#stoppropagation--1" class="anchor"></a>stopPropagation ()</h4>
+<p>Stops propagation</p>
+<h4 id="ispropagationstopped---boolean-1"><a href="#ispropagationstopped---boolean-1" class="anchor"></a>isPropagationStopped () → {Boolean}</h4>
+<p>Returns whether is propagation stopped</p>
+<h5 id="returns-263"><a href="#returns-263" class="anchor"></a>Returns:</h5>
+<p>{Boolean}</p>
+<h2 id="emitter-class-1"><a href="#emitter-class-1" class="anchor"></a>Emitter Class</h2>
+<h3 id="instance-methods-12"><a href="#instance-methods-12" class="anchor"></a>Instance methods</h3>
+<h4 id="on--e-data-fn-ctx---emitter-2"><a href="#on--e-data-fn-ctx---emitter-2" class="anchor"></a>on ( e, [data], fn, [ctx] ) → {Emitter}</h4>
+<p>Adds an event handler</p>
+<h5 id="parameters-280"><a href="#parameters-280" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-264"><a href="#returns-264" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="once--e-data-fn-ctx---emitter-2"><a href="#once--e-data-fn-ctx---emitter-2" class="anchor"></a>once ( e, [data], fn, [ctx] ) → {Emitter}</h4>
+<p>Adds a one time handler for the event.
+Handler is executed only the next time the event is fired, after which it is removed.</p>
+<h5 id="parameters-281"><a href="#parameters-281" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-265"><a href="#returns-265" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="un--e-fn-ctx---emitter-2"><a href="#un--e-fn-ctx---emitter-2" class="anchor"></a>un ( [e], [fn], [ctx] ) → {Emitter}</h4>
+<p>Removes event handler or handlers</p>
+<h5 id="parameters-282"><a href="#parameters-282" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[e] {String}<br/>
+Event type</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-266"><a href="#returns-266" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="emit--e-data---emitter-2"><a href="#emit--e-data---emitter-2" class="anchor"></a>emit ( e, [data] ) → {Emitter}</h4>
+<p>Fires event handlers</p>
+<h5 id="parameters-283"><a href="#parameters-283" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String | events:Event}<br/>
+Event</li>
+<li>[data] {Object}<br/>
+Additional data</li>
+</ul>
+<h5 id="returns-267"><a href="#returns-267" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h3 id="static-methods-9"><a href="#static-methods-9" class="anchor"></a>Static methods</h3>
+<h4 id="on--e-data-fn-ctx---emitter-3"><a href="#on--e-data-fn-ctx---emitter-3" class="anchor"></a>on ( e, [data], fn, [ctx] ) → {Emitter}</h4>
+<p>Adds an event handler</p>
+<h5 id="parameters-284"><a href="#parameters-284" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-268"><a href="#returns-268" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="once--e-data-fn-ctx---emitter-3"><a href="#once--e-data-fn-ctx---emitter-3" class="anchor"></a>once ( e, [data], fn, [ctx] ) → {Emitter}</h4>
+<p>Adds a one time handler for the event.
+Handler is executed only the next time the event is fired, after which it is removed.</p>
+<h5 id="parameters-285"><a href="#parameters-285" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String}<br/>
+Event type</li>
+<li>[data] {Object}<br/>
+Additional data that the handler gets as e.data</li>
+<li>fn {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-269"><a href="#returns-269" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="un--e-fn-ctx---emitter-3"><a href="#un--e-fn-ctx---emitter-3" class="anchor"></a>un ( [e], [fn], [ctx] ) → {Emitter}</h4>
+<p>Removes event handler or handlers</p>
+<h5 id="parameters-286"><a href="#parameters-286" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>[e] {String}<br/>
+Event type</li>
+<li>[fn] {Function}<br/>
+Handler</li>
+<li>[ctx] {Object}<br/>
+Handler context</li>
+</ul>
+<h5 id="returns-270"><a href="#returns-270" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h4 id="emit--e-data---emitter-3"><a href="#emit--e-data---emitter-3" class="anchor"></a>emit ( e, [data] ) → {Emitter}</h4>
+<p>Fires event handlers</p>
+<h5 id="parameters-287"><a href="#parameters-287" class="anchor"></a>Parameters:</h5>
+<ul>
+<li>e {String | events:Event}<br/>
+Event</li>
+<li>[data] {Object}<br/>
+Additional data</li>
+</ul>
+<h5 id="returns-271"><a href="#returns-271" class="anchor"></a>Returns:</h5>
+<p>{Emitter}</p>
+<p>this</p>
+<h1 id="events__channels-module-1"><a href="#events__channels-module-1" class="anchor"></a>events__channels Module</h1>
+<h2 id="function--iddefault-dropfalse---eventsemitter--undefined-1"><a href="#function--iddefault-dropfalse---eventsemitter--undefined-1" class="anchor"></a><em>function</em> ( [id=&#39;default&#39;], [drop=false] ) → {events:Emitter | undefined}</h2>
+<p>Returns/destroys a named communication channel</p>
+<h3 id="parameters-288"><a href="#parameters-288" class="anchor"></a>Parameters:</h3>
+<ul>
+<li>[id=&#39;default&#39;] {String}<br/>
+Channel ID</li>
+<li>[drop=false] {Boolean}<br/>
+Destroy the channel</li>
+</ul>
+<h3 id="returns-272"><a href="#returns-272" class="anchor"></a>Returns:</h3>
+<p>{events:Emitter | undefined}</p>
+<p>Communication channel</p>

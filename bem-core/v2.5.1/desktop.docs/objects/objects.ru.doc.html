@@ -1,0 +1,51 @@
+<h1 id="objects"><a href="#objects" class="anchor"></a>objects</h1>
+<p>Блок <code>objects</code> предоставляет набор методов-хелперов для работы с объектами JavaScript.</p>
+<p>Блок реализован в технологии <code>vanilla.js</code> и подходит для использования как на сервере, так и на клиенте.</p>
+<h2 id="Публичные-методы-блока-2"><a href="#Публичные-методы-блока-2" class="anchor"></a>Публичные методы блока</h2>
+<h3 id="extend"><a href="#extend" class="anchor"></a><code>extend</code></h3>
+<p>Метод позволяет расширять объект свойствами другого объекта. Копируются только собственные свойства объекта, не полученные по цепочке прототипов. Метод принимает аргументами:</p>
+<ul>
+<li><code>target</code> <code>{Object}</code> – целевой объект, который расширяется свойствами других.</li>
+<li><code>source</code> <code>{Object}</code> – объект, свойства которого добавляются к целевому. Может быть передано несколько объектов. Свойства каждого из них будут добавлены к целевому.</li>
+</ul>
+<p>Метод возвращает целевой объект с добавленными свойствами.</p>
+<p>Например:</p>
+<pre><code class="lang-js">modules.require([&#39;objects&#39;], function(objects) {
+    var obj1 = { a : 1, b : 2 },
+        obj2 = { b : 3, c : 4 };
+
+    console.log(objects.extend(obj1, obj2)); // { a : 1, b : 3, c : 4 }
+});
+</code></pre>
+<h3 id="isempty"><a href="#isempty" class="anchor"></a><code>isEmpty</code></h3>
+<p>Метод позволяет выяснить пуст ли переданный ему объект. Другими словами, имеет ли объект собственные свойства.</p>
+<p>Метод принимает один аргумент <code>{Object}</code> – объект для проверки. Возвращаемое значение <code>{Boolean}</code> – <code>true</code> в случае, если объект не имеет собственных свойств.</p>
+<pre><code class="lang-js">modules.require([&#39;objects&#39;], function(objects) {
+    var obj1 = {},
+        obj2 = { foo : &#39;bar&#39; };
+
+    console.log(objects.isEmpty(obj1)); // true
+    console.log(objects.isEmpty(obj2)); // false
+});
+</code></pre>
+<h3 id="each"><a href="#each" class="anchor"></a><code>each</code></h3>
+<p>Метод служит для итеративного обхода собственных свойств объекта. Для каждого собственного свойства вызывается функция-callback. Метод не возвращает значения и принимает следующие аргументы:</p>
+<ul>
+<li><code>obj</code> <code>{Object}</code> – объект обход свойств которого производится.</li>
+<li><code>fn</code> <code>{Function}</code> – callback, вызываемый для каждого свойства.</li>
+<li><code>ctx</code> <code>{Object}</code> – контекст callback-функции. Опционально.</li>
+</ul>
+<p>Первым аргументом callback получает значение свойства объекта, для которого была вызвана, вторым имя свойства.</p>
+<pre><code class="lang-js">modules.require([&#39;objects&#39;], function(objects) {
+    var obj1 = { a : 1, b : 2, c : 4 },
+        logValue = function(val) {
+            console.log(val);
+        };
+
+    objects.each(obj1, logValue); // 124
+});
+</code></pre>
+<p>Примеры использования <code>objects</code> в библиотеке <code>bem-components</code>:</p>
+<ul>
+<li>блок <code>popup</code> <a href="https://github.com/bem/bem-components/blob/v2/common.blocks/popup/_target/popup_target.js#L82">с модификатором target</a>.</li>
+</ul>

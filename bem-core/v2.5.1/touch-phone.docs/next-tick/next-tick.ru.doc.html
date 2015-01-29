@@ -1,0 +1,48 @@
+<h1 id="next-tick-2"><a href="#next-tick-2" class="anchor"></a>next-tick</h1>
+<p>Блок <code>next-tick</code> служит для асинхронного вызова переданной callback функции в следующем витке событийного цикла. </p>
+<p><code>next-tick</code> – полифил, реализующий:</p>
+<ul>
+<li>симуляцию событийного цикла для старых версий браузеров;</li>
+<li>унифицированный интерфейс для работы с различными браузерами и <code>node.js</code>.</li>
+</ul>
+<p>Блок реализован в технологии <code>vanilla.js</code> и подходит для использования как на клиенте, так и на сервере.</p>
+<p>Блок реализует единственный метод и подходит для случаев, когда требуется, чтобы callback был выполнен после того, как другие функции в рамках событийного цикла отработали. Например, чтобы убедиться что доступны данные, динамически вычислявшиеся в рамках цикла.</p>
+<p>Другой пример – случай, когда необходимо убедиться, что некоторое событие всплыло до верхнеуровневого элемента, как, например, в блоке <code>popup</code> с модификатором <code>autoclosable</code>:</p>
+<pre><code class="lang-js">provide(Popup.decl({ modName : &#39;autoclosable&#39;, modVal : true }, /** @lends popup.prototype */{
+    onSetMod : {
+        &#39;visible&#39; : {
+            &#39;true&#39; : function() {
+                this
+                    // NOTE: nextTick because of event bubbling to document
+                    .nextTick(function() {
+                        this.bindToDoc(&#39;pointerclick&#39;, this._onDocPointerClick);
+                    })
+                    .__base.apply(this, arguments);
+            }
+        }
+    },
+
+    _onDocPointerClick : function(e) { /* ... */ }
+}}));
+</code></pre>
+<h2 id="Порядок-вызова-callback-2"><a href="#Порядок-вызова-callback-2" class="anchor"></a>Порядок вызова callback</h2>
+<p>В рамках событийного цикла работы блок формирует очередь, добавляя каждую следующую callback функцию в ее конец. Порядок вызова callback сохраняется. Например:</p>
+<pre><code class="lang-js">modules.define(&#39;test&#39;, [&#39;next-tick&#39;], function(provide, nextTick) {
+
+provide(BEMDOM.decl({ block : this.name }, /** @lends test.prototype */
+{ 
+    onSetMod : {
+        &#39;js&#39; : {
+            &#39;inited&#39; : function() {
+                var order = [];
+
+                nextTick(function() { order.push(1); });
+                nextTick(function() { order.push(2); });
+                nextTick(function() { order.push(3); });
+                nextTick(function() { console.log(order)); }; // should be [1, 2, 3]
+            }
+        }
+    }
+}));
+});
+</code></pre>
