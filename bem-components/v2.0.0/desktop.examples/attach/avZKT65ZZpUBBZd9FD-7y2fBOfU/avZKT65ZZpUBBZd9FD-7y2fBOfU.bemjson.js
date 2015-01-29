@@ -1,0 +1,1 @@
+({"block":"page","title":"attach","head":[{"elem":"css","url":"_avZKT65ZZpUBBZd9FD-7y2fBOfU.css"}],"scripts":[{"elem":"js","url":"_avZKT65ZZpUBBZd9FD-7y2fBOfU.js"}],"mods":{"theme":"islands"},"content":{"block":"attach","mods":{"theme":"islands","size":"m"},"button":"Выберите файл","noFileText":"Файл не выбран"}})

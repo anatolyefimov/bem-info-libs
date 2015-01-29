@@ -1,0 +1,1 @@
+({"block":"page","title":"menu-item","head":[{"elem":"css","url":"_93gXEx6hkrrGalhirEyp89M-Ac0.css"}],"scripts":[{"elem":"js","url":"_93gXEx6hkrrGalhirEyp89M-Ac0.js"}],"mods":{"theme":"islands"},"content":{"block":"menu-item","mods":{"theme":"islands","size":"m"},"content":"Choose BEM","val":"1"}})

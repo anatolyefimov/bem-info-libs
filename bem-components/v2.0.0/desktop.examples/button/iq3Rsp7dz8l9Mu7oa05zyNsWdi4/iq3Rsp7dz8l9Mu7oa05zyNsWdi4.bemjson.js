@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_iq3Rsp7dz8l9Mu7oa05zyNsWdi4.css"}],"scripts":[{"elem":"js","url":"_iq3Rsp7dz8l9Mu7oa05zyNsWdi4.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"submit"},"name":"Test_1","val":"passed","text":"Проверить результат"}})

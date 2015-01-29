@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_u46-J5g8kxImth0M6KRUKJ9gahM.css"}],"scripts":[{"elem":"js","url":"_u46-J5g8kxImth0M6KRUKJ9gahM.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","togglable":"radio"},"text":"I am toggled"}})

@@ -1,0 +1,231 @@
+<h1 id="radio-group-3"><a href="#radio-group-3" class="anchor"></a>radio-group</h1>
+<p>Use this block for creating a group of related radio switches (based on the <a href="../radio/radio.en.md">radio</a> block).</p>
+<h2 id="overview-35"><a href="#overview-35" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-64"><a href="#modifiers-of-the-block-64" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable values</th>
+<th>Use cases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#type">type</a></td>
+<td><code>&#39;button&#39;</code>, <code>&#39;line&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The type of the radio switches group.</td>
+</tr>
+<tr>
+<td><a href="#disabled">disabled</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The disabled state.</td>
+</tr>
+<tr>
+<td><a href="#focused">focused</a></td>
+<td><code>true</code></td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The block is in focus.</td>
+</tr>
+<tr>
+<td><a href="#theme">theme</a></td>
+<td><code>&#39;islands&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>A custom design.</td>
+</tr>
+<tr>
+<td><a href="#size">size</a></td>
+<td><code>&#39;m&#39;</code>, <code>&#39;l&#39;</code></td>
+<td><code>BEMJSON</code></td>
+<td>The size of the radio switches group. Use sizes only for radio switches group when the <a href="#theme">theme modifier is set to islands</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="custom-fields-of-the-block-68"><a href="#custom-fields-of-the-block-68" class="anchor"></a>Custom fields of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#name">name</a></td>
+<td><code>String</code></td>
+<td>The unique block name.</td>
+</tr>
+<tr>
+<td><a href="#val">val</a></td>
+<td><code>Array</code></td>
+<td>A set of values of the selected radio switches.</td>
+</tr>
+<tr>
+<td><a href="#opt">options</a></td>
+<td><code>Array</code></td>
+<td>A set of values for each radio switch of the group. Each radio switch has its own <a href="#optset">set of values</a>.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-33"><a href="#block-description-33" class="anchor"></a>Block description</h2>
+<p>Use the <code>radio-group</code> block to control the size, state, and appearance of the radio switches in the group. The block allows to choose the only one radio switch from the group.</p>
+<h3 id="modifiers-of-the-block-65"><a href="#modifiers-of-the-block-65" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="type"></a></p>
+<h4 id="type-modifier-13"><a href="#type-modifier-13" class="anchor"></a><code>type</code> modifier</h4>
+<p>Acceptable values: <code>&#39;button&#39;</code>, <code>&#39;line&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p><a name="type-button"></a></p>
+<h5 id="button-based-radio-group-type-modifier-with-button-value-1"><a href="#button-based-radio-group-type-modifier-with-button-value-1" class="anchor"></a>Button-based radio-group (<code>type</code> modifier with <code>button</code> value)</h5>
+<p>Implements the <code>radio-group</code> block using the <a href="../radio/radio.en.md/#type">button-based</a> radio switches.</p>
+<p>Grouped button-based radio switches are always aligned in a line.</p>
+<!-- bem-example: touch.examples/radio-group/mZXWTYSaJoVcwmHWtn5G3fcjFOQ -->
+
+<p><a name="type-line"></a></p>
+<h5 id="line-aligned-radio-group-type-modifier-with-line-value-1"><a href="#line-aligned-radio-group-type-modifier-with-line-value-1" class="anchor"></a>Line-aligned radio-group (<code>type</code> modifier with <code>line</code> value)</h5>
+<p>The modifier aligns all radio switches of the group in a line.</p>
+<!-- bem-example: touch.examples/radio-group/9M0Bqhl65ZeHsSr8MDGHZh0G1L4 -->
+
+<p><a name="disabled"></a></p>
+<h4 id="disabled-modifier-24"><a href="#disabled-modifier-24" class="anchor"></a><code>disabled</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier makes the block inactive. The disabled block is visible but not available for user actions.</p>
+<p>The modifier could be applied to:</p>
+<ul>
+<li>The radio-group:</li>
+</ul>
+<!-- bem-example: touch.examples/radio-group/bWb9cCjrImC7izqOnDBdlrxYRrI -->
+
+<!-- bem-example: touch.examples/radio-group/Xufa9W55z2EofcRASoMPL5TxALM -->
+
+<ul>
+<li>The separate radio switch of the group:</li>
+</ul>
+<!-- bem-example: touch.examples/radio-group/c-HiBUKATO4hGNqUhzE8omoB2IU -->
+
+<!-- bem-example: touch.examples/radio-group/cOJseKbRIdnhV1zEOV4FNojlXps -->
+
+<p><a name="focused"></a></p>
+<h4 id="focused-modifier-20"><a href="#focused-modifier-20" class="anchor"></a><code>focused</code> modifier</h4>
+<p>Acceptable value: <code>true</code>.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>The modifier puts the focus on the block.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;radio-group&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, type : &#39;button&#39;, focused : true },
+    name : &#39;radio-button&#39;,
+    val : 2,
+    options : [
+        { val : 1, text : &#39;Football&#39; },
+        { val : 2, text : &#39;Basketball&#39; },
+        { val : 3, text : &#39;Handball&#39; }
+    ]
+}
+</code></pre>
+<pre><code class="lang-javascript">{
+    block : &#39;radio-group&#39;,
+    mods : { theme : &#39;islands&#39;, size : &#39;m&#39;, focused : true },
+    name : &#39;radio&#39;,
+    val : 2,
+    options : [
+        { val : 1, text : &#39;Football&#39; },
+        { val : 2, text : &#39;Basketball&#39; },
+        { val : 3, text : &#39;Handball&#39; }
+    ]
+}
+</code></pre>
+<p><a name="theme"></a></p>
+<h4 id="theme-modifier-31"><a href="#theme-modifier-31" class="anchor"></a><code>theme</code> modifier</h4>
+<p>Acceptable value: <code>&#39;islands&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>The modifier gives the block a custom design.</p>
+<p>The <code>islands</code> theme requires the <a href="#size">size</a> modifier.</p>
+<!-- bem-example: touch.examples/radio-group/OWaIqTGp8OsXvy_32tmWrJXt2Sg -->
+
+<!-- bem-example: touch.examples/radio-group/ib9wJh6kCcww-ceQKLPJB4wWPAA -->
+
+<p><a name="size"></a></p>
+<h4 id="size-modifier-25"><a href="#size-modifier-25" class="anchor"></a><code>size</code> modifier</h4>
+<p>Acceptable values for the <code>islands</code> theme: <code>&#39;m&#39;</code>, <code>&#39;l&#39;</code>.</p>
+<p>Use case: <code>BEMJSON</code>.</p>
+<p>Use the <code>size</code> modifier only for blocks with the <code>islands</code> <a href="#theme">theme</a>.</p>
+<p>Sets the size value for all types of radio-groups.</p>
+<p><strong>m</strong></p>
+<!-- bem-example: touch.examples/radio-group/bkTVG-YbizdmsykXGUYn43YQjFQ -->
+
+<!-- bem-example: touch.examples/radio-group/5GCBax6Cl1S64OxpZLqAfW4yjss -->
+
+<p><strong>l</strong></p>
+<!-- bem-example: touch.examples/radio-group/rxKL08XT5Klo-bAxfuuYI-bUfwI -->
+
+<!-- bem-example: touch.examples/radio-group/vU8ASOBSp3DnYUUIRNEExenxnB4 -->
+
+<h3 id="custom-fields-of-the-block-69"><a href="#custom-fields-of-the-block-69" class="anchor"></a>Custom fields of the block</h3>
+<p><a name="name"></a></p>
+<h4 id="name-field-14"><a href="#name-field-14" class="anchor"></a><code>name</code> field</h4>
+<p>Type: <code>String</code></p>
+<p>Specifies the block unique name.</p>
+<!-- bem-example: touch.examples/radio-group/bkTVG-YbizdmsykXGUYn43YQjFQ -->
+
+<p><a name="val"></a></p>
+<h4 id="val-field-20"><a href="#val-field-20" class="anchor"></a><code>val</code> field</h4>
+<p>Type: <code>Array</code>.</p>
+<p>Specifies a set of values for the selected radio switches.</p>
+<!-- bem-example: touch.examples/radio-group/bkTVG-YbizdmsykXGUYn43YQjFQ -->
+
+<p><a name="opt"></a></p>
+<h4 id="options-field-4"><a href="#options-field-4" class="anchor"></a><code>options</code> field</h4>
+<p>Type: <code>Array</code></p>
+<p>Specifies a set of values for each radio switch of the group.</p>
+<p><a name="optset"></a></p>
+<p>Each radio switch has its own set of values.</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>val</code></td>
+<td><code>String</code>, <code>Number</code></td>
+<td>The value to send to the server if the radio switch is selected.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>String</code></td>
+<td>The radio switch label, or the button label if the <code>type</code> modifier is set to <code>button</code>.</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td><code>Boolean</code></td>
+<td>A disabled state.</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>BEMJSON</code></td>
+<td>The radio switch icon, which is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with the <code>type</code> modifier set to <code>button</code>.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>String</code></td>
+<td>Tooltip content. Use tooltips only for radio switches with <code>type</code> modifier set to <code>button</code>.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>String</code></td>
+<td>The radio switch unique ID.</td>
+</tr>
+</tbody>
+</table>
+</div><!-- bem-example: touch.examples/radio-group/TW9gqoayOgKS4E-h2URXhfq0vFQ -->
+
+<!-- bem-example: touch.examples/radio-group/D8kScAPXGdDRsqrsbFs9IZoNHXg -->
+
+<!-- bem-example: touch.examples/radio-group/qkKQef_8bE7x8NHpA2fJLBmadyI -->

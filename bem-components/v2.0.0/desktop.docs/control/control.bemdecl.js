@@ -1,0 +1,1 @@
+exports.blocks = [{"name":"control"},{"name":"control"},{"name":"control"},{"name":"control"},{"name":"control"},{"name":"control"},{"name":"control"}];

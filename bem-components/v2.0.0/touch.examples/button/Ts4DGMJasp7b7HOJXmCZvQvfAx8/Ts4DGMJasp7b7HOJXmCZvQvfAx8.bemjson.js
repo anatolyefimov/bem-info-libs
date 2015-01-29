@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_Ts4DGMJasp7b7HOJXmCZvQvfAx8.css"}],"scripts":[{"elem":"js","url":"_Ts4DGMJasp7b7HOJXmCZvQvfAx8.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","togglable":"radio"},"text":"Я «залипла» :)"}})

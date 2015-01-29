@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_rFg7CLmnVzOj8sGo0rhjOjsPQo4.css"}],"scripts":[{"elem":"js","url":"_rFg7CLmnVzOj8sGo0rhjOjsPQo4.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"submit"},"name":"Test #1","val":"Passed","text":"Check the result","id":"Unique_1"}})

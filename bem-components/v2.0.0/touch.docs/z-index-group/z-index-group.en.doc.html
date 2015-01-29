@@ -1,0 +1,38 @@
+<h1 id="z-index-group-3"><a href="#z-index-group-3" class="anchor"></a>z-index-group</h1>
+<p>Use this block for creating several layers of the blocks that are located one above the other on a page.</p>
+<h2 id="overview-39"><a href="#overview-39" class="anchor"></a>Overview</h2>
+<h3 id="modifiers-of-the-block-74"><a href="#modifiers-of-the-block-74" class="anchor"></a>Modifiers of the block</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Acceptable value</th>
+<th>Use acse</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#index-level">level</a></td>
+<td>Integer number from 0 to 9</td>
+<td><code>BEMJSON</code>, <code>JS</code></td>
+<td>The layer level.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="block-description-37"><a href="#block-description-37" class="anchor"></a>Block description</h2>
+<p>Use the <code>z-index-group</code> block to place the blocks in layers one above the others. The <a href="#index-level">level</a> modifier controls the block layer position on <code>z</code>-axis.</p>
+<h3 id="modifiers-of-the-block-75"><a href="#modifiers-of-the-block-75" class="anchor"></a>Modifiers of the block</h3>
+<p><a name="index-level"></a></p>
+<h4 id="level-modifier-1"><a href="#level-modifier-1" class="anchor"></a><code>level</code> modifier</h4>
+<p>Acceptable values: integer number from 0 to 9.</p>
+<p>Use cases: <code>BEMJSON</code>, <code>JS</code>.</p>
+<p>When blocks overlap, the <code>level</code> modifier determines which one covers the other.</p>
+<p>The block with the larger <code>level</code> value covers the block with the lower one. If two blocks have the same <code>level</code> value, the block that is declared in BEMJSON later will cover the other one.</p>
+<pre><code class="lang-javascript">{
+    block : &#39;popup&#39;,
+    mix : { block : &#39;z-index-group&#39;, mods : { level : 1 } },
+    mods : { autoclosable : true, theme : &#39;islands&#39; },
+    content : &#39;I am under the block with { level : 2 } value!&#39;
+}
+</code></pre>

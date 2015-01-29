@@ -1,0 +1,82 @@
+exports.blocks = [
+    {
+        "name": "page"
+    },
+    {
+        "name": "page",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "islands"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "page",
+        "elems": [
+            {
+                "name": "css"
+            }
+        ]
+    },
+    {
+        "name": "page",
+        "elems": [
+            {
+                "name": "js"
+            }
+        ]
+    },
+    {
+        "name": "attach"
+    },
+    {
+        "name": "attach",
+        "mods": [
+            {
+                "name": "theme",
+                "vals": [
+                    {
+                        "name": "islands"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "attach",
+        "mods": [
+            {
+                "name": "size",
+                "vals": [
+                    {
+                        "name": "m"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "button"
+    },
+    {
+        "name": "icon"
+    },
+    {
+        "name": "icon",
+        "mods": [
+            {
+                "name": "action",
+                "vals": [
+                    {
+                        "name": "download"
+                    }
+                ]
+            }
+        ]
+    }
+];

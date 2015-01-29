@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_d2DhZhkxKEi1th9tMni2562A9DE.css"}],"scripts":[{"elem":"js","url":"_d2DhZhkxKEi1th9tMni2562A9DE.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"submit"},"name":"Test #1","val":"Passed","text":"Check the result","title":"This button shows the test results"}})

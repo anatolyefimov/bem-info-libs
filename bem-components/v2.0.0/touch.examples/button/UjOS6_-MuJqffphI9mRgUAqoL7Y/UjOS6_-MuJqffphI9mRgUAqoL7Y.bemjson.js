@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_UjOS6_-MuJqffphI9mRgUAqoL7Y.css"}],"scripts":[{"elem":"js","url":"_UjOS6_-MuJqffphI9mRgUAqoL7Y.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","togglable":"check"},"text":"I am pressed"}})

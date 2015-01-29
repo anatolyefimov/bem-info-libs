@@ -1,0 +1,1 @@
+({"block":"page","title":"button","head":[{"elem":"css","url":"_4greGrQLVTKubiWIYure4HoMlhQ.css"}],"scripts":[{"elem":"js","url":"_4greGrQLVTKubiWIYure4HoMlhQ.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"link"},"url":"https://bem.info/","text":"Try BEM!"}})
