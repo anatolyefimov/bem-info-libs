@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"__OfYMV8Y6z6oSoF8RPsj40agVZ8.css"}],"scripts":[{"elem":"js","url":"__OfYMV8Y6z6oSoF8RPsj40agVZ8.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","view":"pseudo"},"text":"У меня прозрачный фон"}})

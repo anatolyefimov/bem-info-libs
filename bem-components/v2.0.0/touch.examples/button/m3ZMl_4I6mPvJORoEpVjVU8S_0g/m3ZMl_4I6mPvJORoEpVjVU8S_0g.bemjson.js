@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_m3ZMl_4I6mPvJORoEpVjVU8S_0g.css"}],"scripts":[{"elem":"js","url":"_m3ZMl_4I6mPvJORoEpVjVU8S_0g.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","disabled":true},"text":"Disabled"}})

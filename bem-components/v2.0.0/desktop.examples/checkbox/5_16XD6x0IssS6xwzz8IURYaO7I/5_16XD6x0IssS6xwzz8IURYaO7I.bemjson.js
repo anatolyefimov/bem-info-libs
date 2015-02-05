@@ -1,1 +1,0 @@
-({"block":"page","title":"checkbox","head":[{"elem":"css","url":"_5_16XD6x0IssS6xwzz8IURYaO7I.css"}],"scripts":[{"elem":"js","url":"_5_16XD6x0IssS6xwzz8IURYaO7I.js"}],"mods":{"theme":"islands"},"content":{"block":"checkbox","mods":{"theme":"islands","size":"m","type":"button","disabled":true},"name":"name2","val":"val_1","text":"Candies"}})

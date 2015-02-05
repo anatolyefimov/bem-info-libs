@@ -1,1 +1,0 @@
-({"block":"page","title":"textarea","head":[{"elem":"css","url":"_b6c0fdkzoYLLmuRsB571EoF_hlk.css"}],"scripts":[{"elem":"js","url":"_b6c0fdkzoYLLmuRsB571EoF_hlk.js"}],"mods":{"theme":"islands"},"content":{"block":"textarea","mods":{"theme":"islands","size":"m"},"name":"Feedback"}})

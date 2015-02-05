@@ -1,1 +1,0 @@
-exports.blocks = [{"name":"modal"},{"name":"modal"},{"name":"modal"},{"name":"modal"},{"name":"modal"},{"name":"modal"},{"name":"modal","mods":[{"name":"autoclosable","vals":[{"name":true}]}]},{"name":"modal","mods":[{"name":"autoclosable","vals":[{"name":true}]}]},{"name":"modal","mods":[{"name":"autoclosable","vals":[{"name":true}]}]}];

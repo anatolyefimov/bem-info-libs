@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_BKGf7R6-YTqXcYfBFkC_293nQyw.css"}],"scripts":[{"elem":"js","url":"_BKGf7R6-YTqXcYfBFkC_293nQyw.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","view":"pseudo"},"text":"With transparent background"}})

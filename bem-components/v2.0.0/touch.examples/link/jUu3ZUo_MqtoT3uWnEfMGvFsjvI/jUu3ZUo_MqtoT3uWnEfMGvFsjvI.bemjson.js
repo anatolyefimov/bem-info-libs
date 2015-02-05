@@ -1,1 +1,0 @@
-({"block":"page","title":"link","head":[{"elem":"css","url":"_jUu3ZUo_MqtoT3uWnEfMGvFsjvI.css"}],"scripts":[{"elem":"js","url":"_jUu3ZUo_MqtoT3uWnEfMGvFsjvI.js"}],"mods":{"theme":"islands"},"content":{"block":"link","mods":{"theme":"islands","size":"m","pseudo":true},"content":"Show the answer","title":"Click the link to see the answer"}})

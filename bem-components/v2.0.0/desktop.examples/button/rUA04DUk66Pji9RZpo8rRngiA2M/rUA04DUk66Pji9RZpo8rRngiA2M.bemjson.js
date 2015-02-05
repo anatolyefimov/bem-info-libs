@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_rUA04DUk66Pji9RZpo8rRngiA2M.css"}],"scripts":[{"elem":"js","url":"_rUA04DUk66Pji9RZpo8rRngiA2M.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m"},"text":"Twitter","icon":{"block":"icon","mods":{"social":"twitter"}}}})

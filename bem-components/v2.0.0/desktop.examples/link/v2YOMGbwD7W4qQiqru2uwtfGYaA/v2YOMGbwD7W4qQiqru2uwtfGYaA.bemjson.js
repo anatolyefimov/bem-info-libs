@@ -1,1 +1,0 @@
-({"block":"page","title":"link","head":[{"elem":"css","url":"_v2YOMGbwD7W4qQiqru2uwtfGYaA.css"}],"scripts":[{"elem":"js","url":"_v2YOMGbwD7W4qQiqru2uwtfGYaA.js"}],"mods":{"theme":"islands"},"content":{"block":"link","mods":{"theme":"islands","size":"l"},"url":"https://bem.info/","content":"bem.info"}})

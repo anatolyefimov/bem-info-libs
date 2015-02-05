@@ -1,1 +1,0 @@
-({"block":"page","title":"button","head":[{"elem":"css","url":"_xL9mhKAvdEnfs0-lXxSRHQi1ZBQ.css"}],"scripts":[{"elem":"js","url":"_xL9mhKAvdEnfs0-lXxSRHQi1ZBQ.js"}],"mods":{"theme":"islands"},"content":{"block":"button","mods":{"theme":"islands","size":"m","type":"submit"},"text":"Send data"}})

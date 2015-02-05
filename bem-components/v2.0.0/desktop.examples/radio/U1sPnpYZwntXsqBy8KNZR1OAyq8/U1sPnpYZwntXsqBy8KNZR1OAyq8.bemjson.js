@@ -1,1 +1,0 @@
-({"block":"page","title":"radio","head":[{"elem":"css","url":"_U1sPnpYZwntXsqBy8KNZR1OAyq8.css"}],"scripts":[{"elem":"js","url":"_U1sPnpYZwntXsqBy8KNZR1OAyq8.js"}],"mods":{"theme":"islands"},"content":{"block":"radio","mods":{"theme":"islands","size":"m","type":"button","checked":true},"name":"radio-islands","val":"BEMHTML","text":"Use BEMHTML"}})

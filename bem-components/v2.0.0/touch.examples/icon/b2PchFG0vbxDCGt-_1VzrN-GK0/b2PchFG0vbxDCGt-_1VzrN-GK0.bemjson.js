@@ -1,1 +1,0 @@
-({"block":"page","title":"icon","head":[{"elem":"css","url":"_b2PchFG0vbxDCGt-_1VzrN-GK0.css"}],"scripts":[{"elem":"js","url":"_b2PchFG0vbxDCGt-_1VzrN-GK0.js"}],"mods":{},"content":{"block":"icon","mods":{"social":"twitter"}}})

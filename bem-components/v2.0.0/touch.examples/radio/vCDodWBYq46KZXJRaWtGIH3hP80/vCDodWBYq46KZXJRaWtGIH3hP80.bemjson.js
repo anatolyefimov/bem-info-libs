@@ -1,1 +1,0 @@
-({"block":"page","title":"radio","head":[{"elem":"css","url":"_vCDodWBYq46KZXJRaWtGIH3hP80.css"}],"scripts":[{"elem":"js","url":"_vCDodWBYq46KZXJRaWtGIH3hP80.js"}],"mods":{"theme":"islands"},"content":{"block":"radio","mods":{"theme":"islands","size":"m","type":"button"},"name":"radio-islands","val":"BEMHTML","text":"twitter","icon":{"block":"icon","mods":{"social":"twitter"}}}})

@@ -1,1 +1,0 @@
-({"block":"page","title":"input","head":[{"elem":"css","url":"_DlW6v4_v_NAYijmDlq8s0hl17Uw.css"}],"scripts":[{"elem":"js","url":"_DlW6v4_v_NAYijmDlq8s0hl17Uw.js"}],"mods":{"theme":"islands"},"content":{"block":"input","mods":{"theme":"islands","size":"m"},"placeholder":"Размер m"}})

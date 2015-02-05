@@ -1,1 +1,0 @@
-({"block":"page","title":"image","head":[{"elem":"css","url":"_5xLdnqyxW_oRsW_zluHfor4aioo.css"}],"scripts":[{"elem":"js","url":"_5xLdnqyxW_oRsW_zluHfor4aioo.js"}],"mods":{},"content":{"block":"image","url":"https://bem.info/m/_/UDW_1du_HiznlY0CUbPFjWQH3iY.svg","title":"Все подробности на bem.info"}})

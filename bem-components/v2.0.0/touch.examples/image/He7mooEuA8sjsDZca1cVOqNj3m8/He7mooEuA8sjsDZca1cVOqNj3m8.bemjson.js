@@ -1,1 +1,0 @@
-({"block":"page","title":"image","head":[{"elem":"css","url":"_He7mooEuA8sjsDZca1cVOqNj3m8.css"}],"scripts":[{"elem":"js","url":"_He7mooEuA8sjsDZca1cVOqNj3m8.js"}],"mods":{},"content":{"block":"image","content":"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"16\"><path d=\"M13.5.5l-8 12L1.7 8l-1 1.6L5.6 15l9.1-13.4z\"/></svg>"}})
